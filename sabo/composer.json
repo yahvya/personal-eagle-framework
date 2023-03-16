@@ -1,1 +1,11 @@
-{}
+{
+    "autoload": {
+        "psr-4": {
+            "Sabo\\Sabo\\" : "sabo",
+            "Sabo\\Config\\" : "config",
+            "Sabo\\DefaultPage\\" : "default-pages",
+            "Sabo\\Exception\\" : "exception",
+            "Sabo\\Helper\\" : "helper"
+        }
+    }
+}

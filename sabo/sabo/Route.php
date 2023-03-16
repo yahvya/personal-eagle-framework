@@ -159,7 +159,8 @@ abstract class Route{
 
         $regex = str_replace($toReplace,$replaces,$url);
 
-        if(str_starts_with($regex,"/") && strlen($regex) != 1) $regex = "/{0,1}" . substr($regex,1);
+        $regex = "/{0,1}" . substr($regex,1);
+        
         if(str_ends_with($regex,"/") ) $regex .= "{0,1}";
         
         return [

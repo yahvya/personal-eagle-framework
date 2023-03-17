@@ -45,28 +45,55 @@ abstract class SaboModel implements System{
      * @param data la donnée à assigner
      * @return SaboModel this
      * @throws ModelAttributeException si une des conditions de vérification de l'attribut n'est pas valide
-     * @throws Exception si l'attribut n'existe pas (phase de développement)
+     * @throws Exception si l'attribut n'est pas accessible (phase de développement)
      */
     public function setAttribute(string $attributeName,mixed $data):SaboModel{
         // vérification de l'existance de l'attribut
-        if(!$this->reflection->hasProperty($attributeName) ){
-            if(SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE) ) 
-                throw new Exception("L'attribut ({$attributeName}) n'existe pas sur la class " . $this->reflection->getName() );
-            else 
-                return $this;
-        }
+        if(!$this->checkAttributeAccessible($attributeName) ) return $this;
 
-        // vérification des conditions
-        $conds = $this->columnsConfiguration[$attributeName]["configClass"]->getConds();
+        // vérification des conditions dans le cas où c'est un champs lié à la base de donnée
+        if(!empty($this->columnsConfiguration[$attributeName]["haveToCheckCond"]) ){
+            // vérification des conditions
+            $conds = $this->columnsConfiguration[$attributeName]["configClass"]->getConds();
 
-        foreach($conds as $cond){
-            if(!$cond->checkCondWith($data) ) throw new ModelAttributeException($cond);
+            foreach($conds as $cond){
+                if(!$cond->checkCondWith($data) ) throw new ModelAttributeException($cond);
+            }
         }
 
         $this->{$attributeName} = $data;
 
         return $this;
     }
+
+    /**
+     * tente de récupérer la valeur d'un attribut
+     * @param attributeName 
+     * @return mixed la valeur de l'attribut ou null si non existant
+     * @throws Exception si l'attribut n'est pas accessible (phase de développement)
+     */
+    public function getAttribute(string $attributeName):mixed{
+        // vérification de l'existance de l'attribut
+        return !$this->checkAttributeAccessible($attributeName) ? null : $this->{$attributeName};
+    }
+
+    /**
+     * vérifie qu'un attribut existe
+     * @param attributeName le nom de l'attribut
+     * @return bool si l'attribut existe
+     * @throws Exception si l'attribut n'est pas accessible pas (phase de développement)
+     */
+    private function checkAttributeAccessible(string $attributeName):bool{
+        // vérification de l'existance de l'attribut
+        if(!$this->reflection->hasProperty($attributeName) || $this->columnsConfiguration[$attributeName]["reflection"]->isPrivate() ){
+            if(SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE) ) 
+                throw new Exception("L'attribut ({$attributeName}) n'existe pas ou est privé sur la class " . $this->reflection->getName() );
+            else 
+                return false;
+        }
+
+        return true;
+    }   
 
     /**
      * lis les attributs associés au model enfant pour en tirer les informations
@@ -87,14 +114,23 @@ abstract class SaboModel implements System{
         foreach($this->reflection->getProperties() as $reflectionProperty){
             $reflectionAttribute = $reflectionProperty->getAttributes(TableColumn::class);
 
+            $modelAttributeName = $reflectionProperty->getName();
+            
             if(!empty($reflectionAttribute[0]) ){
-                $modelAttributeName = $reflectionProperty->getName();
-
                 if($reflectionProperty->isPrivate() ) throw new Exception("Un attribut lié à une colonne de la base de données doit être public ou protected - Table({$this->tableName}) - Attribut({$modelAttributeName})");
 
                 $this->columnsConfiguration[$modelAttributeName] = [
                     "name" => $modelAttributeName,
-                    "configClass" => $reflectionAttribute[0]->newInstance() 
+                    "configClass" => $reflectionAttribute[0]->newInstance(),
+                    "haveToCheckCond" => true,
+                    "reflection" => $reflectionProperty
+                ];
+            }
+            else{
+                $this->columnsConfiguration[$modelAttributeName] = [
+                    "name" => $modelAttributeName,
+                    "reflection" => $reflectionProperty,
+                    "haveToCheckCond" => false
                 ];
             }
         }

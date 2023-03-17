@@ -3,13 +3,15 @@
         "psr-4": {
             "Sabo\\Sabo\\" : "sabo",
             "Sabo\\Config\\" : "config",
-            "Sabo\\DefaultPage\\" : "default-pages",
+            "Sabo\\DefaultPage\\" : "default-page",
             "Sabo\\Exception\\" : "exception",
             "Sabo\\Helper\\" : "helper",
             "Sabo\\Model\\Model\\" : "model\\model",
             "Sabo\\Model\\Exception\\" : "model\\exception",
             "Sabo\\Model\\System\\Mysql\\" : "model\\system\\mysql",
-            "Sabo\\Model\\Conds\\" : "model\\conds"
+            "Sabo\\Model\\System\\Interface\\" : "model\\system\\interface",
+            "Sabo\\Model\\Cond\\" : "model\\cond",
+            "Sabo\\Model\\Attribute\\" : "model\\attribute"
         }
     }
 }

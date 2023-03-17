@@ -4,6 +4,7 @@ namespace Sabo\Model\Attribute;
 
 use Attribute;
 use Sabo\Model\Cond\Cond;
+use Sabo\Model\Cond\PrimaryKeyCond;
 
 /**
  * attribut représentant une colonne en base de donnée
@@ -25,9 +26,22 @@ class TableColumn{
      */
     private bool $isPrimaryKey;
 
-    public function __construct(string $linkedColName,Cond... $linkeConds){
+    private bool $isAutoIncremented;
+
+    public function __construct(string $linkedColName,Cond... $linkedConds){
         $this->linkedColName = $linkedColName;
-        $this->conds = $linkeConds;
+        $this->conds = $linkedConds;
+        $this->isPrimaryKey = false;
+        $this->isAutoIncremented = false;
+
+        foreach($this->conds as $cond){
+            if($cond instanceof PrimaryKeyCond){
+                $this->isPrimaryKey = true;
+                $this->isAutoIncremented = $cond->getIsAutoIncrmented();
+
+                break;
+            }
+        }
     }
 
     /**
@@ -52,6 +66,13 @@ class TableColumn{
 
     /**
      * @return bool si l'attribut est une clé primaire
+     */
+    public function getIsAutoIncremented():bool{
+        return $this->isPrimaryKey && $this->isAutoIncremented;
+    }
+
+    /**
+     * @return bool si l'attribut est une clé primaire auto incrémenté
      */
     public function getIsPrimaryKey():bool{
         return $this->isPrimaryKey;

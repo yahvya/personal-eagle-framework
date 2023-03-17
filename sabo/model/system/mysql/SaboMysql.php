@@ -103,8 +103,6 @@ trait SaboMysql{
 
         self::$sharedCon = self::getNewCon();
 
-        new \Model\TestModel();
-
         return self::$sharedCon != null;
     }
 

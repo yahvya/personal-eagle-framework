@@ -85,7 +85,15 @@ abstract class Router{
             if(array_key_exists($name,$paramsData) ) array_push($args,$paramsData[$name]);
         }
 
-        call_user_func_array($toCall,$args);
+        try{
+            call_user_func_array($toCall,$args);
+        }
+        catch(Exception $e){
+            if(SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE) ) 
+                throw $e;
+            else
+                call_user_func(SaboConfig::getCallableConfig(SaboConfigAttributes::TECHNICAL_ERROR_DEFAULT_PAGE) );
+        }
 
         die();
     }   

@@ -14,6 +14,11 @@ interface Cond{
     public function checkCondWith(mixed $data):bool;
 
     /**
+     * @return bool si l'erreur peut être envoyé à l'utilisateur
+     */
+    public function getIsDisplayable():bool;
+
+    /**
      * @return string le message d'erreur en cas d'échec de validation de la condition
      */
     public function getErrorMessage():string;

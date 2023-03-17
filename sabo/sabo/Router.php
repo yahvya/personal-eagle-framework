@@ -5,10 +5,13 @@ namespace Sabo\Sabo;
 use ReflectionClass;
 use ReflectionFunction;
 use ReflectionMethod;
+use Exception;
+use Sabo\Config\EnvConfig;
 use Sabo\Config\PathConfig;
 use Sabo\Config\SaboConfig;
 use Sabo\Config\SaboConfigAttributes;
 use Sabo\Helper\Helper;
+use Sabo\Model\Model\SaboModel;
 
 /**
  * routeur du framexork
@@ -17,14 +20,21 @@ abstract class Router{
     /**
      * démarre le site web
      * @return never la fonction arrête l'exécution
+     * @throws Exception en mode débug en cas d'erreur
      */
     public static function initWebsite():never{
+        self::readEnv();
+        self::initDatabase();
+
         $routes = Helper::require(PathConfig::MAIN_ROUTE_FILE->value);
 
         $requestMethod = strtolower($_SERVER["REQUEST_METHOD"]);
 
         if(!array_key_exists($requestMethod,$routes) ){
-            die("methode non accepté");
+            if(SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE) )
+                throw new Exception("Méthode de requête {$requestMethod} non accepté");
+            else
+                call_user_func(SaboConfig::getCallableConfig(SaboConfigAttributes::TECHNICAL_ERROR_DEFAULT_PAGE) );
         }
 
         // recherche de la route qui match
@@ -40,6 +50,7 @@ abstract class Router{
      * @param routeData la route
      * @param regexMatches les données matchés de la regex de vérification
      * @return never la fonction arrête l'exécution
+     * @throws Exception en mode debug throw les erreurs pouvant survenir
      */
     private static function startWithRouteData(array $routeData,array $regexMatches):never{
 
@@ -77,5 +88,36 @@ abstract class Router{
         call_user_func_array($toCall,$args);
 
         die();
+    }   
+
+    /**
+     * lis le fichier de configuration
+     */
+    private static function readEnv():void{
+        if(!EnvConfig::readEnv() ){
+            if(SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE) )
+                throw new Exception("Echec de lecture du fichier de configuration");
+            else 
+                call_user_func(SaboConfig::getCallableConfig(SaboConfigAttributes::TECHNICAL_ERROR_DEFAULT_PAGE) );
+        }
+    }
+
+    /**
+     * initialise la base de données
+     */
+    private static function initDatabase():void{
+        // initialisation de la base de données si configuré
+        if(SaboConfig::getBoolConfig(SaboConfigAttributes::INIT_WITH_DATABASE_CONNEXION) ){
+            // échec d'initialisation
+            if(!SaboModel::initModel() ){
+                // mode de test - exception renvoyée sinon affichage d'erreur technique
+                if(SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE) ) 
+                    throw new Exception("Echec d'initilisation de la base de données");
+                else 
+                    call_user_func(SaboConfig::getCallableConfig(SaboConfigAttributes::TECHNICAL_ERROR_DEFAULT_PAGE) );
+
+                die();
+            }
+        }
     }
 }

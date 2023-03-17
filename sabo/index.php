@@ -5,7 +5,7 @@ use Sabo\Config\SaboConfig;
 use Sabo\Helper\Helper;
 use Sabo\Sabo\Router;
 
-define("ROOT",__DIR__ . "/../");
+define("ROOT",__DIR__ . "\\..\\");
 
 require_once("./vendor/autoload.php");
 

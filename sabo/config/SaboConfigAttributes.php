@@ -16,7 +16,19 @@ enum SaboConfigAttributes:string{
     case INIT_WITH_DATABASE_CONNEXION = "init_with_database";
 
     /**
-     * défini la page de connexion par défaut
+     * défini la page de page non trouvé par défaut
      */
     case NO_FOUND_DEFAULT_PAGE = "not_found_default_page";
+
+    /**
+     * défini la page d'erreur technique par défaut
+     */
+    case TECHNICAL_ERROR_DEFAULT_PAGE = "technical_error_default_page";
+
+    /**
+     * défini le type du fichier de configuration, .env ou .json
+     */
+    case ENV_FILE_TYPE = "env_file_type";
+
+    case BASIC_ENV_FORVIEW_PREFIX = "basic_env_forview_prefix";
 };

@@ -2,8 +2,17 @@
 
 namespace Sabo\DefaultPage;
 
+/**
+ * représente une page html affichant un message
+ */
 class MessagePage implements Showable{
+    /**
+     * message affiché
+     */
     private string $message;
+    /**
+     * titre de la page
+     */
     private string $title;
 
     public function __construct(string $title,string $message){

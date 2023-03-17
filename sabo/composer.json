@@ -5,7 +5,9 @@
             "Sabo\\Config\\" : "config",
             "Sabo\\DefaultPage\\" : "default-pages",
             "Sabo\\Exception\\" : "exception",
-            "Sabo\\Helper\\" : "helper"
+            "Sabo\\Helper\\" : "helper",
+            "Sabo\\Model\\Model\\" : "model\\model",
+            "Sabo\\Model\\Exception\\" : "model\\exception"
         }
     }
 }

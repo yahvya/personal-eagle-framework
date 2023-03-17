@@ -9,10 +9,22 @@ use Sabo\DefaultPage\MessagePage;
  * permet la configuration du framework
  */
 abstract class SaboConfig{
-    private static $boolAttributes = [];
-    private static $strAttributes = [];
-    private static $callableAttributes = [];
+    /**
+     * liste des attributes booléens
+     */
+    private static array $boolAttributes = [];
+    /**
+     * liste des attributes chaines
+     */
+    private static array $strAttributes = [];
+    /**
+     * liste des attributes callable
+     */
+    private static array $callableAttributes = [];
 
+    /**
+     * défini la configuration par défaut de l'application
+     */
     public static function setDefaultConfigurations():void{
         // configuration booléennes
         self::$boolAttributes = [
@@ -21,10 +33,15 @@ abstract class SaboConfig{
         ];
 
         // configuration des chaines
-        self::$strAttributes = [];
+        self::$strAttributes = [
+            SaboConfigAttributes::ENV_FILE_TYPE->value => "env.json",
+            SaboConfigAttributes::BASIC_ENV_FORVIEW_PREFIX->value => "forview_"
+        ];
 
+        // configuration des callables
         self::$callableAttributes = [
-            SaboConfigAttributes::NO_FOUND_DEFAULT_PAGE->value => [new MessagePage("Page non trouvé","La page que vous cherchez n'a pas été trouvé !"),"show"]
+            SaboConfigAttributes::NO_FOUND_DEFAULT_PAGE->value => [new MessagePage("Page non trouvé","La page que vous cherchez n'a pas été trouvé !"),"show"],
+            SaboConfigAttributes::TECHNICAL_ERROR_DEFAULT_PAGE->value => [new MessagePage("Erreur technique","Une erreur technique s'est produite !"),"show"]
         ];
     }
 

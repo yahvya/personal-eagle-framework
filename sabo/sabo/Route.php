@@ -10,8 +10,14 @@ use Exception;
  * class utlitaire des routes
  */
 abstract class Route{
+    /**
+     * liste des méthodés acceptés
+     */
     private const ACCEPTED_METHODS = ["get","post","put","delete"];
 
+    /**
+     * liste des noms de routes déjà utilisés
+     */
     private static $usedNames = [];
 
     /**

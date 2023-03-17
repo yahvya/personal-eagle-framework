@@ -7,7 +7,9 @@
             "Sabo\\Exception\\" : "exception",
             "Sabo\\Helper\\" : "helper",
             "Sabo\\Model\\Model\\" : "model\\model",
-            "Sabo\\Model\\Exception\\" : "model\\exception"
+            "Sabo\\Model\\Exception\\" : "model\\exception",
+            "Sabo\\Model\\System\\Mysql\\" : "model\\system\\mysql",
+            "Sabo\\Model\\Conds\\" : "model\\conds"
         }
     }
 }

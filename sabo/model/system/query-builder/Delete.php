@@ -23,21 +23,8 @@ trait Delete{
      * @throws Exception (en mode debug si aucune clé primaire trouvé)
      */
     public function deleteFromPrimaryKeys():QueryBuilder{
-        $whereCondArray = [];
-
-        // récupération des clé primaires
-        foreach($this->linkedModel->getColumnsConfiguration() as $attributeName => $columnConfiguration){
-            if(!empty($columnConfiguration["configClass"]) && $columnConfiguration["configClass"]->getIsPrimaryKey() ){
-                array_push($whereCondArray,[$attributeName,$this->linkedModel->getAttribute($attributeName),SqlComparator::EQUAL,SqlSeparator::AND]);
-            }
-        }
-
-        unset($whereCondArray[count($whereCondArray) - 1][3]);
-
-        $this
-            ->delete()
-            ->where()
-            ->whereGroup(...$whereCondArray);
+        $this->delete();
+        $this->addPrimaryKeysWhereCond();
 
         return $this;
     }

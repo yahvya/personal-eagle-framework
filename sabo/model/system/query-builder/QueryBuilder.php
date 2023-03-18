@@ -15,6 +15,7 @@ class QueryBuilder{
     use Where;
     use Option;
     use Delete;
+    use Update;
 
     /**
      * valeur à bind pour la requête
@@ -110,6 +111,39 @@ class QueryBuilder{
 
         return $columnsConfiguration[$attributeName]["configClass"]->getLinkedColName();
     }
+
+    /**
+     * ajoute les clés primaires comme condition where
+     * @return this
+     * @throws Exception en mode debug si aucune clé trouvé
+     */
+    private function addPrimaryKeysWhereCond():QueryBuilder{
+        $whereCondArray = [];
+
+        // récupération des clé primaires
+        foreach($this->linkedModel->getColumnsConfiguration() as $attributeName => $columnConfiguration){
+            if(!empty($columnConfiguration["configClass"]) && $columnConfiguration["configClass"]->getIsPrimaryKey() ){
+                array_push($whereCondArray,[$attributeName,$this->linkedModel->getAttribute($attributeName),SqlComparator::EQUAL,SqlSeparator::AND]);
+            }
+        }
+
+        $size = count($whereCondArray);
+
+        if($size == 0){
+            if(SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE))
+                throw new Exception("Il n'y a pas de clé primaire");
+            else 
+                return $this;
+        }
+
+        unset($whereCondArray[$size - 1][3]);
+
+        $this
+            ->where()
+            ->whereGroup(...$whereCondArray);
+
+        return $this;
+    } 
 
     /**
      * crée un querybuilder à partir de la classe donnée

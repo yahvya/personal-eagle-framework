@@ -29,7 +29,10 @@ return Route::generateFrom([
 
         $queryBuilder
             ->as("rename")
-            ->deleteFromPrimaryKeys();
+            ->update([
+                "id" => 3,
+                "name" => "yahaya"
+            ]);
 
         die($queryBuilder->getSqlString() );
     },"Home:home_page",["page" => Regex::intRegex()])

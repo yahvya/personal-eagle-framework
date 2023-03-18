@@ -60,6 +60,17 @@ trait Where{
     }
 
     /**
+     * ajoute un séparateur dans la requête
+     * @param sep le séparateur
+     * @return this
+     */
+    public function addSep(SqlSeparator $sep):QueryBuilder{
+        $this->sqlString .= " {$sep->value} ";
+        
+        return $this;
+    }       
+
+    /**
      * ajoute une condition where
      * @param attributeName nom de l'attribut
      * @param value valeur à comparer

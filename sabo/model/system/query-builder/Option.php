@@ -2,6 +2,8 @@
 
 namespace Sabo\Model\System\QueryBuilder;
 
+use PDO;
+
 /**
  * options supplémentaires d'une requête
  */
@@ -23,6 +25,27 @@ trait Option{
         }
 
         $this->sqlString .= "order by " . implode(",",$toAdd) . " ";
+
+        return $this;
+    }
+
+    /**
+     * ajoute la clause limit
+     * @param count nombre de valeurs
+     * @param offset offset
+     * @return this
+     */
+    public function limit(int $count,?int $offset = null):QueryBuilder{
+        if($offset == null){
+            $this->sqlString .= "limit ? ";
+        
+            array_push($this->toBind,[$count,PDO::PARAM_INT]);
+        }
+        else{
+            $this->sqlString .= "limit ? offset ? ";
+
+            array_push($this->toBind,[$count,PDO::PARAM_INT],[$offset,PDO::PARAM_INT]);
+        }
 
         return $this;
     }

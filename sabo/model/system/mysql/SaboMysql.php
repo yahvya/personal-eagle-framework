@@ -7,25 +7,26 @@ use Exception;
 use Sabo\Config\EnvConfig;
 use Sabo\Config\SaboConfig;
 use Sabo\Config\SaboConfigAttributes;
+use Sabo\Model\System\Interface\System;
 
 /**
  * représente une base de donnée MYSQL
  */
-trait SaboMysql{
+abstract class SaboMysql implements System{
     /**
      * identifiants de connexion à la base de données
      */
-    private static array $databaseConfig;
+    protected static array $databaseConfig;
 
     /**
      * connexion partagé entre les modèles
      */
-    private static ?PDO $sharedCon = null;
+    protected static ?PDO $sharedCon = null;
 
     /**
      * connexion du modèle
      */
-    private ?PDO $myCon = null;
+    protected ?PDO $myCon = null;
 
     /**
      * @return PDO|null la connexion
@@ -99,9 +100,9 @@ trait SaboMysql{
             ];
 
             if(isset($configEnv["DB_PORT"]) ) self::$databaseConfig["port"] = $configEnv["DB_PORT"];
-        }
+        }   
 
-        self::$sharedCon = self::getNewCon();
+        self::$sharedCon = static::getNewCon();
 
         return self::$sharedCon != null;
     }
@@ -109,11 +110,13 @@ trait SaboMysql{
     /**
      * @return PDO|null une nouvelle connexion à la base de données
      */
-    private static function getNewCon():?PDO{
+    protected static function getNewCon():?PDO{
         try{
             list("host" => $host,"user" => $user,"name" => $name,"password" => $password) = self::$databaseConfig;
 
-            $pdo = new PDO("mysql:host={$host};dbname={$name};charset=UTF8",$user,$password,[
+            $port = !empty(self::$databaseConfig["port"]) ? "port=" . self::$databaseConfig["port"] . ";" : "";
+
+            $pdo = new PDO("mysql:host={$host};{$port}dbname={$name};charset=UTF8",$user,$password,[
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
             ]);
@@ -133,7 +136,7 @@ trait SaboMysql{
     /**
      * @return PDO|null la connexion partagé entre les modèles
      */
-    private static function getSharedCon():?PDO{
+    public static function getSharedCon():?PDO{
         return self::$sharedCon;
     }
 }

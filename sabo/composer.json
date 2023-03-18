@@ -9,7 +9,9 @@
             "Sabo\\Model\\Model\\" : "model\\model",
             "Sabo\\Model\\Exception\\" : "model\\exception",
             "Sabo\\Model\\System\\Mysql\\" : "model\\system\\mysql",
+            "Sabo\\Model\\System\\Postgre\\" : "model\\system\\postgre",
             "Sabo\\Model\\System\\Interface\\" : "model\\system\\interface",
+            "Sabo\\Model\\System\\QueryBuilder\\" : "model\\system\\query-builder",
             "Sabo\\Model\\Cond\\" : "model\\cond",
             "Sabo\\Model\\Attribute\\" : "model\\attribute"
         }

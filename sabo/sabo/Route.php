@@ -11,6 +11,11 @@ use Exception;
  */
 abstract class Route{
     /**
+     * routes du site
+     */
+    private static array $siteRoutes;
+
+    /**
      * liste des méthodés acceptés
      */
     private const ACCEPTED_METHODS = ["get","post","put","delete"];
@@ -110,6 +115,8 @@ abstract class Route{
             else array_push($result[$routeData["method"] ],$routeData);
         }   
 
+        self::$siteRoutes = $result;
+
         return $result;
     }
 
@@ -120,6 +127,13 @@ abstract class Route{
      */
     public static function getFromFile(string $filename):array{
         return Helper::require(PathConfig::ROUTES_SUBFOLER_PATH->value . "{$filename}.php");
+    }
+
+    /**
+     * @return array les routes du site
+     */
+    public static function getSiteRoutes():array{
+        return self::$siteRoutes;
     }
 
     /**

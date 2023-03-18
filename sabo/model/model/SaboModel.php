@@ -9,14 +9,12 @@ use Sabo\Config\SaboConfig;
 use Sabo\Config\SaboConfigAttributes;
 use Sabo\Model\Attribute\TableColumn;
 use Sabo\Model\Attribute\TableName;
-use Sabo\Model\System\Interface\System;
 use Sabo\Model\System\Mysql\SaboMysql;
 
 /**
  * parent des modèles
  */
-abstract class SaboModel implements System{
-    use SaboMysql;
+abstract class SaboModel extends SaboMysql{
 
     /**
      * reflection de ce model
@@ -26,12 +24,12 @@ abstract class SaboModel implements System{
     /**
      * représente la configuration du model enfant
      */
-    private array $columnsConfiguration;
+    protected array $columnsConfiguration;
 
     /**
      * nom de la table lié au model
      */
-    private string $tableName;
+    protected string $tableName;
 
     public function __construct(bool $createNewCon = false){            
         $this->myCon = $createNewCon ? self::getNewCon() : self::$sharedCon;
@@ -75,6 +73,20 @@ abstract class SaboModel implements System{
     public function getAttribute(string $attributeName):mixed{
         // vérification de l'existance de l'attribut
         return !$this->checkAttributeAccessible($attributeName) ? null : $this->{$attributeName};
+    }   
+
+    /**
+     * @return array la configuration des attributs
+     */
+    public function getColumnsConfiguration():array{
+        return $this->columnsConfiguration;
+    }
+
+    /**
+     * @return string le nom de la table lié
+     */
+    public function getTableName():string{
+        return $this->tableName;
     }
 
     /**

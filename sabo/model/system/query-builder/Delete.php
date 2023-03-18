@@ -24,7 +24,6 @@ trait Delete{
      */
     public function deleteFromPrimaryKeys():QueryBuilder{
         $this->delete();
-        $this->addPrimaryKeysWhereCond();
 
         return $this;
     }

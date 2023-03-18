@@ -16,6 +16,7 @@ class QueryBuilder{
     use Option;
     use Delete;
     use Update;
+    use Insert;
 
     /**
      * valeur à bind pour la requête

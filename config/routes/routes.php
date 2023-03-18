@@ -10,11 +10,13 @@ use Sabo\Sabo\Route;
 
 return Route::generateFrom([
     Route::get("/{lang}/{page}",function(string $lang,string $page):void{
-        $queryBuilder = QueryBuilder::createFrom(TestModel::class)
-            ->as("test")
-            ->select("id","name")
-            ->limit(10,2);
+        $testModel = new TestModel();
 
-        die($queryBuilder->getSqlString() );
+        $testModel
+            ->setAttribute("id",1)
+            ->setAttribute("name","yahaya")
+            ->setAttribute("value","azir");
+
+        $testModel->delete();
     },"Home:home_page",["page" => Regex::intRegex()])
 ]); 

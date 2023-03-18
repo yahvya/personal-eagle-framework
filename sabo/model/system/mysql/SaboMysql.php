@@ -36,17 +36,12 @@ abstract class SaboMysql implements System{
     protected ?QueryBuilder $queryBuilder = null;
 
     /**
-     * @return PDO|null la connexion
-     */
-    public function getMyCon():?PDO{
-        return $this->myCon;
-    }
-
-    /**
      * insère le model dans la base de données
      * @return bool si la requête a réussi
      */
     public function insert():bool{
+
+
         return false;
     }
 
@@ -55,6 +50,14 @@ abstract class SaboMysql implements System{
      * @return bool si la requête a réussi 
      */
     public function delete():bool{
+        $this->initQueryBuilder();
+
+        $this->queryBuilder
+            ->delete()
+            ->addPrimaryKeysWhereCond();
+
+        die($this->queryBuilder->getSqlString() );
+
         return false;
     }
 
@@ -64,16 +67,6 @@ abstract class SaboMysql implements System{
      */
     public function update():bool{
         return false;
-    }
-
-    /**
-     * cherche des résultats en base de données à partir de conditions
-     * @param conds conditions à vérifier
-     * @param getBaseResult défini si les résultats doivent être retournés telles qu'elles ou sous forme d'objets
-     * @return bool si la requête a réussi 
-     */
-    public static function find(array $conds,bool $getBaseResult = false):mixed{
-
     }
 
     /**
@@ -101,6 +94,13 @@ abstract class SaboMysql implements System{
     }
 
     /**
+     * @return PDO|null la connexion
+     */
+    public function getMyCon():?PDO{
+        return $this->myCon;
+    }
+
+    /**
      * initialise le créateur de requête interne si non défini
      */
     private function initQueryBuilder():SaboMysql{
@@ -109,6 +109,16 @@ abstract class SaboMysql implements System{
         $this->queryBuilder->reset();
 
         return $this;
+    }
+
+    /**
+     * cherche des résultats en base de données à partir de conditions
+     * @param conds conditions à vérifier
+     * @param getBaseResult défini si les résultats doivent être retournés telles qu'elles ou sous forme d'objets
+     * @return bool si la requête a réussi 
+     */
+    public static function find(array $conds,bool $getBaseResult = false):mixed{
+
     }
 
     /**

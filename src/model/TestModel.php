@@ -9,7 +9,7 @@ use Sabo\Model\Model\SaboModel;
 
 #[TableName("sabo-final")]
 class TestModel extends SaboModel{
-    #[TableColumn("id_bdd",new PrimaryKeyCond)]
+    #[TableColumn("id",new PrimaryKeyCond)]
     protected int $id;
 
     #[TableColumn("nom",new PrimaryKeyCond)]

@@ -25,7 +25,7 @@ trait Update{
         foreach($toUpdate as $attributeName => $value){
             $columnName = $this->getAttributeLinkedColName($attributeName);
 
-            array_push($toJoin,"{$columnName} = ?");
+            array_push($toJoin,"{$this->as}.{$columnName} = ?");
             array_push($this->toBind,$value);
         }
 
@@ -37,9 +37,7 @@ trait Update{
         }
 
         $this->sqlString .= implode(",",$toJoin) . " ";
-
-        $this->addPrimaryKeysWhereCond();
-
+        
         return $this;
     }
 }

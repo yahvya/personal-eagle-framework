@@ -161,7 +161,7 @@ abstract class Route{
         $url = str_replace(["\{","\}"],["{","}"],$url);
 
         // recherche des paramètres génériques
-        @preg_match_all("#\{[a-zA-Z\_]+\}#",$url,$genericParameters);
+        @preg_match_all("#\{[a-zA-Z0-9\_]+\}#",$url,$genericParameters);
 
         if(!empty($genericParameters[0]) ) $toReplace = $genericParameters[0];
 

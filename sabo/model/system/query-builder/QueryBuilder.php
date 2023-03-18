@@ -14,6 +14,7 @@ class QueryBuilder{
     use Select;
     use Where;
     use Option;
+    use Delete;
 
     /**
      * valeur à bind pour la requête

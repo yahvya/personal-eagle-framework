@@ -24,12 +24,12 @@ abstract class SaboModel extends SaboMysql{
     /**
      * représente la configuration du model enfant
      */
-    protected array $columnsConfiguration;
+    private array $columnsConfiguration;
 
     /**
      * nom de la table lié au model
      */
-    protected string $tableName;
+    private string $tableName;
 
     public function __construct(bool $createNewCon = false){            
         $this->myCon = $createNewCon ? self::getNewCon() : self::$sharedCon;

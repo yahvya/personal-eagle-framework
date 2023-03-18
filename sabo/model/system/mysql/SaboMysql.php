@@ -4,10 +4,12 @@ namespace Sabo\Model\System\Mysql;
 
 use PDO;
 use Exception;
+use PDOException;
 use Sabo\Config\EnvConfig;
 use Sabo\Config\SaboConfig;
 use Sabo\Config\SaboConfigAttributes;
 use Sabo\Model\System\Interface\System;
+use Sabo\Model\System\QueryBuilder\QueryBuilder;
 
 /**
  * représente une base de donnée MYSQL
@@ -27,6 +29,11 @@ abstract class SaboMysql implements System{
      * connexion du modèle
      */
     protected ?PDO $myCon = null;
+
+    /**
+     * constructeur de requête lié au modèle
+     */
+    protected ?QueryBuilder $queryBuilder = null;
 
     /**
      * @return PDO|null la connexion
@@ -70,6 +77,41 @@ abstract class SaboMysql implements System{
     }
 
     /**
+     * démarre une transaction sur la connexion du model
+     * @throws Exception (en mode debug) si la connexion est null
+     */
+    public function beginTransaction():bool{
+        return self::beginTransactionOn($this->myCon);
+    }
+
+    /**
+     * commit une transaction sur la connexion du model
+     * @throws Exception (en mode debug) si la connexion est null
+     */
+    public function commitTransaction():bool{
+        return self::commitTransactionOn($this->myCon);
+    }
+
+    /**
+     * rollback une transaction sur la connexion du model
+     * @throws Exception (en mode debug) si la connexion est null
+     */
+    public function rollbackTransaction():bool{
+        return self::rollbackTransactionOn($this->myCon);
+    }
+
+    /**
+     * initialise le créateur de requête interne si non défini
+     */
+    private function initQueryBuilder():SaboMysql{
+        if($this->queryBuilder == null) $this->queryBuilder = new QueryBuilder($this);
+
+        $this->queryBuilder->reset();
+
+        return $this;
+    }
+
+    /**
      * initialise les modèles
      * @return bool état de succès
      */
@@ -108,6 +150,37 @@ abstract class SaboMysql implements System{
     }
 
     /**
+     * démarre une transaction sur la connexion partagé
+     * @throws Exception (en mode debug) si la connexion est null
+     */
+    public static function beginTransactionOnShared():bool{
+        return self::beginTransactionOn(self::$sharedCon);
+    }
+
+    /**
+     * commit une transaction sur la connexion partagé
+     * @throws Exception (en mode debug) si la connexion est null
+     */
+    public static function commitTransactionOnShared():bool{
+        return self::commitTransactionOn(self::$sharedCon);
+    }
+
+    /**
+     * rollback une transaction sur la connexion partagé
+     * @throws Exception (en mode debug) si la connexion est null
+     */
+    public static function rollbackTransactionOnShared():bool{
+        return self::rollbackTransactionOn(self::$sharedCon);
+    }
+
+    /**
+     * @return PDO|null la connexion partagé entre les modèles
+     */
+    public static function getSharedCon():?PDO{
+        return self::$sharedCon;
+    }
+
+    /**
      * @return PDO|null une nouvelle connexion à la base de données
      */
     protected static function getNewCon():?PDO{
@@ -134,9 +207,68 @@ abstract class SaboMysql implements System{
     }
 
     /**
-     * @return PDO|null la connexion partagé entre les modèles
+     * lance une transaction avec la connexion
+     * @param con la connexion sur laquelle démarrer la connexion
+     * @return bool si réussi
+     * @throws Exception (en mode debug) si la connexion est null
      */
-    public static function getSharedCon():?PDO{
-        return self::$sharedCon;
+    protected static function beginTransactionOn(?PDO $con):bool{
+        if($con == null){
+            if(SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE) )
+                throw new Exception("La connexion est null, démarrage de transaction échoué");
+            else
+                return false;
+        }   
+
+        try{
+            return $con->beginTransaction();
+        }
+        catch(PDOException){
+            return false;
+        }
+    }
+
+    /**
+     * commit une transaction avec la connexion
+     * @param con la connexion sur laquelle commit la connexion
+     * @return bool si réussi
+     * @throws Exception (en mode debug) si la connexion est null
+     */
+    protected static function commitTransactionOn(?PDO $con):bool{
+        if($con == null){
+            if(SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE) )
+                throw new Exception("La connexion est null, commit de transaction échoué");
+            else
+                return false;
+        }   
+
+        try{
+            return $con->commit();
+        }
+        catch(PDOException){
+            return false;
+        }
+    }
+
+    /**
+     * rollback une transaction avec la connexion
+     * @param con la connexion sur laquelle rollback la connexion
+     * @return bool si réussi
+     * @throws Exception (en mode debug) si la connexion est null
+     */
+    protected static function rollbackTransactionOn(?PDO $con):bool{
+        if($con == null){
+            if(SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE) )
+                throw new Exception("La connexion est null, commit de transaction échoué");
+            else
+                return false;
+        }   
+
+        try{
+            return $con->rollBack();
+        }
+        catch(PDOException){
+            return false;
+        }
     }
 }

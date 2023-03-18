@@ -117,7 +117,7 @@ class QueryBuilder{
      * @return this
      * @throws Exception en mode debug si aucune clé trouvé
      */
-    private function addPrimaryKeysWhereCond():QueryBuilder{
+    public function addPrimaryKeysWhereCond():QueryBuilder{
         $whereCondArray = [];
 
         // récupération des clé primaires

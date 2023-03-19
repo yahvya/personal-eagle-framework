@@ -86,6 +86,7 @@ abstract class Router{
         }
 
         try{
+            // lancement de la fonction
             call_user_func_array($toCall,$args);
         }
         catch(Exception $e){

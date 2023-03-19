@@ -5,11 +5,14 @@ namespace Sabo\Model\System\Mysql;
 use PDO;
 use Exception;
 use PDOException;
+use PDOStatement;
 use Sabo\Config\EnvConfig;
 use Sabo\Config\SaboConfig;
 use Sabo\Config\SaboConfigAttributes;
 use Sabo\Model\System\Interface\System;
 use Sabo\Model\System\QueryBuilder\QueryBuilder;
+use Sabo\Model\System\QueryBuilder\SqlComparator;
+use Sabo\Model\System\QueryBuilder\SqlSeparator;
 
 /**
  * représente une base de donnée MYSQL
@@ -143,6 +146,19 @@ abstract class SaboMysql implements System{
     }
 
     /**
+     * @param resetBefore défini si le querybuilder doit être reset avant d'être renvoyé
+     * @return QueryBuilder le query builder interne au model (non reset)
+     */
+    public function getQueryBuilder(bool $resetBefore = true):QueryBuilder{
+        if($this->queryBuilder == null) 
+            $this->initQueryBuilder();
+        else if($resetBefore)
+            $this->queryBuilder->reset();
+
+        return $this->queryBuilder;
+    }
+
+    /**
      * initialise le créateur de requête interne si non défini
      */
     private function initQueryBuilder():SaboMysql{
@@ -155,12 +171,48 @@ abstract class SaboMysql implements System{
 
     /**
      * cherche des résultats en base de données à partir de conditions
-     * @param conds conditions à vérifier
+     * @param conds conditions à vérifier, format [attribute_name => value] ou [attribute_name => [value,SqlComparator,(non obligatoire and par défaut)] SqlSeparator and ou or]
+     * @param toSelect le nom des attributs liés aux colonnes à récupérer
      * @param getBaseResult défini si les résultats doivent être retournés telles qu'elles ou sous forme d'objets
-     * @return bool si la requête a réussi 
+     * @return mixed un tableau contenant les objets si résultats multiples ou un objet model si un seul résultat ou pdostatement de la requête si getBaseResult à true ou null si aucun résultat
+     * @throws Exception (en mode debug) si données mal formulés 
      */
-    public static function find(array $conds,bool $getBaseResult = false):mixed{
-        
+    public static function find(array $conds,array $toSelect = [],bool $getBaseResult = false):mixed{
+        $queryBuilder = QueryBuilder::createFrom(get_called_class() );
+
+        $queryBuilder->select(...$toSelect);
+
+        // vérification des conditions
+        if(!empty($conds) ){
+            $whereConds = [];
+
+            // création des conditions where
+            foreach($conds as $attributeName => $condData){
+                if(gettype($condData) == "array"){
+                    $data = [
+                        $attributeName,
+                        ...$condData
+                    ];
+
+                    if(empty($condData[2]) ) array_push($data,SqlSeparator::AND);
+
+                    array_push($whereConds,$data);
+                }
+                else array_push($whereConds,[$attributeName,$condData,SqlComparator::EQUAL,SqlSeparator::AND]);
+            }
+
+            // suppression du dernier separateur and ou or
+            unset($whereConds[count($whereConds) - 1][3]);
+
+            // ajout de la clause where
+            $queryBuilder   
+                ->where()
+                ->whereGroup(...$whereConds);
+        }
+
+        die($queryBuilder->getSqlString() );
+
+        return null;
     }
 
     /**

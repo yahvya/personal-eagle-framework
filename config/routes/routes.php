@@ -17,6 +17,6 @@ return Route::generateFrom([
             ->setAttribute("name","yahaya")
             ->setAttribute("value","azir");
 
-        $testModel->delete();
+        $testModel->update();
     },"Home:home_page",["page" => Regex::intRegex()])
 ]); 

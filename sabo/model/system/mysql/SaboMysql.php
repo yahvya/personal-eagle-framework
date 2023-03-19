@@ -36,11 +36,35 @@ abstract class SaboMysql implements System{
     protected ?QueryBuilder $queryBuilder = null;
 
     /**
+     * remplace le constructeur de la class
+     */
+    abstract protected function pseudoConstruct():void;
+
+    public function __construct(bool $createNewCon = false){            
+        $this->pseudoConstruct();
+        
+        $this->myCon = $createNewCon ? self::getNewCon() : self::$sharedCon;
+    }
+
+    /**
      * insère le model dans la base de données
      * @return bool si la requête a réussi
      */
     public function insert():bool{
+        $this->initQueryBuilder();
 
+        $linkedModel = $this->queryBuilder->getLinkedModel();
+
+        $toInsert = [];
+
+        // création du tableau de valeur à insérer
+        foreach($linkedModel->getColumnsConfiguration() as $attributeName => $configuration){
+            if(!empty($configuration["configClass"]) && !$configuration["configClass"]->getIsAutoIncremented() ) $toInsert[$attributeName] = $linkedModel->getAttribute($attributeName);
+        }
+
+        $this->queryBuilder->insert($toInsert);
+
+        die($this->queryBuilder->getSqlString() );
 
         return false;
     }
@@ -66,6 +90,24 @@ abstract class SaboMysql implements System{
      * @return bool si la requête a réussi 
      */
     public function update():bool{
+        $this->initQueryBuilder();
+
+        $linkedModel = $this->queryBuilder->getLinkedModel();
+        $columnsConfiguration = $linkedModel->getColumnsConfiguration();
+
+        $toUpdate = [];
+
+        // création du tableau de valeur à update
+        foreach($columnsConfiguration as $attributeName => $configuration){
+            if(!empty($configuration["configClass"]) ) $toUpdate[$attributeName] = $toUpdate[$attributeName] = $linkedModel->getAttribute($attributeName); 
+        }
+
+        $this->queryBuilder
+            ->update($toUpdate)
+            ->addPrimaryKeysWhereCond();
+
+        die($this->queryBuilder->getSqlString() );
+
         return false;
     }
 
@@ -118,7 +160,7 @@ abstract class SaboMysql implements System{
      * @return bool si la requête a réussi 
      */
     public static function find(array $conds,bool $getBaseResult = false):mixed{
-
+        
     }
 
     /**

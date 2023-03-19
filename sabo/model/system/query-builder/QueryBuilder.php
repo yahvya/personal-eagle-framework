@@ -147,6 +147,13 @@ class QueryBuilder{
     } 
 
     /**
+     * @return SaboModel le model lié
+     */
+    public function getLinkedModel():SaboModel{
+        return $this->linkedModel;
+    }
+
+    /**
      * crée un querybuilder à partir de la classe donnée
      * @param modelClass la class du model à lié
      * @return QueryBuilder|null le querybuilder ou null en cas d'échec

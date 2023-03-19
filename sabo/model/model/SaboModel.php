@@ -31,9 +31,7 @@ abstract class SaboModel extends SaboMysql{
      */
     private string $tableName;
 
-    public function __construct(bool $createNewCon = false){            
-        $this->myCon = $createNewCon ? self::getNewCon() : self::$sharedCon;
-
+    protected function pseudoConstruct():void{
         $this->readChildConfiguration();
     }
 

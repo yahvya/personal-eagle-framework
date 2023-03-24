@@ -27,6 +27,8 @@ abstract class SaboController{
 
         // ajout des extension
         foreach(self::$twigExtensions as $twigExtension) $this->twig->addExtension($twigExtension);
+
+        $this->manageFlashDatas();
     }   
 
     /**
@@ -41,6 +43,47 @@ abstract class SaboController{
      * à redéfinir en temps que constructeur intermédiaire
      */
     protected function pseudoConstruct():void{}
+
+    /**
+     * défini un donnée flash
+     * @param flashKey la clé de la donnée flash
+     * @param data la donnée à insérer
+     * @param duration le nombre de rafraichissement autorisé (min 1)
+     */
+    protected function setFlashData(string $flashKey,mixed $data,int $duration = 1):void{
+        if($duration < 1) $duration = 1;
+
+        $duration++;
+
+        $_SESSION["sabo"]["flashDatas"][$flashKey] = [
+            "data" => $data,
+            "counter" => $duration
+        ];
+    }
+
+    /**
+     * @param flashKey la clé de la donnée flash
+     * @return mixed la donnée flash ou null si elle n'existe pas
+     */
+    protected function getFlashData(string $flashKey):mixed{
+        return !empty($_SESSION["sabo"]["flashDatas"][$flashKey]) ? $_SESSION["sabo"]["flashDatas"][$flashKey]["data"] : NULL;
+    }
+
+    /**
+     * gère les données flash à supprimer
+     */
+    private function manageFlashDatas():void{
+        if(!empty($_SESSION["sabo"]["flashDatas"]) ){
+            foreach($_SESSION["sabo"]["flashDatas"] as $key => $flashData){
+                $flashData["counter"]--;
+
+                if($flashData["counter"] == 0) 
+                    unset($_SESSION["sabo"]["flashDatas"][$key]);
+                else
+                    $_SESSION["sabo"]["flashDatas"][$key] = $flashData;
+            }   
+        }
+    }
 
     /**
      * initie les ressources des controllers

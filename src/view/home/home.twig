@@ -9,6 +9,8 @@
 <body>
     <p>Page d'accueil {{ getRoute("Home:home_page") }}</p>
 
+    <p>Nom : {{ nom }}</p>
+
     {{ 
         jRoute("routes",[
             ["get","Home:home_page"],

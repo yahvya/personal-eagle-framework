@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 
 use Sabo\Config\PathConfig;
 use Sabo\Config\SaboConfig;

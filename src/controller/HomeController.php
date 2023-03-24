@@ -6,6 +6,8 @@ use Sabo\Controller\Controller\SaboController;
 
 class HomeController extends SaboController{
     public function showHomePage():void{
-        $this->render("home/home.twig");
+        $this->render("home/home.twig",[
+            "nom" => $this->getFlashData("nom")
+        ]);
     }
 }

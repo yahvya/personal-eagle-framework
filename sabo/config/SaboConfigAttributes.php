@@ -18,7 +18,7 @@ enum SaboConfigAttributes:string{
     /**
      * défini la page de page non trouvé par défaut
      */
-    case NO_FOUND_DEFAULT_PAGE = "not_found_default_page";
+    case NOT_FOUND_DEFAULT_PAGE = "not_found_default_page";
 
     /**
      * défini la page d'erreur technique par défaut
@@ -30,5 +30,13 @@ enum SaboConfigAttributes:string{
      */
     case ENV_FILE_TYPE = "env_file_type";
 
+    /**
+     * défini le préfix des données dans un fichier .env
+     */
     case BASIC_ENV_FORVIEW_PREFIX = "basic_env_forview_prefix";
+
+    /**
+     * chemin du dossier contenant les templates
+     */
+    case VIEWS_FOLDER_PATH = "views_folder_path";
 };

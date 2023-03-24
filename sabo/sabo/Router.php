@@ -10,6 +10,7 @@ use Sabo\Config\EnvConfig;
 use Sabo\Config\PathConfig;
 use Sabo\Config\SaboConfig;
 use Sabo\Config\SaboConfigAttributes;
+use Sabo\Controller\Controller\SaboController;
 use Sabo\Helper\Helper;
 use Sabo\Model\Model\SaboModel;
 
@@ -23,10 +24,11 @@ abstract class Router{
      * @throws Exception en mode débug en cas d'erreur
      */
     public static function initWebsite():never{
+        $routes = Helper::require(PathConfig::MAIN_ROUTE_FILE->value);
+        
         self::readEnv();
         self::initDatabase();
-
-        $routes = Helper::require(PathConfig::MAIN_ROUTE_FILE->value);
+        SaboController::initControllers();
 
         $requestMethod = strtolower($_SERVER["REQUEST_METHOD"]);
 

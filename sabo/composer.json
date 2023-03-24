@@ -13,7 +13,12 @@
             "Sabo\\Model\\System\\Interface\\" : "model\\system\\interface",
             "Sabo\\Model\\System\\QueryBuilder\\" : "model\\system\\query-builder",
             "Sabo\\Model\\Cond\\" : "model\\cond",
-            "Sabo\\Model\\Attribute\\" : "model\\attribute"
+            "Sabo\\Model\\Attribute\\" : "model\\attribute",
+            "Sabo\\Controller\\Controller\\" : "controller\\controller",
+            "Sabo\\Controller\\TwigExtension\\" : "controller\\twig-extension"
         }
+    },
+    "require": {
+        "twig/twig": "^3.5"
     }
 }

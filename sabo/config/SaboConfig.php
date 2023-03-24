@@ -3,6 +3,7 @@
 namespace Sabo\Config;
 
 use Exception;
+use Sabo\Controller\TwigExtension\SaboExtension;
 use Sabo\DefaultPage\MessagePage;
 
 /**
@@ -23,6 +24,11 @@ abstract class SaboConfig{
     private static array $callableAttributes = [];
 
     /**
+     * liste des extensions utilisateurs
+     */
+    private static array $userExtensions = [];
+
+    /**
      * défini la configuration par défaut de l'application
      */
     public static function setDefaultConfigurations():void{
@@ -35,12 +41,13 @@ abstract class SaboConfig{
         // configuration des chaines
         self::$strAttributes = [
             SaboConfigAttributes::ENV_FILE_TYPE->value => "env.json",
-            SaboConfigAttributes::BASIC_ENV_FORVIEW_PREFIX->value => "forview_"
+            SaboConfigAttributes::BASIC_ENV_FORVIEW_PREFIX->value => "forview_",
+            SaboConfigAttributes::VIEWS_FOLDER_PATH->value => "src/view/"
         ];
 
         // configuration des callables
         self::$callableAttributes = [
-            SaboConfigAttributes::NO_FOUND_DEFAULT_PAGE->value => [new MessagePage("Page non trouvé","La page que vous cherchez n'a pas été trouvé !"),"show"],
+            SaboConfigAttributes::NOT_FOUND_DEFAULT_PAGE->value => [new MessagePage("Page non trouvé","La page que vous cherchez n'a pas été trouvé !"),"show"],
             SaboConfigAttributes::TECHNICAL_ERROR_DEFAULT_PAGE->value => [new MessagePage("Erreur technique","Une erreur technique s'est produite !"),"show"]
         ];
     }
@@ -113,6 +120,26 @@ abstract class SaboConfig{
         if(!array_key_exists($configType->value,self::$callableAttributes) ) throw new Exception("La clé {$configType->value} n'existe pas dans les configurations de type callable");
 
         return self::$callableAttributes[$configType->value];
+    }
+
+    /**
+     * @param extensionsClass liste des class représentant des extensions twig (extens de SaboExtension)
+     * @throws Exception si une class n'étend pas de SaboExtension
+     */
+    public static function setUserExtensions(array $extensionsClass):void{
+        // vérifie si les class sont enfant de SaboExtension
+        foreach($extensionsClass as $class){
+            if(!is_subclass_of($class,SaboExtension::class) ) throw new Exception("La class {$class} n'étend pas de SaboExtension");
+        }
+
+        self::$userExtensions = $extensionsClass;
+    }
+
+    /**
+     * @return array le tableau représentant les class d'extension twig utilisateur
+     */
+    public static function getUserExtensions():array{
+        return self::$userExtensions;
     }
 
     /**

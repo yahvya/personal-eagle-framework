@@ -19,7 +19,10 @@ class SaboRouteExtension extends SaboExtension{
             new TwigFunction("getRoute", [$this,"getRoute"]),
             new TwigFunction("postRoute", [$this,"postRoute"]),
             new TwigFunction("putRoute", [$this,"putRoute"]),
-            new TwigFunction("deleteRoute", [$this,"deleteRoute"])
+            new TwigFunction("deleteRoute", [$this,"deleteRoute"]),
+            new TwigFunction("jRoute",[$this,"jRoute"],[
+                "is_safe" => ["html" => true]
+            ])
         ];
     }
 
@@ -53,6 +56,32 @@ class SaboRouteExtension extends SaboExtension{
     public function putRoute(string $routeName,array $routeParams = []):string{
         return $this->routeFrom(self::$routes["put"],$routeName,$routeParams);
     } 
+
+    /**
+     * @param jsVarname nom de la variable javascript à traité
+     * @param routes liste des routes (tableau du format ([method,name,[params => ...] ])
+     * @return string balise javascript contenant la variable des routes
+     * @throws Exception en mode debug si la route n'existe pas
+     */
+    public function jRoute(string $jsVarname,array $routes):string{
+        $jsRoutes = [];
+
+        foreach($routes as $routeData){
+            list($method,$name,) = $routeData;
+
+            $routeData[0] = self::$routes[$method];
+
+            $jsRoutes[$name] = $this->routeFrom(...$routeData);
+        }
+
+        $jsRoutes = json_encode($jsRoutes);
+
+        return <<<HTML
+            <script>
+                var {$jsVarname} = JSON.parse('{$jsRoutes}');
+            </script>
+        HTML;   
+    }
 
     /**
      * @param routeName le nom de la route 

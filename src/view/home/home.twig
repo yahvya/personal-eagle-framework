@@ -8,5 +8,18 @@
 </head>
 <body>
     <p>Page d'accueil {{ getRoute("Home:home_page") }}</p>
+
+    {{ 
+        jRoute("routes",[
+            ["get","Home:home_page"],
+            ["get","Home:home_page",{
+                "lang" : "fr"
+            }]
+        ]) 
+    }}
+
+    <script>
+        console.log(routes)
+    </script>
 </body>
 </html>

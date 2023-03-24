@@ -88,6 +88,13 @@ abstract class SaboModel extends SaboMysql{
     }
 
     /**
+     * @return ReflectionClass la classe de reflection
+     */
+    public function getReflection():ReflectionClass{
+        return $this->reflection;
+    }   
+
+    /**
      * vérifie qu'un attribut existe
      * @param attributeName le nom de l'attribut
      * @return bool si l'attribut existe

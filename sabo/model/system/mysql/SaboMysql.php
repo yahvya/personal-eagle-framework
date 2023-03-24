@@ -9,6 +9,7 @@ use PDOStatement;
 use Sabo\Config\EnvConfig;
 use Sabo\Config\SaboConfig;
 use Sabo\Config\SaboConfigAttributes;
+use Sabo\Model\Model\SaboModel;
 use Sabo\Model\System\Interface\System;
 use Sabo\Model\System\QueryBuilder\QueryBuilder;
 use Sabo\Model\System\QueryBuilder\SqlComparator;
@@ -67,9 +68,7 @@ abstract class SaboMysql implements System{
 
         $this->queryBuilder->insert($toInsert);
 
-        die($this->queryBuilder->getSqlString() );
-
-        return false;
+        return self::execQuery($this->queryBuilder);
     }
 
     /**
@@ -83,9 +82,7 @@ abstract class SaboMysql implements System{
             ->delete()
             ->addPrimaryKeysWhereCond();
 
-        die($this->queryBuilder->getSqlString() );
-
-        return false;
+        return self::execQuery($this->queryBuilder);
     }
 
     /**
@@ -109,9 +106,7 @@ abstract class SaboMysql implements System{
             ->update($toUpdate)
             ->addPrimaryKeysWhereCond();
 
-        die($this->queryBuilder->getSqlString() );
-
-        return false;
+        return self::execQuery($this->queryBuilder);
     }
 
     /**
@@ -173,7 +168,7 @@ abstract class SaboMysql implements System{
      * cherche des résultats en base de données à partir de conditions
      * @param conds conditions à vérifier, format [attribute_name => value] ou [attribute_name => [value,SqlComparator,(non obligatoire and par défaut)] SqlSeparator and ou or]
      * @param toSelect le nom des attributs liés aux colonnes à récupérer
-     * @param getBaseResult défini si les résultats doivent être retournés telles qu'elles ou sous forme d'objets
+     * @param getBaseResult défini si les résultats doivent être retournés telles qu'elles (pdostatement) ou sous forme d'objets
      * @return mixed un tableau contenant les objets si résultats multiples ou un objet model si un seul résultat ou pdostatement de la requête si getBaseResult à true ou null si aucun résultat
      * @throws Exception (en mode debug) si données mal formulés 
      */
@@ -210,9 +205,7 @@ abstract class SaboMysql implements System{
                 ->whereGroup(...$whereConds);
         }
 
-        die($queryBuilder->getSqlString() );
-
-        return null;
+        return self::execQuery($queryBuilder,$getBaseResult ? MysqlReturn::DEFAULT : MysqlReturn::OBJECTS);
     }
 
     /**
@@ -275,6 +268,55 @@ abstract class SaboMysql implements System{
      */
     public static function rollbackTransactionOnShared():bool{
         return self::rollbackTransactionOn(self::$sharedCon);
+    }
+
+    /**
+     * execute la requête contenue dans un le queryBuilder
+     * @param queryBuilder le queryBuilder à exécuter
+     * @param toReturn le type de donnée à retourner, par défaut success_state 
+     * @return mixed
+     */
+    public static function execQuery(QueryBuilder $queryBuilder,MysqlReturn $toReturn = MysqlReturn::SUCCESS_STATE):mixed{
+        $linkedModel = $queryBuilder->getLinkedModel();
+        
+        $pdo = $linkedModel->getMyCon();
+
+        $query = $pdo->prepare($queryBuilder->getSqlString() );
+
+        if($query != false)
+		{
+            // ajout des valeurs à bind
+            $toBind = $queryBuilder->getToBind();
+
+			foreach($toBind as $key => $bindData)
+			{
+				if(gettype($bindData) == "array")
+					$query->bindValue($key + 1,...$bindData);
+				else
+					$query->bindValue($key + 1,$bindData);
+			}
+
+			if($query->execute() ){
+                switch($toReturn){
+                    case MysqlReturn::DEFAULT: return $query;
+                    case MysqlReturn::SUCCESS_STATE : return true;
+                    case MysqlReturn::OBJECTS:
+                        // création des objets model à retourner
+                        $objects = [];   
+
+                        foreach($query->fetchAll() as $rowData) array_push($objects,static::createObjectFrom($linkedModel,$rowData) );
+
+                        return $objects;
+                    ;
+                }
+            }
+		}
+
+        switch($toReturn){
+            case MysqlReturn::DEFAULT: return null;
+            case MysqlReturn::SUCCESS_STATE : return false;
+            case MysqlReturn::OBJECTS: return [];
+        }
     }
 
     /**
@@ -374,5 +416,50 @@ abstract class SaboMysql implements System{
         catch(PDOException){
             return false;
         }
+    }
+
+    /**
+     * crée un objet sabomodel à partir de la ligne passé en base de donnée
+     * @param linkedModel une instance du model à crée
+     * @param rowData la ligne de la base de données [format fetchAssoc]
+     * @return SaboModel|null le model ou null
+     * @throws Exception (en mode debug) si rowData est mal formé
+     */
+    protected static function createObjectFrom(SaboModel $linkedModel,array $rowData):?SaboModel{
+        if(!empty($rowData) ){
+            $columnsConfiguration = $linkedModel->getColumnsConfiguration();
+
+            // création d'une nouvelle instance du model
+            $model = $linkedModel->getReflection()->newInstance();
+
+            $foundName = false;
+
+            foreach($rowData as $attributeCol => $value){
+                // recherche du nom de l'attribut lié à cette colonne
+                foreach($columnsConfiguration as $attributeName => $configuration){
+                    if(empty($configuration["configClass"]) ) continue;
+
+                    if($configuration["configClass"]->getLinkedColName() == $attributeCol){
+                        $foundName = true;
+
+                        $model->{$attributeName} = $value;
+
+                        break;
+                    }
+                }
+            }   
+
+            if(!$foundName){
+                if(SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE) )
+                    throw new Exception("Aucun attribut trouvé pour la colonne {$attributeCol}");
+                else
+                    return null;
+            }
+
+            return $model;
+        }
+        else if(SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE) ) throw new Exception("Le row data est mal formé");
+
+        return null;
     }
 }

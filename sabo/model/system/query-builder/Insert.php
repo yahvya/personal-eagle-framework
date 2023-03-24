@@ -29,13 +29,12 @@ trait Insert{
 
         // récupération des valeurs à insérer
         foreach($values as $attributeName => $value){
-            $columnName = $this->getAttributeLinkedColName($attributeName);
-
-            array_push($columnsToInsert,"{$this->as}.{$columnName}");
+            array_push($columnsToInsert,$this->getAttributeLinkedColName($attributeName) );
             array_push($marks,"?");
+            array_push($this->toBind,$value);
         }
 
-        $this->sqlString = "insert into {$this->linkedModel->getTableName()} as {$this->as}(" . implode(",",$columnsToInsert) . ") values(" . implode(",",$marks) . ") ";
+        $this->sqlString = "insert into {$this->linkedModel->getTableName()} (" . implode(",",$columnsToInsert) . ") values(" . implode(",",$marks) . ") ";
 
         return $this;
     }

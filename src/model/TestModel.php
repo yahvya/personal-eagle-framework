@@ -7,16 +7,13 @@ use Sabo\Model\Attribute\TableName;
 use Sabo\Model\Cond\PrimaryKeyCond;
 use Sabo\Model\Model\SaboModel;
 
-#[TableName("sabo-final")]
+#[TableName("test_table")]
 class TestModel extends SaboModel{
-    #[TableColumn("id",new PrimaryKeyCond)]
+    #[TableColumn("id",new PrimaryKeyCond(true) )]
     protected int $id;
 
-    #[TableColumn("nom",new PrimaryKeyCond)]
-    protected string $name;
-
-    #[TableColumn("value")]
-    protected string $value;    
+    #[TableColumn("name")]
+    protected string $name;  
 
     public string $y;
 }

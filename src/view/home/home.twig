@@ -12,7 +12,7 @@
     <p>Nom : {{ nom }}</p>
 
     {{ 
-        jRoute("routes",[
+        jRoute([
             ["get","Home:home_page"],
             ["get","Home:home_page",{
                 "lang" : "fr"
@@ -21,7 +21,9 @@
     }}
 
     <script>
-        console.log(routes)
+        var mesRoutes = getRouteList();
+
+        console.log(mesRoutes);
     </script>
 </body>
 </html>

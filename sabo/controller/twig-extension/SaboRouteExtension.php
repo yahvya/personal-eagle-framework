@@ -58,12 +58,11 @@ class SaboRouteExtension extends SaboExtension{
     } 
 
     /**
-     * @param jsVarname nom de la variable javascript à traité
      * @param routes liste des routes (tableau du format ([method,name,[params => ...] ])
-     * @return string balise javascript contenant la variable des routes
+     * @return string balise javascript contenant la fonction getRouteList contenant les routes nommées
      * @throws Exception en mode debug si la route n'existe pas
      */
-    public function jRoute(string $jsVarname,array $routes):string{
+    public function jRoute(array $routes):string{
         $jsRoutes = [];
 
         foreach($routes as $routeData){
@@ -77,8 +76,14 @@ class SaboRouteExtension extends SaboExtension{
         $jsRoutes = json_encode($jsRoutes);
 
         return <<<HTML
-            <script>
-                var {$jsVarname} = JSON.parse('{$jsRoutes}');
+            <script id="routes-script">
+                function getRouteList(){
+                    var routesCopy = JSON.parse('{$jsRoutes}');
+
+                    document.getElementById("routes-script").remove();
+
+                    return routesCopy;
+                }
             </script>
         HTML;   
     }

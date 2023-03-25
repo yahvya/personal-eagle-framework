@@ -8,7 +8,14 @@ class HomeController extends SaboController{
     
     public function showHomePage():void{
         $this->render("home/home.twig",[
-            "nom" => $this->getFlashData("nom")
+            "csrf" => $this->generateCsrf()
         ]);
+    }
+
+    public function manageForm():void{
+        $this->render("home/home.twig",[
+            "check" => $this->checkCsrf("csrf"),
+            "csrf" => $this->generateCsrf()
+        ]);   
     }
 }

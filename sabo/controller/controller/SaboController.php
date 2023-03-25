@@ -5,6 +5,8 @@ namespace Sabo\Controller\Controller;
 use Sabo\Config\SaboConfig;
 use Sabo\Config\SaboConfigAttributes;
 use Sabo\Controller\TwigExtension\SaboExtension;
+use Sabo\Utils\String\RandomStringGenerator;
+use Sabo\Utils\String\RandomStringType;
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
 
@@ -12,6 +14,8 @@ use Twig\Environment;
  * parent des controller
  */
 abstract class SaboController{
+    use RandomStringGenerator;
+
     private static array $twigExtensions;
 
     protected Environment $twig;
@@ -43,6 +47,43 @@ abstract class SaboController{
      * à redéfinir en temps que constructeur intermédiaire
      */
     protected function pseudoConstruct():void{}
+
+    /**
+     * génère un token csrf
+     * @return string le token généré
+     */
+    protected function generateCsrf():string{
+        $token = self::generateString(17,false,RandomStringType::SPECIALCHARS);
+
+        do
+            $key = self::generateString(25,false,RandomStringType::SPECIALCHARS);
+        while($this->getFlashData($key) != null);
+
+        $this->setFlashData($key,$token);
+
+        return implode("#",[$token,$key]);
+    }
+
+    /**
+     * vérifie le token csrf 
+     * @param postKey clé du tableau $_POST
+     * @return bool si le token est valide ou non
+     */
+    protected function checkCsrf(string $postKey,bool $removeIfOk = true):bool{
+        if(!empty($_POST[$postKey]) && gettype($_POST[$postKey]) == "string"){
+            $tokenData = explode("#",$_POST[$postKey]);
+
+            if(count($tokenData) == 2){
+                list($token,$key) = $tokenData;
+
+                $storedToken = $this->getFlashData($key);
+
+                if(gettype($storedToken) == "string" && strcmp($token,$storedToken) == 0) return true;
+            }
+        }
+        
+        return false;
+    }
 
     /**
      * défini un donnée flash

@@ -11,6 +11,17 @@
 
     <p>Nom : {{ nom }}</p>
 
+    <form action="{{ postRoute("Home:form") }}" method="post">
+        <input type="hidden" value="{{ csrf }}" name="csrf">
+        <button name="envoi">Vérifie</button>
+    </form>
+
+    {% if check %} 
+        <p>Token vérifié ok</p>
+    {% else %}
+        <p>Token non vérifie</p>
+    {% endif %}
+
     {{ 
         jRoute([
             ["get","Home:home_page"],

@@ -15,7 +15,8 @@
             "Sabo\\Model\\Cond\\" : "model\\cond",
             "Sabo\\Model\\Attribute\\" : "model\\attribute",
             "Sabo\\Controller\\Controller\\" : "controller\\controller",
-            "Sabo\\Controller\\TwigExtension\\" : "controller\\twig-extension"
+            "Sabo\\Controller\\TwigExtension\\" : "controller\\twig-extension",
+            "Sabo\\Utils\\String\\" : "utils\\string"
         }
     },
     "require": {

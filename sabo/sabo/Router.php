@@ -41,10 +41,23 @@ abstract class Router{
 
         // recherche de la route qui match
         foreach($routes[$requestMethod] as $routeData){
-            if(@preg_match("#^{$routeData["urlRegex"]}$#",$_SERVER["PATH_INFO"],$matches) ) self::startWithRouteData($routeData,$matches);
+            if(@preg_match("#^{$routeData["urlRegex"]}$#",$_SERVER["PATH_INFO"],$matches) ){
+                // vérification des conditions d'accès supplémentaires
+                $areValid = true;
+
+                foreach($routeData["accessConds"] as $condToCheck){
+                    if(!call_user_func($condToCheck) ){
+                        $areValid = false;
+
+                        break;
+                    }
+                }
+
+                if($areValid) self::startWithRouteData($routeData,$matches);
+            }
         }
 
-        call_user_func(SaboConfig::getCallableConfig(SaboConfigAttributes::NO_FOUND_DEFAULT_PAGE) );
+        call_user_func(SaboConfig::getCallableConfig(SaboConfigAttributes::NOT_FOUND_DEFAULT_PAGE) );
     }
 
     /**

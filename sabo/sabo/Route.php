@@ -29,13 +29,15 @@ abstract class Route{
      * groupe des routes ensemble
      * @param url url de préfixe, ne peut pas de paramètres générique 
      * @param routesGroup le groupe de routes à assembler
+     * @param accessConds conditions d'accès supplémentaires à la page
      * @return array les routes formatés
      */
-    public static function group(string $url,array $routesGroup):array{
+    public static function group(string $url,array $routesGroup,array|callable $accessConds = []):array{
         foreach($routesGroup as $key => $group){
             if(!empty($group["unmodifiedUrl"]) ){
                 $group["unmodifiedUrl"] = $url . $group["unmodifiedUrl"];
                 $group["urlRegex"] = $url . $group["urlRegex"];
+                $group["accessConds"] = $accessConds;
                 $routesGroup[$key] = $group;
             }
             else $routesGroup[$key] = self::group($url,$group);
@@ -50,10 +52,11 @@ abstract class Route{
      * @param toCall fonction ou tableau du format [Controller::class,"nom_methode"]
      * @param routeName nom de la route
      * @param paramsRegex pour une route générique tableau du format ["nom_variable" => "regex_associe"] ex: /article/{article_id} = ["article_id" => "[0-9]+"]
+     * @param accessConds conditions d'accès supplémentaires à la page
      * @return array les données de la route formatés pour le framework
      */
-    public static function get(string $url,callable|array $toCall,string $routeName,array $paramsRegex = []):array{
-        return self::createRouteFrom("get",$url,$toCall,$routeName,$paramsRegex);
+    public static function get(string $url,callable|array $toCall,string $routeName,array $paramsRegex = [],array|callable $accessConds = []):array{
+        return self::createRouteFrom("get",$url,$toCall,$routeName,$paramsRegex,$accessConds);
     } 
     
     /**
@@ -62,10 +65,11 @@ abstract class Route{
      * @param toCall fonction ou tableau du format [Controller::class,"nom_methode"]
      * @param routeName nom de la route
      * @param paramsRegex pour une route générique tableau du format ["nom_variable" => "regex_associe"] ex: /article/{article_id} = ["article_id" => "[0-9]+"]
+     * @param accessConds conditions d'accès supplémentaires à la page
      * @return array les données de la route formatés pour le framework
      */
-    public static function post(string $url,callable|array $toCall,string $routeName,array $paramsRegex = []):array{
-        return self::createRouteFrom("post",$url,$toCall,$routeName,$paramsRegex);
+    public static function post(string $url,callable|array $toCall,string $routeName,array $paramsRegex = [],array|callable $accessConds = []):array{
+        return self::createRouteFrom("post",$url,$toCall,$routeName,$paramsRegex,$accessConds);
     } 
 
     /**
@@ -74,10 +78,11 @@ abstract class Route{
      * @param toCall fonction ou tableau du format [Controller::class,"nom_methode"]
      * @param routeName nom de la route
      * @param paramsRegex pour une route générique tableau du format ["nom_variable" => "regex_associe"] ex: /article/{article_id} = ["article_id" => "[0-9]+"]
+     * @param accessConds conditions d'accès supplémentaires à la page
      * @return array les données de la route formatés pour le framework
      */
-    public static function put(string $url,callable|array $toCall,string $routeName,array $paramsRegex = []):array{
-        return self::createRouteFrom("put",$url,$toCall,$routeName,$paramsRegex);
+    public static function put(string $url,callable|array $toCall,string $routeName,array $paramsRegex = [],array|callable $accessConds = []):array{
+        return self::createRouteFrom("put",$url,$toCall,$routeName,$paramsRegex,$accessConds);
     } 
 
     /**
@@ -85,11 +90,13 @@ abstract class Route{
      * @param url le lien
      * @param toCall fonction ou tableau du format [Controller::class,"nom_methode"]
      * @param routeName nom de la route
-     * @param paramsRegex pour une route générique tableau du format ["nom_variable" => "regex_associe"] ex: /article/{article_id} = ["article_id" => "[0-9]+"]
+     * @param paramsRegex pour une route générique tableau du format ["nom_variable" => "regex_associe"] ex: /article/{article_id} = ["article_id"
+     * @param  => "[0-9]+"]
+     * @param accessConds conditions d'accès supplémentaires à la page
      * @return array les données de la route formatés pour le framework
      */
-    public static function delete(string $url,callable|array $toCall,string $routeName,array $paramsRegex = []):array{
-        return self::createRouteFrom("delete",$url,$toCall,$routeName,$paramsRegex);
+    public static function delete(string $url,callable|array $toCall,string $routeName,array $paramsRegex = [],array|callable $accessConds = []):array{
+        return self::createRouteFrom("delete",$url,$toCall,$routeName,$paramsRegex,$accessConds);
     } 
 
     /**
@@ -143,10 +150,11 @@ abstract class Route{
      * @param toCall fonction ou tableau du format [Controller::class,"nom_methode"]
      * @param routeName nom de la route unique
      * @param paramsRegex pour une route générique tableau du format ["nom_variable" => "regex_associe"] ex: /article/{article_id} = ["article_id" => "[0-9]+"] sinon .+ associé comme regex par défaut
+     * @param accessConds conditions d'accès supplémentaires à la page
      * @return array les données de la route formatés pour le framework
      * @throws Exception si la méthode n'est pas accepté ou que le nom de la route est déjà pris ou un nom de paramètre générique dupliqué
      */
-    private static function createRouteFrom(string $method,string $url,callable|array $toCall,string $routeName,array $paramsRegex):array{
+    private static function createRouteFrom(string $method,string $url,callable|array $toCall,string $routeName,array $paramsRegex,array|callable $accessConds):array{
         if(in_array($routeName,self::$usedNames) ) throw new Exception("Le nom de route {$routeName} est déjà utilisé");
         if(!in_array($method,self::ACCEPTED_METHODS) ) throw new Exception("La méthode {$method} n'est pas accepté sur la route nommé {$routeName}");
 
@@ -189,7 +197,8 @@ abstract class Route{
             "unmodifiedUrl" => $url,
             "urlRegex" => $regex,
             "toCall" => $toCall,
-            "routeName" => $routeName
+            "routeName" => $routeName,
+            "accessConds" => gettype($accessConds) == "array" ? $accessConds : [$accessConds]
         ];
     }
 }

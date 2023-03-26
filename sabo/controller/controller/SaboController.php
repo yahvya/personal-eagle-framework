@@ -23,6 +23,15 @@ abstract class SaboController{
     public function __construct(){
         $this->pseudoConstruct();
 
+        $this->manageFlashDatas();
+    }   
+
+    /**
+     * affiche la page twig
+     * @param viewFilePath chemin du fichier template
+     * @param viewParams tableau de données à envoyé à la vue
+     */
+    protected function render(string $viewFilePath,array $viewParams = []):never{
         $loader = new FilesystemLoader(ROOT . SaboConfig::getStrConfig(SaboConfigAttributes::VIEWS_FOLDER_PATH) );
 
         $this->twig = new Environment($loader,[
@@ -32,15 +41,17 @@ abstract class SaboController{
         // ajout des extension
         foreach(self::$twigExtensions as $twigExtension) $this->twig->addExtension($twigExtension);
 
-        $this->manageFlashDatas();
-    }   
+        die($this->twig->render($viewFilePath,$viewParams) );
+    }
 
     /**
-     * @param viewFilePath chemin du fichier template
-     * @param viewParams tableau de données à envoyé à la vue
+     * affiche un rendu json
+     * @param data les données à affiché
      */
-    protected function render(string $viewFilePath,array $viewParams = []):never{
-        die($this->twig->render($viewFilePath,$viewParams) );
+    protected function renderJson(array $data):never{
+        header("Content-Type: application/json; charset=utf-8");
+        
+        die(json_encode($data) );
     }
 
     /**
@@ -69,7 +80,7 @@ abstract class SaboController{
      * @param postKey clé du tableau $_POST
      * @return bool si le token est valide ou non
      */
-    protected function checkCsrf(string $postKey,bool $removeIfOk = true):bool{
+    protected function checkCsrf(string $postKey):bool{
         if(!empty($_POST[$postKey]) && gettype($_POST[$postKey]) == "string"){
             $tokenData = explode("#",$_POST[$postKey]);
 

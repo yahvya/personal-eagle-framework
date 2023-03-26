@@ -34,10 +34,10 @@ abstract class Route{
      */
     public static function group(string $url,array $routesGroup,array|callable $accessConds = []):array{
         foreach($routesGroup as $key => $group){
-            if(!empty($group["unmodifiedUrl"]) ){
+            if(!empty($group["urlRegex"]) ){
                 $group["unmodifiedUrl"] = $url . $group["unmodifiedUrl"];
                 $group["urlRegex"] = $url . $group["urlRegex"];
-                $group["accessConds"] = $accessConds;
+                $group["accessConds"] = array_merge($group["accessConds"],$accessConds);
                 $routesGroup[$key] = $group;
             }
             else $routesGroup[$key] = self::group($url,$group);

@@ -7,14 +7,6 @@ namespace Sabo\Helper;
  */
 abstract class Helper{
     /**
-     * @param filepath chemin du fichier
-     * @return bool retourne si le fichier existe
-     */
-    public static function fileExist(string $filepath):bool{
-        return file_exists(ROOT . $filepath);
-    }
-
-    /**
      * require_once un fichier en partant de root
      * @param filepath le chemin du fichier
      * @return mixed le retour du require_once

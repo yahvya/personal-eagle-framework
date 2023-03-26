@@ -14,6 +14,9 @@ class TableName{
      */
     private string $tableName;
 
+    /**
+     * @param tableName le nom de la table en base de données
+     */
     public function __construct(string $tableName){
         $this->tableName = $tableName;
     }

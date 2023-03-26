@@ -17,6 +17,9 @@ class FileHelper{
      */
     private array $fileDatas;
 
+    /**
+     * @param filePath le chemin du fichier à partir de la racine
+     */
     public function __construct(string $filepath){
         $this->filepath = ROOT . $filepath;
 
@@ -83,5 +86,13 @@ class FileHelper{
      */
     public function getExtension():string{
         return $this->fileDatas["extension"];
+    }
+
+    /**
+     * @param filepath chemin du fichier
+     * @return bool retourne si le fichier existe
+     */
+    public static function fileExist(string $filepath):bool{
+        return file_exists(ROOT . $filepath);
     }
 }

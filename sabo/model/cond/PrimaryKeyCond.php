@@ -15,6 +15,9 @@ class PrimaryKeyCond implements Cond{
      */
     private bool $isAutoIncremented;
 
+    /**
+     * @param isAutoIncremented défini si la clé est auto incrémenté (par défaut à faux)
+     */
     public function __construct(bool $isAutoIncremented = false){
         $this->isAutoIncremented = $isAutoIncremented;
     }

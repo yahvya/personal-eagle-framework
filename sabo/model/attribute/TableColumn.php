@@ -28,6 +28,10 @@ class TableColumn{
 
     private bool $isAutoIncremented;
 
+    /**
+     * @param linkedColName nom de la colonne lié en base de données
+     * @param linkedConds paramètres multiples , liste des conditions liés à l'élement
+     */
     public function __construct(string $linkedColName,Cond... $linkedConds){
         $this->linkedColName = $linkedColName;
         $this->conds = $linkedConds;

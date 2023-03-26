@@ -8,12 +8,15 @@ use Sabo\Model\Cond\Cond;
 /**
  * exception en cas d'échec d'assignation sur condition
  */
-class ModelAttributeException extends Exception{
+class ModelCondException extends Exception{
     /**
      * la condition échouée
      */
     private Cond $failedCond;
 
+    /**
+     * @param failedCond la condition qui n'a pas été valide
+     */
     public function __construct(Cond $failedCond){
         parent::__construct($failedCond->getErrorMessage() );
 

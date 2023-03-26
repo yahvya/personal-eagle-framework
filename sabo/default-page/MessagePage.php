@@ -15,6 +15,10 @@ class MessagePage implements Showable{
      */
     private string $title;
 
+    /**
+     * @param title le titre de la page html
+     * @param message le message à afficher dans la page
+     */
     public function __construct(string $title,string $message){
         $this->title = $title;
         $this->message = $message;

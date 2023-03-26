@@ -38,6 +38,9 @@ class QueryBuilder{
      */
     private SaboModel $linkedModel;
 
+    /**
+     * @param linkedModel le modèle à lié à la requête
+     */
     public function __construct(SaboModel $linkedModel){
         $this->linkedModel = $linkedModel;
         $this->as = $this->linkedModel->getTableName();

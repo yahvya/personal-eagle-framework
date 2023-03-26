@@ -4,7 +4,7 @@ namespace Sabo\Model\Model;
 
 use Exception;
 use ReflectionClass;
-use Sabo\Model\Exception\ModelAttributeException;
+use Sabo\Model\Exception\ModelCondException;
 use Sabo\Config\SaboConfig;
 use Sabo\Config\SaboConfigAttributes;
 use Sabo\Model\Attribute\TableColumn;
@@ -40,7 +40,7 @@ abstract class SaboModel extends SaboMysql{
      * @param attributeName le nom de l'attribut
      * @param data la donnée à assigner
      * @return SaboModel this
-     * @throws ModelAttributeException si une des conditions de vérification de l'attribut n'est pas valide
+     * @throws ModelCondException si une des conditions de vérification de l'attribut n'est pas valide
      * @throws Exception si l'attribut n'est pas accessible (phase de développement)
      */
     public function setAttribute(string $attributeName,mixed $data):SaboModel{
@@ -53,7 +53,7 @@ abstract class SaboModel extends SaboMysql{
             $conds = $this->columnsConfiguration[$attributeName]["configClass"]->getConds();
 
             foreach($conds as $cond){
-                if(!$cond->checkCondWith($data) ) throw new ModelAttributeException($cond);
+                if(!$cond->checkCondWith($data) ) throw new ModelCondException($cond);
             }
         }
 

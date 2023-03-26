@@ -44,6 +44,9 @@ abstract class SaboMysql implements System{
      */
     abstract protected function pseudoConstruct():void;
 
+    /**
+     * @param createNewCon défini si une nouvelle connexion doit être crée (si faux alors connexion partagé utilisé)
+     */
     public function __construct(bool $createNewCon = false){            
         $this->pseudoConstruct();
         

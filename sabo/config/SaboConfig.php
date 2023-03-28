@@ -42,7 +42,8 @@ abstract class SaboConfig{
         self::$strAttributes = [
             SaboConfigAttributes::ENV_FILE_TYPE->value => "env.json",
             SaboConfigAttributes::BASIC_ENV_FORVIEW_PREFIX->value => "forview_",
-            SaboConfigAttributes::VIEWS_FOLDER_PATH->value => "src/view/"
+            SaboConfigAttributes::VIEWS_FOLDER_PATH->value => "src/view/",
+            SaboConfigAttributes::MAIL_FOLDER_PATH->value => "src/mail/"
         ];
 
         // configuration des callables

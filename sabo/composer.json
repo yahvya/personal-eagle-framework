@@ -2,6 +2,7 @@
     "autoload": {
         "psr-4": {
             "Sabo\\Sabo\\" : "sabo",
+            "Sabo\\Mailer\\" : "mailer",
             "Sabo\\Config\\" : "config",
             "Sabo\\DefaultPage\\" : "default-page",
             "Sabo\\Exception\\" : "exception",
@@ -22,6 +23,7 @@
         }
     },
     "require": {
-        "twig/twig": "^3.5"
+        "twig/twig": "^3.5",
+        "phpmailer/phpmailer": "^6.8"
     }
 }

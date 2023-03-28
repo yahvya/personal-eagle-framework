@@ -16,7 +16,7 @@ use Twig\Environment;
 abstract class SaboController{
     use RandomStringGenerator;
 
-    private static array $twigExtensions;
+    public static array $twigExtensions;
 
     protected Environment $twig;
 

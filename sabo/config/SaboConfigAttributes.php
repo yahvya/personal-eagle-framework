@@ -39,4 +39,9 @@ enum SaboConfigAttributes:string{
      * chemin du dossier contenant les templates
      */
     case VIEWS_FOLDER_PATH = "views_folder_path";
+
+    /**
+     * chemin du dossier contenant les templates de mail
+     */
+    case MAIL_FOLDER_PATH = "mails_folder_path";
 };

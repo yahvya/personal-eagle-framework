@@ -1,0 +1,17 @@
+<?php
+
+namespace Model;
+
+use Sabo\Model\Attribute\TableColumn;
+use Sabo\Model\Attribute\TableName;
+use Sabo\Model\Cond\PrimaryKeyCond;
+use Sabo\Model\Model\SaboModel;
+
+/**
+ * {model-description}
+ * @name {model-name}
+ */
+#[TableName("{table-name}")]
+class UserModel extends SaboModel{
+{attributes}
+}

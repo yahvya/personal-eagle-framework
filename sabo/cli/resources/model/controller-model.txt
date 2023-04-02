@@ -1,0 +1,15 @@
+<?php
+
+namespace Controller;
+
+use Sabo\Controller\Controller\SaboController;
+
+/**
+ * {controller-description}
+ * @name {controller-name}
+ */
+class {controller-name} extends SaboController{
+    public function home():void{
+
+    }
+}

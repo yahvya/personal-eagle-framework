@@ -18,7 +18,7 @@ abstract class SaboPostgre extends SaboMysql{
 
             $port = !empty(self::$databaseConfig["port"]) ? "port=" . self::$databaseConfig["port"] . ";" : "";
 
-            $pdo = new PDO("mysql:host={$host};{$port}dbname={$name};charset=UTF8",$user,$password,[
+            $pdo = new PDO("pgsql:host={$host};{$port}dbname={$name};charset=UTF8",$user,$password,[
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
             ]);

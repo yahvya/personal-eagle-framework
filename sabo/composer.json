@@ -19,7 +19,8 @@
             "Sabo\\Controller\\TwigExtension\\" : "controller\\twig-extension",
             "Sabo\\Utils\\String\\" : "utils\\string",
             "Sabo\\Middleware\\Middleware\\" : "middleware\\middleware",
-            "Sabo\\Middleware\\Exception\\" : "middleware\\exception"
+            "Sabo\\Middleware\\Exception\\" : "middleware\\exception",
+            "Sabo\\Cli\\" : "cli"
         }
     },
     "require": {

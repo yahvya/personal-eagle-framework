@@ -8,7 +8,7 @@ use Sabo\Sabo\Router;
 
 define("ROOT",__DIR__ . "\\..\\");
 
-require_once("./vendor/autoload.php");
+require_once(__DIR__ . "/vendor/autoload.php");
 
 // définition des configurations par défaut
 SaboConfig::setDefaultConfigurations();

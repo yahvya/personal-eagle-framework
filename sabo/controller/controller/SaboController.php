@@ -5,6 +5,7 @@ namespace Sabo\Controller\Controller;
 use Sabo\Config\SaboConfig;
 use Sabo\Config\SaboConfigAttributes;
 use Sabo\Controller\TwigExtension\SaboExtension;
+use Sabo\Controller\TwigExtension\SaboRouteExtension;
 use Sabo\Utils\String\RandomStringGenerator;
 use Sabo\Utils\String\RandomStringType;
 use Twig\Loader\FilesystemLoader;
@@ -17,6 +18,8 @@ abstract class SaboController{
     use RandomStringGenerator;
 
     public static array $twigExtensions;
+
+    private static SaboRouteExtension $routeExtension;
 
     protected Environment $twig;
 
@@ -148,8 +151,31 @@ abstract class SaboController{
             call_user_func([$extensionClass,"initExtension"]);
 
             $extensions[$key] = new $extensionClass();
+
+            // récupération de l'extension de route
+            if($extensionClass == SaboRouteExtension::class) self::$routeExtension = $extensions[$key];
         }
 
         self::$twigExtensions = $extensions;
+    }
+
+    /**
+     * redirige sur le lien lié au nom de route donné, si non debug et route inexistante alors page d'accueil par défaut
+     * @param routeName nom de la route
+     * @param routeParams paramètres génériques du lien à remplacer
+     * @throws Exception en mode debug si la route n'existe pas
+     */
+    public static function redirectToRoute(string $routeName,array $routeParams = []):never{
+        self::redirectToLink(self::$routeExtension->getRoute($routeName,$routeParams) );
+    }   
+
+    /**
+     * redirige sur le lien donné
+     * @param link le lien
+     */
+    public static function redirectToLink(string $link):never{
+        header("Location: {$link}");
+
+        die();
     }
 }   

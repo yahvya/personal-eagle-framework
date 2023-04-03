@@ -1,12 +1,10 @@
 <?php
 
-use Controller\HomeController;
-use Sabo\Mailer\SaboMailer;
-use Sabo\Mailer\SaboMailerConfig;
+use Sabo\Controller\Controller\SaboController;
 use Sabo\Sabo\Route;
 
+
+// routes à placer ici
 return Route::generateFrom([
-    Route::get("/",function():void{
-        
-    },"Home:home")
+    
 ]);

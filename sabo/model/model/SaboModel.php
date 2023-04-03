@@ -47,6 +47,12 @@ abstract class SaboModel extends SaboMysql{
         // vérification de l'existance de l'attribut
         if(!$this->checkAttributeAccessible($attributeName) ) return $this;
 
+        if($this->columnsConfiguration[$attributeName]["configClass"]->getIsNullable() && $data == null){
+            $this->{$attributeName} = $data;
+            
+            return $this;
+        }
+
         // vérification des conditions dans le cas où c'est un champs lié à la base de donnée
         if(!empty($this->columnsConfiguration[$attributeName]["haveToCheckCond"]) ){
             // vérification des conditions

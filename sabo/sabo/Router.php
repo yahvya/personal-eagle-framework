@@ -15,7 +15,7 @@ use Sabo\Helper\Helper;
 use Sabo\Model\Model\SaboModel;
 
 /**
- * routeur du framexork
+ * routeur du framework
  */
 abstract class Router{
     /**
@@ -26,9 +26,17 @@ abstract class Router{
     public static function initWebsite():never{
         $routes = Helper::require(PathConfig::MAIN_ROUTE_FILE->value);
         
-        self::readEnv();
-        self::initDatabase();
-        SaboController::initControllers();
+        try{
+            self::readEnv();
+            self::initDatabase();
+            SaboController::initControllers();
+        }
+        catch(Exception $e){
+            if(SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE) )
+                throw $e;
+            else
+                call_user_func(SaboConfig::getCallableConfig(SaboConfigAttributes::TECHNICAL_ERROR_DEFAULT_PAGE) );
+        }
 
         $requestMethod = strtolower($_SERVER["REQUEST_METHOD"]);
 
@@ -46,7 +54,16 @@ abstract class Router{
                 $areValid = true;
 
                 foreach($routeData["accessConds"] as $condToCheck){
-                    if(!call_user_func($condToCheck) ){
+                    if(gettype($condToCheck) == "string"){
+                        if(!$condToCheck::verify() ){
+                            $condToCheck::toDoOnFail();
+
+                            $areValid = false;
+
+                            break;
+                        }
+                    }
+                    else if(!call_user_func($condToCheck) ){
                         $areValid = false;
 
                         break;

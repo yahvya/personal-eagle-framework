@@ -12,13 +12,14 @@ abstract class SaboExtension extends AbstractExtension{
      * liste des class d'extensions du framework
      */
     private static array $extensions = [
-        SaboRouteExtension::class
+        SaboRouteExtension::class,
+        
     ];
 
     /**
      * fonction visant à initialiser les ressources nécéssaires à l'extension peut être vide
      */
-    abstract public static function initExtension();
+    abstract public static function initExtension():void;
 
     /**
      * @return array les extensions crée par sabo

@@ -81,8 +81,7 @@ class SaboMailer extends PHPMailer{
             return $this->send();
         }
         catch(Exception $e){
-            if(SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE) )
-                throw $e;
+            if(SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE) ) throw $e;
         }
 
         return false;
@@ -120,8 +119,7 @@ class SaboMailer extends PHPMailer{
             return $this->send();
         }
         catch(Exception $e){
-            if(SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE) )
-                throw $e;
+            if(SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE) ) throw $e;
         }
         
         return false;

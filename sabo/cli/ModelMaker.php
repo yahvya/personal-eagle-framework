@@ -84,16 +84,22 @@ class ModelMaker extends FileMaker{
 
             $type = $typesLink[$type];
 
-            self::printMessage("Est-ce une clé primaire ? (entrée oui - autre non) : ");
+            self::printMessage("Champs nullable ? (entrée non - autre oui) : ");
 
-            if(in_array(substr(fgets(STDIN),0,-1),["\n","\r"]) ){
-                self::printMessage("Auto-increment ? (entrée oui - autre non) : ");
+            $isNullable = !in_array(substr(fgets(STDIN),0,-1),["\n","\r"]);
 
-                $primaryKey = in_array(substr(fgets(STDIN),0,-1),["\n","\r"]) ? ",new PrimaryKeyCond(true) " : "new PrimaryKeyCond() ";
+            if(!$isNullable){
+                self::printMessage("Est-ce une clé primaire ? (entrée oui - autre non) : ");
+
+                if(in_array(substr(fgets(STDIN),0,-1),["\n","\r"]) ){
+                    self::printMessage("Auto-increment ? (entrée oui - autre non) : ");
+
+                    $primaryKey = in_array(substr(fgets(STDIN),0,-1),["\n","\r"]) ? ",new PrimaryKeyCond(true) " : "new PrimaryKeyCond() ";
+                }
+                else $primaryKey = "";
             }
-            else $primaryKey = "";
 
-            $attributes .= "\t#[TableColumn(\"{$colName}\"{$primaryKey})]\n\tprotected {$type} \${$varName};\n\n";
+            $attributes .= $isNullable ? "\t#[TableColumn(\"{$colName}\",true)]\n\tprotected ?{$type} \${$varName} = null;\n\n" : "\t#[TableColumn(\"{$colName}\",false{$primaryKey})]\n\tprotected {$type} \${$varName};\n\n";
 
             echo "\n";
         }

@@ -26,15 +26,21 @@ class TableColumn{
      */
     private bool $isPrimaryKey;
 
+    /**
+     * défini si la clé primaire est auto-incrémenté
+     */
     private bool $isAutoIncremented;
+
+    private bool $isNullable;
 
     /**
      * @param linkedColName nom de la colonne lié en base de données
      * @param linkedConds paramètres multiples , liste des conditions liés à l'élement
      */
-    public function __construct(string $linkedColName,Cond... $linkedConds){
+    public function __construct(string $linkedColName,bool $isNullable,Cond... $linkedConds){
         $this->linkedColName = $linkedColName;
         $this->conds = $linkedConds;
+        $this->isNullable = $isNullable;
         $this->isPrimaryKey = false;
         $this->isAutoIncremented = false;
 
@@ -87,5 +93,12 @@ class TableColumn{
      */
     public function getLinkedColName():string{
         return $this->linkedColName;
+    }
+
+    /**
+     * @return bool si l'élement est nullable
+     */
+    public function getIsNullable():bool{
+        return $this->isNullable;
     }
 }

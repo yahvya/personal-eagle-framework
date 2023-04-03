@@ -3,6 +3,7 @@
 use Sabo\Cli\ControllerMaker;
 use Sabo\Cli\ModelMaker;
 use Sabo\Cli\SaboCliCommand;
+use Sabo\Cli\SaboInitializer;
 
 require_once(__DIR__ . "/vendor/autoload.php");
 
@@ -11,7 +12,8 @@ define("ROOT",__DIR__ . "\\..\\");
 // enregistrement des commandes, importez vos propres commandes
 SaboCliCommand::registerCommands([
     ControllerMaker::class,
-    ModelMaker::class
+    ModelMaker::class,
+    SaboInitializer::class
 ]);
 
 SaboCliCommand::execArgvCommand($argc,$argv);

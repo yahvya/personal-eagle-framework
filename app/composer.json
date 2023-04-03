@@ -2,7 +2,8 @@
     "autoload" : {
         "psr-4" : {
             "Controller\\" : "..\\src\\controller\\",
-            "Middleware\\" : "..\\src\\middleware\\",
+            "Middleware\\Middleware\\" : "..\\src\\middleware\\middleware\\",
+            "Middleware\\RoutesCond\\" : "..\\src\\middleware\\routes-cond\\",
             "Model\\" : "..\\src\\model\\"
         }
     }

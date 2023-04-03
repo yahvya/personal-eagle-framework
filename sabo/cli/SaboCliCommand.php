@@ -1,8 +1,6 @@
 <?php
 namespace Sabo\Cli;
 
-use ReflectionClass;
-
 /**
  * parent des commandes sabo
  */

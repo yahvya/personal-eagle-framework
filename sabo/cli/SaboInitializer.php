@@ -2,6 +2,9 @@
 
 namespace Sabo\Cli;
 
+/**
+ * initialiseur de projet
+ */
 class SaboInitializer extends SaboCliCommand{
     protected function execCommand(int $argc,array $argv):bool{
         `cd app && composer install && composer dumpautoload -o`;

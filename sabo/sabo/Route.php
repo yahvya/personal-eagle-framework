@@ -56,7 +56,7 @@ abstract class Route{
      * @param accessConds conditions d'accès supplémentaires à la page, (::class enfants de SaboMiddlewareCond,Closure booléenne ou callable booleen)
      * @return array les données de la route formatés pour le framework
      */
-    public static function get(string $url,callable|array $toCall,string $routeName,array $paramsRegex = [],array|callable $accessConds = []):array{
+    public static function get(string $url,callable $toCall,string $routeName,array $paramsRegex = [],array|callable $accessConds = []):array{
         return self::createRouteFrom("get",$url,$toCall,$routeName,$paramsRegex,$accessConds);
     } 
     
@@ -69,7 +69,7 @@ abstract class Route{
      * @param accessConds conditions d'accès supplémentaires à la page, (::class enfants de SaboMiddlewareCond,Closure booléenne ou callable booleen)
      * @return array les données de la route formatés pour le framework
      */
-    public static function post(string $url,callable|array $toCall,string $routeName,array $paramsRegex = [],array|callable $accessConds = []):array{
+    public static function post(string $url,callable $toCall,string $routeName,array $paramsRegex = [],array|callable $accessConds = []):array{
         return self::createRouteFrom("post",$url,$toCall,$routeName,$paramsRegex,$accessConds);
     } 
 
@@ -82,7 +82,7 @@ abstract class Route{
      * @param accessConds conditions d'accès supplémentaires à la page, (::class enfants de SaboMiddlewareCond,Closure booléenne ou callable booleen)
      * @return array les données de la route formatés pour le framework
      */
-    public static function put(string $url,callable|array $toCall,string $routeName,array $paramsRegex = [],array|callable $accessConds = []):array{
+    public static function put(string $url,callable $toCall,string $routeName,array $paramsRegex = [],array|callable $accessConds = []):array{
         return self::createRouteFrom("put",$url,$toCall,$routeName,$paramsRegex,$accessConds);
     } 
 
@@ -96,7 +96,7 @@ abstract class Route{
      * @param accessConds conditions d'accès supplémentaires à la page, (::class enfants de SaboMiddlewareCond,Closure booléenne ou callable booleen)
      * @return array les données de la route formatés pour le framework
      */
-    public static function delete(string $url,callable|array $toCall,string $routeName,array $paramsRegex = [],array|callable $accessConds = []):array{
+    public static function delete(string $url,callable $toCall,string $routeName,array $paramsRegex = [],array|callable $accessConds = []):array{
         return self::createRouteFrom("delete",$url,$toCall,$routeName,$paramsRegex,$accessConds);
     } 
 
@@ -155,7 +155,7 @@ abstract class Route{
      * @return array les données de la route formatés pour le framework
      * @throws Exception si la méthode n'est pas accepté ou que le nom de la route est déjà pris ou un nom de paramètre générique dupliqué, accessConds incorrect
      */
-    private static function createRouteFrom(string $method,string $url,callable|array $toCall,string $routeName,array $paramsRegex,array|callable $accessConds):array{
+    private static function createRouteFrom(string $method,string $url,callable $toCall,string $routeName,array $paramsRegex,array|callable $accessConds):array{
         if(in_array($routeName,self::$usedNames) ) throw new Exception("Le nom de route {$routeName} est déjà utilisé");
         if(!in_array($method,self::ACCEPTED_METHODS) ) throw new Exception("La méthode {$method} n'est pas accepté sur la route nommé {$routeName}");
 

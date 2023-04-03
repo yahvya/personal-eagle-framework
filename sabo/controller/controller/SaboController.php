@@ -2,6 +2,7 @@
 
 namespace Sabo\Controller\Controller;
 
+use Sabo\Config\EnvConfig;
 use Sabo\Config\SaboConfig;
 use Sabo\Config\SaboConfigAttributes;
 use Sabo\Controller\TwigExtension\SaboExtension;
@@ -50,7 +51,7 @@ abstract class SaboController{
             $this->twig->addExtension($twigExtension);
         }
 
-        die($this->twig->render($viewFilePath,$viewParams) );
+        die($this->twig->render($viewFilePath,array_merge($viewParams,EnvConfig::getViewEnv() ) ) );
     }
 
     /**

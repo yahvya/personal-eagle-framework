@@ -35,14 +35,20 @@ abstract class SaboController{
      * @param viewParams tableau de données à envoyé à la vue
      */
     protected function render(string $viewFilePath,array $viewParams = []):never{
-        $loader = new FilesystemLoader(ROOT . SaboConfig::getStrConfig(SaboConfigAttributes::VIEWS_FOLDER_PATH) );
+        $folder = ROOT . SaboConfig::getStrConfig(SaboConfigAttributes::VIEWS_FOLDER_PATH);
+
+        $loader = new FilesystemLoader($folder);
 
         $this->twig = new Environment($loader,[
             "debug" => SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE)
         ]);
-
+        
         // ajout des extension
-        foreach(self::$twigExtensions as $twigExtension) $this->twig->addExtension($twigExtension);
+        foreach(self::$twigExtensions as $twigExtension){
+            $twigExtension->setCurrentFile($folder . $viewFilePath);
+
+            $this->twig->addExtension($twigExtension);
+        }
 
         die($this->twig->render($viewFilePath,$viewParams) );
     }

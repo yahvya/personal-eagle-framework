@@ -10,6 +10,7 @@ use Twig\TwigFunction;
 
 /**
  * extension de récupération des routes
+ * fonctions [getRoute,postRoute,putRoute,deleteRoute,jRoute]
  */
 class SaboRouteExtension extends SaboExtension{
     private static array $routes = [];
@@ -20,9 +21,7 @@ class SaboRouteExtension extends SaboExtension{
             new TwigFunction("postRoute", [$this,"postRoute"]),
             new TwigFunction("putRoute", [$this,"putRoute"]),
             new TwigFunction("deleteRoute", [$this,"deleteRoute"]),
-            new TwigFunction("jRoute",[$this,"jRoute"],[
-                "is_safe" => ["html" => true]
-            ])
+            new TwigFunction("jRoute",[$this,"jRoute"],["is_safe" => ["html" => true] ])
         ];
     }
 

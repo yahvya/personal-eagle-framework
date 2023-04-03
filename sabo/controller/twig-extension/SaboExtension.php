@@ -2,6 +2,8 @@
 
 namespace Sabo\Controller\TwigExtension;
 
+use Sabo\Config\SaboConfig;
+use Sabo\Config\SaboConfigAttributes;
 use Twig\Extension\AbstractExtension;
 
 /**
@@ -13,8 +15,28 @@ abstract class SaboExtension extends AbstractExtension{
      */
     private static array $extensions = [
         SaboRouteExtension::class,
-        
+        SaboAssetsExtension::class
     ];
+
+    /**
+     * chemin du fichier sur lequel l'extension va travailler
+     */
+    protected string $currentFile;
+
+    /**
+     * défini le fichier actuel
+     * @param file le chemin du fichier
+     */
+    public function setCurrentFile(string $file):void{
+        $this->currentFile = $file;
+    }
+
+    /**
+     * @return string le chemin du dossier dans lequel se trouve le fichier
+     */
+    protected function getCurrentFileFolder():string{
+        return dirname($this->currentFile) . "\\";
+    }   
 
     /**
      * fonction visant à initialiser les ressources nécéssaires à l'extension peut être vide

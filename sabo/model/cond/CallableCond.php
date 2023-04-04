@@ -37,7 +37,7 @@ class CallableCond implements Cond{
     }
 
     public function checkCondWith(mixed $data):bool{
-        return call_user_func($this->toVerify);
+        return call_user_func($this->toVerify,$data);
     }
 
     public function getIsDisplayable():bool{

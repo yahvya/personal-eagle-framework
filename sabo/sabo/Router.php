@@ -114,7 +114,7 @@ abstract class Router{
         foreach($reflection->getParameters() as $reflectionParam){
             $name = $reflectionParam->getName();
 
-            if(array_key_exists($name,$paramsData) ) array_push($args,$paramsData[$name]);
+            if(array_key_exists($name,$paramsData) ) array_push($args,strlen($paramsData[$name]) == 0 ? null : $paramsData[$name]);
         }
 
         try{

@@ -5,7 +5,6 @@ namespace Sabo\Model\System\Mysql;
 use PDO;
 use Exception;
 use PDOException;
-use PDOStatement;
 use Sabo\Config\EnvConfig;
 use Sabo\Config\SaboConfig;
 use Sabo\Config\SaboConfigAttributes;
@@ -175,7 +174,7 @@ abstract class SaboMysql implements System{
      * @return mixed un tableau contenant les objets si résultats multiples ou un objet model si un seul résultat ou pdostatement de la requête si getBaseResult à true ou null si aucun résultat
      * @throws Exception (en mode debug) si données mal formulés 
      */
-    public static function find(array $conds,array $toSelect = [],bool $getBaseResult = false):mixed{
+    public static function find(array $conds = [],array $toSelect = [],bool $getBaseResult = false):mixed{
         $queryBuilder = QueryBuilder::createFrom(get_called_class() );
 
         $queryBuilder->select(...$toSelect);

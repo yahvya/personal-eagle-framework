@@ -7,6 +7,7 @@ use Sabo\Config\SaboConfig;
 use Sabo\Config\SaboConfigAttributes;
 use Sabo\Controller\TwigExtension\SaboExtension;
 use Sabo\Controller\TwigExtension\SaboRouteExtension;
+use Sabo\Middleware\Exception\MiddlewareException;
 use Sabo\Utils\String\RandomStringGenerator;
 use Sabo\Utils\String\RandomStringType;
 use Twig\Loader\FilesystemLoader;
@@ -129,6 +130,15 @@ abstract class SaboController{
      */
     protected function getFlashData(string $flashKey):mixed{
         return !empty($_SESSION["sabo"]["flashDatas"][$flashKey]) ? $_SESSION["sabo"]["flashDatas"][$flashKey]["data"] : NULL;
+    }
+
+    /**
+     * @param e l'exception
+     * @param replaceMessage le message en cas d'erreur non affichable
+     * @return string le message d'erreur affichable
+     */
+    protected function getErrorMessageFrom(MiddlewareException $e,string $replaceMessage = "Une erreur technique s'est produite"){
+        return $e->getIsDisplayable() ? $e->getMessage() : $replaceMessage;
     }
 
     /**

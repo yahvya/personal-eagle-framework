@@ -76,12 +76,18 @@ class SaboRouteExtension extends SaboExtension{
 
         return <<<HTML
             <script id="routes-script">
-                function getRouteList(){
+                function getRouteManager(){
                     var routesCopy = JSON.parse('{$jsRoutes}');
+
+                    let route = (route,replaces) => {
+                        for(const [toReplace,replace] of Object.entries(replaces) ) route = route.replace(`{\${toReplace}}`,replace)
+                        
+                        return route;
+                    };
 
                     document.getElementById("routes-script").remove();
 
-                    return routesCopy;
+                    return {"routes" : routesCopy,"routeReplace" : route};
                 }
             </script>
         HTML;   
@@ -109,20 +115,8 @@ class SaboRouteExtension extends SaboExtension{
             if($routeData["routeName"] == $routeName){
                 $url = $routeData["unmodifiedUrl"];
 
-                $toReplace = [];
-
-                // recherche des paramètres génériques
-                @preg_match_all("#\{[a-zA-Z0-9\_]+\}#",$url,$genericParameters);
-
-                if(!empty($genericParameters[0]) ) $toReplace = $genericParameters[0];
-
                 // traitement des paramètres
-                foreach($toReplace as $genericParameter){
-                    // récupération du nom de variables sans {}
-                    $name = substr($genericParameter,1,-1); 
-
-                    if(!empty($routeParams[$name]) ) $url = str_replace($genericParameter,$routeParams[$name],$url);
-                }
+                foreach($routeParams as $param => $replace) $url = str_replace("{{$param}}",$replace,$url);
 
                 return $url;
             }

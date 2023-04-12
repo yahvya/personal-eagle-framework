@@ -10,8 +10,10 @@ class ModelMaker extends FileMaker{
      * formate le nom du model
      */
     private function formatName(string $givenName):string{
-        // placement des majuscule
-        $givenName = implode("",array_map(fn(string $part):string => ucfirst($part) ,explode("-",$givenName) ) );
+        foreach(["-","_"] as $sep){
+            // placement des majuscule
+            $givenName = implode("",array_map(fn(string $part):string => ucfirst($part) ,explode($sep,$givenName) ) );
+        }
 
         $endWidthUpper = str_ends_with($givenName,"Model");
 

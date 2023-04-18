@@ -167,7 +167,7 @@ abstract class Route{
 
         $url = preg_quote($url);
         // redéfinition des valeurs non voulues
-        $url = str_replace(["\{","\}"],["{","}"],$url);
+        $url = str_replace(["\{","\}","\-"],["{","}","-"],$url);
 
         // recherche des paramètres génériques
         @preg_match_all("#\{[a-zA-Z0-9\_]+\}#",$url,$genericParameters);

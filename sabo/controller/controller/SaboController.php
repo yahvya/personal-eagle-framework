@@ -37,6 +37,8 @@ abstract class SaboController{
      * @param viewParams tableau de données à envoyé à la vue
      */
     protected function render(string $viewFilePath,array $viewParams = []):never{
+        http_response_code(200);
+
         $folder = ROOT . SaboConfig::getStrConfig(SaboConfigAttributes::VIEWS_FOLDER_PATH);
 
         $loader = new FilesystemLoader($folder);
@@ -194,5 +196,12 @@ abstract class SaboController{
         header("Location: {$link}");
 
         die();
+    }
+
+    /**
+     * @return SaboRouteExtension instance de l'extension des routes
+     */
+    public static function getRouteExtension():SaboRouteExtension{
+        return self::$routeExtension;
     }
 }   

@@ -48,7 +48,8 @@ class ModelMaker extends FileMaker{
 
         $typesLink = [
             "s" => "string",
-            "i" => "int"
+            "i" => "int",
+            "f" => "float"
         ];
 
         $typesString = [];
@@ -96,7 +97,7 @@ class ModelMaker extends FileMaker{
                 if(in_array(substr(fgets(STDIN),0,-1),["\n","\r"]) ){
                     self::printMessage("Auto-increment ? (entrée oui - autre non) : ");
 
-                    $primaryKey = in_array(substr(fgets(STDIN),0,-1),["\n","\r"]) ? ",new PrimaryKeyCond(true) " : "new PrimaryKeyCond() ";
+                    $primaryKey = in_array(substr(fgets(STDIN),0,-1),["\n","\r"]) ? ",new PrimaryKeyCond(true) " : ",new PrimaryKeyCond() ";
                 }
                 else $primaryKey = "";
             }

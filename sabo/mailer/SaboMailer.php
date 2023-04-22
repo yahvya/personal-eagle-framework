@@ -9,6 +9,7 @@ use Sabo\Controller\Controller\SaboController;
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
 use Exception;
+use Sabo\Config\EnvConfig;
 
 /**
  * gestionnaire d'envoi de mail
@@ -61,7 +62,7 @@ class SaboMailer extends PHPMailer{
         foreach(SaboController::$twigExtensions as $twigExtension) $twig->addExtension($twigExtension);
 
         // récupération du contenu du mail
-        $htmlMail = $twig->render($templatePath,$datasForTemplate);
+        $htmlMail = $twig->render($templatePath,array_merge($datasForTemplate,EnvConfig::getViewEnv() ) );
         
         // ajout des destinataires
         foreach($recipients as $recipient){
@@ -129,6 +130,15 @@ class SaboMailer extends PHPMailer{
      * réinitialise le mailer
      */
     private function reset():void{
+        $this->isSMTP();
+        $this->CharSet = "UTF-8";
+        $this->Encoding = "base64";
+        $this->SMTPAuth = true;
+        $this->Host = EnvConfig::getConfigEnv()["mailer"]["host"];
+        $this->Username = EnvConfig::getConfigEnv()["mailer"]["email"];
+        $this->Password = EnvConfig::getConfigEnv()["mailer"]["password"];
+        $this->SMTPSecure = "ssl";
+        $this->Port = 465;
         $this->clearAddresses();
         $this->clearAttachments();
         $this->Subject = $this->AltBody = $this->Body = "";

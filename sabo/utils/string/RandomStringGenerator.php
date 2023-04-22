@@ -40,8 +40,10 @@ trait RandomStringGenerator{
 
         $choiceList = str_split($choiceList);
 
+        $keys = [];
+
         // récupération de l'index des caractères utilisés
-        $keys = array_rand($choiceList,$length);
+        for($i = 0; $i < $length; $i++) array_push($keys,array_rand($choiceList) );
 
         if(gettype($keys) != "array") $keys = [$keys];
 

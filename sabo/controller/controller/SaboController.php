@@ -2,6 +2,7 @@
 
 namespace Sabo\Controller\Controller;
 
+use Middleware\Middleware\LoginMiddleware;
 use Sabo\Config\EnvConfig;
 use Sabo\Config\SaboConfig;
 use Sabo\Config\SaboConfigAttributes;

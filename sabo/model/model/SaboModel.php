@@ -10,6 +10,7 @@ use Sabo\Config\SaboConfigAttributes;
 use Sabo\Model\Attribute\TableColumn;
 use Sabo\Model\Attribute\TableName;
 use Sabo\Model\System\Mysql\SaboMysql;
+use TypeError;
 
 /**
  * parent des modèles
@@ -59,7 +60,12 @@ abstract class SaboModel extends SaboMysql{
             $conds = $this->columnsConfiguration[$attributeName]["configClass"]->getConds();
 
             foreach($conds as $cond){
-                if(!$cond->checkCondWith($data) ) throw new ModelCondException($cond);
+                try{
+                    if(!$cond->checkCondWith($data) ) throw new ModelCondException($cond);
+                }
+                catch(TypeError){
+                    throw new ModelCondException($cond);
+                }
             }
         }
 

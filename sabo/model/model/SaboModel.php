@@ -3,7 +3,9 @@
 namespace Sabo\Model\Model;
 
 use Exception;
+use ReflectionAttribute;
 use ReflectionClass;
+use ReflectionProperty;
 use Sabo\Model\Exception\ModelCondException;
 use Sabo\Config\SaboConfig;
 use Sabo\Config\SaboConfigAttributes;
@@ -34,6 +36,19 @@ abstract class SaboModel extends SaboMysql{
 
     protected function pseudoConstruct():void{
         $this->readChildConfiguration();
+    }
+
+    /**
+     * @return array les données du modèles sous forme de tableau ou null si aucune donné initialisé, les données non initialisé sont mise à null
+     */
+    public function getAsArray():array{
+        $modelData = [];
+
+        foreach($this->columnsConfiguration as $attributeName => $configuration){
+            if(!empty($configuration["configClass"]) ) $modelData[$attributeName] = $configuration["reflection"]->isInitialized($this) ? $this->$attributeName : null;
+        }
+
+        return $modelData;  
     }
 
     /**

@@ -13,7 +13,7 @@ use Sabo\Config\SaboConfigAttributes;
 trait Select{
     /**
      * ajoute le sql select
-     * @param toSelect paramètres multiple, le nom des attributs du model liés aux colonnes à récupérer ou [nom_attribut,SqlFunction], si vide select * par défaut
+     * @param toSelect paramètres multiple, le nom des attributs du model liés aux colonnes à récupérer ou [SqlFunction,nom_attribut,@optionnal alias], si vide select * par défaut
      * @return this
      */
     public function select(string|array... $toSelect):QueryBuilder{
@@ -29,6 +29,8 @@ trait Select{
                     if($columnName == null) continue;
 
                     $columnName = "{$attributeData[0]->value}({$this->as}.{$columnName})";
+
+                    if(!empty($attributeData[2]) ) $columnName .= " as {$attributeData[2]}";
                 }
                 else{
                     $columnName = $this->getAttributeLinkedColName($attributeData);

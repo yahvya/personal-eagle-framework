@@ -16,10 +16,16 @@ class PrimaryKeyCond implements Cond{
     private bool $isAutoIncremented;
 
     /**
+     * défini si la clé primaire peut être affecté même si auto incrémenté
+     */
+    private bool $canBeSetOnIncrement;
+
+    /**
      * @param isAutoIncremented défini si la clé est auto incrémenté (par défaut à faux)
      */
-    public function __construct(bool $isAutoIncremented = false){
+    public function __construct(bool $isAutoIncremented = false,bool $canBeSetOnIncrement = true){
         $this->isAutoIncremented = $isAutoIncremented;
+        $this->canBeSetOnIncrement = $canBeSetOnIncrement;
     }
 
     /**
@@ -30,7 +36,7 @@ class PrimaryKeyCond implements Cond{
     }
 
     public function checkCondWith(mixed $data):bool{
-        return !$this->isAutoIncremented;
+        return !$this->isAutoIncremented || $this->canBeSetOnIncrement;
     }
 
     public function getIsDisplayable():bool{

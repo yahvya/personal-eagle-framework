@@ -295,7 +295,7 @@ abstract class SaboMysql implements System{
 				if(gettype($bindData) == "array")
 					$query->bindValue($key + 1,...$bindData);
 				else
-					$query->bindValue($key + 1,$bindData);
+					$query->bindValue($key + 1,gettype($bindData) == "boolean" ? ($bindData === false ? 0 : 1) : $bindData);
 			}
 
 			if($query->execute() ){

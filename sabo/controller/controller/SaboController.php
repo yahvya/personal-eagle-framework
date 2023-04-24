@@ -2,7 +2,6 @@
 
 namespace Sabo\Controller\Controller;
 
-use Middleware\Middleware\LoginMiddleware;
 use Sabo\Config\EnvConfig;
 use Sabo\Config\SaboConfig;
 use Sabo\Config\SaboConfigAttributes;
@@ -53,7 +52,7 @@ abstract class SaboController{
             $twigExtension->setCurrentFile($folder . $viewFilePath);
 
             $this->twig->addExtension($twigExtension);
-        }
+        }  
 
         die($this->twig->render($viewFilePath,array_merge($viewParams,EnvConfig::getViewEnv() ) ) );
     }
@@ -116,7 +115,7 @@ abstract class SaboController{
      * @param data la donnée à insérer
      * @param duration le nombre de rafraichissement autorisé (min 1)
      */
-    protected function setFlashData(string $flashKey,mixed $data,int $duration = 1):void{
+    protected function setFlashData(string $flashKey,mixed $data,int $duration = 1):SaboController{
         if($duration < 1) $duration = 1;
 
         $duration++;
@@ -125,6 +124,8 @@ abstract class SaboController{
             "data" => $data,
             "counter" => $duration
         ];
+
+        return $this;
     }
 
     /**
@@ -142,6 +143,14 @@ abstract class SaboController{
      */
     protected function getErrorMessageFrom(MiddlewareException $e,string $replaceMessage = "Une erreur technique s'est produite"){
         return $e->getIsDisplayable() ? $e->getMessage() : $replaceMessage;
+    }
+
+    /**
+     * @param key la clé post
+     * @return mixed|null la donnée si elle est trouvée ou null
+     */
+    protected function getValueOrNull(string $key):mixed{  
+        return !empty($_POST[$key]) ? $_POST[$key] : null;
     }
 
     /**

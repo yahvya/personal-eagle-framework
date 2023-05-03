@@ -30,7 +30,7 @@ class FileHelper{
      * @json sous forme de tableau
      * @env sous forme de tableau
      * @default sous forme de texte
-     * @return mixed le contenu du fichier en fonction de son type d'extension ou null en cas d'échec
+     * @return mixed le contenu du fichier en fonction de son type d"extension ou null en cas d"échec
      */
     public function getFileContent():mixed{
         if(!file_exists($this->filepath) || ($fileContent = @file_get_contents($this->filepath) ) == null) return null;
@@ -82,7 +82,7 @@ class FileHelper{
     }
 
     /**
-     * @return string l'extension du fichier lié
+     * @return string l"extension du fichier lié
      */
     public function getExtension():string{
         return $this->fileDatas["extension"];
@@ -94,5 +94,27 @@ class FileHelper{
      */
     public static function fileExist(string $filepath):bool{
         return file_exists(ROOT . $filepath);
+    }
+
+    /**
+     * lance le téléchargement du fichier
+     * @param filepath chemin du fichier
+     * @return bool false si le lancement échoue
+     */
+    public static function download(string $filepath):bool{
+        if(file_exists($filepath) ){
+            header("Content-Description: File Transfer");
+            header("Content-Type: application/octet-stream");
+            header("Content-Disposition: attachment; filename=" . basename($filepath) );
+            header("Expires: 0");
+            header("Cache-Control: must-revalidate");
+            header("Pragma: public");
+            header("Content-Length: " . filesize($filepath));
+            flush();
+            readfile($filepath);
+            die();
+        }
+
+        return false;
     }
 }

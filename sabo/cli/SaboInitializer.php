@@ -13,7 +13,7 @@ class SaboInitializer extends SaboCliCommand{
     }
 
     protected function getCommandDescription():string{
-        return "(initiliaze) Initialise les élements pour commencer le développement à partir d'un projet sabo";
+        return "(initialize) Initialise les élements pour commencer le développement à partir d'un projet sabo";
     }
 
     protected function getHelp():string{

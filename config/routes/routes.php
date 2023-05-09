@@ -6,7 +6,7 @@ use Sabo\Utils\Api\SaboApiConfig;
 
 class StripePayment extends SaboApi{
     public function initPayment():void{
-        echo $this->apiUrl("encore");
+        
     }
 }
 

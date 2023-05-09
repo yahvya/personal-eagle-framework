@@ -73,7 +73,7 @@ abstract class SaboApi{
         if(!curl_setopt_array($curl,$options) ) return false;
 
         $result = curl_exec($curl);
-        
+
         if($storeIn == null) $this->storedRequestResult[$storeIn] = $result;
 
         if($options[CURLOPT_RETURNTRANSFER]){
@@ -88,7 +88,8 @@ abstract class SaboApi{
     }
 
     /**
-     * @return string|array|null les données de la dernière requête
+     * @param as défini comment la donnée doit être retourné [RESULT_AS_JSON_ARRAY|RESULT_AS_STRING]
+     * @return string|array|null les données de la dernière requête ou null
      */
     protected function getLastRequestResult(SaboApiRequest $as):string|array|null{
         if($this->lastRequestResult == null) return null;
@@ -105,6 +106,29 @@ abstract class SaboApi{
             default:
                 return null;
         }
+    }
+
+    /**
+     * vérifie si le tableau donné contient les clés
+     * @param toCheck tableau de données
+     * @param keysToCheck clés à vérifier 
+     * format d'une clé "level1.level2" pour un tableau ["level1" => ["level2" => 2] ]
+     * @return bool si les clés existent dans le tableau
+     */
+    protected static function ifArrayContain(array $toCheck,string... $keysToCheck):bool{
+        foreach($keysToCheck as $keyToCheck){
+            $arrayCopy = $toCheck;
+
+            $keys = explode(".",$keyToCheck);
+
+            foreach($keys as $key){
+                if(gettype($arrayCopy) != "array" || !array_key_exists($key,$arrayCopy) ) return false;
+
+                $arrayCopy = $arrayCopy[$key];
+            }   
+        }
+
+        return true;
     }
 
     /**

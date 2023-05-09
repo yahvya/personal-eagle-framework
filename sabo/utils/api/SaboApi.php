@@ -133,6 +133,7 @@ abstract class SaboApi{
 
     /**
      * crée un objet à partir de la configuration api
+     * @attention à appeller avec la class enfant
      * @param config tableaux indicés par SaboApiConfig->value
      * @return mixed l'objet crée ou null
      */

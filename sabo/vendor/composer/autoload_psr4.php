@@ -10,6 +10,7 @@ return array(
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
     'Sabo\\Utils\\String\\' => array($baseDir . '/utils/string'),
+    'Sabo\\Utils\\Api\\' => array($baseDir . '/utils/api'),
     'Sabo\\Sabo\\' => array($baseDir . '/sabo'),
     'Sabo\\Model\\System\\QueryBuilder\\' => array($baseDir . '/model/system/query-builder'),
     'Sabo\\Model\\System\\Postgre\\' => array($baseDir . '/model/system/postgre'),

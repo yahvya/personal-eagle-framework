@@ -18,6 +18,7 @@
             "Sabo\\Controller\\Controller\\" : "controller\\controller",
             "Sabo\\Controller\\TwigExtension\\" : "controller\\twig-extension",
             "Sabo\\Utils\\String\\" : "utils\\string",
+            "Sabo\\Utils\\Api\\" : "utils\\api",
             "Sabo\\Middleware\\Middleware\\" : "middleware\\middleware",
             "Sabo\\Middleware\\Exception\\" : "middleware\\exception",
             "Sabo\\Cli\\" : "cli"

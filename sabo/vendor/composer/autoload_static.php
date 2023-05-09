@@ -21,6 +21,7 @@ class ComposerStaticInit632086408cf37ca09a6a4cb679276be5
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Sabo\\Utils\\String\\' => 18,
+            'Sabo\\Utils\\Api\\' => 15,
             'Sabo\\Sabo\\' => 10,
             'Sabo\\Model\\System\\QueryBuilder\\' => 31,
             'Sabo\\Model\\System\\Postgre\\' => 26,
@@ -63,6 +64,10 @@ class ComposerStaticInit632086408cf37ca09a6a4cb679276be5
         'Sabo\\Utils\\String\\' => 
         array (
             0 => __DIR__ . '/../..' . '/utils/string',
+        ),
+        'Sabo\\Utils\\Api\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/utils/api',
         ),
         'Sabo\\Sabo\\' => 
         array (
@@ -155,11 +160,17 @@ class ComposerStaticInit632086408cf37ca09a6a4cb679276be5
         'PHPMailer\\PHPMailer\\PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/PHPMailer.php',
         'PHPMailer\\PHPMailer\\POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/POP3.php',
         'PHPMailer\\PHPMailer\\SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/SMTP.php',
+        'Sabo\\Cli\\ControllerMaker' => __DIR__ . '/../..' . '/cli/ControllerMaker.php',
+        'Sabo\\Cli\\FileMaker' => __DIR__ . '/../..' . '/cli/FileMaker.php',
+        'Sabo\\Cli\\ModelMaker' => __DIR__ . '/../..' . '/cli/ModelMaker.php',
+        'Sabo\\Cli\\SaboCliCommand' => __DIR__ . '/../..' . '/cli/SaboCliCommand.php',
+        'Sabo\\Cli\\SaboInitializer' => __DIR__ . '/../..' . '/cli/SaboInitializer.php',
         'Sabo\\Config\\EnvConfig' => __DIR__ . '/../..' . '/config/EnvConfig.php',
         'Sabo\\Config\\PathConfig' => __DIR__ . '/../..' . '/config/PathConfig.php',
         'Sabo\\Config\\SaboConfig' => __DIR__ . '/../..' . '/config/SaboConfig.php',
         'Sabo\\Config\\SaboConfigAttributes' => __DIR__ . '/../..' . '/config/SaboConfigAttributes.php',
         'Sabo\\Controller\\Controller\\SaboController' => __DIR__ . '/../..' . '/controller/controller/SaboController.php',
+        'Sabo\\Controller\\TwigExtension\\SaboAssetsExtension' => __DIR__ . '/../..' . '/controller/twig-extension/SaboAssetsExtension.php',
         'Sabo\\Controller\\TwigExtension\\SaboExtension' => __DIR__ . '/../..' . '/controller/twig-extension/SaboExtension.php',
         'Sabo\\Controller\\TwigExtension\\SaboRouteExtension' => __DIR__ . '/../..' . '/controller/twig-extension/SaboRouteExtension.php',
         'Sabo\\DefaultPage\\MessagePage' => __DIR__ . '/../..' . '/default-page/MessagePage.php',
@@ -171,9 +182,13 @@ class ComposerStaticInit632086408cf37ca09a6a4cb679276be5
         'Sabo\\Mailer\\SaboMailerConfig' => __DIR__ . '/../..' . '/mailer/SaboMailerConfig.php',
         'Sabo\\Middleware\\Exception\\MiddlewareException' => __DIR__ . '/../..' . '/middleware/exception/MiddlewareException.php',
         'Sabo\\Middleware\\Middleware\\SaboMiddleware' => __DIR__ . '/../..' . '/middleware/middleware/SaboMiddleware.php',
+        'Sabo\\Middleware\\Middleware\\SaboMiddlewareCond' => __DIR__ . '/../..' . '/middleware/middleware/SaboMiddlewareCond.php',
         'Sabo\\Model\\Attribute\\TableColumn' => __DIR__ . '/../..' . '/model/attribute/TableColumn.php',
         'Sabo\\Model\\Attribute\\TableName' => __DIR__ . '/../..' . '/model/attribute/TableName.php',
+        'Sabo\\Model\\Cond\\CallableCond' => __DIR__ . '/../..' . '/model/cond/CallableCond.php',
         'Sabo\\Model\\Cond\\Cond' => __DIR__ . '/../..' . '/model/cond/Cond.php',
+        'Sabo\\Model\\Cond\\DatetimeCond' => __DIR__ . '/../..' . '/model/cond/DatetimeCond.php',
+        'Sabo\\Model\\Cond\\FilterCond' => __DIR__ . '/../..' . '/model/cond/FilterCond.php',
         'Sabo\\Model\\Cond\\PrimaryKeyCond' => __DIR__ . '/../..' . '/model/cond/PrimaryKeyCond.php',
         'Sabo\\Model\\Cond\\RegexCond' => __DIR__ . '/../..' . '/model/cond/RegexCond.php',
         'Sabo\\Model\\Cond\\VarcharCond' => __DIR__ . '/../..' . '/model/cond/VarcharCond.php',

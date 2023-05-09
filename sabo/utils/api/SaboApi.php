@@ -47,8 +47,8 @@ abstract class SaboApi{
      * @param requestUrl lien de requête ($api->apiUrl("lien") )
      * @param headers en-tête de la reqûete
      * @param data données de la requête
-     * @param dataConversionType type de conversion de donnée par défault json_encode [JSON_BODY|HTTP_BUILD_QUERY]
-     * @param overrideCurlOptions tableau écrasant les options par défaut curl indicé par CURLOPT_...
+     * @param dataConversionType type de conversion de donnée par défault json_encode [JSON_BODY|HTTP_BUILD_QUERY|NO_DATA] NO_DATA si aucune donné ne doit être affecté
+     * @param overrideCurlOptions tableau écrasant les options par défaut curl indicé par CURLOPT_... CULOPT_POST ...
      * @param storeIn si non null sauvegarde le résultat de la requête avec comme indice la clé donné dans l'accessible "storedRequestResult"
      * @return bool si la requête a réussi
      */
@@ -68,7 +68,9 @@ abstract class SaboApi{
 
         $options[CURLOPT_HTTPHEADER] = $headers;
         $options[CURLOPT_URL] = $requestUrl;
-        $options[CURLOPT_POSTFIELDS] = $dataConversionType == SaboApiRequest::HTTP_BUILD_QUERY ? http_build_query($data) : json_encode($data);
+
+        if(SaboApiRequest::NO_DATA != $dataConversionType)
+            $options[CURLOPT_POSTFIELDS] = $dataConversionType == SaboApiRequest::HTTP_BUILD_QUERY ? http_build_query($data) : json_encode($data);
 
         if(!curl_setopt_array($curl,$options) ) return false;
 
@@ -98,7 +100,7 @@ abstract class SaboApi{
             case SaboApiRequest::RESULT_AS_JSON_ARRAY : 
                 $jsonData = json_decode($this->lastRequestResult,true);    
                 
-                if(gettype($jsonData) != "array") return $jsonData;
+                return gettype($jsonData) != "array" ? null : $jsonData;
 
             case SaboApiRequest::RESULT_AS_STRING: 
                 return $this->lastRequestResult;

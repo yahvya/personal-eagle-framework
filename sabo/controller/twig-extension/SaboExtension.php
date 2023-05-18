@@ -15,13 +15,19 @@ abstract class SaboExtension extends AbstractExtension{
      */
     private static array $extensions = [
         SaboRouteExtension::class,
-        SaboAssetsExtension::class
+        SaboAssetsExtension::class,
+        SaboDebugExtension::class
     ];
 
     /**
      * chemin du fichier sur lequel l'extension va travailler
      */
     protected string $currentFile;
+
+    /**
+     * fonction visant à initialiser les ressources nécéssaires à l'extension peut être vide
+     */
+    abstract public static function initExtension():void;
 
     /**
      * défini le fichier actuel
@@ -37,11 +43,6 @@ abstract class SaboExtension extends AbstractExtension{
     protected function getCurrentFileFolder():string{
         return dirname($this->currentFile) . "\\";
     }   
-
-    /**
-     * fonction visant à initialiser les ressources nécéssaires à l'extension peut être vide
-     */
-    abstract public static function initExtension():void;
 
     /**
      * @return array les extensions crée par sabo

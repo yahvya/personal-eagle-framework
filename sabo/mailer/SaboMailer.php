@@ -22,10 +22,11 @@ class SaboMailer extends PHPMailer{
     private array $config;
 
     /**
-     * @param subject le sujet du mail
      * @param config configuration du mailer (clés SaboMailerConfig->value)
      */
     public function __construct(array $config){
+        parent::__construct(SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE) );
+        
         $this->config = $config;
     }
 
@@ -61,8 +62,18 @@ class SaboMailer extends PHPMailer{
         // ajout des extension
         foreach(SaboController::$twigExtensions as $twigExtension) $twig->addExtension($twigExtension);
 
-        // récupération du contenu du mail
-        $htmlMail = $twig->render($templatePath,array_merge($datasForTemplate,EnvConfig::getViewEnv() ) );
+        try{
+            // récupération du contenu du mail
+            $htmlMail = $twig->render($templatePath,array_merge($datasForTemplate,EnvConfig::getViewEnv() ) );
+        }
+        catch(Exception $e){
+            if(!SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE) ){
+                call_user_func(SaboConfig::getCallableConfig(SaboConfigAttributes::TECHNICAL_ERROR_DEFAULT_PAGE) );
+            
+                die();
+            }
+            else throw $e;
+        }
         
         // ajout des destinataires
         foreach($recipients as $recipient){

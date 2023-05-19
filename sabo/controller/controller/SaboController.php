@@ -2,6 +2,7 @@
 
 namespace Sabo\Controller\Controller;
 
+use Exception;
 use Sabo\Config\EnvConfig;
 use Sabo\Config\SaboConfig;
 use Sabo\Config\SaboConfigAttributes;
@@ -54,7 +55,15 @@ abstract class SaboController{
             $this->twig->addExtension($twigExtension);
         }  
 
-        die($this->twig->render($viewFilePath,array_merge($viewParams,EnvConfig::getViewEnv() ) ) );
+        try{
+            die($this->twig->render($viewFilePath,array_merge($viewParams,EnvConfig::getViewEnv() ) ) );
+        }
+        catch(Exception $e){
+            if(SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE) )
+                throw $e;
+            else
+                call_user_func(SaboConfig::getCallableConfig(SaboConfigAttributes::TECHNICAL_ERROR_DEFAULT_PAGE) );
+        }
     }
 
     /**

@@ -2,6 +2,9 @@
 
 namespace Sabo\Cli;
 
+/**
+ * créateur de controller
+ */
 class ControllerMaker extends FileMaker{
 
     /**

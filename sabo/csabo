@@ -1,6 +1,7 @@
 <?php
 
 use Sabo\Cli\ControllerMaker;
+use Sabo\Cli\ExtensionAdd;
 use Sabo\Cli\ModelMaker;
 use Sabo\Cli\SaboCliCommand;
 use Sabo\Cli\SaboInitializer;
@@ -13,7 +14,8 @@ define("ROOT",__DIR__ . "\\..\\");
 SaboCliCommand::registerCommands([
     ControllerMaker::class,
     ModelMaker::class,
-    SaboInitializer::class
+    SaboInitializer::class,
+    ExtensionAdd::class
 ]);
 
 SaboCliCommand::execArgvCommand($argc,$argv);

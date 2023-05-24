@@ -2,6 +2,9 @@
 
 namespace Sabo\Cli;
 
+/**
+ * créateur de model
+ */
 class ModelMaker extends FileMaker{
 
     private const END_WORD = "<fin>";
@@ -89,15 +92,15 @@ class ModelMaker extends FileMaker{
 
             self::printMessage("Champs nullable ? (entrée non - autre oui) : ");
 
-            $isNullable = !in_array(substr(fgets(STDIN),0,-1),["\n","\r"]);
+            $isNullable = !$this->isEnter(fgets(STDIN) );
 
             if(!$isNullable){
                 self::printMessage("Est-ce une clé primaire ? (entrée oui - autre non) : ");
 
-                if(in_array(substr(fgets(STDIN),0,-1),["\n","\r"]) ){
+                if($this->isEnter(fgets(STDIN) ) ){
                     self::printMessage("Auto-increment ? (entrée oui - autre non) : ");
 
-                    $primaryKey = in_array(substr(fgets(STDIN),0,-1),["\n","\r"]) ? ",new PrimaryKeyCond(true) " : ",new PrimaryKeyCond() ";
+                    $primaryKey = $this->isEnter(fgets(STDIN) ) ? ",new PrimaryKeyCond(true) " : ",new PrimaryKeyCond() ";
                 }
                 else $primaryKey = "";
             }

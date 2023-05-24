@@ -11,6 +11,14 @@ abstract class SaboCliCommand{
     private static array $commands;
 
     /**
+     * vérifie si la saisie vaux la touche entrée
+     * @return bool si la touche entrée a été utilisé
+     */
+    protected function isEnter(string $input):bool{
+        return empty(trim($input) );
+    }
+
+    /**
      * exécute la commande présente en ligne
      */
     public static function execArgvCommand(int $argc,?array $argv):void{
@@ -44,7 +52,7 @@ abstract class SaboCliCommand{
         }
 
         // vérification en cas de demande d'aide
-        if($argc > 2 && in_array($argv[1],["--help","-h","--h"]) ){
+        if($argc > 2 && in_array($argv[2],["--help","-h","--h"]) ){
             self::printMessage($commandClass->getHelp() );
 
             return;

@@ -19,9 +19,7 @@ abstract class FileMaker extends SaboCliCommand{
         if(file_exists($filePath) ){
             SaboCliCommand::printMessage("Le fichier existe déjà sur le chemin ({$filePath}), voulez vous l'écraser (entrée oui - autre non) : ");
 
-            $choice = substr(fgets(STDIN),0,-1);
-
-            if(!in_array($choice,["\n","\r"]) ) return false;
+            if(!$this->isEnter(fgets(STDIN) ) ) return false;
         }
 
         // lecture du modèle à utiliser

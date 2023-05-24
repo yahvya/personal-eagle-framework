@@ -8,7 +8,7 @@ namespace Sabo\Model\System\QueryBuilder;
 trait Where{
     /**
      * ajoute la clause where
-     * @return this
+     * @return QueryBuilder this
      */
     public function where():QueryBuilder{
         $this->sqlString .= "where ";
@@ -22,7 +22,7 @@ trait Where{
      * @param value valeur à comparer
      * @param comparator l'opérateur de comparaison à utiliser par défaut =
      * @param nextSeparator le séparateur pour ajouter une condition par la suite ou null si rien
-     * @return this
+     * @return QueryBuilder this
      */
     public function whereCond(string $attributeName,mixed $value,SqlComparator $comparator = SqlComparator::EQUAL,?SqlSeparator $nextSeparator = null):QueryBuilder{
         $this->sqlString .= $this->manageCond($attributeName,$value,$comparator,$nextSeparator);
@@ -34,6 +34,7 @@ trait Where{
      * alias a whereGroup rajoute un séparateur après le groupe
      * @param separator le séparateur
      * @param param condsToGroup paramètres multiples, tableaux représentant les arguments de whereCond
+     * @return QueryBuilder this
      */
     public function whereGroupSep(SqlSeparator $separator,array... $condsToGroup):QueryBuilder{
         $this->whereGroup(...$condsToGroup);
@@ -46,6 +47,7 @@ trait Where{
     /**
      * crée une condition groupé
      * @param condsToGroup paramètres multiples, tableaux représentant les arguments de whereCond
+     * @return QueryBuilder this
      */
     public function whereGroup(array... $condsToGroup):QueryBuilder{
         $sqlString = "(";
@@ -62,7 +64,7 @@ trait Where{
     /**
      * ajoute un séparateur dans la requête
      * @param sep le séparateur
-     * @return this
+     * @return QueryBuilder this
      */
     public function addSep(SqlSeparator $sep):QueryBuilder{
         $this->sqlString .= " {$sep->value} ";

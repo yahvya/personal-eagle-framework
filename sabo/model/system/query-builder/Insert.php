@@ -13,7 +13,7 @@ trait Insert{
     /**
      * ajoute le sql insert
      * @param values tableau représentant les valeurs à insérer [nom_attribut => valeur]
-     * @return this
+     * @return QueryBuilder this
      * @throws Exception (en mode debug) si values est bide
      */
     public function insert(array $values):QueryBuilder{

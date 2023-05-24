@@ -17,6 +17,7 @@ class QueryBuilder{
     use Delete;
     use Update;
     use Insert;
+    use Join;
 
     /**
      * valeur à bind pour la requête
@@ -49,6 +50,7 @@ class QueryBuilder{
 
     /**
      * modifie l'alias de la table
+     * @return QueryBuilder this
      */
     public function as(string $as):QueryBuilder{
         $this->sqlString = str_replace("{$this->as}.","{$as}.",$this->sqlString);
@@ -63,7 +65,7 @@ class QueryBuilder{
      * défini une requête personnalisé
      * @param sqlString la chaine sql
      * @param toBind valeurs à bind à l'exécution
-     * @return this
+     * @return QueryBuilder this
      */
     public function customQuery(string $sqlString,array $toBind):QueryBuilder{
         $this->sqlString = $sqlString;
@@ -74,7 +76,7 @@ class QueryBuilder{
 
     /**
      * remet à 0 le contenu du builder
-     * @return this
+     * @return QueryBuilder this
      */
     public function reset():QueryBuilder{
         $this->toBind = [];
@@ -100,10 +102,11 @@ class QueryBuilder{
     /**
      * récupére le nom de la colonne lié à un attribut du model
      * @param attributeName nom de l'attribut
+     * @param includeAs définis si l'alias doit être inclus
      * @return string|null le nom de la colonne lié ou null en cas d'échec
      * @throws Exception (en mode debug)
      */
-    public function getAttributeLinkedColName(string $attributeName):?string{
+    public function getAttributeLinkedColName(string $attributeName,bool $includeAs = false):?string{
         $columnsConfiguration = $this->linkedModel->getColumnsConfiguration();
 
         if(empty($columnsConfiguration[$attributeName]) || empty($columnsConfiguration[$attributeName]["configClass"]) ){
@@ -113,12 +116,12 @@ class QueryBuilder{
                 return null;
         }
 
-        return $columnsConfiguration[$attributeName]["configClass"]->getLinkedColName();
+        return $includeAs ? "{$this->as}.{$columnsConfiguration[$attributeName]["configClass"]->getLinkedColName()}" : $columnsConfiguration[$attributeName]["configClass"]->getLinkedColName();
     }
 
     /**
      * ajoute les clés primaires comme condition where
-     * @return this
+     * @return QueryBuilder this
      * @throws Exception en mode debug si aucune clé trouvé
      */
     public function addPrimaryKeysWhereCond():QueryBuilder{

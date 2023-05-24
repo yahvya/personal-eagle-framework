@@ -3,9 +3,7 @@
 namespace Sabo\Model\Model;
 
 use Exception;
-use ReflectionAttribute;
 use ReflectionClass;
-use ReflectionProperty;
 use Sabo\Model\Exception\ModelCondException;
 use Sabo\Config\SaboConfig;
 use Sabo\Config\SaboConfigAttributes;

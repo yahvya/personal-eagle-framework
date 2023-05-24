@@ -13,7 +13,7 @@ trait Update{
     /**
      * ajoute la requête sql de mise à nour
      * @param toUpddate tableau représentant les valeurs à mettre à jour [nom_attribut => nouvelleValeur]
-     * @return this
+     * @return QueryBuilder this
      * @throws Exception (en mode debug) si aucune valeur à mettre à jour
      */
     public function update(array $toUpdate):QueryBuilder{

@@ -14,7 +14,7 @@ trait Select{
     /**
      * ajoute le sql select
      * @param toSelect paramètres multiple, le nom des attributs du model liés aux colonnes à récupérer ou [SqlFunction,nom_attribut,@optionnal alias], si vide select * par défaut
-     * @return this
+     * @return QueryBuilder this
      */
     public function select(string|array... $toSelect):QueryBuilder{
         $this->sqlString = "select";

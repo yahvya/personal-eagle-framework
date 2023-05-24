@@ -7,6 +7,7 @@ use ReflectionClass;
 use Sabo\Model\Exception\ModelCondException;
 use Sabo\Config\SaboConfig;
 use Sabo\Config\SaboConfigAttributes;
+use Sabo\Model\Attribute\JoinedColumn;
 use Sabo\Model\Attribute\TableColumn;
 use Sabo\Model\Attribute\TableName;
 use Sabo\Model\System\Mysql\SaboMysql;
@@ -20,7 +21,7 @@ abstract class SaboModel extends SaboMysql{
     /**
      * reflection de ce model
      */
-    private ReflectionClass $reflection;
+    private ?ReflectionClass $reflection = null;
 
     /**
      * représente la configuration du model enfant
@@ -28,12 +29,19 @@ abstract class SaboModel extends SaboMysql{
     private array $columnsConfiguration;
 
     /**
+     * représente la configuration des liaisons model
+     */
+    private array $joinedLinks;
+
+    /**
      * nom de la table lié au model
      */
     private string $tableName;
 
     protected function pseudoConstruct():void{
-        $this->readChildConfiguration();
+        $this
+            ->readChildConfiguration()
+            ->readJoinedLinks();
     }
 
     /**
@@ -106,6 +114,13 @@ abstract class SaboModel extends SaboMysql{
     }
 
     /**
+     * @return array la configuration jointures
+     */
+    public function getJoinedLinks():array{
+        return $this->joinedLinks;
+    }
+
+    /**
      * @return string le nom de la table lié
      */
     public function getTableName():string{
@@ -139,8 +154,9 @@ abstract class SaboModel extends SaboMysql{
 
     /**
      * lis les attributs associés au model enfant pour en tirer les informations
+     * @return SaboModel this
      */
-    private function readChildConfiguration():void{
+    private function readChildConfiguration():SaboModel{
         $this->reflection = new ReflectionClass($this);
 
         // récupération du nom de la table lié
@@ -176,5 +192,28 @@ abstract class SaboModel extends SaboMysql{
                 ];
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * lis les attributs associés au model enfant pour en tirer les informations les jointures
+     * @return SaboModel this
+     */
+    private function readJoinedLinks():SaboModel{
+        if($this->reflection == null) $this->reflection = new ReflectionClass($this);
+
+        $this->joinedLinks = [];
+
+        // récupération des éléments
+        foreach($this->reflection->getProperties() as $reflectionProperty){
+            $reflectionAttributes = $reflectionProperty->getAttributes(JoinedColumn::class);
+
+            if(empty($reflectionAttributes) ) continue;
+
+            $this->joinedLinks[$reflectionProperty->getName()] = $reflectionAttributes[0]->newInstance();
+        }
+
+        return $this;
     }
 }

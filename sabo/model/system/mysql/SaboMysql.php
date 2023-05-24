@@ -171,7 +171,7 @@ abstract class SaboMysql implements System{
      * @param conds conditions à vérifier, format [attribute_name => value] ou [attribute_name => [value,SqlComparator,(non obligatoire and par défaut)] SqlSeparator and ou or]
      * @param toSelect le nom des attributs liés aux colonnes à récupérer
      * @param getBaseResult défini si les résultats doivent être retournés telles qu'elles (pdostatement) ou sous forme d'objets
-     * @return mixed un tableau contenant les objets si résultats multiples ou un objet model si un seul résultat ou pdostatement de la requête si getBaseResult à true ou null si aucun résultat
+     * @return mixed un tableau contenant les objets si résultats multiples ou pdostatement de la requête si getBaseResult à true ou null si aucun résultat
      * @throws Exception (en mode debug) si données mal formulés 
      */
     public static function find(array $conds = [],array $toSelect = [],bool $getBaseResult = false):mixed{
@@ -456,6 +456,19 @@ abstract class SaboMysql implements System{
                     throw new Exception("Aucun attribut trouvé pour la colonne {$attributeCol}");
                 else
                     return null;
+            }
+
+            // création des objets liés
+            $joinedLinks = $model->getJoinedLinks();
+
+            foreach($joinedLinks as $propertyName => $joinColumnAttribute){
+                $linkedSelectors = $joinColumnAttribute->getLinkedSelectors();
+                $whereConds = [];
+
+                // création des conditions de sélection 
+                foreach($linkedSelectors as $toCheckCond => $attributeValueName) $whereConds[$toCheckCond] = $model->$attributeValueName;
+
+                $model->$propertyName = call_user_func_array([$joinColumnAttribute->getLinkedModelClass(),"find"],[$whereConds]);
             }
 
             return $model;

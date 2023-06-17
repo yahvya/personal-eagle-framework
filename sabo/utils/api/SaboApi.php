@@ -28,7 +28,7 @@ abstract class SaboApi{
      * @param apiUrlPrefix lien préfixant les appels de l'api
      */
     public function __construct(string $apiUrlPrefix){
-        $this->apiUrlPrefix = !str_ends_with($apiUrlPrefix,"/") || ! str_ends_with($apiUrlPrefix,"\\") ? $apiUrlPrefix . "/" : $apiUrlPrefix;
+        $this->apiUrlPrefix = !str_ends_with($apiUrlPrefix,"/") && ! str_ends_with($apiUrlPrefix,"\\") ? $apiUrlPrefix . "/" : $apiUrlPrefix;
         $this->lastRequestResult = null;
         $this->storedRequestResult = [];
     }

@@ -16,7 +16,8 @@ if(FileHelper::fileExist(PathConfig::USER_AUTOLOAD_FILEPATH->value) ) Helper::re
 // définition des configurations par défaut
 SaboConfig::setDefaultConfigurations();
 
-// inclusion des configurations utilisateur
+// inclusion des configurations utilisateur ainsi que des fonctions utiles
+Helper::require(PathConfig::SABO_FUNCTIONS_FILEPATH->value);
 Helper::require(PathConfig::SABO_CONFIG_FILEPATH->value);
 
 // démarrage du site

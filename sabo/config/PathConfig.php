@@ -24,7 +24,12 @@ enum PathConfig:string{
     case USER_AUTOLOAD_FILEPATH = "app\\vendor\\autoload.php";
 
     /**
-     * défini le chemin du dossier contenant le fichier env
+     * chemin du dossier contenant le fichier env
      */
     case ENV_FILEPATH = "config\\";
+
+    /**
+     * chemin du fichier des fonctions globales utiles
+     */
+    case SABO_FUNCTIONS_FILEPATH = "config\\sabo\\functions.php";
 };

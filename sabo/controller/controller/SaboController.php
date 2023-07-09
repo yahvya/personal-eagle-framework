@@ -122,16 +122,17 @@ abstract class SaboController{
      * défini un donnée flash
      * @param flashKey la clé de la donnée flash
      * @param data la donnée à insérer
-     * @param duration le nombre de rafraichissement autorisé (min 1)
+     * @param duration le nombre de rafraichissement autorisé (min 1) si -1 alors la valeur est conservé jusqu'a la première lecture
      */
     protected function setFlashData(string $flashKey,mixed $data,int $duration = 1):SaboController{
-        if($duration < 1) $duration = 1;
+        if($duration < -1 || $duration == 0) $duration = 1;
 
         $duration++;
 
         $_SESSION["sabo"]["flashDatas"][$flashKey] = [
             "data" => $data,
-            "counter" => $duration
+            "counter" => $duration,
+            "untilRead" => $duration -1 == -1 
         ];
 
         return $this;
@@ -142,7 +143,19 @@ abstract class SaboController{
      * @return mixed la donnée flash ou null si elle n'existe pas
      */
     protected function getFlashData(string $flashKey):mixed{
-        return !empty($_SESSION["sabo"]["flashDatas"][$flashKey]) ? $_SESSION["sabo"]["flashDatas"][$flashKey]["data"] : NULL;
+        $data = null;
+
+        if(!empty($_SESSION["sabo"]["flashDatas"][$flashKey]) ){
+            $data = $_SESSION["sabo"]["flashDatas"][$flashKey]["data"];
+
+            if($_SESSION["sabo"]["flashDatas"][$flashKey]["untilRead"]){
+                unset($_SESSION["sabo"]["flashDatas"][$flashKey]);
+
+                $_SESSION["sabo"]["flashDatas"] = array_values($_SESSION["sabo"]["flashDatas"]);
+            }
+        }
+    
+        return $data;
     }
 
     /**
@@ -168,9 +181,11 @@ abstract class SaboController{
     private function manageFlashDatas():void{
         if(!empty($_SESSION["sabo"]["flashDatas"]) ){
             foreach($_SESSION["sabo"]["flashDatas"] as $key => $flashData){
+                if($flashData["untilRead"]) continue;
+
                 $flashData["counter"]--;
 
-                if($flashData["counter"] == 0) 
+                if($flashData["counter"] <= 0) 
                     unset($_SESSION["sabo"]["flashDatas"][$key]);
                 else
                     $_SESSION["sabo"]["flashDatas"][$key] = $flashData;

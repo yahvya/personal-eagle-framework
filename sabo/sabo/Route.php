@@ -38,7 +38,7 @@ abstract class Route{
             if(!empty($group["urlRegex"]) ){
                 $group["unmodifiedUrl"] = $url . $group["unmodifiedUrl"];
                 $group["urlRegex"] = $url . $group["urlRegex"];
-                $group["accessConds"] = array_merge($group["accessConds"],$accessConds);
+                $group["accessConds"] = array_merge($group["accessConds"],gettype($accessConds) != "array" ? [$accessConds] : $accessConds);
                 $routesGroup[$key] = $group;
             }
             else $routesGroup[$key] = self::group($url,$group);

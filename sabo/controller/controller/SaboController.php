@@ -92,7 +92,7 @@ abstract class SaboController{
             $key = self::generateString(25,false,RandomStringType::SPECIALCHARS);
         while($this->getFlashData($key) != null);
 
-        $this->setFlashData($key,$token);
+        $this->setFlashData($key,$token,-1);
 
         return implode("#",[$token,$key]);
     }

@@ -6,7 +6,7 @@ use Sabo\Helper\FileHelper;
 use Sabo\Helper\Helper;
 use Sabo\Sabo\Router;
 
-define("ROOT",__DIR__ . "\\..\\");
+define("ROOT",__DIR__ . "/../");
 
 require_once(__DIR__ . "/vendor/autoload.php");
 

@@ -9,7 +9,7 @@ use Sabo\Cli\SaboCliCommand;
 
 require_once(__DIR__ . "/vendor/autoload.php");
 
-define("ROOT",__DIR__ . "\\..\\");
+define("ROOT",__DIR__ . "/../");
 
 // enregistrement des commandes, importez vos propres commandes
 SaboCliCommand::registerCommands([

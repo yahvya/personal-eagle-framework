@@ -1,12 +1,19 @@
 <?php
 
-namespace Sabo\Cli;
+namespace Sabo\Cli\Project\Project;
+
+use Sabo\Cli\SaboCliCommand;
 
 /**
  * initialiseur de projet
  */
 class SaboInitializer extends SaboCliCommand{
-    protected function execCommand(int $argc,array $argv):bool{
+    /**
+     * commande
+     */
+    public const MY_COMMAND = "initialize";
+
+    public function execCommand(int $argc,array $argv,string $calledCommand):bool{
         `cd app && composer install && composer dumpautoload -o`;
 
         return true;
@@ -21,6 +28,6 @@ class SaboInitializer extends SaboCliCommand{
     }
 
     protected function isMyCommand(string $firstArg):bool{
-        return $firstArg == "initialize";
+        return $firstArg == self::MY_COMMAND;
     }
 }

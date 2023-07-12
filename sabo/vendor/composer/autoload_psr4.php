@@ -29,6 +29,5 @@ return array(
     'Sabo\\Controller\\TwigExtension\\' => array($baseDir . '/controller/twig-extension'),
     'Sabo\\Controller\\Controller\\' => array($baseDir . '/controller/controller'),
     'Sabo\\Config\\' => array($baseDir . '/config'),
-    'Sabo\\Cli\\' => array($baseDir . '/cli'),
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
 );

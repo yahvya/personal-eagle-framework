@@ -1,6 +1,6 @@
 <?php
 
-namespace Sabo\Cli;
+namespace Sabo\Cli\Maker;
 
 use Sabo\Cli\SaboCliCommand;
 
@@ -8,6 +8,9 @@ use Sabo\Cli\SaboCliCommand;
  * représente les class générant un fichier
  */
 abstract class FileMaker extends SaboCliCommand{
+    /**
+     * chemin des ressources model
+     */
     private const MODELS_PATH = ROOT . "sabo/cli/resources/model/";
 
     /**

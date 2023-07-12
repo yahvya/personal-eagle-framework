@@ -1,13 +1,19 @@
 <?php
 
-namespace Sabo\Cli;
+namespace Sabo\Cli\Extension;
 
+use Sabo\Cli\SaboCliCommand;
 use ZipArchive;
 
 /**
  * ajout d'extension
  */
 class ExtensionAdd extends SaboCliCommand{
+    /**
+     * commande
+     */
+    public const MY_COMMAND = "extension:add";
+
     /**
      * chemin de destination des extensions
      */
@@ -18,7 +24,7 @@ class ExtensionAdd extends SaboCliCommand{
      */
     private const EXTENSIONS_FILE_EXTENSION = ".zip";
     
-    protected function execCommand(int $argc,array $argv):bool{
+    public function execCommand(int $argc,array $argv,string $calledCommand):bool{
         $extensionZipFilePath = $this->getExtensionZipFilePath();
         $dstDir = $this->getDstDir(); 
 
@@ -83,7 +89,7 @@ class ExtensionAdd extends SaboCliCommand{
     }
 
     protected function isMyCommand(string $firstArg):bool{
-        return "extension:add" == $firstArg;
+        return $firstArg == self::MY_COMMAND;
     }
 
     /**

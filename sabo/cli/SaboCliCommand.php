@@ -58,9 +58,11 @@ abstract class SaboCliCommand{
             return;
         }
 
+        $command = $argv[1];
+        
         $argv = array_slice($argv,2);
 
-        self::printMessage($commandClass->execCommand($argc - 2,$argv) ? "succès" : "échec");
+        self::printMessage($commandClass->execCommand($argc - 2,$argv,$command) ? "succès" : "échec");
     }
 
     /**
@@ -80,7 +82,7 @@ abstract class SaboCliCommand{
      * affiche le message donnée
      * @param message le message à afficher
      */
-    protected static function printMessage(string $message):void{
+    public static function printMessage(string $message):void{
         echo "\nsabo >> {$message}";
     }
 
@@ -101,8 +103,9 @@ abstract class SaboCliCommand{
      * exécute la commande
      * @param argc taille de argv
      * @param argv les arguments de la ligne de commande
+     * @param calledCommand la commande appelé
      */
-    protected abstract function execCommand(int $argc,array $argv):bool; 
+    public abstract function execCommand(int $argc,array $argv,string $calledCommand):bool; 
 
     /**
      * @return une description de la commande

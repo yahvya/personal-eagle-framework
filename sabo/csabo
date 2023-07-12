@@ -1,10 +1,11 @@
 <?php
 
-use Sabo\Cli\ControllerMaker;
-use Sabo\Cli\ExtensionAdd;
-use Sabo\Cli\ModelMaker;
+use Sabo\Cli\Controller\ControllerMaker;
+use Sabo\Cli\Extension\ExtensionAdd;
+use Sabo\Cli\Model\ModelMaker;
+use Sabo\Cli\Project\Project\ProjectManager;
+use Sabo\Cli\Project\Project\SaboInitializer;
 use Sabo\Cli\SaboCliCommand;
-use Sabo\Cli\SaboInitializer;
 
 require_once(__DIR__ . "/vendor/autoload.php");
 
@@ -15,7 +16,8 @@ SaboCliCommand::registerCommands([
     ControllerMaker::class,
     ModelMaker::class,
     SaboInitializer::class,
-    ExtensionAdd::class
+    ExtensionAdd::class,
+    ProjectManager::class
 ]);
 
 SaboCliCommand::execArgvCommand($argc,$argv);

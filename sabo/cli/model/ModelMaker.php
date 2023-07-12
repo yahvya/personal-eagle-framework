@@ -1,12 +1,21 @@
 <?php
 
-namespace Sabo\Cli;
+namespace Sabo\Cli\Model;
+
+use Sabo\Cli\Maker\FileMaker;
 
 /**
  * créateur de model
  */
 class ModelMaker extends FileMaker{
+    /**
+     * commande
+     */
+    public const MY_COMMAND = "make:model";
 
+    /**
+     * mot de fin de saisie
+     */
     private const END_WORD = "<fin>";
 
     /**
@@ -115,7 +124,7 @@ class ModelMaker extends FileMaker{
         return $attributes;
     }
 
-    protected function execCommand(int $argc,array $argv):bool{
+    public function execCommand(int $argc,array $argv,string $calledCommand):bool{
         // alors nom manquant
         if($argc == 0){
             self::printMessage("Veuillez saisir au minimum le nom du model");
@@ -144,7 +153,7 @@ class ModelMaker extends FileMaker{
     }
     
     protected function isMyCommand(string $firstArg):bool{
-        return $firstArg == "make:model";
+        return $firstArg == self::MY_COMMAND;
     }
 
     protected function getModelFilePath():string{

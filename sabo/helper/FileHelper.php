@@ -70,7 +70,7 @@ class FileHelper{
 
         $this->fileDatas = [
             "extension" => "." . array_pop($pathPart),
-            "folder" => dirname($this->filepath) . "\\"
+            "folder" => dirname($this->filepath) . "/"
         ];
     }
 

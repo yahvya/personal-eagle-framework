@@ -41,7 +41,7 @@ abstract class SaboExtension extends AbstractExtension{
      * @return string le chemin du dossier dans lequel se trouve le fichier
      */
     protected function getCurrentFileFolder():string{
-        return dirname($this->currentFile) . "\\";
+        return dirname($this->currentFile) . "/";
     }   
 
     /**

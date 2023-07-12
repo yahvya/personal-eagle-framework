@@ -33,7 +33,7 @@ class ProjectBuilder implements ProjectManagerCommand{
 
             $path = trim(fgets(STDIN) );
 
-            if(!str_ends_with($path,"/") || !str_ends_with($path,"\\") ) $path .= "/";
+            if(!str_ends_with($path,"/") && !str_ends_with($path,"\\") ) $path .= "/";
 
             if(!is_dir($path) ) 
                 SaboCliCommand::printMessage("Le chemin fourni n'est pas un dossier");
@@ -57,7 +57,7 @@ class ProjectBuilder implements ProjectManagerCommand{
      * @return bool si le copie à réussi
      */
     private function copyDirectoryIn(string $dstPath,string $fromDir):bool{
-        if(!is_dir($fromDir) || !is_dir($fromDir) ) return false;
+        if(!is_dir($fromDir) || !is_dir($dstPath) ) return false;
 
         $dirContent = array_diff(scandir($fromDir),[".",".."]);
 
@@ -110,7 +110,7 @@ class ProjectBuilder implements ProjectManagerCommand{
             $path = ROOT . $path;
             
             if(is_dir($path) ) 
-                $this->deleteDir(!str_ends_with($path,"/") || !str_ends_with($path,"\\") ? "{$path}/" : $path);
+                $this->deleteDir(!str_ends_with($path,"/") && !str_ends_with($path,"\\") ? "{$path}/" : $path);
             else
                 unlink($path);
         }

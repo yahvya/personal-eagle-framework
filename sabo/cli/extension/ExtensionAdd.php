@@ -17,7 +17,7 @@ class ExtensionAdd extends SaboCliCommand{
     /**
      * chemin de destination des extensions
      */
-    private const EXTENSIONS_DEFAULT_DIR = ROOT . "src\\sabo-extensions";
+    private const EXTENSIONS_DEFAULT_DIR = ROOT . "src/sabo-extensions";
 
     /**
      * extension des fichiers extensions
@@ -28,8 +28,8 @@ class ExtensionAdd extends SaboCliCommand{
         $extensionZipFilePath = $this->getExtensionZipFilePath();
         $dstDir = $this->getDstDir(); 
 
-        if($dstDir != self::EXTENSIONS_DEFAULT_DIR . "\\") {
-            $dstDir = ROOT . (str_starts_with($dstDir,"\\") || str_starts_with($dstDir,"/") ? substr($dstDir,1) : $dstDir);
+        if($dstDir != self::EXTENSIONS_DEFAULT_DIR . "/") {
+            $dstDir = ROOT . (str_starts_with($dstDir,"/") || str_starts_with($dstDir,"/") ? substr($dstDir,1) : $dstDir);
         }
 
         // ouverture du fichier zip
@@ -59,7 +59,7 @@ class ExtensionAdd extends SaboCliCommand{
             return false;
         }
 
-        $dirname = explode("\\",str_replace("/","\\",$dirname) )[0];
+        $dirname = explode("/",str_replace("\\","/",$dirname) )[0];
 
         // extraction du zip
         if(!$zip->extractTo($dstDir) ){
@@ -99,11 +99,11 @@ class ExtensionAdd extends SaboCliCommand{
     private function getDstDir():string{
         SaboCliCommand::printMessage("Saississez le chemin du dossier contenant vos extensions à partir de la racine de votre projet - appuyez sur entrée pour utiliser le dossier par défaut (" . self::EXTENSIONS_DEFAULT_DIR . ") : ");
 
-        $input = fgets(STDIN);
+        $input = @fgets(STDIN);
 
         $directory = $this->isEnter($input) ? self::EXTENSIONS_DEFAULT_DIR : trim($input);
 
-        if(!str_ends_with($directory,"\\") && !str_ends_with($directory,"/") ) $directory .= "\\";
+        if(!str_ends_with($directory,"\\") && !str_ends_with($directory,"/") ) $directory .= "/";
 
         return $directory;
     }
@@ -129,7 +129,7 @@ class ExtensionAdd extends SaboCliCommand{
      * @return bool si la mise à jour à réussi
      */
     private function updateClassmap($dstDir):bool{
-        $composerFilePath = ROOT . "app\\composer.json";
+        $composerFilePath = ROOT . "app/composer.json";
 
         // chargement du contenu json
         $composerContent = @file_get_contents($composerFilePath);
@@ -151,7 +151,7 @@ class ExtensionAdd extends SaboCliCommand{
         if(empty($composerContent["autoload"]["classmap"]) ) $composerContent["autoload"]["classmap"] = [];
 
         // création du chemin à partir du dossier app
-        $dstDir = "..\\" . substr($dstDir,strlen(ROOT) );
+        $dstDir = "../" . substr($dstDir,strlen(ROOT) );
 
         if(!in_array($dstDir,$composerContent["autoload"]["classmap"]) ){
             array_push($composerContent["autoload"]["classmap"],$dstDir);
@@ -170,7 +170,7 @@ class ExtensionAdd extends SaboCliCommand{
      */
     private function deleteDir(string $dir):void{ 
         if(is_dir($dir) ){
-            if(!str_ends_with($dir,"\\") && !str_ends_with($dir,"/") ) $dir .= "\\";
+            if(!str_ends_with($dir,"\\") && !str_ends_with($dir,"/") ) $dir .= "/";
 
             $dirElementsList = array_diff(scandir($dir),[".",".."]);
 

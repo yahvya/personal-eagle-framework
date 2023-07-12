@@ -9,27 +9,27 @@ enum PathConfig:string{
     /**
      * chemin sous dossier des routes séparés
      */
-    case ROUTES_SUBFOLER_PATH = "config\\routes\\routes\\";
+    case ROUTES_SUBFOLER_PATH = "config/routes/routes/";
     /**
      * chemin du fichier route principal
      */
-    case MAIN_ROUTE_FILE = "config\\routes\\routes.php";
+    case MAIN_ROUTE_FILE = "config/routes/routes.php";
     /**
      * chemin du fichier de configuration utilisateur du framework
      */
-    case SABO_CONFIG_FILEPATH = "config\\sabo\\config.php";
+    case SABO_CONFIG_FILEPATH = "config/sabo/config.php";
     /**
      * chemin du fichier autoload utilisateur
      */
-    case USER_AUTOLOAD_FILEPATH = "app\\vendor\\autoload.php";
+    case USER_AUTOLOAD_FILEPATH = "app/vendor/autoload.php";
 
     /**
      * chemin du dossier contenant le fichier env
      */
-    case ENV_FILEPATH = "config\\";
+    case ENV_FILEPATH = "config/";
 
     /**
      * chemin du fichier des fonctions globales utiles
      */
-    case SABO_FUNCTIONS_FILEPATH = "config\\sabo\\functions.php";
+    case SABO_FUNCTIONS_FILEPATH = "config/sabo/functions.php";
 };

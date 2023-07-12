@@ -1,6 +1,4 @@
 {
     "toDeleteOnBuild": [
-        "tmpFolder",
-        "testfile.txt"
     ]
 }

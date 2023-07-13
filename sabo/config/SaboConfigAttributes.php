@@ -10,6 +10,17 @@ enum SaboConfigAttributes:string{
      * mode de développement
      */
     case DEBUG_MODE = "debug_mode";
+
+    /**
+     * mode maintenance du site
+     */
+    case MAINTENANCE_MODE = "maintenance_mode";
+
+    /**
+     * défini la page de maintenance par défaut
+     */
+    case MAINTENANCE_DEFAULT_PAGE = "maintenance_default_page";
+
     /**
      * défini si une connexion à la base de données doit être crée au lancement
      */

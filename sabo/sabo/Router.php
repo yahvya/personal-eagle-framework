@@ -38,6 +38,10 @@ abstract class Router{
                 call_user_func(SaboConfig::getCallableConfig(SaboConfigAttributes::TECHNICAL_ERROR_DEFAULT_PAGE) );
         }
 
+        // vérification de l'état de maintenance
+        if(SaboConfig::getBoolConfig(SaboConfigAttributes::MAINTENANCE_MODE) )
+            call_user_func(SaboConfig::getCallableConfig(SaboConfigAttributes::MAINTENANCE_DEFAULT_PAGE) );
+
         $requestMethod = strtolower($_SERVER["REQUEST_METHOD"]);
 
         if(!array_key_exists($requestMethod,$routes) ){

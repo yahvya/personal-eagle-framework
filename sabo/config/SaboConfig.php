@@ -35,7 +35,8 @@ abstract class SaboConfig{
         // configuration booléennes
         self::$boolAttributes = [
             SaboConfigAttributes::DEBUG_MODE->value => false,
-            SaboConfigAttributes::INIT_WITH_DATABASE_CONNEXION->value => false
+            SaboConfigAttributes::INIT_WITH_DATABASE_CONNEXION->value => false,
+            SaboConfigAttributes::MAINTENANCE_MODE->value => false
         ];
 
         // configuration des chaines
@@ -49,7 +50,8 @@ abstract class SaboConfig{
         // configuration des callables
         self::$callableAttributes = [
             SaboConfigAttributes::NOT_FOUND_DEFAULT_PAGE->value => [new MessagePage("Page non trouvé","La page que vous cherchez n'a pas été trouvé !"),"show"],
-            SaboConfigAttributes::TECHNICAL_ERROR_DEFAULT_PAGE->value => [new MessagePage("Erreur technique","Une erreur technique s'est produite !"),"show"]
+            SaboConfigAttributes::TECHNICAL_ERROR_DEFAULT_PAGE->value => [new MessagePage("Erreur technique","Une erreur technique s'est produite !"),"show"],
+            SaboConfigAttributes::MAINTENANCE_DEFAULT_PAGE->value => [new MessagePage("Site en maintenance","Le site est actuellement en maintenance !"),"show"]
         ];
     }
 

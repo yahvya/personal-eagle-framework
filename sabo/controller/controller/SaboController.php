@@ -148,11 +148,8 @@ abstract class SaboController{
         if(!empty($_SESSION["sabo"]["flashDatas"][$flashKey]) ){
             $data = $_SESSION["sabo"]["flashDatas"][$flashKey]["data"];
 
-            if($_SESSION["sabo"]["flashDatas"][$flashKey]["untilRead"]){
+            if($_SESSION["sabo"]["flashDatas"][$flashKey]["untilRead"])
                 unset($_SESSION["sabo"]["flashDatas"][$flashKey]);
-
-                $_SESSION["sabo"]["flashDatas"] = array_values($_SESSION["sabo"]["flashDatas"]);
-            }
         }
     
         return $data;

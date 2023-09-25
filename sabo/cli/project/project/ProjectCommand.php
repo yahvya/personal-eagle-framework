@@ -8,8 +8,9 @@ namespace Sabo\Cli\Project\Project;
 interface ProjectManagerCommand{
     /**
      * exécute la commande
-     * @param argc le nombre de commandes
-     * @param argv les arguments passés
+     * @param int $argc le nombre de commandes
+     * @param array $argv les arguments passés
+     * @return bool si l'exécution de la commande réussi
      */
     public function exec(int $argc,array $argv):bool;
 }

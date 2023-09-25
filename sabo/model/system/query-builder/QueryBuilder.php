@@ -40,7 +40,7 @@ class QueryBuilder{
     private SaboModel $linkedModel;
 
     /**
-     * @param linkedModel le modèle à lié à la requête
+     * @param SaboModel linkedModel le modèle à lié à la requête
      */
     public function __construct(SaboModel $linkedModel){
         $this->linkedModel = $linkedModel;
@@ -50,6 +50,7 @@ class QueryBuilder{
 
     /**
      * modifie l'alias de la table
+     * @param string @as l'alias
      * @return QueryBuilder this
      */
     public function as(string $as):QueryBuilder{
@@ -63,8 +64,8 @@ class QueryBuilder{
 
     /**
      * défini une requête personnalisé
-     * @param sqlString la chaine sql
-     * @param toBind valeurs à bind à l'exécution
+     * @param string $sqlString la chaine sql
+     * @param array $toBind valeurs à bind à l'exécution
      * @return QueryBuilder this
      */
     public function customQuery(string $sqlString,array $toBind):QueryBuilder{
@@ -101,8 +102,8 @@ class QueryBuilder{
 
     /**
      * récupére le nom de la colonne lié à un attribut du model
-     * @param attributeName nom de l'attribut
-     * @param includeAs définis si l'alias doit être inclus
+     * @param string $attributeName nom de l'attribut
+     * @param bool $includeAs définis si l'alias doit être inclus
      * @return string|null le nom de la colonne lié ou null en cas d'échec
      * @throws Exception (en mode debug)
      */
@@ -161,7 +162,7 @@ class QueryBuilder{
 
     /**
      * crée un querybuilder à partir de la classe donnée
-     * @param modelClass la class du model à lié
+     * @param string $modelClass la class du model à lié
      * @return QueryBuilder|null le querybuilder ou null en cas d'échec
      * @throws Exception (en mode debug)
      */

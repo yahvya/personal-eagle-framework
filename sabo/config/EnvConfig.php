@@ -17,6 +17,9 @@ abstract class EnvConfig{
      */
     private static array $configEnv = [];
 
+    /**
+     * si c'est un fichier d'environnement au format json
+     */
     private static bool $isJsonEnv;
 
     /**
@@ -59,14 +62,23 @@ abstract class EnvConfig{
         return true;
     }
 
+    /**
+     * @return array les données d'environnement pour la vue
+     */
     public static function getViewEnv():array{
         return self::$viewEnv;
     }
 
+    /**
+     * @return array les données d'environnement pour le programme
+     */
     public static function getConfigEnv():array{
         return self::$configEnv;
     }
 
+    /**
+     * @return bool si le fichier d'environnement est au format json
+     */
     public static function getIsJsonEnv():bool{
         return self::$isJsonEnv;
     }

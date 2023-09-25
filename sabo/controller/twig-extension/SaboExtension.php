@@ -31,7 +31,7 @@ abstract class SaboExtension extends AbstractExtension{
 
     /**
      * défini le fichier actuel
-     * @param file le chemin du fichier
+     * @param string $file le chemin du fichier
      */
     public function setCurrentFile(string $file):void{
         $this->currentFile = $file;

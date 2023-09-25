@@ -110,6 +110,7 @@ class ExtensionAdd extends SaboCliCommand{
 
     /**
      * demande et récupère le chemin du fichier zip de l'extension
+     * @return string le chemin récupéré
      */
     private function getExtensionZipFilePath():string{
         $extensionLen = strlen(self::EXTENSIONS_FILE_EXTENSION);
@@ -125,10 +126,10 @@ class ExtensionAdd extends SaboCliCommand{
 
     /**
      * met à jour le fichier composer.json
-     * @param dstDir le dossier conteneur des extensions
+     * @param string $dstDir le dossier conteneur des extensions
      * @return bool si la mise à jour à réussi
      */
-    private function updateClassmap($dstDir):bool{
+    private function updateClassmap(string $dstDir):bool{
         $composerFilePath = ROOT . "app/composer.json";
 
         // chargement du contenu json
@@ -166,7 +167,7 @@ class ExtensionAdd extends SaboCliCommand{
 
     /**
      * supprime un dossier
-     * @param dir le chemin du dossier
+     * @param string $dir le chemin du dossier
      */
     private function deleteDir(string $dir):void{ 
         if(is_dir($dir) ){

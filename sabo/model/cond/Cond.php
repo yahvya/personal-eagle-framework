@@ -8,7 +8,7 @@ namespace Sabo\Model\Cond;
 interface Cond{
     /**
      * vérifie la condition
-     * @param data la donnée à valider
+     * @param mixed $data la donnée à valider
      * @return bool si la validation a réussie
      */
     public function checkCondWith(mixed $data):bool;

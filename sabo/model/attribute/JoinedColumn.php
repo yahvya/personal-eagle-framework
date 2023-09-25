@@ -23,8 +23,8 @@ class JoinedColumn implements Cond{
     private array $linkedSelectors;
 
     /**
-     * @param linkedModelClass class du model à charger
-     * @param linkedSelectors tableau indicé par le nom des attributs du model lié avec valeur nom d'attribut du model actuel
+     * @param string $linkedModelClass class du model à charger
+     * @param array $linkedSelectors tableau indicé par le nom des attributs du model lié avec valeur nom d'attribut du model actuel
      * @throws Exception si le model n'est pas un enfant de sabomodel
      */
     public function __construct(string $linkedModelClass,array $linkedSelectors){

@@ -25,7 +25,7 @@ abstract class SaboApi{
     private ?string $lastRequestResult;
 
     /**
-     * @param apiUrlPrefix lien préfixant les appels de l'api
+     * @param string $apiUrlPrefix lien préfixant les appels de l'api
      */
     public function __construct(string $apiUrlPrefix){
         $this->apiUrlPrefix = !str_ends_with($apiUrlPrefix,"/") && !str_ends_with($apiUrlPrefix,"\\") ? $apiUrlPrefix . "/" : $apiUrlPrefix;
@@ -34,7 +34,7 @@ abstract class SaboApi{
     }
 
     /**
-     * @param apiSuffix suffixe à ajouter
+     * @param string $apiSuffix suffixe à ajouter
      * @return string l'url composé du préfix de l'api et du suffixe 
      */
     protected function apiUrl(string $apiSuffix):string{
@@ -44,12 +44,12 @@ abstract class SaboApi{
     /**
      * fais une requête curl à partir de la configuration donnée
      * met en jour en cas de succès lastRequestResult
-     * @param requestUrl lien de requête ($api->apiUrl("lien") )
-     * @param headers en-tête de la reqûete
-     * @param data données de la requête
-     * @param dataConversionType type de conversion de donnée par défault json_encode [JSON_BODY|HTTP_BUILD_QUERY|NO_DATA] NO_DATA si aucune donné ne doit être affecté
-     * @param overrideCurlOptions tableau écrasant les options par défaut curl indicé par CURLOPT_... CULOPT_POST ...
-     * @param storeIn si non null sauvegarde le résultat de la requête avec comme indice la clé donné dans l'accessible "storedRequestResult"
+     * @param string $requestUrl lien de requête ($api->apiUrl("lien") )
+     * @param array $headers en-tête de la reqûete
+     * @param mixed $data données de la requête
+     * @param SaboApiRequest $dataConversionType type de conversion de donnée par défault json_encode [JSON_BODY|HTTP_BUILD_QUERY|NO_DATA] NO_DATA si aucune donné ne doit être affecté
+     * @param array $overrideCurlOptions tableau écrasant les options par défaut curl indicé par CURLOPT_... CULOPT_POST ...
+     * @param string|null $storeIn si non null sauvegarde le résultat de la requête avec comme indice la clé donné dans l'accessible "storedRequestResult"
      * @return bool si la requête a réussi
      */
     protected function request(string $requestUrl,array $headers,mixed $data,SaboApiRequest $dataConversionType,array $overrideCurlOptions = [],?string $storeIn = null):bool{
@@ -76,7 +76,7 @@ abstract class SaboApi{
 
         $result = curl_exec($curl);
 
-        if($storeIn == null) $this->storedRequestResult[$storeIn] = $result;
+        if($storeIn !== null) $this->storedRequestResult[$storeIn] = $result;
 
         if($options[CURLOPT_RETURNTRANSFER]){
             if($result === false) return false;
@@ -90,7 +90,7 @@ abstract class SaboApi{
     }
 
     /**
-     * @param as défini comment la donnée doit être retourné [RESULT_AS_JSON_ARRAY|RESULT_AS_STRING]
+     * @param SaboApiRequest $as défini comment la donnée doit être retourné [RESULT_AS_JSON_ARRAY|RESULT_AS_STRING]
      * @return string|array|null les données de la dernière requête ou null
      */
     protected function getLastRequestResult(SaboApiRequest $as):string|array|null{
@@ -112,9 +112,8 @@ abstract class SaboApi{
 
     /**
      * vérifie si le tableau donné contient les clés
-     * @param toCheck tableau de données
-     * @param keysToCheck clés à vérifier 
-     * format d'une clé "level1.level2" pour un tableau ["level1" => ["level2" => 2] ]
+     * @param array $toCheck tableau de données
+     * @param string... $keysToCheck clés à vérifier format d'une clé "level1.level2" pour un tableau ["level1" => ["level2" => 2] ]
      * @return bool si les clés existent dans le tableau
      */
     protected static function ifArrayContain(array $toCheck,string... $keysToCheck):bool{
@@ -136,7 +135,7 @@ abstract class SaboApi{
     /**
      * crée un objet à partir de la configuration api
      * @attention à appeller avec la class enfant
-     * @param config tableaux indicés par SaboApiConfig->value
+     * @param array $config tableaux indicés par SaboApiConfig->value
      * @return mixed l'objet crée ou null
      */
     public static function createFromConfig(array $config):mixed{

@@ -27,8 +27,8 @@ class SaboRouteExtension extends SaboExtension{
 
 
     /**
-     * @param routeName le nom de la route 
-     * @param routeParams tableau associatif des paramètres optionneles du lien [nom => valeur]
+     * @param string @routeName le nom de la route 
+     * @param array @routeParams tableau associatif des paramètres optionneles du lien [nom => valeur]
      * @return string le lien lié à la route ou un lien / en cas de route non trouvé [cas get]
      * @throws Exception en mode debug si la route n'existe pas
      */
@@ -37,8 +37,8 @@ class SaboRouteExtension extends SaboExtension{
     } 
     
     /**
-     * @param routeName le nom de la route 
-     * @param routeParams tableau associatif des paramètres optionneles du lien [nom => valeur]
+     * @param string @routeName le nom de la route 
+     * @param array @routeParams tableau associatif des paramètres optionneles du lien [nom => valeur]
      * @return string le lien lié à la route ou un lien / en cas de route non trouvé [cas post]
      * @throws Exception en mode debug si la route n'existe pas
      */
@@ -47,8 +47,8 @@ class SaboRouteExtension extends SaboExtension{
     } 
 
     /**
-     * @param routeName le nom de la route 
-     * @param routeParams tableau associatif des paramètres optionneles du lien [nom => valeur]
+     * @param string @routeName le nom de la route 
+     * @param array @routeParams tableau associatif des paramètres optionneles du lien [nom => valeur]
      * @return string le lien lié à la route ou un lien / en cas de route non trouvé [cas put]
      * @throws Exception en mode debug si la route n'existe pas
      */
@@ -57,11 +57,13 @@ class SaboRouteExtension extends SaboExtension{
     } 
 
     /**
-     * @param routes liste des routes (tableau du format ([method,name,[params => ...] ])
+     * @param array @routes liste des routes (tableau du format ([method,name,[params => ...] ])
+     * @param string|null funcNameReplace nom de remplacement pour la fonction js
+     * @param string|null @customIdReplace  nom de remplacement pour l'id du script js
      * @return string balise javascript contenant la fonction getRouteList contenant les routes nommées
      * @throws Exception en mode debug si la route n'existe pas
      */
-    public function jRoute(array $routes):string{
+    public function jRoute(array $routes,?string $funcNameReplace = null,?string $customIdReplace = null):string{
         $jsRoutes = [];
 
         foreach($routes as $routeData){
@@ -74,9 +76,12 @@ class SaboRouteExtension extends SaboExtension{
 
         $jsRoutes = json_encode($jsRoutes);
 
+        $name = $funcNameReplace ?? "getRouteManager";
+        $scriptId = $customIdReplace ?? "routes-script";
+
         return <<<HTML
-            <script id="routes-script">
-                function getRouteManager(){
+            <script id="{$scriptId}">
+                function {$name}(){
                     var routesCopy = JSON.parse('{$jsRoutes}');
 
                     let route = (route,replaces) => {
@@ -85,7 +90,7 @@ class SaboRouteExtension extends SaboExtension{
                         return route;
                     };
 
-                    document.getElementById("routes-script").remove();
+                    document.getElementById("{$scriptId}").remove();
 
                     return {"routes" : routesCopy,"routeReplace" : route};
                 }
@@ -94,8 +99,8 @@ class SaboRouteExtension extends SaboExtension{
     }
 
     /**
-     * @param routeName le nom de la route 
-     * @param routeParams tableau associatif des paramètres optionneles du lien [nom => valeur]
+     * @param string @routeName le nom de la route 
+     * @param array @routeParams tableau associatif des paramètres optionneles du lien [nom => valeur]
      * @return string le lien lié à la route ou un lien / en cas de route non trouvé [cas delete]
      * @throws Exception en mode debug si la route n'existe pas
      */
@@ -104,9 +109,9 @@ class SaboRouteExtension extends SaboExtension{
     } 
 
     /**
-     * @param routes la liste des routes
-     * @param routeName le nom de la route 
-     * @param routeParams tableau associatif des paramètres optionneles du lien [nom => valeur]
+     * @param array @routes la liste des routes
+     * @param string @routeName le nom de la route 
+     * @param array @routeParams tableau associatif des paramètres optionneles du lien [nom => valeur]
      * @return string le lien lié à la route ou un lien / en cas de route non trouvé
      * @throws Exception en mode debug si la route n'existe pas
      */

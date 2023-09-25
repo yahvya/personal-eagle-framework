@@ -1,31 +1,32 @@
 {
     "autoload": {
+        "classmap": [
+            "cli"
+        ],
         "psr-4": {
-            "Sabo\\Sabo\\" : "sabo",
-            "Sabo\\Mailer\\" : "mailer",
-            "Sabo\\Config\\" : "config",
-            "Sabo\\DefaultPage\\" : "default-page",
-            "Sabo\\Exception\\" : "exception",
-            "Sabo\\Helper\\" : "helper",
-            "Sabo\\Model\\Model\\" : "model\\model",
-            "Sabo\\Model\\Exception\\" : "model\\exception",
-            "Sabo\\Model\\System\\Mysql\\" : "model\\system\\mysql",
-            "Sabo\\Model\\System\\Postgre\\" : "model\\system\\postgre",
-            "Sabo\\Model\\System\\Interface\\" : "model\\system\\interface",
-            "Sabo\\Model\\System\\QueryBuilder\\" : "model\\system\\query-builder",
-            "Sabo\\Model\\Cond\\" : "model\\cond",
-            "Sabo\\Model\\Attribute\\" : "model\\attribute",
-            "Sabo\\Controller\\Controller\\" : "controller\\controller",
-            "Sabo\\Controller\\TwigExtension\\" : "controller\\twig-extension",
-            "Sabo\\Utils\\String\\" : "utils\\string",
-            "Sabo\\Utils\\Api\\" : "utils\\api",
-            "Sabo\\Middleware\\Middleware\\" : "middleware\\middleware",
-            "Sabo\\Middleware\\Exception\\" : "middleware\\exception"
-        },
-        "classmap": ["cli"]
+            "Sabo\\Config\\": "config",
+            "Sabo\\Controller\\Controller\\": "controller\\controller",
+            "Sabo\\Controller\\TwigExtension\\": "controller\\twig-extension",
+            "Sabo\\DefaultPage\\": "default-page",
+            "Sabo\\Helper\\": "helper",
+            "Sabo\\Mailer\\": "mailer",
+            "Sabo\\Middleware\\Exception\\": "middleware\\exception",
+            "Sabo\\Middleware\\Middleware\\": "middleware\\middleware",
+            "Sabo\\Model\\Attribute\\": "model\\attribute",
+            "Sabo\\Model\\Cond\\": "model\\cond",
+            "Sabo\\Model\\Exception\\": "model\\exception",
+            "Sabo\\Model\\Model\\": "model\\model",
+            "Sabo\\Model\\System\\Interface\\": "model\\system\\interface",
+            "Sabo\\Model\\System\\Mysql\\": "model\\system\\mysql",
+            "Sabo\\Model\\System\\Postgre\\": "model\\system\\postgre",
+            "Sabo\\Model\\System\\QueryBuilder\\": "model\\system\\query-builder",
+            "Sabo\\Sabo\\": "sabo",
+            "Sabo\\Utils\\Api\\": "utils\\api",
+            "Sabo\\Utils\\String\\": "utils\\string"
+        }
     },
     "require": {
-        "twig/twig": "^3.5",
-        "phpmailer/phpmailer": "^6.8"
+        "phpmailer/phpmailer": "^6.8",
+        "twig/twig": "^3.5"
     }
 }

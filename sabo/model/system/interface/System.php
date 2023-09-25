@@ -24,9 +24,9 @@ interface System{
 
     /**
      * cherche des résultats en base de données à partir de conditions
-     * @param conds conditions à vérifier, format [attribute_name => value] ou [attribute_name => [value,SqlComparator,(non obligatoire and par défaut)] SqlSeparator and ou or] , si conds est vide alors select *
-     * @param toSelect le nom des attributs liés aux colonnes à récupérer
-     * @param getBaseResult défini si les résultats doivent être retournés telles qu'elles ou sous forme d'objets
+     * @param array $conds conditions à vérifier, format [attribute_name => value] ou [attribute_name => [value,SqlComparator,(non obligatoire and par défaut)] SqlSeparator and ou or] , si conds est vide alors select *
+     * @param array $toSelect le nom des attributs liés aux colonnes à récupérer
+     * @param bool $getBaseResult défini si les résultats doivent être retournés telles qu'elles ou sous forme d'objets
      * @return mixed un tableau contenant les objets si résultats multiples ou un objet model si un seul résultat ou pdostatement de la requête si getBaseResult à true ou null si aucun résultat
      * @throws Exception (en mode debug) si données mal formulés 
      */

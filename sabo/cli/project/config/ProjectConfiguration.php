@@ -52,6 +52,7 @@ class ProjectConfiguration implements ProjectManagerCommand{
 
     /**
      * affiche le menu de choix et gère le choix fait
+     * @return bool true la lecture de choix réussi
      */
     public function readChoice():bool{
         $exit = false;
@@ -204,7 +205,7 @@ class ProjectConfiguration implements ProjectManagerCommand{
 
     /**
      * récupère la saisie utilisateur sur une liste de choix
-     * @param from la liste de choix
+     * @param array $from la liste de choix
      * @return string le choix fait
      */
     private function getChoiceFrom(array $from):string{
@@ -223,7 +224,7 @@ class ProjectConfiguration implements ProjectManagerCommand{
 
     /**
      * récupère le contenu du fichier de configuration
-     * 
+     * @return array|null le contenu du fichier ou null si echec de récupération
      */
     public static function getConfigFileContent():?array{
         $configFileDatas = @file_get_contents(ROOT . self::CONFIG_FILEPATH);

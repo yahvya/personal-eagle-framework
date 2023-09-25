@@ -20,6 +20,8 @@ class ModelMaker extends FileMaker{
 
     /**
      * formate le nom du model
+     * @param string $givenName le nom à formatté
+     * @return string le nom formatté
      */
     private function formatName(string $givenName):string{
         foreach(["-","_"] as $sep){
@@ -41,6 +43,7 @@ class ModelMaker extends FileMaker{
 
     /**
      * demande le nom de la table
+     * @return string le nom de table fourni
      */
     private function askTableName():string{
         do{
@@ -54,6 +57,7 @@ class ModelMaker extends FileMaker{
 
     /**
      * demande la liste des attributs de la table
+     * @return string les attributs fournies
      */
     private function askAttributes():string{
         $attributes = "";

@@ -12,6 +12,7 @@ abstract class SaboCliCommand{
 
     /**
      * vérifie si la saisie vaux la touche entrée
+     * @param string $input la saisie
      * @return bool si la touche entrée a été utilisé
      */
     protected function isEnter(string $input):bool{
@@ -20,6 +21,8 @@ abstract class SaboCliCommand{
 
     /**
      * exécute la commande présente en ligne
+     * @param int $argc le nombre d'argument
+     * @param array|null $argv les arguments passés
      */
     public static function execArgvCommand(int $argc,?array $argv):void{
         if($argv == null){
@@ -67,7 +70,7 @@ abstract class SaboCliCommand{
 
     /**
      * enregistre les commandes
-     * @param commands (format - CommandClass::class)
+     * @param array $commands (format - CommandClass::class)
      */
     public static function registerCommands(array $commands):void{
         self::$commands = [];
@@ -80,7 +83,7 @@ abstract class SaboCliCommand{
 
     /**
      * affiche le message donnée
-     * @param message le message à afficher
+     * @param string $message le message à afficher
      */
     public static function printMessage(string $message):void{
         echo "\nsabo >> {$message}";
@@ -88,7 +91,7 @@ abstract class SaboCliCommand{
 
     /**
      * tente de trouver la class lié à la commande passé
-     * @param argvElement la chaine commande
+     * @param string $argvElement la chaine commande
      * @return SaboCliCommand|null la commande ou null en cas d'échec
      */
     private static function findCommandFrom(string $argvElement):?SaboCliCommand{
@@ -101,14 +104,15 @@ abstract class SaboCliCommand{
 
     /**
      * exécute la commande
-     * @param argc taille de argv
-     * @param argv les arguments de la ligne de commande
-     * @param calledCommand la commande appelé
+     * @param int $argc taille de argv
+     * @param array $argv les arguments de la ligne de commande
+     * @param string $calledCommand la commande appelé
+     * @return bool la réussite de la commande
      */
     public abstract function execCommand(int $argc,array $argv,string $calledCommand):bool; 
 
     /**
-     * @return une description de la commande
+     * @return string une description de la commande
      */
     protected abstract function getCommandDescription():string; 
 
@@ -118,7 +122,7 @@ abstract class SaboCliCommand{
     protected abstract function getHelp():string;
 
     /**
-     * @param firstArg l'argument à vérifier
+     * @param stirng $firstArg l'argument à vérifier
      * @return bool si la commande appartient à la class
      */
     protected abstract function isMyCommand(string $firstArg):bool;

@@ -2,7 +2,7 @@
 
 use Sabo\Sabo\Route;
 
-// routes à placer ici
+// routes du site
 return Route::generateFrom([
     
 ]);

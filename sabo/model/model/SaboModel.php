@@ -59,8 +59,8 @@ abstract class SaboModel extends SaboMysql{
 
     /**
      * tente d'assigner une valeur à un attribut du model
-     * @param attributeName le nom de l'attribut
-     * @param data la donnée à assigner
+     * @param string $attributeName le nom de l'attribut
+     * @param mixed $data la donnée à assigner
      * @return SaboModel this
      * @throws ModelCondException si une des conditions de vérification de l'attribut n'est pas valide
      * @throws Exception si l'attribut n'est pas accessible (phase de développement)
@@ -97,7 +97,7 @@ abstract class SaboModel extends SaboMysql{
 
     /**
      * tente de récupérer la valeur d'un attribut
-     * @param attributeName 
+     * @param string $attributeName 
      * @return mixed la valeur de l'attribut ou null si non existant
      * @throws Exception si l'attribut n'est pas accessible (phase de développement)
      */
@@ -136,7 +136,7 @@ abstract class SaboModel extends SaboMysql{
 
     /**
      * vérifie qu'un attribut existe
-     * @param attributeName le nom de l'attribut
+     * @param string $attributeName le nom de l'attribut
      * @return bool si l'attribut existe
      * @throws Exception si l'attribut n'est pas accessible pas (phase de développement)
      */

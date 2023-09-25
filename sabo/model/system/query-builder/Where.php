@@ -18,10 +18,10 @@ trait Where{
 
     /**
      * ajoute une condition where
-     * @param attributeName nom de l'attribut
-     * @param value valeur à comparer
-     * @param comparator l'opérateur de comparaison à utiliser par défaut =
-     * @param nextSeparator le séparateur pour ajouter une condition par la suite ou null si rien
+     * @param string $attributeName nom de l'attribut
+     * @param mixed $value valeur à comparer
+     * @param SqlComparator $comparator l'opérateur de comparaison à utiliser par défaut =
+     * @param SqlComparator|null $nextSeparator le séparateur pour ajouter une condition par la suite ou null si rien
      * @return QueryBuilder this
      */
     public function whereCond(string $attributeName,mixed $value,SqlComparator $comparator = SqlComparator::EQUAL,?SqlSeparator $nextSeparator = null):QueryBuilder{
@@ -32,8 +32,8 @@ trait Where{
 
     /**
      * alias a whereGroup rajoute un séparateur après le groupe
-     * @param separator le séparateur
-     * @param param condsToGroup paramètres multiples, tableaux représentant les arguments de whereCond
+     * @param SqlSeparator $separator le séparateur
+     * @param array... $param condsToGroup paramètres multiples, tableaux représentant les arguments de whereCond
      * @return QueryBuilder this
      */
     public function whereGroupSep(SqlSeparator $separator,array... $condsToGroup):QueryBuilder{
@@ -46,7 +46,7 @@ trait Where{
 
     /**
      * crée une condition groupé
-     * @param condsToGroup paramètres multiples, tableaux représentant les arguments de whereCond
+     * @param array ...condsToGroup paramètres multiples, tableaux représentant les arguments de whereCond
      * @return QueryBuilder this
      */
     public function whereGroup(array... $condsToGroup):QueryBuilder{
@@ -63,7 +63,7 @@ trait Where{
 
     /**
      * ajoute un séparateur dans la requête
-     * @param sep le séparateur
+     * @param SqlSeparator $sep le séparateur
      * @return QueryBuilder this
      */
     public function addSep(SqlSeparator $sep):QueryBuilder{
@@ -74,10 +74,10 @@ trait Where{
 
     /**
      * ajoute une condition where
-     * @param attributeName nom de l'attribut
-     * @param value valeur à comparer
-     * @param comparator l'opérateur de comparaison à utiliser par défaut =
-     * @param nextSeparator le séparateur pour ajouter une condition par la suite ou null si rien
+     * @param string $attributeName nom de l'attribut
+     * @param mixed $value valeur à comparer
+     * @param SqlComparator $comparator l'opérateur de comparaison à utiliser par défaut =
+     * @param SqlSeparator|null $nextSeparator le séparateur pour ajouter une condition par la suite ou null si rien
      * @return string la chaine sql ou une chaine vide
      */
     private function manageCond(string $attributeName,mixed $value,SqlComparator $comparator = SqlComparator::EQUAL,?SqlSeparator $nextSeparator = null):string{

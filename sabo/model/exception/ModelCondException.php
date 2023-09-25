@@ -15,7 +15,7 @@ class ModelCondException extends Exception{
     private Cond $failedCond;
 
     /**
-     * @param failedCond la condition qui n'a pas été valide
+     * @param Cond $failedCond la condition qui n'a pas été valide
      */
     public function __construct(Cond $failedCond){
         parent::__construct($failedCond->getErrorMessage() );

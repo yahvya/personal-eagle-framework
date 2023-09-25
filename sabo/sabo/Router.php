@@ -20,7 +20,6 @@ use Sabo\Model\Model\SaboModel;
 abstract class Router{
     /**
      * démarre le site web
-     * @return never la fonction arrête l'exécution
      * @throws Exception en mode débug en cas d'erreur
      */
     public static function initWebsite():never{
@@ -83,9 +82,8 @@ abstract class Router{
 
     /**
      * lance le site à partir des données d'une route
-     * @param routeData la route
-     * @param regexMatches les données matchés de la regex de vérification
-     * @return never la fonction arrête l'exécution
+     * @param array $routeData la route
+     * @param array $regexMatches les données matchés de la regex de vérification
      * @throws Exception en mode debug throw les erreurs pouvant survenir
      */
     private static function startWithRouteData(array $routeData,array $regexMatches):never{

@@ -22,8 +22,7 @@ class SaboMailer extends PHPMailer{
     private array $config;
 
     /**
-     * @param subject le sujet du mail
-     * @param config configuration du mailer (clés SaboMailerConfig->value)
+     * @param array $config configuration du mailer (clés SaboMailerConfig->value)
      */
     public function __construct(array $config){
         parent::__construct(SaboConfig::getBoolConfig(SaboConfigAttributes::DEBUG_MODE) );
@@ -33,11 +32,11 @@ class SaboMailer extends PHPMailer{
 
     /**
      * envoi un mail aux destinataires
-     * @param subject le sujet du mail
-     * @param recipients les destinataires du mail
-     * @param altBody contenu alternatif sur html non affiché
-     * @param templatePath chemin du template twig à partir du dossier des mails
-     * @param datasForTemplate tableau de données pour le template twig
+     * @param array $recipients les destinataires du mail
+     * @param string $subject le sujet du mail
+     * @param string $altBody contenu alternatif sur html non affiché
+     * @param string $templatePath chemin du template twig à partir du dossier des mails
+     * @param array $datasForTemplate tableau de données pour le template twig
      * @return bool si l'envoi a réussi
      * @throws Exception en mode debug en cas d'échec d'envoi du mail ou destinataires incorrects
      */
@@ -90,9 +89,9 @@ class SaboMailer extends PHPMailer{
 
     /**
      * envoi un mail aux destinataires
-     * @param recipients les destinataires
-     * @param subject le sujet du mail
-     * @param mailContent le contenu du mail
+     * @param array $recipients les destinataires
+     * @param string $subject le sujet du mail
+     * @param string $mailContent le contenu du mail
      * @return bool si le mail s'est bien envoyé
      * @throws Exception en mode debug en cas d'échec d'envoi du mail ou destinataires incorrects
      */

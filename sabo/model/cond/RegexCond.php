@@ -15,10 +15,10 @@ class RegexCond implements Cond{
     private string $delimitor;
 
     /**
-     * @param regex la chaine regex
-     * @param errorMessage le message d'erreur en cas de non validation
-     * @param regexOptions les options à ajouter sur la regex
-     * @param delimitor le délimiteur de la regex (1 caractère)  
+     * @param string $regex la chaine regex
+     * @param string $errorMessage le message d'erreur en cas de non validation
+     * @param string $regexOptions les options à ajouter sur la regex
+     * @param string $delimitor le délimiteur de la regex (1 caractère)  
      */
     public function __construct(string $regex,string $errorMessage,string $regexOptions = "",string $delimitor = "#"){
         $this->regex = $regex;

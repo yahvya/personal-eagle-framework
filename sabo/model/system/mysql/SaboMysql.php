@@ -44,7 +44,7 @@ abstract class SaboMysql implements System{
     abstract protected function pseudoConstruct():void;
 
     /**
-     * @param createNewCon défini si une nouvelle connexion doit être crée (si faux alors connexion partagé utilisé)
+     * @param bool $createNewCon défini si une nouvelle connexion doit être crée (si faux alors connexion partagé utilisé)
      */
     public function __construct(bool $createNewCon = false){            
         $this->pseudoConstruct();
@@ -143,7 +143,7 @@ abstract class SaboMysql implements System{
     }
 
     /**
-     * @param resetBefore défini si le querybuilder doit être reset avant d'être renvoyé
+     * @param bool $resetBefore défini si le querybuilder doit être reset avant d'être renvoyé
      * @return QueryBuilder le query builder interne au model (non reset)
      */
     public function getQueryBuilder(bool $resetBefore = true):QueryBuilder{
@@ -168,9 +168,9 @@ abstract class SaboMysql implements System{
 
     /**
      * cherche des résultats en base de données à partir de conditions
-     * @param conds conditions à vérifier, format [attribute_name => value] ou [attribute_name => [value,SqlComparator,(non obligatoire and par défaut)] SqlSeparator and ou or]
-     * @param toSelect le nom des attributs liés aux colonnes à récupérer
-     * @param getBaseResult défini si les résultats doivent être retournés telles qu'elles (pdostatement) ou sous forme d'objets
+     * @param array $conds conditions à vérifier, format [attribute_name => value] ou [attribute_name => [value,SqlComparator,(non obligatoire and par défaut)] SqlSeparator and ou or]
+     * @param array $toSelect le nom des attributs liés aux colonnes à récupérer
+     * @param bool $getBaseResult défini si les résultats doivent être retournés telles qu'elles (pdostatement) ou sous forme d'objets
      * @return mixed un tableau contenant les objets si résultats multiples ou pdostatement de la requête si getBaseResult à true ou null si aucun résultat
      * @throws Exception (en mode debug) si données mal formulés 
      */
@@ -356,7 +356,7 @@ abstract class SaboMysql implements System{
 
     /**
      * lance une transaction avec la connexion
-     * @param con la connexion sur laquelle démarrer la connexion
+     * @param PDO|null $con la connexion sur laquelle démarrer la connexion
      * @return bool si réussi
      * @throws Exception (en mode debug) si la connexion est null
      */
@@ -378,7 +378,7 @@ abstract class SaboMysql implements System{
 
     /**
      * commit une transaction avec la connexion
-     * @param con la connexion sur laquelle commit la connexion
+     * @param PDO|null $con la connexion sur laquelle commit la connexion
      * @return bool si réussi
      * @throws Exception (en mode debug) si la connexion est null
      */
@@ -400,7 +400,7 @@ abstract class SaboMysql implements System{
 
     /**
      * rollback une transaction avec la connexion
-     * @param con la connexion sur laquelle rollback la connexion
+     * @param PDO|null $con la connexion sur laquelle rollback la connexion
      * @return bool si réussi
      * @throws Exception (en mode debug) si la connexion est null
      */
@@ -422,8 +422,8 @@ abstract class SaboMysql implements System{
 
     /**
      * crée un objet sabomodel à partir de la ligne passé en base de donnée
-     * @param linkedModel une instance du model à crée
-     * @param rowData la ligne de la base de données [format fetchAssoc]
+     * @param SaboModel $linkedModel une instance du model à crée
+     * @param array $rowData la ligne de la base de données [format fetchAssoc]
      * @return SaboModel|null le model ou null
      * @throws Exception (en mode debug) si rowData est mal formé
      */

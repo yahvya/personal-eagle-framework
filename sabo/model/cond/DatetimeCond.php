@@ -17,7 +17,7 @@ class DatetimeCond implements Cond{
     private string $errorMessage;
 
     /**
-     * @param errorMessage le message d'erreur affiché
+     * @param string $errorMessage le message d'erreur affiché
      */
     public function __construct(string $errorMessage = "Une date au format correct est attendue"){
         $this->errorMessage = $errorMessage;

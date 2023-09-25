@@ -15,6 +15,8 @@ class ControllerMaker extends FileMaker{
 
     /**
      * formate le nom du controller
+     * @param string $givenName le nom à formatté
+     * @return string le nom formatté
      */
     private function formatName(string $givenName):string{
         foreach(["-","_"] as $sep){

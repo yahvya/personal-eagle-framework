@@ -10,7 +10,7 @@ use PDO;
 trait Option{
     /**
      * ajoute la clause order by 
-     * @param conds paramètres multiples, nom_attribut ou [nom_attribut,SqlSeparator(desc ou asc)] par défaut asc
+     * @param array... $conds paramètres multiples, nom_attribut ou [nom_attribut,SqlSeparator(desc ou asc)] par défaut asc
      * @return QueryBuilder this
      */
     public function orderBy(string|array... $conds):QueryBuilder{
@@ -32,8 +32,8 @@ trait Option{
 
     /**
      * ajoute la clause limit
-     * @param count nombre de valeurs
-     * @param offset offset
+     * @param int $count nombre de valeurs
+     * @param int|null $offset offset
      * @return QueryBuilder this
      */
     public function limit(int $count,?int $offset = null):QueryBuilder{

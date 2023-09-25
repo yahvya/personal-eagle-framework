@@ -18,7 +18,7 @@ class FileHelper{
     private array $fileDatas;
 
     /**
-     * @param filePath le chemin du fichier à partir de la racine
+     * @param string $filePath le chemin du fichier à partir de la racine
      */
     public function __construct(string $filepath){
         $this->filepath = ROOT . $filepath;
@@ -89,7 +89,7 @@ class FileHelper{
     }
 
     /**
-     * @param filepath chemin du fichier
+     * @param string $filepath chemin du fichier
      * @return bool retourne si le fichier existe
      */
     public static function fileExist(string $filepath):bool{
@@ -98,7 +98,7 @@ class FileHelper{
 
     /**
      * lance le téléchargement du fichier
-     * @param filepath chemin du fichier
+     * @param string $filepath chemin du fichier
      * @return bool false si le lancement échoue
      */
     public static function download(string $filepath):bool{

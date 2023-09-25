@@ -26,9 +26,9 @@ class CallableCond implements Cond{
     private bool $isDisplayable;
     
     /**
-     * @param toVerify le callable à vérifier, doit renvoyer un booléen
-     * @param errorMessage le message d'erreur
-     * @param isDisplayable défini si l'erreur peut être affiché
+     * @param callable $toVerify le callable à vérifier, doit renvoyer un booléen
+     * @param string $errorMessage le message d'erreur
+     * @param bool $isDisplayable défini si l'erreur peut être affiché
      */
     public function __construct(callable $toVerify,string $errorMessage,bool $isDisplayable){
         $this->toVerify = $toVerify;

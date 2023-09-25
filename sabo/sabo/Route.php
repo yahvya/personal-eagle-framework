@@ -28,9 +28,9 @@ abstract class Route{
 
     /**
      * groupe des routes ensemble
-     * @param url url de préfixe, ne peut pas de paramètres générique 
-     * @param routesGroup le groupe de routes à assembler
-     * @param accessConds conditions d'accès supplémentaires à la page, (::class enfants de SaboMiddlewareCond,Closure booléenne ou callable booleen)
+     * @param string $url url de préfixe, ne peut pas de paramètres générique 
+     * @param array $routesGroup le groupe de routes à assembler
+     * @param array|callable $accessConds conditions d'accès supplémentaires à la page, (::class enfants de SaboMiddlewareCond,Closure booléenne ou callable booleen)
      * @return array les routes formatés
      */
     public static function group(string $url,array $routesGroup,array|callable $accessConds = []):array{
@@ -49,11 +49,11 @@ abstract class Route{
 
     /**
      * crée une route get
-     * @param url le lien
-     * @param toCall fonction ou tableau du format [Controller::class,"nom_methode"]
-     * @param routeName nom de la route
-     * @param paramsRegex pour une route générique tableau du format ["nom_variable" => "regex_associe"] ex: /article/{article_id} = ["article_id" => "[0-9]+"]
-     * @param accessConds conditions d'accès supplémentaires à la page, (::class enfants de SaboMiddlewareCond,Closure booléenne ou callable booleen)
+     * @param string $url le lien
+     * @param callable|array $toCall fonction ou tableau du format [Controller::class,"nom_methode"]
+     * @param string $routeName nom de la route
+     * @param array $paramsRegex pour une route générique tableau du format ["nom_variable" => "regex_associe"] ex: /article/{article_id} = ["article_id" => "[0-9]+"]
+     * @param array|callable $accessConds conditions d'accès supplémentaires à la page, (::class enfants de SaboMiddlewareCond,Closure booléenne ou callable booleen)
      * @return array les données de la route formatés pour le framework
      */
     public static function get(string $url,callable|array $toCall,string $routeName,array $paramsRegex = [],array|callable $accessConds = []):array{
@@ -62,11 +62,11 @@ abstract class Route{
     
     /**
      * crée une route post
-     * @param url le lien
-     * @param toCall fonction ou tableau du format [Controller::class,"nom_methode"]
-     * @param routeName nom de la route
-     * @param paramsRegex pour une route générique tableau du format ["nom_variable" => "regex_associe"] ex: /article/{article_id} = ["article_id" => "[0-9]+"]
-     * @param accessConds conditions d'accès supplémentaires à la page, (::class enfants de SaboMiddlewareCond,Closure booléenne ou callable booleen)
+     * @param string $url le lien
+     * @param callable|array $toCall fonction ou tableau du format [Controller::class,"nom_methode"]
+     * @param string $routeName nom de la route
+     * @param array $paramsRegex pour une route générique tableau du format ["nom_variable" => "regex_associe"] ex: /article/{article_id} = ["article_id" => "[0-9]+"]
+     * @param array|callable $accessConds conditions d'accès supplémentaires à la page, (::class enfants de SaboMiddlewareCond,Closure booléenne ou callable booleen)
      * @return array les données de la route formatés pour le framework
      */
     public static function post(string $url,callable|array $toCall,string $routeName,array $paramsRegex = [],array|callable $accessConds = []):array{
@@ -75,11 +75,11 @@ abstract class Route{
 
     /**
      * crée une route put
-     * @param url le lien
-     * @param toCall fonction ou tableau du format [Controller::class,"nom_methode"]
-     * @param routeName nom de la route
-     * @param paramsRegex pour une route générique tableau du format ["nom_variable" => "regex_associe"] ex: /article/{article_id} = ["article_id" => "[0-9]+"]
-     * @param accessConds conditions d'accès supplémentaires à la page, (::class enfants de SaboMiddlewareCond,Closure booléenne ou callable booleen)
+     * @param string $url le lien
+     * @param callable|array $toCall fonction ou tableau du format [Controller::class,"nom_methode"]
+     * @param string $routeName nom de la route
+     * @param array $paramsRegex pour une route générique tableau du format ["nom_variable" => "regex_associe"] ex: /article/{article_id} = ["article_id" => "[0-9]+"]
+     * @param array|callable $accessConds conditions d'accès supplémentaires à la page, (::class enfants de SaboMiddlewareCond,Closure booléenne ou callable booleen)
      * @return array les données de la route formatés pour le framework
      */
     public static function put(string $url,callable|array $toCall,string $routeName,array $paramsRegex = [],array|callable $accessConds = []):array{
@@ -88,12 +88,11 @@ abstract class Route{
 
     /**
      * crée une route delete
-     * @param url le lien
-     * @param toCall fonction ou tableau du format [Controller::class,"nom_methode"]
-     * @param routeName nom de la route
-     * @param paramsRegex pour une route générique tableau du format ["nom_variable" => "regex_associe"] ex: /article/{article_id} = ["article_id"
-     * @param  => "[0-9]+"]
-     * @param accessConds conditions d'accès supplémentaires à la page, (::class enfants de SaboMiddlewareCond,Closure booléenne ou callable booleen)
+     * @param string $url le lien
+     * @param callable|array $toCall fonction ou tableau du format [Controller::class,"nom_methode"]
+     * @param string $routeName nom de la route
+     * @param array $paramsRegex pour une route générique tableau du format ["nom_variable" => "regex_associe"] ex: /article/{article_id} = ["article_id" => "[0-9]+"]
+     * @param array|callable $accessConds conditions d'accès supplémentaires à la page, (::class enfants de SaboMiddlewareCond,Closure booléenne ou callable booleen)
      * @return array les données de la route formatés pour le framework
      */
     public static function delete(string $url,callable|array $toCall,string $routeName,array $paramsRegex = [],array|callable $accessConds = []):array{
@@ -102,7 +101,7 @@ abstract class Route{
 
     /**
      * formate les routes du site
-     * @param routesData routes généré via les méthodes routes
+     * @param array $routesData routes généré via les méthodes routes
      * @return array la liste des routes formattés
      */
     public static function generateFrom(array $routesData):array{
@@ -130,7 +129,7 @@ abstract class Route{
 
     /**
      * récupère les routes à partir d'un fichier dans /config/routes/routes/
-     * @param filename le nom du fichier contenant les routes
+     * @param string $filename le nom du fichier contenant les routes
      * @return array les routes contenues dans le fichier
      */
     public static function getFromFile(string $filename):array{
@@ -146,12 +145,12 @@ abstract class Route{
 
     /**
      * crée une route du type donnée
-     * @param method la méthode de requête
-     * @param url le lien
-     * @param toCall fonction ou tableau du format [Controller::class,"nom_methode"]
-     * @param routeName nom de la route unique
-     * @param paramsRegex pour une route générique tableau du format ["nom_variable" => "regex_associe"] ex: /article/{article_id} = ["article_id" => "[0-9]+"] sinon .+ associé comme regex par défaut
-     * @param accessConds conditions d'accès supplémentaires à la page, (::class enfants de SaboMiddlewareCond,Closure booléenne ou callable booleen)
+     * @param string $method la méthode de requête
+     * @param string $url le lien
+     * @param callable|url $toCall fonction ou tableau du format [Controller::class,"nom_methode"]
+     * @param string $routeName nom de la route unique
+     * @param array $paramsRegex pour une route générique tableau du format ["nom_variable" => "regex_associe"] ex: /article/{article_id} = ["article_id" => "[0-9]+"] sinon .+ associé comme regex par défaut
+     * @param array|callable $accessConds conditions d'accès supplémentaires à la page, (::class enfants de SaboMiddlewareCond,Closure booléenne ou callable booleen)
      * @return array les données de la route formatés pour le framework
      * @throws Exception si la méthode n'est pas accepté ou que le nom de la route est déjà pris ou un nom de paramètre générique dupliqué, accessConds incorrect
      */

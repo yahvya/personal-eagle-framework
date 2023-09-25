@@ -10,8 +10,9 @@ use Sabo\Model\Exception\ModelCondException;
  */
 abstract class SaboMiddleware{
     /**
-     * @param toVerifyIn la tableau dans lequel vérifié ($_GET,$_POST,...)
-     * @param keys les clés à vérifier 
+     * @param array $toVerifyIn la tableau dans lequel vérifié ($_GET,$_POST,...)
+     * @param string $keys les clés à vérifier
+     * @return bool si les données existent dans de tableau fourni 
      */
     protected static function checkIfNotEmptyIn(array $toVerifyIn,string ...$keys):bool{
         foreach($keys as $key){
@@ -23,8 +24,8 @@ abstract class SaboMiddleware{
 
     /**
      * lève une exception à partir d'un message
-     * @param errorMessage le message d'erreur
-     * @param isDisplayable défini si l'erreur peut être affiché (par défaut true)
+     * @param string $errorMessage le message d'erreur
+     * @param bool $isDisplayable défini si l'erreur peut être affiché (par défaut true)
      * @throws MiddlewareException
      */
     protected static function throwException(string $errorMessage,bool $isDisplayable = true):void{
@@ -33,7 +34,7 @@ abstract class SaboMiddleware{
 
     /**
      * lève une exception à partir d'une condition échoué
-     * @param condException la condition échouée
+     * @param ModelCondException $condException la condition échouée
      * @throws MiddlewareException
      */
     protected static function throwModelCondException(ModelCondException $condException):void{

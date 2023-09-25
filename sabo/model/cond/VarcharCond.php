@@ -22,9 +22,9 @@ class VarcharCond implements Cond{
     private string $errorMessage;
 
     /**
-     * @param minLength la taille minimum de la chaine contenue (par défaut 1)
-     * @param maxLength la taille maximum de la chaine contenue (par défaut 2)
-     * @param errorMessage le message à afficher en cas de non validation
+     * @param int $minLength la taille minimum de la chaine contenue (par défaut 1)
+     * @param int $maxLength la taille maximum de la chaine contenue (par défaut 2)
+     * @param string $errorMessage le message à afficher en cas de non validation
      */
     public function __construct(int $minLength = 1,int $maxLength = 255,string $errorMessage = "Veuillez vérifier le contenu de la chaine saisie."){
         $this->maxLength = $maxLength;

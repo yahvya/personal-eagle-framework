@@ -12,7 +12,7 @@ use Sabo\Config\SaboConfigAttributes;
 trait Insert{
     /**
      * ajoute le sql insert
-     * @param values tableau représentant les valeurs à insérer [nom_attribut => valeur]
+     * @param array $values tableau représentant les valeurs à insérer [nom_attribut => valeur]
      * @return QueryBuilder this
      * @throws Exception (en mode debug) si values est bide
      */

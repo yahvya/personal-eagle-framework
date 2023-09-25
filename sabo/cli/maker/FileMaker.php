@@ -15,8 +15,8 @@ abstract class FileMaker extends SaboCliCommand{
 
     /**
      * crée le fichier en remplaçant
-     * @param filePath chemin du fichier destination
-     * @param toReplace les données à remplacer dans le modèle
+     * @param string $filePath chemin du fichier destination
+     * @param arrya $toReplace les données à remplacer dans le modèle
      */
     public function createFileIn(string $filePath,array $toReplace):bool{
         if(file_exists($filePath) ){

@@ -8,9 +8,9 @@ namespace Sabo\Utils\String;
 trait RandomStringGenerator{
     /**
      * retourne une chaine aléatoire
-     * @param length la taille de la chaine a généré (entier positif) par défaut 10
-     * @param removeSimilarChars défini si les caractères pouvant se ressembler doivent se supprimer
-     * @param toIgnore liste des types à ignorer lors de la construction de la chaine  
+     * @param int $length la taille de la chaine a généré (entier positif) par défaut 10
+     * @param bool $removeSimilarChars défini si les caractères pouvant se ressembler doivent se supprimer
+     * @param RandomStringType... $toIgnore liste des types à ignorer lors de la construction de la chaine  
      * @return string la chaine généré
      */
     public static function generateString(int $length = 10,bool $removeSimilarChars = true,RandomStringType... $toIgnore):string{

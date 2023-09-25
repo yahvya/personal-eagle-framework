@@ -14,8 +14,8 @@ class MiddlewareException extends Exception{
     private bool $isDisplayable;
 
     /**
-     * @param errorMessage le message d'erreur de l'exception
-     * @param isDispblayable défini si l'exception peut être affiché ou non à l'utilisateur
+     * @param string $errorMessage le message d'erreur de l'exception
+     * @param bool $isDispblayable défini si l'exception peut être affiché ou non à l'utilisateur
      */
     public function __construct(string $errorMessage,bool $isDisplayable = true){
         parent::__construct($errorMessage);

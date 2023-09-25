@@ -17,6 +17,7 @@ class SaboDebugExtension extends SaboExtension{
 
     /**
      * var_dump classique
+     * @param mixed... $datas paramètres multiples à dump
      */
     public function dump(mixed ...$datas):void{
         echo "<pre>";

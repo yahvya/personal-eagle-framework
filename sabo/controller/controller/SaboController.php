@@ -20,22 +20,34 @@ use Twig\Environment;
 abstract class SaboController{
     use RandomStringGenerator;
 
-    public static array $twigExtensions;
+    /**
+     * extensions twig
+     */
+    public static array $twigExtensions = [];
 
+    /**
+     * extension de gestion de routes
+     */
     private static SaboRouteExtension $routeExtension;
 
+    /**
+     * environnement actuel twig
+     */
     protected Environment $twig;
 
-    public function __construct(){
+    /**
+     * @param bool $manageFlashDatas si les données flash doivent être géré sur l'instance de ce controller
+     */
+    public function __construct(bool $manageFlashDatas = true){
         $this->pseudoConstruct();
 
-        $this->manageFlashDatas();
+        if($manageFlashDatas) $this->manageFlashDatas();
     }   
 
     /**
      * affiche la page twig
-     * @param viewFilePath chemin du fichier template
-     * @param viewParams tableau de données à envoyé à la vue
+     * @param string $viewFilePath chemin du fichier template
+     * @param array $viewParams tableau de données à envoyé à la vue
      */
     protected function render(string $viewFilePath,array $viewParams = []):never{
         http_response_code(200);
@@ -64,11 +76,13 @@ abstract class SaboController{
             else
                 call_user_func(SaboConfig::getCallableConfig(SaboConfigAttributes::TECHNICAL_ERROR_DEFAULT_PAGE) );
         }
+
+        die();
     }
 
     /**
      * affiche un rendu json
-     * @param data les données à affiché
+     * @param array $data les données à affiché
      */
     protected function renderJson(array $data):never{
         header("Content-Type: application/json; charset=utf-8");
@@ -83,23 +97,24 @@ abstract class SaboController{
 
     /**
      * génère un token csrf
+     * @param int|null $expiration le délai d'expiration ou par défaut 30 min
      * @return string le token généré
      */
-    protected function generateCsrf():string{
-        $token = self::generateString(17,false,RandomStringType::SPECIALCHARS);
+    protected function generateCsrf(int $expiration = 3600):string{
+        $token = bin2hex(random_bytes(35) );
 
         do
             $key = self::generateString(25,false,RandomStringType::SPECIALCHARS);
         while($this->getFlashData($key) != null);
 
-        $this->setFlashData($key,$token,-1);
+        $this->setFlashData($key,["token" => $token,"creationTime" => time(),"expiration" => $expiration],-1);
 
         return implode("#",[$token,$key]);
     }
 
     /**
      * vérifie le token csrf 
-     * @param postKey clé du tableau $_POST
+     * @param string $postKey clé du tableau $_POST
      * @return bool si le token est valide ou non
      */
     protected function checkCsrf(string $postKey):bool{
@@ -107,11 +122,11 @@ abstract class SaboController{
             $tokenData = explode("#",$_POST[$postKey]);
 
             if(count($tokenData) == 2){
-                list($token,$key) = $tokenData;
+                [$token,$key] = $tokenData;
 
-                $storedToken = $this->getFlashData($key);
+                $storedTokenDatas = $this->getFlashData($key);
 
-                if(gettype($storedToken) == "string" && strcmp($token,$storedToken) == 0) return true;
+                if(gettype($storedTokenDatas) == "array" && strcmp($token,$storedTokenDatas["token"]) == 0) return true;
             }
         }
         
@@ -120,9 +135,9 @@ abstract class SaboController{
 
     /**
      * défini un donnée flash
-     * @param flashKey la clé de la donnée flash
-     * @param data la donnée à insérer
-     * @param duration le nombre de rafraichissement autorisé (min 1) si -1 alors la valeur est conservé jusqu'a la première lecture
+     * @param string $flashKey la clé de la donnée flash
+     * @param mixed $data la donnée à insérer pour rajouter un gestion d'expiration un tableau sous le format est attendu ["creationTime" => time(),"expiration" => durée_en_secondes,....]
+     * @param int $duration le nombre de rafraichissement autorisé (min 1) si -1 alors la valeur est conservé jusqu'a la première lecture
      */
     protected function setFlashData(string $flashKey,mixed $data,int $duration = 1):SaboController{
         if($duration < -1 || $duration == 0) $duration = 1;
@@ -139,7 +154,7 @@ abstract class SaboController{
     }
 
     /**
-     * @param flashKey la clé de la donnée flash
+     * @param string $flashKey la clé de la donnée flash
      * @return mixed la donnée flash ou null si elle n'existe pas
      */
     protected function getFlashData(string $flashKey):mixed{
@@ -156,8 +171,8 @@ abstract class SaboController{
     }
 
     /**
-     * @param e l'exception
-     * @param replaceMessage le message en cas d'erreur non affichable
+     * @param MiddlewareException $e l'exception
+     * @param string $replaceMessage le message en cas d'erreur non affichable
      * @return string le message d'erreur affichable
      */
     protected function getErrorMessageFrom(MiddlewareException $e,string $replaceMessage = "Une erreur technique s'est produite"){
@@ -165,7 +180,7 @@ abstract class SaboController{
     }
 
     /**
-     * @param key la clé post
+     * @param string $key la clé post
      * @return mixed|null la donnée si elle est trouvée ou null
      */
     protected function getValueOrNull(string $key):mixed{  
@@ -178,7 +193,18 @@ abstract class SaboController{
     private function manageFlashDatas():void{
         if(!empty($_SESSION["sabo"]["flashDatas"]) ){
             foreach($_SESSION["sabo"]["flashDatas"] as $key => $flashData){
-                if($flashData["untilRead"]) continue;
+                if($flashData["untilRead"]){
+
+                    if(!isset($flashData["data"]["expiration"]) || !isset($flashData["data"]["creationTime"]) ) continue;
+
+                    try{
+                        // vérification de l'expiration
+                        if(time() - $flashData["data"]["creationTime"] >= $flashData["data"]["expiration"]) unset($_SESSION["sabo"]["flashDatas"][$key]);
+
+                        continue;
+                    }
+                    catch(Exception){}
+                }
 
                 $flashData["counter"]--;
 
@@ -211,8 +237,8 @@ abstract class SaboController{
 
     /**
      * redirige sur le lien lié au nom de route donné, si non debug et route inexistante alors page d'accueil par défaut
-     * @param routeName nom de la route
-     * @param routeParams paramètres génériques du lien à remplacer
+     * @param string $routeName nom de la route
+     * @param array $routeParams paramètres génériques du lien à remplacer
      * @throws Exception en mode debug si la route n'existe pas
      */
     public static function redirectToRoute(string $routeName,array $routeParams = []):never{
@@ -221,12 +247,10 @@ abstract class SaboController{
 
     /**
      * redirige sur le lien donné
-     * @param link le lien
+     * @param string $link le lien
      */
     public static function redirectToLink(string $link):never{
-        header("Location: {$link}");
-
-        die();
+        header("Location: {$link}"); die();
     }
 
     /**

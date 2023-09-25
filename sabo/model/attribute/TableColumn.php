@@ -34,8 +34,9 @@ class TableColumn{
     private bool $isNullable;
 
     /**
-     * @param linkedColName nom de la colonne lié en base de données
-     * @param linkedConds paramètres multiples , liste des conditions liés à l'élement
+     * @param string $linkedColName nom de la colonne lié en base de données
+     * @param bool $isNullable si le chamos peut être mis à null 
+     * @param Cond... $linkedConds paramètres multiples , liste des conditions liés à l'élement
      */
     public function __construct(string $linkedColName,bool $isNullable,Cond... $linkedConds){
         $this->linkedColName = $linkedColName;
@@ -56,10 +57,10 @@ class TableColumn{
 
     /**
      * vérifie si la donnée peut être affecté à l'attribut lié
-     * @param data la donnée à valider
+     * @param mixed $data la donnée à valider
      * @return bool|Cond si la validation a réussie ou Cond la condition qui a echoué
      */
-    public function canBeSetToAttribute(mixed $data):bool{
+    public function canBeSetToAttribute(mixed $data):bool|Cond{
         foreach($this->conds as $cond){
             if(!$cond->checkCondWith($data) ) return $cond;
         }

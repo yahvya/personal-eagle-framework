@@ -57,8 +57,8 @@ abstract class SaboConfig{
 
     /**
      * affecte un status de type booléen
-     * @param configType le case de la donnée à mettre à jour (ex: SaboConfigAttributes::DEBUG_MODE)
-     * @param status le status à affecter
+     * @param SaboConfigAttributes $configType le case de la donnée à mettre à jour (ex: SaboConfigAttributes::DEBUG_MODE)
+     * @param bool $status le status à affecter
      * @throws Exception en cas de donnée non existante
      */
     public static function setBoolConfig(SaboConfigAttributes $configType,bool $status):void{
@@ -68,7 +68,7 @@ abstract class SaboConfig{
     }
 
     /**
-     * @param configType le case de la donnée à récupérer (ex: SaboConfigAttributes::DEBUG_MODE)
+     * @param SaboConfigAttributes $configType le case de la donnée à récupérer (ex: SaboConfigAttributes::DEBUG_MODE)
      * @return bool le status de la donnée
      * @throws Exception en cas de donnée non existante
      */
@@ -80,8 +80,8 @@ abstract class SaboConfig{
     
     /**
      * affecte un status de type chaine
-     * @param configType le case de la donnée à mettre à jour (ex: SaboConfigAttributes::USER_AUTOLOAD_FILEPATH)
-     * @param value la chaine à affecter
+     * @param SaboConfigAttributes $configType le case de la donnée à mettre à jour (ex: SaboConfigAttributes::USER_AUTOLOAD_FILEPATH)
+     * @param string value la chaine à affecter
      * @throws Exception en cas de donnée non existante
      */
     public static function setStrConfig(SaboConfigAttributes $configType,string $value):void{
@@ -91,7 +91,7 @@ abstract class SaboConfig{
     }
 
     /**
-     * @param configType le case de la donnée à récupérer (ex: SaboConfigAttributes::USER_AUTOLOAD_FILEPATH)
+     * @param SaboConfigAttributes $configType le case de la donnée à récupérer (ex: SaboConfigAttributes::USER_AUTOLOAD_FILEPATH)
      * @return string la chaine
      * @throws Exception en cas de donnée non existante
      */
@@ -103,8 +103,8 @@ abstract class SaboConfig{
 
     /**
      * affecte un status de type callable
-     * @param configType le case de la donnée à mettre à jour (ex: SaboConfigAttributes::NO_FOUND_DEFAULT_PAGE)
-     * @param callable le callable à affecter
+     * @param SaboConfigAttributes $configType le case de la donnée à mettre à jour (ex: SaboConfigAttributes::NO_FOUND_DEFAULT_PAGE)
+     * @param array $callable le callable à affecter
      * @throws Exception en cas de donnée non existante
      */
     public static function setCallableConfig(SaboConfigAttributes $configType,array $callable):void{
@@ -115,7 +115,7 @@ abstract class SaboConfig{
     }
 
     /**
-     * @param configType le case de la donnée à récupérer (ex: SaboConfigAttributes::NO_FOUND_DEFAULT_PAGE)
+     * @param SaboConfigAttributes $configType le case de la donnée à récupérer (ex: SaboConfigAttributes::NO_FOUND_DEFAULT_PAGE)
      * @return array le status de la donnée
      * @throws Exception en cas de donnée non existante ou de valeur non callable envoyée
      */
@@ -126,7 +126,7 @@ abstract class SaboConfig{
     }
 
     /**
-     * @param extensionsClass liste des class représentant des extensions twig (extens de SaboExtension)
+     * @param array $extensionsClass liste des class représentant des extensions twig (extens de SaboExtension)
      * @throws Exception si une class n'étend pas de SaboExtension
      */
     public static function setUserExtensions(array $extensionsClass):void{

@@ -19,7 +19,7 @@ class SaboAssetsExtension extends SaboExtension{
 
     /**
      * inclus le fichier css passé à partir du dossier css/ du dossier parent du fichier sinon recherche dans public/css
-     * @param fileName le nom du fichier css sans l'extension
+     * @param string $fileName le nom du fichier css sans l'extension
      * @return string la balise link rel
      */
     public function includeCss(string $fileName):string{
@@ -34,8 +34,8 @@ class SaboAssetsExtension extends SaboExtension{
 
     /**
      * inclus le fichier js passé à partir du dossier js/ du dossier parent du fichier sinon recherche dans public/js
-     * @param fileName le nom du fichier js sans l'extension
-     * @param config tableau définissant les attributs defer et module
+     * @param string $fileName le nom du fichier js sans l'extension
+     * @param array $config tableau définissant les attributs defer et module
      * @return string la balise script src
      */
     public function includeJs(string $fileName,array $config = []):string{

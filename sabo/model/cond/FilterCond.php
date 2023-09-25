@@ -19,6 +19,10 @@ class FilterCond implements Cond{
      */
     private int $filter;
 
+    /**
+     * @param int $filter constante FILTER_VALIDATE_...
+     * @param string $errorMessage message d'erreur
+     */
     public function __construct(int $filter,string $errorMessage){
         $this->filter = $filter;
         $this->errorMessage = $errorMessage;

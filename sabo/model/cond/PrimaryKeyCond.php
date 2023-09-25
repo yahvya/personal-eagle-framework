@@ -21,7 +21,8 @@ class PrimaryKeyCond implements Cond{
     private bool $canBeSetOnIncrement;
 
     /**
-     * @param isAutoIncremented défini si la clé est auto incrémenté (par défaut à faux)
+     * @param bool $isAutoIncremented défini si la clé est auto incrémenté (par défaut à faux)
+     * @param bool $canBeSetOnIncrement si une valeur peut être setAttribute sur l'attribut malgré le auto increment
      */
     public function __construct(bool $isAutoIncremented = false,bool $canBeSetOnIncrement = true){
         $this->isAutoIncremented = $isAutoIncremented;

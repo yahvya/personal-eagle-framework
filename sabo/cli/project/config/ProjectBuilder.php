@@ -52,8 +52,8 @@ class ProjectBuilder implements ProjectManagerCommand{
 
     /**
      * copie un dossier dans l'autre
-     * @param dstPath chemin de destination
-     * @param fromDir dossier source
+     * @param string $dstPath chemin de destination
+     * @param string $fromDir dossier source
      * @return bool si le copie à réussi
      */
     private function copyDirectoryIn(string $dstPath,string $fromDir):bool{
@@ -120,7 +120,7 @@ class ProjectBuilder implements ProjectManagerCommand{
 
     /**
      * supprime un dossier
-     * @param path le chemin
+     * @param string $path le chemin
      * @return bool si la suppression à réussi
      */
     private function deleteDir(string $path):bool{

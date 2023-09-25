@@ -8,9 +8,9 @@ namespace Sabo\Model\System\QueryBuilder;
 trait Join{
     /**
      * fusionne les données du query builder passé avec ceux du querybuilder actuel
-     * @param toJoin le queryBuilder à joindre
-     * @param prefixSqlLinker sql à ajouter avant fusion
-     * @param suffixSqlLinker sql à ajouter après fusion
+     * @param QueryBuilder $toJoin le queryBuilder à joindre
+     * @param string[null $prefixSqlLinker sql à ajouter avant fusion
+     * @param string|null $suffixSqlLinker sql à ajouter après fusion
      * @return QueryBuilder this
      */
     public function joinQuery(QueryBuilder $toJoin,?string $prefixSqlLinker = null,?string $suffixSqlLinker = null):QueryBuilder{
@@ -25,8 +25,8 @@ trait Join{
 
     /**
      * ajoute un sql écrit
-     * @param sql la chaine sql à ajouter
-     * @param toBind les valeurs à bind
+     * @param string $sql la chaine sql à ajouter
+     * @param array $toBind les valeurs à bind
      * @return QueryBuilder this
      */
     public function addSql(string $sql,array $toBind = []):QueryBuilder{

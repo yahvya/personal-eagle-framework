@@ -21,7 +21,7 @@ trait Where{
      * @param string $attributeName nom de l'attribut
      * @param mixed $value valeur à comparer
      * @param SqlComparator $comparator l'opérateur de comparaison à utiliser par défaut =
-     * @param SqlComparator|null $nextSeparator le séparateur pour ajouter une condition par la suite ou null si rien
+     * @param SqlSeparator|null $nextSeparator le séparateur pour ajouter une condition par la suite ou null si rien
      * @return QueryBuilder this
      */
     public function whereCond(string $attributeName,mixed $value,SqlComparator $comparator = SqlComparator::EQUAL,?SqlSeparator $nextSeparator = null):QueryBuilder{

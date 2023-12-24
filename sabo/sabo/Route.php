@@ -41,7 +41,7 @@ abstract class Route{
                 $group["accessConds"] = array_merge($group["accessConds"],gettype($accessConds) != "array" ? [$accessConds] : $accessConds);
                 $routesGroup[$key] = $group;
             }
-            else $routesGroup[$key] = self::group($url,$group);
+            else $routesGroup[$key] = self::group($url,$group,$accessConds);
         }
 
         return $routesGroup;

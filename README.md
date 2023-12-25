@@ -17,7 +17,7 @@ php sabo\csabo initialize
 
 ***Utiliser un système d'hôte virtuel est à préconiser - toutefois une configuration pour des liens au format localhost/projet est possible***
 
-Vous pouvre maintenant vous rendre sur votre navigateur ex *https://monprojet.local*
+Vous pouvez maintenant vous rendre sur votre navigateur ex *https://monprojet.local*
 
 *Une version usant d'un serveur personnalisé sera bientôt disponible*
 
@@ -78,8 +78,6 @@ php sabo\csabo initial
   - view : *dossier racine de la recherche de vues twig*
 - .htaccess - modifiable en conservant la redirection du framework
 
-    
-
 ### Commandes
 
 Le framework vient avec un petit utilitaire de commande nommé 'csabo' pour 'cli sabo'. Le fichier est un fichier php sans extension situé dans le dossier sabo.
@@ -90,11 +88,9 @@ Pour l'utiliser à partir de la racine
 php sabo\csabo --showlist
 ```
 
->  Vous pouvez y ajouter vos commandes en étendant la class SaboCliCommand et en enregistrant votre commande en suivant le modèle dans csabo
-
+> Vous pouvez y ajouter vos commandes en étendant la class SaboCliCommand et en enregistrant votre commande en suivant le modèle dans csabo
 
 *Les commandes de création de fichier telles que make:controller ou make:model se basent sur un fichier modèle se situant dans le dossier sabo > cli > resources > model, modifier ces fichiers changera le template généré à l'utilisation de ces commandes.*
-
 
 ### Afficher une page / Routing
 
@@ -102,7 +98,7 @@ php sabo\csabo --showlist
 
 Dans le fichier config > routes > routes.php vous pouvez ajouter vos routes à l'aide de la class 'Sabo\Sabo\Route'
 
-La class offre différentes méthodes statiques ::get,::post,::put,::delete,::group pour générer vos routes 
+La class offre différentes méthodes statiques ::get,::post,::put,::delete,::group pour générer vos routes
 
 ```
 return Route::generateFrom([
@@ -112,7 +108,6 @@ return Route::generateFrom([
 ]);
 ```
 
-
 Ces fonctions (hormis ::group) acceptent un callable de type fonction comme dans l'exemple ou une sous classe de 'Sabo\Controller\Controller\SaboController'
 
 ```
@@ -120,7 +115,6 @@ return Route::generateFrom([
 	Route::get("/",[HomeController::class,"showHomepage"],"home.homepage")
 ]);
 ```
-
 
 #### Paramètres génériques
 
@@ -166,7 +160,6 @@ Route::get("/login",function():void{echo "page de connexion"},accessConds: [
     ])
 ```
 
-
 Toutes les conditions se doivent de retourner true pour que l'accès soit valide
 
 'ClassCond::class' représente une class impémentant l'interface 'Sabo\Middleware\Middleware\SaboMiddlewareCond', cette interface défini une fonction verify qui sera appellé pour vérifier vos conditions , si la fonction retourne false la fonction 'toDoOnFail' sera appellé (peut servir à rediriger ...)
@@ -191,7 +184,7 @@ Cet exemple génère 3 liens:
 - /compte/deconnexion
 - /compte/gestion/
 
-> Un groupe peut prendre des conditions d'accès aux liens dans le même format que les fonctions classiques (::get,::post...), une condition défini sur un groupe est appliqué à tous les liens se trouvant 
+> Un groupe peut prendre des conditions d'accès aux liens dans le même format que les fonctions classiques (::get,::post...), une condition défini sur un groupe est appliqué à tous les liens se trouvant
 
 ```
 Route::group("/compte",[
@@ -211,7 +204,7 @@ Le QueryBuilder est une class conteneur de traits divisés pouvant être retrouv
 
 ### Extensions du framework
 
-Les extension représentent des paquets de code sous format zip pouvant être ajoutés à un projet *sabo* pour y ajouter des fonctionnalités 
+Les extension représentent des paquets de code sous format zip pouvant être ajoutés à un projet *sabo* pour y ajouter des fonctionnalités
 
 La commande suivante permet l'ajout simple d'extension au projet
 

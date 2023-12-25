@@ -184,7 +184,7 @@ Cet exemple génère 3 liens:
 - /compte/deconnexion
 - /compte/gestion/
 
-> Un groupe peut prendre des conditions d'accès aux liens dans le même format que les fonctions classiques (::get,::post...), une condition défini sur un groupe est appliqué à tous les liens se trouvant
+> Un groupe peut prendre des conditions d'accès aux liens dans le même format que les fonctions classiques (::get,::post...), une condition défini sur un groupe est appliqué à tous les liens se trouvant à l'intérieur
 
 ```
 Route::group("/compte",[
@@ -198,9 +198,205 @@ Les models représentent les tables de la base de données , la commande 'make:m
 
 #### QueryBuilder
 
-> Chaque modèle étendant de SaboModel vient avec les méthodes crud basé sur une constructeur de requête interne, la class QueryBuilder implémente les fonctionnalités bas niveau permettant de construire les requêtes les plus complexes, et permet via 'addSql' d'écrire manuellement le code SQL combiné à l'utilasation de méthodes telles que 'getAttributeLinkedColName' qui permettant d'utiliser le nom de ses attributs de class php pour faire référence aux noms de colonnes
+> Chaque modèle étendant de SaboModel vient avec les méthodes crud basé sur un constructeur de requête interne, la class QueryBuilder implémente les fonctionnalités bas niveau permettant de construire les requêtes les plus complexes, et permet via 'addSql' d'écrire manuellement le code SQL combiné à l'utilasation de méthodes telles que 'getAttributeLinkedColName' qui permettant d'utiliser le nom de ses attributs de class php pour faire référence aux noms de colonnes
 
 Le QueryBuilder est une class conteneur de traits divisés pouvant être retrouvé dans 'sabo > model > system > query-builder' permettant la modification et la personnalisation des fonctionnalités de celle ci que vous pouvez faire.
+
+exemple de model contenant des requêtes simple et plus complexe
+
+```
+<?php
+
+namespace Model\Model;
+
+use PDO;
+use Sabo\Model\Attribute\TableColumn;
+use Sabo\Model\Attribute\TableName;
+use Sabo\Model\Cond\DatetimeCond;
+use Sabo\Model\Cond\PrimaryKeyCond;
+use Sabo\Model\Cond\RegexCond;
+use Sabo\Model\Cond\VarcharCond;
+use Sabo\Model\Model\SaboModel;
+use Sabo\Model\System\Mysql\MysqlReturn;
+use Sabo\Model\System\QueryBuilder\QueryBuilder;
+use Sabo\Model\System\QueryBuilder\SqlComparator;
+use Sabo\Model\System\QueryBuilder\SqlSeparator;
+
+/**
+ * table des articles de blog
+ * @name BlogModel
+ */
+#[TableName("blog")]
+class BlogModel extends SaboModel{
+	#[TableColumn("id",false,new PrimaryKeyCond(true) )]
+	protected int $id;
+
+	#[TableColumn("article_title",false,new VarcharCond(2,255,"Le titre doit contenir entre 2 et 255 caractères") )]
+	protected string $title;
+
+	#[TableColumn("formatted_title",false,new RegexCond("[a-zA-Z-'0-9]{2,255}","Veuillez vérifier le format du titre formaté. Il doit contenir entre 2 et 255 caractères."))]
+	protected string $formattedTitle;
+
+	#[TableColumn("article_preview",false,new VarcharCond(2,255,"Le contenu preview de l'article doit contenir entre 2 et 255 caractères") )]
+	protected string $preview;
+
+	#[TableColumn("article_content",false,new RegexCond(".{10,}","L'article doit être assez conséquent pour être affiché") )]
+	protected string $content;
+
+	#[TableColumn("create_date",false,new DatetimeCond() )]
+	protected string $creationDate;
+
+	#[TableColumn("is_active",false)]
+	protected bool $isActive;
+
+    public function insert(): bool{
+        $this->isActive = true;
+        $this->creationDate = date("Y-m-d H:i:s");
+
+        return parent::insert();
+    }
+
+    /**
+     * trouve un article à partir d'une recherche
+     * @param string $search recherche
+     * @return BlogModel|null l'article trouvé ou null
+     */
+    public static function getFromSearch(string $search):?BlogModel{
+        $queryBuilder = QueryBuilder::createFrom(self::class);
+
+        $queryBuilder
+            ->select()
+            ->where()
+            ->whereCond("title","%{$search}%",SqlComparator::LIKE,SqlSeparator::AND)
+            ->whereCond("isActive",true)
+            ->orderBy("title")
+            ->limit(1);
+
+        $results = self::execQuery($queryBuilder,MysqlReturn::OBJECTS);
+
+        return empty($results) ? null : $results[0];
+    }
+
+    /**
+     * recherche un article aléatoire
+     * @return BlogModel|null l'article trouvé ou null
+     */
+    public static function getRandomArticle():?BlogModel{
+        $queryBuilder = QueryBuilder::createFrom(self::class);
+
+        $queryBuilder
+            ->select()
+            ->where()
+            ->whereCond("isActive",true)
+            ->addSql("ORDER BY RAND() ")
+            ->limit(1);
+
+        $results = self::execQuery($queryBuilder,MysqlReturn::OBJECTS);
+
+        return !empty($results) ? $results[0] : null;
+    }
+
+    /**
+     * recherche les articles similaires à celui donné
+     * @param BlogModel $baseArticle article de base
+     * @param int $countOfSimilarArticlesToGet nombre d'articles maximum similaire à récupéré
+     * @return array liste des articles trouvés
+     */
+    public static function getSimilarArticlesToOrRandoms(BlogModel $baseArticle, int $countOfSimilarArticlesToGet):array{
+        /*
+            modèle de requete (similarité vérifié dans les 2 sens, article 1 ressemble au 2 ou article 2 ressemble au 1)
+
+            # sauvegarde des informations de l'article
+            WITH blog_article_data AS (SELECT ba.article_title,ba.article_content FROM blog AS ba WHERE id = 2 AND is_active 1)
+            SELECT
+                *
+            FROM
+                blog AS b
+            WHERE
+            #     exclusion de l'article lui même dans les résultats
+                b.id != 2 AND
+                b.is_active = 1 AND
+                (
+            #         sélection d'un article dont les caractéristiques ressemblent à celui de l'article de base
+                    (SELECT article_title FROM blog_article_data) LIKE CONCAT('%',b.article_title,'%') OR
+                    (SELECT article_content FROM blog_article_data) LIKE CONCAT('%',b.article_content,'%') OR
+                    (SELECT article_content FROM blog_article_data) LIKE CONCAT('%',b.article_title,'%') OR
+            #         sélection d'un article auquel les caractéritiques de l'article de base ressemble
+                    b.article_title LIKE CONCAT('%',(SELECT article_title FROM blog_article_data),'%') OR
+                    b.article_content LIKE CONCAT('%',(SELECT article_content FROM blog_article_data),'%') OR
+                    b.article_title LIKE CONCAT('%',(SELECT article_content FROM blog_article_data),'%')
+                )
+        */
+
+        $queryBuilder = QueryBuilder::createFrom(self::class);
+
+        // nom des élements sql génériques (nom de table,colonnes...)
+        $tableName = $queryBuilder->getLinkedModel()->getTableName();
+        $title = $queryBuilder->getAttributeLinkedColName("title");
+        $content = $queryBuilder->getAttributeLinkedColName("content");
+        $id = $queryBuilder->getAttributeLinkedColName("id");
+        $isActive = $queryBuilder->getAttributeLinkedColName("isActive");
+
+        $queryBuilder
+            ->addSql(
+                "
+                    WITH blog_article_data AS (SELECT ba.{$title},ba.{$content} FROM {$tableName} AS ba WHERE {$id} = ? AND {$isActive} = 1)
+                    SELECT
+                        *
+                    FROM
+                        {$tableName} AS b
+                    WHERE
+                        b.{$id} != ? AND
+                        b.{$isActive} = 1 AND
+                        (
+                            (SELECT {$title} FROM blog_article_data) LIKE CONCAT('%',b.{$title},'%') OR
+                            (SELECT {$content} FROM blog_article_data) LIKE CONCAT('%',b.{$content},'%') OR
+                            (SELECT {$content} FROM blog_article_data) LIKE CONCAT('%',b.{$title},'%') OR
+                            b.{$title} LIKE CONCAT('%',(SELECT {$title} FROM blog_article_data),'%') OR
+                            b.{$content} LIKE CONCAT('%',(SELECT {$content} FROM blog_article_data),'%') OR
+                            b.{$title} LIKE CONCAT('%',(SELECT {$content} FROM blog_article_data),'%')
+                        ) 
+                ",
+                [$baseArticle->id,$baseArticle->id ]
+            )
+            ->limit($countOfSimilarArticlesToGet);
+
+        $results = self::execQuery($queryBuilder, MysqlReturn::OBJECTS);
+
+        // si aucun résultat trouvé recherche d'articles randoms
+        if(empty($results) ){
+            $queryBuilder
+                ->reset()
+                ->select()
+                ->where()
+                ->whereCond("id",$baseArticle->id,SqlComparator::NOT_EQUAL)
+                ->limit($countOfSimilarArticlesToGet);
+
+            $results = self::execQuery($queryBuilder,MysqlReturn::OBJECTS);
+        }
+
+        return $results;
+    }
+}
+```
+
+Cet exemple sert à montrer : 
+
+- La modification possible du namespace de base fourni
+- requêtes simples
+- requêtes plus complexes
+- l'ajout des conditions sur un attribut via les conds
+- la recommandation de définir une couche entre SaboModel et vos classes (ici : abstract class CustomModel extends SaboModel)
+
+#### Conds
+
+Pour mettre à jour une valeur attribut d'un model ou récupérer une valeur l'usage des fonctions '*setAttribute' et 'getAttribute'* est nécessaire. Ces fonctions prennent en premier argument le nom de l'attribut / variable comme référence au nom de la colonne en base de donnée
+
+A l'usage de setAttribute sur un champs *'setAttribute("title","Nouveau titre")'* chaque conditions posés sur 'protected string $title;' sera vérifié et la première invalide renvoie une exception (ModelCondException)
+
+### Middleware
+
+La class abstraite *SaboMiddleware* offre les fonctionnalités de base pour la gestion des exceptions de model , la vérification de champs ....
 
 ### Extensions du framework
 

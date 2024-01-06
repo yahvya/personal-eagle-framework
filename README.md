@@ -39,8 +39,10 @@ Vous pouvez configurer laragon pour ajouter dans l'option 'Créer un site web ra
 A la création d'un nouveau site via l'option, veuillez saisir dans le terminal à la racine du projet
 
 ```
-php sabo\csabo initial
+php sabo\csabo initialize
 ```
+
+>  Le framework initialisera votre site avec une connexion à la base de donnée, configurable dans 'config/env.json' , si vous ne souhaitez pas une connexion à la base de donnée rendez vous dans 'config/sabo/config.php' et changez à **false** INIT_WITH_DATABASE_CONNEXION
 
 ### Structure du projet
 
@@ -380,7 +382,7 @@ class BlogModel extends SaboModel{
 }
 ```
 
-Cet exemple sert à montrer : 
+Cet exemple sert à montrer :
 
 - La modification possible du namespace de base fourni
 - requêtes simples

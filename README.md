@@ -42,7 +42,7 @@ A la création d'un nouveau site via l'option, veuillez saisir dans le terminal 
 php sabo\csabo initialize
 ```
 
->  Le framework initialisera votre site avec une connexion à la base de donnée, configurable dans 'config/env.json' , si vous ne souhaitez pas une connexion à la base de donnée rendez vous dans 'config/sabo/config.php' et changez à **false** INIT_WITH_DATABASE_CONNEXION
+> Le framework initialisera votre site avec une connexion à la base de donnée, configurable dans 'config/env.json' , si vous ne souhaitez pas une connexion à la base de donnée rendez vous dans 'config/sabo/config.php' et changez à **false** INIT_WITH_DATABASE_CONNEXION
 
 ### Structure du projet
 
@@ -100,7 +100,7 @@ php sabo\csabo --showlist
 
 Dans le fichier config > routes > routes.php vous pouvez ajouter vos routes à l'aide de la class 'Sabo\Sabo\Route'
 
-La class offre différentes méthodes statiques ::get,::post,::put,::delete,::group pour générer vos routes
+La class offre différentes méthodes statiques ::get,::post,::put,::delete,::group pour générer vos routes nommée
 
 ```
 return Route::generateFrom([
@@ -147,7 +147,7 @@ Route::get("/article/{articleName}",function(string $articleName):void{},"home.h
 
 #### Condition d'accès aux liens
 
-en plus de la forme du lien des conditions peuvent être ajoutés pour autoriser l'accès au lien (par exemple : l'utilisateur doit être connecté), ce conditions se matérialisent par des fonctions renvoyant des booléens ou des class de conditions décrivant des conditions plus complètes
+en plus de la forme du lien des conditions peuvent être ajoutés pour autoriser l'accès au lien (par exemple : l'utilisateur doit être connecté), ces conditions se matérialisent par des fonctions renvoyant des booléens ou des class de conditions décrivant des conditions plus complètes
 
 ```
 Route::get("/login",function():void{echo "page de connexion"},accessConds: [

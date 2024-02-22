@@ -7,8 +7,8 @@
  * alias var_dump
  * @datas les données à afficher
  */
-function debug(mixed... $datas):void{
+function debug(mixed... $datas):never{
     echo "<pre>";
-    var_dump(...$datas);
+    dump(...$datas);
     die("</pre>");
 }

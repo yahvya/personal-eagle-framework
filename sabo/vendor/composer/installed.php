@@ -3,7 +3,7 @@
         'name' => '__root__',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '97c9bcbbc4415a6fcf73593e58d7c01172d3617c',
+        'reference' => '50cabadc74b8fef08092948016ecbb234d79ae86',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         '__root__' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '97c9bcbbc4415a6fcf73593e58d7c01172d3617c',
+            'reference' => '50cabadc74b8fef08092948016ecbb234d79ae86',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -45,6 +45,15 @@
             'install_path' => __DIR__ . '/../symfony/polyfill-mbstring',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'symfony/var-dumper' => array(
+            'pretty_version' => 'v7.0.3',
+            'version' => '7.0.3.0',
+            'reference' => 'a7a061abbf6fe3d4a79032cbc5149a4d65a10234',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/var-dumper',
+            'aliases' => array(),
+            'dev_requirement' => true,
         ),
         'twig/twig' => array(
             'pretty_version' => 'v3.5.1',

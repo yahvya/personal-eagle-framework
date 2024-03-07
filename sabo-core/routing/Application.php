@@ -8,6 +8,7 @@ use Throwable;
 
 /**
  * @brief Gestionnaire de l'application
+ * @author yahaya bathily https://github.com/yahvya/
  */
 abstract class Application{
     /**
@@ -35,24 +36,14 @@ abstract class Application{
 
         try{
             self::requireNeededFiles();
+            self::checkConfigs();
         }
         catch(ConfigException $e){
 
         }
         catch(Throwable){
-            
-        }
-    }
 
-    /**
-     * @brief Inclus les fichiers requis
-     * @return void
-     * @throws ConfigException en cas d'erreur
-     */
-    private static function requireNeededFiles():void{
-        require_once(self::$applicationConfig->getConfig("FUNCTIONS_CONFIG_FILEPATH") );
-        self::$envConfig = require_once(self::$applicationConfig->getConfig("ENV_CONFIG_FILEPATH") );
-        self::$frameworkConfig = require_once(self::$applicationConfig->getConfig("FRAMEWORK_CONFIG_FILEPATH") );
+        }
     }
 
     /**
@@ -74,5 +65,24 @@ abstract class Application{
      */
     public static function getFrameworkConfig():?Config{
         return self::$frameworkConfig;
+    }
+
+    /**
+     * @brief Inclus les fichiers requis
+     * @return void
+     * @throws ConfigException en cas d'erreur
+     */
+    private static function requireNeededFiles():void{
+        require_once(self::$applicationConfig->getConfig("FUNCTIONS_CONFIG_FILEPATH") );
+        self::$envConfig = require_once(self::$applicationConfig->getConfig("ENV_CONFIG_FILEPATH") );
+        self::$frameworkConfig = require_once(self::$applicationConfig->getConfig("FRAMEWORK_CONFIG_FILEPATH") );
+    }
+
+    /**
+     * @brief Vérifie les configurations
+     * @return void
+     */
+    private static function checkConfigs():void{
+
     }
 }

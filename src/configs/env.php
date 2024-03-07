@@ -1,23 +1,29 @@
 <?php
 
 use SaboCore\Config\Config;
+use SaboCore\Config\DatabaseConfig;
+use SaboCore\Config\EnvConfig;
+use SaboCore\Database\Providers\default\MysqlProvider;
 
 /**
  * @brief Fichier d'environnement du framework
  * @return Config les variables d'environnement
  */
 return Config::create()
-    // nom de l'application
-    ->setConfig("applicationName","Sabo framework")
-    // lien de l'application (au format lien/)
-    ->setConfig("applicationLink","https://sabo-final.local/")
-    // configuration de connexion à la base de donnée
+    ->setConfig(EnvConfig::APPLICATION_NAME_CONFIG->value,"Sabo framework")
+    ->setConfig(EnvConfig::APPLICATION_LINK_CONFIG->value,"https://sabo-final.local/")
     ->setConfig(
-        "database",
+        EnvConfig::DATABASE_CONFIG->value,
         Config::create()
-            ->setConfig("initWithConnection",true)
-            ->setConfig("host","")
-            ->setConfig("user","")
-            ->setConfig("password","")
-            ->setConfig("dbname","")
+            ->setConfig(DatabaseConfig::INIT_APP_WITH_CONNECTION->value,true)
+            ->setConfig(DatabaseConfig::PROVIDER->value,new MysqlProvider() )
+            ->setConfig(
+                DatabaseConfig::PROVIDER_CONFIG->value,
+                Config::create()
+                    ->setConfig("host","")
+                    ->setConfig("user","")
+                    ->setConfig("password","")
+                    ->setConfig("dbname","")
+            )
     );
+    // ajoutez vos propres configurations

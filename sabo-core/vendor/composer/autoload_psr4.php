@@ -6,6 +6,9 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'SaboCore\\Utils\\Printer\\' => array($baseDir . '/utils/printer'),
     'SaboCore\\Routing\\' => array($baseDir . '/routing'),
+    'SaboCore\\Database\\Providers\\Providers\\' => array($baseDir . '/database/providers/providers'),
     'SaboCore\\Config\\' => array($baseDir . '/config'),
+    'BeBat\\ConsoleColor\\' => array($vendorDir . '/bebat/console-color/src'),
 );

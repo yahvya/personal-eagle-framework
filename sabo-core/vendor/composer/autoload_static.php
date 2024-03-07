@@ -9,26 +9,59 @@ class ComposerStaticInit617501ac91ccf0e7e599a5974d0459cb
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
+            'SaboCore\\Utils\\Printer\\' => 23,
             'SaboCore\\Routing\\' => 17,
+            'SaboCore\\Database\\Providers\\Providers\\' => 38,
             'SaboCore\\Config\\' => 16,
+        ),
+        'B' => 
+        array (
+            'BeBat\\ConsoleColor\\' => 19,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'SaboCore\\Utils\\Printer\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/utils/printer',
+        ),
         'SaboCore\\Routing\\' => 
         array (
             0 => __DIR__ . '/../..' . '/routing',
+        ),
+        'SaboCore\\Database\\Providers\\Providers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/database/providers/providers',
         ),
         'SaboCore\\Config\\' => 
         array (
             0 => __DIR__ . '/../..' . '/config',
         ),
+        'BeBat\\ConsoleColor\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bebat/console-color/src',
+        ),
     );
 
     public static $classMap = array (
+        'BeBat\\ConsoleColor\\ApplierInterface' => __DIR__ . '/..' . '/bebat/console-color/src/ApplierInterface.php',
+        'BeBat\\ConsoleColor\\Style' => __DIR__ . '/..' . '/bebat/console-color/src/Style.php',
+        'BeBat\\ConsoleColor\\StyleInterface' => __DIR__ . '/..' . '/bebat/console-color/src/StyleInterface.php',
+        'BeBat\\ConsoleColor\\Style\\BackgroundColor' => __DIR__ . '/..' . '/bebat/console-color/src/Style/BackgroundColor.php',
+        'BeBat\\ConsoleColor\\Style\\Color' => __DIR__ . '/..' . '/bebat/console-color/src/Style/Color.php',
+        'BeBat\\ConsoleColor\\Style\\Color256' => __DIR__ . '/..' . '/bebat/console-color/src/Style/Color256.php',
+        'BeBat\\ConsoleColor\\Style\\ColorRGB' => __DIR__ . '/..' . '/bebat/console-color/src/Style/ColorRGB.php',
+        'BeBat\\ConsoleColor\\Style\\Composite' => __DIR__ . '/..' . '/bebat/console-color/src/Style/Composite.php',
+        'BeBat\\ConsoleColor\\Style\\Text' => __DIR__ . '/..' . '/bebat/console-color/src/Style/Text.php',
+        'BeBat\\ConsoleColor\\Style\\Underline' => __DIR__ . '/..' . '/bebat/console-color/src/Style/Underline.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'SaboCore\\Config\\Config' => __DIR__ . '/../..' . '/config/Config.php',
         'SaboCore\\Config\\ConfigException' => __DIR__ . '/../..' . '/config/ConfigException.php',
+        'SaboCore\\Config\\DatabaseConfig' => __DIR__ . '/../..' . '/config/DatabaseConfig.php',
+        'SaboCore\\Config\\EnvConfig' => __DIR__ . '/../..' . '/config/EnvConfig.php',
+        'SaboCore\\Database\\Providers\\Providers\\DatabaseProvider' => __DIR__ . '/../..' . '/database/providers/providers/DatabaseProvider.php',
+        'SaboCore\\Routing\\Application' => __DIR__ . '/../..' . '/routing/Application.php',
+        'SaboCore\\Utils\\Printer\\Printer' => __DIR__ . '/../..' . '/utils/printer/Printer.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

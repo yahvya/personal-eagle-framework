@@ -6,7 +6,22 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'BeBat\\ConsoleColor\\ApplierInterface' => $vendorDir . '/bebat/console-color/src/ApplierInterface.php',
+    'BeBat\\ConsoleColor\\Style' => $vendorDir . '/bebat/console-color/src/Style.php',
+    'BeBat\\ConsoleColor\\StyleInterface' => $vendorDir . '/bebat/console-color/src/StyleInterface.php',
+    'BeBat\\ConsoleColor\\Style\\BackgroundColor' => $vendorDir . '/bebat/console-color/src/Style/BackgroundColor.php',
+    'BeBat\\ConsoleColor\\Style\\Color' => $vendorDir . '/bebat/console-color/src/Style/Color.php',
+    'BeBat\\ConsoleColor\\Style\\Color256' => $vendorDir . '/bebat/console-color/src/Style/Color256.php',
+    'BeBat\\ConsoleColor\\Style\\ColorRGB' => $vendorDir . '/bebat/console-color/src/Style/ColorRGB.php',
+    'BeBat\\ConsoleColor\\Style\\Composite' => $vendorDir . '/bebat/console-color/src/Style/Composite.php',
+    'BeBat\\ConsoleColor\\Style\\Text' => $vendorDir . '/bebat/console-color/src/Style/Text.php',
+    'BeBat\\ConsoleColor\\Style\\Underline' => $vendorDir . '/bebat/console-color/src/Style/Underline.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'SaboCore\\Config\\Config' => $baseDir . '/config/Config.php',
     'SaboCore\\Config\\ConfigException' => $baseDir . '/config/ConfigException.php',
+    'SaboCore\\Config\\DatabaseConfig' => $baseDir . '/config/DatabaseConfig.php',
+    'SaboCore\\Config\\EnvConfig' => $baseDir . '/config/EnvConfig.php',
+    'SaboCore\\Database\\Providers\\Providers\\DatabaseProvider' => $baseDir . '/database/providers/providers/DatabaseProvider.php',
+    'SaboCore\\Routing\\Application' => $baseDir . '/routing/Application.php',
+    'SaboCore\\Utils\\Printer\\Printer' => $baseDir . '/utils/printer/Printer.php',
 );

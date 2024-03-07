@@ -37,6 +37,18 @@ class Config{
     }
 
     /**
+     * @brief Vérifie que les configurations fournies existent
+     * @param string|int ...$keys nom des configurations
+     * @return void
+     * @throws ConfigException en cas de clé nom trouvée
+     */
+    public function checkConfigs(string|int ...$keys):void{
+        foreach($keys as $key){
+            if(!array_key_exists($key, $this->config) ) throw new ConfigException("Configuration <$key> non trouvée");
+        }
+    }
+
+    /**
      * @brief Crée une nouvelle configuration
      * @return Config une nouvelle configuration
      */

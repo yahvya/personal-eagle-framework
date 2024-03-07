@@ -1,6 +1,17 @@
 <?php
 
 /**
- * @brief utilitaire de ligne de commande du framework
+ * @brief Utilitaire de ligne de commande du framework
+ * @author Yahaya Bathily https://github.com/yahvya
  */
 
+// inclusion de l'autoloader du framework ainsi que du client
+$appRoot = __DIR__;
+
+require_once("$appRoot/sabo-core/vendor/autoload.php");
+require_once("$appRoot/vendor/autoload.php");
+
+use SaboCore\Config\Config;
+
+// configuration du thème d'affichage
+$themeConfig = Config::create();

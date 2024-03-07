@@ -2,7 +2,12 @@
     "autoload": {
         "psr-4": {
             "SaboCore\\Config\\": "./config/",
-            "SaboCore\\Routing\\": "./routing/"
+            "SaboCore\\Routing\\": "./routing/",
+            "SaboCore\\Database\\Providers\\Providers\\": "./database/providers/providers/",
+            "SaboCore\\Utils\\Printer\\": "./utils/printer/"
         }
+    },
+    "require": {
+        "bebat/console-color": "^1.0"
     }
 }

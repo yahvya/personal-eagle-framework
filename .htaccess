@@ -1,4 +1,0 @@
-RewriteEngine On
-RewriteCond %{REQUEST_URI} !(.sabo/index\.php.|public/.*|src/view/.*\.(css|js))
-RewriteRule (.*) sabo/index.php/$1
-ErrorDocument 404 sabo/index.php

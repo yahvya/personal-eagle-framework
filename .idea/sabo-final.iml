@@ -25,12 +25,15 @@
       <sourceFolder url="file://$MODULE_DIR$/sabo/sabo" isTestSource="false" packagePrefix="Sabo\Sabo\" />
       <sourceFolder url="file://$MODULE_DIR$/sabo/utils/api" isTestSource="false" packagePrefix="Sabo\Utils\Api\" />
       <sourceFolder url="file://$MODULE_DIR$/sabo/utils/string" isTestSource="false" packagePrefix="Sabo\Utils\String\" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/sabo/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/sabo/vendor/phpmailer/phpmailer" />
       <excludeFolder url="file://$MODULE_DIR$/sabo/vendor/symfony/polyfill-ctype" />
       <excludeFolder url="file://$MODULE_DIR$/sabo/vendor/symfony/polyfill-mbstring" />
       <excludeFolder url="file://$MODULE_DIR$/sabo/vendor/twig/twig" />
+      <excludeFolder url="file://$MODULE_DIR$/sabo/vendor/symfony/var-dumper" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

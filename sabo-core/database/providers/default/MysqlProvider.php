@@ -1,6 +1,6 @@
 <?php
 
-namespace SaboCore\Database\Providers\default;
+namespace SaboCore\Database\Providers\Default;
 
 use SaboCore\Database\Providers\Providers\DatabaseProvider;
 

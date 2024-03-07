@@ -3,7 +3,7 @@
 use SaboCore\Config\Config;
 use SaboCore\Config\DatabaseConfig;
 use SaboCore\Config\EnvConfig;
-use SaboCore\Database\Providers\default\MysqlProvider;
+use SaboCore\Database\Providers\Default\MysqlProvider;
 
 /**
  * @brief Fichier d'environnement du framework

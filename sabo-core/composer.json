@@ -4,7 +4,11 @@
             "SaboCore\\Config\\": "./config/",
             "SaboCore\\Routing\\": "./routing/",
             "SaboCore\\Database\\Providers\\Providers\\": "./database/providers/providers/",
-            "SaboCore\\Utils\\Printer\\": "./utils/printer/"
+            "SaboCore\\Database\\Providers\\Default\\": "./database/providers/default/",
+            "SaboCore\\Utils\\Printer\\": "./utils/printer/",
+            "SaboCore\\Cli\\Cli\\": "./cli/cli/",
+            "SaboCore\\Cli\\Commands\\": "./cli/commands/",
+            "SaboCore\\Cli\\Theme\\": "./cli/theme/"
         }
     },
     "require": {

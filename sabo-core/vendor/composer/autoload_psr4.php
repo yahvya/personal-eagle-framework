@@ -9,6 +9,10 @@ return array(
     'SaboCore\\Utils\\Printer\\' => array($baseDir . '/utils/printer'),
     'SaboCore\\Routing\\' => array($baseDir . '/routing'),
     'SaboCore\\Database\\Providers\\Providers\\' => array($baseDir . '/database/providers/providers'),
+    'SaboCore\\Database\\Providers\\Default\\' => array($baseDir . '/database/providers/default'),
     'SaboCore\\Config\\' => array($baseDir . '/config'),
+    'SaboCore\\Cli\\Theme\\' => array($baseDir . '/cli/theme'),
+    'SaboCore\\Cli\\Commands\\' => array($baseDir . '/cli/commands'),
+    'SaboCore\\Cli\\Cli\\' => array($baseDir . '/cli/cli'),
     'BeBat\\ConsoleColor\\' => array($vendorDir . '/bebat/console-color/src'),
 );

@@ -12,7 +12,11 @@ class ComposerStaticInit617501ac91ccf0e7e599a5974d0459cb
             'SaboCore\\Utils\\Printer\\' => 23,
             'SaboCore\\Routing\\' => 17,
             'SaboCore\\Database\\Providers\\Providers\\' => 38,
+            'SaboCore\\Database\\Providers\\Default\\' => 36,
             'SaboCore\\Config\\' => 16,
+            'SaboCore\\Cli\\Theme\\' => 19,
+            'SaboCore\\Cli\\Commands\\' => 22,
+            'SaboCore\\Cli\\Cli\\' => 17,
         ),
         'B' => 
         array (
@@ -33,9 +37,25 @@ class ComposerStaticInit617501ac91ccf0e7e599a5974d0459cb
         array (
             0 => __DIR__ . '/../..' . '/database/providers/providers',
         ),
+        'SaboCore\\Database\\Providers\\Default\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/database/providers/default',
+        ),
         'SaboCore\\Config\\' => 
         array (
             0 => __DIR__ . '/../..' . '/config',
+        ),
+        'SaboCore\\Cli\\Theme\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/cli/theme',
+        ),
+        'SaboCore\\Cli\\Commands\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/cli/commands',
+        ),
+        'SaboCore\\Cli\\Cli\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/cli/cli',
         ),
         'BeBat\\ConsoleColor\\' => 
         array (
@@ -55,10 +75,17 @@ class ComposerStaticInit617501ac91ccf0e7e599a5974d0459cb
         'BeBat\\ConsoleColor\\Style\\Text' => __DIR__ . '/..' . '/bebat/console-color/src/Style/Text.php',
         'BeBat\\ConsoleColor\\Style\\Underline' => __DIR__ . '/..' . '/bebat/console-color/src/Style/Underline.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'SaboCore\\Cli\\Cli\\ArgumentManager' => __DIR__ . '/../..' . '/cli/cli/ArgumentManager.php',
+        'SaboCore\\Cli\\Cli\\SaboCli' => __DIR__ . '/../..' . '/cli/cli/SaboCli.php',
+        'SaboCore\\Cli\\Commands\\HelpCommand' => __DIR__ . '/../..' . '/cli/commands/HelpCommand.php',
+        'SaboCore\\Cli\\Commands\\LaunchServerCommand' => __DIR__ . '/../..' . '/cli/commands/LaunchServerCommand.php',
+        'SaboCore\\Cli\\Commands\\SaboCommand' => __DIR__ . '/../..' . '/cli/commands/SaboCommand.php',
+        'SaboCore\\Cli\\Theme\\Theme' => __DIR__ . '/../..' . '/cli/theme/Theme.php',
         'SaboCore\\Config\\Config' => __DIR__ . '/../..' . '/config/Config.php',
         'SaboCore\\Config\\ConfigException' => __DIR__ . '/../..' . '/config/ConfigException.php',
         'SaboCore\\Config\\DatabaseConfig' => __DIR__ . '/../..' . '/config/DatabaseConfig.php',
         'SaboCore\\Config\\EnvConfig' => __DIR__ . '/../..' . '/config/EnvConfig.php',
+        'SaboCore\\Database\\Providers\\Default\\MysqlProvider' => __DIR__ . '/../..' . '/database/providers/default/MysqlProvider.php',
         'SaboCore\\Database\\Providers\\Providers\\DatabaseProvider' => __DIR__ . '/../..' . '/database/providers/providers/DatabaseProvider.php',
         'SaboCore\\Routing\\Application' => __DIR__ . '/../..' . '/routing/Application.php',
         'SaboCore\\Utils\\Printer\\Printer' => __DIR__ . '/../..' . '/utils/printer/Printer.php',

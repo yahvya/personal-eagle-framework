@@ -4,7 +4,6 @@ namespace SaboCore\Routing;
 
 use SaboCore\Config\Config;
 use SaboCore\Config\ConfigException;
-use Throwable;
 
 /**
  * @brief Gestionnaire de l'application
@@ -15,16 +14,6 @@ abstract class Application{
      * @var Config|null configuration de l'application
      */
     private static ?Config $applicationConfig = null;
-
-    /**
-     * @var Config|null configuration d'environnement
-     */
-    private static ?Config $envConfig = null;
-
-    /**
-     * @var Config|null configuration du framework
-     */
-    private static ?Config $frameworkConfig = null;
 
     /**
      * @brief Lance l'application
@@ -41,30 +30,33 @@ abstract class Application{
         catch(ConfigException $e){
 
         }
-        catch(Throwable){
-
-        }
     }
 
     /**
-     * @return Config|null la configuration de l'application
+     * @return Config|null la configuration de l'application ou null si non défini
      */
     public static function getApplicationConfig():?Config{
         return self::$applicationConfig;
     }
 
     /**
-     * @return Config|null la configuration d'environnement
+     * @return Config la configuration d'environnement
+     * @throws ConfigException en cas de configuration non défini
      */
-    public static function getEnvConfig():?Config{
-        return self::$envConfig;
+    public static function getEnvConfig():Config{
+        if(self::$applicationConfig) throw new ConfigException("Configuration d'environnement non trouvé");
+
+        return self::$applicationConfig->getConfig("envConfig");
     }
 
     /**
-     * @return Config|null la configuration du framework
+     * @return Config la configuration du framework
+     * @throws ConfigException en cas de configuration non défini
      */
-    public static function getFrameworkConfig():?Config{
-        return self::$frameworkConfig;
+    public static function getFrameworkConfig():Config{
+        if(self::$applicationConfig) throw new ConfigException("Configuration de framework non trouvé");
+
+        return self::$applicationConfig->getConfig("frameworkConfig");
     }
 
     /**
@@ -74,8 +66,10 @@ abstract class Application{
      */
     private static function requireNeededFiles():void{
         require_once(self::$applicationConfig->getConfig("FUNCTIONS_CONFIG_FILEPATH") );
-        self::$envConfig = require_once(self::$applicationConfig->getConfig("ENV_CONFIG_FILEPATH") );
-        self::$frameworkConfig = require_once(self::$applicationConfig->getConfig("FRAMEWORK_CONFIG_FILEPATH") );
+
+        self::$applicationConfig = Config::create()
+            ->setConfig("envConfig",require_once(self::$applicationConfig->getConfig("ENV_CONFIG_FILEPATH") ) )
+            ->setConfig("frameworkConfig",require_once(self::$applicationConfig->getConfig("FRAMEWORK_CONFIG_FILEPATH") ) );
     }
 
     /**

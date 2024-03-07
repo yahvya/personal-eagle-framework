@@ -34,9 +34,11 @@ abstract class Printer{
      * @brief Affiche le texte fournie sans modification
      * @param string $toPrint texte à afficher
      * @param Composite $compositeStyle style du texte
+     * @param int $countOfLineBreak nombre de sauts de ligne après
      * @return void
      */
-    public static function printStyle(string $toPrint,Composite $compositeStyle):void{
+    public static function printStyle(string $toPrint,Composite $compositeStyle,int $countOfLineBreak = 0):void{
         echo (new Style)->apply($toPrint,$compositeStyle);
+        echo str_repeat(PHP_EOL,$countOfLineBreak);
     }
 }

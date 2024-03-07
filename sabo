@@ -11,7 +11,55 @@ $appRoot = __DIR__;
 require_once("$appRoot/sabo-core/vendor/autoload.php");
 require_once("$appRoot/vendor/autoload.php");
 
+define("ROOT",$appRoot);
+
+use BeBat\ConsoleColor\Style\BackgroundColor;
+use BeBat\ConsoleColor\Style\Color;
+use BeBat\ConsoleColor\Style\Composite;
+use BeBat\ConsoleColor\Style\Text;
+use SaboCore\Cli\Cli\SaboCli;
+use SaboCore\Cli\Commands\HelpCommand;
+use SaboCore\Cli\Commands\LaunchServerCommand;
+use SaboCore\Cli\Theme\Theme;
 use SaboCore\Config\Config;
 
 // configuration du thème d'affichage
-$themeConfig = Config::create();
+$themeConfig = Config::create()
+    ->setConfig(
+        Theme::BASIC_TEXT_STYLE->value,
+        new Composite(Color::BrightWhite)
+    )
+    ->setConfig(
+        Theme::SPECIAL_TEXT_STYLE->value,
+        new Composite(Color::Blue,Text::Bold)
+    )
+    ->setConfig(
+        Theme::NOT_IMPORTANT_STYLE->value,
+        new Composite(Color::White)
+    )
+    ->setConfig(
+        Theme::TITLE_STYLE->value,
+        new Composite(Color::BrightBlue,Text::Bold)
+    )
+    ->setConfig(
+        Theme::HOVER_STYLE->value,
+        new Composite(BackgroundColor::Green,Color::White)
+    )
+    ->setConfig(
+        Theme::BASIC_ERROR_STYLE->value,
+        new Composite(Color::Red,Text::Bold)
+    )
+    ->setConfig(
+        Theme::IMPORTANT_ERROR_STYLE->value,
+        new Composite(Color::White,Text::Bold, BackgroundColor::Red)
+    );
+
+// enregistrement des commandes et exécution
+$cli = new SaboCli($argv,$themeConfig);
+
+$cli
+    // commandes par défaut
+    ->registerCommand(new HelpCommand("help") )
+    ->registerCommand(new LaunchServerCommand("serve") )
+    // enregistrez vos commandes (attention aux duplicatas de noms)
+    ->start();

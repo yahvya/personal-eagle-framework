@@ -8,9 +8,9 @@ namespace SaboCore\Config;
  */
 class Config{
     /**
-     * @var array configuration
+     * @var array<string,mixed> configuration
      */
-    private array $config = [];
+    protected array $config = [];
 
     /**
      * @brief Ajoute / Modifie un élément de configuration

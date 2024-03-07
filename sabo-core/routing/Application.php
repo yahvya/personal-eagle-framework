@@ -4,6 +4,8 @@ namespace SaboCore\Routing;
 
 use SaboCore\Config\Config;
 use SaboCore\Config\ConfigException;
+use SaboCore\Config\EnvConfig;
+use SaboCore\Config\FrameworkConfig;
 
 /**
  * @brief Gestionnaire de l'application
@@ -28,7 +30,7 @@ abstract class Application{
             self::checkConfigs();
         }
         catch(ConfigException $e){
-
+            
         }
     }
 
@@ -75,8 +77,17 @@ abstract class Application{
     /**
      * @brief Vérifie les configurations
      * @return void
+     * @throws ConfigException en cas de configuration mal formée
      */
     private static function checkConfigs():void{
+        if(self::$applicationConfig === null) throw new ConfigException("Configuration non défini");
 
+        // vérification de la configuration d'environnement
+        $envConfig = self::$applicationConfig->getConfig("envConfig");
+        $envConfig->checkConfigs(...array_map(fn(EnvConfig $case):string => $case->value,EnvConfig::cases()));
+
+        // vérification de la configuration du framework
+        $frameworkConfig = self::$applicationConfig->getConfig("frameworkConfig");
+        $frameworkConfig->checkConfigs(...array_map(fn(FrameworkConfig $case):string => $case->value,FrameworkConfig::cases()));
     }
 }

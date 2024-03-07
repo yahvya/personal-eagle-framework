@@ -10,8 +10,11 @@ use SaboCore\Database\Providers\Default\MysqlProvider;
  * @return Config les variables d'environnement
  */
 return Config::create()
+    // configurations requises
     ->setConfig(EnvConfig::APPLICATION_NAME_CONFIG->value,"Sabo framework")
     ->setConfig(EnvConfig::APPLICATION_LINK_CONFIG->value,"https://sabo-final.local/")
+    ->setConfig(EnvConfig::MAINTENANCE_CONFIG->value,false)
+    ->setConfig(EnvConfig::DEV_MODE_CONFIG->value,true)
     ->setConfig(
         EnvConfig::DATABASE_CONFIG->value,
         Config::create()

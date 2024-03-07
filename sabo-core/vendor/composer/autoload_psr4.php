@@ -6,6 +6,8 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
+    'Symfony\\Component\\VarDumper\\' => array($vendorDir . '/symfony/var-dumper'),
     'SaboCore\\Utils\\Printer\\' => array($baseDir . '/utils/printer'),
     'SaboCore\\Routing\\' => array($baseDir . '/routing'),
     'SaboCore\\Database\\Providers\\Providers\\' => array($baseDir . '/database/providers/providers'),

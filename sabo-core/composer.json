@@ -12,6 +12,7 @@
         }
     },
     "require": {
-        "bebat/console-color": "^1.0"
+        "bebat/console-color": "^1.0",
+        "symfony/var-dumper": "^7.0"
     }
 }

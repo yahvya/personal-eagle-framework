@@ -1,0 +1,6 @@
+#routage
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !\.(css|js)$
+RewriteCond %{REQUEST_URI} !^/src/public
+RewriteCond %{REQUEST_URI} !^.*sabo-core/index.php.*
+RewriteRule ^(.*)$ sabo-core/index.php/$1 [L]

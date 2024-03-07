@@ -1,1 +1,9 @@
-{}
+{
+    "autoload": {
+        "psr-4": {
+            "Controllers\\": "./src/controllers/",
+            "Models\\": "./src/models/",
+            "Treatment\\": "./src/treatment/"
+        }
+    }
+}

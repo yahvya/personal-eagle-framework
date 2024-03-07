@@ -1,6 +1,6 @@
 <?php
 
 /**
- * @brief fonctions globales utilitaires du framework
+ * @brief Fonctions globales utilitaires du framework
  */
 

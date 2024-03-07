@@ -1,1 +1,8 @@
-{}
+{
+    "autoload": {
+        "psr-4": {
+            "SaboCore\\Config\\": "./config/",
+            "SaboCore\\Routing\\": "./routing/"
+        }
+    }
+}

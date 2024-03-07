@@ -2,7 +2,9 @@
     "autoload": {
         "psr-4": {
             "SaboCore\\Config\\": "./config/",
-            "SaboCore\\Routing\\": "./routing/",
+            "SaboCore\\Routing\\Application\\": "./routing/application/",
+            "SaboCore\\Routing\\Response\\": "./routing/response/",
+            "SaboCore\\Routing\\Request\\": "./routing/request/",
             "SaboCore\\Database\\Providers\\Providers\\": "./database/providers/providers/",
             "SaboCore\\Database\\Providers\\Default\\": "./database/providers/default/",
             "SaboCore\\Utils\\Printer\\": "./utils/printer/",

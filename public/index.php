@@ -12,7 +12,7 @@ require_once("$appRoot/sabo-core/vendor/autoload.php");
 require_once("$appRoot/vendor/autoload.php");
 
 use SaboCore\Config\Config;
-use SaboCore\Routing\Application;
+use SaboCore\Routing\Application\Application;
 
 // configuration publique de l'application
 define(

@@ -1,6 +1,6 @@
 <?php
 
-namespace SaboCore\Routing;
+namespace SaboCore\Routing\Application;
 
 use SaboCore\Config\Config;
 use SaboCore\Config\ConfigException;
@@ -26,11 +26,18 @@ abstract class Application{
         self::$applicationConfig = $applicationConfig;
 
         try{
+            // chargement des fichiers requis et de la configuration
             self::requireNeededFiles();
+            // vérification des configurations
             self::checkConfigs();
+            // initialisation de la base de données si requise
+
+            // chargement des routes
+
+            // lancement de l'application
         }
         catch(ConfigException $e){
-            
+
         }
     }
 

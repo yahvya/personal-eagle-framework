@@ -19,7 +19,6 @@ use BeBat\ConsoleColor\Style\Composite;
 use BeBat\ConsoleColor\Style\Text;
 use SaboCore\Cli\Cli\SaboCli;
 use SaboCore\Cli\Commands\HelpCommand;
-use SaboCore\Cli\Commands\LaunchServerCommand;
 use SaboCore\Cli\Theme\Theme;
 use SaboCore\Config\Config;
 
@@ -60,6 +59,5 @@ $cli = new SaboCli($argv,$themeConfig);
 $cli
     // commandes par défaut
     ->registerCommand(new HelpCommand("help") )
-    ->registerCommand(new LaunchServerCommand("serve") )
     // enregistrez vos commandes (attention aux duplicatas de noms)
     ->start();

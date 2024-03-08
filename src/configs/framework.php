@@ -6,4 +6,7 @@ use SaboCore\Config\Config;
  * @brief Fichier de configuration global du framework
  * @return Config les variables d'environnement
  */
+
+// placez ici les configurations globales
+
 return Config::create();

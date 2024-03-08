@@ -4,8 +4,12 @@ namespace SaboCore\Routing\Application;
 
 use SaboCore\Config\Config;
 use SaboCore\Config\ConfigException;
+use SaboCore\Config\DatabaseConfig;
 use SaboCore\Config\EnvConfig;
 use SaboCore\Config\FrameworkConfig;
+use SaboCore\Routing\Response\HtmlResponse;
+use SaboCore\Routing\Response\ResponseCode;
+use Throwable;
 
 /**
  * @brief Gestionnaire de l'application
@@ -30,14 +34,25 @@ abstract class Application{
             self::requireNeededFiles();
             // vérification des configurations
             self::checkConfigs();
-            // initialisation de la base de données si requise
 
-            // chargement des routes
+            try{
+                // initialisation de la base de données si requise
+                self::initDatabase();
+                // chargement des routes
 
-            // lancement de l'application
+                // vérification de maintenance
+
+                // lancement de l'application
+            }
+            catch(ConfigException $e){
+                if(self::$applicationConfig->getConfig("envConfig")->getConfig(EnvConfig::DEV_MODE_CONFIG->value) )
+                    debugDie($e);
+                else
+                    throw $e;
+            }
         }
-        catch(ConfigException $e){
-
+        catch(ConfigException) {
+            self::showInternalErrorPage();
         }
     }
 
@@ -96,5 +111,45 @@ abstract class Application{
         // vérification de la configuration du framework
         $frameworkConfig = self::$applicationConfig->getConfig("frameworkConfig");
         $frameworkConfig->checkConfigs(...array_map(fn(FrameworkConfig $case):string => $case->value,FrameworkConfig::cases()));
+    }
+
+    /**
+     * @brief Initialise la base de données si requise
+     * @return void
+     * @throws ConfigException en cas d'erreur
+     */
+    private static function initDatabase():void{
+        $databaseConfig = self::$applicationConfig
+            ->getConfig("envConfig")
+            ->getConfig(EnvConfig::DATABASE_CONFIG->value);
+
+        if(!$databaseConfig->getConfig(DatabaseConfig::INIT_APP_WITH_CONNECTION->value) ) return;
+
+        // vérification de la présence de chaque élement de configuration
+        $databaseConfig->checkConfigs(...array_map(fn(DatabaseConfig $case):string => $case->value,DatabaseConfig::cases()));
+
+        // initialisation de la base de données
+        $databaseConfig
+            ->getConfig(DatabaseConfig::PROVIDER->value)
+            ->initDatabase($databaseConfig->getConfig(DatabaseConfig::PROVIDER_CONFIG->value));
+    }
+
+    /**
+     * @brief Affiche la page de page non trouvée
+     * @return void
+     */
+    private static function showInternalErrorPage():void{
+        try{
+            // affichage de la page d'erreur
+            $response = new HtmlResponse(
+                @file_get_contents(APP_CONFIG->getConfig("ROOT") . "/src/views/default-pages/internal-error.html") ??
+                "Erreur interne"
+            );
+
+            $response
+                ->setResponseCode(ResponseCode::INTERNAL_SERVER_ERROR)
+                ->renderResponse();
+        }
+        catch(Throwable){}
     }
 }

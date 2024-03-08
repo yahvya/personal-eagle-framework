@@ -15,7 +15,7 @@ class LaunchServerCommand extends SaboCommand{
     /**
      * @brief Port par défaut
      */
-    private const string DEFAULT_PORT = "8080";
+    protected const string DEFAULT_PORT = "8080";
 
     #[Override]
     public function execCommand(SaboCli $cli): void{

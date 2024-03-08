@@ -19,7 +19,7 @@ abstract class Application{
     /**
      * @var Config|null configuration de l'application
      */
-    private static ?Config $applicationConfig = null;
+    protected static ?Config $applicationConfig = null;
 
     /**
      * @brief Lance l'application
@@ -38,12 +38,10 @@ abstract class Application{
             try{
                 // initialisation de la base de données si requise
                 self::initDatabase();
-                // chargement des routes
-
-                // vérification de maintenance
-
                 // lancement de l'application
-                debugDie(parse_url($_SERVER["REQUEST_URI"],PHP_URL_PATH) );
+                $routingManager = new RoutingManager();
+
+                $routingManager->start();
             }
             catch(ConfigException $e){
                 if(self::$applicationConfig->getConfig("ENV_CONFIG")->getConfig(EnvConfig::DEV_MODE_CONFIG->value) )
@@ -52,7 +50,7 @@ abstract class Application{
                     throw $e;
             }
         }
-        catch(ConfigException) {
+        catch(Throwable) {
             self::showInternalErrorPage();
         }
     }
@@ -69,7 +67,7 @@ abstract class Application{
      * @throws ConfigException en cas de configuration non défini
      */
     public static function getEnvConfig():Config{
-        if(self::$applicationConfig) throw new ConfigException("Configuration d'environnement non trouvé");
+        if(self::$applicationConfig === null) throw new ConfigException("Configuration d'environnement non trouvé");
 
         return self::$applicationConfig->getConfig("ENV_CONFIG");
     }
@@ -79,7 +77,7 @@ abstract class Application{
      * @throws ConfigException en cas de configuration non défini
      */
     public static function getFrameworkConfig():Config{
-        if(self::$applicationConfig) throw new ConfigException("Configuration de framework non trouvé");
+        if(self::$applicationConfig === null) throw new ConfigException("Configuration de framework non trouvé");
 
         return self::$applicationConfig->getConfig("FRAMEWORK_CONFIG");
     }
@@ -89,7 +87,7 @@ abstract class Application{
      * @return void
      * @throws ConfigException en cas d'erreur
      */
-    private static function requireNeededFiles():void{
+    protected static function requireNeededFiles():void{
         require_once(self::$applicationConfig->getConfig("FUNCTIONS_CONFIG_FILEPATH") );
 
         self::$applicationConfig = Config::create()
@@ -102,7 +100,7 @@ abstract class Application{
      * @return void
      * @throws ConfigException en cas de configuration mal formée
      */
-    private static function checkConfigs():void{
+    protected static function checkConfigs():void{
         if(self::$applicationConfig === null) throw new ConfigException("Configuration non défini");
 
         // vérification de la configuration d'environnement
@@ -119,7 +117,7 @@ abstract class Application{
      * @return void
      * @throws ConfigException en cas d'erreur
      */
-    private static function initDatabase():void{
+    protected static function initDatabase():void{
         $databaseConfig = self::$applicationConfig
             ->getConfig("ENV_CONFIG")
             ->getConfig(EnvConfig::DATABASE_CONFIG->value);
@@ -139,7 +137,7 @@ abstract class Application{
      * @brief Affiche la page de page non trouvée
      * @return void
      */
-    private static function showInternalErrorPage():void{
+    protected static function showInternalErrorPage():void{
         try{
             // affichage de la page d'erreur
             $response = new HtmlResponse(

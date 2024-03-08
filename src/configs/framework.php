@@ -13,4 +13,5 @@ use SaboCore\Config\FrameworkConfig;
 return Config::create()
     // configurations requises
     ->setConfig(FrameworkConfig::PUBLIC_DIR_PATH->value,"/src/public")
-    ->setConfig(FrameworkConfig::STORAGE_DIR_PATH->value,"/src/storage");
+    ->setConfig(FrameworkConfig::STORAGE_DIR_PATH->value,"/src/storage")
+    ->setConfig(FrameworkConfig::AUTHORIZED_EXTENSIONS_AS_PUBLIC->value,[".css",".js"]);

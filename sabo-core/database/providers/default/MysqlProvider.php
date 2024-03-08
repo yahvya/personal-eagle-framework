@@ -17,7 +17,7 @@ class MysqlProvider extends DatabaseProvider{
     /**
      * @var PDO|null instance partagée de connexion à la base de données
      */
-    private static ?PDO $con;
+    protected static ?PDO $con;
 
     #[Override]
     public function initDatabase(Config $providerConfig):void{

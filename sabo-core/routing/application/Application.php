@@ -41,7 +41,7 @@ abstract class Application{
                 // lancement de l'application
                 $routingManager = new RoutingManager();
 
-                $routingManager->start();
+                $routingManager->start()->renderResponse();
             }
             catch(ConfigException $e){
                 if(self::$applicationConfig->getConfig("ENV_CONFIG")->getConfig(EnvConfig::DEV_MODE_CONFIG->value) )

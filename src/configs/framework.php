@@ -14,4 +14,6 @@ return Config::create()
     // configurations requises
     ->setConfig(FrameworkConfig::PUBLIC_DIR_PATH->value,"/src/public")
     ->setConfig(FrameworkConfig::STORAGE_DIR_PATH->value,"/src/storage")
+    ->setConfig(FrameworkConfig::ROUTES_BASEDIR_PATH->value,"/src/routes")
+    ->setConfig(FrameworkConfig::ROUTE_GENERIC_PARAMETER_MATCHER->value,":([a-zA-Z]+)")
     ->setConfig(FrameworkConfig::AUTHORIZED_EXTENSIONS_AS_PUBLIC->value,[".css",".js"]);

@@ -4,6 +4,7 @@ namespace SaboCore\Routing\Application;
 
 use SaboCore\Config\ConfigException;
 use SaboCore\Config\FrameworkConfig;
+use SaboCore\Routing\Response\Response;
 use SaboCore\Routing\Response\RessourceResponse;
 use Throwable;
 
@@ -22,17 +23,18 @@ class RoutingManager{
 
     /**
      * @brief Lance le routing de l'application
-     * @return never
+     * @return Response la réponse à afficher
      * @throws ConfigException|Throwable en cas d'erreur
      */
-    public function start():never{
+    public function start():Response{
         // chargement des routes
+        require_once(APP_CONFIG->getConfig("ROOT") . Application::getFrameworkConfig()->getConfig(FrameworkConfig::ROUTES_BASEDIR_PATH->value) . "/routes.php");
 
         // vérification de maintenance
 
+
         // vérification d'accès à une ressource
-        if($this->isAccessibleRessource() )
-            (new RessourceResponse(APP_CONFIG->getConfig("ROOT") . $this->link))->renderResponse();
+        if($this->isAccessibleRessource() ) return new RessourceResponse(APP_CONFIG->getConfig("ROOT") . $this->link);
 
         die();
     }

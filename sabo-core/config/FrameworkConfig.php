@@ -24,4 +24,17 @@ enum FrameworkConfig:string{
      * @type string[]
      */
     case AUTHORIZED_EXTENSIONS_AS_PUBLIC = "authorizedExtensionsAsPublic";
+
+    /**
+     * @brief Chemin du dossier contenant les routes
+     * @type string
+     */
+    case ROUTES_BASEDIR_PATH = "routesBasedirPath";
+
+    /**
+     * @brief Regex de match des paramètres génériques
+     * @type string
+     * @attention la regex doit capturer le nom de la variable ex: :articleName => :([a-zA-Z]+)
+     */
+    case ROUTE_GENERIC_PARAMETER_MATCHER = "routeGenericMatcher";
 }

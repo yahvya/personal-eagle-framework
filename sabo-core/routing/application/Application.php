@@ -7,6 +7,7 @@ use SaboCore\Config\ConfigException;
 use SaboCore\Config\DatabaseConfig;
 use SaboCore\Config\EnvConfig;
 use SaboCore\Config\FrameworkConfig;
+use SaboCore\Config\MaintenanceConfig;
 use SaboCore\Routing\Response\HtmlResponse;
 use SaboCore\Routing\Response\ResponseCode;
 use Throwable;
@@ -110,6 +111,10 @@ abstract class Application{
         // vérification de la configuration du framework
         $frameworkConfig = self::$applicationConfig->getConfig("FRAMEWORK_CONFIG");
         $frameworkConfig->checkConfigs(...array_map(fn(FrameworkConfig $case):string => $case->value,FrameworkConfig::cases()));
+
+        // vérification de la configuration de maintenancce
+        $maintenanceConfig = $envConfig->getConfig(EnvConfig::MAINTENANCE_CONFIG->value);
+        $maintenanceConfig->checkConfigs(...array_map(fn(MaintenanceConfig $case):string => $case->value,MaintenanceConfig::cases()));
     }
 
     /**

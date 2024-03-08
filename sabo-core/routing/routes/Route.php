@@ -58,7 +58,7 @@ class Route{
      * @param Closure|array $toExecute à exécuter pour traiter la route
      * @param string $routeName nom de la route
      * @param array $genericParamsRegex expressions régulières associées aux paramètres génériques
-     * @param AccessVerifier[] $accessVerifiers vérificateurs d'accès à la route
+     * @param AccessVerifier[] $accessVerifiers vérificateurs d'accès à la route, seuls les fonctions failures sont prises en compte et retournent Response
      */
     public function __construct(string $requestMethod,string $link,Closure|array $toExecute,string $routeName,array $genericParamsRegex = [],array $accessVerifiers = []){
         // formatage du lien
@@ -79,7 +79,7 @@ class Route{
      * @brief Ajoute un préfix au lien
      * @param string $prefix préfixe à ajouter à la route
      * @param array $genericParameters paramètres génériques à ajouter à la route
-     * @param AccessVerifier[] $accessVerifiers vérificateurs d'accès à la route
+     * @param AccessVerifier[] $accessVerifiers vérificateurs d'accès à la route, seuls les fonctions failures sont prises en compte et retournent Response
      * @return $this
      */
     public function addPrefix(string $prefix,array $genericParameters = [],array $accessVerifiers = []):Route{
@@ -114,6 +114,34 @@ class Route{
             $matchTable[$this->genericParamsOrder[$key - 1] ] = $value;
 
         return new MatchResult(true,$matchTable);
+    }
+
+    /**
+     * @return Closure|array l'action d'exécution
+     */
+    public function getToExecute():Closure|array{
+        return $this->toExecute;
+    }
+
+    /**
+     * @return AccessVerifier[] les vérificateurs de la route
+     */
+    public function getAccessVerifiers():array{
+        return $this->accessVerifiers;
+    }
+
+    /**
+     * @return string la méthode de requête
+     */
+    public function getRequestMethod():string{
+        return $this->requestMethod;
+    }
+
+    /**
+     * @return string le nom de la route
+     */
+    public function getRouteName():string{
+        return $this->routeName;
     }
 
     /**
@@ -156,7 +184,7 @@ class Route{
      * @param Closure|array $toExecute à exécuter pour traiter la route
      * @param string $routeName nom de la route
      * @param array $genericParamsRegex expressions régulières associées aux paramètres génériques
-     * @param AccessVerifier[] $accessVerifiers vérificateurs d'accès à la route
+     * @param AccessVerifier[] $accessVerifiers vérificateurs d'accès à la route, seuls les fonctions failures sont prises en compte et retournent Response
      * @return Route la route crée
      */
     public static function get(string $link,Closure|array $toExecute,string $routeName,array $genericParamsRegex = [],array $accessVerifiers = []):Route{
@@ -169,7 +197,7 @@ class Route{
      * @param Closure|array $toExecute Fonction à exécuter pour traiter la route
      * @param string $routeName Nom de la route
      * @param array $genericParamsRegex Expressions régulières associées aux paramètres génériques
-     * @param AccessVerifier[] $accessVerifiers Vérificateurs d'accès à la route
+     * @param AccessVerifier[] $accessVerifiers Vérificateurs d'accès à la route, seuls les fonctions failures sont prises en compte et retournent Response
      * @return Route La route créée
      */
     public static function delete(string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = [], array $accessVerifiers = []): Route {
@@ -182,7 +210,7 @@ class Route{
      * @param Closure|array $toExecute Fonction à exécuter pour traiter la route
      * @param string $routeName Nom de la route
      * @param array $genericParamsRegex Expressions régulières associées aux paramètres génériques
-     * @param AccessVerifier[] $accessVerifiers Vérificateurs d'accès à la route
+     * @param AccessVerifier[] $accessVerifiers Vérificateurs d'accès à la route, seuls les fonctions failures sont prises en compte et retournent Response
      * @return Route La route créée
      */
     public static function post(string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = [], array $accessVerifiers = []): Route {
@@ -195,7 +223,7 @@ class Route{
      * @param Closure|array $toExecute Fonction à exécuter pour traiter la route
      * @param string $routeName Nom de la route
      * @param array $genericParamsRegex Expressions régulières associées aux paramètres génériques
-     * @param AccessVerifier[] $accessVerifiers Vérificateurs d'accès à la route
+     * @param AccessVerifier[] $accessVerifiers Vérificateurs d'accès à la route, seuls les fonctions failures sont prises en compte et retournent Response
      * @return Route La route créée
      */
     public static function put(string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = [], array $accessVerifiers = []): Route {
@@ -208,7 +236,7 @@ class Route{
      * @param Closure|array $toExecute Fonction à exécuter pour traiter la route
      * @param string $routeName Nom de la route
      * @param array $genericParamsRegex Expressions régulières associées aux paramètres génériques
-     * @param AccessVerifier[] $accessVerifiers Vérificateurs d'accès à la route
+     * @param AccessVerifier[] $accessVerifiers Vérificateurs d'accès à la route, seuls les fonctions failures sont prises en compte et retournent Response
      * @return Route La route créée
      */
     public static function patch(string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = [], array $accessVerifiers = []): Route {
@@ -221,7 +249,7 @@ class Route{
      * @param Closure|array $toExecute Fonction à exécuter pour traiter la route
      * @param string $routeName Nom de la route
      * @param array $genericParamsRegex Expressions régulières associées aux paramètres génériques
-     * @param AccessVerifier[] $accessVerifiers Vérificateurs d'accès à la route
+     * @param AccessVerifier[] $accessVerifiers Vérificateurs d'accès à la route, seuls les fonctions failures sont prises en compte et retournent Response
      * @return Route La route créée
      */
     public static function options(string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = [], array $accessVerifiers = []): Route {
@@ -234,7 +262,7 @@ class Route{
      * @param Closure|array $toExecute Fonction à exécuter pour traiter la route
      * @param string $routeName Nom de la route
      * @param array $genericParamsRegex Expressions régulières associées aux paramètres génériques
-     * @param AccessVerifier[] $accessVerifiers Vérificateurs d'accès à la route
+     * @param AccessVerifier[] $accessVerifiers Vérificateurs d'accès à la route, seuls les fonctions failures sont prises en compte et retournent Response
      * @return Route La route créée
      */
     public static function head(string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = [], array $accessVerifiers = []): Route {
@@ -247,7 +275,7 @@ class Route{
      * @param Closure|array $toExecute Fonction à exécuter pour traiter la route
      * @param string $routeName Nom de la route
      * @param array $genericParamsRegex Expressions régulières associées aux paramètres génériques
-     * @param AccessVerifier[] $accessVerifiers Vérificateurs d'accès à la route
+     * @param AccessVerifier[] $accessVerifiers Vérificateurs d'accès à la route, seuls les fonctions failures sont prises en compte et retournent Response
      * @return Route La route créée
      */
     public static function trace(string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = [], array $accessVerifiers = []): Route {

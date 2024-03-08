@@ -2,10 +2,21 @@
 
 namespace SaboCore\Routing\Application;
 
+use Closure;
+use ReflectionClass;
+use ReflectionFunction;
+use ReflectionMethod;
 use SaboCore\Config\ConfigException;
+use SaboCore\Config\EnvConfig;
 use SaboCore\Config\FrameworkConfig;
+use SaboCore\Config\MaintenanceConfig;
+use SaboCore\Controller\Controller;
+use SaboCore\Routing\Request\Request;
+use SaboCore\Routing\Response\HtmlResponse;
+use SaboCore\Routing\Response\RedirectResponse;
 use SaboCore\Routing\Response\Response;
 use SaboCore\Routing\Response\RessourceResponse;
+use SaboCore\Routing\Routes\RouteManager;
 use Throwable;
 
 /**
@@ -31,12 +42,35 @@ class RoutingManager{
         require_once(APP_CONFIG->getConfig("ROOT") . Application::getFrameworkConfig()->getConfig(FrameworkConfig::ROUTES_BASEDIR_PATH->value) . "/routes.php");
 
         // vérification de maintenance
+        $maintenanceManager = $this->checkMaintenance();
 
+        if($maintenanceManager !== null) return $maintenanceManager;
 
         // vérification d'accès à une ressource
         if($this->isAccessibleRessource() ) return new RessourceResponse(APP_CONFIG->getConfig("ROOT") . $this->link);
 
-        die();
+        // recherche de l'action à faire
+        $searchResult = RouteManager::findRouteByLink($this->link);
+
+        // affichage de la page non trouvée
+        if($searchResult == null) return self::notFoundPage();
+
+        // vérification des conditions d'accès
+        ["route" => $route,"match" => $match] = $searchResult;
+        $matches = $match->getMatchTable();
+
+        $request = new Request();
+        $args = [$request,$matches];
+
+        // récupération et vérification des conditions
+        foreach($route->getAccessVerifiers() as $verifier) {
+            $verifyResult = $verifier->execVerification($args,$args,$args);
+
+            if(!empty($verifyResult["failure"]) ) return $verifyResult["failure"];
+        }
+
+        // lancement du programme
+        return $this->launch($route->getToExecute(),$matches,$request);
     }
 
     /**
@@ -61,4 +95,109 @@ class RoutingManager{
             // on vérifie que le fichier existe
             file_exists(APP_CONFIG->getConfig("ROOT") . $this->link);
     }
+
+    /**
+     * @brief lance la fonction de traitement
+     * @param array|Closure $toExecute l'action à exécuter
+     * @param array $matches les matchs dans l'URL
+     * @param Request $request la requête
+     * @return Response la réponse fournie
+     * @throws Throwable en cas d'erreur
+     */
+    protected function launch(array|Closure $toExecute,array $matches,Request $request):Response{
+        if($toExecute instanceof Closure){
+            $callable = $toExecute;
+            $reflectionMethod = new ReflectionFunction($toExecute);
+        }
+        elseif(is_subclass_of($toExecute[0],Controller::class) ){
+            $instance = (new ReflectionClass($toExecute[0]))->newInstance();
+            $callable = [$instance,$toExecute[1]];
+            $reflectionMethod = new ReflectionMethod($instance,$toExecute[1]);
+        }
+        else throw new ConfigException("Callable inconnu");
+
+        $args = [];
+
+        // affectation des paramètres attendue
+        foreach($reflectionMethod->getParameters() as $parameter){
+            // recherche de l'argument request
+            $type = $parameter->getType();
+
+            if($type !== null && $type->getName() === Request::class){
+                $args[] = $request;
+                continue;
+            }
+
+            // recherche de l'argument paramètre de l'URL
+            $parameterName = $parameter->getName();
+
+            if(array_key_exists($parameterName,$matches) )
+                $args[] = $matches[$parameterName];
+        }
+
+        return call_user_func_array($callable,$args);
+    }
+
+    /**
+     * @return Response|null vérifie la gestion de la maintenance
+     * @throws ConfigException|Throwable en cas d'erreur
+     */
+    protected function checkMaintenance():Response|null{
+        $maintenanceConfig = Application::getEnvConfig()->getConfig(EnvConfig::MAINTENANCE_CONFIG->value);
+        $maintenanceSecretLink = $maintenanceConfig->getConfig(MaintenanceConfig::SECRET_LINK->value);
+
+        if(!$maintenanceConfig->getConfig(MaintenanceConfig::IS_IN_MAINTENANCE->value) || $this->canAccessOnMaintenance() ) return null;
+        if($this->link !== $maintenanceSecretLink) return self::maintenancePage();
+
+        $maintenanceManager = (new ReflectionClass($maintenanceConfig->getConfig(MaintenanceConfig::ACCESS_MANAGER->value)))->newInstance();
+
+        // si la requête est POST authentification sinon affichage de la page d'authentification
+        if($_SERVER["REQUEST_METHOD"] === "POST"){
+            if($maintenanceManager->verifyLogin(new Request()) ){
+                $this->authorizeAccessOnMaintenance();
+                return new RedirectResponse("/");
+            }
+            else return new RedirectResponse($maintenanceSecretLink);
+        }
+        else return $maintenanceManager->showMaintenancePage($maintenanceSecretLink);
+    }
+
+    /**
+     * @return bool si l'utilisateur a accès au site
+     */
+    protected function canAccessOnMaintenance():bool{
+        return false;
+    }
+
+    /**
+     * @brief Autorise l'accès durant la maintenance
+     * @return void
+     */
+    protected function authorizeAccessOnMaintenance():void{
+
+    }
+
+    /**
+     * @return HtmlResponse la page non trouvée
+     * @throws ConfigException en cas d'erreur de configuration
+     */
+    public static function notFoundPage():HtmlResponse{
+        return new HtmlResponse(
+            @file_get_contents(APP_CONFIG->getConfig("ROOT") . "/src/views/default-pages/not-found.html") ??
+            "Page non trouvé"
+        );
+    }
+
+    /**
+     * @return HtmlResponse la page de maintenance
+     * @throws ConfigException en cas d'erreur de configuration
+     */
+    public static function maintenancePage():HtmlResponse{
+        return new HtmlResponse(
+            @file_get_contents(APP_CONFIG->getConfig("ROOT") . "/src/views/default-pages/maintenance.html") ??
+            "Site en cours de maintenance"
+        );
+    }
+
+
 }

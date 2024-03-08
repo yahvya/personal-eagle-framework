@@ -27,7 +27,7 @@ enum EnvConfig:string{
 
     /**
      * @brief Si l'application est en maintenance
-     * @type boolean
+     * @type Config
      */
     case MAINTENANCE_CONFIG = "maintenanceConfig";
 

@@ -41,7 +41,7 @@ class AccessVerifier{
      * @return bool le résultat de la vérification
      */
     public function verify(array $verifierArgs):bool{
-        return call_user_func($this->verifier,$verifierArgs);
+        return call_user_func_array($this->verifier,$verifierArgs);
     }
 
     /**
@@ -49,14 +49,14 @@ class AccessVerifier{
      * @param array $verifierArgs paramètres à envoyer à la fonction de vérification
      * @param array $onSuccessArgs arguments à envoyer à la fonction de succès
      * @param array $onFailureArgs arguments à envoyer à la fonction d'échec
-     * @return bool le résultat de la vérification
+     * @return array le résultat de la vérification ["success" → ...] ou ["failure" → ...] ou ["verifier" → ...]
      */
-    public function execVerification(array $verifierArgs,array $onSuccessArgs = [],array $onFailureArgs = []):bool{
+    public function execVerification(array $verifierArgs,array $onSuccessArgs = [],array $onFailureArgs = []):array{
         $verificationResult = $this->verify($verifierArgs);
 
-        if($verificationResult && $this->onSuccess !== null) call_user_func($this->onSuccess,$onSuccessArgs);
-        elseif(!$verificationResult && $this->onFailure !== null) call_user_func($this->onFailure,$onFailureArgs);
+        if($verificationResult && $this->onSuccess !== null) return ["success" => call_user_func_array($this->onSuccess,$onSuccessArgs)];
+        elseif(!$verificationResult && $this->onFailure !== null) return ["failure" => call_user_func_array($this->onFailure,$onFailureArgs)];
 
-        return $verificationResult;
+        return ["verifier" => $verificationResult];
     }
 }

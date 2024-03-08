@@ -11,7 +11,8 @@
             "SaboCore\\Utils\\Printer\\": "./utils/printer/",
             "SaboCore\\Cli\\Cli\\": "./cli/cli/",
             "SaboCore\\Cli\\Commands\\": "./cli/commands/",
-            "SaboCore\\Cli\\Theme\\": "./cli/theme/"
+            "SaboCore\\Cli\\Theme\\": "./cli/theme/",
+            "SaboCore\\Controller\\": "./controller"
         }
     },
     "require": {

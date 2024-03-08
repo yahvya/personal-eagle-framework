@@ -1,6 +1,7 @@
 <?php
 
 use SaboCore\Config\Config;
+use SaboCore\Config\FrameworkConfig;
 
 /**
  * @brief Fichier de configuration global du framework
@@ -9,4 +10,7 @@ use SaboCore\Config\Config;
 
 // placez ici les configurations globales
 
-return Config::create();
+return Config::create()
+    // configurations requises
+    ->setConfig(FrameworkConfig::PUBLIC_DIR_PATH->value,"/src/public")
+    ->setConfig(FrameworkConfig::STORAGE_DIR_PATH->value,"/src/storage");

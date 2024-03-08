@@ -25,7 +25,7 @@ define(
 Application::launchApplication(
     Config::create()
         // configurations des chemins
-        ->setConfig("ENV_CONFIG_FILEPATH","{$appRoot}/src/configs/env.php")
-        ->setConfig("FUNCTIONS_CONFIG_FILEPATH","{$appRoot}/src/configs/functions.php")
-        ->setConfig("FRAMEWORK_CONFIG_FILEPATH","{$appRoot}/src/configs/framework.php")
+        ->setConfig("ENV_CONFIG_FILEPATH","$appRoot/src/configs/env.php")
+        ->setConfig("FUNCTIONS_CONFIG_FILEPATH","$appRoot/src/configs/functions.php")
+        ->setConfig("FRAMEWORK_CONFIG_FILEPATH","$appRoot/src/configs/framework.php")
 );

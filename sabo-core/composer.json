@@ -5,6 +5,7 @@
             "SaboCore\\Routing\\Application\\": "./routing/application/",
             "SaboCore\\Routing\\Response\\": "./routing/response/",
             "SaboCore\\Routing\\Request\\": "./routing/request/",
+            "SaboCore\\Routing\\Routes\\": "./routing/routes/",
             "SaboCore\\Database\\Providers\\Providers\\": "./database/providers/providers/",
             "SaboCore\\Database\\Providers\\Default\\": "./database/providers/default/",
             "SaboCore\\Utils\\Printer\\": "./utils/printer/",

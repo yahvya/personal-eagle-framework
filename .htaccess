@@ -1,4 +1,3 @@
 RewriteEngine On
-RewriteCond %{REQUEST_URI} !^/src/public
-RewriteCond %{REQUEST_URI} !\.(css|js)
-RewriteRule (.*) sabo-core/index.php [L]
+RewriteCond %{REQUEST_URI} !^/sabo-core/index.php
+RewriteRule .* ./sabo-core/index.php

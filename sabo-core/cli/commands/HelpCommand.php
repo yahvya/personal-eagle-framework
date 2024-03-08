@@ -47,8 +47,8 @@ class HelpCommand extends SaboCommand {
     #[Override]
     public function getHelpLines(): array{
         return [
-            "php sabo $this->commandName",
             "Affiche la liste des commandes",
+            "php sabo $this->commandName"
         ];
     }
 }

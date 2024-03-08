@@ -64,6 +64,13 @@ class SaboCli{
     }
 
     /**
+     * @return ArgumentManager le gestionnaire d'arguments
+     */
+    public function getArgumentManager():ArgumentManager{
+        return $this->argumentManager;
+    }
+
+    /**
      * @brief Lance l'exécution du traitement cli
      * @return void
      */

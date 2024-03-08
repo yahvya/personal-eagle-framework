@@ -43,9 +43,10 @@ abstract class Application{
                 // vérification de maintenance
 
                 // lancement de l'application
+                debugDie(parse_url($_SERVER["REQUEST_URI"],PHP_URL_PATH) );
             }
             catch(ConfigException $e){
-                if(self::$applicationConfig->getConfig("envConfig")->getConfig(EnvConfig::DEV_MODE_CONFIG->value) )
+                if(self::$applicationConfig->getConfig("ENV_CONFIG")->getConfig(EnvConfig::DEV_MODE_CONFIG->value) )
                     debugDie($e);
                 else
                     throw $e;
@@ -70,7 +71,7 @@ abstract class Application{
     public static function getEnvConfig():Config{
         if(self::$applicationConfig) throw new ConfigException("Configuration d'environnement non trouvé");
 
-        return self::$applicationConfig->getConfig("envConfig");
+        return self::$applicationConfig->getConfig("ENV_CONFIG");
     }
 
     /**
@@ -80,7 +81,7 @@ abstract class Application{
     public static function getFrameworkConfig():Config{
         if(self::$applicationConfig) throw new ConfigException("Configuration de framework non trouvé");
 
-        return self::$applicationConfig->getConfig("frameworkConfig");
+        return self::$applicationConfig->getConfig("FRAMEWORK_CONFIG");
     }
 
     /**
@@ -92,8 +93,8 @@ abstract class Application{
         require_once(self::$applicationConfig->getConfig("FUNCTIONS_CONFIG_FILEPATH") );
 
         self::$applicationConfig = Config::create()
-            ->setConfig("envConfig",require_once(self::$applicationConfig->getConfig("ENV_CONFIG_FILEPATH") ) )
-            ->setConfig("frameworkConfig",require_once(self::$applicationConfig->getConfig("FRAMEWORK_CONFIG_FILEPATH") ) );
+            ->setConfig("ENV_CONFIG",require_once(self::$applicationConfig->getConfig("ENV_CONFIG_FILEPATH") ) )
+            ->setConfig("FRAMEWORK_CONFIG",require_once(self::$applicationConfig->getConfig("FRAMEWORK_CONFIG_FILEPATH") ) );
     }
 
     /**
@@ -105,11 +106,11 @@ abstract class Application{
         if(self::$applicationConfig === null) throw new ConfigException("Configuration non défini");
 
         // vérification de la configuration d'environnement
-        $envConfig = self::$applicationConfig->getConfig("envConfig");
+        $envConfig = self::$applicationConfig->getConfig("ENV_CONFIG");
         $envConfig->checkConfigs(...array_map(fn(EnvConfig $case):string => $case->value,EnvConfig::cases()));
 
         // vérification de la configuration du framework
-        $frameworkConfig = self::$applicationConfig->getConfig("frameworkConfig");
+        $frameworkConfig = self::$applicationConfig->getConfig("FRAMEWORK_CONFIG");
         $frameworkConfig->checkConfigs(...array_map(fn(FrameworkConfig $case):string => $case->value,FrameworkConfig::cases()));
     }
 
@@ -120,7 +121,7 @@ abstract class Application{
      */
     private static function initDatabase():void{
         $databaseConfig = self::$applicationConfig
-            ->getConfig("envConfig")
+            ->getConfig("ENV_CONFIG")
             ->getConfig(EnvConfig::DATABASE_CONFIG->value);
 
         if(!$databaseConfig->getConfig(DatabaseConfig::INIT_APP_WITH_CONNECTION->value) ) return;

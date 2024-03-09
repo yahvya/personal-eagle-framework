@@ -19,6 +19,7 @@
         "bebat/console-color": "^1.0",
         "symfony/var-dumper": "^7.0",
         "ext-pdo": "*",
-        "symfony/mime": "^7.0"
+        "symfony/mime": "^7.0",
+        "illuminate/view": "^10.47"
     }
 }

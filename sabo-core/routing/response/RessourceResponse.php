@@ -28,7 +28,12 @@ class RessourceResponse extends Response{
 
     #[Override]
     protected function renderContent(): never{
-        readfile($this->content);
+        try{
+            @readfile($this->content);
+        }
+        catch(Throwable){
+            die("Ressource non trouvé");
+        }
         die();
     }
 }

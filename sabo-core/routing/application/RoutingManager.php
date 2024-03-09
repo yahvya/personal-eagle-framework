@@ -17,6 +17,7 @@ use SaboCore\Routing\Response\RedirectResponse;
 use SaboCore\Routing\Response\Response;
 use SaboCore\Routing\Response\RessourceResponse;
 use SaboCore\Routing\Routes\RouteManager;
+use SaboCore\Utils\Session\FrameworkSession;
 use Throwable;
 
 /**
@@ -41,8 +42,10 @@ class RoutingManager{
         // chargement des routes
         require_once(APP_CONFIG->getConfig("ROOT") . Application::getFrameworkConfig()->getConfig(FrameworkConfig::ROUTES_BASEDIR_PATH->value) . "/routes.php");
 
+        $request = new Request();
+
         // vérification de maintenance
-        $maintenanceManager = $this->checkMaintenance();
+        $maintenanceManager = $this->checkMaintenance($request);
 
         if($maintenanceManager !== null) return $maintenanceManager;
 
@@ -59,7 +62,6 @@ class RoutingManager{
         ["route" => $route,"match" => $match] = $searchResult;
         $matches = $match->getMatchTable();
 
-        $request = new Request();
         $args = [$request,$matches];
 
         // récupération et vérification des conditions
@@ -135,26 +137,31 @@ class RoutingManager{
                 $args[] = $matches[$parameterName];
         }
 
+        // gestion des données flash
+        $request->getSessionStorage()->manageFlashDatas();
+
         return call_user_func_array($callable,$args);
     }
 
     /**
-     * @return Response|null vérifie la gestion de la maintenance
+     * @brief Vérifie la gestion de la maintenance
+     * @param Request $request requête
+     * @return Response|null la réponse ou null si accès autorisé
      * @throws ConfigException|Throwable en cas d'erreur
      */
-    protected function checkMaintenance():Response|null{
+    protected function checkMaintenance(Request $request):Response|null{
         $maintenanceConfig = Application::getEnvConfig()->getConfig(EnvConfig::MAINTENANCE_CONFIG->value);
         $maintenanceSecretLink = $maintenanceConfig->getConfig(MaintenanceConfig::SECRET_LINK->value);
 
-        if(!$maintenanceConfig->getConfig(MaintenanceConfig::IS_IN_MAINTENANCE->value) || $this->canAccessOnMaintenance() ) return null;
+        if(!$maintenanceConfig->getConfig(MaintenanceConfig::IS_IN_MAINTENANCE->value) || $this->canAccessOnMaintenance($request) ) return null;
         if($this->link !== $maintenanceSecretLink) return self::maintenancePage();
 
         $maintenanceManager = (new ReflectionClass($maintenanceConfig->getConfig(MaintenanceConfig::ACCESS_MANAGER->value)))->newInstance();
 
         // si la requête est POST authentification sinon affichage de la page d'authentification
         if($_SERVER["REQUEST_METHOD"] === "POST"){
-            if($maintenanceManager->verifyLogin(new Request()) ){
-                $this->authorizeAccessOnMaintenance();
+            if($maintenanceManager->verifyLogin() ){
+                $this->authorizeAccessOnMaintenance($request);
                 return new RedirectResponse("/");
             }
             else return new RedirectResponse($maintenanceSecretLink);
@@ -163,18 +170,20 @@ class RoutingManager{
     }
 
     /**
+     * @param Request $request gestionnaire de requête
      * @return bool si l'utilisateur a accès au site
      */
-    protected function canAccessOnMaintenance():bool{
-        return false;
+    protected function canAccessOnMaintenance(Request $request):bool{
+        return $request->getSessionStorage()->getFrameworkValue(FrameworkSession::MAINTENANCE_ACCESS->value) !== null;
     }
 
     /**
+     * @param Request $request gestionnaire de requête
      * @brief Autorise l'accès durant la maintenance
      * @return void
      */
-    protected function authorizeAccessOnMaintenance():void{
-
+    protected function authorizeAccessOnMaintenance(Request $request):void{
+        $request->getSessionStorage()->storeFramework(FrameworkSession::MAINTENANCE_ACCESS->value,true);
     }
 
     /**

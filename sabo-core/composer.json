@@ -9,6 +9,7 @@
             "SaboCore\\Database\\Providers\\Providers\\": "./database/providers/providers/",
             "SaboCore\\Database\\Providers\\Default\\": "./database/providers/default/",
             "SaboCore\\Utils\\Printer\\": "./utils/printer/",
+            "SaboCore\\Utils\\Session\\": "./utils/session/",
             "SaboCore\\Cli\\Cli\\": "./cli/cli/",
             "SaboCore\\Cli\\Commands\\": "./cli/commands/",
             "SaboCore\\Cli\\Theme\\": "./cli/theme/",

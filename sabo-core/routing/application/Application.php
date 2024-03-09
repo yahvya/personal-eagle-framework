@@ -112,7 +112,7 @@ abstract class Application{
         $frameworkConfig = self::$applicationConfig->getConfig("FRAMEWORK_CONFIG");
         $frameworkConfig->checkConfigs(...array_map(fn(FrameworkConfig $case):string => $case->value,FrameworkConfig::cases()));
 
-        // vérification de la configuration de maintenancce
+        // vérification de la configuration de maintenance
         $maintenanceConfig = $envConfig->getConfig(EnvConfig::MAINTENANCE_CONFIG->value);
         $maintenanceConfig->checkConfigs(...array_map(fn(MaintenanceConfig $case):string => $case->value,MaintenanceConfig::cases()));
     }

@@ -91,6 +91,7 @@ abstract class Application{
     protected static function requireNeededFiles():void{
         require_once(self::$applicationConfig->getConfig("FUNCTIONS_CONFIG_FILEPATH") );
         require_once(self::$applicationConfig->getConfig("BLADE_FUNCTIONS_CONFIG_FILEPATH") );
+        require_once(self::$applicationConfig->getConfig("TWIG_FUNCTIONS_CONFIG_FILEPATH") );
 
         self::$applicationConfig = Config::create()
             ->setConfig("ENV_CONFIG",require_once(self::$applicationConfig->getConfig("ENV_CONFIG_FILEPATH") ) )

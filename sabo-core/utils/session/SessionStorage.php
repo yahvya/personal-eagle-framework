@@ -2,6 +2,8 @@
 
 namespace SaboCore\Utils\Session;
 
+use SaboCore\Utils\Csrf\CsrfManager;
+
 /**
  * @brief Gestionnaire de session
  * @author yahaya bathily https://github.com/yahvya
@@ -13,7 +15,8 @@ class SessionStorage{
     protected const array KEYMAP = [
         "forUser" => "USER",
         "forFlashDatas" => "FLASH",
-        "forFramework" => "FRAMEWORK"
+        "forFramework" => "FRAMEWORK",
+        "forCsrfToken" => "CSRF_TOKEN"
     ];
 
     /**
@@ -141,5 +144,42 @@ class SessionStorage{
         }
 
         return $this;
+    }
+
+    /**
+     * @brief Stock un token
+     * @param CsrfManager $csrfManager le gestionnaire à stocker
+     * @return $this
+     */
+    public function storeCsrf(CsrfManager $csrfManager):SessionStorage{
+        $_SESSION[self::KEYMAP["forCsrfToken"] ][$csrfManager->getToken()] = $csrfManager->serialize();
+
+        return $this;
+    }
+
+    /**
+     * @param string $token le token csrf
+     * @return CsrfManager|null le gestionnaire ou null
+     */
+    public function getCsrfFrom(string $token):CsrfManager|null{
+        return isset($_SESSION[self::KEYMAP["forCsrfToken"]][$token]) ? CsrfManager::deserialize($_SESSION[self::KEYMAP["forCsrfToken"]][$token]) : null;
+    }
+
+    /**
+     * @brief Supprime le token csrf
+     * @param CsrfManager $csrfManager gestionnaire csrf à supprimer
+     * @return $this
+     */
+    public function deleteCsrf(CsrfManager $csrfManager):SessionStorage{
+        unset($_SESSION[self::KEYMAP["forCsrfToken"] ][$csrfManager->getToken()]);
+
+        return $this;
+    }
+
+    /**
+     * @return SessionStorage une nouvelle instance de SessionStorage
+     */
+    public static function create():SessionStorage{
+        return new SessionStorage();
     }
 }

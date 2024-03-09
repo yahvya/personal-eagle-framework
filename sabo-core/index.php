@@ -29,4 +29,5 @@ Application::launchApplication(
         ->setConfig("FUNCTIONS_CONFIG_FILEPATH","$appRoot/src/configs/functions.php")
         ->setConfig("FRAMEWORK_CONFIG_FILEPATH","$appRoot/src/configs/framework.php")
         ->setConfig("BLADE_FUNCTIONS_CONFIG_FILEPATH","$appRoot/src/configs/blade-config.php")
+        ->setConfig("TWIG_FUNCTIONS_CONFIG_FILEPATH","$appRoot/src/configs/twig-config.php")
 );

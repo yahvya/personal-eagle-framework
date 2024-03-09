@@ -15,7 +15,7 @@ class Request{
     protected SessionStorage $sessionStorage;
 
     public function __construct(){
-        $this->sessionStorage = new SessionStorage();
+        $this->sessionStorage = SessionStorage::create();
     }
 
     /**

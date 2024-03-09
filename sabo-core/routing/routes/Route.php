@@ -145,6 +145,13 @@ class Route{
     }
 
     /**
+     * @return string le lien associé
+     */
+    public function getRouteLink():string{
+        return $this->link;
+    }
+
+    /**
      * @brief Met à jour les données de la route à partir des informations contenues dans le lien ainsi que les paramètres génériques
      * @return $this
      */

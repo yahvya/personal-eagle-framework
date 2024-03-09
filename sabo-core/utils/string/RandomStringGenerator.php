@@ -6,7 +6,7 @@ namespace SaboCore\Utils\String;
  * @brief Générateur de chaine aléatoire
  * @author yahaya bathily https://github.com/yahvya
  */
-trait RandomStringGenerator{
+abstract class RandomStringGenerator{
     /**
      * @brief Construis une chaine aléatoire
      * @param int $length la taille de la chaine a généré (entier positif) par défaut 10

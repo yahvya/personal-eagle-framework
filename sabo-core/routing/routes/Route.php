@@ -65,7 +65,7 @@ class Route{
         if(!str_starts_with($link,"/") ) $link = "/$link";
         if(!str_ends_with($link,"/") ) $link = "$link/";
 
-        $this->requestMethod = $requestMethod;
+        $this->requestMethod = strtolower($requestMethod);
         $this->link = $link;
         $this->toExecute = $toExecute;
         $this->routeName = $routeName;

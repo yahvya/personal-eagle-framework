@@ -44,6 +44,13 @@ class BladeResponse extends HtmlResponse{
             $eventDispatcher = new Dispatcher(new Container);
             $viewResolver = new EngineResolver;
             $bladeCompiler = new BladeCompiler($filesystem, $pathToCompiledTemplates);
+
+            // enregistrement des directives
+            $bladeDirectives = registerBladeDirectives();
+
+            foreach ($bladeDirectives as $directive => $executor)
+                $bladeCompiler->directive($directive,$executor);
+
             $viewResolver->register("blade", function () use ($bladeCompiler) {
                 return new CompilerEngine($bladeCompiler);
             });

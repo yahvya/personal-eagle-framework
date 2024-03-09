@@ -28,4 +28,5 @@ Application::launchApplication(
         ->setConfig("ENV_CONFIG_FILEPATH","$appRoot/src/configs/env.php")
         ->setConfig("FUNCTIONS_CONFIG_FILEPATH","$appRoot/src/configs/functions.php")
         ->setConfig("FRAMEWORK_CONFIG_FILEPATH","$appRoot/src/configs/framework.php")
+        ->setConfig("BLADE_FUNCTIONS_CONFIG_FILEPATH","$appRoot/src/configs/blade-config.php")
 );

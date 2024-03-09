@@ -1,5 +1,5 @@
 .idea
 vendor
 sabo-core/vendor
-sabo-core/views/blade
+sabo-core/views
 src/configs/env.php

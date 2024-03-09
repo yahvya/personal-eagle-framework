@@ -10,6 +10,8 @@
             "SaboCore\\Database\\Providers\\Default\\": "./database/providers/default/",
             "SaboCore\\Utils\\Printer\\": "./utils/printer/",
             "SaboCore\\Utils\\Session\\": "./utils/session/",
+            "SaboCore\\Utils\\Api\\": "./utils/api/",
+            "SaboCore\\Utils\\String\\": "./utils/string/",
             "SaboCore\\Cli\\Cli\\": "./cli/cli/",
             "SaboCore\\Cli\\Commands\\": "./cli/commands/",
             "SaboCore\\Cli\\Theme\\": "./cli/theme/",
@@ -21,6 +23,8 @@
         "symfony/var-dumper": "^7.0",
         "ext-pdo": "*",
         "symfony/mime": "^7.0",
-        "illuminate/view": "^10.47"
+        "illuminate/view": "^10.47",
+        "ext-curl": "*",
+        "twig/twig": "^3.8"
     }
 }

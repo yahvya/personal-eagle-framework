@@ -2,6 +2,7 @@
 
 /**
  * @brief Fonctions globales utilitaires du framework
+ * @attention ces fonctions sont aussi disponible dans blade
  */
 
 /**

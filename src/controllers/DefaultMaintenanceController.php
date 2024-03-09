@@ -18,7 +18,6 @@ class DefaultMaintenanceController extends MaintenanceController{
 
     #[Override]
     public function verifyLogin(Request $request): bool{
-        debugDie("verification");
         return true;
     }
 }

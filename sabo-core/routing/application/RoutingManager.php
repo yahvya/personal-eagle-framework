@@ -160,7 +160,7 @@ class RoutingManager{
 
         // si la requête est POST authentification sinon affichage de la page d'authentification
         if($_SERVER["REQUEST_METHOD"] === "POST"){
-            if($maintenanceManager->verifyLogin() ){
+            if($maintenanceManager->verifyLogin($request) ){
                 $this->authorizeAccessOnMaintenance($request);
                 return new RedirectResponse("/");
             }

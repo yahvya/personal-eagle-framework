@@ -86,6 +86,39 @@ class SessionStorage{
     }
 
     /**
+     * @brief Supprime une valeur en session
+     * @param string $storeKey clé de stockage
+     * @return $this
+     */
+    public function delete(string $storeKey):SessionStorage{
+        unset($_SESSION[self::KEYMAP["forUser"] ][$storeKey]);
+
+        return $this;
+    }
+
+    /**
+     * @brief Supprime une valeur en session framework
+     * @param string $storeKey clé de stockage
+     * @return $this
+     */
+    public function deleteInFramework(string $storeKey):SessionStorage{
+        unset($_SESSION[self::KEYMAP["forFramework"] ][$storeKey]);
+
+        return $this;
+    }
+
+    /**
+     * @brief Supprime une valeur en session flash
+     * @param string $storeKey clé de stockage
+     * @return $this
+     */
+    public function deleteInFlash(string $storeKey):SessionStorage{
+        unset($_SESSION[self::KEYMAP["forFlashDatas"] ][$storeKey]);
+
+        return $this;
+    }
+
+    /**
      * @brief Gère la durée de vie des données flash
      * @return $this
      */
@@ -95,10 +128,16 @@ class SessionStorage{
         foreach($_SESSION[self::KEYMAP["forFlashDatas"] ] as $key => $flashConfig){
             // vérification sur la durée et le temps d'expiration
             if(
-                $flashConfig["countOfRedirectBefore"] === 0 ||
-                time() - $flashConfig["storeTime"] >= $flashConfig["timeBeforeDelete"]
-            )
+                $flashConfig["config"]["countOfRedirectBefore"] === 0 ||
+                time() - $flashConfig["config"]["storeTime"] >= $flashConfig["config"]["timeBeforeDelete"]
+            ){
                 unset($_SESSION[self::KEYMAP["forFlashDatas"] ][$key]);
+                continue;
+            }
+
+            $flashConfig["config"]["countOfRedirectBefore"]--;
+
+            $_SESSION[self::KEYMAP["forFlashDatas"] ][$key] = $flashConfig;
         }
 
         return $this;

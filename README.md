@@ -18,7 +18,7 @@ cd ..
 composer install
 rm README.md
 cd src/views/mails
-rm /.gitkeep
+rm .gitkeep
 cd ../../configs
 mv env.example.php env.php
 cd ../storage/maintenance

@@ -48,4 +48,4 @@ php sabo serve
 - Le dossier **storage** représente le dossier de stockage de l'application, par défaut contient le fichier hash d'accès à la maintenance
 - Le dossier **routes** contenant les différentes routes de l'application
 - Le dossier **treatment** visant à contenir les class de traitement contient par défaut CustomTreatment classe parent customisable des class de traitement
-- Le dossier **views** racine de recherche des élélements de vue, peut contenir du css et js accessible  
+- Le dossier **views** racine de recherche des éléments de vue, peut contenir du css et js accessible  

@@ -37,7 +37,7 @@ return Config::create()
     ->setConfig(
         EnvConfig::DATABASE_CONFIG->value,
         Config::create()
-            ->setConfig(DatabaseConfig::INIT_APP_WITH_CONNECTION->value,true)
+            ->setConfig(DatabaseConfig::INIT_APP_WITH_CONNECTION->value,false)
             ->setConfig(DatabaseConfig::PROVIDER->value,new MysqlProvider() )
             ->setConfig(
                 DatabaseConfig::PROVIDER_CONFIG->value,

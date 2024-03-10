@@ -18,6 +18,8 @@
             "SaboCore\\Utils\\Api\\": "./utils/api/",
             "SaboCore\\Utils\\String\\": "./utils/string/",
             "SaboCore\\Utils\\Csrf\\": "./utils/csrf/",
+            "SaboCore\\Utils\\Storage\\": "./utils/storage/",
+            "SaboCore\\Utils\\FileManager\\": "./utils/file-manager/",
             "SaboCore\\Utils\\TwigExtensions\\": "./utils/twig-extensions/",
             "SaboCore\\Cli\\Cli\\": "./cli/cli/",
             "SaboCore\\Cli\\Commands\\": "./cli/commands/",

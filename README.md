@@ -17,7 +17,6 @@ composer install
 cd ..
 composer install
 rm README.md
-rm -r .git
 cd src/views/mails
 rm /.gitkeep
 cd ../../configs

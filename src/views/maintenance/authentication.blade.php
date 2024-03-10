@@ -14,7 +14,8 @@
     <form class="m-auto w-75" action="{{ $secretLink }}" method="post">
         <div class="form-group">
             <label for="password" class="form-label">Mot de passe</label>
-            <input type="password" class="form-control" id="password" aria-describedby="password" placeholder="Entrez votre mot de passe" required>
+            <input type="hidden" name="csrf" value="{{ generateCsrf()->getToken() }}">
+            <input type="password" class="form-control" id="password" aria-describedby="password" placeholder="Entrez votre mot de passe" required name="password">
         </div>
 
         <button type="submit" class="btn btn-primary mb-2 mt-5 m-auto d-block">Accéder au site</button>

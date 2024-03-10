@@ -12,7 +12,7 @@ use SaboCore\Utils\Storage\Storable;
  * @brief Gestionnaire de fichier serveur
  * @author yahaya bathily
  */
-abstract class FileManager implements Storable {
+class FileManager implements Storable {
     /**
      * @var string chemin complet du fichier
      */
@@ -39,19 +39,27 @@ abstract class FileManager implements Storable {
      * @return string|null l'extension trouvée ou
      */
     public function getExtension(bool $fromFirstOccur = true,string $extensionSeparator = "."):string|null{
-        $pos = $fromFirstOccur ? @strpos($this->fileAbsolutePath,$extensionSeparator) : @strrpos($this->fileAbsolutePath,$extensionSeparator);
+        $extension = $this->fileAbsolutePath;
 
-        if($pos === false) return null;
+        // récupération de l'extension dans que la chaine résultat contient des séparateurs de chemin
+        do {
+            $pos = $fromFirstOccur ? @strpos($extension,$extensionSeparator) : @strrpos($extension, $extensionSeparator);
 
-        return @substr($this->fileAbsolutePath,$pos + 1);
+            if ($pos === false) return null;
+
+            $extension = @substr($extension, $pos + 1);
+        }while(str_contains($extension,"/") || str_contains($extension,"\\") );
+
+        return $extension;
     }
 
     /**
+     * @param string|null $fileName nom à donner au fichier téléchargé ou null pour conserver le nom par défaut
      * @return DownloadResponse le fichier au téléchargement
      * @throws TreatmentException en cas de fichier non téléchargeable
      */
-    public function getToDownload():DownloadResponse{
-        return new DownloadResponse($this->fileAbsolutePath);
+    public function getToDownload(?string $fileName = null):DownloadResponse{
+        return new DownloadResponse($this->fileAbsolutePath,$fileName);
     }
 
     /**
@@ -82,6 +90,7 @@ abstract class FileManager implements Storable {
 
     /**
      * @return FileContentManager|null gestionnaire de contenu de fichier si échec de lecture du contenu
+     * @attention adapté aux fichiers à contenu textuel
      */
     #[Override]
     public function getFromStorage():?FileContentManager{

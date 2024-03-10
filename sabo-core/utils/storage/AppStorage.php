@@ -24,7 +24,7 @@ abstract class AppStorage{
             $dirname = @dirname($storagePath);
 
             // création du dossier résultat s'il n'existe pas
-            if($createFoldersIfNotExists){
+            if($createFoldersIfNotExists && !is_dir($dirname)){
                 if(!@mkdir($dirname,recursive: true) )
                     return false;
             }
@@ -49,7 +49,7 @@ abstract class AppStorage{
             $dirname = @dirname($storagePath);
 
             // création du dossier résultat s'il n'existe pas
-            if($createFoldersIfNotExists){
+            if($createFoldersIfNotExists && !is_dir($dirname)){
                 if(!@mkdir($dirname,recursive: true) )
                     return false;
             }
@@ -74,7 +74,7 @@ abstract class AppStorage{
             $dirname = @dirname($storagePath);
 
             // création du dossier résultat s'il n'existe pas
-            if($createFoldersIfNotExists){
+            if($createFoldersIfNotExists && !is_dir($dirname) ){
                 if(!@mkdir($dirname,recursive: true) )
                     return false;
             }
@@ -93,7 +93,7 @@ abstract class AppStorage{
      */
     public static function buildStorageCompletePath(string $pathFromStorage):string{
         try{
-            $completePath = Application::getFrameworkConfig()->getConfig(FrameworkConfig::STORAGE_DIR_PATH->value);
+            $completePath = APP_CONFIG->getConfig("ROOT") . Application::getFrameworkConfig()->getConfig(FrameworkConfig::STORAGE_DIR_PATH->value);
 
             if(str_ends_with($completePath,"/") ) $completePath = substr($completePath,0,-1);
             if(!str_starts_with($pathFromStorage,"/") ) $pathFromStorage = "/$pathFromStorage";

@@ -24,11 +24,12 @@ class FormFileManager extends FileManager{
     }
 
     /**
+     * @param string|null $fileName
      * @inheritDoc
      * @attention fonction inactive pour les fichiers de formulaire, passer par FileManager
      */
     #[Override]
-    public function getToDownload(): DownloadResponse{
+    public function getToDownload(?string $fileName = null): DownloadResponse{
         throw new TreatmentException("Ce fichier ne peut pas être téléchargé",true);
     }
 
@@ -44,6 +45,15 @@ class FormFileManager extends FileManager{
     #[Override]
     public function getFromStorage(): ?FileContentManager{
         return null;
+    }
+
+    /**
+     * @inheritDoc
+     * @attention fonction inactive pour les fichiers de formulaire, passer par FileManager
+     */
+    #[Override]
+    public function delete(): bool{
+        return false;
     }
 
     /**

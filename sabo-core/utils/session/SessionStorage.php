@@ -10,23 +10,13 @@ use SaboCore\Utils\Csrf\CsrfManager;
  */
 class SessionStorage{
     /**
-     * @brief mappage des clés de stockage de la session
-     */
-    protected const array KEYMAP = [
-        "forUser" => "USER",
-        "forFlashDatas" => "FLASH",
-        "forFramework" => "FRAMEWORK",
-        "forCsrfToken" => "CSRF_TOKEN"
-    ];
-
-    /**
      * @brief Stock une donnée
      * @param string $storeKey clé de la donnée
      * @param mixed $toStore donnée
      * @return $this
      */
     public function store(string $storeKey,mixed $toStore):SessionStorage{
-        $_SESSION[self::KEYMAP["forUser"] ][$storeKey] = $toStore;
+        $_SESSION[SessionStorageKeymap::FOR_USER->value][$storeKey] = $toStore;
 
         return $this;
     }
@@ -40,7 +30,7 @@ class SessionStorage{
      * @return $this
      */
     public function storeFlash(string $storeKey,mixed $toStore,int $countOfRedirectBefore = 1,int $timeBeforeDelete = 1800):SessionStorage{
-        $_SESSION[self::KEYMAP["forFlashDatas"] ][$storeKey] = [
+        $_SESSION[SessionStorageKeymap::FOR_FLASH->value][$storeKey] = [
             "value" => $toStore,
             "config" => [
                 "countOfRedirectBefore" => $countOfRedirectBefore,
@@ -59,7 +49,7 @@ class SessionStorage{
      * @return $this
      */
     public function storeFramework(string $storeKey,mixed $toStore):SessionStorage{
-        $_SESSION[self::KEYMAP["forFramework"] ][$storeKey] = $toStore;
+        $_SESSION[SessionStorageKeymap::FOR_FRAMEWORK->value][$storeKey] = $toStore;
 
         return $this;
     }
@@ -69,7 +59,7 @@ class SessionStorage{
      * @return mixed la valeur stockée ou null si non trouvé
      */
     public function getValue(string $storeKey):mixed{
-        return $_SESSION[self::KEYMAP["forUser"]][$storeKey] ?? null;
+        return $_SESSION[SessionStorageKeymap::FOR_USER->value][$storeKey] ?? null;
     }
 
     /**
@@ -77,7 +67,7 @@ class SessionStorage{
      * @return mixed la valeur stockée ou null si non trouvé
      */
     public function getFrameworkValue(string $storeKey):mixed{
-        return $_SESSION[self::KEYMAP["forFramework"]][$storeKey] ?? null;
+        return $_SESSION[SessionStorageKeymap::FOR_FRAMEWORK->value][$storeKey] ?? null;
     }
 
     /**
@@ -85,7 +75,9 @@ class SessionStorage{
      * @return mixed la valeur stockée ou null si non trouvé
      */
     public function getFlashValue(string $storeKey):mixed{
-        return isset($_SESSION[self::KEYMAP["forFlashDatas"]][$storeKey]) ? $_SESSION[self::KEYMAP["forFlashDatas"]][$storeKey]["value"] : null;
+        return isset($_SESSION[SessionStorageKeymap::FOR_FLASH->value][$storeKey]) ?
+            $_SESSION[SessionStorageKeymap::FOR_FLASH->value][$storeKey]["value"] :
+            null;
     }
 
     /**
@@ -94,7 +86,7 @@ class SessionStorage{
      * @return $this
      */
     public function delete(string $storeKey):SessionStorage{
-        unset($_SESSION[self::KEYMAP["forUser"] ][$storeKey]);
+        unset($_SESSION[SessionStorageKeymap::FOR_USER->value][$storeKey]);
 
         return $this;
     }
@@ -105,7 +97,7 @@ class SessionStorage{
      * @return $this
      */
     public function deleteInFramework(string $storeKey):SessionStorage{
-        unset($_SESSION[self::KEYMAP["forFramework"] ][$storeKey]);
+        unset($_SESSION[SessionStorageKeymap::FOR_FRAMEWORK->value][$storeKey]);
 
         return $this;
     }
@@ -116,7 +108,7 @@ class SessionStorage{
      * @return $this
      */
     public function deleteInFlash(string $storeKey):SessionStorage{
-        unset($_SESSION[self::KEYMAP["forFlashDatas"] ][$storeKey]);
+        unset($_SESSION[SessionStorageKeymap::FOR_FLASH->value][$storeKey]);
 
         return $this;
     }
@@ -126,21 +118,21 @@ class SessionStorage{
      * @return $this
      */
     public function manageFlashDatas():SessionStorage{
-        if(!isset($_SESSION[self::KEYMAP["forFlashDatas"] ]) ) $_SESSION[self::KEYMAP["forFlashDatas"] ] = [];
+        if(!isset($_SESSION[SessionStorageKeymap::FOR_FLASH->value]) ) $_SESSION[SessionStorageKeymap::FOR_FLASH->value] = [];
 
-        foreach($_SESSION[self::KEYMAP["forFlashDatas"] ] as $key => $flashConfig){
+        foreach($_SESSION[SessionStorageKeymap::FOR_FLASH->value] as $key => $flashConfig){
             // vérification sur la durée et le temps d'expiration
             if(
                 $flashConfig["config"]["countOfRedirectBefore"] === 0 ||
                 time() - $flashConfig["config"]["storeTime"] >= $flashConfig["config"]["timeBeforeDelete"]
             ){
-                unset($_SESSION[self::KEYMAP["forFlashDatas"] ][$key]);
+                unset($_SESSION[SessionStorageKeymap::FOR_FLASH->value][$key]);
                 continue;
             }
 
             $flashConfig["config"]["countOfRedirectBefore"]--;
 
-            $_SESSION[self::KEYMAP["forFlashDatas"] ][$key] = $flashConfig;
+            $_SESSION[SessionStorageKeymap::FOR_FLASH->value][$key] = $flashConfig;
         }
 
         return $this;
@@ -152,7 +144,7 @@ class SessionStorage{
      * @return $this
      */
     public function storeCsrf(CsrfManager $csrfManager):SessionStorage{
-        $_SESSION[self::KEYMAP["forCsrfToken"] ][$csrfManager->getToken()] = $csrfManager->serialize();
+        $_SESSION[SessionStorageKeymap::FOR_CSRF_TOKEN->value][$csrfManager->getToken()] = $csrfManager->serialize();
 
         return $this;
     }
@@ -162,7 +154,9 @@ class SessionStorage{
      * @return CsrfManager|null le gestionnaire ou null
      */
     public function getCsrfFrom(string $token):CsrfManager|null{
-        return isset($_SESSION[self::KEYMAP["forCsrfToken"]][$token]) ? CsrfManager::deserialize($_SESSION[self::KEYMAP["forCsrfToken"]][$token]) : null;
+        return isset($_SESSION[SessionStorageKeymap::FOR_CSRF_TOKEN->value][$token]) ?
+            CsrfManager::deserialize($_SESSION[SessionStorageKeymap::FOR_CSRF_TOKEN->value][$token]) :
+            null;
     }
 
     /**
@@ -171,7 +165,7 @@ class SessionStorage{
      * @return $this
      */
     public function deleteCsrf(CsrfManager $csrfManager):SessionStorage{
-        unset($_SESSION[self::KEYMAP["forCsrfToken"] ][$csrfManager->getToken()]);
+        unset($_SESSION[SessionStorageKeymap::FOR_CSRF_TOKEN->value][$csrfManager->getToken()]);
 
         return $this;
     }

@@ -1,6 +1,8 @@
 .idea
 vendor
 sabo-core/vendor
+src/configs/env.php
 sabo-core/views/blade/compiled/*
 sabo-core/views/twig/*
-src/configs/env.php
+!sabo-core/views/blade/compiled/.gitkeep
+!sabo-core/views/twig/.gitkeep

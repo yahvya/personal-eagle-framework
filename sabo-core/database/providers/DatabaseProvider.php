@@ -1,6 +1,6 @@
 <?php
 
-namespace SaboCore\Database\Providers\Providers;
+namespace SaboCore\Database\Providers;
 
 use SaboCore\Config\Config;
 use SaboCore\Config\ConfigException;
@@ -17,4 +17,9 @@ abstract class DatabaseProvider{
      * @throws ConfigException en cas d'erreur
      */
     public abstract function initDatabase(Config $providerConfig):void;
+
+    /**
+     * @return mixed le gestionnaire de connexion
+     */
+    public abstract function getCon():mixed;
 }

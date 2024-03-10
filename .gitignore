@@ -1,5 +1,6 @@
 .idea
 vendor
 sabo-core/vendor
-sabo-core/views
+sabo-core/views/blade/compiled/
+sabo-core/views/twig/
 src/configs/env.php

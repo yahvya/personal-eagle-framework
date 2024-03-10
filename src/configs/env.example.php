@@ -5,7 +5,7 @@ use SaboCore\Config\Config;
 use SaboCore\Config\DatabaseConfig;
 use SaboCore\Config\EnvConfig;
 use SaboCore\Config\MaintenanceConfig;
-use SaboCore\Database\Providers\Default\MysqlProvider;
+use SaboCore\Database\Default\provider\MysqlProvider;
 
 /**
  * @brief Fichier d'environnement du framework

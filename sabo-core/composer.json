@@ -21,6 +21,7 @@
             "SaboCore\\Utils\\Storage\\": "./utils/storage/",
             "SaboCore\\Utils\\FileManager\\": "./utils/file-manager/",
             "SaboCore\\Utils\\TwigExtensions\\": "./utils/twig-extensions/",
+            "SaboCore\\Utils\\Mailer\\": "./utils/mailer/",
             "SaboCore\\Cli\\Cli\\": "./cli/cli/",
             "SaboCore\\Cli\\Commands\\": "./cli/commands/",
             "SaboCore\\Cli\\Theme\\": "./cli/theme/",
@@ -34,6 +35,7 @@
         "symfony/mime": "^7.0",
         "illuminate/view": "^10.47",
         "ext-curl": "*",
-        "twig/twig": "^3.8"
+        "twig/twig": "^3.8",
+        "phpmailer/phpmailer": "^6.9"
     }
 }

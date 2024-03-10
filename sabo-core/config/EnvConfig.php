@@ -36,4 +36,10 @@ enum EnvConfig:string{
      * @type boolean true oui sinon production
      */
     case DEV_MODE_CONFIG = "devModeConfig";
+
+    /**
+     * @brief Configuration de l'envoi de mail
+     * @type Config
+     */
+    case MAILER_CONFIG = "mailerConfig";
 }

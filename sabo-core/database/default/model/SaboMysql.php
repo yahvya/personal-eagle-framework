@@ -183,7 +183,7 @@ abstract class SaboMysql implements System{
      * @param array $conditions conditions à vérifier, format [attribute_name => value] ou [attribute_name => [value,SqlComparator,(non obligatoire and par défaut)] SqlSeparator and ou or]
      * @param array $toSelect le nom des attributs liés aux colonnes à récupérer
      * @param bool $getBaseResult défini si les résultats doivent être retournés telles qu'elles (PDOStatement) ou sous forme d'objets
-     * @return PDOStatement|array|bool|null un tableau contenant les objets si résultats multiples ou PDOStatement de la requête si getBaseResult à true ou null si aucun résultat
+     * @return PDOStatement|SaboModel[]|bool|null un tableau contenant les objets si résultats multiples ou PDOStatement de la requête si getBaseResult à true ou null si aucun résultat
      * @throws Throwable (en mode debug) si données mal formulées
      */
     public static function find(array $conditions = [], array $toSelect = [], bool $getBaseResult = false): PDOStatement|array|bool|null
@@ -231,7 +231,7 @@ abstract class SaboMysql implements System{
         try{
             self::$sharedCon = Application::getEnvConfig()
                 ->getConfig(EnvConfig::DATABASE_CONFIG->value)
-                ->getConfig(DatabaseConfig::PROVIDER)->getCon();
+                ->getConfig(DatabaseConfig::PROVIDER->value)->getCon();
 
             return self::$sharedCon != null;
         }

@@ -78,7 +78,7 @@ abstract class SaboModel extends SaboMysql{
         // vérification des conditions dans le cas où c'est un champ lié à la base de donnée
         if(!empty($this->columnsConfiguration[$attributeName]["haveToCheckCond"]) ){
             // vérification des conditions
-            $conditions = $this->columnsConfiguration[$attributeName]["configClass"]->getConds();
+            $conditions = $this->columnsConfiguration[$attributeName]["configClass"]->getConditions();
 
             foreach($conditions as $cond){
                 try{

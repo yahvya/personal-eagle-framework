@@ -96,6 +96,6 @@ class FileManager implements Storable {
     public function getFromStorage():?FileContentManager{
         $fileContent = @file_get_contents($this->fileAbsolutePath);
 
-        return $fileContent === null ? null : new FileContentManager($fileContent);
+        return $fileContent === false ? null : new FileContentManager($fileContent);
     }
 }

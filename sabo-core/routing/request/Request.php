@@ -16,8 +16,15 @@ class Request{
      */
     protected SessionStorage $sessionStorage;
 
+    /**
+     * @var array en-têtes de la requête
+     */
+    protected array $headers;
+
     public function __construct(){
         $this->sessionStorage = SessionStorage::create();
+        $headers = apache_request_headers();
+        $this->headers = $headers !== false ? $headers : [];
     }
 
     /**
@@ -105,6 +112,15 @@ class Request{
             $values[$key] = new FormFileManager($file);
 
         return $values;
+    }
+
+    /**
+     * @brief Fourni un en tête requête
+     * @param string $header nom de l'en tête
+     * @return string|null l'en-tête ou null si non trouvé
+     */
+    public function getHeader(string $header):string|null{
+        return $this->headers[$header] ?? null;
     }
 
     /**

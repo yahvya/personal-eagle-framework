@@ -24,9 +24,10 @@ mv env.example.php env.php
 cd ../storage/maintenance
 mv maintenance.secret.example maintenance.secret
 cd ../../../
+rm -r -fo .git
+rm -r .git
 clear
 php sabo serve
-
 ```
 
 ### Lancement du site

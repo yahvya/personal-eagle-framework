@@ -25,7 +25,8 @@
             "SaboCore\\Cli\\Cli\\": "./cli/cli/",
             "SaboCore\\Cli\\Commands\\": "./cli/commands/",
             "SaboCore\\Cli\\Theme\\": "./cli/theme/",
-            "SaboCore\\Controller\\": "./controller"
+            "SaboCore\\Controller\\": "./controller/",
+            "SaboCore\\Treatment\\": "./treatment/"
         }
     },
     "require": {

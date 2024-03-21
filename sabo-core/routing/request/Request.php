@@ -2,7 +2,7 @@
 
 namespace SaboCore\Routing\Request;
 
-use SaboCore\treatment\TreatmentException;
+use SaboCore\Treatment\TreatmentException;
 use SaboCore\Utils\FileManager\FormFileManager;
 use SaboCore\Utils\Session\SessionStorage;
 

@@ -30,7 +30,7 @@ class RoutingManager{
     protected string $link;
 
     public function __construct(){
-        $this->link = parse_url($_SERVER["REQUEST_URI"],PHP_URL_PATH);
+        $this->link = urldecode($_SERVER["REQUEST_URI"]);
     }
 
     /**

@@ -24,20 +24,20 @@ trait Update{
 
         // ajout des valeurs set
         foreach($toUpdate as $attributeName => $value){
-            $columnName = $this->getAttributeLinkedColName($attributeName);
+            $columnName = $this->getAttributeLinkedColName(attributeName: $attributeName);
 
             $toJoin[] = "$this->as.$columnName = ?";
             $this->toBind[] = $value;
         }
 
         if(count($toJoin) == 0){
-            if(Application::getEnvConfig()->getConfig(EnvConfig::DEV_MODE_CONFIG->value) )
-                throw new Exception("Aucune valeur à mettre à jour");
+            if(Application::getEnvConfig()->getConfig(name: EnvConfig::DEV_MODE_CONFIG->value) )
+                throw new Exception(message: "Aucune valeur à mettre à jour");
             else    
                 return $this;
         }
 
-        $this->sqlString .= implode(",",$toJoin) . " ";
+        $this->sqlString .= implode(separator: ",",array: $toJoin) . " ";
         
         return $this;
     }

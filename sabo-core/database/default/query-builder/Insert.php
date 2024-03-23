@@ -19,8 +19,8 @@ trait Insert{
      */
     public function insert(array $values):QueryBuilder{
         if(empty($values) ){
-            if(Application::getEnvConfig()->getConfig(EnvConfig::DEV_MODE_CONFIG->value) )
-                throw new Exception("Values ne peut être vide dans une requête insert");
+            if(Application::getEnvConfig()->getConfig(name: EnvConfig::DEV_MODE_CONFIG->value) )
+                throw new Exception(message: "Values ne peut être vide dans une requête insert");
             else
                 return $this;
         }
@@ -35,7 +35,7 @@ trait Insert{
             $this->toBind[] = $value;
         }
 
-        $this->sqlString = "INSERT INTO {$this->linkedModel->getTableName()} (" . implode(",",$columnsToInsert) . ") VALUES(" . implode(",",$marks) . ") ";
+        $this->sqlString = "INSERT INTO {$this->linkedModel->getTableName()} (" . implode(separator: ",",array: $columnsToInsert) . ") VALUES(" . implode(separator: ",",array: $marks) . ") ";
 
         return $this;
     }

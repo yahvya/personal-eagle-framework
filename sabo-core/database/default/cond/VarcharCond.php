@@ -39,8 +39,8 @@ class VarcharCond implements Cond{
 
     #[Override]
     public function checkCondWith(mixed $data):bool{
-        if(gettype($data) == "string"){
-            $len = strlen($data);
+        if(gettype(value: $data) == "string"){
+            $len = strlen(string: $data);
 
             return $len >= $this->minLength && $len <= $this->maxLength;
         }

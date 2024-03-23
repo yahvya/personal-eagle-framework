@@ -19,9 +19,9 @@ class RessourceResponse extends Response{
         $this->content = $ressourceAbsolutePath;
 
         try{
-            $fileExtension = pathinfo($ressourceAbsolutePath,PATHINFO_EXTENSION);
+            $fileExtension = @pathinfo(path: $ressourceAbsolutePath,flags: PATHINFO_EXTENSION);
 
-            $this->setHeader("Content-Type",(new MimeTypes)->getMimeTypes($fileExtension)[0]);
+            $this->setHeader(name: "Content-Type",value: (new MimeTypes)->getMimeTypes($fileExtension)[0]);
         }
         catch(Throwable){}
     }
@@ -29,7 +29,7 @@ class RessourceResponse extends Response{
     #[Override]
     protected function renderContent(): never{
         try{
-            @readfile($this->content);
+            @readfile(filename: $this->content);
         }
         catch(Throwable){
             die("Ressource non trouvé");

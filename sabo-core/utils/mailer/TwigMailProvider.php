@@ -16,11 +16,11 @@ class TwigMailProvider extends MailerTemplateProvider{
     #[Override]
     public function buildContent(): string{
         $environment = TwigResponse::newEnvironment([
-            APP_CONFIG->getConfig("ROOT") . Application::getEnvConfig()
-                ->getConfig(EnvConfig::MAILER_CONFIG->value)
-                ->getConfig(MailerConfig::MAIL_TEMPLATES_DIR_PATH->value)
+            APP_CONFIG->getConfig(name: "ROOT") . Application::getEnvConfig()
+                ->getConfig(name: EnvConfig::MAILER_CONFIG->value)
+                ->getConfig(name: MailerConfig::MAIL_TEMPLATES_DIR_PATH->value)
         ]);
 
-        return $environment->render($this->templatePath,$this->templateDatas);
+        return $environment->render(name: $this->templatePath,context: $this->templateDatas);
     }
 }

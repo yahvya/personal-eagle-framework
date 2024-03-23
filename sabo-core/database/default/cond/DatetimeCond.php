@@ -4,8 +4,8 @@ namespace SaboCore\Database\Default\Cond;
 
 use Attribute;
 use DateTime;
-use Exception;
 use Override;
+use Throwable;
 
 /**
  * @brief Condition représentant un champ de type datetime
@@ -28,11 +28,11 @@ class DatetimeCond implements Cond{
     #[Override]
     public function checkCondWith(mixed $data):bool{
         try{
-            new DateTime($data);
+            new DateTime(datetime: $data);
 
             return true;
         }
-        catch(Exception){}
+        catch(Throwable){}
 
         return false;
     }

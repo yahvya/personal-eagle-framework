@@ -21,7 +21,7 @@ class ArgumentManager{
      * @param string[] $argv variable argv
      */
     public function __construct(array $argv){
-        $this->args = array_slice($argv,1);
+        $this->args = array_slice(array: $argv,offset: 1);
     }
 
     /**
@@ -30,7 +30,7 @@ class ArgumentManager{
      * @return string|null l'argument s'il est trouvé ou null
      */
     public function previous():?string{
-        return array_key_exists($this->currentIndex - 1,$this->args) ? $this->args[--$this->currentIndex] : null;
+        return array_key_exists(key: $this->currentIndex - 1, array: $this->args) ? $this->args[--$this->currentIndex] : null;
     }
 
     /**
@@ -39,14 +39,14 @@ class ArgumentManager{
      * @return string|null l'argument s'il est trouvé ou null
      */
     public function next():?string{
-        return array_key_exists($this->currentIndex,$this->args) ? $this->args[$this->currentIndex++] : null;
+        return array_key_exists(key: $this->currentIndex,array: $this->args) ? $this->args[$this->currentIndex++] : null;
     }
 
     /**
      * @return int le nombre d'arguments de la ligne de commande
      */
     public function getCount():int{
-        return count($this->args);
+        return count(value: $this->args);
     }
 
     /**

@@ -13,9 +13,9 @@ use Twig\TwigFunction;
 class DefaultExtensions extends AbstractExtension {
     public function getFunctions():array{
         return [
-            new TwigFunction("route",[$this,"route"]),
-            new TwigFunction("generateCsrf",[$this,"generateCsrf"]),
-            new TwigFunction("checkCsrf",[$this,"checkCsrf"]),
+            new TwigFunction(name: "route",callable: [$this,"route"]),
+            new TwigFunction(name: "generateCsrf",callable: [$this,"generateCsrf"]),
+            new TwigFunction(name: "checkCsrf",callable: [$this,"checkCsrf"]),
         ];
     }
 
@@ -27,7 +27,7 @@ class DefaultExtensions extends AbstractExtension {
      * @return string|null le lien lié à la route
      */
     public function route(string $requestMethod,string $routeName,array $replaces = []):string|null{
-        return route($requestMethod,$routeName,$replaces);
+        return route(requestMethod: $requestMethod,routeName: $routeName,replaces: $replaces);
     }
 
     /**
@@ -44,6 +44,6 @@ class DefaultExtensions extends AbstractExtension {
      * @return bool si le token est valide
      */
     public function checkCsrf(string $token):bool{
-        return checkCsrf($token);
+        return checkCsrf(token: $token);
     }
 }

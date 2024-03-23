@@ -40,20 +40,21 @@ function debugDie(mixed ...$toDebug):never{
  * @return string|null le lien lié à la route
  */
 function route(string $requestMethod,string $routeName,array $replaces = []):string|null{
-    $route = RouteManager::findRouteByName($routeName,$requestMethod);
+    $route = RouteManager::findRouteByName(routeName: $routeName,method: $requestMethod);
 
-    if($route === null) return null;
+    if($route === null)
+        return null;
 
     try{
         $link = $route->getRouteLink();
 
         // recherche et remplacement des paramètres dans le lien
-        $variableMatcher = Application::getFrameworkConfig()->getConfig(FrameworkConfig::ROUTE_GENERIC_PARAMETER_MATCHER->value);
+        $variableMatcher = Application::getFrameworkConfig()->getConfig(name: FrameworkConfig::ROUTE_GENERIC_PARAMETER_MATCHER->value);
 
         foreach($replaces as $variableName => $replace){
-            $matcher = preg_replace("#\(.*\)#",$variableName,$variableMatcher);
+            $matcher = preg_replace(pattern: "#\(.*\)#",replacement: $variableName,subject: $variableMatcher);
 
-            $link = preg_replace("#$matcher#",$replace,$link);
+            $link = preg_replace(pattern: "#$matcher#",replacement: $replace,subject: $link);
         }
 
         return $link;
@@ -73,11 +74,11 @@ function generateCsrf():CsrfManager{
     // génération du token
     do
         $token = RandomStringGenerator::generateString(50,false,RandomStringType::SPECIALCHARS);
-    while($sessionStorage->getCsrfFrom($token) !== null);
+    while($sessionStorage->getCsrfFrom(token: $token) !== null);
 
-    $manager = new CsrfManager($token);
+    $manager = new CsrfManager(token: $token);
 
-    $sessionStorage->storeCsrf($manager);
+    $sessionStorage->storeCsrf(csrfManager: $manager);
 
     return $manager;
 }
@@ -91,11 +92,11 @@ function checkCsrf(string $token):bool{
     $sessionStorage = SessionStorage::create();
 
     // recherche du token
-    $csrfManager = $sessionStorage->getCsrfFrom($token);
+    $csrfManager = $sessionStorage->getCsrfFrom(token: $token);
 
     if($csrfManager === null) return false;
 
-    $sessionStorage->deleteCsrf($csrfManager);
+    $sessionStorage->deleteCsrf(csrfManager: $csrfManager);
 
     return true;
 }

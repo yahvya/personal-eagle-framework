@@ -15,7 +15,7 @@ class HtmlResponse extends Response{
     public function __construct(string $content){
         $this->content = $content;
 
-        $this->setHeader("Content-Type","text/html; charset=UTF-8");
+        $this->setHeader(name: "Content-Type",value: "text/html; charset=UTF-8");
     }
 
     #[Override]

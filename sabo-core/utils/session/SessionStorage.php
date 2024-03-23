@@ -155,7 +155,7 @@ class SessionStorage{
      */
     public function getCsrfFrom(string $token):CsrfManager|null{
         return isset($_SESSION[SessionStorageKeymap::FOR_CSRF_TOKEN->value][$token]) ?
-            CsrfManager::deserialize($_SESSION[SessionStorageKeymap::FOR_CSRF_TOKEN->value][$token]) :
+            CsrfManager::deserialize(instance: $_SESSION[SessionStorageKeymap::FOR_CSRF_TOKEN->value][$token]) :
             null;
     }
 

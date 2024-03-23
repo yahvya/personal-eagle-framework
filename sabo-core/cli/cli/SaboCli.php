@@ -34,7 +34,7 @@ class SaboCli{
      * @param Config $themeConfig configuration de thème
      */
     public function __construct(array $argv,Config $themeConfig){
-        $this->argumentManager = new ArgumentManager($argv);
+        $this->argumentManager = new ArgumentManager(argv: $argv);
         $this->themeConfig = $themeConfig;
     }
 
@@ -81,13 +81,13 @@ class SaboCli{
 
             if($command == null){
                 Printer::printStyle(
-                    "Veuillez saisir la commande à lancer",
-                    $this->themeConfig->getConfig(Theme::IMPORTANT_ERROR_STYLE->value)
+                    toPrint: "Veuillez saisir la commande à lancer",
+                    compositeStyle: $this->themeConfig->getConfig(Theme::IMPORTANT_ERROR_STYLE->value)
                 );
                 return;
             }
 
-            if(!array_key_exists($command,$this->commands) ){
+            if(!array_key_exists(key: $command,array: $this->commands) ){
                 Printer::printStyle(
                     "Commande non trouvé, pensez à utilisez (help)",
                     $this->themeConfig->getConfig(Theme::BASIC_ERROR_STYLE->value)
@@ -96,10 +96,10 @@ class SaboCli{
             }
 
             // exécution de la commande
-            $this->commands[$command]->execCommand($this);
+            $this->commands[$command]->execCommand(cli: $this);
         }
         catch(Throwable){
-            Printer::print("Echec d'exécution de la commande", Color::Red);
+            Printer::print(toPrint: "Echec d'exécution de la commande",textColor: Color::Red);
         }
     }
 }

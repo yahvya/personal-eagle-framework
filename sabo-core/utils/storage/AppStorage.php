@@ -20,16 +20,16 @@ abstract class AppStorage{
      */
     public static function storeClassicFile(string $storagePath,string $fileBasePath,bool $createFoldersIfNotExists = true):bool{
         try{
-            $storagePath = self::buildStorageCompletePath($storagePath);
-            $dirname = @dirname($storagePath);
+            $storagePath = self::buildStorageCompletePath(pathFromStorage: $storagePath);
+            $dirname = @dirname(path: $storagePath);
 
             // création du dossier résultat s'il n'existe pas
-            if($createFoldersIfNotExists && !is_dir($dirname)){
-                if(!@mkdir($dirname,recursive: true) )
+            if($createFoldersIfNotExists && !is_dir(filename: $dirname)){
+                if(!@mkdir(directory: $dirname,recursive: true) )
                     return false;
             }
 
-            return @copy($fileBasePath,$storagePath);
+            return @copy(from: $fileBasePath,to: $storagePath);
         }
         catch(Throwable){
             return false;
@@ -45,16 +45,16 @@ abstract class AppStorage{
      */
     public static function storeContent(string $storagePath,string $content,bool $createFoldersIfNotExists = true):bool{
         try{
-            $storagePath = self::buildStorageCompletePath($storagePath);
-            $dirname = @dirname($storagePath);
+            $storagePath = self::buildStorageCompletePath(pathFromStorage: $storagePath);
+            $dirname = @dirname(path: $storagePath);
 
             // création du dossier résultat s'il n'existe pas
             if($createFoldersIfNotExists && !is_dir($dirname)){
-                if(!@mkdir($dirname,recursive: true) )
+                if(!@mkdir(directory: $dirname,recursive: true) )
                     return false;
             }
 
-            return @file_put_contents($storagePath,$content) !== false;
+            return @file_put_contents(filename: $storagePath,data: $content) !== false;
         }
         catch(Throwable){
             return false;
@@ -70,16 +70,16 @@ abstract class AppStorage{
      */
     public static function storeFormFile(string $storagePath, string $fileTmpName, bool $createFoldersIfNotExists = true):bool{
         try{
-            $storagePath = self::buildStorageCompletePath($storagePath);
+            $storagePath = self::buildStorageCompletePath(pathFromStorage: $storagePath);
             $dirname = @dirname($storagePath);
 
             // création du dossier résultat s'il n'existe pas
-            if($createFoldersIfNotExists && !is_dir($dirname) ){
-                if(!@mkdir($dirname,recursive: true) )
+            if($createFoldersIfNotExists && !is_dir(filename: $dirname) ){
+                if(!@mkdir(directory: $dirname,recursive: true) )
                     return false;
             }
 
-            return @move_uploaded_file($fileTmpName,$storagePath);
+            return @move_uploaded_file(from: $fileTmpName,to: $storagePath);
         }
         catch(Throwable){
             return false;
@@ -93,10 +93,10 @@ abstract class AppStorage{
      */
     public static function buildStorageCompletePath(string $pathFromStorage):string{
         try{
-            $completePath = APP_CONFIG->getConfig("ROOT") . Application::getFrameworkConfig()->getConfig(FrameworkConfig::STORAGE_DIR_PATH->value);
+            $completePath = APP_CONFIG->getConfig(name: "ROOT") . Application::getFrameworkConfig()->getConfig(name: FrameworkConfig::STORAGE_DIR_PATH->value);
 
-            if(str_ends_with($completePath,"/") ) $completePath = substr($completePath,0,-1);
-            if(!str_starts_with($pathFromStorage,"/") ) $pathFromStorage = "/$pathFromStorage";
+            if(str_ends_with(haystack: $completePath,needle: "/") ) $completePath = substr(string: $completePath,offset: 0,length: -1);
+            if(!str_starts_with(haystack: $pathFromStorage,needle: "/") ) $pathFromStorage = "/$pathFromStorage";
 
             return $completePath . $pathFromStorage;
         }

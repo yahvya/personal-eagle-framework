@@ -24,12 +24,12 @@ class BladeResponse extends HtmlResponse{
      */
     public function __construct(string $pathFromViews,array $datas = []){
         try{
-            $factory = self::newFactory([APP_CONFIG->getConfig("ROOT") . "/src/views/"]);
+            $factory = self::newFactory(viewsPath: [APP_CONFIG->getConfig(name: "ROOT") . "/src/views/"]);
 
-            parent::__construct($factory->make($pathFromViews,$datas)->render());
+            parent::__construct(content: $factory->make(view: $pathFromViews,data: $datas)->render());
         }
         catch(Throwable){
-            parent::__construct("Veuillez rechargez la page");
+            parent::__construct(content: "Veuillez rechargez la page");
         }
     }
 
@@ -39,11 +39,11 @@ class BladeResponse extends HtmlResponse{
      */
     public static function newFactory(array $viewsPath):Factory|null{
         try{
-            $pathToCompiledTemplates = APP_CONFIG->getConfig("ROOT") . "/sabo-core/views/blade/compiled";
+            $pathToCompiledTemplates = APP_CONFIG->getConfig(name: "ROOT") . "/sabo-core/views/blade/compiled";
             $filesystem = new Filesystem;
-            $eventDispatcher = new Dispatcher(new Container);
+            $eventDispatcher = new Dispatcher(container: new Container);
             $viewResolver = new EngineResolver;
-            $bladeCompiler = new BladeCompiler($filesystem, $pathToCompiledTemplates);
+            $bladeCompiler = new BladeCompiler(files: $filesystem, cachePath: $pathToCompiledTemplates);
 
             // enregistrement des directives
             $bladeDirectives = registerBladeDirectives();
@@ -51,16 +51,16 @@ class BladeResponse extends HtmlResponse{
             foreach ($bladeDirectives as $directive => $executor)
                 $bladeCompiler->directive($directive,$executor);
 
-            $viewResolver->register("blade", function () use ($bladeCompiler) {
+            $viewResolver->register(engine: "blade",resolver:  function () use ($bladeCompiler) {
                 return new CompilerEngine($bladeCompiler);
             });
-            $viewResolver->register("php", function () use($filesystem) {
+            $viewResolver->register(engine: "php", resolver: function () use($filesystem) {
                 return new PhpEngine($filesystem);
             });
 
-            $viewFinder = new FileViewFinder($filesystem, $viewsPath);
+            $viewFinder = new FileViewFinder(files: $filesystem, paths: $viewsPath);
 
-            return new Factory($viewResolver, $viewFinder, $eventDispatcher);
+            return new Factory(engines: $viewResolver, finder: $viewFinder, events: $eventDispatcher);
         }
         catch(Throwable){
             return null;

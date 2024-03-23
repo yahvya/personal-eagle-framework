@@ -41,7 +41,7 @@ class AccessVerifier{
      * @return bool le résultat de la vérification
      */
     public function verify(array $verifierArgs):bool{
-        return call_user_func_array($this->verifier,$verifierArgs);
+        return call_user_func_array(callback: $this->verifier,args: $verifierArgs);
     }
 
     /**
@@ -52,10 +52,12 @@ class AccessVerifier{
      * @return array le résultat de la vérification ["success" → ...] ou ["failure" → ...] ou ["verifier" → ...]
      */
     public function execVerification(array $verifierArgs,array $onSuccessArgs = [],array $onFailureArgs = []):array{
-        $verificationResult = $this->verify($verifierArgs);
+        $verificationResult = $this->verify(verifierArgs: $verifierArgs);
 
-        if($verificationResult && $this->onSuccess !== null) return ["success" => call_user_func_array($this->onSuccess,$onSuccessArgs)];
-        elseif(!$verificationResult && $this->onFailure !== null) return ["failure" => call_user_func_array($this->onFailure,$onFailureArgs)];
+        if($verificationResult && $this->onSuccess !== null)
+            return ["success" => call_user_func_array(callback: $this->onSuccess,args: $onSuccessArgs)];
+        elseif(!$verificationResult && $this->onFailure !== null)
+            return ["failure" => call_user_func_array(callback: $this->onFailure,args: $onFailureArgs)];
 
         return ["verifier" => $verificationResult];
     }

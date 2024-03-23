@@ -17,7 +17,7 @@ abstract class Treatment{
      * @throws TreatmentException l'exception
      */
     protected static function throwException(string $errorMessage,bool $isDisplayable = true):void{
-        throw new TreatmentException($errorMessage,$isDisplayable);
+        throw new TreatmentException(message: $errorMessage,isDisplayable: $isDisplayable);
     }
 
     /**
@@ -27,6 +27,6 @@ abstract class Treatment{
      * @throws TreatmentException l'exception
      */
     protected static function throwModelCondException(ModelCondException $exception):void{
-        throw new TreatmentException($exception->getMessage(),$exception->getIsDisplayable() );
+        throw new TreatmentException(message: $exception->getMessage(),isDisplayable: $exception->getIsDisplayable() );
     }
 }

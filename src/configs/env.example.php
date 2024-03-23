@@ -16,50 +16,51 @@ return Config::create()
     // configurations requises
 
     // nom de l'application
-    ->setConfig(EnvConfig::APPLICATION_NAME_CONFIG->value,"Mon application")
+    ->setConfig(name: EnvConfig::APPLICATION_NAME_CONFIG->value,value: "Mon application")
 
     // lien de l'application
-    ->setConfig(EnvConfig::APPLICATION_LINK_CONFIG->value,"http://127.0.0.1:8080/")
+    ->setConfig(name: EnvConfig::APPLICATION_LINK_CONFIG->value,value: "http://127.0.0.1:8080/")
 
     // mode de développement true = dev - false = prod
-    ->setConfig(EnvConfig::DEV_MODE_CONFIG->value,true)
+    ->setConfig(name: EnvConfig::DEV_MODE_CONFIG->value,value: true)
 
     // configuration de l'état de maintenance
     ->setConfig(
-        EnvConfig::MAINTENANCE_CONFIG->value,
-        Config::create()
-            ->setConfig(MaintenanceConfig::IS_IN_MAINTENANCE->value,false)
-            ->setConfig(MaintenanceConfig::ACCESS_MANAGER->value,DefaultMaintenanceController::class)
-            ->setConfig(MaintenanceConfig::SECRET_LINK->value,"/maintenance/secret/")
+        name: EnvConfig::MAINTENANCE_CONFIG->value,
+        value: Config::create()
+            ->setConfig(name: MaintenanceConfig::IS_IN_MAINTENANCE->value,value: false)
+            ->setConfig(name: MaintenanceConfig::ACCESS_MANAGER->value,value: DefaultMaintenanceController::class)
+            ->setConfig(name: MaintenanceConfig::SECRET_LINK->value,value: "/maintenance/dev/access/")
     )
 
     // configuration de la base de données
     ->setConfig(
-        EnvConfig::DATABASE_CONFIG->value,
-        Config::create()
-            ->setConfig(DatabaseConfig::INIT_APP_WITH_CONNECTION->value,false)
-            ->setConfig(DatabaseConfig::PROVIDER->value,new MysqlProvider() )
+        name: EnvConfig::DATABASE_CONFIG->value,
+        value: Config::create()
+            ->setConfig(name: DatabaseConfig::INIT_APP_WITH_CONNECTION->value,value: false)
+            ->setConfig(name: DatabaseConfig::PROVIDER->value,value: new MysqlProvider() )
             ->setConfig(
-                DatabaseConfig::PROVIDER_CONFIG->value,
-                Config::create()
-                    ->setConfig("host","")
-                    ->setConfig("user","")
-                    ->setConfig("password","")
-                    ->setConfig("dbname","")
+                name: DatabaseConfig::PROVIDER_CONFIG->value,
+                value: Config::create()
+                    ->setConfig(name: "host",value: "localhost")
+                    ->setConfig(name: "user",value: "root")
+                    ->setConfig(name: "password",value: "")
+                    ->setConfig(name: "dbname",value: "nom de la base de donnée")
             )
     )
 
     // configuration du mailer
     ->setConfig(
-        EnvConfig::MAILER_CONFIG->value,
+        name: EnvConfig::MAILER_CONFIG->value,
         // configuration vérifiée uniquement à l'usage de SaboMailer
-        Config::create()
-//            ->setConfig(MailerConfig::FROM_NAME->value,"")
-//            ->setConfig(MailerConfig::FROM_EMAIL->value,"")
-//            ->setConfig(MailerConfig::MAILER_PROVIDER_HOST->value,"smtp.gmail.com")
-//            ->setConfig(MailerConfig::MAILER_PROVIDER_USERNAME->value,"")
-//            ->setConfig(MailerConfig::MAILER_PROVIDER_PASSWORD->value,"")
-//            ->setConfig(MailerConfig::MAIL_TEMPLATES_DIR_PATH->value,"/src/views/mails")
+        value: Config::create()
+//            ->setConfig(name: MailerConfig::FROM_NAME->value,value: "")
+//            ->setConfig(name: MailerConfig::FROM_EMAIL->value,value: "")
+//            ->setConfig(name: MailerConfig::MAILER_PROVIDER_HOST->value,value: "smtp.gmail.com")
+//            ->setConfig(name: MailerConfig::MAILER_PROVIDER_USERNAME->value,value: "")
+//            ->setConfig(name: MailerConfig::MAILER_PROVIDER_PASSWORD->value,value: "")
+//            ->setConfig(name: MailerConfig::PROVIDER_PORT->value,value: 465)
+//            ->setConfig(name: MailerConfig::MAIL_TEMPLATES_DIR_PATH->value,value: "/src/views/mails")
     )
 
     // ajoutez vos propres configurations

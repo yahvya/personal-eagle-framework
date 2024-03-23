@@ -31,7 +31,8 @@ class Config{
      * @throws ConfigException en cas de configuration non trouvée
      */
     public function getConfig(string|int $name):mixed{
-        if(!array_key_exists($name,$this->config) ) throw new ConfigException("La configuration <$name> n'a pas été trouvé");
+        if(!array_key_exists(key: $name,array: $this->config) )
+            throw new ConfigException(message: "La configuration <$name> n'a pas été trouvé");
 
         return $this->config[$name];
     }
@@ -44,7 +45,8 @@ class Config{
      */
     public function checkConfigs(string|int ...$keys):void{
         foreach($keys as $key){
-            if(!array_key_exists($key, $this->config) ) throw new ConfigException("Configuration <$key> non trouvée");
+            if(!array_key_exists(key: $key,array: $this->config) )
+                throw new ConfigException(message: "Configuration <$key> non trouvée");
         }
     }
 

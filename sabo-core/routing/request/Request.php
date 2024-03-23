@@ -45,7 +45,8 @@ class Request{
         $values = self::getValuesFrom($_POST,...$toGet);
 
         if($values === null){
-            if($errorMessage !== null) throw new TreatmentException($errorMessage,true);
+            if($errorMessage !== null)
+                throw new TreatmentException(message: $errorMessage,isDisplayable: true);
 
             return null;
         }
@@ -64,7 +65,8 @@ class Request{
         $values = self::getValuesFrom($_GET,...$toGet);
 
         if($values === null){
-            if($errorMessage !== null) throw new TreatmentException($errorMessage,true);
+            if($errorMessage !== null)
+                throw new TreatmentException(message: $errorMessage,isDisplayable: true);
 
             return null;
         }
@@ -83,7 +85,8 @@ class Request{
         $values = self::getValuesFrom($_COOKIE,...$toGet);
 
         if($values === null){
-            if($errorMessage !== null) throw new TreatmentException($errorMessage,true);
+            if($errorMessage !== null)
+                throw new TreatmentException(message: $errorMessage,isDisplayable: true);
 
             return null;
         }
@@ -102,14 +105,15 @@ class Request{
         $values = self::getValuesFrom($_FILES,...$toGet);
 
         if($values === null){
-            if($errorMessage !== null) throw new TreatmentException($errorMessage,true);
+            if($errorMessage !== null)
+                throw new TreatmentException(message: $errorMessage,isDisplayable: true);
 
             return null;
         }
 
         // création des FormFileManager
         foreach($values as $key => $file)
-            $values[$key] = new FormFileManager($file);
+            $values[$key] = new FormFileManager(fileDatas: $file);
 
         return $values;
     }
@@ -133,7 +137,8 @@ class Request{
         $result = [];
 
         foreach($toGet as $key){
-            if(!array_key_exists($key,$container) ) return null;
+            if(!array_key_exists(key: $key,array: $container) )
+                return null;
 
             $result[$key] = $container[$key];
         }

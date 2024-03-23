@@ -28,16 +28,17 @@ class PostgresProvider extends DatabaseProvider {
 
         try{
             try{
-                $port = "port={$providerConfig->getConfig("port")};";
+                $port = "port={$providerConfig->getConfig(name: "port")};";
             }
             catch(ConfigException){
                 $port = "";
             }
 
             self::$con = new PDO(
-                "pgsql:host={$providerConfig->getConfig("host")};{$port}dbname={$providerConfig->getConfig("dbname")};charset=UTF8",
-                $providerConfig->getConfig("user"),
-                $providerConfig->getConfig("password"),[
+                dsn: "pgsql:host={$providerConfig->getConfig(name: "host")};{$port}dbname={$providerConfig->getConfig(name: "dbname")};charset=UTF8",
+                username: $providerConfig->getConfig(name: "user"),
+                password: $providerConfig->getConfig(name: "password"),
+                options: [
                     PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
@@ -47,7 +48,7 @@ class PostgresProvider extends DatabaseProvider {
             if(!SaboModel::initModel() ) throw new Exception();
         }
         catch(Throwable){
-            throw new ConfigException("Echec de connexion à la base de donnée");
+            throw new ConfigException(message: "Echec de connexion à la base de donnée");
         }
     }
 

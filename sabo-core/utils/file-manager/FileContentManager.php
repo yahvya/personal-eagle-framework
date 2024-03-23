@@ -2,7 +2,7 @@
 
 namespace SaboCore\Utils\FileManager;
 
-use SaboCore\treatment\TreatmentException;
+use SaboCore\Treatment\TreatmentException;
 
 /**
  * @brief Gestionnaire de contenu de fichiers
@@ -30,9 +30,10 @@ class FileContentManager{
      * @throws TreatmentException si le fichier n'est pas convertible, displayable non affichable
      */
     public function getJsonContent():array{
-        $convertedContent = @json_decode($this->fileContent,true);
+        $convertedContent = @json_decode(json: $this->fileContent,associative: true);
 
-        if(gettype($convertedContent) !== "array") throw new TreatmentException("Le fichier ne peut être converti au format json",false);
+        if(gettype(value: $convertedContent) !== "array")
+            throw new TreatmentException(message: "Le fichier ne peut être converti au format json",isDisplayable: false);
 
         return $convertedContent;
     }

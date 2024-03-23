@@ -41,8 +41,8 @@ abstract class SaboCommand{
      * @throws ConfigException en cas d'erreur de thème
      */
     protected function ask(string $toAsk, Config $themeConfig):string{
-        Printer::printStyle("> $toAsk : ",$themeConfig->getConfig(Theme::SPECIAL_TEXT_STYLE->value) );
-        return trim(fgets(STDIN));
+        Printer::printStyle(toPrint: "> $toAsk : ",compositeStyle: $themeConfig->getConfig(name: Theme::SPECIAL_TEXT_STYLE->value) );
+        return trim(string: fgets(stream: STDIN));
     }
 
     /**

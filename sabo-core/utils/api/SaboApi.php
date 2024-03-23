@@ -29,7 +29,7 @@ abstract class SaboApi{
      * @param string $apiUrlPrefix lien préfixant les appels de l'api
      */
     public function __construct(string $apiUrlPrefix){
-        $this->apiUrlPrefix = !str_ends_with($apiUrlPrefix,"/") && !str_ends_with($apiUrlPrefix,"\\") ? $apiUrlPrefix . "/" : $apiUrlPrefix;
+        $this->apiUrlPrefix = !str_ends_with(haystack: $apiUrlPrefix,needle: "/") && !str_ends_with(haystack: $apiUrlPrefix,needle: "\\") ? $apiUrlPrefix . "/" : $apiUrlPrefix;
         $this->lastRequestResult = null;
         $this->storedRequestResult = [];
     }
@@ -71,11 +71,11 @@ abstract class SaboApi{
         $options[CURLOPT_URL] = $requestUrl;
 
         if(SaboApiRequest::NO_DATA != $dataConversionType)
-            $options[CURLOPT_POSTFIELDS] = $dataConversionType == SaboApiRequest::HTTP_BUILD_QUERY ? http_build_query($data) : json_encode($data);
+            $options[CURLOPT_POSTFIELDS] = $dataConversionType == SaboApiRequest::HTTP_BUILD_QUERY ? http_build_query(data: $data) : @json_encode(value: $data);
 
-        if(!curl_setopt_array($curl,$options) ) return false;
+        if(!curl_setopt_array(handle: $curl,options: $options) ) return false;
 
-        $result = curl_exec($curl);
+        $result = curl_exec(handle: $curl);
 
         if($storeIn !== null) $this->storedRequestResult[$storeIn] = $result;
 
@@ -99,9 +99,9 @@ abstract class SaboApi{
 
         switch($as){
             case SaboApiRequest::RESULT_AS_JSON_ARRAY : 
-                $jsonData = json_decode($this->lastRequestResult,true);    
+                $jsonData = @json_decode(json: $this->lastRequestResult,associative: true);
                 
-                return gettype($jsonData) != "array" ? null : $jsonData;
+                return gettype(value: $jsonData) != "array" ? null : $jsonData;
 
             case SaboApiRequest::RESULT_AS_STRING: 
                 return $this->lastRequestResult;
@@ -121,10 +121,10 @@ abstract class SaboApi{
         foreach($keysToCheck as $keyToCheck){
             $arrayCopy = $toCheck;
 
-            $keys = explode(".",$keyToCheck);
+            $keys = explode(separator: ".",string: $keyToCheck);
 
             foreach($keys as $key){
-                if(gettype($arrayCopy) != "array" || !array_key_exists($key,$arrayCopy) ) return false;
+                if(gettype(value: $arrayCopy) != "array" || !array_key_exists(key: $key,array: $arrayCopy) ) return false;
 
                 $arrayCopy = $arrayCopy[$key];
             }   
@@ -141,7 +141,7 @@ abstract class SaboApi{
      */
     public static function createFromConfig(array $config):mixed{
         try{
-            $reflection = new ReflectionClass(get_called_class() );
+            $reflection = new ReflectionClass(objectOrClass: get_called_class() );
 
             return $reflection->newInstance(
                 $config[SaboApiConfig::URL->value]

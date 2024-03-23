@@ -21,14 +21,14 @@ function bladeJsRoutes(array $routes,?string $funcNameReplace = null,?string $cu
     foreach($routes as $routeData){
         list($method,$name,) = $routeData;
 
-        $route = RouteManager::findRouteByName($name,$method);
+        $route = RouteManager::findRouteByName(routeName: $name,method: $method);
 
         if($route === null) continue;
 
         $jsRoutes[$name] = $route->getRouteLink();
     }
 
-    $jsRoutes = json_encode($jsRoutes);
+    $jsRoutes = @json_encode(value: $jsRoutes);
 
     $name = $funcNameReplace ?? "getRouteManager";
     $scriptId = $customIdReplace ?? "routes-script";

@@ -22,8 +22,8 @@ trait Select{
             $toGet = [];
 
             foreach($toSelect as $attributeData){
-                if(gettype($attributeData) == "array"){
-                    $columnName = $this->getAttributeLinkedColName($attributeData[1]);
+                if(gettype(value: $attributeData) == "array"){
+                    $columnName = $this->getAttributeLinkedColName(attributeName: $attributeData[1]);
 
                     if($columnName == null) continue;
 
@@ -32,7 +32,7 @@ trait Select{
                     if(!empty($attributeData[2]) ) $columnName .= " AS $attributeData[2]";
                 }
                 else{
-                    $columnName = $this->getAttributeLinkedColName($attributeData);
+                    $columnName = $this->getAttributeLinkedColName(attributeName: $attributeData);
 
                     if($columnName == null) continue;
 
@@ -42,7 +42,7 @@ trait Select{
                 $toGet[] = $columnName;
             }
 
-            $this->sqlString .= " " . implode(",",$toGet) . " ";
+            $this->sqlString .= " " . implode(separator: ",",array: $toGet) . " ";
         }
         else $this->sqlString .= " * ";
 

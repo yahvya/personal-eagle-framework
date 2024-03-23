@@ -3,5 +3,5 @@
 use SaboCore\Routing\Routes\RouteManager;
 
 // enregistrement des routes
-RouteManager::fromFile("api");
-RouteManager::fromFile("web");
+RouteManager::fromFile(filename: "api");
+RouteManager::fromFile(filename: "web");

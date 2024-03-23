@@ -40,7 +40,7 @@ class CallableCond implements Cond{
 
     #[Override]
     public function checkCondWith(mixed $data):bool{
-        return call_user_func($this->toVerify,$data);
+        return call_user_func(callback: $this->toVerify,args: $data);
     }
 
     #[Override]

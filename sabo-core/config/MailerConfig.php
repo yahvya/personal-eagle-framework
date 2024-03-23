@@ -42,4 +42,10 @@ enum MailerConfig:string{
      * @type string
      */
     case MAIL_TEMPLATES_DIR_PATH = "mailTemplatesDirPath";
+
+    /**
+     * @brief Port du fournisseur
+     * @type int
+     */
+    case PROVIDER_PORT = "mailerProviderPort";
 }

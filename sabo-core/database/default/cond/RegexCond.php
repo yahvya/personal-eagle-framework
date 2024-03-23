@@ -46,7 +46,7 @@ class RegexCond implements Cond{
 
     #[Override]
     public function checkCondWith(mixed $data):bool{
-        return @preg_match($this->delimiter . $this->regex . $this->delimiter . $this->regexOptions,$data);
+        return @preg_match(pattern: $this->delimiter . $this->regex . $this->delimiter . $this->regexOptions,subject: $data);
     }
 
     #[Override]

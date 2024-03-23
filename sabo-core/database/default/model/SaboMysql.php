@@ -63,12 +63,13 @@ abstract class SaboMysql implements System{
 
             // création du tableau de valeur à insérer
             foreach($linkedModel->getColumnsConfiguration() as $attributeName => $configuration){
-                if(!empty($configuration["configClass"]) && !$configuration["configClass"]->getIsAutoIncremented() ) $toInsert[$attributeName] = $linkedModel->getAttribute($attributeName);
+                if(!empty($configuration["configClass"]) && !$configuration["configClass"]->getIsAutoIncremented() )
+                    $toInsert[$attributeName] = $linkedModel->getAttribute(attributeName: $attributeName);
             }
 
-            $this->queryBuilder->insert($toInsert);
+            $this->queryBuilder->insert(values: $toInsert);
 
-            return self::execQuery($this->queryBuilder);
+            return self::execQuery(queryBuilder: $this->queryBuilder);
         }
         catch(Throwable){
             return false;
@@ -87,7 +88,7 @@ abstract class SaboMysql implements System{
                 ->delete()
                 ->addPrimaryKeysWhereCond();
 
-            return self::execQuery($this->queryBuilder);
+            return self::execQuery(queryBuilder: $this->queryBuilder);
         }
         catch(Throwable){
             return false;
@@ -109,14 +110,15 @@ abstract class SaboMysql implements System{
 
             // création du tableau de valeur à update
             foreach($columnsConfiguration as $attributeName => $configuration){
-                if(!empty($configuration["configClass"]) ) $toUpdate[$attributeName] = $linkedModel->getAttribute($attributeName);
+                if(!empty($configuration["configClass"]) )
+                    $toUpdate[$attributeName] = $linkedModel->getAttribute(attributeName: $attributeName);
             }
 
             $this->queryBuilder
-                ->update($toUpdate)
+                ->update(toUpdate: $toUpdate)
                 ->addPrimaryKeysWhereCond();
 
-            return self::execQuery($this->queryBuilder);
+            return self::execQuery(queryBuilder: $this->queryBuilder);
         }
         catch(Throwable){
             return false;
@@ -128,7 +130,7 @@ abstract class SaboMysql implements System{
      * @throws Exception (en mode debug) si la connexion est null
      */
     public function beginTransaction():bool{
-        return self::beginTransactionOn($this->myCon);
+        return self::beginTransactionOn(con: $this->myCon);
     }
 
     /**
@@ -136,7 +138,7 @@ abstract class SaboMysql implements System{
      * @throws Exception (en mode debug) si la connexion est null
      */
     public function commitTransaction():bool{
-        return self::commitTransactionOn($this->myCon);
+        return self::commitTransactionOn(con: $this->myCon);
     }
 
     /**
@@ -144,7 +146,7 @@ abstract class SaboMysql implements System{
      * @throws Exception (en mode debug) si la connexion est null
      */
     public function rollbackTransaction():bool{
-        return self::rollbackTransactionOn($this->myCon);
+        return self::rollbackTransactionOn(con: $this->myCon);
     }
 
     /**
@@ -171,7 +173,7 @@ abstract class SaboMysql implements System{
      * @brief initialise le créateur de requête interne si non défini
      */
     protected function initQueryBuilder():SaboMysql{
-        if($this->queryBuilder == null) $this->queryBuilder = new QueryBuilder($this);
+        if($this->queryBuilder == null) $this->queryBuilder = new QueryBuilder(linkedModel: $this);
 
         $this->queryBuilder->reset();
 
@@ -188,7 +190,7 @@ abstract class SaboMysql implements System{
      */
     public static function find(array $conditions = [], array $toSelect = [], bool $getBaseResult = false): PDOStatement|array|bool|null
     {
-        $queryBuilder = QueryBuilder::createFrom(get_called_class() );
+        $queryBuilder = QueryBuilder::createFrom(modelClass: get_called_class() );
 
         $queryBuilder->select(...$toSelect);
 
@@ -198,7 +200,7 @@ abstract class SaboMysql implements System{
 
             // création des conditions where
             foreach($conditions as $attributeName => $condData){
-                if(gettype($condData) == "array"){
+                if(gettype(value: $condData) == "array"){
                     $data = [
                         $attributeName,
                         ...$condData
@@ -220,7 +222,7 @@ abstract class SaboMysql implements System{
                 ->whereGroup(...$whereConditions);
         }
 
-        return self::execQuery($queryBuilder,$getBaseResult ? MysqlReturn::DEFAULT : MysqlReturn::OBJECTS);
+        return self::execQuery(queryBuilder: $queryBuilder,toReturn: $getBaseResult ? MysqlReturn::DEFAULT : MysqlReturn::OBJECTS);
     }
 
     /**
@@ -230,8 +232,9 @@ abstract class SaboMysql implements System{
     public static function initModel():bool{
         try{
             self::$sharedCon = Application::getEnvConfig()
-                ->getConfig(EnvConfig::DATABASE_CONFIG->value)
-                ->getConfig(DatabaseConfig::PROVIDER->value)->getCon();
+                ->getConfig(name: EnvConfig::DATABASE_CONFIG->value)
+                ->getConfig(name: DatabaseConfig::PROVIDER->value)
+                ->getCon();
 
             return self::$sharedCon != null;
         }
@@ -245,7 +248,7 @@ abstract class SaboMysql implements System{
      * @throws Exception (en mode debug) si la connexion est null
      */
     public static function beginTransactionOnShared():bool{
-        return self::beginTransactionOn(self::$sharedCon);
+        return self::beginTransactionOn(con: self::$sharedCon);
     }
 
     /**
@@ -253,7 +256,7 @@ abstract class SaboMysql implements System{
      * @throws Exception (en mode debug) si la connexion est null
      */
     public static function commitTransactionOnShared():bool{
-        return self::commitTransactionOn(self::$sharedCon);
+        return self::commitTransactionOn(con: self::$sharedCon);
     }
 
     /**
@@ -261,7 +264,7 @@ abstract class SaboMysql implements System{
      * @throws Exception (en mode debug) si la connexion est null
      */
     public static function rollbackTransactionOnShared():bool{
-        return self::rollbackTransactionOn(self::$sharedCon);
+        return self::rollbackTransactionOn(con: self::$sharedCon);
     }
 
     /**
@@ -271,13 +274,12 @@ abstract class SaboMysql implements System{
      * @return PDOStatement|array|bool|null
      * @throws Throwable en cas d'erreur
      */
-    public static function execQuery(QueryBuilder $queryBuilder,MysqlReturn $toReturn = MysqlReturn::SUCCESS_STATE): PDOStatement|array|bool|null
-    {
+    public static function execQuery(QueryBuilder $queryBuilder,MysqlReturn $toReturn = MysqlReturn::SUCCESS_STATE): PDOStatement|array|bool|null{
         $linkedModel = $queryBuilder->getLinkedModel();
         
         $pdo = $linkedModel->getMyCon();
 
-        $query = $pdo->prepare($queryBuilder->getSqlString() );
+        $query = $pdo->prepare(query: $queryBuilder->getSqlString() );
 
         if($query !== false){
             // ajout des valeurs à bind
@@ -288,7 +290,7 @@ abstract class SaboMysql implements System{
 				if(gettype($bindData) == "array")
 					$query->bindValue($key + 1,...$bindData);
 				else
-					$query->bindValue($key + 1,gettype($bindData) == "boolean" ? ($bindData === false ? 0 : 1) : $bindData);
+					$query->bindValue($key + 1,gettype(value: $bindData) == "boolean" ? ($bindData === false ? 0 : 1) : $bindData);
 			}
 
 			if($query->execute() ){
@@ -299,7 +301,8 @@ abstract class SaboMysql implements System{
                         // création des objets model à retourner
                         $objects = [];   
 
-                        foreach($query->fetchAll() as $rowData) $objects[] = static::createObjectFrom($linkedModel, $rowData);
+                        foreach($query->fetchAll() as $rowData)
+                            $objects[] = static::createObjectFrom(linkedModel: $linkedModel,rowData:  $rowData);
 
                         return $objects;
                 }
@@ -328,8 +331,8 @@ abstract class SaboMysql implements System{
      */
     protected static function beginTransactionOn(?PDO $con):bool{
         if($con == null){
-            if(Application::getEnvConfig()->getConfig(EnvConfig::DEV_MODE_CONFIG->value) )
-                throw new Exception("La connexion est null, démarrage de transaction échoué");
+            if(Application::getEnvConfig()->getConfig(name: EnvConfig::DEV_MODE_CONFIG->value) )
+                throw new Exception(message: "La connexion est null, démarrage de transaction échoué");
             else
                 return false;
         }   
@@ -350,8 +353,8 @@ abstract class SaboMysql implements System{
      */
     protected static function commitTransactionOn(?PDO $con):bool{
         if($con == null){
-            if(Application::getEnvConfig()->getConfig(EnvConfig::DEV_MODE_CONFIG->value) )
-                throw new Exception("La connexion est null, commit de transaction échoué");
+            if(Application::getEnvConfig()->getConfig(name: EnvConfig::DEV_MODE_CONFIG->value) )
+                throw new Exception(message: "La connexion est null, commit de transaction échoué");
             else
                 return false;
         }   
@@ -372,8 +375,8 @@ abstract class SaboMysql implements System{
      */
     protected static function rollbackTransactionOn(?PDO $con):bool{
         if($con == null){
-            if(Application::getEnvConfig()->getConfig(EnvConfig::DEV_MODE_CONFIG->value) )
-                throw new Exception("La connexion est null, commit de transaction échoué");
+            if(Application::getEnvConfig()->getConfig(name: EnvConfig::DEV_MODE_CONFIG->value) )
+                throw new Exception(message: "La connexion est null, commit de transaction échoué");
             else
                 return false;
         }   
@@ -417,8 +420,8 @@ abstract class SaboMysql implements System{
                 }
 
                 if(!$foundName){
-                    if(Application::getEnvConfig()->getConfig(EnvConfig::DEV_MODE_CONFIG->value) )
-                        throw new Exception("Aucun attribut trouvé pour la colonne $attributeCol");
+                    if(Application::getEnvConfig()->getConfig(name: EnvConfig::DEV_MODE_CONFIG->value) )
+                        throw new Exception(message: "Aucun attribut trouvé pour la colonne $attributeCol");
                     else
                         return null;
                 }
@@ -434,12 +437,13 @@ abstract class SaboMysql implements System{
                 // création des conditions de sélection 
                 foreach($linkedSelectors as $toCheckCond => $attributeValueName) $whereConditions[$toCheckCond] = $model->$attributeValueName;
 
-                $model->$propertyName = call_user_func_array([$joinColumnAttribute->getLinkedModelClass(),"find"],[$whereConditions]);
+                $model->$propertyName = call_user_func_array(callback: [$joinColumnAttribute->getLinkedModelClass(),"find"],args: [$whereConditions]);
             }
 
             return $model;
         }
-        else if(Application::getEnvConfig()->getConfig(EnvConfig::DEV_MODE_CONFIG->value) ) throw new Exception("Le row data est mal formé");
+        else if(Application::getEnvConfig()->getConfig(name: EnvConfig::DEV_MODE_CONFIG->value) )
+            throw new Exception(message: "Le row data est mal formé");
 
         return null;
     }

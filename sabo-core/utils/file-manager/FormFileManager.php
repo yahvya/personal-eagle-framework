@@ -4,7 +4,7 @@ namespace SaboCore\Utils\FileManager;
 
 use Override;
 use SaboCore\Routing\Response\DownloadResponse;
-use SaboCore\treatment\TreatmentException;
+use SaboCore\Treatment\TreatmentException;
 use SaboCore\Utils\Storage\AppStorage;
 
 /**
@@ -18,7 +18,7 @@ class FormFileManager extends FileManager{
     protected array $fileDatas;
 
     public function __construct(array $fileDatas){
-        parent::__construct($fileDatas["tmp_name"]);
+        parent::__construct(fileAbsolutePath: $fileDatas["tmp_name"]);
 
         $this->fileDatas = $fileDatas;
     }
@@ -30,12 +30,18 @@ class FormFileManager extends FileManager{
      */
     #[Override]
     public function getToDownload(?string $fileName = null): DownloadResponse{
-        throw new TreatmentException("Ce fichier ne peut pas être téléchargé",true);
+        throw new TreatmentException(message: "Ce fichier ne peut pas être téléchargé",isDisplayable: true);
     }
 
     #[Override]
     public function storeIn(string $path, bool $createFoldersIfNotExists = true): bool{
-        return $this->getErrorState() == 0 && AppStorage::storeFormFile($path,$this->fileAbsolutePath,$createFoldersIfNotExists);
+        return
+            $this->getErrorState() == 0 &&
+            AppStorage::storeFormFile(
+                storagePath: $path,
+                fileTmpName: $this->fileAbsolutePath,
+                createFoldersIfNotExists: $createFoldersIfNotExists
+            );
     }
 
     /**
@@ -69,7 +75,7 @@ class FormFileManager extends FileManager{
      * @return bool
      */
     public function isInTypes(string ...$typesToCheck):bool{
-        return in_array($this->getType(),$typesToCheck);
+        return in_array(needle: $this->getType(),haystack: $typesToCheck);
     }
 
     /**

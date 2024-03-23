@@ -33,8 +33,8 @@ abstract class RouteManager{
      */
     public static function registerGroup(string $linksPrefix,array $routes,array $genericParamsConfig = [],array $groupAccessVerifiers = []):void{
         foreach($routes as $route){
-            $route->addPrefix($linksPrefix,$genericParamsConfig,$groupAccessVerifiers);
-            self::registerRoute($route);
+            $route->addPrefix(prefix: $linksPrefix,genericParameters: $genericParamsConfig,accessVerifiers: $groupAccessVerifiers);
+            self::registerRoute(route: $route);
         }
     }
 
@@ -47,7 +47,7 @@ abstract class RouteManager{
         $routeName = $route->getRouteName();
 
         try{
-            $isDebugMode = Application::getEnvConfig()->getConfig(EnvConfig::DEV_MODE_CONFIG->value);
+            $isDebugMode = Application::getEnvConfig()->getConfig(name: EnvConfig::DEV_MODE_CONFIG->value);
 
             if(in_array($routeName,self::$usedNames) ){
                 if($isDebugMode)
@@ -60,7 +60,7 @@ abstract class RouteManager{
                 self::$usedNames[] = $routeName;
 
                 // enregistrement de la route
-                if(!array_key_exists($method,self::$routes) ) self::$routes[$method] = [];
+                if(!array_key_exists(key: $method,array: self::$routes) ) self::$routes[$method] = [];
 
                 self::$routes[$method][] = $route;
             }
@@ -76,9 +76,9 @@ abstract class RouteManager{
      */
     public static function fromFile(string $filename):void{
         try{
-            $path = APP_CONFIG->getConfig("ROOT") . Application::getFrameworkConfig()->getConfig(FrameworkConfig::ROUTES_BASEDIR_PATH->value) . "/$filename.php";
+            $path = APP_CONFIG->getConfig(name: "ROOT") . Application::getFrameworkConfig()->getConfig(name: FrameworkConfig::ROUTES_BASEDIR_PATH->value) . "/$filename.php";
 
-            if(file_exists($path) ) require_once($path);
+            if(@file_exists(filename: $path) ) require_once($path);
         }
         catch(Throwable){}
     }
@@ -90,10 +90,11 @@ abstract class RouteManager{
      * @return Route|null la route ou null
      */
     public static function findRouteByName(string $routeName,?string $method = null):?Route{
-        $routes = self::getRoutesFrom($method);
+        $routes = self::getRoutesFrom(method: $method);
 
         foreach($routes as $route){
-            if($route->getRouteName() === $routeName) return $route;
+            if($route->getRouteName() === $routeName)
+                return $route;
         }
 
         return null;
@@ -106,11 +107,11 @@ abstract class RouteManager{
      * @return array<string,Route|MatchResult>|null null si non trouvé sinon ["route" => ...,"match" => ...]
      */
     public static function findRouteByLink(string $link,?string $method = null):?array{
-        $routes = self::getRoutesFrom($method);
+        $routes = self::getRoutesFrom(method: $method);
 
         foreach ($routes as $route){
             // recherche de la route par match
-            $match = $route->matchWith($link);
+            $match = $route->matchWith(url: $link);
 
             if($match->getHaveMatch() ) return ["route" => $route,"match" => $match];
         }
@@ -124,10 +125,10 @@ abstract class RouteManager{
      * @return Route[]
      */
     protected static function getRoutesFrom(?string $method):array{
-        if($method !== null && array_key_exists($method,self::$routes) )
-            $routes = self::$routes[strtolower($method)];
+        if($method !== null && array_key_exists(key: $method,array: self::$routes) )
+            $routes = self::$routes[strtolower(string: $method)];
         else if($method === null)
-            $routes = array_merge(...array_values(self::$routes) );
+            $routes = array_merge(...array_values(array: self::$routes) );
         else
             $routes = [];
 

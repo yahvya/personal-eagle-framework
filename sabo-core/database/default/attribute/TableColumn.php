@@ -66,7 +66,7 @@ class TableColumn{
      */
     public function canBeSetToAttribute(mixed $data):bool|Cond{
         foreach($this->conditions as $cond){
-            if(!$cond->checkCondWith($data) ) return $cond;
+            if(!$cond->checkCondWith(data: $data) ) return $cond;
         }
 
         return true;

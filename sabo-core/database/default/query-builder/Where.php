@@ -29,7 +29,12 @@ trait Where{
      * @throws Exception en cas d'erreur
      */
     public function whereCond(string $attributeName,mixed $value,SqlComparator $comparator = SqlComparator::EQUAL,?SqlSeparator $nextSeparator = null):QueryBuilder{
-        $this->sqlString .= $this->manageCond($attributeName,$value,$comparator,$nextSeparator);
+        $this->sqlString .= $this->manageCond(
+            attributeName: $attributeName,
+            value: $value,
+            comparator: $comparator,
+            nextSeparator: $nextSeparator
+        );
 
         return $this;
     }
@@ -56,7 +61,7 @@ trait Where{
     public function whereGroup(array ...$conditionsToGroup):QueryBuilder{
         $sqlString = "(";
 
-        foreach($conditionsToGroup as $condData) $sqlString .= call_user_func_array([$this,"manageCond"],$condData);
+        foreach($conditionsToGroup as $condData) $sqlString .= call_user_func_array(callback: [$this,"manageCond"],args: $condData);
 
         $sqlString .= ") ";
 
@@ -86,7 +91,7 @@ trait Where{
      * @throws Exception en cas d'erreur
      */
     private function manageCond(string $attributeName,mixed $value,SqlComparator $comparator = SqlComparator::EQUAL,?SqlSeparator $nextSeparator = null):string{
-        $columnName = $this->getAttributeLinkedColName($attributeName);
+        $columnName = $this->getAttributeLinkedColName(attributeName: $attributeName);
 
         if($columnName == null) return "";
 

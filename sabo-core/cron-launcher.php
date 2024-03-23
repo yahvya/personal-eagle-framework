@@ -1,7 +1,7 @@
 <?php session_start();
 
 /**
- * @brief Point d'entrée du site
+ * @brief Point d'entrée de configuration pour scripts cron
  * @author yahaya bathily https://github.com/yahvya/
  */
 
@@ -21,4 +21,4 @@ define(
 );
 
 // lancement de l'application
-Application::launchApplication(applicationConfig: Application::getApplicationDefaultConfig() );
+Application::launchApplication(applicationConfig: Application::getApplicationDefaultConfig(),startRouting: false);

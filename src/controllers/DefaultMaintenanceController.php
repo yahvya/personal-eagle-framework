@@ -17,23 +17,29 @@ use Throwable;
 class DefaultMaintenanceController extends MaintenanceController{
     #[Override]
     public function showMaintenancePage(string $secretLink): Response{
-        return new BladeResponse("maintenance/authentication",[
-            "secretLink" => $secretLink
-        ]);
+        return new BladeResponse(
+            pathFromViews: "maintenance/authentication",
+            datas: [
+                "secretLink" => $secretLink
+            ]
+        );
     }
 
     #[Override]
     public function verifyLogin(Request $request): bool{
         try{
-            ["csrf" => $csrf,"password" => $password] = $request->getPostValues("Accès non autorisé","csrf","password");
+            ["csrf" => $csrf,"password" => $password] = $request->getPostValues(
+                "Accès non autorisé",
+                "csrf","password"
+            );
 
             // vérification csrf
-            if(!checkCsrf($csrf) ) return false;
+            if(!checkCsrf(token: $csrf) ) return false;
 
-            $fileManager = new FileManager(AppStorage::buildStorageCompletePath("/maintenance/maintenance.secret") );
+            $fileManager = new FileManager(fileAbsolutePath: AppStorage::buildStorageCompletePath(pathFromStorage: "/maintenance/maintenance.secret") );
 
             // vérification du mot de passe à partir de la clé secrète de maintenance
-            return @password_verify($password,$fileManager->getFromStorage()->getContent());
+            return @password_verify(password: $password,hash: $fileManager->getFromStorage()->getContent());
         }
         catch(Throwable){
             return false;

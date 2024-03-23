@@ -28,9 +28,10 @@ class MysqlProvider extends DatabaseProvider{
 
         try{
             self::$con = new PDO(
-                "mysql:host={$providerConfig->getConfig("host")};dbname={$providerConfig->getConfig("dbname")}",
-                $providerConfig->getConfig("user"),
-                $providerConfig->getConfig("password"),[
+                dsn: "mysql:host={$providerConfig->getConfig("host")};dbname={$providerConfig->getConfig("dbname")}",
+                username: $providerConfig->getConfig("user"),
+                password: $providerConfig->getConfig("password"),
+                options: [
                     PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
@@ -40,7 +41,7 @@ class MysqlProvider extends DatabaseProvider{
             if(!SaboModel::initModel() ) throw new Exception();
         }
         catch(Throwable){
-            throw new ConfigException("Echec de connexion à la base de donnée");
+            throw new ConfigException(message: "Echec de connexion à la base de donnée");
         }
     }
 

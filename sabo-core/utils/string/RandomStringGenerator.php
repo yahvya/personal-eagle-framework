@@ -35,16 +35,16 @@ abstract class RandomStringGenerator{
         foreach($toIgnore as $typeToIgnore) unset($chars[$typeToIgnore->value]);
 
         // création de la chaine de choix finale
-        $choiceList = implode('', $chars);
+        $choiceList = implode(separator: '',array:  $chars);
 
-        $choiceList = str_split($choiceList);
+        $choiceList = str_split(string: $choiceList);
 
         $keys = [];
 
         // récupération de l'index des caractères utilisés
-        for($i = 0; $i < $length; $i++) $keys[] = array_rand($choiceList);
+        for($i = 0; $i < $length; $i++) $keys[] = array_rand(array: $choiceList);
 
-        if(gettype($keys) != "array") $keys = [$keys];
+        if(gettype(value: $keys) != "array") $keys = [$keys];
 
         $finalString = "";
 

@@ -62,10 +62,10 @@ class Route{
      */
     public function __construct(string $requestMethod,string $link,Closure|array $toExecute,string $routeName,array $genericParamsRegex = [],array $accessVerifiers = []){
         // formatage du lien
-        if(!str_starts_with($link,"/") ) $link = "/$link";
-        if(!str_ends_with($link,"/") ) $link = "$link/";
+        if(!str_starts_with(haystack: $link,needle: "/") ) $link = "/$link";
+        if(!str_ends_with(haystack: $link,needle: "/") ) $link = "$link/";
 
-        $this->requestMethod = strtolower($requestMethod);
+        $this->requestMethod = strtolower(string: $requestMethod);
         $this->link = $link;
         $this->toExecute = $toExecute;
         $this->routeName = $routeName;
@@ -84,8 +84,8 @@ class Route{
      */
     public function addPrefix(string $prefix,array $genericParameters = [],array $accessVerifiers = []):Route{
         // formatage du préfixe
-        if(!str_starts_with($prefix,"/") ) $prefix = "/$prefix";
-        if(str_ends_with($prefix,"/") ) $prefix = substr($prefix,0,-1);
+        if(!str_starts_with(haystack: $prefix,needle: "/") ) $prefix = "/$prefix";
+        if(str_ends_with(haystack: $prefix,needle: "/") ) $prefix = substr(string: $prefix,offset: 0,length: -1);
 
         // combinaison lien préfixe, vérificateurs et regex
         $this->link = $prefix . $this->link;
@@ -101,9 +101,10 @@ class Route{
      * @return MatchResult le résultat du match contenant l'association si match
      */
     public function matchWith(string $url):MatchResult{
-        @preg_match("#^$this->verificationRegex$#",$url,$matches);
+        @preg_match(pattern: "#^$this->verificationRegex$#",subject: $url,matches: $matches);
 
-        if(empty($matches) ) return new MatchResult(false);
+        if(empty($matches) )
+            return new MatchResult(haveMatch: false);
 
         // association des paramètres récupérés avec leur ordre
         $matchTable = [];
@@ -113,7 +114,7 @@ class Route{
         foreach($matches as $key => $value)
             $matchTable[$this->genericParamsOrder[$key - 1] ] = $value;
 
-        return new MatchResult(true,$matchTable);
+        return new MatchResult(haveMatch: true,matchTable: $matchTable);
     }
 
     /**
@@ -156,17 +157,17 @@ class Route{
      * @return $this
      */
     protected function updateConfig():Route{
-        $this->verificationRegex = str_replace("/","\/",$this->link);
+        $this->verificationRegex = str_replace(search: "/",replace: "\/",subject: $this->link);
         $this->genericParamsOrder = [];
         $genericParameterMatcher = ":([a-zA-Z]+)";
 
         try{
-            $genericParameterMatcher = Application::getFrameworkConfig()->getConfig(FrameworkConfig::ROUTE_GENERIC_PARAMETER_MATCHER->value);
+            $genericParameterMatcher = Application::getFrameworkConfig()->getConfig(name: FrameworkConfig::ROUTE_GENERIC_PARAMETER_MATCHER->value);
         }
         catch(Throwable){}
 
         // match des variables
-        @preg_match_all("#$genericParameterMatcher#",$this->link,$matches);
+        @preg_match_all(pattern: "#$genericParameterMatcher#",subject: $this->link,matches: $matches);
 
         // récupération des paramètres
         foreach($matches[0] as $key => $completeMatch){
@@ -177,7 +178,7 @@ class Route{
 
             // transformation dans la chaine par regex
             $regex = $this->genericParamsRegex[$variableName] ?? ".+";
-            $this->verificationRegex = str_replace($completeMatch,"($regex)",$this->verificationRegex);
+            $this->verificationRegex = str_replace(search: $completeMatch,replace: "($regex)",subject: $this->verificationRegex);
         }
 
         $this->verificationRegex .= "?";
@@ -195,7 +196,14 @@ class Route{
      * @return Route la route crée
      */
     public static function get(string $link,Closure|array $toExecute,string $routeName,array $genericParamsRegex = [],array $accessVerifiers = []):Route{
-        return new Route("get",$link,$toExecute,$routeName,$genericParamsRegex,$accessVerifiers);
+        return new Route(
+            requestMethod: "get",
+            link: $link,
+            toExecute: $toExecute,
+            routeName: $routeName,
+            genericParamsRegex: $genericParamsRegex,
+            accessVerifiers: $accessVerifiers
+        );
     }
 
     /**
@@ -208,7 +216,14 @@ class Route{
      * @return Route La route créée
      */
     public static function delete(string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = [], array $accessVerifiers = []): Route {
-        return new Route("delete", $link, $toExecute, $routeName, $genericParamsRegex, $accessVerifiers);
+        return new Route(
+            requestMethod: "delete",
+            link: $link,
+            toExecute: $toExecute,
+            routeName: $routeName,
+            genericParamsRegex: $genericParamsRegex,
+            accessVerifiers: $accessVerifiers
+        );
     }
 
     /**
@@ -221,7 +236,14 @@ class Route{
      * @return Route La route créée
      */
     public static function post(string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = [], array $accessVerifiers = []): Route {
-        return new Route("post", $link, $toExecute, $routeName, $genericParamsRegex, $accessVerifiers);
+        return new Route(
+            requestMethod: "post",
+            link: $link,
+            toExecute: $toExecute,
+            routeName: $routeName,
+            genericParamsRegex: $genericParamsRegex,
+            accessVerifiers: $accessVerifiers
+        );
     }
 
     /**
@@ -234,7 +256,14 @@ class Route{
      * @return Route La route créée
      */
     public static function put(string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = [], array $accessVerifiers = []): Route {
-        return new Route("put", $link, $toExecute, $routeName, $genericParamsRegex, $accessVerifiers);
+        return new Route(
+            requestMethod: "put",
+            link: $link,
+            toExecute: $toExecute,
+            routeName: $routeName,
+            genericParamsRegex: $genericParamsRegex,
+            accessVerifiers: $accessVerifiers
+        );
     }
 
     /**
@@ -247,7 +276,14 @@ class Route{
      * @return Route La route créée
      */
     public static function patch(string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = [], array $accessVerifiers = []): Route {
-        return new Route("patch", $link, $toExecute, $routeName, $genericParamsRegex, $accessVerifiers);
+        return new Route(
+            requestMethod: "patch",
+            link: $link,
+            toExecute: $toExecute,
+            routeName: $routeName,
+            genericParamsRegex: $genericParamsRegex,
+            accessVerifiers: $accessVerifiers
+        );
     }
 
     /**
@@ -260,7 +296,14 @@ class Route{
      * @return Route La route créée
      */
     public static function options(string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = [], array $accessVerifiers = []): Route {
-        return new Route("options", $link, $toExecute, $routeName, $genericParamsRegex, $accessVerifiers);
+        return new Route(
+            requestMethod: "options",
+            link: $link,
+            toExecute: $toExecute,
+            routeName: $routeName,
+            genericParamsRegex: $genericParamsRegex,
+            accessVerifiers: $accessVerifiers
+        );
     }
 
     /**
@@ -273,7 +316,14 @@ class Route{
      * @return Route La route créée
      */
     public static function head(string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = [], array $accessVerifiers = []): Route {
-        return new Route("head", $link, $toExecute, $routeName, $genericParamsRegex, $accessVerifiers);
+        return new Route(
+            requestMethod: "head",
+            link: $link,
+            toExecute: $toExecute,
+            routeName: $routeName,
+            genericParamsRegex: $genericParamsRegex,
+            accessVerifiers: $accessVerifiers
+        );
     }
 
     /**
@@ -286,6 +336,13 @@ class Route{
      * @return Route La route créée
      */
     public static function trace(string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = [], array $accessVerifiers = []): Route {
-        return new Route("trace", $link, $toExecute, $routeName, $genericParamsRegex, $accessVerifiers);
+        return new Route(
+            requestMethod: "trace",
+            link: $link,
+            toExecute: $toExecute,
+            routeName: $routeName,
+            genericParamsRegex: $genericParamsRegex,
+            accessVerifiers: $accessVerifiers
+        );
     }
 }

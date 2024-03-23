@@ -55,8 +55,8 @@ class QueryBuilder{
      * @return $this
      */
     public function as(string $as):QueryBuilder{
-        $this->sqlString = str_replace("$this->as.","$as.",$this->sqlString);
-        $this->sqlString = str_replace("AS $this->as","AS $as",$this->sqlString);
+        $this->sqlString = str_replace(search: "$this->as.",replace: "$as.",subject: $this->sqlString);
+        $this->sqlString = str_replace(search: "AS $this->as",replace: "AS $as",subject: $this->sqlString);
         
         $this->as = $as;
 
@@ -112,13 +112,15 @@ class QueryBuilder{
         $columnsConfiguration = $this->linkedModel->getColumnsConfiguration();
 
         if(empty($columnsConfiguration[$attributeName]) || empty($columnsConfiguration[$attributeName]["configClass"]) ){
-            if(Application::getEnvConfig()->getConfig(EnvConfig::DEV_MODE_CONFIG->value) )
-                throw new Exception("Attribut inconnu ou non lié à une colonne sur select $attributeName");
+            if(Application::getEnvConfig()->getConfig(name: EnvConfig::DEV_MODE_CONFIG->value) )
+                throw new Exception(message: "Attribut inconnu ou non lié à une colonne sur select $attributeName");
             else    
                 return null;
         }
 
-        return $includeAs ? "$this->as.{$columnsConfiguration[$attributeName]["configClass"]->getLinkedColName()}" : $columnsConfiguration[$attributeName]["configClass"]->getLinkedColName();
+        return $includeAs ?
+            "$this->as.{$columnsConfiguration[$attributeName]["configClass"]->getLinkedColName()}" :
+            $columnsConfiguration[$attributeName]["configClass"]->getLinkedColName();
     }
 
     /**
@@ -132,15 +134,15 @@ class QueryBuilder{
         // récupération des clés primaires
         foreach($this->linkedModel->getColumnsConfiguration() as $attributeName => $columnConfiguration){
             if(!empty($columnConfiguration["configClass"]) && $columnConfiguration["configClass"]->getIsPrimaryKey() ){
-                $whereCondArray[] = [$attributeName, $this->linkedModel->getAttribute($attributeName), SqlComparator::EQUAL, SqlSeparator::AND];
+                $whereCondArray[] = [$attributeName, $this->linkedModel->getAttribute(attributeName: $attributeName), SqlComparator::EQUAL, SqlSeparator::AND];
             }
         }
 
-        $size = count($whereCondArray);
+        $size = count(value: $whereCondArray);
 
         if($size == 0){
-            if(Application::getEnvConfig()->getConfig(EnvConfig::DEV_MODE_CONFIG->value))
-                throw new Exception("Il n'y a pas de clé primaire");
+            if(Application::getEnvConfig()->getConfig(name: EnvConfig::DEV_MODE_CONFIG->value))
+                throw new Exception(message: "Il n'y a pas de clé primaire");
             else 
                 return $this;
         }
@@ -168,13 +170,13 @@ class QueryBuilder{
      * @throws Exception (en mode debug)
      */
     public static function createFrom(string $modelClass):?QueryBuilder{
-        if(!class_exists($modelClass) || !is_subclass_of($modelClass,SaboModel::class) ){
-            if(Application::getEnvConfig()->getConfig(EnvConfig::DEV_MODE_CONFIG->value) )
-                throw new Exception("La class $modelClass passé à QueryBuilder doit être une sous classe de SaboModel");
+        if(!class_exists(class: $modelClass) || !is_subclass_of(object_or_class: $modelClass,class: SaboModel::class) ){
+            if(Application::getEnvConfig()->getConfig(name: EnvConfig::DEV_MODE_CONFIG->value) )
+                throw new Exception(message: "La class $modelClass passé à QueryBuilder doit être une sous classe de SaboModel");
             else
                 return null;
         }
 
-        return new QueryBuilder(new $modelClass() );
+        return new QueryBuilder(linkedModel: new $modelClass() );
     } 
 }

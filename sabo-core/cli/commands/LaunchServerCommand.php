@@ -24,12 +24,12 @@ class LaunchServerCommand extends SaboCommand{
         $rooter = ROOT . "/sabo-core/index.php";
 
         Printer::printStyle(
-            "Lancement du serveur ($link)",
-            $cli->getThemeConfig()->getConfig(Theme::SPECIAL_TEXT_STYLE->value),
-            1
+            toPrint: "Lancement du serveur ($link)",
+            compositeStyle: $cli->getThemeConfig()->getConfig(name: Theme::SPECIAL_TEXT_STYLE->value),
+            countOfLineBreak: 1
         );
 
-        system("php -S $link $rooter");
+        system(command: "php -S $link $rooter");
     }
 
     #[Override]

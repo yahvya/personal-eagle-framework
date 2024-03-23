@@ -32,7 +32,7 @@ class FilterCond implements Cond{
 
     #[Override]
     public function checkCondWith(mixed $data):bool{
-        return filter_var($data,$this->filter);
+        return filter_var(value: $data,filter: $this->filter);
     }
 
     #[Override]

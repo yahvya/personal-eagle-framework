@@ -2,6 +2,8 @@
 
 namespace SaboCore\Routing\Application;
 
+use SaboCore\Config\ApplicationConfig;
+use SaboCore\Config\ApplicationPathConfig;
 use SaboCore\Config\Config;
 use SaboCore\Config\ConfigException;
 use SaboCore\Config\DatabaseConfig;
@@ -25,9 +27,10 @@ abstract class Application{
     /**
      * @brief Lance l'application
      * @param Config $applicationConfig configuration de l'application
+     * @@param bool $startRouting si la recherche et le rendu de routing doit être fait
      * @return void
      */
-    public static function launchApplication(Config $applicationConfig):void{
+    public static function launchApplication(Config $applicationConfig,bool $startRouting = true):void{
         self::$applicationConfig = $applicationConfig;
 
         try{
@@ -36,16 +39,32 @@ abstract class Application{
             // vérification des configurations
             self::checkConfigs();
 
+            // chargement des routes
+            require_once(
+                APP_CONFIG->getConfig(name: "ROOT") .
+                Application::getFrameworkConfig()->getConfig(name: FrameworkConfig::ROUTES_BASEDIR_PATH->value) .
+                "/routes.php"
+            );
+
             try{
                 // initialisation de la base de données si requise
                 self::initDatabase();
-                // lancement de l'application
-                $routingManager = new RoutingManager();
 
-                $routingManager->start()->renderResponse();
+                // lancement de l'application
+                if($startRouting){
+                    $routingManager = new RoutingManager();
+                    $routingManager
+                        ->start()
+                        ->renderResponse();
+                }
             }
-            catch(ConfigException $e){
-                if(self::$applicationConfig->getConfig("ENV_CONFIG")->getConfig(EnvConfig::DEV_MODE_CONFIG->value) )
+            catch(Throwable $e){
+                // vérification si mode debug
+                if(
+                    self::$applicationConfig
+                        ->getConfig(name:ApplicationConfig::ENV_CONFIG->value)
+                        ->getConfig(name: EnvConfig::DEV_MODE_CONFIG->value)
+                )
                     debugDie($e);
                 else
                     throw $e;
@@ -70,7 +89,7 @@ abstract class Application{
     public static function getEnvConfig():Config{
         if(self::$applicationConfig === null) throw new ConfigException("Configuration d'environnement non trouvé");
 
-        return self::$applicationConfig->getConfig("ENV_CONFIG");
+        return self::$applicationConfig->getConfig(ApplicationConfig::ENV_CONFIG->value);
     }
 
     /**
@@ -80,7 +99,50 @@ abstract class Application{
     public static function getFrameworkConfig():Config{
         if(self::$applicationConfig === null) throw new ConfigException("Configuration de framework non trouvé");
 
-        return self::$applicationConfig->getConfig("FRAMEWORK_CONFIG");
+        return self::$applicationConfig->getConfig(ApplicationConfig::FRAMEWORK_CONFIG->value);
+    }
+
+    /**
+     * @brief
+     * @param Config $envConfig nouvelle configuration de l'environnement
+     * @return void
+     * @throws ConfigException en cas de configuration non prédéfini
+     */
+    public static function setEnvConfig(Config $envConfig):void{
+        if(self::$applicationConfig === null)
+            throw new ConfigException(message: "L'application n'a pas été configuré");
+
+        self::$applicationConfig->setConfig(name: ApplicationConfig::ENV_CONFIG->value,value: $envConfig);
+    }
+
+    /**
+     * @return Config la configuration par défaut de l'application
+     */
+    public static function getApplicationDefaultConfig():Config{
+        $appRoot = __DIR__ . "/../../..";
+
+        return Config::create()
+            // configurations des chemins
+            ->setConfig(
+                name: ApplicationPathConfig::ENV_CONFIG_FILEPATH->value,
+                value: "$appRoot/src/configs/env.php"
+            )
+            ->setConfig(
+                name: ApplicationPathConfig::FUNCTIONS_CONFIG_FILEPATH->value,
+                value: "$appRoot/src/configs/functions.php"
+            )
+            ->setConfig(
+                name: ApplicationPathConfig::FRAMEWORK_CONFIG_FILEPATH->value,
+                value: "$appRoot/src/configs/framework.php"
+            )
+            ->setConfig(
+                name: ApplicationPathConfig::BLADE_FUNCTIONS_CONFIG_FILEPATH->value,
+                value: "$appRoot/src/configs/blade-config.php"
+            )
+            ->setConfig(
+                name: ApplicationPathConfig::TWIG_FUNCTIONS_CONFIG_FILEPATH->value,
+                value: "$appRoot/src/configs/twig-config.php"
+            );
     }
 
     /**
@@ -89,13 +151,17 @@ abstract class Application{
      * @throws ConfigException en cas d'erreur
      */
     protected static function requireNeededFiles():void{
-        require_once(self::$applicationConfig->getConfig("FUNCTIONS_CONFIG_FILEPATH") );
-        require_once(self::$applicationConfig->getConfig("BLADE_FUNCTIONS_CONFIG_FILEPATH") );
-        require_once(self::$applicationConfig->getConfig("TWIG_FUNCTIONS_CONFIG_FILEPATH") );
+        require_once(self::$applicationConfig->getConfig(name: ApplicationPathConfig::FUNCTIONS_CONFIG_FILEPATH->value));
+        require_once(self::$applicationConfig->getConfig(name: ApplicationPathConfig::BLADE_FUNCTIONS_CONFIG_FILEPATH->value));
+        require_once(self::$applicationConfig->getConfig(name: ApplicationPathConfig::TWIG_FUNCTIONS_CONFIG_FILEPATH->value));
 
         self::$applicationConfig = Config::create()
-            ->setConfig("ENV_CONFIG",require_once(self::$applicationConfig->getConfig("ENV_CONFIG_FILEPATH") ) )
-            ->setConfig("FRAMEWORK_CONFIG",require_once(self::$applicationConfig->getConfig("FRAMEWORK_CONFIG_FILEPATH") ) );
+            ->setConfig(
+                name: ApplicationConfig::ENV_CONFIG->value,
+                value: require_once(self::$applicationConfig->getConfig(name: ApplicationPathConfig::ENV_CONFIG_FILEPATH->value)))
+            ->setConfig(
+                name: ApplicationConfig::FRAMEWORK_CONFIG->value,
+                value: require_once(self::$applicationConfig->getConfig(name: ApplicationPathConfig::FRAMEWORK_CONFIG_FILEPATH->value)));
     }
 
     /**
@@ -104,18 +170,19 @@ abstract class Application{
      * @throws ConfigException en cas de configuration mal formée
      */
     protected static function checkConfigs():void{
-        if(self::$applicationConfig === null) throw new ConfigException("Configuration non défini");
+        if(self::$applicationConfig === null)
+            throw new ConfigException(message: "Configuration non défini");
 
         // vérification de la configuration d'environnement
-        $envConfig = self::$applicationConfig->getConfig("ENV_CONFIG");
+        $envConfig = self::$applicationConfig->getConfig(name: ApplicationConfig::ENV_CONFIG->value);
         $envConfig->checkConfigs(...array_map(fn(EnvConfig $case):string => $case->value,EnvConfig::cases()));
 
         // vérification de la configuration du framework
-        $frameworkConfig = self::$applicationConfig->getConfig("FRAMEWORK_CONFIG");
+        $frameworkConfig = self::$applicationConfig->getConfig(name: ApplicationConfig::FRAMEWORK_CONFIG->value);
         $frameworkConfig->checkConfigs(...array_map(fn(FrameworkConfig $case):string => $case->value,FrameworkConfig::cases()));
 
         // vérification de la configuration de maintenance
-        $maintenanceConfig = $envConfig->getConfig(EnvConfig::MAINTENANCE_CONFIG->value);
+        $maintenanceConfig = $envConfig->getConfig(name: EnvConfig::MAINTENANCE_CONFIG->value);
         $maintenanceConfig->checkConfigs(...array_map(fn(MaintenanceConfig $case):string => $case->value,MaintenanceConfig::cases()));
     }
 
@@ -126,18 +193,19 @@ abstract class Application{
      */
     protected static function initDatabase():void{
         $databaseConfig = self::$applicationConfig
-            ->getConfig("ENV_CONFIG")
-            ->getConfig(EnvConfig::DATABASE_CONFIG->value);
+            ->getConfig(name: ApplicationConfig::ENV_CONFIG->value)
+            ->getConfig(name: EnvConfig::DATABASE_CONFIG->value);
 
-        if(!$databaseConfig->getConfig(DatabaseConfig::INIT_APP_WITH_CONNECTION->value) ) return;
+        // vérification du choix d'initialisation de base de donnée ou non
+        if(!$databaseConfig->getConfig(name: DatabaseConfig::INIT_APP_WITH_CONNECTION->value) ) return;
 
         // vérification de la présence de chaque élement de configuration
         $databaseConfig->checkConfigs(...array_map(fn(DatabaseConfig $case):string => $case->value,DatabaseConfig::cases()));
 
         // initialisation de la base de données
         $databaseConfig
-            ->getConfig(DatabaseConfig::PROVIDER->value)
-            ->initDatabase($databaseConfig->getConfig(DatabaseConfig::PROVIDER_CONFIG->value));
+            ->getConfig(name: DatabaseConfig::PROVIDER->value)
+            ->initDatabase(providerConfig: $databaseConfig->getConfig(name: DatabaseConfig::PROVIDER_CONFIG->value));
     }
 
     /**
@@ -148,12 +216,12 @@ abstract class Application{
         try{
             // affichage de la page d'erreur
             $response = new HtmlResponse(
-                @file_get_contents(APP_CONFIG->getConfig("ROOT") . "/src/views/default-pages/internal-error.html") ??
+                content: @file_get_contents(APP_CONFIG->getConfig("ROOT") . "/src/views/default-pages/internal-error.html") ??
                 "Erreur interne"
             );
 
             $response
-                ->setResponseCode(ResponseCode::INTERNAL_SERVER_ERROR)
+                ->setResponseCode(code: ResponseCode::INTERNAL_SERVER_ERROR)
                 ->renderResponse();
         }
         catch(Throwable){}

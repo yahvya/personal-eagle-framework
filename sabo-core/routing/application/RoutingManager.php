@@ -30,7 +30,7 @@ class RoutingManager{
     protected string $link;
 
     public function __construct(){
-        $this->link = urldecode($_SERVER["REQUEST_URI"]);
+        $this->link = urldecode(string: $_SERVER["REQUEST_URI"]);
     }
 
     /**
@@ -39,24 +39,23 @@ class RoutingManager{
      * @throws ConfigException|Throwable en cas d'erreur
      */
     public function start():Response{
-        // chargement des routes
-        require_once(APP_CONFIG->getConfig("ROOT") . Application::getFrameworkConfig()->getConfig(FrameworkConfig::ROUTES_BASEDIR_PATH->value) . "/routes.php");
-
         $request = new Request();
 
         // vérification de maintenance
-        $maintenanceManager = $this->checkMaintenance($request);
+        $maintenanceManager = $this->checkMaintenance(request: $request);
 
         if($maintenanceManager !== null) return $maintenanceManager;
 
         // vérification d'accès à une ressource
-        if($this->isAccessibleRessource() ) return new RessourceResponse(APP_CONFIG->getConfig("ROOT") . $this->link);
+        if($this->isAccessibleRessource() )
+            return new RessourceResponse(ressourceAbsolutePath: APP_CONFIG->getConfig("ROOT") . $this->link);
 
         // recherche de l'action à faire
-        $searchResult = RouteManager::findRouteByLink($this->link);
+        $searchResult = RouteManager::findRouteByLink(link: $this->link);
 
         // affichage de la page non trouvée
-        if($searchResult == null) return self::notFoundPage();
+        if($searchResult == null)
+            return self::notFoundPage();
 
         // vérification des conditions d'accès
         ["route" => $route,"match" => $match] = $searchResult;
@@ -66,13 +65,14 @@ class RoutingManager{
 
         // récupération et vérification des conditions
         foreach($route->getAccessVerifiers() as $verifier) {
-            $verifyResult = $verifier->execVerification($args,$args,$args);
+            $verifyResult = $verifier->execVerification(verifierArgs: $args,onSuccessArgs: $args,onFailureArgs: $args);
 
-            if(!empty($verifyResult["failure"]) ) return $verifyResult["failure"];
+            if(!empty($verifyResult["failure"]) )
+                return $verifyResult["failure"];
         }
 
         // lancement du programme
-        return $this->launch($route->getToExecute(),$matches,$request);
+        return $this->launch(toExecute: $route->getToExecute(),matches: $matches,request: $request);
     }
 
     /**
@@ -86,16 +86,16 @@ class RoutingManager{
         return
             // on vérifie si le chemin se trouve dans le dossier public, ou est une extension autorisée
             (
-                str_starts_with($this->link,$frameworkConfig->getConfig(FrameworkConfig::PUBLIC_DIR_PATH->value)) ||
+                str_starts_with(haystack: $this->link,needle: $frameworkConfig->getConfig(name: FrameworkConfig::PUBLIC_DIR_PATH->value)) ||
                 !empty(
                     array_filter(
-                        $frameworkConfig->getConfig(FrameworkConfig::AUTHORIZED_EXTENSIONS_AS_PUBLIC->value),
-                        fn(string $extension):bool => str_ends_with($this->link,$extension)
+                        array: $frameworkConfig->getConfig(FrameworkConfig::AUTHORIZED_EXTENSIONS_AS_PUBLIC->value),
+                        callback: fn(string $extension):bool => str_ends_with($this->link,$extension)
                     )
                 )
             ) &&
             // on vérifie que le fichier existe
-            file_exists(APP_CONFIG->getConfig("ROOT") . $this->link);
+            @file_exists(filename: APP_CONFIG->getConfig(name: "ROOT") . $this->link);
     }
 
     /**
@@ -109,14 +109,14 @@ class RoutingManager{
     protected function launch(array|Closure $toExecute,array $matches,Request $request):Response{
         if($toExecute instanceof Closure){
             $callable = $toExecute;
-            $reflectionMethod = new ReflectionFunction($toExecute);
+            $reflectionMethod = new ReflectionFunction(function: $toExecute);
         }
-        elseif(is_subclass_of($toExecute[0],Controller::class) ){
-            $instance = (new ReflectionClass($toExecute[0]))->newInstance();
+        elseif(is_subclass_of(object_or_class: $toExecute[0],class: Controller::class) ){
+            $instance = (new ReflectionClass(objectOrClass: $toExecute[0]))->newInstance();
             $callable = [$instance,$toExecute[1]];
-            $reflectionMethod = new ReflectionMethod($instance,$toExecute[1]);
+            $reflectionMethod = new ReflectionMethod(objectOrMethod: $instance,method: $toExecute[1]);
         }
-        else throw new ConfigException("Callable inconnu");
+        else throw new ConfigException(message: "Callable inconnu");
 
         $args = [];
 
@@ -133,14 +133,14 @@ class RoutingManager{
             // recherche de l'argument paramètre de l'URL
             $parameterName = $parameter->getName();
 
-            if(array_key_exists($parameterName,$matches) )
+            if(array_key_exists(key: $parameterName,array: $matches) )
                 $args[] = $matches[$parameterName];
         }
 
         // gestion des données flash
         $request->getSessionStorage()->manageFlashDatas();
 
-        return call_user_func_array($callable,$args);
+        return call_user_func_array(callback: $callable,args: $args);
     }
 
     /**
@@ -150,23 +150,28 @@ class RoutingManager{
      * @throws ConfigException|Throwable en cas d'erreur
      */
     protected function checkMaintenance(Request $request):Response|null{
-        $maintenanceConfig = Application::getEnvConfig()->getConfig(EnvConfig::MAINTENANCE_CONFIG->value);
-        $maintenanceSecretLink = $maintenanceConfig->getConfig(MaintenanceConfig::SECRET_LINK->value);
+        $maintenanceConfig = Application::getEnvConfig()->getConfig(name: EnvConfig::MAINTENANCE_CONFIG->value);
+        $maintenanceSecretLink = $maintenanceConfig->getConfig(name: MaintenanceConfig::SECRET_LINK->value);
 
-        if(!$maintenanceConfig->getConfig(MaintenanceConfig::IS_IN_MAINTENANCE->value) || $this->canAccessOnMaintenance($request) ) return null;
-        if($this->link !== $maintenanceSecretLink) return self::maintenancePage();
+        if(
+            !$maintenanceConfig->getConfig(name: MaintenanceConfig::IS_IN_MAINTENANCE->value) ||
+            $this->canAccessOnMaintenance(request: $request)
+        ) return null;
 
-        $maintenanceManager = (new ReflectionClass($maintenanceConfig->getConfig(MaintenanceConfig::ACCESS_MANAGER->value)))->newInstance();
+        if($this->link !== $maintenanceSecretLink)
+            return self::maintenancePage();
+
+        $maintenanceManager = (new ReflectionClass($maintenanceConfig->getConfig(name: MaintenanceConfig::ACCESS_MANAGER->value)))->newInstance();
 
         // si la requête est POST authentification sinon affichage de la page d'authentification
         if($_SERVER["REQUEST_METHOD"] === "POST"){
-            if($maintenanceManager->verifyLogin($request) ){
-                $this->authorizeAccessOnMaintenance($request);
-                return new RedirectResponse("/");
+            if($maintenanceManager->verifyLogin(request: $request) ){
+                $this->authorizeAccessOnMaintenance(request: $request);
+                return new RedirectResponse(link: "/");
             }
-            else return new RedirectResponse($maintenanceSecretLink);
+            else return new RedirectResponse(link: $maintenanceSecretLink);
         }
-        else return $maintenanceManager->showMaintenancePage($maintenanceSecretLink);
+        else return $maintenanceManager->showMaintenancePage(secretLink: $maintenanceSecretLink);
     }
 
     /**
@@ -174,7 +179,7 @@ class RoutingManager{
      * @return bool si l'utilisateur a accès au site
      */
     protected function canAccessOnMaintenance(Request $request):bool{
-        return $request->getSessionStorage()->getFrameworkValue(FrameworkSession::MAINTENANCE_ACCESS->value) !== null;
+        return $request->getSessionStorage()->getFrameworkValue(storeKey: FrameworkSession::MAINTENANCE_ACCESS->value) !== null;
     }
 
     /**
@@ -183,7 +188,7 @@ class RoutingManager{
      * @return void
      */
     protected function authorizeAccessOnMaintenance(Request $request):void{
-        $request->getSessionStorage()->storeFramework(FrameworkSession::MAINTENANCE_ACCESS->value,true);
+        $request->getSessionStorage()->storeFramework(storeKey: FrameworkSession::MAINTENANCE_ACCESS->value,toStore: true);
     }
 
     /**
@@ -192,7 +197,7 @@ class RoutingManager{
      */
     public static function notFoundPage():HtmlResponse{
         return new HtmlResponse(
-            @file_get_contents(APP_CONFIG->getConfig("ROOT") . "/src/views/default-pages/not-found.html") ??
+            content: @file_get_contents(APP_CONFIG->getConfig(name: "ROOT") . "/src/views/default-pages/not-found.html") ??
             "Page non trouvé"
         );
     }
@@ -203,10 +208,8 @@ class RoutingManager{
      */
     public static function maintenancePage():HtmlResponse{
         return new HtmlResponse(
-            @file_get_contents(APP_CONFIG->getConfig("ROOT") . "/src/views/default-pages/maintenance.html") ??
+            content: @file_get_contents(APP_CONFIG->getConfig(name: "ROOT") . "/src/views/default-pages/maintenance.html") ??
             "Site en cours de maintenance"
         );
     }
-
-
 }

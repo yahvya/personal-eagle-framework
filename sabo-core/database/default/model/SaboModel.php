@@ -51,7 +51,8 @@ abstract class SaboModel extends SaboMysql{
         $modelData = [];
 
         foreach($this->columnsConfiguration as $attributeName => $configuration){
-            if(!empty($configuration["configClass"]) ) $modelData[$attributeName] = $configuration["reflection"]->isInitialized($this) ? $this->$attributeName : null;
+            if(!empty($configuration["configClass"]) )
+                $modelData[$attributeName] = $configuration["reflection"]->isInitialized($this) ? $this->$attributeName : null;
         }
 
         return $modelData;  
@@ -67,7 +68,7 @@ abstract class SaboModel extends SaboMysql{
      */
     public function setAttribute(string $attributeName,mixed $data):SaboModel{
         // vérification de l'existence de l'attribut
-        if(!$this->checkAttributeAccessible($attributeName) ) return $this;
+        if(!$this->checkAttributeAccessible(attributeName: $attributeName) ) return $this;
 
         if($this->columnsConfiguration[$attributeName]["configClass"]->getIsNullable() && $data == null){
             $this->{$attributeName} = $data;
@@ -103,7 +104,7 @@ abstract class SaboModel extends SaboMysql{
      */
     public function getAttribute(string $attributeName):mixed{
         // vérification de l'existence de l'attribut
-        return !$this->checkAttributeAccessible($attributeName) ? null : $this->{$attributeName};
+        return !$this->checkAttributeAccessible(attributeName: $attributeName) ? null : $this->{$attributeName};
     }   
 
     /**
@@ -142,9 +143,9 @@ abstract class SaboModel extends SaboMysql{
      */
     protected function checkAttributeAccessible(string $attributeName):bool{
         // vérification de l'existence de l'attribut
-        if(!$this->reflection->hasProperty($attributeName) || $this->columnsConfiguration[$attributeName]["reflection"]->isPrivate() ){
-            if(Application::getEnvConfig()->getConfig(EnvConfig::DEV_MODE_CONFIG->value) )
-                throw new Exception("L'attribut ($attributeName) n'existe pas ou est privé sur la class " . $this->reflection->getName() );
+        if(!$this->reflection->hasProperty(name: $attributeName) || $this->columnsConfiguration[$attributeName]["reflection"]->isPrivate() ){
+            if(Application::getEnvConfig()->getConfig(name: EnvConfig::DEV_MODE_CONFIG->value) )
+                throw new Exception(message: "L'attribut ($attributeName) n'existe pas ou est privé sur la class {$this->reflection->getName()}");
             else 
                 return false;
         }
@@ -158,24 +159,26 @@ abstract class SaboModel extends SaboMysql{
      * @throws Exception en cas d'erreur
      */
     protected function readChildConfiguration():SaboModel{
-        $this->reflection = new ReflectionClass($this);
+        $this->reflection = new ReflectionClass(objectOrClass: $this);
 
         // récupération du nom de la table lié
-        $reflectionAttribute = $this->reflection->getAttributes(TableName::class);
+        $reflectionAttribute = $this->reflection->getAttributes(name: TableName::class);
 
-        if(empty($reflectionAttribute[0]) ) throw new Exception("Attribut TableName manquant sur le model -> " . $this->reflection->getName() );
+        if(empty($reflectionAttribute[0]) )
+            throw new Exception(message: "Attribut TableName manquant sur le model -> {$this->reflection->getName()}");
 
         $this->tableName = $reflectionAttribute[0]->newInstance()->getTableName();
         $this->columnsConfiguration = [];
 
         // récupération de la configuration des attributs
         foreach($this->reflection->getProperties() as $reflectionProperty){
-            $reflectionAttribute = $reflectionProperty->getAttributes(TableColumn::class);
+            $reflectionAttribute = $reflectionProperty->getAttributes(name: TableColumn::class);
 
             $modelAttributeName = $reflectionProperty->getName();
             
             if(!empty($reflectionAttribute[0]) ){
-                if($reflectionProperty->isPrivate() ) throw new Exception("Un attribut lié à une colonne de la base de données doit être public ou protected - Table($this->tableName) - Attribut($modelAttributeName)");
+                if($reflectionProperty->isPrivate() )
+                    throw new Exception(message: "Un attribut lié à une colonne de la base de données doit être public ou protected - Table($this->tableName) - Attribut($modelAttributeName)");
 
                 $this->columnsConfiguration[$modelAttributeName] = [
                     "name" => $modelAttributeName,
@@ -201,13 +204,13 @@ abstract class SaboModel extends SaboMysql{
      * @return SaboModel this
      */
     protected function readJoinedLinks():SaboModel{
-        if($this->reflection == null) $this->reflection = new ReflectionClass($this);
+        if($this->reflection == null) $this->reflection = new ReflectionClass(objectOrClass: $this);
 
         $this->joinedLinks = [];
 
         // récupération des éléments
         foreach($this->reflection->getProperties() as $reflectionProperty){
-            $reflectionAttributes = $reflectionProperty->getAttributes(JoinedColumn::class);
+            $reflectionAttributes = $reflectionProperty->getAttributes(name: JoinedColumn::class);
 
             if(empty($reflectionAttributes) ) continue;
 

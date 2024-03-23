@@ -27,7 +27,7 @@ abstract class Printer{
         if($backgroundColor !== null) $styles[] = $backgroundColor;
         if($isImportant) $styles[] = Text::Bold;
 
-        self::printStyle($toPrint,new Composite(...$styles) );
+        self::printStyle(toPrint: $toPrint,compositeStyle: new Composite(...$styles) );
     }
 
     /**
@@ -38,7 +38,7 @@ abstract class Printer{
      * @return void
      */
     public static function printStyle(string $toPrint,Composite $compositeStyle,int $countOfLineBreak = 0):void{
-        echo (new Style)->apply($toPrint,$compositeStyle);
-        echo str_repeat(PHP_EOL,$countOfLineBreak);
+        echo (new Style)->apply(text: $toPrint,style: $compositeStyle);
+        echo str_repeat(string: PHP_EOL,times: $countOfLineBreak);
     }
 }

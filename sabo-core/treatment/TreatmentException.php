@@ -1,6 +1,6 @@
 <?php
 
-namespace SaboCore\treatment;
+namespace SaboCore\Treatment;
 
 use Exception;
 
@@ -19,7 +19,7 @@ class TreatmentException extends Exception{
      * @param bool $isDisplayable si l'erreur est affichable à l'utilisateur
      */
     public function __construct(string $message, bool $isDisplayable){
-        parent::__construct($message);
+        parent::__construct(message: $message);
 
         $this->message = $message;
         $this->isDisplayable = $isDisplayable;

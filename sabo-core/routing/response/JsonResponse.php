@@ -15,12 +15,12 @@ class JsonResponse extends Response{
     public function __construct(array $json){
         $this->content = $json;
 
-        $this->setHeader("Content-Type","application/json");
+        $this->setHeader(name: "Content-Type",value: "application/json");
     }
 
     #[Override]
     public function renderContent():never{
-        $jsonContent = @json_encode($this->content);
+        $jsonContent = @json_encode(value: $this->content);
 
         die(!$jsonContent ? "{}" : $jsonContent);
     }

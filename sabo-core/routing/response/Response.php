@@ -94,10 +94,10 @@ class Response{
      * @return never
      */
     public function renderResponse():never{
-        http_response_code($this->responseCode->value);
+        @http_response_code(response_code: $this->responseCode->value);
 
         foreach($this->headers as $name => $header)
-            header("$name: $header");
+            header(header: "$name: $header");
 
         $this->renderContent();
     }

@@ -31,7 +31,7 @@ class CsrfManager{
      * @return string la version serializé
      */
     public function serialize():string{
-        return serialize($this);
+        return serialize(value: $this);
     }
 
     /**
@@ -39,6 +39,6 @@ class CsrfManager{
      * @return CsrfManager la version desérializé
      */
     public static function deserialize(string $instance):CsrfManager{
-        return unserialize($instance);
+        return unserialize(data: $instance);
     }
 }

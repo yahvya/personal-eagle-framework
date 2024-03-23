@@ -20,12 +20,12 @@ class TwigResponse extends HtmlResponse{
      */
     public function __construct(string $pathFromViews,array $datas = []){
         try{
-            $environment = self::newEnvironment([APP_CONFIG->getConfig("ROOT") . "/src/views/"]);
+            $environment = self::newEnvironment(viewsPath: [APP_CONFIG->getConfig(name: "ROOT") . "/src/views/"]);
 
-            parent::__construct($environment->render($pathFromViews,$datas) );
+            parent::__construct(content: $environment->render(name: $pathFromViews,context: $datas) );
         }
         catch(Throwable){
-            parent::__construct("Veuillez rechargez la page");
+            parent::__construct(content: "Veuillez rechargez la page");
         }
     }
 
@@ -36,10 +36,12 @@ class TwigResponse extends HtmlResponse{
      */
     public static function newEnvironment(array $viewsPath):Environment|null{
         try{
-            $loader = new FilesystemLoader($viewsPath);
-            $environment = new Environment($loader,[
-                "cache" => APP_CONFIG->getConfig("ROOT") . "/sabo-core/views/twig",
-                "debug" => Application::getEnvConfig()->getConfig(EnvConfig::DEV_MODE_CONFIG->value),
+            $loader = new FilesystemLoader(paths: $viewsPath);
+            $environment = new Environment(
+                loader: $loader,
+                options: [
+                "cache" => APP_CONFIG->getConfig(name: "ROOT") . "/sabo-core/views/twig",
+                "debug" => Application::getEnvConfig()->getConfig(name: EnvConfig::DEV_MODE_CONFIG->value),
 
             ]);
 
@@ -47,7 +49,7 @@ class TwigResponse extends HtmlResponse{
             $extensions = registerTwigExtensions();
 
             foreach($extensions as $extension)
-                $environment->addExtension((new ReflectionClass($extension))->newInstance() );
+                $environment->addExtension(extension: (new ReflectionClass(objectOrClass: $extension))->newInstance() );
 
             return $environment;
         }

@@ -20,15 +20,15 @@ trait Option{
         $toAdd = [];
 
         foreach($conditions as $cond){
-            if(gettype($cond) == "array"){
-                $columnName = $this->getAttributeLinkedColName($cond[0]);
+            if(gettype(value: $cond) == "array"){
+                $columnName = $this->getAttributeLinkedColName(attributeName: $cond[0]);
                 
                 $toAdd[] = "$this->as.$columnName {$cond[1]->value}";
             }
-            else $toAdd[] = "$this->as.{$this->getAttributeLinkedColName($cond)} ASC";
+            else $toAdd[] = "$this->as.{$this->getAttributeLinkedColName(attributeName: $cond)} ASC";
         }
 
-        $this->sqlString .= "ORDER BY " . implode(",",$toAdd) . " ";
+        $this->sqlString .= "ORDER BY " . implode(separator: ",",array: $toAdd) . " ";
 
         return $this;
     }

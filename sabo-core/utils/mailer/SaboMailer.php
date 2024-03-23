@@ -26,24 +26,24 @@ class SaboMailer extends PHPMailer {
         $this->reset();
 
         try{
-            $isDebugMode = Application::getEnvConfig()->getConfig(EnvConfig::DEV_MODE_CONFIG->value);
+            $isDebugMode = Application::getEnvConfig()->getConfig(name: EnvConfig::DEV_MODE_CONFIG->value);
 
             // vérification de l'existence des destinataires
             if(empty($recipients) ){
                 if($isDebugMode)
-                    throw new Exception("Les destinataires d'un mail ne peuvent être vide");
+                    throw new Exception(message: "Les destinataires d'un mail ne peuvent être vide");
                 else
                     return false;
             }
 
             // ajout des destinataires
             foreach($recipients as $recipient){
-                if(gettype($recipient) != "array") $recipient = [$recipient];
+                if(gettype(value: $recipient) != "array") $recipient = [$recipient];
 
                 $this->addAddress(...$recipient);
             }
 
-            $this->isHTML(true);
+            $this->isHTML();
             $this->Body = $templateProvider->buildContent();
             $this->AltBody = $templateProvider->getAltContent();
             $this->Subject = $subject;
@@ -72,7 +72,7 @@ class SaboMailer extends PHPMailer {
         $this->reset();
 
         try{
-            $isDebugMode = Application::getEnvConfig()->getConfig(EnvConfig::DEV_MODE_CONFIG->value);
+            $isDebugMode = Application::getEnvConfig()->getConfig(name: EnvConfig::DEV_MODE_CONFIG->value);
 
             // vérification des destinataires
 
@@ -109,7 +109,7 @@ class SaboMailer extends PHPMailer {
      * @throws Throwable en cas d'erreur
      */
     public function reset():SaboMailer{
-        $config = Application::getEnvConfig()->getConfig(EnvConfig::MAILER_CONFIG->value);
+        $config = Application::getEnvConfig()->getConfig(name: EnvConfig::MAILER_CONFIG->value);
 
         $config->checkConfigs(...array_map(fn(MailerConfig $case):string => $case->value,MailerConfig::cases()));
 
@@ -117,17 +117,17 @@ class SaboMailer extends PHPMailer {
         $this->CharSet = "UTF-8";
         $this->Encoding = "base64";
         $this->SMTPAuth = true;
-        $this->Host = $config->getConfig(MailerConfig::MAILER_PROVIDER_HOST->value);
-        $this->Username = $config->getConfig(MailerConfig::MAILER_PROVIDER_USERNAME->value);
-        $this->Password = $config->getConfig(MailerConfig::MAILER_PROVIDER_PASSWORD->value);
-        $this->From = $config->getConfig(MailerConfig::FROM_EMAIL->value);
-        $this->FromName = $config->getConfig(MailerConfig::FROM_NAME->value);
+        $this->Host = $config->getConfig(name: MailerConfig::MAILER_PROVIDER_HOST->value);
+        $this->Username = $config->getConfig(name: MailerConfig::MAILER_PROVIDER_USERNAME->value);
+        $this->Password = $config->getConfig(name: MailerConfig::MAILER_PROVIDER_PASSWORD->value);
+        $this->From = $config->getConfig(name: MailerConfig::FROM_EMAIL->value);
+        $this->FromName = $config->getConfig(name: MailerConfig::FROM_NAME->value);
         $this->SMTPSecure = "ssl";
-        $this->Port = 465;
+        $this->Port = $config->getConfig(name: MailerConfig::PROVIDER_PORT->value);
         $this->clearAddresses();
         $this->clearAttachments();
         $this->Subject = $this->AltBody = $this->Body = "";
-        $this->isHTML(false);
+        $this->isHTML(isHtml: false);
 
         return $this;
     }

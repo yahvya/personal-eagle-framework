@@ -26,4 +26,9 @@ enum SqlComparator:string{
      * @brief Comparaison "égal"
      */
     case EQUAL = "=";
+
+    /**
+     * @brief Comparaison "non égale"
+     */
+    case NOT_EQUAL = "!=";
 }

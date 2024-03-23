@@ -4,7 +4,7 @@ namespace SaboCore\Utils\FileManager;
 
 use Override;
 use SaboCore\Routing\Response\DownloadResponse;
-use SaboCore\treatment\TreatmentException;
+use SaboCore\Treatment\TreatmentException;
 use SaboCore\Utils\Storage\AppStorage;
 use SaboCore\Utils\Storage\Storable;
 
@@ -29,7 +29,7 @@ class FileManager implements Storable {
      * @return bool si le fichier existe
      */
     public function fileExists():bool{
-        return @file_exists($this->fileAbsolutePath);
+        return @file_exists(filename: $this->fileAbsolutePath);
     }
 
     /**
@@ -43,12 +43,12 @@ class FileManager implements Storable {
 
         // récupération de l'extension dans que la chaine résultat contient des séparateurs de chemin
         do {
-            $pos = $fromFirstOccur ? @strpos($extension,$extensionSeparator) : @strrpos($extension, $extensionSeparator);
+            $pos = $fromFirstOccur ? @strpos(haystack: $extension,needle: $extensionSeparator) : @strrpos(haystack: $extension,needle:  $extensionSeparator);
 
             if ($pos === false) return null;
 
-            $extension = @substr($extension, $pos + 1);
-        }while(str_contains($extension,"/") || str_contains($extension,"\\") );
+            $extension = @substr(string: $extension, offset: $pos + 1);
+        }while(@str_contains(haystack: $extension,needle: "/") || str_contains(haystack: $extension,needle: "\\") );
 
         return $extension;
     }
@@ -59,7 +59,7 @@ class FileManager implements Storable {
      * @throws TreatmentException en cas de fichier non téléchargeable
      */
     public function getToDownload(?string $fileName = null):DownloadResponse{
-        return new DownloadResponse($this->fileAbsolutePath,$fileName);
+        return new DownloadResponse(ressourceAbsolutePath: $this->fileAbsolutePath,chosenName: $fileName);
     }
 
     /**
@@ -77,7 +77,11 @@ class FileManager implements Storable {
      */
     #[Override]
     public function storeIn(string $path,bool $createFoldersIfNotExists = true):bool{
-        return AppStorage::storeClassicFile($path,$this->fileAbsolutePath,$createFoldersIfNotExists);
+        return AppStorage::storeClassicFile(
+            storagePath: $path,
+            fileBasePath: $this->fileAbsolutePath,
+            createFoldersIfNotExists: $createFoldersIfNotExists
+        );
     }
 
     /**
@@ -85,7 +89,7 @@ class FileManager implements Storable {
      * @return bool si la suppression a réussie
      */
     public function delete():bool{
-        return @unlink($this->fileAbsolutePath);
+        return @unlink(filename: $this->fileAbsolutePath);
     }
 
     /**
@@ -94,8 +98,8 @@ class FileManager implements Storable {
      */
     #[Override]
     public function getFromStorage():?FileContentManager{
-        $fileContent = @file_get_contents($this->fileAbsolutePath);
+        $fileContent = @file_get_contents(filename: $this->fileAbsolutePath);
 
-        return $fileContent === false ? null : new FileContentManager($fileContent);
+        return $fileContent === false ? null : new FileContentManager(fileContent: $fileContent);
     }
 }

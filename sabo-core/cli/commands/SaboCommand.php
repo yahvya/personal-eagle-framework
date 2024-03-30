@@ -2,6 +2,7 @@
 
 namespace SaboCore\Cli\Commands;
 
+use SaboCore\Cli\Cli\ArgumentManager;
 use SaboCore\Cli\Cli\SaboCli;
 use SaboCore\Cli\Theme\Theme;
 use SaboCore\Config\Config;
@@ -31,6 +32,30 @@ abstract class SaboCommand{
      */
     public function getName():string{
         return $this->commandName;
+    }
+
+    /**
+     * @brief Récupère les valeurs des options recherchées ou les demandes si non trouvées
+     * @attention à utiliser pour les options obligatoires
+     * @param SaboCli $cli Cli
+     * @param string ...$optionNames nom des options recherchées
+     * @return array Les options au format ["nom option" → "valuer option"]
+     * @throws ConfigException en cas d'erreur
+     */
+    protected function getOptions(SaboCli $cli,string ...$optionNames):array{
+        $result = [];
+        $argumentManager = $cli->getArgumentManager();
+        $themeConfig = $cli->getThemeConfig();
+
+        foreach($optionNames as $optionName){
+            $result[$optionName] =
+                // recherche de l'option parmi les arguments
+                $argumentManager->find(optionName: $optionName)?->getArgumentValue() ??
+                // demande de la valeur de l'option
+                $this->ask(toAsk: "Veuillez fournir une valeur pour l'option <$optionName>",themeConfig: $themeConfig);
+        }
+
+        return $result;
     }
 
     /**

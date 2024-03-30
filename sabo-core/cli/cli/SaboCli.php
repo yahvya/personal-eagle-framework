@@ -87,7 +87,9 @@ class SaboCli{
                 return;
             }
 
-            if(!array_key_exists(key: $command,array: $this->commands) ){
+            $commandName = $command->getArgumentValue();
+
+            if(!array_key_exists(key: $commandName,array: $this->commands) ){
                 Printer::printStyle(
                     "Commande non trouvé, pensez à utilisez (help)",
                     $this->themeConfig->getConfig(Theme::BASIC_ERROR_STYLE->value)
@@ -96,7 +98,7 @@ class SaboCli{
             }
 
             // exécution de la commande
-            $this->commands[$command]->execCommand(cli: $this);
+            $this->commands[$commandName]->execCommand(cli: $this);
         }
         catch(Throwable){
             Printer::print(toPrint: "Echec d'exécution de la commande",textColor: Color::Red);

@@ -1,0 +1,10 @@
+<?php
+
+{controller-import-config}
+
+/**
+ * @brief {controller-description}
+*/
+class {controller-name} extends {parent-class}{
+
+}

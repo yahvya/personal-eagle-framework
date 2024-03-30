@@ -11,7 +11,19 @@ $appRoot = __DIR__;
 require_once("$appRoot/sabo-core/vendor/autoload.php");
 require_once("$appRoot/vendor/autoload.php");
 
-define("ROOT",$appRoot);
+use SaboCore\Cli\Commands\ControllerMakerCommand;
+use SaboCore\Cli\Commands\ModelMakerCommand;
+use SaboCore\Config\Config;
+use SaboCore\Routing\Application\Application;
+
+// configuration publique de l'application
+define(
+    constant_name: "APP_CONFIG",
+    value: Config::create()->setConfig(name: "ROOT", value: $appRoot)
+);
+
+// lancement de l'application
+Application::launchApplication(applicationConfig: Application::getApplicationDefaultConfig(),startRouting: false);
 
 use BeBat\ConsoleColor\Style\BackgroundColor;
 use BeBat\ConsoleColor\Style\Color;
@@ -21,7 +33,6 @@ use SaboCore\Cli\Cli\SaboCli;
 use SaboCore\Cli\Commands\HelpCommand;
 use SaboCore\Cli\Commands\LaunchServerCommand;
 use SaboCore\Cli\Theme\Theme;
-use SaboCore\Config\Config;
 
 // configuration du thème d'affichage
 $themeConfig = Config::create()
@@ -59,7 +70,9 @@ $cli = new SaboCli($argv,$themeConfig);
 
 $cli
     // commandes par défaut
-    ->registerCommand(new HelpCommand("help") )
-    ->registerCommand(new LaunchServerCommand("serve") )
+    ->registerCommand(executor: new HelpCommand("help") )
+    ->registerCommand(executor: new LaunchServerCommand("serve") )
+    ->registerCommand(executor: new ControllerMakerCommand(commandName: "make:controller") )
+    ->registerCommand(executor: new ModelMakerCommand(commandName: "make:model") )
     // enregistrez vos commandes (attention aux duplicatas de noms)
     ->start();

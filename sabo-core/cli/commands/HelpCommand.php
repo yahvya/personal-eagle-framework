@@ -17,6 +17,7 @@ class HelpCommand extends SaboCommand {
         $themeConfig = $cli->getThemeConfig();
         $notImportantStyle = $themeConfig->getConfig(name: Theme::NOT_IMPORTANT_STYLE->value);
         $basicStyle = $themeConfig->getConfig(name: Theme::BASIC_TEXT_STYLE->value);
+        $commands = $cli->getCommands();
 
         Printer::printStyle(
             toPrint: "> SABO CLI",
@@ -24,14 +25,37 @@ class HelpCommand extends SaboCommand {
             countOfLineBreak: 2
         );
 
+        // vérification du cas d'affichage de l'aide d'une commande
+        $searchedCommand = $cli->getArgumentManager()->find(optionName: "command");
+
+        if($searchedCommand !== null){
+            $searchedCommand = $searchedCommand->getArgumentValue();
+
+            // commande non trouvée pas
+            if(!array_key_exists(key: $searchedCommand,array: $commands) ){
+                Printer::printStyle(
+                    toPrint: "Commande <$searchedCommand> non trouvée",
+                    compositeStyle: $themeConfig->getConfig(name: Theme::BASIC_ERROR_STYLE->value)
+                );
+                return;
+            }
+
+            // affichage de l'aide la commande
+            Printer::printStyle(toPrint: "\t> ($searchedCommand)",compositeStyle: $basicStyle,countOfLineBreak: 1);
+
+            foreach($commands[$searchedCommand]->getHelpLines() as $helpLine)
+                Printer::printStyle(toPrint: "\t\t> $helpLine",compositeStyle: $notImportantStyle,countOfLineBreak: 1);
+
+            return;
+        }
+
         Printer::printStyle(
             toPrint: "> Liste des commandes",
-            compositeStyle: $themeConfig->getConfig(Theme::SPECIAL_TEXT_STYLE->value),
+            compositeStyle: $themeConfig->getConfig(name: Theme::SPECIAL_TEXT_STYLE->value),
             countOfLineBreak: 1
         );
 
-        // récupération et tri des noms des commandes
-        $commands = $cli->getCommands();
+        // tri des noms des commandes
         $commandsNames = array_keys(array: $commands);
         sort(array: $commandsNames);
 
@@ -48,7 +72,9 @@ class HelpCommand extends SaboCommand {
     public function getHelpLines(): array{
         return [
             "Affiche la liste des commandes",
-            "php sabo $this->commandName"
+            "php sabo $this->commandName",
+            "Options optionnelles : ",
+            "\--command : Nom de la commande précise dont vous souhaitez l'aide"
         ];
     }
 }

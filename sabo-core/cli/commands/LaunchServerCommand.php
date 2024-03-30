@@ -19,9 +19,9 @@ class LaunchServerCommand extends SaboCommand{
 
     #[Override]
     public function execCommand(SaboCli $cli): void{
-        $port = $cli->getArgumentManager()->next() ?? self::DEFAULT_PORT;
+        $port = $cli->getArgumentManager()->find(optionName: "port")?->getArgumentValue() ?? self::DEFAULT_PORT;
         $link = "127.0.0.1:$port";
-        $rooter = ROOT . "/sabo-core/index.php";
+        $rooter = APP_CONFIG->getConfig(name: "ROOT") . "/sabo-core/index.php";
 
         Printer::printStyle(
             toPrint: "Lancement du serveur ($link)",
@@ -37,7 +37,7 @@ class LaunchServerCommand extends SaboCommand{
         return [
             "Lance le serveur de développement - Port par défaut (" . self::DEFAULT_PORT . ")",
             "php sabo $this->commandName",
-            "php sabo $this->commandName {port}",
+            "php sabo $this->commandName --port={port}",
         ];
     }
 }

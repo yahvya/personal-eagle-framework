@@ -70,8 +70,8 @@ $cli = new SaboCli($argv,$themeConfig);
 
 $cli
     // commandes par défaut
-    ->registerCommand(executor: new HelpCommand("help") )
-    ->registerCommand(executor: new LaunchServerCommand("serve") )
+    ->registerCommand(executor: new HelpCommand(commandName: "help") )
+    ->registerCommand(executor: new LaunchServerCommand(commandName: "serve") )
     ->registerCommand(executor: new ControllerMakerCommand(commandName: "make:controller") )
     ->registerCommand(executor: new ModelMakerCommand(commandName: "make:model") )
     // enregistrez vos commandes (attention aux duplicatas de noms)

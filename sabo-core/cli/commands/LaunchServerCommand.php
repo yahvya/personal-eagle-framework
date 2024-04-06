@@ -17,10 +17,17 @@ class LaunchServerCommand extends SaboCommand{
      */
     protected const string DEFAULT_PORT = "8080";
 
+    /**
+     * @brief Hôte par défaut
+     */
+    protected const string DEFAULT_HOST = "127.0.0.1";
+
     #[Override]
     public function execCommand(SaboCli $cli): void{
         $port = $cli->getArgumentManager()->find(optionName: "port")?->getArgumentValue() ?? self::DEFAULT_PORT;
-        $link = "127.0.0.1:$port";
+        $host = $cli->getArgumentManager()->find(optionName: "host")?->getArgumentValue() ?? self::DEFAULT_HOST;
+
+        $link = "$host:$port";
         $rooter = APP_CONFIG->getConfig(name: "ROOT") . "/sabo-core/index.php";
 
         Printer::printStyle(
@@ -35,9 +42,10 @@ class LaunchServerCommand extends SaboCommand{
     #[Override]
     public function getHelpLines(): array{
         return [
-            "Lance le serveur de développement - Port par défaut (" . self::DEFAULT_PORT . ")",
+            "Lance le serveur de développement - Port par défaut (" . self::DEFAULT_PORT . ") - Hôte par défaut (". self::DEFAULT_HOST .")",
             "php sabo $this->commandName",
             "php sabo $this->commandName --port={port}",
+            "php sabo $this->commandName --host={adresse}",
         ];
     }
 }

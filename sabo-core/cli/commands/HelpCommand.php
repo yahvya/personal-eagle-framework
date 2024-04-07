@@ -74,7 +74,7 @@ class HelpCommand extends SaboCommand {
             "Affiche la liste des commandes",
             "php sabo $this->commandName",
             "Options optionnelles : ",
-            "\--command : Nom de la commande précise dont vous souhaitez l'aide"
+            "\t--command : Nom de la commande précise dont vous souhaitez l'aide"
         ];
     }
 }

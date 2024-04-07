@@ -37,7 +37,6 @@ class CliArgument{
         return $this->option;
     }
 
-
     /**
      * @return string contenu de l'argument sans l'option potentielle
      */

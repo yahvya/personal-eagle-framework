@@ -81,6 +81,8 @@ class LaunchServerCommand extends SaboCommand{
                     toPrint: "Echec de lancement de la synchronisation",
                     compositeStyle: $themeConfig->getConfig(name: Theme::BASIC_ERROR_STYLE->value)
                 );
+
+                return;
             }
         }
 
@@ -90,7 +92,27 @@ class LaunchServerCommand extends SaboCommand{
             countOfLineBreak: 1
         );
 
-        @system(command: "php -S $link $rooter");
+        $serverProcess = @popen(command: "php -S $link $rooter",mode: "r");
+
+        if($serverProcess === false){
+            Printer::printStyle(
+                toPrint: "Echec de lancement du serveur",
+                compositeStyle: $themeConfig->getConfig(name: Theme::BASIC_ERROR_STYLE->value)
+            );
+
+            return;
+        }
+
+        // lecture des sorties
+        while(true){
+            if(isset($syncProcess)){
+                while(($syncLine = fgets(stream: $syncProcess)) !== false)
+                    print($syncLine);
+            }
+
+            while(($processLine = fgets(stream: $serverProcess)) !== false)
+                print($processLine);
+        }
     }
 
     #[Override]

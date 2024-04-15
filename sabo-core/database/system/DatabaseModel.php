@@ -115,12 +115,12 @@ abstract class DatabaseModel{
      * @param DatabaseCondition ...$findBuilders Configuration de recherche
      * @return DatabaseModel|null le modèle trouvé ou null
      */
-    protected abstract static function findOne(DatabaseCondition|DatabaseCondSeparator ...$findBuilders):DatabaseModel|null;
+    public abstract static function findOne(DatabaseCondition|DatabaseCondSeparator ...$findBuilders):DatabaseModel|null;
 
     /**
      * @brief Recherche toutes les occurrences
      * @param DatabaseCondition ...$findBuilders Configuration de recherche
      * @return SaboList<DatabaseModel> liste des occurrences
      */
-    protected abstract static function findAll(DatabaseCondition|DatabaseCondSeparator ...$findBuilders):SaboList;
+    public abstract static function findAll(DatabaseCondition|DatabaseCondSeparator ...$findBuilders):SaboList;
 }

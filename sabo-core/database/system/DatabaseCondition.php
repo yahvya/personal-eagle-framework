@@ -24,10 +24,10 @@ class DatabaseCondition{
 
     /**
      * @param string $attributeName Nom de l'attribut du model
-     * @param mixed $conditionValue Valeur à vérifier
      * @param DatabaseComparator $comparator Comparateur
+     * @param mixed $conditionValue Valeur à vérifier
      */
-    public function __construct(string $attributeName, mixed $conditionValue, DatabaseComparator $comparator){
+    public function __construct(string $attributeName, DatabaseComparator $comparator,mixed $conditionValue){
         $this->attributeName = $attributeName;
         $this->conditionValue = $conditionValue;
         $this->comparator = $comparator;

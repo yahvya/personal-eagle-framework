@@ -22,6 +22,7 @@
             "SaboCore\\Utils\\FileManager\\": "./utils/file-manager/",
             "SaboCore\\Utils\\TwigExtensions\\": "./utils/twig-extensions/",
             "SaboCore\\Utils\\Mailer\\": "./utils/mailer/",
+            "SaboCore\\Utils\\List\\": "./utils/list/",
             "SaboCore\\Cli\\Cli\\": "./cli/cli/",
             "SaboCore\\Cli\\Commands\\": "./cli/commands/",
             "SaboCore\\Cli\\Theme\\": "./cli/theme/",

@@ -8,6 +8,7 @@
             "SaboCore\\Routing\\Routes\\": "./routing/routes/",
             "SaboCore\\Database\\Providers\\": "./database/providers/",
             "SaboCore\\Database\\Default\\Provider\\": "./database/default/provider/",
+            "SaboCore\\Database\\Default\\System\\": "./database/default/system/",
             "SaboCore\\Database\\System\\": "./database/system/",
             "SaboCore\\Utils\\Printer\\": "./utils/printer/",
             "SaboCore\\Utils\\Session\\": "./utils/session/",

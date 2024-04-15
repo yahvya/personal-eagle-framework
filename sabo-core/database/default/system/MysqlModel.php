@@ -2,51 +2,208 @@
 
 namespace SaboCore\Database\Default\System;
 
+use Override;
+use ReflectionClass;
+use SaboCore\Config\ConfigException;
+use SaboCore\Database\Default\Attributes\TableColumn;
+use SaboCore\Database\Default\Attributes\TableName;
+use SaboCore\Database\Default\Conditions\MysqlCondException;
+use SaboCore\Database\Default\Formatters\FormaterException;
 use SaboCore\Database\System\DatabaseCondition;
 use SaboCore\Database\System\DatabaseCondSeparator;
 use SaboCore\Database\System\DatabaseModel;
 use SaboCore\Utils\List\SaboList;
 
-class MysqlModel extends DatabaseModel
-{
+/**
+ * @brief Modèle de la base de données mysql
+ * @author yahaya bathily https://github.com/yahvya
+ * @attention les attributs utilisables doivent être protected|public
+ */
+class MysqlModel extends DatabaseModel{
+    /**
+     * @var TableName Fournisseur du nom de la table
+     */
+    protected TableName $tableName;
 
     /**
-     * @inheritDoc
+     * @var Array<string,TableColumn> Configuration des colonnes de la base de donnée. Indicé par le nom de l'attribut et contient comme valeur l'instance de TableColumn
      */
-    public function create(): bool
-    {
+    protected array $dbColumnsConfig;
 
+    /**
+     * @var array Valeur originale des attributs sans formatage
+     */
+    protected array $attributesOriginalValues = [];
+
+    /**
+     * @throws ConfigException en cas d'erreur de configuration du model
+     */
+    public function __construct(){
+        $this->loadConfiguration();
+    }
+
+    #[Override]
+    public function create(): bool{
+        $this->beforeCreate();
+
+
+
+        $this->afterCreate();
+
+        return true;
+    }
+
+    #[Override]
+    public function update(): bool{
+        $this->beforeCreate();
+
+
+
+        $this->afterCreate();
+
+        return true;
+    }
+
+    #[Override]
+    public function delete(): bool{
+        $this->beforeCreate();
+
+
+
+        $this->afterCreate();
+
+        return true;
+    }
+
+    #[Override]
+    public function afterGeneration(): DatabaseModel{
+        parent::afterGeneration();
+
+        // sauvegarde des valeurs par défaut des attributs
+
+        foreach($this->dbColumnsConfig as $attributeName => $_)
+            $this->attributesOriginalValues[$attributeName] = $this->$attributeName;
+
+        return $this;
     }
 
     /**
-     * @inheritDoc
+     * @brief Met à jour la valeur d'un attribut
+     * @param string $attributeName Nom de l'attribut à mettre à jour
+     * @param mixed $value valeur à placer
+     * @return $this
+     * @throws ConfigException en cas d'attribut non trouvé
+     * @throws FormaterException en cas d'erreur de formatage
+     * @throws MysqlCondException en cas d'erreur de validation
      */
-    public function update(): bool
-    {
+    public function setAttribute(string $attributeName,mixed $value):MysqlModel{
+        $columnConfig = $this->dbColumnsConfig[$attributeName] ?? null;
 
+        if($columnConfig === null)
+            throw new ConfigException(message: "Attribut non trouvé");
+
+        // vérification de la validité et formatage de la donnée
+        $formatedData = $columnConfig
+            ->verifyData(data: $value)
+            ->formatData(originalData: $value);
+
+        $this->attributesOriginalValues[$attributeName] = $value;
+        $this->$attributeName = $formatedData;
+
+        return $this;
     }
 
     /**
-     * @inheritDoc
+     * @brief Fourni la valeur de l'attribut
+     * @param string $attributeName nom de l'attribut
+     * @param bool $reform si true reforme la donnée via les formateurs de reformation
+     * @return mixed La donnée
+     * @throws ConfigException en cas d'attribut non trouvé
      */
-    public function delete(): bool
-    {
+    public function getAttribute(string $attributeName,bool $reform = true):mixed{
+        $columnConfig = $this->dbColumnsConfig[$attributeName] ?? null;
 
+        if($columnConfig === null)
+            throw new ConfigException(message: "Attribut non trouvé");
+
+        $data = $this->$attributeName;
+
+        // reformation de la donnée
+        if($reform)
+            $data = $columnConfig->reformData(formatedData: $data);
+
+        return $data;
     }
 
     /**
-     * @inheritDoc
+     * @brief Fourni la valeur originale non formatée de l'attribut
+     * @attention Si la valeur était inséré en base de données l'originale équivaut à la valeur formatée avant insertion
+     * @param string $attributeName non de l'attribut
+     * @return mixed la valeur ou null
      */
-    public static function findOne(DatabaseCondition|DatabaseCondSeparator ...$findBuilders): DatabaseModel|null
-    {
-
+    public function getAttributOriginal(string $attributeName):mixed{
+        return $this->attributesOriginalValues[$attributeName] ?? null;
     }
 
     /**
-     * @inheritDoc
+     * @return Array<string,TableColumn> La configuration des colonnes
      */
-    public static function findAll(DatabaseCondition|DatabaseCondSeparator ...$findBuilders): SaboList
-    {
+    public function getDbColumnsConfig():array{
+        return $this->dbColumnsConfig;
+    }
 
+    /**
+     * @brief Charge la configuration du modèle
+     * @return void
+     * @throws ConfigException en cas de mauvaise configuration
+     */
+    protected function loadConfiguration():void{
+        $reflection = new ReflectionClass(objectOrClass: $this);
+
+        // récupération du nom de la table
+        $found = false;
+
+        foreach($reflection->getAttributes() as $attribute){
+            if($attribute->getName() === TableName::class){
+                $this->tableName = $attribute->newInstance();
+                $found = true;
+                break;
+            }
+        }
+
+        if(!$found)
+            throw new ConfigException(message: "Model mal configuré");
+
+        // chargement des colonnes lié à la base de donnée
+        $this->dbColumnsConfig = [];
+
+        foreach($reflection->getProperties() as $property){
+            // recherche de l'attribut descriptif
+            foreach($property->getAttributes() as $attribute){
+                $instance = $attribute->newInstance();
+
+                if($instance instanceof TableColumn){
+                    $this->dbColumnsConfig[$property->getName()] = $instance;
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * @return TableName Fournisseur du nom de la table
+     */
+    public function getTableName(): TableName{
+        return $this->tableName;
+    }
+
+    #[Override]
+    public static function findOne(DatabaseCondition|DatabaseCondSeparator ...$findBuilders): DatabaseModel|null{
+        return null;
+    }
+
+    #[Override]
+    public static function findAll(DatabaseCondition|DatabaseCondSeparator ...$findBuilders): SaboList{
+        return new SaboList([]);
     }
 }

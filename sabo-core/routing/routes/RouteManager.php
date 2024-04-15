@@ -6,6 +6,7 @@ use SaboCore\Config\ConfigException;
 use SaboCore\Config\EnvConfig;
 use SaboCore\Config\FrameworkConfig;
 use SaboCore\Routing\Application\Application;
+use SaboCore\Utils\Verification\Verifier;
 use Throwable;
 
 /**
@@ -28,7 +29,7 @@ abstract class RouteManager{
      * @param string $linksPrefix prefix des liens contenus dans le groupe
      * @param Route[] $routes liste des routes du groupe
      * @param array $genericParamsConfig expressions régulières liées aux éléments génériques (appliquées à tous les liens du groupe)
-     * @param AccessVerifier[] $groupAccessVerifiers gestionnaires d'accès (appliquées à tous les liens du groupe), reçoivent un objet Request en paramètre les fonctions, seuls les fonctions failures sont prises en compte et retournent Response
+     * @param Verifier[] $groupAccessVerifiers gestionnaires d'accès (appliquées à tous les liens du groupe), reçoivent un objet Request en paramètre les fonctions, seuls les fonctions failures sont prises en compte et retournent Response
      * @return void
      */
     public static function registerGroup(string $linksPrefix,array $routes,array $genericParamsConfig = [],array $groupAccessVerifiers = []):void{

@@ -1,14 +1,14 @@
 <?php
 
-namespace SaboCore\Routing\Routes;
+namespace SaboCore\Utils\Verification;
 
 use Closure;
 
 /**
- * @brief Vérificateur d'accès
+ * @brief Gestionnaire de vérification
  * @author yahaya bathily https://github.com/yahvya
  */
-class AccessVerifier{
+class Verifier{
     /**
      * @var array|Closure condition de vérification à retour booléen
      */

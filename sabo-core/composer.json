@@ -23,6 +23,7 @@
             "SaboCore\\Utils\\TwigExtensions\\": "./utils/twig-extensions/",
             "SaboCore\\Utils\\Mailer\\": "./utils/mailer/",
             "SaboCore\\Utils\\List\\": "./utils/list/",
+            "SaboCore\\Utils\\Verification\\": "./utils/verification/",
             "SaboCore\\Cli\\Cli\\": "./cli/cli/",
             "SaboCore\\Cli\\Commands\\": "./cli/commands/",
             "SaboCore\\Cli\\Theme\\": "./cli/theme/",

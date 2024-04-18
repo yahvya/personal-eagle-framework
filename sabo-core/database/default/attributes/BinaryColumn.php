@@ -8,15 +8,15 @@ use SaboCore\Database\Default\Conditions\Cond;
 use SaboCore\Database\Default\Formatters\Formater;
 
 /**
- * @brief Champs de type varchar
+ * @brief Champs de type binary
  * @author yahaya bathily https://github.com/yahvya
  */
 #[Attribute]
-class VarcharColumn extends TableColumn{
+class BinaryColumn extends TableColumn{
     /**
-     * @var int Taille max du champ
+     * @var int Taille du champ
      */
-    protected int $maxLen;
+    protected int $len;
 
     /**
      * @param string $columnName Nom de la colonne en base de donnée
@@ -50,13 +50,13 @@ class VarcharColumn extends TableColumn{
             datasReformers: $datasReformers
         );
 
-        $this->maxLen = $maxLen;
+        $this->len = $maxLen;
     }
 
     #[Override]
     public function getCreationSql(): string{
         return
-            "$this->columnName VARCHAR($this->maxLen)"
+            "$this->columnName BINARY($this->len)"
             . ($this->isNullable ? "" : " NOT NULL")
             . ($this->isUnique() ? " UNIQUE": "")
             . ($this->haveDefaultValue() ? " DEFAULT {$this->getDefaultValueStr()}" : "");

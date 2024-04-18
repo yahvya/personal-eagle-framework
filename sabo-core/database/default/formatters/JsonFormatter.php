@@ -2,12 +2,14 @@
 
 namespace SaboCore\Database\Default\Formatters;
 
+use SaboCore\Database\Default\System\MysqlModel;
+
 /**
  * @brief Formateur de donnée json en chaine json
  * @author yahaya bathily https://github.com/yahvya
  */
 class JsonFormatter implements Formater{
-    public function format(mixed $data): string{
+    public function format(MysqlModel $baseModel,mixed $data): string{
         $json = @json_encode(value: $data);
 
         if($json === false)

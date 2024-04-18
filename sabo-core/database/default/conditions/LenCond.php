@@ -4,6 +4,7 @@ namespace SaboCore\Database\Default\Conditions;
 
 use Attribute;
 use Override;
+use SaboCore\Database\Default\System\MysqlModel;
 
 /**
  * @brief Condition de vérification de taille
@@ -38,7 +39,7 @@ class LenCond implements Cond{
     }
 
     #[Override]
-    public function verifyData(mixed $data):bool{
+    public function verifyData(MysqlModel $baseModel,string $attributeName,mixed $data):bool{
         if(gettype(value: $data) == "string"){
             $len = strlen(string: $data);
 

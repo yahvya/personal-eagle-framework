@@ -5,6 +5,7 @@ namespace SaboCore\Database\Default\Conditions;
 use Attribute;
 use Closure;
 use Override;
+use SaboCore\Database\Default\System\MysqlModel;
 
 /**
  * @brief Représente une condition pouvant être appellé
@@ -39,7 +40,7 @@ class CallableCond implements Cond{
     }
 
     #[Override]
-    public function verifyData(mixed $data):bool{
+    public function verifyData(MysqlModel $baseModel,string $attributeName,mixed $data):bool{
         return call_user_func(callback: $this->toVerify,args: $data);
     }
 

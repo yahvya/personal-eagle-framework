@@ -5,6 +5,7 @@ namespace SaboCore\Database\Default\Conditions;
 use Attribute;
 use DateTime;
 use Override;
+use SaboCore\Database\Default\System\MysqlModel;
 use Throwable;
 
 /**
@@ -26,7 +27,7 @@ class DateTimeCond implements Cond{
     }
 
     #[Override]
-    public function verifyData(mixed $data):bool{
+    public function verifyData(MysqlModel $baseModel,string $attributeName,mixed $data):bool{
         try{
             new DateTime(datetime: $data);
 

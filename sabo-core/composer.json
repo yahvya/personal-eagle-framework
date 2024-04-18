@@ -13,6 +13,7 @@
             "SaboCore\\Database\\Default\\Attributes\\": "./database/default/attributes/",
             "SaboCore\\Database\\Default\\Formatters\\": "./database/default/formatters/",
             "SaboCore\\Database\\Default\\Conditions\\": "./database/default/conditions/",
+            "SaboCore\\Database\\Default\\CustomDatatypes\\": "./database/default/custom-datatypes/",
             "SaboCore\\Database\\System\\": "./database/system/",
             "SaboCore\\Utils\\Printer\\": "./utils/printer/",
             "SaboCore\\Utils\\Session\\": "./utils/session/",

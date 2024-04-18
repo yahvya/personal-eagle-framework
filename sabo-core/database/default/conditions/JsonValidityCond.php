@@ -3,6 +3,7 @@
 namespace SaboCore\Database\Default\Conditions;
 
 use Override;
+use SaboCore\Database\Default\System\MysqlModel;
 
 /**
  * @brief Condition de vérification de validité json
@@ -10,7 +11,7 @@ use Override;
  */
 class JsonValidityCond implements Cond{
     #[Override]
-    public function verifyData(mixed $data): bool{
+    public function verifyData(MysqlModel $baseModel,string $attributeName,mixed $data): bool{
         return is_array(value: $data);
     }
 

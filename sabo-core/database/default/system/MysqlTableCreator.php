@@ -1,6 +1,7 @@
 <?php
 
 namespace SaboCore\Database\Default\System;
+
 use ReflectionClass;
 use Throwable;
 
@@ -21,7 +22,7 @@ abstract class MysqlTableCreator{
         $primaryKeys = [];
         $foreignKeys = [];
 
-        foreach($model->getDbColumnsConfig() as $_ => $column){
+        foreach($model->getColumnsConfig() as $_ => $column){
             $creationScript .= "\t{$column->getCreationSql()},\n";
 
             if($column->isPrimaryKey())

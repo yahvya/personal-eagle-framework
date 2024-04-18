@@ -4,6 +4,7 @@ namespace SaboCore\Database\Default\Conditions;
 
 use Attribute;
 use Override;
+use SaboCore\Database\Default\System\MysqlModel;
 
 /**
  * @brief Condition filter_var
@@ -31,7 +32,7 @@ class FilterCond implements Cond{
     }
 
     #[Override]
-    public function verifyData(mixed $data):bool{
+    public function verifyData(MysqlModel $baseModel,string $attributeName,mixed $data):bool{
         return filter_var(value: $data,filter: $this->filter);
     }
 

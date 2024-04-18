@@ -8,19 +8,23 @@ use SaboCore\Database\Default\Conditions\Cond;
 use SaboCore\Database\Default\Formatters\Formater;
 
 /**
- * @brief Champs de type varchar
+ * @brief Champs de type decimal
  * @author yahaya bathily https://github.com/yahvya
  */
 #[Attribute]
-class VarcharColumn extends TableColumn{
+class DecimalColumn extends TableColumn{
     /**
-     * @var int Taille max du champ
+     * @var int Nombre de valeurs dans la partie décimale
      */
-    protected int $maxLen;
+    protected int $decimalCount;
+
+    /**
+     * @var int Nombre de valeurs dans la partie post decimal
+     */
+    protected int $afterDecimalCount;
 
     /**
      * @param string $columnName Nom de la colonne en base de donnée
-     * @param int $maxLen Taille max du champ
      * @param bool $isNullable si le champ est nullable (mis à false par défaut si clé primaire)
      * @param bool $isPrimaryKey si le champ est une clé primaire
      * @param bool $isUnique si le champ est unique
@@ -31,11 +35,13 @@ class VarcharColumn extends TableColumn{
      * @param Cond[] $setConditions Conditions à vérifier sur la donnée originale avant de l'accepter dans l'attribut
      * @param Formater[] $dataFormatters Formateur de donnée pour transformer la donnée originale
      * @param Formater[] $datasReformers Formateur de donnée pour reformer la donnée
+     * @param int $decimalCount Nombre de valeurs dans la partie décimale
+     * @param int $afterDecimalCount Nombre de valeurs dans la partie post décimale
      * @attention Les conditions sont appelées avant formatage sur la donnée originale
      * @attention Chaque formateur recevra le résultat du précédent
      * @attention L'attribut par défaut doit contenir la chaine exacte qui sera saisie dans la création sql ex : "'default'" "10" ...
      */
-    public function __construct(string $columnName, int $maxLen, bool $isNullable = false, bool $isPrimaryKey = false, bool $isUnique = false, string $defaultValue = self::NO_DEFAULT_VALUE, bool $isForeignKey = false, ?string $referencedModel = null, ?string $referencedAttributeName = null, array $setConditions = [], array $dataFormatters = [], array $datasReformers = []){
+    public function __construct(string $columnName, bool $isNullable = false, bool $isPrimaryKey = false, bool $isUnique = false, string $defaultValue = self::NO_DEFAULT_VALUE, bool $isForeignKey = false, ?string $referencedModel = null, ?string $referencedAttributeName = null, array $setConditions = [], array $dataFormatters = [], array $datasReformers = [],int $decimalCount = 15,int $afterDecimalCount = 2){
         parent::__construct(
             columnName: $columnName,
             isNullable: $isNullable,
@@ -50,13 +56,14 @@ class VarcharColumn extends TableColumn{
             datasReformers: $datasReformers
         );
 
-        $this->maxLen = $maxLen;
+        $this->decimalCount = $decimalCount;
+        $this->afterDecimalCount = $afterDecimalCount;
     }
 
     #[Override]
     public function getCreationSql(): string{
         return
-            "$this->columnName VARCHAR($this->maxLen)"
+            "$this->columnName DECIMAL($this->decimalCount,$this->afterDecimalCount)"
             . ($this->isNullable ? "" : " NOT NULL")
             . ($this->isUnique() ? " UNIQUE": "")
             . ($this->haveDefaultValue() ? " DEFAULT {$this->getDefaultValueStr()}" : "");

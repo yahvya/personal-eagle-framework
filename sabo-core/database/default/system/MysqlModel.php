@@ -5,6 +5,7 @@ namespace SaboCore\Database\Default\System;
 use Override;
 use ReflectionClass;
 use SaboCore\Config\ConfigException;
+use SaboCore\Database\Default\Attributes\EnumColumn;
 use SaboCore\Database\Default\Attributes\TableColumn;
 use SaboCore\Database\Default\Attributes\TableName;
 use SaboCore\Database\Default\Conditions\MysqlCondException;
@@ -104,8 +105,8 @@ class MysqlModel extends DatabaseModel{
 
         // vérification de la validité et formatage de la donnée
         $formatedData = $columnConfig
-            ->verifyData(data: $value)
-            ->formatData(originalData: $value);
+            ->verifyData(baseModel: $this,attributeName: $attributeName,data: $value)
+            ->formatData(baseModel: $this,originalData: $value);
 
         $this->attributesOriginalValues[$attributeName] = $value;
         $this->$attributeName = $formatedData;
@@ -119,6 +120,7 @@ class MysqlModel extends DatabaseModel{
      * @param bool $reform si true reforme la donnée via les formateurs de reformation
      * @return mixed La donnée
      * @throws ConfigException en cas d'attribut non trouvé
+     * @throws FormaterException en cas d'échec de formatage
      */
     public function getAttribute(string $attributeName,bool $reform = true):mixed{
         $columnConfig = $this->dbColumnsConfig[$attributeName] ?? null;
@@ -130,7 +132,7 @@ class MysqlModel extends DatabaseModel{
 
         // reformation de la donnée
         if($reform)
-            $data = $columnConfig->reformData(formatedData: $data);
+            $data = $columnConfig->reformData(baseModel: $this,formatedData: $data);
 
         return $data;
     }
@@ -146,10 +148,19 @@ class MysqlModel extends DatabaseModel{
     }
 
     /**
-     * @return Array<string,TableColumn> La configuration des colonnes
+     * @return Array<string,TableColumn|EnumColumn> La configuration des colonnes
      */
-    public function getDbColumnsConfig():array{
+    public function getColumnsConfig():array{
         return $this->dbColumnsConfig;
+    }
+
+    /**
+     * @brief Fourni la configuration de colonne d'un attribut en particulier
+     * @param string $attributName Nom de l'attribut
+     * @return TableColumn|EnumColumn|null la configuration de colonne ou null
+     */
+    public function getColumnConfig(string $attributName):TableColumn|EnumColumn|null{
+        return $this->dbColumnsConfig[$attributName] ?? null;
     }
 
     /**

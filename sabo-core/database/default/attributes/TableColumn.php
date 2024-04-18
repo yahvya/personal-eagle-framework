@@ -6,12 +6,18 @@ use SaboCore\Database\Default\Conditions\Cond;
 use SaboCore\Database\Default\Conditions\MysqlCondException;
 use SaboCore\Database\Default\Formatters\Formater;
 use SaboCore\Database\Default\Formatters\FormaterException;
+use SaboCore\Database\Default\System\MysqlModel;
 
 /**
  * @brief Représentation d'une colonne
  * @author yahaya bathily https://github.com/yahvya
  */
 abstract class TableColumn extends SqlAttribute{
+    /**
+     * @brief Chaine représentant si l'attribut n'a pas de valeur par défaut
+     */
+    protected const string NO_DEFAULT_VALUE = "ATTRIBUTE_NO_DEFAULT_VALUE";
+
     /**
      * @var string Nom de la colonne
      */
@@ -36,6 +42,11 @@ abstract class TableColumn extends SqlAttribute{
      * @var bool Si le champ est unique
      */
     protected bool $isUnique;
+
+    /**
+     * @var string Valeur par défaut
+     */
+    protected string $defaultValue;
 
     /**
      * @var string|null Classe référencée par la clé étrangère
@@ -67,6 +78,7 @@ abstract class TableColumn extends SqlAttribute{
      * @param bool $isNullable si le champ est nullable (mis à false par défaut si clé primaire)
      * @param bool $isPrimaryKey si le champ est une clé primaire
      * @param bool $isUnique si le champ est unique
+     * @param string $defaultValue Valeur par défaut de l'attribut (sous la forme sql)
      * @param bool $isForeignKey si le champ est une clé étrangère
      * @param string|null $referencedModel Class du modèle référencé par la clé
      * @param string|null $referencedAttributeName Nom de l'attribut référencé
@@ -75,8 +87,10 @@ abstract class TableColumn extends SqlAttribute{
      * @param Formater[] $datasReformers Formateur de donnée pour reformer la donnée
      * @attention Les conditions sont appelées avant formatage sur la donnée originale
      * @attention Chaque formateur recevra le résultat du précédent
+     * @attention L'attribut par défaut doit contenir la chaine exacte qui sera saisie dans la création sql ex : "'default'" "10" ...
      */
-    public function __construct(string $columnName,bool $isNullable = false,bool $isPrimaryKey = false,bool $isUnique = false,bool $isForeignKey = false,?string $referencedModel = null,?string $referencedAttributeName = null,array $setConditions = [],array $dataFormatters = [],array $datasReformers = []){
+    public function __construct(string $columnName,bool $isNullable = false,bool $isPrimaryKey = false,bool $isUnique = false,string $defaultValue = self::NO_DEFAULT_VALUE,bool $isForeignKey = false,?string $referencedModel = null,?string $referencedAttributeName = null,array $setConditions = [],array $dataFormatters = [],array $datasReformers = []){
+        $this->defaultValue = $defaultValue;
         $this->columnName = $columnName;
         $this->isNullable = $isPrimaryKey ? false : $isNullable;
         $this->isPrimaryKey = $isPrimaryKey;
@@ -91,16 +105,18 @@ abstract class TableColumn extends SqlAttribute{
 
     /**
      * @brief Vérifie la donnée à affecter
+     * @param MysqlModel $baseModel Model de base
+     * @param string $attributeName Nom de l'attribut
      * @param mixed $data La donnée à vérifier
      * @return $this
      * @throws MysqlCondException en cas de condition invalide
      */
-    public function verifyData(mixed $data):TableColumn{
+    public function verifyData(MysqlModel $baseModel,string $attributeName,mixed $data):TableColumn{
         if($this->isNullable && $data === null)
             return $this;
 
         foreach($this->setConditions as $cond){
-            if(!$cond->verifyData(data: $data))
+            if(!$cond->verifyData(baseModel: $baseModel,attributeName: $attributeName,data: $data))
                 throw new MysqlCondException(failedCond: $cond);
         }
 
@@ -109,33 +125,36 @@ abstract class TableColumn extends SqlAttribute{
 
     /**
      * @brief Formate la donnée originale en passant par les formateurs
+     * @param MysqlModel $baseModel Model de base
      * @param mixed $originalData Donnée originale
      * @return mixed La donnée totalement formatée
      * @attention Les conditions doivent être vérifiées avant formatage
      * @throws FormaterException en cas d'erreur de formatage
      */
-    public function formatData(mixed $originalData):mixed{
+    public function formatData(MysqlModel $baseModel,mixed $originalData):mixed{
         if($originalData === null)
             return null;
 
         $formatedData = $originalData;
 
         foreach($this->datasFormatters as $formatter)
-            $formatedData = $formatter->format(data: $formatedData);
+            $formatedData = $formatter->format(baseModel: $baseModel,data: $formatedData);
 
         return $formatedData;
     }
 
     /**
      * @brief Reforme la donnée originale en passant par les reconstructeurs
+     * @param MysqlModel $baseModel Model de base
      * @param mixed $formatedData Donnée formatée
      * @return mixed La donnée totalement reformée
+     * @throws FormaterException en cas d'erreur de formatage
      */
-    public function reformData(mixed $formatedData):mixed{
+    public function reformData(MysqlModel $baseModel,mixed $formatedData):mixed{
         $reformedData = $formatedData;
 
         foreach($this->datasReformers as $formatter)
-            $reformedData = $formatter->format(data: $formatedData);
+            $reformedData = $formatter->format(baseModel: $baseModel,data: $formatedData);
 
         return $reformedData;
     }
@@ -190,10 +209,23 @@ abstract class TableColumn extends SqlAttribute{
     }
 
     /**
+     * @return string La chaine sql de valeur par défaut ou vide si pas de valeur par défaut
+     */
+    public function getDefaultValueStr():string{
+        return $this->haveDefaultValue() ? $this->defaultValue : "";
+    }
+
+    /**
+     * @return bool Si l'attribut à une valeur par défaut
+     */
+    public function haveDefaultValue():bool{
+        return $this->defaultValue !== self::NO_DEFAULT_VALUE;
+    }
+
+    /**
      * @return Formater[] formateurs de données
      */
-    public function getDatasFormatters(): array
-    {
+    public function getDatasFormatters(): array{
         return $this->datasFormatters;
     }
 
@@ -209,5 +241,23 @@ abstract class TableColumn extends SqlAttribute{
      */
     public function getReferencedAttributeName(): ?string{
         return $this->referencedAttributeName;
+    }
+
+    /**
+     * @brief Méthode appellé au montage de la propriété portant cet attribut. Transforme la donnée récupérée en base de donnée en la donnée finale
+     * @param mixed $data La donnée de base
+     * @return mixed la donnée convertie
+     */
+    public function convertToValue(mixed $data):mixed{
+        return $data;
+    }
+
+    /**
+     * @brief Méthode appellé à l'insertion ou mise à jour de la propriété portant cet attribut. Transforme la donnée de l'attribut en une donnée capable d'être inséré en base de donnée
+     * @param mixed $data La donnée de base
+     * @return mixed la donnée convertie
+     */
+    public function convertFromValue(mixed $data):mixed{
+        return $data;
     }
 }

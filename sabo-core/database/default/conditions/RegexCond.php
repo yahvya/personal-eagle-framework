@@ -4,6 +4,7 @@ namespace SaboCore\Database\Default\Conditions;
 
 use Attribute;
 use Override;
+use SaboCore\Database\Default\System\MysqlModel;
 
 /**
  * @brief Attribut définissant une condition regex
@@ -45,7 +46,7 @@ class RegexCond implements Cond{
     }
 
     #[Override]
-    public function verifyData(mixed $data):bool{
+    public function verifyData(MysqlModel $baseModel,string $attributeName,mixed $data):bool{
         return @preg_match(pattern: $this->delimiter . $this->regex . $this->delimiter . $this->regexOptions,subject: $data);
     }
 

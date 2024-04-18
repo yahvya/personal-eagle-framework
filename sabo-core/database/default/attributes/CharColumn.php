@@ -8,19 +8,19 @@ use SaboCore\Database\Default\Conditions\Cond;
 use SaboCore\Database\Default\Formatters\Formater;
 
 /**
- * @brief Champs de type varchar
+ * @brief Champs de type char
  * @author yahaya bathily https://github.com/yahvya
  */
 #[Attribute]
-class VarcharColumn extends TableColumn{
+class CharColumn extends TableColumn{
     /**
-     * @var int Taille max du champ
+     * @var int Taille du champ
      */
-    protected int $maxLen;
+    protected int $len;
 
     /**
      * @param string $columnName Nom de la colonne en base de donnée
-     * @param int $maxLen Taille max du champ
+     * @param int $len Taille du champ
      * @param bool $isNullable si le champ est nullable (mis à false par défaut si clé primaire)
      * @param bool $isPrimaryKey si le champ est une clé primaire
      * @param bool $isUnique si le champ est unique
@@ -35,7 +35,7 @@ class VarcharColumn extends TableColumn{
      * @attention Chaque formateur recevra le résultat du précédent
      * @attention L'attribut par défaut doit contenir la chaine exacte qui sera saisie dans la création sql ex : "'default'" "10" ...
      */
-    public function __construct(string $columnName, int $maxLen, bool $isNullable = false, bool $isPrimaryKey = false, bool $isUnique = false, string $defaultValue = self::NO_DEFAULT_VALUE, bool $isForeignKey = false, ?string $referencedModel = null, ?string $referencedAttributeName = null, array $setConditions = [], array $dataFormatters = [], array $datasReformers = []){
+    public function __construct(string $columnName, int $len, bool $isNullable = false, bool $isPrimaryKey = false, bool $isUnique = false, string $defaultValue = self::NO_DEFAULT_VALUE, bool $isForeignKey = false, ?string $referencedModel = null, ?string $referencedAttributeName = null, array $setConditions = [], array $dataFormatters = [], array $datasReformers = []){
         parent::__construct(
             columnName: $columnName,
             isNullable: $isNullable,
@@ -50,13 +50,13 @@ class VarcharColumn extends TableColumn{
             datasReformers: $datasReformers
         );
 
-        $this->maxLen = $maxLen;
+        $this->len = $len;
     }
 
     #[Override]
     public function getCreationSql(): string{
         return
-            "$this->columnName VARCHAR($this->maxLen)"
+            "$this->columnName CHAR($this->len)"
             . ($this->isNullable ? "" : " NOT NULL")
             . ($this->isUnique() ? " UNIQUE": "")
             . ($this->haveDefaultValue() ? " DEFAULT {$this->getDefaultValueStr()}" : "");

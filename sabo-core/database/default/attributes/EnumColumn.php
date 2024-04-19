@@ -3,6 +3,7 @@
 namespace SaboCore\Database\Default\Attributes;
 
 use Attribute;
+use Override;
 use SaboCore\Utils\List\SaboList;
 
 /**
@@ -34,6 +35,7 @@ class EnumColumn extends TableColumn{
         $this->possibleValues = new SaboList(datas: $possibleValues);
     }
 
+    #[Override]
     public function getCreationSql(): string{
         return
             "$this->columnName ENUM(" .

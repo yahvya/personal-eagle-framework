@@ -3,6 +3,7 @@
 namespace SaboCore\Database\Default\Attributes;
 
 use Attribute;
+use Override;
 
 #[Attribute]
 class TableName extends SqlAttribute {
@@ -25,6 +26,7 @@ class TableName extends SqlAttribute {
         return $this->tableName;
     }
 
+    #[Override]
     public function getCreationSql():string{
         return "CREATE TABLE $this->tableName";
     }

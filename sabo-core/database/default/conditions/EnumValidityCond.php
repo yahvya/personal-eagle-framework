@@ -2,6 +2,7 @@
 
 namespace SaboCore\Database\Default\Conditions;
 
+use Override;
 use SaboCore\Database\Default\Conditions\Cond;
 use SaboCore\Database\Default\System\MysqlModel;
 use Throwable;
@@ -29,6 +30,7 @@ class EnumValidityCond implements Cond{
         $this->isDisplayable = $isDisplayable;
     }
 
+    #[Override]
     public function verifyData(MysqlModel $baseModel,string $attributeName,mixed $data): bool{
         try{
             // récupération du tableau des valeurs possibles
@@ -42,6 +44,7 @@ class EnumValidityCond implements Cond{
         }
     }
 
+    #[Override]
     public function getErrorMessage(): string{
         return $this->errorMessage;
     }

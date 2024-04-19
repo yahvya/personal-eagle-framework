@@ -2,6 +2,7 @@
 
 namespace SaboCore\Database\Default\Formatters;
 
+use Override;
 use SaboCore\Database\Default\System\MysqlModel;
 
 /**
@@ -9,6 +10,7 @@ use SaboCore\Database\Default\System\MysqlModel;
  * @author yahaya bathily https://github.com/yahvya
  */
 class JsonFormatter implements Formater{
+    #[Override]
     public function format(MysqlModel $baseModel,mixed $data): string{
         $json = @json_encode(value: $data);
 

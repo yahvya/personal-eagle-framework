@@ -44,6 +44,7 @@ class MysqlProvider extends DatabaseProvider{
     /**
      * @return PDO|null la connexion crée à l'initialisation ou null
      */
+    #[Override]
     public function getCon():?PDO{
         return self::$con;
     }

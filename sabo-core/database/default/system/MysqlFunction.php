@@ -38,7 +38,7 @@ class MysqlFunction{
      * @return $this
      */
     public function as(string $alias):MysqlFunction{
-        $this->alias = $alias;
+        $this->alias = "'$alias'";
 
         return $this;
     }

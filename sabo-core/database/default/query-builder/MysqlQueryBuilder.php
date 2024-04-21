@@ -1,17 +1,12 @@
 <?php
 
 namespace SaboCore\Database\Default\QueryBuilder;
-require_once("../../../vendor/autoload.php");
+
 use PDO;
 use PDOStatement;
 use ReflectionClass;
 use SaboCore\Config\ConfigException;
-use SaboCore\Database\Default\Attributes\DecimalColumn;
-use SaboCore\Database\Default\Attributes\IntColumn;
 use SaboCore\Database\Default\Attributes\TableColumn;
-use SaboCore\Database\Default\Attributes\TableName;
-use SaboCore\Database\Default\Attributes\VarcharColumn;
-use SaboCore\Database\Default\System\MysqlComparator;
 use SaboCore\Database\Default\System\MysqlCondition;
 use SaboCore\Database\Default\System\MysqlCondSeparator;
 use SaboCore\Database\Default\System\MysqlFunction;
@@ -84,7 +79,23 @@ class MysqlQueryBuilder{
      */
     public function prepareRequest(PDO $pdo):?PDOStatement{
         try{
-            return $pdo->prepare("");
+            $statement = $pdo->prepare(query: $this->getSql());
+
+            if($statement === false)
+                return null;
+
+            // ajout des valeurs à bind
+            $toBind = $this->getBindValues();
+            $bindCounter = 0;
+
+            foreach($toBind as $bindManager){
+                foreach($bindManager->getToBindDatas() as $bindConfig){
+                    $bindCounter++;
+                    $statement->bindValue($bindCounter,...$bindConfig);
+                }
+            }
+
+            return $statement;
         }
         catch(Throwable){
             return null;
@@ -182,7 +193,7 @@ class MysqlQueryBuilder{
         else{
             $toBind = new MysqlBindDatas(
                 countOfMarkers: 1,
-                toBindDatas: [ [$data,$columnConfig->getColumnType()] ]
+                toBindDatas: [ [$data,$data === null ? PDO::PARAM_NULL : $columnConfig->getColumnType()] ]
             );
 
             return [
@@ -427,7 +438,7 @@ class MysqlQueryBuilder{
      * @param MysqlCondition|MysqlCondSeparator ...$conditions conditions de vérification
      * @return $this
      */
-    public function whereCond(MysqlCondition|MysqlCondSeparator ...$conditions):MysqlQueryBuilder{
+    public function cond(MysqlCondition|MysqlCondSeparator ...$conditions):MysqlQueryBuilder{
         ["sql" => $sql,"toBind" => $toBind] =  $this->parseConditionSequence(sequence: $conditions);
 
         $this->sqlString .= "$sql ";
@@ -512,57 +523,3 @@ class MysqlQueryBuilder{
         return $this;
     }
 }
-
-#[TableName(tableName: "users")]
-class UserModel extends MysqlModel{
-    #[IntColumn(columnName: "id", isAutoIncrement: true, isPrimaryKey: true)]
-    protected int $id;
-
-    #[VarcharColumn(columnName: "username",maxLen: 255)]
-    protected string $name;
-
-    #[DecimalColumn(columnName: "payed_price")]
-    protected float $price;
-}
-
-$testQuery = new MysqlQueryBuilder(modelClass: UserModel::class);
-
-$testQuery
-    ->select("name")
-    ->where()
-    ->whereCond(new MysqlCondition(condGetter: "name",comparator: MysqlComparator::IN(),conditionValue: ["tir","fir","sir"]) );
-
-$queryBuilder = new MysqlQueryBuilder(modelClass: UserModel::class);
-
-$queryBuilder
-    ->select()
-    ->where()
-    ->whereCond(
-        MysqlCondSeparator::GROUP_START(),
-            new MysqlCondition(
-                condGetter: "price",
-                comparator: MysqlComparator::EQUAL(),
-                conditionValue: 300.5
-            ),
-            MysqlCondSeparator::AND(),
-            new MysqlCondition(
-                condGetter: "name",
-                comparator: MysqlComparator::LIKE(),
-                conditionValue: "%svel%"
-            ),
-            MysqlCondSeparator::AND(),
-            new MysqlCondition(
-                condGetter: "name",
-                comparator: MysqlComparator::REQUEST_COMPARATOR(comparator: "IN({request})", queryBuilder: $testQuery),
-                conditionValue: $testQuery
-            ),
-        MysqlCondSeparator::GROUP_END(),
-        MysqlCondSeparator::OR(),
-        new MysqlCondition(
-            condGetter: "name",
-            comparator: MysqlComparator::EQUAL(),
-            conditionValue: "nael"
-        ),
-    );
-
-var_dump($queryBuilder->getSql(),array_map(fn(MysqlBindDatas $d) => $d->getToBindDatas()->getRealList(),$queryBuilder->getBindValues()) );

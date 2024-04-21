@@ -17,7 +17,7 @@ abstract class MysqlTableCreator{
      * @throws Throwable en cas d'erreur
      */
     public static function getTableCreationFrom(MysqlModel $model):string{
-        $creationScript = "{$model->getTableName()->getCreationSql()}(\n";
+        $creationScript = "{$model->getTableNameManager()->getCreationSql()}(\n";
 
         $primaryKeys = [];
         $foreignKeys = [];

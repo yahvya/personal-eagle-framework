@@ -4,6 +4,7 @@ namespace SaboCore\Database\Default\Attributes;
 
 use Attribute;
 use Override;
+use PDO;
 use SaboCore\Database\Default\Conditions\Cond;
 use SaboCore\Database\Default\Formatters\Formater;
 
@@ -60,5 +61,10 @@ class CharColumn extends TableColumn{
             . ($this->isNullable ? "" : " NOT NULL")
             . ($this->isUnique() ? " UNIQUE": "")
             . ($this->haveDefaultValue() ? " DEFAULT {$this->getDefaultValueStr()}" : "");
+    }
+
+    #[Override]
+    public function getColumnType(): int{
+        return PDO::PARAM_STR;
     }
 }

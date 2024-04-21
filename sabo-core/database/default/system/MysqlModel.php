@@ -27,7 +27,7 @@ class MysqlModel extends DatabaseModel{
     protected TableName $tableName;
 
     /**
-     * @var Array<string,TableColumn> Configuration des colonnes de la base de donnée. Indicé par le nom de l'attribut et contient comme valeur l'instance de TableColumn
+     * @var TableColumn[] Configuration des colonnes de la base de donnée. Indicé par le nom de l'attribut et contient comme valeur l'instance de TableColumn
      */
     protected array $dbColumnsConfig;
 
@@ -148,7 +148,7 @@ class MysqlModel extends DatabaseModel{
     }
 
     /**
-     * @return Array<string,TableColumn|EnumColumn> La configuration des colonnes
+     * @return TableColumn[]|EnumColumn[] La configuration des colonnes
      */
     public function getColumnsConfig():array{
         return $this->dbColumnsConfig;
@@ -204,7 +204,7 @@ class MysqlModel extends DatabaseModel{
     /**
      * @return TableName Fournisseur du nom de la table
      */
-    public function getTableName(): TableName{
+    public function getTableNameManager(): TableName{
         return $this->tableName;
     }
 

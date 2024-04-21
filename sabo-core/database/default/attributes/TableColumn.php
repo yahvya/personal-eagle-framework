@@ -260,4 +260,9 @@ abstract class TableColumn extends SqlAttribute{
     public function convertFromValue(mixed $data):mixed{
         return $data;
     }
+
+    /**
+     * @return int Fourni le type de paramètre pdo
+     */
+    abstract public function getColumnType():int;
 }

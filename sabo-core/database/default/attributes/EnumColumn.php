@@ -4,6 +4,7 @@ namespace SaboCore\Database\Default\Attributes;
 
 use Attribute;
 use Override;
+use PDO;
 use SaboCore\Utils\List\SaboList;
 
 /**
@@ -57,5 +58,10 @@ class EnumColumn extends TableColumn{
      */
     public function getPossibleValues(): SaboList{
         return $this->possibleValues;
+    }
+
+    #[Override]
+    public function getColumnType(): int{
+        return PDO::PARAM_STR;
     }
 }

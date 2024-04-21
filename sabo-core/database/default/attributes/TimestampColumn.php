@@ -4,6 +4,7 @@ namespace SaboCore\Database\Default\Attributes;
 
 use Attribute;
 use Override;
+use PDO;
 use SaboCore\Database\Default\Conditions\Cond;
 use SaboCore\Database\Default\CustomDatatypes\Timestamp;
 use SaboCore\Database\Default\Formatters\Formater;
@@ -67,5 +68,10 @@ class TimestampColumn extends TableColumn{
     #[Override]
     public function convertFromValue(mixed $data): mixed{
         return $data->convertForDatabase();
+    }
+
+    #[Override]
+    public function getColumnType(): int{
+        return PDO::PARAM_INT;
     }
 }

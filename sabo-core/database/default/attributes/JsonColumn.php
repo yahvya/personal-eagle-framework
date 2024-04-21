@@ -4,6 +4,7 @@ namespace SaboCore\Database\Default\Attributes;
 
 use Attribute;
 use Override;
+use PDO;
 
 /**
  * @brief Champs de type json
@@ -34,5 +35,10 @@ class JsonColumn extends TableColumn{
             . ($this->isNullable ? "" : " NOT NULL")
             . ($this->isUnique() ? " UNIQUE": "")
             . ($this->haveDefaultValue() ? " DEFAULT {$this->getDefaultValueStr()}" : "");
+    }
+
+    #[Override]
+    public function getColumnType():int{
+        return PDO::PARAM_STR;
     }
 }

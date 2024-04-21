@@ -4,7 +4,6 @@ namespace SaboCore\Database\Default\QueryBuilder;
 require_once("../../../vendor/autoload.php");
 use PDO;
 use PDOStatement;
-use PHPMailer\PHPMailer\Exception;
 use ReflectionClass;
 use SaboCore\Config\ConfigException;
 use SaboCore\Database\Default\Attributes\DecimalColumn;
@@ -13,6 +12,7 @@ use SaboCore\Database\Default\Attributes\TableName;
 use SaboCore\Database\Default\Attributes\VarcharColumn;
 use SaboCore\Database\Default\System\MysqlFunction;
 use SaboCore\Database\Default\System\MysqlModel;
+use SaboCore\Database\Default\System\MysqlBindDatas;
 use Throwable;
 
 /**
@@ -26,12 +26,12 @@ class MysqlQueryBuilder{
     protected string $sqlString;
 
     /**
-     * @var array Valeur à bind
+     * @var MysqlBindDatas[] Valeur à bind
      */
-    protected array $toBind = [];
+    protected array $toBind;
 
     /**
-     * @var MysqlModel
+     * @var MysqlModel Model de base
      */
     protected MysqlModel $baseModel;
 
@@ -54,7 +54,7 @@ class MysqlQueryBuilder{
                 throw new ConfigException(message: "La class fournie doit être une sous class de " . MysqlModel::class);
 
             $this->baseModel = $model;
-            $this->tableAlias = $this->baseModel->getTableName()->getTableName() . time();
+            $this->reset();
         }
         catch(Throwable){
             throw new ConfigException(message: "Une erreur s'est produite lors de la construction du builder");
@@ -81,6 +81,7 @@ class MysqlQueryBuilder{
     public function reset():MysqlQueryBuilder{
         $this->sqlString = "";
         $this->toBind = [];
+        $this->tableAlias = $this->baseModel->getTableNameManager()->getTableName() . time();
 
         return $this;
     }
@@ -111,14 +112,44 @@ class MysqlQueryBuilder{
     }
 
     /**
-     * @brief Ajoute la chaine select SELECT [] FROM table
+     * @return string La chaine sql sans modification
+     * @attention La chaine fournie peut ne pas être utilisable
+     */
+    public function getRealSql():string{
+        return $this->sqlString;
+    }
+
+    /**
+     * @return string La chaine sql formaté pour une requête
+     */
+    public function getSql():string{
+        return str_replace(
+            search: ["{aliasTable}"],
+            replace: [$this->tableAlias],
+            subject: $this->sqlString
+        );
+    }
+
+    /**
+     * @return MysqlBindDatas[] les valeurs à bind
+     */
+    public function getBindValues():array{
+        return $this->toBind;
+    }
+
+    /**
+     * @brief Fonctions de requêtage
+     */
+
+    /**
+     * @brief Ajoute la chaine SELECT [] FROM table
      * @param string|MysqlFunction ...$toSelect
      * @return $this
      * @attention en fonction des champs sélectionnés le / les models générés seront partiellement construit s'il manque des champs.
      * @throws Throwable en cas d'erreur
      */
     public function select(string|MysqlFunction ...$toSelect):MysqlQueryBuilder{
-        $this->sqlString = "SELECT ";
+        $this->sqlString .= "SELECT ";
 
         $tableColumnsConfig = $this->baseModel->getColumnsConfig();
 
@@ -145,43 +176,31 @@ class MysqlQueryBuilder{
             $columnsToSelect[] = $function . ($alias ? " AS $alias" : "");
         }
 
-        $this->sqlString .= (empty($columnsToSelect) ? "*" : implode(separator: ",",array: $columnsToSelect)) . " FROM {$this->baseModel->getTableName()->getTableName()} AS {aliasTable} ";
+        $this->sqlString .= (empty($columnsToSelect) ? "*" : implode(separator: ",",array: $columnsToSelect)) . " FROM {$this->baseModel->getTableNameManager()->getTableName()} AS {aliasTable} ";
 
         return $this;
     }
 
     /**
-     * @return string La chaine sql sans modification
-     * @attention La chaine fournie peut ne pas être utilisable
+     * @brief Ajoute la chaine UPDATE table SET []
+     * @param MysqlBindDatas[] $updateConfig Tableau indicé par le nom des attributs à changer et avec valeur l'instance MysqlBindDatas
      */
-    public function getRealSql():string{
-        return $this->sqlString;
+    public function update(array $updateConfig):MysqlQueryBuilder{
+        $this->sqlString .= "UPDATE {$this->baseModel->getTableNameManager()->getTableName()} AS {tableAlias} SET ";        
+
+        $columnsConfig = $this->baseModel->getColumnsConfig();
+        $columnsToUpdate = [];
+
+        // ajout des attributs à modifier
+        foreach($updateConfig as $attributeName => $bindConfig){
+
+        }
+
+        return $this;
     }
 
-    /**
-     * @return string La chaine sql formaté pour une requête
-     */
-    public function getSql():string{
-        return str_replace(
-            search: ["{aliasTable}"],
-            replace: [$this->tableAlias],
-            subject: $this->sqlString
-        );
-    }
-
-    /**
-     * @return array Le tableau des valeurs à bind
-     * @attention Les valeurs peuvent ne pas être (utilisable)
-     */
-    public function getRealBindValues():array{
-        return $this->toBind;
-    }
-
-    /**
-     * @return array les valeurs à bind formatées pour une requête
-     */
-    public function getBindValues():array{
-        return $this->toBind;
+    public function delete():MysqlQueryBuilder{
+        return $this;        
     }
 }
 
@@ -207,5 +226,15 @@ $queryBuilder
         MysqlFunction::COLUMN_ALIAS(attributeName: "name",alias: "name-alias"),
         MysqlFunction::DATE_FORMAT("'2023-10-20'","%Y")
     );
+
+var_dump($queryBuilder->getSql());
+
+$queryBuilder
+    ->reset()
+    ->as(alias: "user-alias")
+    ->update(updateConfig: [
+        "price" => 300.3,
+        "name" => "svel"
+    ]);
 
 var_dump($queryBuilder->getSql());

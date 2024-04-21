@@ -208,11 +208,19 @@ class MysqlModel extends DatabaseModel{
         return $this->tableName;
     }
 
+    /**
+     * @param MysqlCondition|MysqlCondSeparator ...$findBuilders Configuration de recherche
+     * @return MysqlModel|null model trouvé ou null
+     */
     #[Override]
     public static function findOne(DatabaseCondition|DatabaseCondSeparator ...$findBuilders): DatabaseModel|null{
         return null;
     }
 
+    /**
+     * @param MysqlCondition|MysqlCondSeparator ...$findBuilders Configuration de recherche
+     * @return SaboList<MysqlModel> Liste des occurrences
+     */
     #[Override]
     public static function findAll(DatabaseCondition|DatabaseCondSeparator ...$findBuilders): SaboList{
         return new SaboList([]);

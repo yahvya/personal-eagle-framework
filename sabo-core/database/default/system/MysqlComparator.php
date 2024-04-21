@@ -3,10 +3,13 @@
 namespace SaboCore\Database\Default\System;
 
 use Closure;
+use SaboCore\Database\Default\QueryBuilder\MysqlQueryBuilder;
 use SaboCore\Database\System\DatabaseComparator;
 
 /**
  * @brief Comparateurs mysql
+ * @attention Pour comparer au résultat d'une requête, utilisez REQUEST_COMPARATOR
+ * @markers singleMarker,bindMarkers
  * @author yahaya bathily https://github.com/yahvya
  */
 class MysqlComparator extends DatabaseComparator{
@@ -33,6 +36,36 @@ class MysqlComparator extends DatabaseComparator{
      */
     public function getBindDatas(mixed $value):MysqlBindDatas{
         return call_user_func_array($this->toBindGetter,[$value]);
+    }
+
+    /**
+     * @brief Crée un comparateur sur une requête
+     * @param string $comparator Chaine comparatrice contenant le marqueur {request} pour y placer la requête
+     * @param MysqlQueryBuilder $queryBuilder Requête à gérer
+     * @attention la fonction bindGetter généré prend en paramètre le queryBuilder (sur une "MysqlCondition" fournissez le queryBuilder)
+     * @attention Une fois appellé le contenu de la requête n'est pas modifiable
+     * @return MysqlComparator comparateur
+     */
+    public static function REQUEST_COMPARATOR(string $comparator,MysqlQueryBuilder $queryBuilder):MysqlComparator{
+        return new MysqlComparator(
+            comparator: str_replace(search: "{request}",replace: $queryBuilder->getSql(),subject: $comparator),
+            toBindGetter: function(MysqlQueryBuilder $queryBuilder):MysqlBindDatas{
+                // fusion des valeurs à bind du builder dans un seul builder
+
+                $bindValues = [];
+                $countOfMarkers = 0;
+
+                foreach($queryBuilder->getBindValues() as $bindValue){
+                    $bindValues[] = $bindValue->getToBindDatas()->getRealList();
+                    $countOfMarkers += $bindValue->getCountOfMarkers();
+                }
+
+                return new MysqlBindDatas(
+                    countOfMarkers: $countOfMarkers,
+                    toBindDatas: $bindValues
+                );
+            }
+        );
     }
 
     /**

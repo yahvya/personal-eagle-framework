@@ -8,9 +8,9 @@ namespace SaboCore\Database\System;
  */
 class DatabaseCondition{
     /**
-     * @var string Nom de l'attribut du model
+     * @var mixed Elément de récupération de la condition
      */
-    protected string $attributeName;
+    protected mixed $condGetter;
 
     /**
      * @var mixed Valeur à vérifier
@@ -23,21 +23,21 @@ class DatabaseCondition{
     protected DatabaseComparator $comparator;
 
     /**
-     * @param string $attributeName Nom de l'attribut du model
+     * @param mixed $condGetter Elément de récupération de la condition
      * @param DatabaseComparator $comparator Comparateur
      * @param mixed $conditionValue Valeur à vérifier
      */
-    public function __construct(string $attributeName, DatabaseComparator $comparator,mixed $conditionValue){
-        $this->attributeName = $attributeName;
+    public function __construct(mixed $condGetter, DatabaseComparator $comparator,mixed $conditionValue){
+        $this->condGetter = $condGetter;
         $this->conditionValue = $conditionValue;
         $this->comparator = $comparator;
     }
 
     /**
-     * @return string Nom de l'attribut du model
+     * @return mixed Elément de récupération de la condition
      */
-    public function getAttributeName(): string{
-        return $this->attributeName;
+    public function getCondGetter(): mixed{
+        return $this->condGetter;
     }
 
     /**

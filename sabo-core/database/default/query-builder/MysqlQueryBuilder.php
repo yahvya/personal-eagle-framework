@@ -11,6 +11,9 @@ use SaboCore\Database\Default\Attributes\IntColumn;
 use SaboCore\Database\Default\Attributes\TableColumn;
 use SaboCore\Database\Default\Attributes\TableName;
 use SaboCore\Database\Default\Attributes\VarcharColumn;
+use SaboCore\Database\Default\System\MysqlComparator;
+use SaboCore\Database\Default\System\MysqlCondition;
+use SaboCore\Database\Default\System\MysqlCondSeparator;
 use SaboCore\Database\Default\System\MysqlFunction;
 use SaboCore\Database\Default\System\MysqlModel;
 use SaboCore\Database\Default\System\MysqlBindDatas;
@@ -206,6 +209,73 @@ class MysqlQueryBuilder{
     }
 
     /**
+     * @brief Parse les données de la condition
+     * @param MysqlCondition $condition condition
+     * @return array les données de la condition ["sql" => ...,"toBind" => MysqlBindDatas]
+     */
+    protected function parseCondition(MysqlCondition $condition):array{
+        $comparator = $condition->getComparator();
+        $condGetter = $condition->getCondGetter();
+
+        if($condGetter instanceof MysqlFunction){
+            // traitement de la fonction
+            $function = $condGetter->getFunction();
+
+            if($condGetter->haveToReplaceAttributesName())
+                $function = $this->replaceAttributesNameIn(string: $function);
+
+            $sql = "$function ";
+        }
+        else{
+            // récupération du nom de l'attribut
+            $sql = "{$this->baseModel->getColumnConfig(attributName: $condGetter)->getColumnName()} ";
+        }
+
+        // traitement de replacement des marqueurs de comparaison
+        $toBind = $comparator->getBindDatas(value: $condition->getConditionValue());
+
+        $comparatorStr = str_replace(
+            search: ["{singleMarker}","{bindMarkers}"],
+            replace: ["?",$toBind->getMarkersStr()],
+            subject: $comparator->getComparator()
+        );
+
+        return [
+            "sql" => $sql . $comparatorStr,
+            "toBind" => $toBind
+        ];
+    }
+
+    /**
+     * @brief Parse une séquence de conditions et de séparateurs
+     * @param (MysqlCondition|MysqlCondSeparator)[] $sequence séquence
+     * @return array les données de la séquence ["sql" => ...,"toBind" => [MysqlBindDatas, ...]]
+     */
+    protected function parseConditionSequence(array $sequence):array{
+        $sql = "";
+        $toBindList = [];
+
+        foreach($sequence as $conditionConfig){
+            if($conditionConfig instanceof MysqlCondSeparator){
+                // traitement du séparateur
+                $sql .= "{$conditionConfig->getSeparator()} ";
+                continue;
+            }
+
+            // traitement de la condition
+            ["sql" => $parsedSql,"toBind" => $toBind] = $this->parseCondition($conditionConfig);
+
+            $sql .= "$parsedSql ";
+            $toBindList[] = $toBind;
+        }
+
+        return [
+            "sql" => $sql,
+            "toBind" => $toBindList
+        ];
+    }
+
+    /**
      * @brief Fonctions de requêtes
      */
 
@@ -267,6 +337,39 @@ class MysqlQueryBuilder{
     }
 
     /**
+     * @brief Ajoute la chaine INSERT INTO
+     * @param MysqlFunction[]|MysqlQueryBuilder|mixed $insertConfig Tableau indicé par le nom des attributs à changer et avec valeur associé valeur|MysqlFunction|MysqlQueryBuilder
+     * @return $this
+     * @attention en cas de fonction ne pas y placer d'alias
+     */
+    public function insert(array $insertConfig):MysqlQueryBuilder{
+        $this->sqlString .= "INSERT INTO {$this->baseModel->getTableNameManager()->getTableName()} ";
+
+        $columnsToInsert = [];
+        $sql = [];
+        $columnsConfig = $this->baseModel->getColumnsConfig();
+
+        // ajout des attributs à insérer
+        foreach($insertConfig as $attributeName => $value){
+            ["sql" => $setSql,"toBind" => $valuesToBind] =  $this->manageValueDatas(
+                columnConfig: $columnsConfig[$attributeName],
+                data: $value,
+                sqlBefore: "(",
+                sqlAfter: ")"
+            );
+
+            $columnsToInsert[] = $columnsConfig[$attributeName]->getColumnName();
+            $sql[] = "$setSql";
+
+            $this->toBind = array_merge($this->toBind,$valuesToBind);
+        }
+
+        $this->sqlString .= "(" . implode(separator: ",",array: $columnsToInsert) .") VALUES(" . implode(separator: ",",array: $sql) . ")";
+
+        return $this;
+    }
+
+    /**
      * @brief Ajoute la chaine UPDATE table SET []
      * @param MysqlFunction[]|MysqlQueryBuilder|mixed $updateConfig Tableau indicé par le nom des attributs à changer et avec valeur associé valeur|MysqlFunction|MysqlQueryBuilder
      * @return $this
@@ -276,7 +379,9 @@ class MysqlQueryBuilder{
         $this->sqlString .= "UPDATE {$this->baseModel->getTableNameManager()->getTableName()} AS {aliasTable} SET ";
 
         $columnsConfig = $this->baseModel->getColumnsConfig();
-        $columnsToUpdate = [];
+
+        // construction du sql set
+        $sql = [];
 
         // ajout des attributs à modifier
         foreach($updateConfig as $attributeName => $newValue){
@@ -287,16 +392,12 @@ class MysqlQueryBuilder{
                 sqlAfter: ")"
             );
 
-            $columnsToUpdate[$columnsConfig[$attributeName]->getColumnName()] = $setSql;
+            $sql[] = "{$columnsConfig[$attributeName]->getColumnName()} = $setSql";
 
             $this->toBind = array_merge($this->toBind,$valuesToBind);
         }
 
-        // construction du sql set
-        foreach($columnsToUpdate as $columnName => $sql)
-            $this->sqlString .= "$columnName = $sql, ";
-
-        $this->sqlString = substr(string: $this->sqlString,offset: 0,length: -2) . " ";
+        $this->sqlString .= implode(separator: ", ",array: $sql) . " ";
 
         return $this;
     }
@@ -309,6 +410,81 @@ class MysqlQueryBuilder{
         $this->sqlString .= "DELETE FROM {$this->baseModel->getTableNameManager()->getTableName()} AS {aliasTable} ";
 
         return $this;        
+    }
+
+    /**
+     * @brief Ajoute la chaine WHERE
+     * @return $this
+     */
+    public function where():MysqlQueryBuilder{
+        $this->sqlString .= "WHERE ";
+
+        return $this;
+    }
+
+    /**
+     * @brief Ajoute les conditions where
+     * @param MysqlCondition|MysqlCondSeparator ...$conditions conditions de vérification
+     * @return $this
+     */
+    public function whereCond(MysqlCondition|MysqlCondSeparator ...$conditions):MysqlQueryBuilder{
+        ["sql" => $sql,"toBind" => $toBind] =  $this->parseConditionSequence(sequence: $conditions);
+
+        $this->sqlString .= "$sql ";
+        $this->toBind = array_merge($this->toBind,$toBind);
+
+        return $this;
+    }
+
+    /**
+     * @brief Ajoute la chaine HAVING ...
+     * @param MysqlCondition|MysqlCondSeparator ...$conditions conditions de vérification
+     * @return $this
+     */
+    public function having(MysqlCondition|MysqlCondSeparator ...$conditions):MysqlQueryBuilder{
+        ["sql" => $sql,"toBind" => $toBind] =  $this->parseConditionSequence(sequence: $conditions);
+
+        $this->sqlString .= "HAVING $sql ";
+        $this->toBind = array_merge($this->toBind,$toBind);
+
+        return $this;
+    }
+
+    /**
+     * @brief Ajoute la chaine ORDER BY ... ($builder->orderBy(["price","ASC"],["id","DESC"] ) )
+     * @param array ...$configs Tableaux de deux éléments contenant en premier le nom de l'attribut suivi de "ASC" ou "DESC"
+     * @return $this
+     */
+    public function orderBy(array ...$configs):MysqlQueryBuilder{
+        $this->sqlString .= "ORDER BY ";
+        $sql = [];
+
+        foreach($configs as $orderConfig){
+            [$attributeName,$sortOrder] = $orderConfig;
+
+            $sql[] = "{$this->baseModel->getColumnConfig(attributName: $attributeName)->getColumnName()} $sortOrder";
+        }
+
+        $this->sqlString .= implode(separator: ",",array: $sql) . " ";
+
+        return $this;
+    }
+
+    /**
+     * @brief Ajoute la chaine GROUP BY
+     * @param string ...$attributesNames nom des attributs
+     * @return $this
+     */
+    public function groupBy(string ...$attributesNames):MysqlQueryBuilder{
+        $this->sqlString .= "GROUP BY " . implode(
+            separator: ",",
+            array: array_map(
+                callback: fn(string $attributeName):string => $this->baseModel->getColumnConfig(attributName: $attributeName)->getColumnName(),
+                array: $attributesNames
+            )
+        ) . " ";
+
+        return $this;
     }
 
     /**
@@ -349,6 +525,44 @@ class UserModel extends MysqlModel{
     protected float $price;
 }
 
+$testQuery = new MysqlQueryBuilder(modelClass: UserModel::class);
+
+$testQuery
+    ->select("name")
+    ->where()
+    ->whereCond(new MysqlCondition(condGetter: "name",comparator: MysqlComparator::IN(),conditionValue: ["tir","fir","sir"]) );
+
 $queryBuilder = new MysqlQueryBuilder(modelClass: UserModel::class);
 
-var_dump($queryBuilder->delete()->getSql());
+$queryBuilder
+    ->select()
+    ->where()
+    ->whereCond(
+        MysqlCondSeparator::GROUP_START(),
+            new MysqlCondition(
+                condGetter: "price",
+                comparator: MysqlComparator::EQUAL(),
+                conditionValue: 300.5
+            ),
+            MysqlCondSeparator::AND(),
+            new MysqlCondition(
+                condGetter: "name",
+                comparator: MysqlComparator::LIKE(),
+                conditionValue: "%svel%"
+            ),
+            MysqlCondSeparator::AND(),
+            new MysqlCondition(
+                condGetter: "name",
+                comparator: MysqlComparator::REQUEST_COMPARATOR(comparator: "IN({request})", queryBuilder: $testQuery),
+                conditionValue: $testQuery
+            ),
+        MysqlCondSeparator::GROUP_END(),
+        MysqlCondSeparator::OR(),
+        new MysqlCondition(
+            condGetter: "name",
+            comparator: MysqlComparator::EQUAL(),
+            conditionValue: "nael"
+        ),
+    );
+
+var_dump($queryBuilder->getSql(),array_map(fn(MysqlBindDatas $d) => $d->getToBindDatas()->getRealList(),$queryBuilder->getBindValues()) );

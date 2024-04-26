@@ -18,21 +18,23 @@ abstract class DatabaseModel{
 
     /**
      * @brief Actions à faire après la création du model
+     * @param mixed $datas Données à fournir
      * @attention il est recommandé d'appeler parent::afterCreate en cas de redéfinition
-     * @throws DatabaseActionException pour stopper l'action en cas d'erreur
      * @return $this
+     *@throws DatabaseActionException pour stopper l'action en cas d'erreur
      */
-    protected function afterCreate():DatabaseModel{
+    protected function afterCreate(mixed $datas):DatabaseModel{
         return $this;
     }
 
     /**
      * @brief Actions à faire avant la création du model
+     * @param mixed $datas Données à fournir
      * @attention il est recommandé d'appeler parent::beforeCreate en cas de redéfinition
      * @throws DatabaseActionException pour stopper l'action en cas d'erreur
      * @return $this
      */
-    protected function beforeCreate():DatabaseModel{
+    protected function beforeCreate(mixed $datas):DatabaseModel{
         return $this;
     }
 
@@ -45,21 +47,23 @@ abstract class DatabaseModel{
 
     /**
      * @brief Actions à faire après la mise à jour du model
+     * @param mixed $datas Données à fournir
      * @attention il est recommandé d'appeler parent::afterUpdate en cas de redéfinition
      * @throws DatabaseActionException pour stopper l'action en cas d'erreur
      * @return $this
      */
-    protected function afterUpdate():DatabaseModel{
+    protected function afterUpdate(mixed $datas):DatabaseModel{
         return $this;
     }
 
     /**
      * @brief Actions à faire avant la mise à jour du model
+     * @param mixed $datas Données à fournir
      * @attention il est recommandé d'appeler parent::beforeUpdate en cas de redéfinition
      * @throws DatabaseActionException pour stopper l'action en cas d'erreur
      * @return $this
      */
-    protected function beforeUpdate():DatabaseModel{
+    protected function beforeUpdate(mixed $datas):DatabaseModel{
         return $this;
     }
 
@@ -72,41 +76,45 @@ abstract class DatabaseModel{
 
     /**
      * @brief Actions à faire après la suppression du model
+     * @param mixed $datas Données à fournir
      * @attention il est recommandé d'appeler parent::afterDelete en cas de redéfinition
      * @throws DatabaseActionException pour stopper l'action en cas d'erreur
      * @return $this
      */
-    protected function afterDelete():DatabaseModel{
+    protected function afterDelete(mixed $datas):DatabaseModel{
         return $this;
     }
 
     /**
      * @brief Actions à faire avant la suppression du model
+     * @param mixed $datas Données à fournir
      * @attention il est recommandé d'appeler parent::beforeDelete en cas de redéfinition
      * @throws DatabaseActionException pour stopper l'action en cas d'erreur
      * @return $this
      */
-    protected function beforeDelete():DatabaseModel{
+    protected function beforeDelete(mixed $datas):DatabaseModel{
         return $this;
     }
 
     /**
      * @brief Actions à faire avant la génération du model à partir de la méthode find
+     * @param mixed $datas Données à fournir
      * @attention il est recommandé d'appeler parent::beforeGeneration en cas de redéfinition
      * @throws DatabaseActionException pour stopper l'action en cas d'erreur
      * @return $this
      */
-    protected function beforeGeneration():DatabaseModel{
+    protected function beforeGeneration(mixed $datas):DatabaseModel{
         return $this;
     }
 
     /**
      * @brief Actions à faire après la génération du model à partir de la méthode find
+     * @param mixed $datas Données à fournir
      * @attention il est recommandé d'appeler parent::afterGeneration en cas de redéfinition
      * @throws DatabaseActionException pour stopper l'action en cas d'erreur
      * @return $this
      */
-    protected function afterGeneration():DatabaseModel{
+    protected function afterGeneration(mixed $datas):DatabaseModel{
         return $this;
     }
 

@@ -4,11 +4,11 @@ namespace SaboCore\Database\Default\QueryBuilder;
 
 use PDO;
 use PDOStatement;
-use ReflectionClass;
 use SaboCore\Config\ConfigException;
 use SaboCore\Database\Default\Attributes\TableColumn;
 use SaboCore\Database\Default\System\MysqlCondition;
 use SaboCore\Database\Default\System\MysqlCondSeparator;
+use SaboCore\Database\Default\System\MysqlException;
 use SaboCore\Database\Default\System\MysqlFunction;
 use SaboCore\Database\Default\System\MysqlModel;
 use SaboCore\Database\Default\System\MysqlBindDatas;
@@ -40,24 +40,21 @@ class MysqlQueryBuilder{
     protected string $tableAlias;
 
     /**
-     * @param string $modelClass class du model
-     * @throws ConfigException en cas d'erreur
+     * @param MysqlModel $model instance du model
      */
-    public function __construct(string $modelClass){
-        try{
-            $reflection = new ReflectionClass(objectOrClass: $modelClass);
+    public function __construct(MysqlModel $model){
+        $this->baseModel = $model;
+        $this->reset();
+    }
 
-            $model = $reflection->newInstance();
-
-            if(!($model instanceof MysqlModel))
-                throw new ConfigException(message: "La class fournie doit être une sous class de " . MysqlModel::class);
-
-            $this->baseModel = $model;
-            $this->reset();
-        }
-        catch(Throwable){
-            throw new ConfigException(message: "Une erreur s'est produite lors de la construction du builder");
-        }
+    /**
+     * @brief Crée un query builder à partir du model fourni
+     * @param string $modelClass model de la class
+     * @return MysqlQueryBuilder l'instance crée
+     * @throws ConfigException en cas d'erreur de configuration
+     */
+    public static function createFrom(string $modelClass):MysqlQueryBuilder{
+        return new MysqlQueryBuilder(model: MysqlModel::newInstanceOfModel(modelClass: $modelClass) );
     }
 
     /**
@@ -315,7 +312,6 @@ class MysqlQueryBuilder{
      * @param string|MysqlFunction ...$toSelect
      * @return $this
      * @attention en fonction des champs sélectionnés le / les models générés seront partiellement construit s'il manque des champs.
-     * @throws Throwable en cas d'erreur
      */
     public function select(string|MysqlFunction ...$toSelect):MysqlQueryBuilder{
         $this->sqlString .= "SELECT ";

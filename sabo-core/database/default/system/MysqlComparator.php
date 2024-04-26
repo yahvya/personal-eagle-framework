@@ -56,7 +56,7 @@ class MysqlComparator extends DatabaseComparator{
                 $countOfMarkers = 0;
 
                 foreach($queryBuilder->getBindValues() as $bindValue){
-                    $bindValues[] = $bindValue->getToBindDatas()->getRealList();
+                    $bindValues[] = $bindValue->getToBindDatas()->toArray();
                     $countOfMarkers += $bindValue->getCountOfMarkers();
                 }
 

@@ -44,7 +44,7 @@ class EnumColumn extends TableColumn{
                     separator: ",",
                     array: array_map(
                         callback: fn(string $value):string => "'$value'",
-                        array: $this->possibleValues->getRealList()
+                        array: $this->possibleValues->toArray()
                     )
                 )
             . ")"

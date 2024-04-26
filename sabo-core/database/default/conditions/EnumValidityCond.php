@@ -34,7 +34,7 @@ class EnumValidityCond implements Cond{
     public function verifyData(MysqlModel $baseModel,string $attributeName,mixed $data): bool{
         try{
             // récupération du tableau des valeurs possibles
-            $possibleValues = $baseModel->getColumnConfig(attributName: $attributeName)->getPossibleValues()->getRealList();
+            $possibleValues = $baseModel->getColumnConfig(attributName: $attributeName)->getPossibleValues()->toArray();
             return
                 in_array(needle: $data,haystack: $possibleValues) ||
                 is_numeric(value: $data) && array_key_exists(key: $data,array: $possibleValues);

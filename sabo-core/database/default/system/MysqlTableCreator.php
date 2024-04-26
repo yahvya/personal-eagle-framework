@@ -3,7 +3,7 @@
 namespace SaboCore\Database\Default\System;
 
 use ReflectionClass;
-use Throwable;
+use ReflectionException;
 
 /**
  * @brief Fournisseur de création de table sql à partir d'un model
@@ -14,7 +14,8 @@ abstract class MysqlTableCreator{
      * @brief Fourni le sql de création de table à partir d'un model
      * @param MysqlModel $model Le model
      * @return string la chaine sql de création
-     * @throws Throwable en cas d'erreur
+     * @throws MysqlException en cas d'erreur
+     * @throws ReflectionException en cas d'erreur de réflexion
      */
     public static function getTableCreationFrom(MysqlModel $model):string{
         $creationScript = "{$model->getTableNameManager()->getCreationSql()}(\n";

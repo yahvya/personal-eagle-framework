@@ -4,6 +4,7 @@ namespace SaboCore\Utils\List;
 
 use Closure;
 use Countable;
+use Illuminate\Contracts\Support\Arrayable;
 use Iterator;
 use TypeError;
 
@@ -12,7 +13,7 @@ use TypeError;
  * @author yahaya bathily https://github.com/yahvya
  * @template ContainedType type d'éléments contenu
  */
-class SaboList implements Countable, Iterator {
+class SaboList implements Countable, Iterator,Arrayable {
     /**
      * @var ContainedType[] données
      */
@@ -153,7 +154,7 @@ class SaboList implements Countable, Iterator {
     /**
      * @return ContainedType[] Fourni la liste réelle
      */
-    public function getRealList():array{
+    public function toArray():array{
         return $this->datas;
     }
 }

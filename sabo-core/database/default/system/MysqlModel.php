@@ -1,19 +1,30 @@
 <?php
 
 namespace SaboCore\Database\Default\System;
-
+require_once("../../../cron-launcher.php");
 use Override;
+use PDO;
+use PDOStatement;
 use ReflectionClass;
+use SaboCore\Config\Config;
 use SaboCore\Config\ConfigException;
+use SaboCore\Config\DatabaseConfig;
+use SaboCore\Config\EnvConfig;
 use SaboCore\Database\Default\Attributes\EnumColumn;
+use SaboCore\Database\Default\Attributes\IntColumn;
 use SaboCore\Database\Default\Attributes\TableColumn;
 use SaboCore\Database\Default\Attributes\TableName;
+use SaboCore\Database\Default\Attributes\VarcharColumn;
 use SaboCore\Database\Default\Conditions\MysqlCondException;
 use SaboCore\Database\Default\Formatters\FormaterException;
+use SaboCore\Database\Default\QueryBuilder\MysqlQueryBuilder;
+use SaboCore\Database\System\DatabaseActionException;
 use SaboCore\Database\System\DatabaseCondition;
 use SaboCore\Database\System\DatabaseCondSeparator;
 use SaboCore\Database\System\DatabaseModel;
+use SaboCore\Routing\Application\Application;
 use SaboCore\Utils\List\SaboList;
+use Throwable;
 
 /**
  * @brief Modèle de la base de données mysql
@@ -37,10 +48,17 @@ class MysqlModel extends DatabaseModel{
     protected array $attributesOriginalValues = [];
 
     /**
+     * @var MysqlQueryBuilder constructeur de requête interne
+     * @attention À l'utilisation directe du QueryBuilder. Privilégiez de passer par la méthode "prepareForNewQuery"
+     */
+    protected MysqlQueryBuilder $queryBuilder;
+
+    /**
      * @throws ConfigException en cas d'erreur de configuration du model
      */
     public function __construct(){
         $this->loadConfiguration();
+        $this->queryBuilder = new MysqlQueryBuilder(model: $this);
     }
 
     #[Override]
@@ -54,31 +72,67 @@ class MysqlModel extends DatabaseModel{
         return true;
     }
 
+    /**
+     * @brief Met à jour la ligne en base de données, basé sur les clés primaires
+     * @return bool si la mise à jour s'est produite
+     * @throws ConfigException en cas d'erreur
+     * @throws DatabaseActionException en cas d'erreur
+     * @throws MysqlException en cas de clé primaire non fourni
+     */
     #[Override]
     public function update(): bool{
-        $this->beforeCreate();
+        $this->beforeUpdate();
 
+        $updateConfig = [];
 
+        // récupération des valeurs actuelles des attributs
+        foreach($this->dbColumnsConfig as $attributeName => $_)
+            $updateConfig[$attributeName] = $this->$attributeName;
 
-        $this->afterCreate();
+        $queryBuilder = $this->prepareForNewQuery()->update(updateConfig: $updateConfig);
+
+        // exécution de la requête
+        $statement = self::execQuery(
+            queryBuilder: self::buildPrimaryKeysCondOn(model: $this,queryBuilder: $queryBuilder)
+        );
+
+        if($statement === null)
+            return false;
+
+        $this->beforeDelete();
 
         return true;
     }
 
+    /**
+     * @brief Supprime la ligne en base de données, basé sur les clés primaires
+     * @return bool
+     * @throws ConfigException en cas d'erreur
+     * @throws DatabaseActionException en cas d'erreur
+     * @throws MysqlException en cas de clé primaire non fourni
+     */
     #[Override]
     public function delete(): bool{
-        $this->beforeCreate();
+        $this->beforeDelete();
 
+        $queryBuilder = $this->prepareForNewQuery()->delete();
 
+        // exécution de la requête
+        $statement = self::execQuery(
+            queryBuilder: self::buildPrimaryKeysCondOn(model: $this,queryBuilder: $queryBuilder)
+        );
 
-        $this->afterCreate();
+        if($statement === null)
+            return false;
+
+        $this->afterDelete();
 
         return true;
     }
 
     #[Override]
-    public function afterGeneration(): DatabaseModel{
-        parent::afterGeneration();
+    public function afterGeneration(mixed $datas = []): DatabaseModel{
+        parent::afterGeneration(datas: $datas);
 
         // sauvegarde des valeurs par défaut des attributs
 
@@ -86,6 +140,47 @@ class MysqlModel extends DatabaseModel{
             $this->attributesOriginalValues[$attributeName] = $this->$attributeName;
 
         return $this;
+    }
+
+    #[Override]
+    protected function beforeCreate(mixed $datas = []): DatabaseModel{
+        return parent::beforeCreate(datas: $datas);
+    }
+
+    #[Override]
+    protected function afterCreate(mixed $datas = []): DatabaseModel{
+        return parent::afterCreate(datas: $datas);
+    }
+
+    #[Override]
+    protected function afterUpdate(mixed $datas = []): DatabaseModel{
+        return parent::afterUpdate(datas: $datas);
+    }
+
+    #[Override]
+    protected function beforeUpdate(mixed $datas = []): DatabaseModel{
+        return parent::beforeUpdate(datas: $datas);
+    }
+
+    #[Override]
+    protected function afterDelete(mixed $datas = []): DatabaseModel{
+        return parent::afterDelete(datas: $datas);
+    }
+
+    #[Override]
+    protected function beforeDelete(mixed $datas = []): DatabaseModel{
+        return parent::beforeDelete(datas: $datas);
+    }
+
+    /**
+     * @brief Action à exécuter avant génération du model
+     * @param mixed $datas tableau indicé par les noms d'attributs, et avec comme valeur celle en base de données
+     * @return $this
+     * @throws DatabaseActionException en cas d'erreur
+     */
+    #[Override]
+    protected function beforeGeneration(mixed $datas = []): MysqlModel{
+        return parent::beforeGeneration(datas: $datas);
     }
 
     /**
@@ -164,6 +259,20 @@ class MysqlModel extends DatabaseModel{
     }
 
     /**
+     * @return TableName Fournisseur du nom de la table
+     */
+    public function getTableNameManager(): TableName{
+        return $this->tableName;
+    }
+
+    /**
+     * @param array $attributesOriginalValues
+     */
+    public function setAttributesOriginalValues(array $attributesOriginalValues): void{
+        $this->attributesOriginalValues = $attributesOriginalValues;
+    }
+
+    /**
      * @brief Charge la configuration du modèle
      * @return void
      * @throws ConfigException en cas de mauvaise configuration
@@ -202,27 +311,249 @@ class MysqlModel extends DatabaseModel{
     }
 
     /**
-     * @return TableName Fournisseur du nom de la table
+     * @brief Prépare le queryBuilder interne pour une nouvelle requête
+     * @return MysqlQueryBuilder le queryBuilder prêt pour une nouvelle requête
      */
-    public function getTableNameManager(): TableName{
-        return $this->tableName;
+    protected function prepareForNewQuery():MysqlQueryBuilder{
+        return $this->queryBuilder->reset();
     }
 
     /**
+     * @brief Génère un model à partir de la première ligne fetch
+     * @param PDOStatement|null $statement statement
+     * @param MysqlQueryBuilder $queryBuilder constructeur
+     * @return MysqlModel|null le model crée ou null
+     * @throws MysqlException en cas d'erreur
+     * @throws ConfigException en cas d'erreur
+     */
+    public static function createFromDatabaseLine(?PDOStatement $statement,MysqlQueryBuilder $queryBuilder):MysqlModel|null{
+        if($statement === null)
+            throw new MysqlException(message: "Echec de construction de la requête");
+
+        $lineConfig = $statement->fetch(mode: PDO::FETCH_ASSOC);
+
+        if($lineConfig === null || $lineConfig === false)
+            return null;
+
+        return self::createModelFromLine(
+            line: $lineConfig,
+            modelClass: get_class(object: $queryBuilder->getBaseModel())
+        );
+    }
+
+    /**
+     * @brief Génère un model à partir de la première ligne fetch
+     * @param PDOStatement|null $statement statement
+     * @param MysqlQueryBuilder $queryBuilder constructeur
+     * @return SaboList la liste des models générés
+     * @throws MysqlException en cas d'erreur
+     * @throws ConfigException en cas d'erreur
+     */
+    public static function createFromDatabaseLines(?PDOStatement $statement,MysqlQueryBuilder $queryBuilder):SaboList{
+        $models = [];
+
+        while(true){
+            $model = self::createFromDatabaseLine(statement: $statement,queryBuilder: $queryBuilder);
+
+            if($model === null)
+                break;
+
+            $models[] = $model;
+        }
+
+        return new SaboList(datas: $models);
+    }
+
+    /**
+     * @brief Récupère la première ligne fournie par les résultats de la requête
      * @param MysqlCondition|MysqlCondSeparator ...$findBuilders Configuration de recherche
      * @return MysqlModel|null model trouvé ou null
+     * @throws ConfigException en cas d'erreur de configuration
      */
     #[Override]
-    public static function findOne(DatabaseCondition|DatabaseCondSeparator ...$findBuilders): DatabaseModel|null{
-        return null;
+    public static function findOne(DatabaseCondition|DatabaseCondSeparator ...$findBuilders): MysqlModel|null{
+        try{
+            $queryBuilder = MysqlQueryBuilder::createFrom(modelClass: get_called_class());
+
+            $queryBuilder->select();
+
+            if(!empty($findBuilders) )
+                $queryBuilder->where()->cond(...$findBuilders);
+
+            $queryBuilder->limit(count: 1);
+
+            return self::createFromDatabaseLine(statement: self::execQuery(queryBuilder: $queryBuilder),queryBuilder: $queryBuilder);
+        }
+        catch(ConfigException $e){
+            throw $e;
+        }
+        catch(Throwable){
+            return null;
+        }
     }
 
     /**
-     * @param MysqlCondition|MysqlCondSeparator ...$findBuilders Configuration de recherche
-     * @return SaboList<MysqlModel> Liste des occurrences
+     * @brief
+     * @param DatabaseCondition|DatabaseCondSeparator ...$findBuilders
+     * @return SaboList<MysqlModel>
+     * @throws ConfigException en cas d'erreur de configuration
+     * @throws MysqlException en cas d'erreur
      */
     #[Override]
     public static function findAll(DatabaseCondition|DatabaseCondSeparator ...$findBuilders): SaboList{
-        return new SaboList([]);
+        $queryBuilder = MysqlQueryBuilder::createFrom(modelClass: get_called_class());
+
+        $queryBuilder->select();
+
+        if(!empty($findBuilders) )
+            $queryBuilder->where()->cond(...$findBuilders);
+
+        return self::createFromDatabaseLines(statement: self::execQuery(queryBuilder: $queryBuilder),queryBuilder: $queryBuilder);
     }
+
+    /**
+     * @param string $modelClass class du model
+     * @return MysqlModel le model créé
+     * @throws ConfigException en cas d'erreur
+     */
+    public static function newInstanceOfModel(string $modelClass):MysqlModel{
+        try{
+            $reflection = new ReflectionClass(objectOrClass: $modelClass);
+
+            $model = $reflection->newInstance();
+
+            if(!($model instanceof MysqlModel))
+                throw new ConfigException(message: "La class fournie doit être une sous class de " . MysqlModel::class);
+
+            return $model;
+        }
+        catch(ConfigException $e){
+            throw $e;
+        }
+        catch(Throwable){
+            throw new ConfigException(message: "Une erreur s'est produite lors de la construction du builder");
+        }
+    }
+
+    /**
+     * @brief Exécute la requête et fourni le statement de réponse
+     * @param MysqlQueryBuilder $queryBuilder constructeur de requête
+     * @param bool $execute si true exécute la requête et fourni le statement sinon fourni le statement
+     * @return PDOStatement|null le statement
+     * @throws ConfigException en cas d'erreur de configuration
+     */
+    public static function execQuery(MysqlQueryBuilder $queryBuilder,bool $execute = true):?PDOStatement{
+        $provider = self::getDatabaseConfig()->getConfig(name: DatabaseConfig::PROVIDER->value);
+
+        $statement = $queryBuilder->prepareRequest(pdo: $provider->getCon());
+
+        if($statement === null || ($execute && !$statement->execute() ) )
+            return null;
+
+        return $statement;
+    }
+
+    /**
+     * @brief Crée un model à partir de la configuration
+     * @param array $line contenu de la ligne de la base de données
+     * @param string $modelClass class du model
+     * @return MysqlModel model crée
+     * @throws ConfigException en cas d'erreur
+     * @throws MysqlException en cas d'erreur
+     */
+    public static function createModelFromLine(array $line,string $modelClass):MysqlModel{
+        $model = self::newInstanceOfModel(modelClass: $modelClass);
+
+        $columnsConfig = $model->getColumnsConfig();
+        // tableau indicé par les noms d'attributs et les valeurs de la ligne
+        $linkedValues = [];
+
+        // construction du tableau inversé des configurations
+        foreach($line as $columnRealName => $dbValue){
+            foreach($columnsConfig as $attributeName => $columnConfig){
+                if($columnConfig->getColumnName() === $columnRealName){
+                    $linkedValues[$attributeName] = $dbValue;
+
+                    break;
+                }
+            }
+        }
+
+        // exécution des actions pré génération
+        $model->beforeGeneration(datas: $linkedValues);
+
+        // affectation des attributs
+        foreach($linkedValues as $attributeName => $dbValue)
+            $model->$attributeName = $dbValue;
+
+        // exécution des actions post générations
+        $model->afterGeneration();
+
+        return $model;
+    }
+
+    /**
+     * @brief Ajoute au queryBuilder les conditions de vérification de clé primaire du model
+     * @param MysqlModel $model le model
+     * @param MysqlQueryBuilder $queryBuilder constructeur
+     * @param bool $addWhere si true ajoute ->where() suivi des conditions si false ajoute une condition AND avant d'ajouter le groupe de vérification des clés primaires
+     * @return MysqlQueryBuilder le constructeur changé
+     * @throws MysqlException en cas de clés primaires non présente
+     */
+    public static function buildPrimaryKeysCondOn(MysqlModel $model,MysqlQueryBuilder $queryBuilder,bool $addWhere = true):MysqlQueryBuilder{
+        if($addWhere)
+            $queryBuilder->where();
+        else
+            $queryBuilder->cond(MysqlCondSeparator::AND());
+
+        // ajout du groupe de conditions
+        $columnsConfig = $model->getColumnsConfig();
+        $primaryKeysCond = [];
+
+        foreach($columnsConfig as $attributeName => $columnConfig){
+            if($columnConfig->isPrimaryKey()){
+                $primaryKeysCond[] = new MysqlCondition(
+                    condGetter: $attributeName,
+                    comparator: MysqlComparator::EQUAL(),
+                    conditionValue: $model->$attributeName
+                );
+                $primaryKeysCond[] = MysqlCondSeparator::AND();
+            }
+        }
+
+        if(empty($primaryKeysCond) )
+            throw new MysqlException(message: "Aucune clé primaire trouvée",isDisplayable: false);
+
+        // remplacement de la dernière condition AND
+        $primaryKeysCond[count(value: $primaryKeysCond) - 1] = MysqlCondSeparator::GROUP_END();
+
+        return $queryBuilder->cond(
+            MysqlCondSeparator::GROUP_START(),
+            ...$primaryKeysCond
+        );
+    }
+
+    /**
+     * @return Config la configuration de la base de donnée de l'application
+     * @throws ConfigException en cas d'erreur de configuration
+     */
+    protected static function getDatabaseConfig():Config{
+        return Application::getEnvConfig()->getConfig(name: EnvConfig::DATABASE_CONFIG->value);
+    }
+}
+
+#[TableName(tableName: "project")]
+class ProjectModel extends MysqlModel{
+    #[IntColumn(columnName: "id",isAutoIncrement: true,isPrimaryKey: true)]
+    protected int $id;
+
+    #[VarcharColumn(columnName: "name",maxLen: 255)]
+    protected string $name;
+}
+
+try{
+    ProjectModel::findOne()?->delete();
+}
+catch(Throwable $e){
+    debugDie($e);
 }

@@ -50,7 +50,7 @@ class TimestampColumn extends TableColumn{
     #[Override]
     public function getCreationSql(): string{
         return
-            "$this->columnName UNSIGNED INT"
+            "$this->columnName INT"
             . ($this->isNullable ? "" : " NOT NULL")
             . ($this->isUnique() ? " UNIQUE": "")
             . ($this->haveDefaultValue() ? " DEFAULT {$this->getDefaultValueStr()}" : "");

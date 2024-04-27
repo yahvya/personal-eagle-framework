@@ -2,11 +2,11 @@
 
 namespace Models;
 
-use SaboCore\Database\Default\Model\SaboModel;
+use SaboCore\Database\Default\System\MysqlModel;
 
 /**
  * @brief Model customisé de l'application
  */
-abstract class CustomModel extends SaboModel{
+abstract class CustomModel extends MysqlModel {
 
 }

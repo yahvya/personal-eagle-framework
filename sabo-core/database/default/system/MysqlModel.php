@@ -1,7 +1,7 @@
 <?php
 
 namespace SaboCore\Database\Default\System;
-require_once("../../../cron-launcher.php");
+
 use Override;
 use PDO;
 use PDOStatement;
@@ -11,11 +11,9 @@ use SaboCore\Config\ConfigException;
 use SaboCore\Config\DatabaseConfig;
 use SaboCore\Config\EnvConfig;
 use SaboCore\Database\Default\Attributes\EnumColumn;
-use SaboCore\Database\Default\Attributes\IntColumn;
 use SaboCore\Database\Default\Attributes\JoinedColumn;
 use SaboCore\Database\Default\Attributes\TableColumn;
 use SaboCore\Database\Default\Attributes\TableName;
-use SaboCore\Database\Default\Attributes\VarcharColumn;
 use SaboCore\Database\Default\Conditions\MysqlCondException;
 use SaboCore\Database\Default\CustomDatatypes\JoinedList;
 use SaboCore\Database\Default\Formatters\FormaterException;
@@ -246,6 +244,31 @@ class MysqlModel extends DatabaseModel{
      */
     public function getTableNameManager(): TableName{
         return $this->tableName;
+    }
+
+    /**
+     * @brief Transforme les données du model en tableau
+     * @param bool $addJoinedColumns si true ajoute les colonnes jointes
+     * @return array le tableau indicé par les noms d'attributs et comme valeur celles récupérées
+     */
+    public function getAsArray(bool $addJoinedColumns = true):array{
+        $result = [];
+
+        // récupération des attributs
+        foreach($this->dbColumnsConfig as $attributeName => $_)
+            $result[$attributeName] = $this->$attributeName;
+
+        if(!$addJoinedColumns)
+            return $result;
+
+        // récupération des colonnes jointes
+        foreach($this->joinedColumnsConfig as $attributeName => $_)
+            $result[$attributeName] = array_map(
+                callback: fn(MysqlModel $joinedModel):array => $joinedModel->getAsArray(),
+                array: $this->$attributeName->toArray()
+            );
+
+        return $result;
     }
 
     /**
@@ -646,35 +669,4 @@ class MysqlModel extends DatabaseModel{
     protected static function getDatabaseConfig():Config{
         return Application::getEnvConfig()->getConfig(name: EnvConfig::DATABASE_CONFIG->value);
     }
-}
-
-#[TableName(tableName: "project")]
-class ProjectModel extends MysqlModel{
-    #[IntColumn(columnName: "id",isAutoIncrement: true,isPrimaryKey: true)]
-    protected int $id;
-
-    #[VarcharColumn(columnName: "name",maxLen: 255)]
-    protected string $name;
-
-    #[JoinedColumn(classModel: ProjectVersions::class,joinConfig: ["id" => "projectId"])]
-    protected JoinedList $versions;
-
-    /**
-     * @return JoinedList<ProjectVersions>
-     */
-    public function getVersions():JoinedList{
-        return $this->versions;
-    }
-}
-
-#[TableName(tableName: "project_version")]
-class ProjectVersions extends MysqlModel{
-    #[IntColumn(columnName: "id", isAutoIncrement: true, isPrimaryKey: true)]
-    protected int $id;
-
-    #[IntColumn(columnName: "project_version_number")]
-    protected int $versionNumber;
-
-    #[IntColumn(columnName: "project_id",isForeignKey: true,referencedModel: ProjectVersions::class)]
-    protected int $projectId;
 }

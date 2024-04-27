@@ -12,10 +12,12 @@ use SaboCore\Config\DatabaseConfig;
 use SaboCore\Config\EnvConfig;
 use SaboCore\Database\Default\Attributes\EnumColumn;
 use SaboCore\Database\Default\Attributes\IntColumn;
+use SaboCore\Database\Default\Attributes\JoinedColumn;
 use SaboCore\Database\Default\Attributes\TableColumn;
 use SaboCore\Database\Default\Attributes\TableName;
 use SaboCore\Database\Default\Attributes\VarcharColumn;
 use SaboCore\Database\Default\Conditions\MysqlCondException;
+use SaboCore\Database\Default\CustomDatatypes\JoinedList;
 use SaboCore\Database\Default\Formatters\FormaterException;
 use SaboCore\Database\Default\QueryBuilder\MysqlQueryBuilder;
 use SaboCore\Database\System\DatabaseActionException;
@@ -43,6 +45,11 @@ class MysqlModel extends DatabaseModel{
     protected array $dbColumnsConfig;
 
     /**
+     * @var JoinedColumn[] Configuration des colonnes de jointures
+     */
+    protected array $joinedColumnsConfig;
+
+    /**
      * @var array Valeur originale des attributs sans formatage
      */
     protected array $attributesOriginalValues = [];
@@ -63,13 +70,35 @@ class MysqlModel extends DatabaseModel{
 
     #[Override]
     public function create(): bool{
-        $this->beforeCreate();
+        try{
+            $this->beforeCreate();
 
+            // construction des champs à insérer
+            $insertConfig = [];
+            $columnsConfig = $this->getColumnsConfig();
+            $reflection = new ReflectionClass(objectOrClass: $this);
 
+            foreach($columnsConfig as $attributeName => $columnConfig){
+                if(!$reflection->getProperty(name: $attributeName)->isInitialized(object: $this)){
+                    if($columnConfig->isNullable() )
+                        $insertConfig[$attributeName] = null;
+                }
+                else
+                    $insertConfig[$attributeName] = $columnConfig->convertFromValue(data: $this->$attributeName);
+            }
 
-        $this->afterCreate();
+            $statement = self::execQuery(queryBuilder: $this->prepareForNewQuery()->insert(insertConfig: $insertConfig));
 
-        return true;
+            if($statement === null)
+                return false;
+
+            $this->afterCreate();
+
+            return true;
+        }
+        catch(Throwable){
+            return false;
+        }
     }
 
     /**
@@ -86,8 +115,8 @@ class MysqlModel extends DatabaseModel{
         $updateConfig = [];
 
         // récupération des valeurs actuelles des attributs
-        foreach($this->dbColumnsConfig as $attributeName => $_)
-            $updateConfig[$attributeName] = $this->$attributeName;
+        foreach($this->dbColumnsConfig as $attributeName => $columnConfig)
+            $updateConfig[$attributeName] = $columnConfig->convertFromValue(data: $this->$attributeName);
 
         $queryBuilder = $this->prepareForNewQuery()->update(updateConfig: $updateConfig);
 
@@ -128,59 +157,6 @@ class MysqlModel extends DatabaseModel{
         $this->afterDelete();
 
         return true;
-    }
-
-    #[Override]
-    public function afterGeneration(mixed $datas = []): DatabaseModel{
-        parent::afterGeneration(datas: $datas);
-
-        // sauvegarde des valeurs par défaut des attributs
-
-        foreach($this->dbColumnsConfig as $attributeName => $_)
-            $this->attributesOriginalValues[$attributeName] = $this->$attributeName;
-
-        return $this;
-    }
-
-    #[Override]
-    protected function beforeCreate(mixed $datas = []): DatabaseModel{
-        return parent::beforeCreate(datas: $datas);
-    }
-
-    #[Override]
-    protected function afterCreate(mixed $datas = []): DatabaseModel{
-        return parent::afterCreate(datas: $datas);
-    }
-
-    #[Override]
-    protected function afterUpdate(mixed $datas = []): DatabaseModel{
-        return parent::afterUpdate(datas: $datas);
-    }
-
-    #[Override]
-    protected function beforeUpdate(mixed $datas = []): DatabaseModel{
-        return parent::beforeUpdate(datas: $datas);
-    }
-
-    #[Override]
-    protected function afterDelete(mixed $datas = []): DatabaseModel{
-        return parent::afterDelete(datas: $datas);
-    }
-
-    #[Override]
-    protected function beforeDelete(mixed $datas = []): DatabaseModel{
-        return parent::beforeDelete(datas: $datas);
-    }
-
-    /**
-     * @brief Action à exécuter avant génération du model
-     * @param mixed $datas tableau indicé par les noms d'attributs, et avec comme valeur celle en base de données
-     * @return $this
-     * @throws DatabaseActionException en cas d'erreur
-     */
-    #[Override]
-    protected function beforeGeneration(mixed $datas = []): MysqlModel{
-        return parent::beforeGeneration(datas: $datas);
     }
 
     /**
@@ -259,6 +235,13 @@ class MysqlModel extends DatabaseModel{
     }
 
     /**
+     * @return JoinedColumn[] Les configurations des colonnes de jointure
+     */
+    public function getJoinedColumnsConfig():array{
+        return $this->joinedColumnsConfig;
+    }
+
+    /**
      * @return TableName Fournisseur du nom de la table
      */
     public function getTableNameManager(): TableName{
@@ -270,6 +253,59 @@ class MysqlModel extends DatabaseModel{
      */
     public function setAttributesOriginalValues(array $attributesOriginalValues): void{
         $this->attributesOriginalValues = $attributesOriginalValues;
+    }
+
+    #[Override]
+    public function afterGeneration(mixed $datas = []): DatabaseModel{
+        parent::afterGeneration(datas: $datas);
+
+        // sauvegarde des valeurs par défaut des attributs
+
+        foreach($this->dbColumnsConfig as $attributeName => $_)
+            $this->attributesOriginalValues[$attributeName] = $this->$attributeName;
+
+        return $this;
+    }
+
+    #[Override]
+    protected function beforeCreate(mixed $datas = []): DatabaseModel{
+        return parent::beforeCreate(datas: $datas);
+    }
+
+    #[Override]
+    protected function afterCreate(mixed $datas = []): DatabaseModel{
+        return parent::afterCreate(datas: $datas);
+    }
+
+    #[Override]
+    protected function afterUpdate(mixed $datas = []): DatabaseModel{
+        return parent::afterUpdate(datas: $datas);
+    }
+
+    #[Override]
+    protected function beforeUpdate(mixed $datas = []): DatabaseModel{
+        return parent::beforeUpdate(datas: $datas);
+    }
+
+    #[Override]
+    protected function afterDelete(mixed $datas = []): DatabaseModel{
+        return parent::afterDelete(datas: $datas);
+    }
+
+    #[Override]
+    protected function beforeDelete(mixed $datas = []): DatabaseModel{
+        return parent::beforeDelete(datas: $datas);
+    }
+
+    /**
+     * @brief Action à exécuter avant génération du model
+     * @param mixed $datas tableau indicé par les noms d'attributs, et avec comme valeur celle en base de données
+     * @return $this
+     * @throws DatabaseActionException en cas d'erreur
+     */
+    #[Override]
+    protected function beforeGeneration(mixed $datas = []): MysqlModel{
+        return parent::beforeGeneration(datas: $datas);
     }
 
     /**
@@ -296,14 +332,22 @@ class MysqlModel extends DatabaseModel{
 
         // chargement des colonnes lié à la base de donnée
         $this->dbColumnsConfig = [];
+        $this->joinedColumnsConfig = [];
 
         foreach($reflection->getProperties() as $property){
+            $propertyName = $property->getName();
+
             // recherche de l'attribut descriptif
             foreach($property->getAttributes() as $attribute){
                 $instance = $attribute->newInstance();
 
                 if($instance instanceof TableColumn){
-                    $this->dbColumnsConfig[$property->getName()] = $instance;
+                    $this->dbColumnsConfig[$propertyName] = $instance;
+                    break;
+                }
+
+                if($instance instanceOf JoinedColumn){
+                    $this->joinedColumnsConfig[$propertyName] = $instance;
                     break;
                 }
             }
@@ -319,12 +363,24 @@ class MysqlModel extends DatabaseModel{
     }
 
     /**
+     * @brief Fourni le dernier id inséré
+     * @return int|null le dernier id inséré
+     * @throws ConfigException en cas d'erreur de configuration
+     */
+    protected function lastInsertId():int|null{
+        $provider = self::getDatabaseConfig()->getConfig(name: DatabaseConfig::PROVIDER->value);
+
+        return $provider->getCon()?->lastInsertId();
+    }
+
+    /**
      * @brief Génère un model à partir de la première ligne fetch
      * @param PDOStatement|null $statement statement
      * @param MysqlQueryBuilder $queryBuilder constructeur
      * @return MysqlModel|null le model crée ou null
      * @throws MysqlException en cas d'erreur
      * @throws ConfigException en cas d'erreur
+     * @throws DatabaseActionException en cas d'erreur
      */
     public static function createFromDatabaseLine(?PDOStatement $statement,MysqlQueryBuilder $queryBuilder):MysqlModel|null{
         if($statement === null)
@@ -348,6 +404,7 @@ class MysqlModel extends DatabaseModel{
      * @return SaboList la liste des models générés
      * @throws MysqlException en cas d'erreur
      * @throws ConfigException en cas d'erreur
+     * @throws DatabaseActionException en cas d'erreur
      */
     public static function createFromDatabaseLines(?PDOStatement $statement,MysqlQueryBuilder $queryBuilder):SaboList{
         $models = [];
@@ -398,6 +455,7 @@ class MysqlModel extends DatabaseModel{
      * @return SaboList<MysqlModel>
      * @throws ConfigException en cas d'erreur de configuration
      * @throws MysqlException en cas d'erreur
+     * @throws DatabaseActionException en cas d'erreur
      */
     #[Override]
     public static function findAll(DatabaseCondition|DatabaseCondSeparator ...$findBuilders): SaboList{
@@ -431,7 +489,7 @@ class MysqlModel extends DatabaseModel{
             throw $e;
         }
         catch(Throwable){
-            throw new ConfigException(message: "Une erreur s'est produite lors de la construction du builder");
+            throw new ConfigException(message: "Une erreur s'est produite lors de la construction du model");
         }
     }
 
@@ -454,17 +512,53 @@ class MysqlModel extends DatabaseModel{
     }
 
     /**
+     * @brief Charge les données de la colonne jointe fournie
+     * @param MysqlModel $model model de base dans laquelle charger les données
+     * @param JoinedColumn $joinedColumn Configuration de jointure
+     * @return SaboList<MysqlModel> Résultats de la récupération
+     * @throws MysqlException en cas d'erreur
+     */
+    public static function loadJoinedColumns(MysqlModel $model,JoinedColumn $joinedColumn):SaboList{
+        $joinConfig = $joinedColumn->getJoinConfig();
+
+        // construction des conditions de match
+        $conditions = [MysqlCondSeparator::GROUP_START()];
+
+        foreach($joinConfig as $baseModelAttributeName => $joinModelAttributeName){
+            $conditions[] = new MysqlCondition(
+                condGetter: $joinModelAttributeName,
+                comparator: MysqlComparator::EQUAL(),
+                conditionValue: $model->$baseModelAttributeName
+            );
+
+            $conditions[] = MysqlCondSeparator::AND();
+        }
+
+        $size = count(value: $conditions);
+
+        if($size === 1)
+            throw new MysqlException(message: "Aucune condition de match sur le liste jointe",isDisplayable: false);
+
+        // remplacement du dernier and par la fermeture de groupe
+        $conditions[$size - 1] = MysqlCondSeparator::GROUP_END();
+
+        return @call_user_func_array([$joinedColumn->getClassModel(),"findAll"],$conditions);
+    }
+
+    /**
      * @brief Crée un model à partir de la configuration
      * @param array $line contenu de la ligne de la base de données
      * @param string $modelClass class du model
      * @return MysqlModel model crée
      * @throws ConfigException en cas d'erreur
      * @throws MysqlException en cas d'erreur
+     * @throws DatabaseActionException en cas d'erreur
      */
     public static function createModelFromLine(array $line,string $modelClass):MysqlModel{
         $model = self::newInstanceOfModel(modelClass: $modelClass);
 
         $columnsConfig = $model->getColumnsConfig();
+
         // tableau indicé par les noms d'attributs et les valeurs de la ligne
         $linkedValues = [];
 
@@ -484,7 +578,19 @@ class MysqlModel extends DatabaseModel{
 
         // affectation des attributs
         foreach($linkedValues as $attributeName => $dbValue)
-            $model->$attributeName = $dbValue;
+            $model->$attributeName = $columnsConfig[$attributeName]->convertToValue(data: $dbValue);
+
+        // chargement des colonnes jointes
+        foreach($model->joinedColumnsConfig as $attributeName => $config){
+            $list = new JoinedList(descriptor: $config,linkedModel: $model);
+            $model->$attributeName = $list;
+
+            if(!$config->getLoadOnGeneration())
+                continue;
+
+            $list->loadContent();
+        }
+
 
         // exécution des actions post générations
         $model->afterGeneration();
@@ -515,7 +621,7 @@ class MysqlModel extends DatabaseModel{
                 $primaryKeysCond[] = new MysqlCondition(
                     condGetter: $attributeName,
                     comparator: MysqlComparator::EQUAL(),
-                    conditionValue: $model->$attributeName
+                    conditionValue: $columnConfig->convertFromValue(data: $model->$attributeName)
                 );
                 $primaryKeysCond[] = MysqlCondSeparator::AND();
             }
@@ -549,11 +655,26 @@ class ProjectModel extends MysqlModel{
 
     #[VarcharColumn(columnName: "name",maxLen: 255)]
     protected string $name;
+
+    #[JoinedColumn(classModel: ProjectVersions::class,joinConfig: ["id" => "projectId"])]
+    protected JoinedList $versions;
+
+    /**
+     * @return JoinedList<ProjectVersions>
+     */
+    public function getVersions():JoinedList{
+        return $this->versions;
+    }
 }
 
-try{
-    ProjectModel::findOne()?->delete();
-}
-catch(Throwable $e){
-    debugDie($e);
+#[TableName(tableName: "project_version")]
+class ProjectVersions extends MysqlModel{
+    #[IntColumn(columnName: "id", isAutoIncrement: true, isPrimaryKey: true)]
+    protected int $id;
+
+    #[IntColumn(columnName: "project_version_number")]
+    protected int $versionNumber;
+
+    #[IntColumn(columnName: "project_id",isForeignKey: true,referencedModel: ProjectVersions::class)]
+    protected int $projectId;
 }

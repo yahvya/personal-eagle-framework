@@ -68,4 +68,11 @@ class IntColumn extends TableColumn{
     public function getColumnType(): int{
         return PDO::PARAM_INT;
     }
+
+    /**
+     * @return bool si l'élément est auto incrémenté
+     */
+    public function isAutoIncremented(): bool{
+        return $this->isAutoIncremented;
+    }
 }

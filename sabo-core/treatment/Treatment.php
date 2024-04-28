@@ -2,7 +2,7 @@
 
 namespace SaboCore\Treatment;
 
-use SaboCore\Database\Default\Exception\ModelCondException;
+use SaboCore\Database\Default\System\MysqlException;
 
 /**
  * @brief Gestionnaire de traitement
@@ -22,11 +22,11 @@ abstract class Treatment{
 
     /**
      * @brief Lèves une exception de traitement
-     * @param ModelCondException $exception l'exception de condition
+     * @param MysqlException $exception l'exception de condition
      * @return void
      * @throws TreatmentException l'exception
      */
-    protected static function throwModelCondException(ModelCondException $exception):void{
+    protected static function throwModelException(MysqlException $exception):void{
         throw new TreatmentException(message: $exception->getMessage(),isDisplayable: $exception->getIsDisplayable() );
     }
 }

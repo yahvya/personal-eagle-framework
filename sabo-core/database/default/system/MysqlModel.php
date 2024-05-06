@@ -256,7 +256,7 @@ class MysqlModel extends DatabaseModel{
 
         // récupération des attributs
         foreach($this->dbColumnsConfig as $attributeName => $_)
-            $result[$attributeName] = $this->$attributeName;
+            $result[$attributeName] = $this->getAttribute(attributeName: $attributeName);
 
         if(!$addJoinedColumns)
             return $result;

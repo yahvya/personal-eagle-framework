@@ -2,7 +2,7 @@
 
 {model-import-config}
 
-use SaboCore\Database\Default\Attribute\TableName;
+use SaboCore\Database\Default\Attributes\TableName;
 
 /**
  * @brief {model-description}

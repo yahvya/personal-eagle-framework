@@ -178,7 +178,7 @@ class Route{
             $this->genericParamsOrder[$key] = $variableName;
 
             // transformation dans la chaine par regex
-            $regex = $this->genericParamsRegex[$variableName] ?? ".+";
+            $regex = $this->genericParamsRegex[$variableName] ?? "[^\/]*";
             $this->verificationRegex = str_replace(search: $completeMatch,replace: "($regex)",subject: $this->verificationRegex);
         }
 

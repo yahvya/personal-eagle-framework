@@ -10,7 +10,7 @@ use Throwable;
  * @brief Réponse ressource
  * @author yahaya bathily https://github.com/yahvya
  */
-class RessourceResponse extends Response{
+class ResourceResponse extends Response{
     /**
      * @param string $ressourceAbsolutePath chemin absolu du fichier à fournir
      * @attention le fichier fourni doit exister

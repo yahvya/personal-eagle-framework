@@ -26,6 +26,7 @@
             "SaboCore\\Utils\\Mailer\\": "./utils/mailer/",
             "SaboCore\\Utils\\List\\": "./utils/list/",
             "SaboCore\\Utils\\Verification\\": "./utils/verification/",
+            "SaboCore\\Utils\\Sse\\": "./utils/sse/",
             "SaboCore\\Cli\\Cli\\": "./cli/cli/",
             "SaboCore\\Cli\\Commands\\": "./cli/commands/",
             "SaboCore\\Cli\\Theme\\": "./cli/theme/",

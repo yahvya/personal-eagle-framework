@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00828" xml:lang="fr">
+<title>Référence de la classe MatchResult</title>
+<indexterm><primary>MatchResult</primary></indexterm>
+<para>
+
+<para>Résultat de match. </para>
+ 
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00828_1a982642cac06bd758afdab3946741c012">__construct</link> (bool $haveMatch, array $matchTable=[])</para>
+</listitem>
+            <listitem><para><link linkend="_a00828_1ad84ca4a73a5caaa223f676c1b52d5d00">getHaveMatch</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00828_1ac05dc202fb625e37b5acdc6f0e48e39b">getMatchTable</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Attributs protégés    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_a00828_1ae8cfff820a0bda7889fff261c4374c02">$match</link></para>
+</listitem>
+            <listitem><para>array <link linkend="_a00828_1a750db6bcfeaed3cf64d5d7163ada8c54">$matchTable</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Résultat de match. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00257_source_1l00009">9</link> du fichier <link linkend="_a00257_source">MatchResult.php</link>.</para>
+</section>
+<section>
+<title>Documentation des constructeurs et destructeur</title>
+<anchor xml:id="_a00828_1a982642cac06bd758afdab3946741c012"/><section>
+    <title>__construct()</title>
+<indexterm><primary>__construct</primary><secondary>MatchResult</secondary></indexterm>
+<indexterm><primary>MatchResult</primary><secondary>__construct</secondary></indexterm>
+<para><computeroutput>__construct (bool $haveMatch, array $matchTable = <computeroutput>[]</computeroutput>
+)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>bool</entry><entry>$haveMatch</entry><entry>
+<para>si le match est fait </para>
+</entry>
+                            </row>
+                            <row>
+<entry>array</entry><entry>$matchTable</entry><entry>
+<para>table de match </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00257_source_1l00024">24</link> du fichier <link linkend="_a00257_source">MatchResult.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00828_1ad84ca4a73a5caaa223f676c1b52d5d00"/><section>
+    <title>getHaveMatch()</title>
+<indexterm><primary>getHaveMatch</primary><secondary>MatchResult</secondary></indexterm>
+<indexterm><primary>MatchResult</primary><secondary>getHaveMatch</secondary></indexterm>
+<para><computeroutput>getHaveMatch ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>bool si le match est fait </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00257_source_1l00032">32</link> du fichier <link linkend="_a00257_source">MatchResult.php</link>.</para>
+</section>
+<anchor xml:id="_a00828_1ac05dc202fb625e37b5acdc6f0e48e39b"/><section>
+    <title>getMatchTable()</title>
+<indexterm><primary>getMatchTable</primary><secondary>MatchResult</secondary></indexterm>
+<indexterm><primary>MatchResult</primary><secondary>getMatchTable</secondary></indexterm>
+<para><computeroutput>getMatchTable ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>array table de match </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00257_source_1l00039">39</link> du fichier <link linkend="_a00257_source">MatchResult.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des champs</title>
+<anchor xml:id="_a00828_1ae8cfff820a0bda7889fff261c4374c02"/><section>
+    <title>$match</title>
+<indexterm><primary>$match</primary><secondary>MatchResult</secondary></indexterm>
+<indexterm><primary>MatchResult</primary><secondary>$match</secondary></indexterm>
+<para><computeroutput>bool $match<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00257_source_1l00013">13</link> du fichier <link linkend="_a00257_source">MatchResult.php</link>.</para>
+</section>
+<anchor xml:id="_a00828_1a750db6bcfeaed3cf64d5d7163ada8c54"/><section>
+    <title>$matchTable</title>
+<indexterm><primary>$matchTable</primary><secondary>MatchResult</secondary></indexterm>
+<indexterm><primary>MatchResult</primary><secondary>$matchTable</secondary></indexterm>
+<para><computeroutput>array $matchTable<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00257_source_1l00018">18</link> du fichier <link linkend="_a00257_source">MatchResult.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00257">MatchResult.php</link></section>
+</section>

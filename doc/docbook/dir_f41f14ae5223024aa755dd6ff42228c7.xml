@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_f41f14ae5223024aa755dd6ff42228c7" xml:lang="fr">
+<title>Répertoire de référence de config</title>
+<indexterm><primary>Répertoire de référence de config</primary></indexterm>
+<simplesect>
+    <title>Fichiers    </title>
+        <itemizedlist>
+            <listitem><para>fichier <link linkend="_a00038">ApplicationConfig.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00041">ApplicationPathConfig.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00044">Config.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00047">ConfigException.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00050">DatabaseConfig.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00053">EnvConfig.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00056">FrameworkConfig.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00059">MailerConfig.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00062">MaintenanceConfig.php</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

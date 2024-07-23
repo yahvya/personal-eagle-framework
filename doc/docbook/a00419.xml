@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00419" xml:lang="fr">
+<title>Référence de l&apos;espace de nommage SaboCore\Routing\Response</title>
+<indexterm><primary>SaboCore\Routing\Response</primary></indexterm>
+<simplesect>
+    <title>Structures de données    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_a00796">BladeResponse</link></para>
+
+<para>Réponse fichier blade. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00800">DownloadResponse</link></para>
+
+<para>Réponse de téléchargement. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00804">HtmlResponse</link></para>
+
+<para>Réponse html. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00808">JsonResponse</link></para>
+
+<para>Réponse json. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00812">RedirectResponse</link></para>
+
+<para>Réponse redirection. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00816">ResourceResponse</link></para>
+
+<para>Réponse ressource. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00820">Response</link></para>
+
+<para>Gestionnaire de retour de réponse. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00824">TwigResponse</link></para>
+
+<para>Réponse twig. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Énumérations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_a00419_1a60fc225caae1512201a1778eeaf1a0fb">ResponseCode</link> : int { <link linkend="_a00419_1a60fc225caae1512201a1778eeaf1a0fbaf584a9ea047509016d9b5653f3f1cd24">INTERNAL_SERVER_ERROR</link> = 500
+ }</para>
+
+<para>Codes retours http. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Documentation du type de l&apos;énumération</title>
+<anchor xml:id="_a00419_1a60fc225caae1512201a1778eeaf1a0fb"/><section>
+    <title>ResponseCode</title>
+<indexterm><primary>ResponseCode</primary><secondary>SaboCore\Routing\Response</secondary></indexterm>
+<indexterm><primary>SaboCore\Routing\Response</primary><secondary>ResponseCode</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_a00419_1a60fc225caae1512201a1778eeaf1a0fb">ResponseCode</link> : int</computeroutput></para><para>
+
+<para>Codes retours http. </para>
+</para>
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<informaltable frame="all">
+<title>Valeurs énumérées</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>INTERNAL_SERVER_ERROR</primary><secondary>SaboCore\Routing\Response</secondary></indexterm>
+<indexterm><primary>SaboCore\Routing\Response</primary><secondary>INTERNAL_SERVER_ERROR</secondary></indexterm>
+<anchor xml:id="_a00419_1a60fc225caae1512201a1778eeaf1a0fbaf584a9ea047509016d9b5653f3f1cd24"/>INTERNAL_SERVER_ERROR</entry><entry>
+<para>Succès de la requête. </para>
+
+<para>La requête a été traitée avec succès et a entraîné la création d&apos;une ressource.</para>
+
+<para>La réponse est vide (pas de contenu à renvoyer).</para>
+
+<para>La syntaxe de la requête est erronée.</para>
+
+<para>L&apos;accès à la ressource est refusé en raison d&apos;informations d&apos;identification invalides.</para>
+
+<para>Le serveur a compris la requête, mais refuse de la traiter.</para>
+
+<para>La ressource demandée n&apos;a pas été trouvée sur le serveur.</para>
+
+<para>Erreur interne du serveur. </para>
+</entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+<para>
+Définition à la ligne <link linkend="_a00251_source_1l00009">9</link> du fichier <link linkend="_a00251_source">ResponseCode.php</link>.</para>
+</section>
+</section>
+</section>

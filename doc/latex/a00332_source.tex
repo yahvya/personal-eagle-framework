@@ -1,0 +1,50 @@
+\hypertarget{a00332_source}{}\doxysection{Random\+String\+Generator.\+php}
+\label{a00332_source}\index{RandomStringGenerator.php@{RandomStringGenerator.php}}
+\mbox{\hyperlink{a00332}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{a00332_source_l00003}\mbox{\hyperlink{a00432}{00003}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{a00432}{SaboCore\(\backslash\)Utils\(\backslash\)String}};}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{a00332_source_l00009}\mbox{\hyperlink{a00912}{00009}}\ \textcolor{keyword}{abstract}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{a00912}{RandomStringGenerator}}\{}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00017}\mbox{\hyperlink{a00912_aa7459a8b7fc0d675fe9ac226b40b6d52}{00017}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00912_aa7459a8b7fc0d675fe9ac226b40b6d52}{generateString}}(\textcolor{keywordtype}{int}\ \$length\ =\ 10,\textcolor{keywordtype}{bool}\ \$removeSimilarChars\ =\ \textcolor{keyword}{true},\mbox{\hyperlink{a00432_add4f75f97db16032d6f41b34f8a28222}{RandomStringType}}\ ...\$toIgnore):string\{}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00018}00018\ \ \ \ \ \ \ \ \ \$chars\ =\ [}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{a00432_add4f75f97db16032d6f41b34f8a28222}{RandomStringType}}::LOWERCHARS-\/>value\ =>\ \textcolor{stringliteral}{"{}abcdefghjkmnpqrstuvwxyz"{}},}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{a00432_add4f75f97db16032d6f41b34f8a28222}{RandomStringType}}::UPPERCHARS-\/>value\ =>\ \textcolor{stringliteral}{"{}ABCDEFGHJKMNPQRSTUVWXYZ"{}},}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{a00432_add4f75f97db16032d6f41b34f8a28222}{RandomStringType}}::NUMBERS-\/>value\ =>\ \textcolor{stringliteral}{"{}123456789"{}},}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{a00432_add4f75f97db16032d6f41b34f8a28222}{RandomStringType}}::\mbox{\hyperlink{a00432_add4f75f97db16032d6f41b34f8a28222ad22e5fea7341e7227ef734951f404c8c}{SPECIALCHARS}}-\/>value\ =>\ \textcolor{stringliteral}{"{}\&\#\{[(-\/\_@)]\}\$\%!"{}}}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00023}00023\ \ \ \ \ \ \ \ \ ];}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{a00332_source_l00025}00025\ \ \ \ \ \ \ \ \ \$similarChars\ =\ \$removeSimilarChars\ ?\ []\ :\ [}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ RandomStringType::LOWERCHARS-\/>value\ =>\ \textcolor{stringliteral}{"{}lio"{}},}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ RandomStringType::UPPERCHARS-\/>value\ =>\ \textcolor{stringliteral}{"{}LIO"{}},}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ RandomStringType::NUMBERS-\/>value\ =>\ \textcolor{stringliteral}{"{}0"{}}}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00029}00029\ \ \ \ \ \ \ \ \ ];}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{a00332_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ fusion\ des\ caractères\ similaires\ à\ la\ liste\ des\ caractères}}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}(\$similarChars\ as\ \$key\ =>\ \$charList)\ \$chars[\$key]\ =\ \$chars[\$key]\ .\ \$charList;}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{a00332_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ suppression\ des\ caractères\ à\ ignorer}}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}(\$toIgnore\ as\ \$typeToIgnore)\ unset(\$chars[\$typeToIgnore-\/>value]);}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{a00332_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ création\ de\ la\ chaine\ de\ choix\ finale}}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00038}00038\ \ \ \ \ \ \ \ \ \$choiceList\ =\ implode(separator:\ \textcolor{stringliteral}{''},array:\ \ \$chars);}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{a00332_source_l00040}00040\ \ \ \ \ \ \ \ \ \$choiceList\ =\ str\_split(\textcolor{keywordtype}{string}:\ \$choiceList);}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{a00332_source_l00042}00042\ \ \ \ \ \ \ \ \ \$keys\ =\ [];}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{a00332_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ récupération\ de\ l'index\ des\ caractères\ utilisés}}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\$i\ =\ 0;\ \$i\ <\ \$length;\ \$i++)\ \$keys[]\ =\ array\_rand(array:\ \$choiceList);}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{a00332_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(gettype(value:\ \$keys)\ !=\ \textcolor{stringliteral}{"{}array"{}})\ \$keys\ =\ [\$keys];}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{a00332_source_l00049}00049\ \ \ \ \ \ \ \ \ \$finalString\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{a00332_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}(\$keys\ as\ \$key)\ \$finalString\ .=\ \$choiceList[\$key];}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{a00332_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$finalString;}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00332_source_l00055}00055\ \}}
+
+\end{DoxyCode}

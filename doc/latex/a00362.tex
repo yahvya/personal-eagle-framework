@@ -1,0 +1,124 @@
+\hypertarget{a00362}{}\doxysection{Référence du fichier functions.\+php}
+\label{a00362}\index{functions.php@{functions.php}}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00362_a0d236ed64e37eb3249a05cfc95ff6bf7}{debug}} (mixed ... \$to\+Debug)
+\begin{DoxyCompactList}\small\item\em Débug les variables fournies. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00362_a7755ccc633d143394cb1be10c23a8483}{debug\+Die}} (mixed ... \$to\+Debug)
+\begin{DoxyCompactList}\small\item\em Débug les variables fournies et quitte le programme. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00362_ae51039edf7ff9675adb95522e00d4583}{route}} (string \$request\+Method, string \$route\+Name, array \$replaces=\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Recherche une route pour la fournir. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00362_a373d6145a4cffaddaff2c4c9ac2f6e65}{generate\+Csrf}} ()
+\begin{DoxyCompactList}\small\item\em Génère un token csrf. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00362_a8be53ae6480c0f3c2133084a111bfe6b}{check\+Csrf}} (string \$token)
+\begin{DoxyCompactList}\small\item\em Vérifie que le token soit valide et le supprime si valide. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{a00362_a8be53ae6480c0f3c2133084a111bfe6b}\label{a00362_a8be53ae6480c0f3c2133084a111bfe6b}} 
+\index{functions.php@{functions.php}!checkCsrf@{checkCsrf}}
+\index{checkCsrf@{checkCsrf}!functions.php@{functions.php}}
+\doxysubsubsection{\texorpdfstring{checkCsrf()}{checkCsrf()}}
+{\footnotesize\ttfamily check\+Csrf (\begin{DoxyParamCaption}\item[{string}]{\$token }\end{DoxyParamCaption})}
+
+
+
+Vérifie que le token soit valide et le supprime si valide. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$token} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+bool si le token est valide 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00362_source_l00091}{91}} du fichier \mbox{\hyperlink{a00362_source}{functions.\+php}}.
+
+\mbox{\Hypertarget{a00362_a0d236ed64e37eb3249a05cfc95ff6bf7}\label{a00362_a0d236ed64e37eb3249a05cfc95ff6bf7}} 
+\index{functions.php@{functions.php}!debug@{debug}}
+\index{debug@{debug}!functions.php@{functions.php}}
+\doxysubsubsection{\texorpdfstring{debug()}{debug()}}
+{\footnotesize\ttfamily debug (\begin{DoxyParamCaption}\item[{mixed ...}]{\$to\+Debug }\end{DoxyParamCaption})}
+
+
+
+Débug les variables fournies. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mixed} & ...\$to\+Debug variables à débugger \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00362_source_l00022}{22}} du fichier \mbox{\hyperlink{a00362_source}{functions.\+php}}.
+
+\mbox{\Hypertarget{a00362_a7755ccc633d143394cb1be10c23a8483}\label{a00362_a7755ccc633d143394cb1be10c23a8483}} 
+\index{functions.php@{functions.php}!debugDie@{debugDie}}
+\index{debugDie@{debugDie}!functions.php@{functions.php}}
+\doxysubsubsection{\texorpdfstring{debugDie()}{debugDie()}}
+{\footnotesize\ttfamily debug\+Die (\begin{DoxyParamCaption}\item[{mixed ...}]{\$to\+Debug }\end{DoxyParamCaption})}
+
+
+
+Débug les variables fournies et quitte le programme. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mixed} & ...\$to\+Debug variables à débugger \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \mbox{\hyperlink{a00362_source_l00030}{30}} du fichier \mbox{\hyperlink{a00362_source}{functions.\+php}}.
+
+\mbox{\Hypertarget{a00362_a373d6145a4cffaddaff2c4c9ac2f6e65}\label{a00362_a373d6145a4cffaddaff2c4c9ac2f6e65}} 
+\index{functions.php@{functions.php}!generateCsrf@{generateCsrf}}
+\index{generateCsrf@{generateCsrf}!functions.php@{functions.php}}
+\doxysubsubsection{\texorpdfstring{generateCsrf()}{generateCsrf()}}
+{\footnotesize\ttfamily generate\+Csrf (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Génère un token csrf. 
+
+\begin{DoxyReturn}{Renvoie}
+Csrf\+Manager le gestion de token 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00362_source_l00071}{71}} du fichier \mbox{\hyperlink{a00362_source}{functions.\+php}}.
+
+\mbox{\Hypertarget{a00362_ae51039edf7ff9675adb95522e00d4583}\label{a00362_ae51039edf7ff9675adb95522e00d4583}} 
+\index{functions.php@{functions.php}!route@{route}}
+\index{route@{route}!functions.php@{functions.php}}
+\doxysubsubsection{\texorpdfstring{route()}{route()}}
+{\footnotesize\ttfamily route (\begin{DoxyParamCaption}\item[{string}]{\$request\+Method,  }\item[{string}]{\$route\+Name,  }\item[{array}]{\$replaces = {\ttfamily \mbox{[}\mbox{]}} }\end{DoxyParamCaption})}
+
+
+
+Recherche une route pour la fournir. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$request\+Method} & méthode de requête \\
+\hline
+string & {\em \$route\+Name} & nom de la route \\
+\hline
+ & {\em array$<$string,string$>$} & \$replaces éléments de remplacements dans le lien \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+string$\vert$null le lien lié à la route 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00362_source_l00042}{42}} du fichier \mbox{\hyperlink{a00362_source}{functions.\+php}}.
+

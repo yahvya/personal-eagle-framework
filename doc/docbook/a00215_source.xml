@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00215_source" xml:lang="fr">
+<title>DatabaseModel.php</title>
+<indexterm><primary>DatabaseModel.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00215_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00215_source_1l00002"/>00002 
+<anchor xml:id="_a00215_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00415">SaboCore\Database\System</link>;
+<anchor xml:id="_a00215_source_1l00004"/>00004 
+<anchor xml:id="_a00215_source_1l00005"/>00005 use&#32;<link linkend="_a00868">SaboCore\Utils\List\SaboList</link>;
+<anchor xml:id="_a00215_source_1l00006"/>00006 
+<anchor xml:id="_a00215_source_1l00011"/><link linkend="_a00780">00011</link> <emphasis role="keyword">abstract</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_a00780">DatabaseModel</link>{
+<anchor xml:id="_a00215_source_1l00017"/><link linkend="_a00780_1a435e7d7525d4bcd0ed5e34a469f3adf6">00017</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">abstract</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00780_1a435e7d7525d4bcd0ed5e34a469f3adf6">create</link>():bool;
+<anchor xml:id="_a00215_source_1l00018"/>00018 
+<anchor xml:id="_a00215_source_1l00026"/><link linkend="_a00780_1a089f2f9d3bc5e244bb046103eda5e68a">00026</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00780_1a089f2f9d3bc5e244bb046103eda5e68a">afterCreate</link>(mixed&#32;$datas):<link linkend="_a00780">DatabaseModel</link>{
+<anchor xml:id="_a00215_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this;
+<anchor xml:id="_a00215_source_1l00028"/>00028 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00215_source_1l00029"/>00029 
+<anchor xml:id="_a00215_source_1l00037"/><link linkend="_a00780_1a0b5513e28076cdae5edbbc135347952e">00037</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00780_1a0b5513e28076cdae5edbbc135347952e">beforeCreate</link>(mixed&#32;$datas):<link linkend="_a00780">DatabaseModel</link>{
+<anchor xml:id="_a00215_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this;
+<anchor xml:id="_a00215_source_1l00039"/>00039 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00215_source_1l00040"/>00040 
+<anchor xml:id="_a00215_source_1l00046"/><link linkend="_a00780_1a842e4774e3b3601a005b995c02f7e883">00046</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">abstract</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00780_1a842e4774e3b3601a005b995c02f7e883">update</link>():bool;
+<anchor xml:id="_a00215_source_1l00047"/>00047 
+<anchor xml:id="_a00215_source_1l00055"/><link linkend="_a00780_1abac22adee1771b27007d99ef7c970fd6">00055</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00780_1abac22adee1771b27007d99ef7c970fd6">afterUpdate</link>(mixed&#32;$datas):<link linkend="_a00780">DatabaseModel</link>{
+<anchor xml:id="_a00215_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this;
+<anchor xml:id="_a00215_source_1l00057"/>00057 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00215_source_1l00058"/>00058 
+<anchor xml:id="_a00215_source_1l00066"/><link linkend="_a00780_1a35b505cd63c26794e672b59521925ac4">00066</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00780_1a35b505cd63c26794e672b59521925ac4">beforeUpdate</link>(mixed&#32;$datas):<link linkend="_a00780">DatabaseModel</link>{
+<anchor xml:id="_a00215_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this;
+<anchor xml:id="_a00215_source_1l00068"/>00068 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00215_source_1l00069"/>00069 
+<anchor xml:id="_a00215_source_1l00075"/><link linkend="_a00780_1a13bdffdd926f26b825ea57066334ff01">00075</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">abstract</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<emphasis role="keyword">delete</emphasis>():<emphasis role="keywordtype">bool</emphasis>;
+<anchor xml:id="_a00215_source_1l00076"/>00076 
+<anchor xml:id="_a00215_source_1l00084"/><link linkend="_a00780_1a92e5ced3dbea2a85916d9ccb74b910e5">00084</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00780_1a92e5ced3dbea2a85916d9ccb74b910e5">afterDelete</link>(mixed&#32;$datas):<link linkend="_a00780">DatabaseModel</link>{
+<anchor xml:id="_a00215_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this;
+<anchor xml:id="_a00215_source_1l00086"/>00086 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00215_source_1l00087"/>00087 
+<anchor xml:id="_a00215_source_1l00095"/><link linkend="_a00780_1a259eacc66c812fa6b8c9a8540852f171">00095</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00780_1a259eacc66c812fa6b8c9a8540852f171">beforeDelete</link>(mixed&#32;$datas):<link linkend="_a00780">DatabaseModel</link>{
+<anchor xml:id="_a00215_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this;
+<anchor xml:id="_a00215_source_1l00097"/>00097 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00215_source_1l00098"/>00098 
+<anchor xml:id="_a00215_source_1l00106"/><link linkend="_a00780_1a778260a14bf17b9217bea8af56d930e6">00106</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00780_1a778260a14bf17b9217bea8af56d930e6">beforeGeneration</link>(mixed&#32;$datas):<link linkend="_a00780">DatabaseModel</link>{
+<anchor xml:id="_a00215_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this;
+<anchor xml:id="_a00215_source_1l00108"/>00108 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00215_source_1l00109"/>00109 
+<anchor xml:id="_a00215_source_1l00117"/><link linkend="_a00780_1a1c3bb66c57dc01dc29b0028502d1ffcb">00117</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00780_1a1c3bb66c57dc01dc29b0028502d1ffcb">afterGeneration</link>(mixed&#32;$datas):<link linkend="_a00780">DatabaseModel</link>{
+<anchor xml:id="_a00215_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this;
+<anchor xml:id="_a00215_source_1l00119"/>00119 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00215_source_1l00120"/>00120 
+<anchor xml:id="_a00215_source_1l00126"/><link linkend="_a00780_1ad29e4ef1858f02bf16baf2705bb5fc93">00126</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">abstract</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00780_1ad29e4ef1858f02bf16baf2705bb5fc93">findOne</link>(<link linkend="_a00772">DatabaseCondition</link>|<link linkend="_a00776">DatabaseCondSeparator</link>&#32;...$findBuilders):<link linkend="_a00780">DatabaseModel</link>|null;
+<anchor xml:id="_a00215_source_1l00127"/>00127 
+<anchor xml:id="_a00215_source_1l00133"/><link linkend="_a00780_1a5c4801a810bd1777c2a40584beefc1f5">00133</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">abstract</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00780_1a5c4801a810bd1777c2a40584beefc1f5">findAll</link>(<link linkend="_a00772">DatabaseCondition</link>|<link linkend="_a00776">DatabaseCondSeparator</link>&#32;...$findBuilders):<link linkend="_a00868">SaboList</link>;
+<anchor xml:id="_a00215_source_1l00134"/>00134 }
+</programlisting></section>

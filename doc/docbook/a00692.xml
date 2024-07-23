@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00692" xml:lang="fr">
+<title>Référence de la classe RegexCond</title>
+<indexterm><primary>RegexCond</primary></indexterm>
+<para>
+
+<para>Attribut définissant une condition regex. </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de RegexCond:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00692.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00692_1a353115eaa9119e2993aff6602071379f">__construct</link> (string $regex, string $errorMessage, string $regexOptions=&quot;&quot;, string $delimiter=&quot;#&quot;)</para>
+</listitem>
+            <listitem><para><link linkend="_a00692_1aaab6c4c9f3ed625334aa5024eb645ba0">verifyData</link> (<link linkend="_a00752">MysqlModel</link> $baseModel, string $attributeName, mixed $data)</para>
+
+<para>Vérifie si la donnée est valide. </para>
+</listitem>
+            <listitem><para><link linkend="_a00692_1a2bd06fb688dc4a272e4a92500cb3a4ce">getIsDisplayable</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00692_1a3d24ed0e93b212b4d5e382fa795bf4ef">getErrorMessage</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00664_1aaab6c4c9f3ed625334aa5024eb645ba0">verifyData</link> (<link linkend="_a00752">MysqlModel</link> $baseModel, string $attributeName, mixed $data)</para>
+
+<para>Vérifie si la donnée est valide. </para>
+</listitem>
+            <listitem><para><link linkend="_a00664_1a3d24ed0e93b212b4d5e382fa795bf4ef">getErrorMessage</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00664_1a2bd06fb688dc4a272e4a92500cb3a4ce">getIsDisplayable</link> ()</para>
+</listitem>
+        </itemizedlist>
+<section>
+<title>Description détaillée</title>
+
+<para>Attribut définissant une condition regex. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00146_source_1l00014">14</link> du fichier <link linkend="_a00146_source">RegexCond.php</link>.</para>
+</section>
+<section>
+<title>Documentation des constructeurs et destructeur</title>
+<anchor xml:id="_a00692_1a353115eaa9119e2993aff6602071379f"/><section>
+    <title>__construct()</title>
+<indexterm><primary>__construct</primary><secondary>RegexCond</secondary></indexterm>
+<indexterm><primary>RegexCond</primary><secondary>__construct</secondary></indexterm>
+<para><computeroutput>__construct (string $regex, string $errorMessage, string $regexOptions = <computeroutput>&quot;&quot;</computeroutput>
+, string $delimiter = <computeroutput>&quot;#&quot;</computeroutput>
+)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$regex</entry><entry>
+<para>la chaine regex </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$errorMessage</entry><entry>
+<para>le message d&apos;erreur en cas de non validation </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$regexOptions</entry><entry>
+<para>les options à ajouter sur la regex </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$delimiter</entry><entry>
+<para>le délimiteur de la regex (1 caractère) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00146_source_1l00041">41</link> du fichier <link linkend="_a00146_source">RegexCond.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00692_1a3d24ed0e93b212b4d5e382fa795bf4ef"/><section>
+    <title>getErrorMessage()</title>
+<indexterm><primary>getErrorMessage</primary><secondary>RegexCond</secondary></indexterm>
+<indexterm><primary>RegexCond</primary><secondary>getErrorMessage</secondary></indexterm>
+<para><computeroutput>getErrorMessage ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string Le message d&apos;erreur </para>
+</formalpara>
+</para>
+<para>
+Implémente <link linkend="_a00664_1a3d24ed0e93b212b4d5e382fa795bf4ef">Cond</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00146_source_1l00059">59</link> du fichier <link linkend="_a00146_source">RegexCond.php</link>.</para>
+</section>
+<anchor xml:id="_a00692_1a2bd06fb688dc4a272e4a92500cb3a4ce"/><section>
+    <title>getIsDisplayable()</title>
+<indexterm><primary>getIsDisplayable</primary><secondary>RegexCond</secondary></indexterm>
+<indexterm><primary>RegexCond</primary><secondary>getIsDisplayable</secondary></indexterm>
+<para><computeroutput>getIsDisplayable ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>bool Si le message d&apos;erreur peut être affiché </para>
+</formalpara>
+</para>
+<para>
+Implémente <link linkend="_a00664_1a2bd06fb688dc4a272e4a92500cb3a4ce">Cond</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00146_source_1l00054">54</link> du fichier <link linkend="_a00146_source">RegexCond.php</link>.</para>
+</section>
+<anchor xml:id="_a00692_1aaab6c4c9f3ed625334aa5024eb645ba0"/><section>
+    <title>verifyData()</title>
+<indexterm><primary>verifyData</primary><secondary>RegexCond</secondary></indexterm>
+<indexterm><primary>RegexCond</primary><secondary>verifyData</secondary></indexterm>
+<para><computeroutput>verifyData (<link linkend="_a00752">MysqlModel</link> $baseModel, string $attributeName, mixed $data)</computeroutput></para><para>
+
+<para>Vérifie si la donnée est valide. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>MysqlModel</entry><entry>$baseModel</entry><entry>
+<para>Model de base </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$attributeName</entry><entry>
+<para>Nom de l&apos;attribut </para>
+</entry>
+                            </row>
+                            <row>
+<entry>mixed</entry><entry>$data</entry><entry>
+<para>donnée à vérifier </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>bool si la donnée est valide </para>
+</formalpara>
+</para>
+<para>
+Implémente <link linkend="_a00664_1aaab6c4c9f3ed625334aa5024eb645ba0">Cond</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00146_source_1l00049">49</link> du fichier <link linkend="_a00146_source">RegexCond.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00146">RegexCond.php</link></section>
+</section>

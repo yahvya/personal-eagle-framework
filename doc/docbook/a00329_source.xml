@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00329_source" xml:lang="fr">
+<title>Storable.php</title>
+<indexterm><primary>Storable.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00329_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00329_source_1l00002"/>00002 
+<anchor xml:id="_a00329_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00431">SaboCore\Utils\Storage</link>;
+<anchor xml:id="_a00329_source_1l00004"/>00004 
+<anchor xml:id="_a00329_source_1l00009"/><link linkend="_a00908">00009</link> <emphasis role="keyword">interface&#32;</emphasis><link linkend="_a00908">Storable</link>{
+<anchor xml:id="_a00329_source_1l00015"/><link linkend="_a00908_1a66bef9ec7e8dca474b5b160c64190399">00015</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00908_1a66bef9ec7e8dca474b5b160c64190399">storeIn</link>(<emphasis role="keywordtype">string</emphasis>&#32;$path):bool;
+<anchor xml:id="_a00329_source_1l00016"/>00016 
+<anchor xml:id="_a00329_source_1l00020"/><link linkend="_a00908_1a9ac68df2af17ace6a2430d1fc34984ce">00020</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00908_1a9ac68df2af17ace6a2430d1fc34984ce">getFromStorage</link>():mixed;
+<anchor xml:id="_a00329_source_1l00021"/>00021 }
+</programlisting></section>

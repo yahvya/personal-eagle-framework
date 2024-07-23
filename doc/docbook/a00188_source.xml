@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00188_source" xml:lang="fr">
+<title>MysqlFunction.php</title>
+<indexterm><primary>MysqlFunction.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00188_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00188_source_1l00002"/>00002 
+<anchor xml:id="_a00188_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00413">SaboCore\Database\Default\System</link>;
+<anchor xml:id="_a00188_source_1l00004"/>00004 
+<anchor xml:id="_a00188_source_1l00009"/><link linkend="_a00748">00009</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00748">MysqlFunction</link>{
+<anchor xml:id="_a00188_source_1l00013"/><link linkend="_a00748_1a79348d1e1455a6f7d3d71462ea7de24f">00013</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00748_1a79348d1e1455a6f7d3d71462ea7de24f">$function</link>;
+<anchor xml:id="_a00188_source_1l00014"/>00014 
+<anchor xml:id="_a00188_source_1l00018"/><link linkend="_a00748_1aed23c33cbbfca9eac8ab14e946080ec5">00018</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_a00748_1aed23c33cbbfca9eac8ab14e946080ec5">$replaceAttributesName</link>;
+<anchor xml:id="_a00188_source_1l00019"/>00019 
+<anchor xml:id="_a00188_source_1l00023"/><link linkend="_a00748_1ac1b6033540b7af4eeb40b90d3f7c4bf5">00023</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;?<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00748_1ac1b6033540b7af4eeb40b90d3f7c4bf5">$alias</link>;
+<anchor xml:id="_a00188_source_1l00024"/>00024 
+<anchor xml:id="_a00188_source_1l00029"/><link linkend="_a00748_1ae89d65c99e75367c515435bb41ac963b">00029</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1ae89d65c99e75367c515435bb41ac963b">__construct</link>(<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00748_1a79348d1e1455a6f7d3d71462ea7de24f">$function</link>,<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_a00748_1aed23c33cbbfca9eac8ab14e946080ec5">$replaceAttributesName</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>){
+<anchor xml:id="_a00188_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;<emphasis role="keyword">function</emphasis>&#32;=&#32;<link linkend="_a00748_1a79348d1e1455a6f7d3d71462ea7de24f">$function</link>;
+<anchor xml:id="_a00188_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;replaceAttributesName&#32;=&#32;<link linkend="_a00748_1aed23c33cbbfca9eac8ab14e946080ec5">$replaceAttributesName</link>;
+<anchor xml:id="_a00188_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;alias&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="_a00188_source_1l00033"/>00033 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00034"/>00034 
+<anchor xml:id="_a00188_source_1l00040"/><link linkend="_a00748_1ae11fa93f5d6f384f8a5fff304a10c725">00040</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1ae11fa93f5d6f384f8a5fff304a10c725">as</link>(<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00748_1ac1b6033540b7af4eeb40b90d3f7c4bf5">$alias</link>):<link linkend="_a00748">MysqlFunction</link>{
+<anchor xml:id="_a00188_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;alias&#32;=&#32;<emphasis role="stringliteral">&quot;&apos;$alias&apos;&quot;</emphasis>;
+<anchor xml:id="_a00188_source_1l00042"/>00042 
+<anchor xml:id="_a00188_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$this;
+<anchor xml:id="_a00188_source_1l00044"/>00044 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00045"/>00045 
+<anchor xml:id="_a00188_source_1l00049"/><link linkend="_a00748_1a26e3e0c627051b4287204b3575b81d97">00049</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1a26e3e0c627051b4287204b3575b81d97">getAlias</link>():string|null{
+<anchor xml:id="_a00188_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;alias;
+<anchor xml:id="_a00188_source_1l00051"/>00051 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00052"/>00052 
+<anchor xml:id="_a00188_source_1l00056"/><link linkend="_a00748_1ac83856f218e9caf5475a5478481a0814">00056</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1ac83856f218e9caf5475a5478481a0814">haveToReplaceAttributesName</link>():bool{
+<anchor xml:id="_a00188_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;replaceAttributesName;
+<anchor xml:id="_a00188_source_1l00058"/>00058 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00059"/>00059 
+<anchor xml:id="_a00188_source_1l00063"/><link linkend="_a00748_1a3cb728ca27acfebd282caecdb8a1f5fc">00063</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1a3cb728ca27acfebd282caecdb8a1f5fc">getFunction</link>():string{
+<anchor xml:id="_a00188_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;function;
+<anchor xml:id="_a00188_source_1l00065"/>00065 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00066"/>00066 
+<anchor xml:id="_a00188_source_1l00073"/><link linkend="_a00748_1a44670226d153783619776d10e7b7622b">00073</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1a44670226d153783619776d10e7b7622b">CONCAT</link>(<emphasis role="keywordtype">string</emphasis>&#32;...$toConcat):<link linkend="_a00748">MysqlFunction</link>{
+<anchor xml:id="_a00188_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00748">MysqlFunction</link>(function:&#32;<emphasis role="stringliteral">&quot;CONCAT(&quot;</emphasis>&#32;.&#32;implode(separator:&#32;<emphasis role="stringliteral">&quot;,&quot;</emphasis>,array:&#32;$toConcat)&#32;.&#32;<emphasis role="stringliteral">&quot;)&quot;</emphasis>);
+<anchor xml:id="_a00188_source_1l00075"/>00075 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00076"/>00076 
+<anchor xml:id="_a00188_source_1l00085"/><link linkend="_a00748_1ab88146fc6b6eb074dd4e6c922f0f2eb5">00085</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1ab88146fc6b6eb074dd4e6c922f0f2eb5">SUBSTRING</link>(<emphasis role="keywordtype">string</emphasis>&#32;$stringGetter,<emphasis role="keywordtype">int</emphasis>&#32;$start,<emphasis role="keywordtype">int</emphasis>&#32;$length):<link linkend="_a00748">MysqlFunction</link>{
+<anchor xml:id="_a00188_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00748">MysqlFunction</link>(function:&#32;<emphasis role="stringliteral">&quot;SUBSTRING($stringGetter,$start,$length)&quot;</emphasis>);
+<anchor xml:id="_a00188_source_1l00087"/>00087 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00088"/>00088 
+<anchor xml:id="_a00188_source_1l00095"/><link linkend="_a00748_1aaea342834fbb0456bd2bad686ef08a76">00095</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1aaea342834fbb0456bd2bad686ef08a76">UPPER</link>(<emphasis role="keywordtype">string</emphasis>&#32;$stringGetter):<link linkend="_a00748">MysqlFunction</link>{
+<anchor xml:id="_a00188_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00748">MysqlFunction</link>(function:&#32;<emphasis role="stringliteral">&quot;UPPER($stringGetter)&quot;</emphasis>);
+<anchor xml:id="_a00188_source_1l00097"/>00097 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00098"/>00098 
+<anchor xml:id="_a00188_source_1l00105"/><link linkend="_a00748_1ab3d345e2681103f9405796389a40d689">00105</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1ab3d345e2681103f9405796389a40d689">LOWER</link>(<emphasis role="keywordtype">string</emphasis>&#32;$stringGetter):<link linkend="_a00748">MysqlFunction</link>{
+<anchor xml:id="_a00188_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00748">MysqlFunction</link>(function:&#32;<emphasis role="stringliteral">&quot;LOWER($stringGetter)&quot;</emphasis>);
+<anchor xml:id="_a00188_source_1l00107"/>00107 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00108"/>00108 
+<anchor xml:id="_a00188_source_1l00115"/><link linkend="_a00748_1a9bce6fae2c594fde79e20ddcb699ec04">00115</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1a9bce6fae2c594fde79e20ddcb699ec04">DISTINCT</link>(<emphasis role="keywordtype">string</emphasis>&#32;$toDistinct):<link linkend="_a00748">MysqlFunction</link>{
+<anchor xml:id="_a00188_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00748">MysqlFunction</link>(function:&#32;<emphasis role="stringliteral">&quot;DISTINCT&#32;$toDistinct&quot;</emphasis>);
+<anchor xml:id="_a00188_source_1l00117"/>00117 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00118"/>00118 
+<anchor xml:id="_a00188_source_1l00125"/><link linkend="_a00748_1a9e1fb41d95b786ab44c0d7dd9231b86b">00125</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1a9e1fb41d95b786ab44c0d7dd9231b86b">LENGTH</link>(<emphasis role="keywordtype">string</emphasis>&#32;$stringGetter):<link linkend="_a00748">MysqlFunction</link>{
+<anchor xml:id="_a00188_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00748">MysqlFunction</link>(function:&#32;<emphasis role="stringliteral">&quot;LENGTH($stringGetter)&quot;</emphasis>);
+<anchor xml:id="_a00188_source_1l00127"/>00127 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00128"/>00128 
+<anchor xml:id="_a00188_source_1l00133"/><link linkend="_a00748_1a84f1921a0e6ef1af146350935845148b">00133</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1a84f1921a0e6ef1af146350935845148b">RAND</link>():<link linkend="_a00748">MysqlFunction</link>{
+<anchor xml:id="_a00188_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00748">MysqlFunction</link>(function:&#32;<emphasis role="stringliteral">&quot;RAND()&quot;</emphasis>);
+<anchor xml:id="_a00188_source_1l00135"/>00135 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00136"/>00136 
+<anchor xml:id="_a00188_source_1l00143"/><link linkend="_a00748_1a080555ab5f8e8b7084a0b09e1576f67f">00143</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1a080555ab5f8e8b7084a0b09e1576f67f">ABS</link>(<emphasis role="keywordtype">string</emphasis>&#32;$numberGetter):<link linkend="_a00748">MysqlFunction</link>{
+<anchor xml:id="_a00188_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00748">MysqlFunction</link>(function:&#32;<emphasis role="stringliteral">&quot;ABS($numberGetter)&quot;</emphasis>);
+<anchor xml:id="_a00188_source_1l00145"/>00145 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00146"/>00146 
+<anchor xml:id="_a00188_source_1l00153"/><link linkend="_a00748_1a0f9fa0a3c26d1ffdf533c2fd9f55aa45">00153</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1a0f9fa0a3c26d1ffdf533c2fd9f55aa45">SUM</link>(<emphasis role="keywordtype">string</emphasis>&#32;$numberGetter):<link linkend="_a00748">MysqlFunction</link>{
+<anchor xml:id="_a00188_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00748">MysqlFunction</link>(function:&#32;<emphasis role="stringliteral">&quot;SUM($numberGetter)&quot;</emphasis>);
+<anchor xml:id="_a00188_source_1l00155"/>00155 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00156"/>00156 
+<anchor xml:id="_a00188_source_1l00163"/><link linkend="_a00748_1a7a9c122983d026ece0f8f5c513eb3cb7">00163</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1a7a9c122983d026ece0f8f5c513eb3cb7">AVG</link>(<emphasis role="keywordtype">string</emphasis>&#32;$numberGetter):<link linkend="_a00748">MysqlFunction</link>{
+<anchor xml:id="_a00188_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00748">MysqlFunction</link>(function:&#32;<emphasis role="stringliteral">&quot;AVG($numberGetter)&quot;</emphasis>);
+<anchor xml:id="_a00188_source_1l00165"/>00165 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00166"/>00166 
+<anchor xml:id="_a00188_source_1l00173"/><link linkend="_a00748_1a988e6d98ae6b67636b03df3abc50f6ca">00173</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1a988e6d98ae6b67636b03df3abc50f6ca">COUNT</link>(<emphasis role="keywordtype">string</emphasis>&#32;$numberGetter):<link linkend="_a00748">MysqlFunction</link>{
+<anchor xml:id="_a00188_source_1l00174"/>00174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00748">MysqlFunction</link>(function:&#32;<emphasis role="stringliteral">&quot;COUNT($numberGetter)&quot;</emphasis>);
+<anchor xml:id="_a00188_source_1l00175"/>00175 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00176"/>00176 
+<anchor xml:id="_a00188_source_1l00183"/><link linkend="_a00748_1a0f63514de83daffec5bc77ea94c280fd">00183</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1a0f63514de83daffec5bc77ea94c280fd">MIN</link>(<emphasis role="keywordtype">string</emphasis>&#32;$numberGetter):<link linkend="_a00748">MysqlFunction</link>{
+<anchor xml:id="_a00188_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00748">MysqlFunction</link>(function:&#32;<emphasis role="stringliteral">&quot;MIN($numberGetter)&quot;</emphasis>);
+<anchor xml:id="_a00188_source_1l00185"/>00185 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00186"/>00186 
+<anchor xml:id="_a00188_source_1l00193"/><link linkend="_a00748_1a226d32da507609cfbc41c5f2de9b8343">00193</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1a226d32da507609cfbc41c5f2de9b8343">MAX</link>(<emphasis role="keywordtype">string</emphasis>&#32;$numberGetter):<link linkend="_a00748">MysqlFunction</link>{
+<anchor xml:id="_a00188_source_1l00194"/>00194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00748">MysqlFunction</link>(function:&#32;<emphasis role="stringliteral">&quot;MAX($numberGetter)&quot;</emphasis>);
+<anchor xml:id="_a00188_source_1l00195"/>00195 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00196"/>00196 
+<anchor xml:id="_a00188_source_1l00204"/><link linkend="_a00748_1a22da2044d66bf620f08adf6d3168ca48">00204</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1a22da2044d66bf620f08adf6d3168ca48">ROUND</link>(<emphasis role="keywordtype">string</emphasis>&#32;$numberGetter,<emphasis role="keywordtype">int</emphasis>&#32;$decimal&#32;=&#32;2):<link linkend="_a00748">MysqlFunction</link>{
+<anchor xml:id="_a00188_source_1l00205"/>00205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00748">MysqlFunction</link>(function:&#32;<emphasis role="stringliteral">&quot;ROUND($numberGetter,$decimal)&quot;</emphasis>);
+<anchor xml:id="_a00188_source_1l00206"/>00206 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00207"/>00207 
+<anchor xml:id="_a00188_source_1l00212"/><link linkend="_a00748_1ab1659f28be37badd992f4b8500230d1d">00212</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1ab1659f28be37badd992f4b8500230d1d">NOW</link>():<link linkend="_a00748">MysqlFunction</link>{
+<anchor xml:id="_a00188_source_1l00213"/>00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00748">MysqlFunction</link>(function:&#32;<emphasis role="stringliteral">&quot;NOW()&quot;</emphasis>);
+<anchor xml:id="_a00188_source_1l00214"/>00214 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00215"/>00215 
+<anchor xml:id="_a00188_source_1l00220"/><link linkend="_a00748_1a290a31832414d365de969280195a71ff">00220</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1a290a31832414d365de969280195a71ff">TIMESTAMP</link>():<link linkend="_a00748">MysqlFunction</link>{
+<anchor xml:id="_a00188_source_1l00221"/>00221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00748">MysqlFunction</link>(function:&#32;<emphasis role="stringliteral">&quot;NOW()&quot;</emphasis>);
+<anchor xml:id="_a00188_source_1l00222"/>00222 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00223"/>00223 
+<anchor xml:id="_a00188_source_1l00230"/><link linkend="_a00748_1a852d920b172bd343a1b4d212a1aa8653">00230</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1a852d920b172bd343a1b4d212a1aa8653">DATE_FORMAT</link>(<emphasis role="keywordtype">string</emphasis>&#32;$dateGetter,<emphasis role="keywordtype">string</emphasis>&#32;$format):<link linkend="_a00748">MysqlFunction</link>{
+<anchor xml:id="_a00188_source_1l00231"/>00231 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00748">MysqlFunction</link>(function:&#32;<emphasis role="stringliteral">&quot;DATE_FORMAT($dateGetter,&apos;$format&apos;)&quot;</emphasis>);
+<anchor xml:id="_a00188_source_1l00232"/>00232 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00233"/>00233 
+<anchor xml:id="_a00188_source_1l00240"/><link linkend="_a00748_1acc81210dd38eb501c944e482ed498d26">00240</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00748_1acc81210dd38eb501c944e482ed498d26">COLUMN_ALIAS</link>(<emphasis role="keywordtype">string</emphasis>&#32;$attributeName,<emphasis role="keywordtype">string</emphasis>&#32;$alias):<link linkend="_a00748">MysqlFunction</link>{
+<anchor xml:id="_a00188_source_1l00241"/>00241 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;(new&#32;<link linkend="_a00748">MysqlFunction</link>(function:&#32;$attributeName))-&gt;as(alias:&#32;$alias);
+<anchor xml:id="_a00188_source_1l00242"/>00242 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00188_source_1l00243"/>00243 }
+</programlisting></section>

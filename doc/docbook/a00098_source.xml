@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00098_source" xml:lang="fr">
+<title>SqlAttribute.php</title>
+<indexterm><primary>SqlAttribute.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00098_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00098_source_1l00002"/>00002 
+<anchor xml:id="_a00098_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00405">SaboCore\Database\Default\Attributes</link>;
+<anchor xml:id="_a00098_source_1l00004"/>00004 
+<anchor xml:id="_a00098_source_1l00009"/><link linkend="_a00628">00009</link> <emphasis role="keyword">abstract</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_a00628">SqlAttribute</link>{
+<anchor xml:id="_a00098_source_1l00013"/><link linkend="_a00628_1a77ed872e25498694d3063ef2da790f82">00013</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">abstract</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00628_1a77ed872e25498694d3063ef2da790f82">getCreationSql</link>():string;
+<anchor xml:id="_a00098_source_1l00014"/>00014 }
+</programlisting></section>

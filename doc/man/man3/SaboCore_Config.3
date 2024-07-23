@@ -1,0 +1,231 @@
+.TH "SaboCore\Config" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SaboCore\Config
+.SH SYNOPSIS
+.br
+.PP
+.SS "Structures de données"
+
+.in +1c
+.ti -1c
+.RI "class \fBConfig\fP"
+.br
+.RI "Représente une configuration\&. "
+.ti -1c
+.RI "class \fBConfigException\fP"
+.br
+.RI "Exception de configuration\&. "
+.in -1c
+.SS "Énumérations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBApplicationConfig\fP : string { \fBFRAMEWORK_CONFIG\fP = 'FRAMEWORK_CONFIG' }"
+.br
+.RI "Enumération de configuration de l'application\&. "
+.ti -1c
+.RI "enum \fBApplicationPathConfig\fP : string { \fBTWIG_FUNCTIONS_CONFIG_FILEPATH\fP = 'TWIG_FUNCTIONS_CONFIG_FILEPATH' }"
+.br
+.RI "Configuration des chemins de l'application\&. "
+.ti -1c
+.RI "enum \fBDatabaseConfig\fP : string { \fBPROVIDER_CONFIG\fP = 'providerConfig' }"
+.br
+.RI "Configuration de la base de donnée\&. "
+.ti -1c
+.RI "enum \fBEnvConfig\fP : string { \fBMAILER_CONFIG\fP = 'mailerConfig' }"
+.br
+.RI "Configuration d'environnement\&. "
+.ti -1c
+.RI "enum \fBFrameworkConfig\fP : string { \fBROUTE_GENERIC_PARAMETER_MATCHER\fP = 'routeGenericMatcher' }"
+.br
+.RI "Configuration du framework\&. "
+.ti -1c
+.RI "enum \fBMailerConfig\fP : string { \fBPROVIDER_PORT\fP = 'mailerProviderPort' }"
+.br
+.RI "Configuration de mail\&. "
+.ti -1c
+.RI "enum \fBMaintenanceConfig\fP : string { \fBACCESS_MANAGER\fP = 'accessManager' }"
+.br
+.RI "Configuration de maintenant\&. "
+.in -1c
+.SH "Documentation du type de l'énumération"
+.PP 
+.SS "enum \fBApplicationConfig\fP : string"
+
+.PP
+Enumération de configuration de l'application\&. 
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+\fBValeurs énumérées\fP
+.in +1c
+.TP
+\fB\fIFRAMEWORK_CONFIG \fP\fP
+Configuration de l'environnement @type Config\&. Configuration du framework @type Config 
+.PP
+Définition à la ligne \fB9\fP du fichier \fBApplicationConfig\&.php\fP\&.
+.SS "enum \fBApplicationPathConfig\fP : string"
+
+.PP
+Configuration des chemins de l'application\&. 
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+\fBValeurs énumérées\fP
+.in +1c
+.TP
+\fB\fITWIG_FUNCTIONS_CONFIG_FILEPATH \fP\fP
+Chemin du fichier d'environnement @type string\&. Chemin du fichier des fonctions globales @type string
+.PP
+Chemin du fichier de configuration du framework @type string
+.PP
+Chemin du fichier de configuration blade @type string
+.PP
+Chemin du fichier de configuration twig @type string 
+.PP
+Définition à la ligne \fB9\fP du fichier \fBApplicationPathConfig\&.php\fP\&.
+.SS "enum \fBDatabaseConfig\fP : string"
+
+.PP
+Configuration de la base de donnée\&. 
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya/ 
+.RE
+.PP
+
+.PP
+\fBValeurs énumérées\fP
+.in +1c
+.TP
+\fB\fIPROVIDER_CONFIG \fP\fP
+Défini si une connexion à la base de données doit être initialisé @type boolean\&. Fournisseur d'instance @type
+.PP
+Configuration du fournisseur d'instance @type Config 
+.PP
+Définition à la ligne \fB9\fP du fichier \fBDatabaseConfig\&.php\fP\&.
+.SS "enum \fBEnvConfig\fP : string"
+
+.PP
+Configuration d'environnement\&. 
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya/ 
+.RE
+.PP
+
+.PP
+\fBValeurs énumérées\fP
+.in +1c
+.TP
+\fB\fIMAILER_CONFIG \fP\fP
+Configuration de base de données @type string\&. Nom de l'application @type string
+.PP
+Lien de l'application @type string
+.PP
+Si l'application est en maintenance @type Config
+.PP
+Si l'application est en mode développement @type boolean true oui sinon production
+.PP
+Configuration de l'envoi de mail @type Config 
+.PP
+Définition à la ligne \fB9\fP du fichier \fBEnvConfig\&.php\fP\&.
+.SS "enum \fBFrameworkConfig\fP : string"
+
+.PP
+Configuration du framework\&. 
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya/ 
+.RE
+.PP
+
+.PP
+\fBValeurs énumérées\fP
+.in +1c
+.TP
+\fB\fIROUTE_GENERIC_PARAMETER_MATCHER \fP\fP
+Chemin du dossier public @type string\&. Chemin vers le dossier de stockage @type string
+.PP
+Liste des extensions de fichiers autorisés à l'accès direct par l'URL en plus de ceux se trouvant dans le dossier public @type string[]
+.PP
+Chemin du dossier contenant les routes @type string
+.PP
+Regex de match des paramètres génériques @type string 
+.PP
+\fBAttention\fP
+.RS 4
+la regex doit capturer le nom de la variable ex: :articleName => :([a-zA-Z]+) 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB9\fP du fichier \fBFrameworkConfig\&.php\fP\&.
+.SS "enum \fBMailerConfig\fP : string"
+
+.PP
+Configuration de mail\&. 
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+\fBValeurs énumérées\fP
+.in +1c
+.TP
+\fB\fIPROVIDER_PORT \fP\fP
+Email de l'envoyeur @type string\&. Nom de l'envoyeur @type string
+.PP
+Hôte fournisseur @type string
+.PP
+Nom d'utilisateur du fournisseur @type string
+.PP
+Mot de passe du fournisseur @type string
+.PP
+Chemin de du dossier racine des templates de mails @type string
+.PP
+Port du fournisseur @type int 
+.PP
+Définition à la ligne \fB9\fP du fichier \fBMailerConfig\&.php\fP\&.
+.SS "enum \fBMaintenanceConfig\fP : string"
+
+.PP
+Configuration de maintenant\&. 
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+\fBValeurs énumérées\fP
+.in +1c
+.TP
+\fB\fIACCESS_MANAGER \fP\fP
+Si le site est en état de maintenant @type boolean\&. Lien secret de connexion au site @type string
+.PP
+Class de gestion d'accès au site @type string 
+.PP
+Définition à la ligne \fB9\fP du fichier \fBMaintenanceConfig\&.php\fP\&.
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

@@ -1,0 +1,76 @@
+.TH "DatabaseProvider" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+DatabaseProvider \- Classe parente de fournisseur d'instance pour le système de base de donnée\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Dérivée par \fBMysqlProvider\fP\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fBinitDatabase\fP (\fBConfig\fP $providerConfig)"
+.br
+.RI "Initialise la base de données\&. "
+.ti -1c
+.RI "\fBgetCon\fP ()"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Classe parente de fournisseur d'instance pour le système de base de donnée\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya/ 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB12\fP du fichier \fBDatabaseProvider\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "getCon ()\fC [abstract]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+mixed le gestionnaire de connexion 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBMysqlProvider\fP\&.
+.SS "initDatabase (\fBConfig\fP $providerConfig)\fC [abstract]\fP"
+
+.PP
+Initialise la base de données\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$providerConfig\fP configuration du provider 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+void 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas d'erreur 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBMysqlProvider\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

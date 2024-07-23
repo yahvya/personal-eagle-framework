@@ -1,0 +1,113 @@
+\hypertarget{a00314_source}{}\doxysection{Session\+Storage.\+php}
+\label{a00314_source}\index{SessionStorage.php@{SessionStorage.php}}
+\mbox{\hyperlink{a00314}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00003}00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{a00429}{SaboCore\(\backslash\)Utils\(\backslash\)Session}};}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00005}00005\ use\ \mbox{\hyperlink{a00852}{SaboCore\(\backslash\)Utils\(\backslash\)Csrf\(\backslash\)CsrfManager}};}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00011}\mbox{\hyperlink{a00892}{00011}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{a00892}{SessionStorage}}\{}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00018}\mbox{\hyperlink{a00892_a7d60e4e6caad7cecee3916c8c986cde2}{00018}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00892_a7d60e4e6caad7cecee3916c8c986cde2}{store}}(\textcolor{keywordtype}{string}\ \$storeKey,mixed\ \$toStore):\mbox{\hyperlink{a00892}{SessionStorage}}\{}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00019}00019\ \ \ \ \ \ \ \ \ \$\_SESSION[\mbox{\hyperlink{a00429_adae9ef061a4cd6fa8f58ba2b6805c50c}{SessionStorageKeymap}}::FOR\_USER-\/>value][\$storeKey]\ =\ \$toStore;}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this;}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00032}\mbox{\hyperlink{a00892_a9df72b055e8be5e317a69d72d1debf2c}{00032}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00892_a9df72b055e8be5e317a69d72d1debf2c}{storeFlash}}(\textcolor{keywordtype}{string}\ \$storeKey,mixed\ \$toStore,\textcolor{keywordtype}{int}\ \$countOfRedirectBefore\ =\ 1,\textcolor{keywordtype}{int}\ \$timeBeforeDelete\ =\ 1800):\mbox{\hyperlink{a00892}{SessionStorage}}\{}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00033}00033\ \ \ \ \ \ \ \ \ \$\_SESSION[\mbox{\hyperlink{a00429_adae9ef061a4cd6fa8f58ba2b6805c50c}{SessionStorageKeymap}}::FOR\_FLASH-\/>value][\$storeKey]\ =\ [}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}value"{}}\ =>\ \$toStore,}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}config"{}}\ =>\ [}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}countOfRedirectBefore"{}}\ =>\ \$countOfRedirectBefore,}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}timeBeforeDelete"{}}\ =>\ \$timeBeforeDelete,}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}storeTime"{}}\ =>\ time()}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ ]}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00040}00040\ \ \ \ \ \ \ \ \ ];}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this;}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00051}\mbox{\hyperlink{a00892_a5263fa7e32ff5a7d1dd062be793eb56e}{00051}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00892_a5263fa7e32ff5a7d1dd062be793eb56e}{storeFramework}}(\textcolor{keywordtype}{string}\ \$storeKey,mixed\ \$toStore):\mbox{\hyperlink{a00892}{SessionStorage}}\{}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00052}00052\ \ \ \ \ \ \ \ \ \$\_SESSION[\mbox{\hyperlink{a00429_adae9ef061a4cd6fa8f58ba2b6805c50c}{SessionStorageKeymap}}::FOR\_FRAMEWORK-\/>value][\$storeKey]\ =\ \$toStore;}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this;}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00055}00055\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00061}\mbox{\hyperlink{a00892_af36acaad5b4419558879348394b5f9c3}{00061}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00892_af36acaad5b4419558879348394b5f9c3}{getValue}}(\textcolor{keywordtype}{string}\ \$storeKey):mixed\{}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00062}00062\ \ \ \ \ \ \ \ \ return\ \$\_SESSION[\mbox{\hyperlink{a00429_adae9ef061a4cd6fa8f58ba2b6805c50c}{SessionStorageKeymap}}::FOR\_USER-\/>value][\$storeKey]\ ??\ null;}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00069}\mbox{\hyperlink{a00892_a76cb71c708af3b706a6a3651685c2717}{00069}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00892_a76cb71c708af3b706a6a3651685c2717}{getFrameworkValue}}(\textcolor{keywordtype}{string}\ \$storeKey):mixed\{}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00070}00070\ \ \ \ \ \ \ \ \ return\ \$\_SESSION[\mbox{\hyperlink{a00429_adae9ef061a4cd6fa8f58ba2b6805c50c}{SessionStorageKeymap}}::FOR\_FRAMEWORK-\/>value][\$storeKey]\ ??\ null;}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00077}\mbox{\hyperlink{a00892_abadbe9b7c4cb50ff25c4313d91647bd1}{00077}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00892_abadbe9b7c4cb50ff25c4313d91647bd1}{getFlashValue}}(\textcolor{keywordtype}{string}\ \$storeKey):mixed\{}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00078}00078\ \ \ \ \ \ \ \ \ return\ isset(\$\_SESSION[\mbox{\hyperlink{a00429_adae9ef061a4cd6fa8f58ba2b6805c50c}{SessionStorageKeymap}}::FOR\_FLASH-\/>value][\$storeKey])\ ?}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \$\_SESSION[\mbox{\hyperlink{a00429_adae9ef061a4cd6fa8f58ba2b6805c50c}{SessionStorageKeymap}}::FOR\_FLASH-\/>value][\$storeKey][\textcolor{stringliteral}{"{}value"{}}]\ :}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ null;}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00088}\mbox{\hyperlink{a00892_a560e502668eff22e6ea35474cd42e2d3}{00088}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \textcolor{keyword}{delete}(\textcolor{keywordtype}{string}\ \$storeKey):\mbox{\hyperlink{a00892}{SessionStorage}}\{}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00089}00089\ \ \ \ \ \ \ \ \ unset(\$\_SESSION[SessionStorageKeymap::FOR\_USER-\/>value][\$storeKey]);}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this;}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00092}00092\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00099}\mbox{\hyperlink{a00892_a6ac5ed7725a6b1a05ec618d3d547b575}{00099}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00892_a6ac5ed7725a6b1a05ec618d3d547b575}{deleteInFramework}}(\textcolor{keywordtype}{string}\ \$storeKey):\mbox{\hyperlink{a00892}{SessionStorage}}\{}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00100}00100\ \ \ \ \ \ \ \ \ unset(\$\_SESSION[\mbox{\hyperlink{a00429_adae9ef061a4cd6fa8f58ba2b6805c50c}{SessionStorageKeymap}}::FOR\_FRAMEWORK-\/>value][\$storeKey]);}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this;}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00103}00103\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00110}\mbox{\hyperlink{a00892_add54a50add9c0d546be2feb28e0af671}{00110}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00892_add54a50add9c0d546be2feb28e0af671}{deleteInFlash}}(\textcolor{keywordtype}{string}\ \$storeKey):\mbox{\hyperlink{a00892}{SessionStorage}}\{}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00111}00111\ \ \ \ \ \ \ \ \ unset(\$\_SESSION[\mbox{\hyperlink{a00429_adae9ef061a4cd6fa8f58ba2b6805c50c}{SessionStorageKeymap}}::FOR\_FLASH-\/>value][\$storeKey]);}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this;}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00114}00114\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00120}\mbox{\hyperlink{a00892_aebe6ba394fe608ac377cb3807951b383}{00120}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00892_aebe6ba394fe608ac377cb3807951b383}{manageFlashDatas}}():\mbox{\hyperlink{a00892}{SessionStorage}}\{}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00121}00121\ \ \ \ \ \ \ \ \ if(!isset(\$\_SESSION[\mbox{\hyperlink{a00429_adae9ef061a4cd6fa8f58ba2b6805c50c}{SessionStorageKeymap}}::FOR\_FLASH-\/>value])\ )\ \$\_SESSION[\mbox{\hyperlink{a00429_adae9ef061a4cd6fa8f58ba2b6805c50c}{SessionStorageKeymap}}::FOR\_FLASH-\/>value]\ =\ [];}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}(\$\_SESSION[SessionStorageKeymap::FOR\_FLASH-\/>value]\ as\ \$key\ =>\ \$flashConfig)\{}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ vérification\ sur\ la\ durée\ et\ le\ temps\ d'expiration}}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$flashConfig[\textcolor{stringliteral}{"{}config"{}}][\textcolor{stringliteral}{"{}countOfRedirectBefore"{}}]\ ===\ 0\ ||}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ time()\ -\/\ \$flashConfig[\textcolor{stringliteral}{"{}config"{}}][\textcolor{stringliteral}{"{}storeTime"{}}]\ >=\ \$flashConfig[\textcolor{stringliteral}{"{}config"{}}][\textcolor{stringliteral}{"{}timeBeforeDelete"{}}]}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ unset(\$\_SESSION[SessionStorageKeymap::FOR\_FLASH-\/>value][\$key]);}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \$flashConfig[\textcolor{stringliteral}{"{}config"{}}][\textcolor{stringliteral}{"{}countOfRedirectBefore"{}}]-\/-\/;}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \$\_SESSION[SessionStorageKeymap::FOR\_FLASH-\/>value][\$key]\ =\ \$flashConfig;}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00136}00136\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this;}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00139}00139\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00146}\mbox{\hyperlink{a00892_a379861c28c29fb17910c4b5c32442abe}{00146}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00892_a379861c28c29fb17910c4b5c32442abe}{storeCsrf}}(\mbox{\hyperlink{a00852}{CsrfManager}}\ \$csrfManager):\mbox{\hyperlink{a00892}{SessionStorage}}\{}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00147}00147\ \ \ \ \ \ \ \ \ \$\_SESSION[\mbox{\hyperlink{a00429_adae9ef061a4cd6fa8f58ba2b6805c50c}{SessionStorageKeymap}}::\mbox{\hyperlink{a00429_adae9ef061a4cd6fa8f58ba2b6805c50cab9cfe24cbc9bab74c202711502611479}{FOR\_CSRF\_TOKEN}}-\/>value][\$csrfManager-\/>getToken()]\ =\ \$csrfManager-\/>serialize();}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00149}00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this;}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00150}00150\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00156}\mbox{\hyperlink{a00892_a45e32506e0d92d0bdbb61e5b46e446b9}{00156}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00892_a45e32506e0d92d0bdbb61e5b46e446b9}{getCsrfFrom}}(\textcolor{keywordtype}{string}\ \$token):\mbox{\hyperlink{a00852}{CsrfManager}}|null\{}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00157}00157\ \ \ \ \ \ \ \ \ return\ isset(\$\_SESSION[\mbox{\hyperlink{a00429_adae9ef061a4cd6fa8f58ba2b6805c50c}{SessionStorageKeymap}}::\mbox{\hyperlink{a00429_adae9ef061a4cd6fa8f58ba2b6805c50cab9cfe24cbc9bab74c202711502611479}{FOR\_CSRF\_TOKEN}}-\/>value][\$token])\ ?}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{a00852}{CsrfManager}}::deserialize(instance:\ \$\_SESSION[\mbox{\hyperlink{a00429_adae9ef061a4cd6fa8f58ba2b6805c50c}{SessionStorageKeymap}}::\mbox{\hyperlink{a00429_adae9ef061a4cd6fa8f58ba2b6805c50cab9cfe24cbc9bab74c202711502611479}{FOR\_CSRF\_TOKEN}}-\/>value][\$token])\ :}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ null;}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00160}00160\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00167}\mbox{\hyperlink{a00892_abbd56bd11b671f7b85f0e1f36b2a4738}{00167}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00892_abbd56bd11b671f7b85f0e1f36b2a4738}{deleteCsrf}}(\mbox{\hyperlink{a00852}{CsrfManager}}\ \$csrfManager):\mbox{\hyperlink{a00892}{SessionStorage}}\{}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00168}00168\ \ \ \ \ \ \ \ \ unset(\$\_SESSION[\mbox{\hyperlink{a00429_adae9ef061a4cd6fa8f58ba2b6805c50c}{SessionStorageKeymap}}::\mbox{\hyperlink{a00429_adae9ef061a4cd6fa8f58ba2b6805c50cab9cfe24cbc9bab74c202711502611479}{FOR\_CSRF\_TOKEN}}-\/>value][\$csrfManager-\/>getToken()]);}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00170}00170\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this;}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00171}00171\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{a00314_source_l00176}\mbox{\hyperlink{a00892_a239b1c70258014a86569483c2d009de6}{00176}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00892_a239b1c70258014a86569483c2d009de6}{create}}():\mbox{\hyperlink{a00892}{SessionStorage}}\{}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00177}00177\ \ \ \ \ \ \ \ \ return\ new\ \mbox{\hyperlink{a00892}{SessionStorage}}();}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00178}00178\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00314_source_l00179}00179\ \}}
+
+\end{DoxyCode}

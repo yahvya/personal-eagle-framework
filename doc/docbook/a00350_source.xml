@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00350_source" xml:lang="fr">
+<title>blade-config.php</title>
+<indexterm><primary>blade-config.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00350_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00350_source_1l00002"/>00002 
+<anchor xml:id="_a00350_source_1l00003"/>00003 use&#32;<link linkend="_a00836">SaboCore\Routing\Routes\RouteManager</link>;
+<anchor xml:id="_a00350_source_1l00004"/>00004 
+<anchor xml:id="_a00350_source_1l00009"/>00009 <emphasis role="comment">//&#32;Créez&#32;ici&#32;les&#32;fonctions.&#32;Il&#32;est&#32;recommandé&#32;de&#32;préfixer&#32;les&#32;fonctions&#32;par&#32;blade&#32;(ex&#32;:&#32;function&#32;bladeCustomFunction(){})</emphasis>
+<anchor xml:id="_a00350_source_1l00010"/>00010 
+<anchor xml:id="_a00350_source_1l00018"/><link linkend="_a00350_1a85a30ef1717c24c6781e81c851ff79fc">00018</link> <emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00350_1a85a30ef1717c24c6781e81c851ff79fc">bladeJsRoutes</link>(array&#32;$routes,?<emphasis role="keywordtype">string</emphasis>&#32;$funcNameReplace&#32;=&#32;<emphasis role="keyword">null</emphasis>,?<emphasis role="keywordtype">string</emphasis>&#32;$customIdReplace&#32;=&#32;<emphasis role="keyword">null</emphasis>):string{
+<anchor xml:id="_a00350_source_1l00019"/>00019 &#32;&#32;&#32;&#32;$jsRoutes&#32;=&#32;[];
+<anchor xml:id="_a00350_source_1l00020"/>00020 
+<anchor xml:id="_a00350_source_1l00021"/>00021 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($routes&#32;as&#32;$routeData){
+<anchor xml:id="_a00350_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;list($method,$name,)&#32;=&#32;$routeData;
+<anchor xml:id="_a00350_source_1l00023"/>00023 
+<anchor xml:id="_a00350_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$route&#32;=&#32;RouteManager::findRouteByName(routeName:&#32;$name,method:&#32;$method);
+<anchor xml:id="_a00350_source_1l00025"/>00025 
+<anchor xml:id="_a00350_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($route&#32;===&#32;<emphasis role="keyword">null</emphasis>)&#32;<emphasis role="keywordflow">continue</emphasis>;
+<anchor xml:id="_a00350_source_1l00027"/>00027 
+<anchor xml:id="_a00350_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$jsRoutes[$name]&#32;=&#32;$route-&gt;getRouteLink();
+<anchor xml:id="_a00350_source_1l00029"/>00029 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00350_source_1l00030"/>00030 
+<anchor xml:id="_a00350_source_1l00031"/>00031 &#32;&#32;&#32;&#32;$jsRoutes&#32;=&#32;@json_encode(value:&#32;$jsRoutes);
+<anchor xml:id="_a00350_source_1l00032"/>00032 
+<anchor xml:id="_a00350_source_1l00033"/>00033 &#32;&#32;&#32;&#32;$name&#32;=&#32;$funcNameReplace&#32;??&#32;<emphasis role="stringliteral">&quot;getRouteManager&quot;</emphasis>;
+<anchor xml:id="_a00350_source_1l00034"/>00034 &#32;&#32;&#32;&#32;$scriptId&#32;=&#32;$customIdReplace&#32;??&#32;<emphasis role="stringliteral">&quot;routes-script&quot;</emphasis>;
+<anchor xml:id="_a00350_source_1l00035"/>00035 
+<anchor xml:id="_a00350_source_1l00036"/>00036 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&lt;&lt;&lt;HTML
+<anchor xml:id="_a00350_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;script&#32;<emphasis role="keywordtype">id</emphasis>=<emphasis role="stringliteral">&quot;{$scriptId}&quot;</emphasis>&gt;
+<anchor xml:id="_a00350_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">function</emphasis>&#32;{$name}(){
+<anchor xml:id="_a00350_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;var&#32;routesCopy&#32;=&#32;JSON.parse(<emphasis role="stringliteral">&apos;{$jsRoutes}&apos;</emphasis>);
+<anchor xml:id="_a00350_source_1l00040"/>00040 
+<anchor xml:id="_a00350_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;let&#32;<link linkend="_a00362_1ae51039edf7ff9675adb95522e00d4583">route</link>&#32;=&#32;(<link linkend="_a00362_1ae51039edf7ff9675adb95522e00d4583">route</link>,replaces)&#32;=&gt;&#32;{
+<anchor xml:id="_a00350_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keyword">const</emphasis>&#32;[toReplace,replace]&#32;of&#32;Object.entries(replaces)&#32;)&#32;<link linkend="_a00362_1ae51039edf7ff9675adb95522e00d4583">route</link>&#32;=&#32;<link linkend="_a00362_1ae51039edf7ff9675adb95522e00d4583">route</link>.replace(`{\${toReplace}}`,replace)
+<anchor xml:id="_a00350_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_a00350_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_a00362_1ae51039edf7ff9675adb95522e00d4583">route</link>;
+<anchor xml:id="_a00350_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="_a00350_source_1l00046"/>00046 
+<anchor xml:id="_a00350_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;document.getElementById(<emphasis role="stringliteral">&quot;{$scriptId}&quot;</emphasis>).remove();
+<anchor xml:id="_a00350_source_1l00048"/>00048 
+<anchor xml:id="_a00350_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;{<emphasis role="stringliteral">&quot;routes&quot;</emphasis>&#32;:&#32;routesCopy,<emphasis role="stringliteral">&quot;routeReplace&quot;</emphasis>&#32;:&#32;<link linkend="_a00362_1ae51039edf7ff9675adb95522e00d4583">route</link>};
+<anchor xml:id="_a00350_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00350_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;/script&gt;
+<anchor xml:id="_a00350_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;HTML;
+<anchor xml:id="_a00350_source_1l00053"/>00053 }
+<anchor xml:id="_a00350_source_1l00054"/>00054 
+<anchor xml:id="_a00350_source_1l00055"/>00055 <emphasis role="comment">//&#32;Remplissez&#32;la&#32;tableau&#32;de&#32;vos&#32;directives&#32;blades</emphasis>
+<anchor xml:id="_a00350_source_1l00056"/>00056 
+<anchor xml:id="_a00350_source_1l00060"/>00060 <emphasis role="keyword">function</emphasis>&#32;registerBladeDirectives():array{
+<anchor xml:id="_a00350_source_1l00061"/>00061 &#32;&#32;&#32;&#32;return&#32;[
+<anchor xml:id="_a00350_source_1l00062"/>00062 
+<anchor xml:id="_a00350_source_1l00063"/>00063 &#32;&#32;&#32;&#32;];
+<anchor xml:id="_a00350_source_1l00064"/>00064 }
+</programlisting></section>

@@ -1,0 +1,28 @@
+\hypertarget{a00305_source}{}\doxysection{Twig\+Mail\+Provider.\+php}
+\label{a00305_source}\index{TwigMailProvider.php@{TwigMailProvider.php}}
+\mbox{\hyperlink{a00305}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{a00305_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{a00305_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{a00305_source_l00003}00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{a00427}{SaboCore\(\backslash\)Utils\(\backslash\)Mailer}};}
+\DoxyCodeLine{\Hypertarget{a00305_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{a00305_source_l00005}00005\ use\ Override;}
+\DoxyCodeLine{\Hypertarget{a00305_source_l00006}00006\ use\ \mbox{\hyperlink{a00403_a5f86f21fc1b2fcda9bfff7e5f1e64129}{SaboCore\(\backslash\)Config\(\backslash\)EnvConfig}};}
+\DoxyCodeLine{\Hypertarget{a00305_source_l00007}00007\ use\ \mbox{\hyperlink{a00403_aacba5d64694ffba3146214e337356afc}{SaboCore\(\backslash\)Config\(\backslash\)MailerConfig}};}
+\DoxyCodeLine{\Hypertarget{a00305_source_l00008}00008\ use\ \mbox{\hyperlink{a00784}{SaboCore\(\backslash\)Routing\(\backslash\)Application\(\backslash\)Application}};}
+\DoxyCodeLine{\Hypertarget{a00305_source_l00009}00009\ use\ \mbox{\hyperlink{a00824}{SaboCore\(\backslash\)Routing\(\backslash\)Response\(\backslash\)TwigResponse}};}
+\DoxyCodeLine{\Hypertarget{a00305_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{a00305_source_l00015}\mbox{\hyperlink{a00884}{00015}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{a00884}{TwigMailProvider}}\ \textcolor{keyword}{extends}\ \mbox{\hyperlink{a00876}{MailerTemplateProvider}}\{}
+\DoxyCodeLine{\Hypertarget{a00305_source_l00016}00016\ \textcolor{preprocessor}{\ \ \ \ \#[Override]}}
+\DoxyCodeLine{\Hypertarget{a00305_source_l00017}\mbox{\hyperlink{a00884_aa8c3eeb275898c4cb38be9b12770bf1b}{00017}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00884_aa8c3eeb275898c4cb38be9b12770bf1b}{buildContent}}():\ string\{}
+\DoxyCodeLine{\Hypertarget{a00305_source_l00018}00018\ \ \ \ \ \ \ \ \ \$environment\ =\ \mbox{\hyperlink{a00824}{TwigResponse}}::newEnvironment([}
+\DoxyCodeLine{\Hypertarget{a00305_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ APP\_CONFIG-\/>getConfig(name:\ \textcolor{stringliteral}{"{}ROOT"{}})\ .\ \mbox{\hyperlink{a00784}{Application}}::getEnvConfig()}
+\DoxyCodeLine{\Hypertarget{a00305_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/>getConfig(name:\ EnvConfig::MAILER\_CONFIG-\/>value)}
+\DoxyCodeLine{\Hypertarget{a00305_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/>getConfig(name:\ MailerConfig::MAIL\_TEMPLATES\_DIR\_PATH-\/>value)}
+\DoxyCodeLine{\Hypertarget{a00305_source_l00022}00022\ \ \ \ \ \ \ \ \ ]);}
+\DoxyCodeLine{\Hypertarget{a00305_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{a00305_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$environment-\/>render(name:\ \$this-\/>templatePath,context:\ \$this-\/>templateDatas);}
+\DoxyCodeLine{\Hypertarget{a00305_source_l00025}00025\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00305_source_l00026}00026\ \}}
+
+\end{DoxyCode}

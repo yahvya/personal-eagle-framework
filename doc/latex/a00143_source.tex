@@ -1,0 +1,33 @@
+\hypertarget{a00143_source}{}\doxysection{Mysql\+Cond\+Exception.\+php}
+\label{a00143_source}\index{MysqlCondException.php@{MysqlCondException.php}}
+\mbox{\hyperlink{a00143}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{a00143_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{a00143_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{a00143_source_l00003}00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{a00408}{SaboCore\(\backslash\)Database\(\backslash\)Default\(\backslash\)Conditions}};}
+\DoxyCodeLine{\Hypertarget{a00143_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{a00143_source_l00005}00005\ use\ Exception;}
+\DoxyCodeLine{\Hypertarget{a00143_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{a00143_source_l00011}\mbox{\hyperlink{a00688}{00011}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{a00688}{MysqlCondException}}\ \textcolor{keyword}{extends}\ Exception\{}
+\DoxyCodeLine{\Hypertarget{a00143_source_l00015}\mbox{\hyperlink{a00688_a71971bace3a81a0e8f71f3c60edb0fd6}{00015}}\ \ \ \ \ \textcolor{keyword}{protected}\ \mbox{\hyperlink{a00664}{Cond}}\ \mbox{\hyperlink{a00688_a71971bace3a81a0e8f71f3c60edb0fd6}{\$failedCond}};}
+\DoxyCodeLine{\Hypertarget{a00143_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{a00143_source_l00020}\mbox{\hyperlink{a00688_abf4a00b75c778529f11d2307d7558993}{00020}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00688_abf4a00b75c778529f11d2307d7558993}{\_\_construct}}(\mbox{\hyperlink{a00664}{Cond}}\ \mbox{\hyperlink{a00688_a71971bace3a81a0e8f71f3c60edb0fd6}{\$failedCond}})\{}
+\DoxyCodeLine{\Hypertarget{a00143_source_l00021}00021\ \ \ \ \ \ \ \ \ parent::\_\_construct(\mbox{\hyperlink{a00688_a71971bace3a81a0e8f71f3c60edb0fd6}{\$failedCond}}-\/>\mbox{\hyperlink{a00664_a3d24ed0e93b212b4d5e382fa795bf4ef}{getErrorMessage}}());}
+\DoxyCodeLine{\Hypertarget{a00143_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{a00143_source_l00023}00023\ \ \ \ \ \ \ \ \ \$this-\/>failedCond\ =\ \mbox{\hyperlink{a00688_a71971bace3a81a0e8f71f3c60edb0fd6}{\$failedCond}};}
+\DoxyCodeLine{\Hypertarget{a00143_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00143_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{a00143_source_l00031}\mbox{\hyperlink{a00688_a189f287b97b9aeab08d2f34c8d89f1e3}{00031}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00688_a189f287b97b9aeab08d2f34c8d89f1e3}{getErrorMessage}}(\textcolor{keywordtype}{string}\ \$defaultMessage\ =\ \textcolor{stringliteral}{"{}Une\ erreur\ technique\ c'est\ produite"{}}):\ string\{}
+\DoxyCodeLine{\Hypertarget{a00143_source_l00032}00032\ \ \ \ \ \ \ \ \ return\ \$this-\/>failedCond-\/>\mbox{\hyperlink{a00688_a2bd06fb688dc4a272e4a92500cb3a4ce}{getIsDisplayable}}()\ ?\ \$this-\/>failedCond-\/>\mbox{\hyperlink{a00688_a189f287b97b9aeab08d2f34c8d89f1e3}{getErrorMessage}}()\ :\ \$defaultMessage;}
+\DoxyCodeLine{\Hypertarget{a00143_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00143_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{a00143_source_l00038}\mbox{\hyperlink{a00688_ace366a0a88198a7d40eee3426529b4fd}{00038}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00688_ace366a0a88198a7d40eee3426529b4fd}{getFailedCond}}():\ \mbox{\hyperlink{a00664}{Cond}}\{}
+\DoxyCodeLine{\Hypertarget{a00143_source_l00039}00039\ \ \ \ \ \ \ \ \ return\ \$this-\/>failedCond;}
+\DoxyCodeLine{\Hypertarget{a00143_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00143_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{a00143_source_l00045}\mbox{\hyperlink{a00688_a2bd06fb688dc4a272e4a92500cb3a4ce}{00045}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00688_a2bd06fb688dc4a272e4a92500cb3a4ce}{getIsDisplayable}}():\ bool\{}
+\DoxyCodeLine{\Hypertarget{a00143_source_l00046}00046\ \ \ \ \ \ \ \ \ return\ \$this-\/>failedCond-\/>getIsDisplayable();}
+\DoxyCodeLine{\Hypertarget{a00143_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00143_source_l00048}00048\ \}}
+
+\end{DoxyCode}

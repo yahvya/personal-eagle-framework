@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00680" xml:lang="fr">
+<title>Référence de la classe JsonValidityCond</title>
+<indexterm><primary>JsonValidityCond</primary></indexterm>
+<para>
+
+<para>Condition de vérification de validité json. </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de JsonValidityCond:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00680.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00680_1aaab6c4c9f3ed625334aa5024eb645ba0">verifyData</link> (<link linkend="_a00752">MysqlModel</link> $baseModel, string $attributeName, mixed $data)</para>
+
+<para>Vérifie si la donnée est valide. </para>
+</listitem>
+            <listitem><para><link linkend="_a00680_1a3d24ed0e93b212b4d5e382fa795bf4ef">getErrorMessage</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00680_1a2bd06fb688dc4a272e4a92500cb3a4ce">getIsDisplayable</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00664_1aaab6c4c9f3ed625334aa5024eb645ba0">verifyData</link> (<link linkend="_a00752">MysqlModel</link> $baseModel, string $attributeName, mixed $data)</para>
+
+<para>Vérifie si la donnée est valide. </para>
+</listitem>
+            <listitem><para><link linkend="_a00664_1a3d24ed0e93b212b4d5e382fa795bf4ef">getErrorMessage</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00664_1a2bd06fb688dc4a272e4a92500cb3a4ce">getIsDisplayable</link> ()</para>
+</listitem>
+        </itemizedlist>
+<section>
+<title>Description détaillée</title>
+
+<para>Condition de vérification de validité json. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00137_source_1l00012">12</link> du fichier <link linkend="_a00137_source">JsonValidityCond.php</link>.</para>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00680_1a3d24ed0e93b212b4d5e382fa795bf4ef"/><section>
+    <title>getErrorMessage()</title>
+<indexterm><primary>getErrorMessage</primary><secondary>JsonValidityCond</secondary></indexterm>
+<indexterm><primary>JsonValidityCond</primary><secondary>getErrorMessage</secondary></indexterm>
+<para><computeroutput>getErrorMessage ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string Le message d&apos;erreur </para>
+</formalpara>
+</para>
+<para>
+Implémente <link linkend="_a00664_1a3d24ed0e93b212b4d5e382fa795bf4ef">Cond</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00137_source_1l00019">19</link> du fichier <link linkend="_a00137_source">JsonValidityCond.php</link>.</para>
+</section>
+<anchor xml:id="_a00680_1a2bd06fb688dc4a272e4a92500cb3a4ce"/><section>
+    <title>getIsDisplayable()</title>
+<indexterm><primary>getIsDisplayable</primary><secondary>JsonValidityCond</secondary></indexterm>
+<indexterm><primary>JsonValidityCond</primary><secondary>getIsDisplayable</secondary></indexterm>
+<para><computeroutput>getIsDisplayable ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>bool Si le message d&apos;erreur peut être affiché </para>
+</formalpara>
+</para>
+<para>
+Implémente <link linkend="_a00664_1a2bd06fb688dc4a272e4a92500cb3a4ce">Cond</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00137_source_1l00024">24</link> du fichier <link linkend="_a00137_source">JsonValidityCond.php</link>.</para>
+</section>
+<anchor xml:id="_a00680_1aaab6c4c9f3ed625334aa5024eb645ba0"/><section>
+    <title>verifyData()</title>
+<indexterm><primary>verifyData</primary><secondary>JsonValidityCond</secondary></indexterm>
+<indexterm><primary>JsonValidityCond</primary><secondary>verifyData</secondary></indexterm>
+<para><computeroutput>verifyData (<link linkend="_a00752">MysqlModel</link> $baseModel, string $attributeName, mixed $data)</computeroutput></para><para>
+
+<para>Vérifie si la donnée est valide. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>MysqlModel</entry><entry>$baseModel</entry><entry>
+<para>Model de base </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$attributeName</entry><entry>
+<para>Nom de l&apos;attribut </para>
+</entry>
+                            </row>
+                            <row>
+<entry>mixed</entry><entry>$data</entry><entry>
+<para>donnée à vérifier </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>bool si la donnée est valide </para>
+</formalpara>
+</para>
+<para>
+Implémente <link linkend="_a00664_1aaab6c4c9f3ed625334aa5024eb645ba0">Cond</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00137_source_1l00014">14</link> du fichier <link linkend="_a00137_source">JsonValidityCond.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00137">JsonValidityCond.php</link></section>
+</section>

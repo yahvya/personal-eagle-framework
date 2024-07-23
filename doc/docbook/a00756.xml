@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00756" xml:lang="fr">
+<title>Référence de la classe MysqlTableCreator</title>
+<indexterm><primary>MysqlTableCreator</primary></indexterm>
+<para>
+
+<para>Fournisseur de création de table sql à partir d&apos;un model. </para>
+ 
+</para>
+<simplesect>
+    <title>Fonctions membres publiques statiques    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_a00756_1a7a4a9754bcabdb89197c1239ef7cf5a2">getTableCreationFrom</link> (<link linkend="_a00752">MysqlModel</link> $model)</para>
+
+<para>Fourni le sql de création de table à partir d&apos;un model. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Fournisseur de création de table sql à partir d&apos;un model. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00194_source_1l00012">12</link> du fichier <link linkend="_a00194_source">MysqlTableCreator.php</link>.</para>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00756_1a7a4a9754bcabdb89197c1239ef7cf5a2"/><section>
+    <title>getTableCreationFrom()</title>
+<indexterm><primary>getTableCreationFrom</primary><secondary>MysqlTableCreator</secondary></indexterm>
+<indexterm><primary>MysqlTableCreator</primary><secondary>getTableCreationFrom</secondary></indexterm>
+<para><computeroutput>static getTableCreationFrom (<link linkend="_a00752">MysqlModel</link> $model)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Fourni le sql de création de table à partir d&apos;un model. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>MysqlModel</entry><entry>$model</entry><entry>
+<para>Le model </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>string la chaine sql de création </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Exceptions</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>MysqlException</entry><entry>
+<para>en cas d&apos;erreur </para>
+</entry>
+                            </row>
+                            <row>
+<entry>ReflectionException</entry><entry>
+<para>en cas d&apos;erreur de réflexion </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00194_source_1l00020">20</link> du fichier <link linkend="_a00194_source">MysqlTableCreator.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00194">MysqlTableCreator.php</link></section>
+</section>

@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00764" xml:lang="fr">
+<title>Référence de la classe DatabaseActionException</title>
+<indexterm><primary>DatabaseActionException</primary></indexterm>
+<para>
+
+<para>Exception d&apos;action sur un processus de la base de données. </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de DatabaseActionException:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00764.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00764_1ab144b91d04ff3b4009bb9d58edd0e7df">__construct</link> (string $errorMessage, <link linkend="_a00415_1a1e9821eaec23ae2ec90932c730046b80">DatabaseActions</link> $failedAction, bool $isDisplayable=true)</para>
+</listitem>
+            <listitem><para><link linkend="_a00764_1a189f287b97b9aeab08d2f34c8d89f1e3">getErrorMessage</link> (string $defaultMessage=&quot;Une erreur technique c&apos;est produite&quot;)</para>
+
+<para>Fourni le message d&apos;erreur formaté en fonction de l&apos;état isDisplayable. </para>
+</listitem>
+            <listitem><para><link linkend="_a00764_1a3db4dfbd537d988f70bd1a43bef47fe2">getFailedAction</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00764_1a2bd06fb688dc4a272e4a92500cb3a4ce">getIsDisplayable</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Attributs protégés    </title>
+        <itemizedlist>
+            <listitem><para>string <link linkend="_a00764_1ac97fcc0af722602bf40bc016e5720459">$errorMessage</link></para>
+</listitem>
+            <listitem><para><link linkend="_a00415_1a1e9821eaec23ae2ec90932c730046b80">DatabaseActions</link> <link linkend="_a00764_1a16ba3b7e9659eee85fc94e45e96c5a25">$failedAction</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_a00764_1a919a243061a1986ae430fd787760bbf9">$isDisplayable</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Exception d&apos;action sur un processus de la base de données. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00200_source_1l00011">11</link> du fichier <link linkend="_a00200_source">DatabaseActionException.php</link>.</para>
+</section>
+<section>
+<title>Documentation des constructeurs et destructeur</title>
+<anchor xml:id="_a00764_1ab144b91d04ff3b4009bb9d58edd0e7df"/><section>
+    <title>__construct()</title>
+<indexterm><primary>__construct</primary><secondary>DatabaseActionException</secondary></indexterm>
+<indexterm><primary>DatabaseActionException</primary><secondary>__construct</secondary></indexterm>
+<para><computeroutput>__construct (string $errorMessage, <link linkend="_a00415_1a1e9821eaec23ae2ec90932c730046b80">DatabaseActions</link> $failedAction, bool $isDisplayable = <computeroutput>true</computeroutput>
+)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$errorMessage</entry><entry>
+<para>Message d&apos;erreur </para>
+</entry>
+                            </row>
+                            <row>
+<entry>DatabaseActions</entry><entry>$failedAction</entry><entry>
+<para>Action échouée </para>
+</entry>
+                            </row>
+                            <row>
+<entry>bool</entry><entry>$isDisplayable</entry><entry>
+<para>Si le message d&apos;erreur peut être affiché </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00200_source_1l00032">32</link> du fichier <link linkend="_a00200_source">DatabaseActionException.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00764_1a189f287b97b9aeab08d2f34c8d89f1e3"/><section>
+    <title>getErrorMessage()</title>
+<indexterm><primary>getErrorMessage</primary><secondary>DatabaseActionException</secondary></indexterm>
+<indexterm><primary>DatabaseActionException</primary><secondary>getErrorMessage</secondary></indexterm>
+<para><computeroutput>getErrorMessage (string $defaultMessage = <computeroutput>&quot;Une&#160;erreur&#160;technique&#160;c&apos;est&#160;produite&quot;</computeroutput>
+)</computeroutput></para><para>
+
+<para>Fourni le message d&apos;erreur formaté en fonction de l&apos;état isDisplayable. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$defaultMessage</entry><entry>
+<para>message par défaut en cas de message non affichable </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>string Le message d&apos;erreur affichable </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00200_source_1l00045">45</link> du fichier <link linkend="_a00200_source">DatabaseActionException.php</link>.</para>
+</section>
+<anchor xml:id="_a00764_1a3db4dfbd537d988f70bd1a43bef47fe2"/><section>
+    <title>getFailedAction()</title>
+<indexterm><primary>getFailedAction</primary><secondary>DatabaseActionException</secondary></indexterm>
+<indexterm><primary>DatabaseActionException</primary><secondary>getFailedAction</secondary></indexterm>
+<para><computeroutput>getFailedAction ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>DatabaseActions L&apos;action échouée </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00200_source_1l00052">52</link> du fichier <link linkend="_a00200_source">DatabaseActionException.php</link>.</para>
+</section>
+<anchor xml:id="_a00764_1a2bd06fb688dc4a272e4a92500cb3a4ce"/><section>
+    <title>getIsDisplayable()</title>
+<indexterm><primary>getIsDisplayable</primary><secondary>DatabaseActionException</secondary></indexterm>
+<indexterm><primary>DatabaseActionException</primary><secondary>getIsDisplayable</secondary></indexterm>
+<para><computeroutput>getIsDisplayable ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>bool Si le message peut être affiché à l&apos;utilisateur </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00200_source_1l00059">59</link> du fichier <link linkend="_a00200_source">DatabaseActionException.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des champs</title>
+<anchor xml:id="_a00764_1ac97fcc0af722602bf40bc016e5720459"/><section>
+    <title>$errorMessage</title>
+<indexterm><primary>$errorMessage</primary><secondary>DatabaseActionException</secondary></indexterm>
+<indexterm><primary>DatabaseActionException</primary><secondary>$errorMessage</secondary></indexterm>
+<para><computeroutput>string $errorMessage<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00200_source_1l00015">15</link> du fichier <link linkend="_a00200_source">DatabaseActionException.php</link>.</para>
+</section>
+<anchor xml:id="_a00764_1a16ba3b7e9659eee85fc94e45e96c5a25"/><section>
+    <title>$failedAction</title>
+<indexterm><primary>$failedAction</primary><secondary>DatabaseActionException</secondary></indexterm>
+<indexterm><primary>DatabaseActionException</primary><secondary>$failedAction</secondary></indexterm>
+<para><computeroutput><link linkend="_a00415_1a1e9821eaec23ae2ec90932c730046b80">DatabaseActions</link> $failedAction<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00200_source_1l00020">20</link> du fichier <link linkend="_a00200_source">DatabaseActionException.php</link>.</para>
+</section>
+<anchor xml:id="_a00764_1a919a243061a1986ae430fd787760bbf9"/><section>
+    <title>$isDisplayable</title>
+<indexterm><primary>$isDisplayable</primary><secondary>DatabaseActionException</secondary></indexterm>
+<indexterm><primary>DatabaseActionException</primary><secondary>$isDisplayable</secondary></indexterm>
+<para><computeroutput>bool $isDisplayable<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00200_source_1l00025">25</link> du fichier <link linkend="_a00200_source">DatabaseActionException.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00200">DatabaseActionException.php</link></section>
+</section>

@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00916" xml:lang="fr">
+<title>Référence de la classe DefaultExtensions</title>
+<indexterm><primary>DefaultExtensions</primary></indexterm>
+<para>
+
+<para>Extensions par défaut de twig. </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de DefaultExtensions:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00916.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00916_1a131c2522f07821f77cd1d038c216031b">getFunctions</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00916_1ae51039edf7ff9675adb95522e00d4583">route</link> (string $requestMethod, string $routeName, array $replaces=[])</para>
+
+<para>Recherche une route pour la fournir. </para>
+</listitem>
+            <listitem><para><link linkend="_a00916_1a373d6145a4cffaddaff2c4c9ac2f6e65">generateCsrf</link> ()</para>
+
+<para>Génère un token csrf. </para>
+</listitem>
+            <listitem><para><link linkend="_a00916_1a8be53ae6480c0f3c2133084a111bfe6b">checkCsrf</link> (string $token)</para>
+
+<para>Vérifie que le token soit valide et le supprime si valide. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Extensions par défaut de twig. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00338_source_1l00013">13</link> du fichier <link linkend="_a00338_source">DefaultExtensions.php</link>.</para>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00916_1a8be53ae6480c0f3c2133084a111bfe6b"/><section>
+    <title>checkCsrf()</title>
+<indexterm><primary>checkCsrf</primary><secondary>DefaultExtensions</secondary></indexterm>
+<indexterm><primary>DefaultExtensions</primary><secondary>checkCsrf</secondary></indexterm>
+<para><computeroutput>checkCsrf (string $token)</computeroutput></para><para>
+
+<para>Vérifie que le token soit valide et le supprime si valide. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$token</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>bool si le token est valide </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00338_source_1l00046">46</link> du fichier <link linkend="_a00338_source">DefaultExtensions.php</link>.</para>
+</section>
+<anchor xml:id="_a00916_1a373d6145a4cffaddaff2c4c9ac2f6e65"/><section>
+    <title>generateCsrf()</title>
+<indexterm><primary>generateCsrf</primary><secondary>DefaultExtensions</secondary></indexterm>
+<indexterm><primary>DefaultExtensions</primary><secondary>generateCsrf</secondary></indexterm>
+<para><computeroutput>generateCsrf ( )</computeroutput></para><para>
+
+<para>Génère un token csrf. </para>
+</para>
+
+<para><formalpara><title>Renvoie</title>
+
+<para>CsrfManager le gestion de token </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00338_source_1l00037">37</link> du fichier <link linkend="_a00338_source">DefaultExtensions.php</link>.</para>
+</section>
+<anchor xml:id="_a00916_1a131c2522f07821f77cd1d038c216031b"/><section>
+    <title>getFunctions()</title>
+<indexterm><primary>getFunctions</primary><secondary>DefaultExtensions</secondary></indexterm>
+<indexterm><primary>DefaultExtensions</primary><secondary>getFunctions</secondary></indexterm>
+<para><computeroutput>getFunctions ( )</computeroutput></para><para>
+Définition à la ligne <link linkend="_a00338_source_1l00014">14</link> du fichier <link linkend="_a00338_source">DefaultExtensions.php</link>.</para>
+</section>
+<anchor xml:id="_a00916_1ae51039edf7ff9675adb95522e00d4583"/><section>
+    <title>route()</title>
+<indexterm><primary>route</primary><secondary>DefaultExtensions</secondary></indexterm>
+<indexterm><primary>DefaultExtensions</primary><secondary>route</secondary></indexterm>
+<para><computeroutput>route (string $requestMethod, string $routeName, array $replaces = <computeroutput>[]</computeroutput>
+)</computeroutput></para><para>
+
+<para>Recherche une route pour la fournir. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$requestMethod</entry><entry>
+<para>méthode de requête </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$routeName</entry><entry>
+<para>nom de la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry></entry><entry>array&lt;string, string&gt;</entry><entry>
+<para>$replaces éléments de remplacements dans le lien </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>string|null le lien lié à la route </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00338_source_1l00029">29</link> du fichier <link linkend="_a00338_source">DefaultExtensions.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00338">DefaultExtensions.php</link></section>
+</section>

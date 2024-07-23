@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00092_source" xml:lang="fr">
+<title>JoinedColumn.php</title>
+<indexterm><primary>JoinedColumn.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00092_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00092_source_1l00002"/>00002 
+<anchor xml:id="_a00092_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00405">SaboCore\Database\Default\Attributes</link>;
+<anchor xml:id="_a00092_source_1l00004"/>00004 
+<anchor xml:id="_a00092_source_1l00005"/>00005 use&#32;Attribute;
+<anchor xml:id="_a00092_source_1l00006"/>00006 
+<anchor xml:id="_a00092_source_1l00011"/>00011 <emphasis role="preprocessor">#[Attribute]</emphasis>
+<anchor xml:id="_a00092_source_1l00012"/><link linkend="_a00620">00012</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00620">JoinedColumn</link>{
+<anchor xml:id="_a00092_source_1l00016"/><link linkend="_a00620_1abf512a4f5bf2b1a3a6994ff542bb9e3d">00016</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00620_1abf512a4f5bf2b1a3a6994ff542bb9e3d">$classModel</link>;
+<anchor xml:id="_a00092_source_1l00017"/>00017 
+<anchor xml:id="_a00092_source_1l00021"/><link linkend="_a00620_1a58c31dfa753d0b3cf0fdeddc04167d98">00021</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;array&#32;<link linkend="_a00620_1a58c31dfa753d0b3cf0fdeddc04167d98">$joinConfig</link>;
+<anchor xml:id="_a00092_source_1l00022"/>00022 
+<anchor xml:id="_a00092_source_1l00026"/><link linkend="_a00620_1aef934585a7fd557c3e6417a41416a4e1">00026</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_a00620_1aef934585a7fd557c3e6417a41416a4e1">$loadOnGeneration</link>;
+<anchor xml:id="_a00092_source_1l00027"/>00027 
+<anchor xml:id="_a00092_source_1l00033"/><link linkend="_a00620_1add3f65a5305917eef1b3266e7e00a4ef">00033</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00620_1add3f65a5305917eef1b3266e7e00a4ef">__construct</link>(<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00620_1abf512a4f5bf2b1a3a6994ff542bb9e3d">$classModel</link>,array&#32;<link linkend="_a00620_1a58c31dfa753d0b3cf0fdeddc04167d98">$joinConfig</link>,<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_a00620_1aef934585a7fd557c3e6417a41416a4e1">$loadOnGeneration</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>){
+<anchor xml:id="_a00092_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;classModel&#32;=&#32;<link linkend="_a00620_1abf512a4f5bf2b1a3a6994ff542bb9e3d">$classModel</link>;
+<anchor xml:id="_a00092_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;joinConfig&#32;=&#32;<link linkend="_a00620_1a58c31dfa753d0b3cf0fdeddc04167d98">$joinConfig</link>;
+<anchor xml:id="_a00092_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;loadOnGeneration&#32;=&#32;<link linkend="_a00620_1aef934585a7fd557c3e6417a41416a4e1">$loadOnGeneration</link>;
+<anchor xml:id="_a00092_source_1l00037"/>00037 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00092_source_1l00038"/>00038 
+<anchor xml:id="_a00092_source_1l00042"/><link linkend="_a00620_1a076e6f60e412926f7f6d80aa76d5653a">00042</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00620_1a076e6f60e412926f7f6d80aa76d5653a">getClassModel</link>():string{
+<anchor xml:id="_a00092_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;classModel;
+<anchor xml:id="_a00092_source_1l00044"/>00044 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00092_source_1l00045"/>00045 
+<anchor xml:id="_a00092_source_1l00049"/><link linkend="_a00620_1aa9bd214250371f9210f42c6e8df27e95">00049</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00620_1aa9bd214250371f9210f42c6e8df27e95">getJoinConfig</link>():array{
+<anchor xml:id="_a00092_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;joinConfig;
+<anchor xml:id="_a00092_source_1l00051"/>00051 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00092_source_1l00052"/>00052 
+<anchor xml:id="_a00092_source_1l00056"/><link linkend="_a00620_1a647299dc5dd60dbf15f0be0b837961bd">00056</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00620_1a647299dc5dd60dbf15f0be0b837961bd">getLoadOnGeneration</link>():bool{
+<anchor xml:id="_a00092_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;loadOnGeneration;
+<anchor xml:id="_a00092_source_1l00058"/>00058 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00092_source_1l00059"/>00059 }
+</programlisting></section>

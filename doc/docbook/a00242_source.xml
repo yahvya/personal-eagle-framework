@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00242_source" xml:lang="fr">
+<title>RedirectResponse.php</title>
+<indexterm><primary>RedirectResponse.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00242_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00242_source_1l00002"/>00002 
+<anchor xml:id="_a00242_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00419">SaboCore\Routing\Response</link>;
+<anchor xml:id="_a00242_source_1l00004"/>00004 
+<anchor xml:id="_a00242_source_1l00009"/><link linkend="_a00812">00009</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00812">RedirectResponse</link>&#32;<emphasis role="keyword">extends</emphasis>&#32;<link linkend="_a00820">Response</link>{
+<anchor xml:id="_a00242_source_1l00013"/><link linkend="_a00812_1a049301a90bf41a4e12ad50d1bacd2867">00013</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00812_1a049301a90bf41a4e12ad50d1bacd2867">__construct</link>(<emphasis role="keywordtype">string</emphasis>&#32;$link){
+<anchor xml:id="_a00242_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;<link linkend="_a00820_1ac5219f5de9d65547e105f56bfdbadf38">setHeader</link>(name:&#32;<emphasis role="stringliteral">&quot;Location&quot;</emphasis>,value:&#32;$link);
+<anchor xml:id="_a00242_source_1l00015"/>00015 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00242_source_1l00016"/>00016 }
+</programlisting></section>

@@ -1,0 +1,133 @@
+.TH "AppStorage" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AppStorage \- Gestionnaire de stockage de l'application\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Fonctions membres publiques statiques"
+
+.in +1c
+.ti -1c
+.RI "static \fBstoreClassicFile\fP (string $storagePath, string $fileBasePath, bool $createFoldersIfNotExists=true)"
+.br
+.RI "Réalise une copie du fichier dans la destination de stockage\&. "
+.ti -1c
+.RI "static \fBstoreContent\fP (string $storagePath, string $content, bool $createFoldersIfNotExists=true)"
+.br
+.RI "Stock le contenu fourni dans la destination de stockage\&. "
+.ti -1c
+.RI "static \fBstoreFormFile\fP (string $storagePath, string $fileTmpName, bool $createFoldersIfNotExists=true)"
+.br
+.RI "Upload le fichier formulaire dans la destination de stockage\&. "
+.ti -1c
+.RI "static \fBbuildStorageCompletePath\fP (string $pathFromStorage)"
+.br
+.RI "Construis le chemin absolu de stockage\&. "
+.in -1c
+.SH "Description détaillée"
+.PP 
+Gestionnaire de stockage de l'application\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB13\fP du fichier \fBAppStorage\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "static buildStorageCompletePath (string $pathFromStorage)\fC [static]\fP"
+
+.PP
+Construis le chemin absolu de stockage\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$pathFromStorage\fP chemin avec comme racine le dossier de stockage 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+string le chemin complet de stockage 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB94\fP du fichier \fBAppStorage\&.php\fP\&.
+.SS "static storeClassicFile (string $storagePath, string $fileBasePath, bool $createFoldersIfNotExists = \fCtrue\fP)\fC [static]\fP"
+
+.PP
+Réalise une copie du fichier dans la destination de stockage\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$storagePath\fP chemin avec comme racine le dossier de stockage du projet 
+.br
+\fI$fileBasePath\fP chemin complet du fichier à copier 
+.br
+\fI$createFoldersIfNotExists\fP si true et que le nouveau chemin contient des dossiers inexistants, ils seront créés 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB21\fP du fichier \fBAppStorage\&.php\fP\&.
+.SS "static storeContent (string $storagePath, string $content, bool $createFoldersIfNotExists = \fCtrue\fP)\fC [static]\fP"
+
+.PP
+Stock le contenu fourni dans la destination de stockage\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$storagePath\fP chemin avec comme racine le dossier de stockage du projet 
+.br
+\fI$content\fP le contenu à stocker 
+.br
+\fI$createFoldersIfNotExists\fP si true et que le nouveau chemin contient des dossiers inexistants, ils seront créés 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB46\fP du fichier \fBAppStorage\&.php\fP\&.
+.SS "static storeFormFile (string $storagePath, string $fileTmpName, bool $createFoldersIfNotExists = \fCtrue\fP)\fC [static]\fP"
+
+.PP
+Upload le fichier formulaire dans la destination de stockage\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$storagePath\fP chemin avec comme racine le dossier de stockage du projet 
+.br
+\fI$fileTmpName\fP tmp_name associé au fichier 
+.br
+\fI$createFoldersIfNotExists\fP si true et que le nouveau chemin contient des dossiers inexistants, ils seront créés 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB71\fP du fichier \fBAppStorage\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

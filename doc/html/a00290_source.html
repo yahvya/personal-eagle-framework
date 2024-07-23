@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sabo final:  Fichier source de FormFileManager.php</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="favicon.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">Sabo final<span id="projectnumber">&#160;1.1.1</span>
+   </div>
+   <div id="projectbrief">Mini framework php</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('a00290_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">FormFileManager.php</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="a00290.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span>&lt;?php</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">namespace </span><a class="code hl_namespace" href="a00425.html">SaboCore\Utils\FileManager</a>;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>use Override;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>use <a class="code hl_class" href="a00800.html">SaboCore\Routing\Response\DownloadResponse</a>;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>use <a class="code hl_class" href="a00844.html">SaboCore\Treatment\TreatmentException</a>;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>use <a class="code hl_class" href="a00904.html">SaboCore\Utils\Storage\AppStorage</a>;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="a00864.html">   14</a></span><span class="keyword">class </span><a class="code hl_class" href="a00864.html">FormFileManager</a> <span class="keyword">extends</span> <a class="code hl_class" href="a00860.html">FileManager</a>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="a00864.html#aa5315ff3be6e97556315376efcdccec6">   18</a></span>    <span class="keyword">protected</span> array <a class="code hl_variable" href="a00864.html#aa5315ff3be6e97556315376efcdccec6">$fileDatas</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="a00864.html#aefae9405137353cfb90c081874d8a4c7">   20</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00864.html#aefae9405137353cfb90c081874d8a4c7">__construct</a>(array <a class="code hl_variable" href="a00864.html#aa5315ff3be6e97556315376efcdccec6">$fileDatas</a>){</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        parent::__construct(fileAbsolutePath: <a class="code hl_variable" href="a00864.html#aa5315ff3be6e97556315376efcdccec6">$fileDatas</a>[<span class="stringliteral">&quot;tmp_name&quot;</span>]);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        $this-&gt;fileDatas = <a class="code hl_variable" href="a00864.html#aa5315ff3be6e97556315376efcdccec6">$fileDatas</a>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    }</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">    #[Override]</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="a00864.html#abc073d615c782d3e91ec0d06f6456c2a">   32</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00864.html#abc073d615c782d3e91ec0d06f6456c2a">getToDownload</a>(?<span class="keywordtype">string</span> $fileName = <span class="keyword">null</span>): <a class="code hl_class" href="a00800.html">DownloadResponse</a>{</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        throw new <a class="code hl_class" href="a00844.html">TreatmentException</a>(message: <span class="stringliteral">&quot;Ce fichier ne peut pas être téléchargé&quot;</span>,isDisplayable: true);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    }</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">    #[Override]</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="a00864.html#aa3742aafae0db54aaf752b2826176a72">   37</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00864.html#aa3742aafae0db54aaf752b2826176a72">storeIn</a>(<span class="keywordtype">string</span> $path, <span class="keywordtype">bool</span> $createFoldersIfNotExists = <span class="keyword">true</span>): bool{</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        return</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            $this-&gt;getErrorState() == 0 &amp;&amp;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <a class="code hl_class" href="a00904.html">AppStorage</a>::storeFormFile(</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                storagePath: $path,</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                fileTmpName: $this-&gt;fileAbsolutePath,</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                createFoldersIfNotExists: $createFoldersIfNotExists</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            );</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">    #[Override]</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="a00864.html#a9ac68df2af17ace6a2430d1fc34984ce">   52</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00864.html#a9ac68df2af17ace6a2430d1fc34984ce">getFromStorage</a>(): ?<a class="code hl_class" href="a00856.html">FileContentManager</a>{</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        return null;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">    #[Override]</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="a00864.html#a13bdffdd926f26b825ea57066334ff01">   61</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <span class="keyword">delete</span>(): <span class="keywordtype">bool</span>{</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="a00864.html#a830b5c75df72b32396701bc563fbe3c7">   68</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00864.html#a830b5c75df72b32396701bc563fbe3c7">getType</a>():string{</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        return $this-&gt;fileDatas[<span class="stringliteral">&quot;type&quot;</span>] ?? <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="a00864.html#a3e694ddaaa663c1abc74b9e30b143b89">   77</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00864.html#a3e694ddaaa663c1abc74b9e30b143b89">isInTypes</a>(<span class="keywordtype">string</span> ...$typesToCheck):bool{</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        return in_array(needle: $this-&gt;getType(),haystack: $typesToCheck);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    }</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="a00864.html#a7563c2998ef776441d5a3ad56bbc66b9">   84</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00864.html#a7563c2998ef776441d5a3ad56bbc66b9">getErrorState</a>():int{</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        return $this-&gt;fileDatas[<span class="stringliteral">&quot;error&quot;</span>];</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    }</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="a00864.html#a75cce10cdf81be6dc84881c28b3379b7">   91</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00864.html#a75cce10cdf81be6dc84881c28b3379b7">getSize</a>():int{</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        return $this-&gt;fileDatas[<span class="stringliteral">&quot;size&quot;</span>];</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    }</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>}</div>
+<div class="ttc" id="aa00425_html"><div class="ttname"><a href="a00425.html">SaboCore\Utils\FileManager</a></div><div class="ttdef"><b>Definition:</b> <a href="a00284_source.html#l00003">FileContentManager.php:3</a></div></div>
+<div class="ttc" id="aa00800_html"><div class="ttname"><a href="a00800.html">SaboCore\Routing\Response\DownloadResponse</a></div><div class="ttdoc">Réponse de téléchargement.</div><div class="ttdef"><b>Definition:</b> <a href="a00233_source.html#l00012">DownloadResponse.php:12</a></div></div>
+<div class="ttc" id="aa00844_html"><div class="ttname"><a href="a00844.html">SaboCore\Treatment\TreatmentException</a></div><div class="ttdoc">Exception de traitement.</div><div class="ttdef"><b>Definition:</b> <a href="a00269_source.html#l00011">TreatmentException.php:11</a></div></div>
+<div class="ttc" id="aa00856_html"><div class="ttname"><a href="a00856.html">SaboCore\Utils\FileManager\FileContentManager</a></div><div class="ttdoc">Gestionnaire de contenu de fichiers.</div><div class="ttdef"><b>Definition:</b> <a href="a00284_source.html#l00011">FileContentManager.php:11</a></div></div>
+<div class="ttc" id="aa00860_html"><div class="ttname"><a href="a00860.html">SaboCore\Utils\FileManager\FileManager</a></div><div class="ttdoc">Gestionnaire de fichier serveur.</div><div class="ttdef"><b>Definition:</b> <a href="a00287_source.html#l00015">FileManager.php:15</a></div></div>
+<div class="ttc" id="aa00864_html"><div class="ttname"><a href="a00864.html">SaboCore\Utils\FileManager\FormFileManager</a></div><div class="ttdoc">Gestionnaire de fichier provenant de formulaire ($_FILES)</div><div class="ttdef"><b>Definition:</b> <a href="a00290_source.html#l00014">FormFileManager.php:14</a></div></div>
+<div class="ttc" id="aa00864_html_a3e694ddaaa663c1abc74b9e30b143b89"><div class="ttname"><a href="a00864.html#a3e694ddaaa663c1abc74b9e30b143b89">SaboCore\Utils\FileManager\FormFileManager\isInTypes</a></div><div class="ttdeci">isInTypes(string ... $typesToCheck)</div><div class="ttdoc">Vérifie si le type mime contenu du fichier est présent dans la liste fournie.</div><div class="ttdef"><b>Definition:</b> <a href="a00290_source.html#l00077">FormFileManager.php:77</a></div></div>
+<div class="ttc" id="aa00864_html_a7563c2998ef776441d5a3ad56bbc66b9"><div class="ttname"><a href="a00864.html#a7563c2998ef776441d5a3ad56bbc66b9">SaboCore\Utils\FileManager\FormFileManager\getErrorState</a></div><div class="ttdeci">getErrorState()</div><div class="ttdef"><b>Definition:</b> <a href="a00290_source.html#l00084">FormFileManager.php:84</a></div></div>
+<div class="ttc" id="aa00864_html_a75cce10cdf81be6dc84881c28b3379b7"><div class="ttname"><a href="a00864.html#a75cce10cdf81be6dc84881c28b3379b7">SaboCore\Utils\FileManager\FormFileManager\getSize</a></div><div class="ttdeci">getSize()</div><div class="ttdef"><b>Definition:</b> <a href="a00290_source.html#l00091">FormFileManager.php:91</a></div></div>
+<div class="ttc" id="aa00864_html_a830b5c75df72b32396701bc563fbe3c7"><div class="ttname"><a href="a00864.html#a830b5c75df72b32396701bc563fbe3c7">SaboCore\Utils\FileManager\FormFileManager\getType</a></div><div class="ttdeci">getType()</div><div class="ttdef"><b>Definition:</b> <a href="a00290_source.html#l00068">FormFileManager.php:68</a></div></div>
+<div class="ttc" id="aa00864_html_a9ac68df2af17ace6a2430d1fc34984ce"><div class="ttname"><a href="a00864.html#a9ac68df2af17ace6a2430d1fc34984ce">SaboCore\Utils\FileManager\FormFileManager\getFromStorage</a></div><div class="ttdeci">getFromStorage()</div><div class="ttdef"><b>Definition:</b> <a href="a00290_source.html#l00052">FormFileManager.php:52</a></div></div>
+<div class="ttc" id="aa00864_html_aa3742aafae0db54aaf752b2826176a72"><div class="ttname"><a href="a00864.html#aa3742aafae0db54aaf752b2826176a72">SaboCore\Utils\FileManager\FormFileManager\storeIn</a></div><div class="ttdeci">storeIn(string $path, bool $createFoldersIfNotExists=true)</div><div class="ttdoc">Stock le fichier dans le dossier de stockage (en conservant le fichier actuel)</div><div class="ttdef"><b>Definition:</b> <a href="a00290_source.html#l00037">FormFileManager.php:37</a></div></div>
+<div class="ttc" id="aa00864_html_aa5315ff3be6e97556315376efcdccec6"><div class="ttname"><a href="a00864.html#aa5315ff3be6e97556315376efcdccec6">SaboCore\Utils\FileManager\FormFileManager\$fileDatas</a></div><div class="ttdeci">array $fileDatas</div><div class="ttdef"><b>Definition:</b> <a href="a00290_source.html#l00018">FormFileManager.php:18</a></div></div>
+<div class="ttc" id="aa00864_html_abc073d615c782d3e91ec0d06f6456c2a"><div class="ttname"><a href="a00864.html#abc073d615c782d3e91ec0d06f6456c2a">SaboCore\Utils\FileManager\FormFileManager\getToDownload</a></div><div class="ttdeci">getToDownload(?string $fileName=null)</div><div class="ttdef"><b>Definition:</b> <a href="a00290_source.html#l00032">FormFileManager.php:32</a></div></div>
+<div class="ttc" id="aa00864_html_aefae9405137353cfb90c081874d8a4c7"><div class="ttname"><a href="a00864.html#aefae9405137353cfb90c081874d8a4c7">SaboCore\Utils\FileManager\FormFileManager\__construct</a></div><div class="ttdeci">__construct(array $fileDatas)</div><div class="ttdef"><b>Definition:</b> <a href="a00290_source.html#l00020">FormFileManager.php:20</a></div></div>
+<div class="ttc" id="aa00904_html"><div class="ttname"><a href="a00904.html">SaboCore\Utils\Storage\AppStorage</a></div><div class="ttdoc">Gestionnaire de stockage de l'application.</div><div class="ttdef"><b>Definition:</b> <a href="a00326_source.html#l00013">AppStorage.php:13</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_5a9687d32d98fbbdb60629c9ff0dd338.html">sabo-core</a></li><li class="navelem"><a class="el" href="dir_27d72d4b518677f61e722129f47020e8.html">utils</a></li><li class="navelem"><a class="el" href="dir_4577860d4cecc32cf88d160e5d61ad6f.html">file-manager</a></li><li class="navelem"><a class="el" href="a00290.html">FormFileManager.php</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
+</body>
+</html>

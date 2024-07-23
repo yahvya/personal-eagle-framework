@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00433" xml:lang="fr">
+<title>Référence de l&apos;espace de nommage SaboCore\Utils\TwigExtensions</title>
+<indexterm><primary>SaboCore\Utils\TwigExtensions</primary></indexterm>
+<simplesect>
+    <title>Structures de données    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_a00916">DefaultExtensions</link></para>
+
+<para>Extensions par défaut de twig. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

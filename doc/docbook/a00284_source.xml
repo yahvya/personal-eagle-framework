@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00284_source" xml:lang="fr">
+<title>FileContentManager.php</title>
+<indexterm><primary>FileContentManager.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00284_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00284_source_1l00002"/>00002 
+<anchor xml:id="_a00284_source_1l00003"/><link linkend="_a00425">00003</link> <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00425">SaboCore\Utils\FileManager</link>;
+<anchor xml:id="_a00284_source_1l00004"/>00004 
+<anchor xml:id="_a00284_source_1l00005"/>00005 use&#32;<link linkend="_a00844">SaboCore\Treatment\TreatmentException</link>;
+<anchor xml:id="_a00284_source_1l00006"/>00006 
+<anchor xml:id="_a00284_source_1l00011"/><link linkend="_a00856">00011</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00856">FileContentManager</link>{
+<anchor xml:id="_a00284_source_1l00015"/><link linkend="_a00856_1a6e0c009437a5b0052924185664e19a80">00015</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00856_1a6e0c009437a5b0052924185664e19a80">$fileContent</link>;
+<anchor xml:id="_a00284_source_1l00016"/>00016 
+<anchor xml:id="_a00284_source_1l00020"/><link linkend="_a00856_1aeef734a429dff6af7193955a437b6d91">00020</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00856_1aeef734a429dff6af7193955a437b6d91">__construct</link>(<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00856_1a6e0c009437a5b0052924185664e19a80">$fileContent</link>){
+<anchor xml:id="_a00284_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;fileContent&#32;=&#32;<link linkend="_a00856_1a6e0c009437a5b0052924185664e19a80">$fileContent</link>;
+<anchor xml:id="_a00284_source_1l00022"/>00022 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00284_source_1l00023"/>00023 
+<anchor xml:id="_a00284_source_1l00024"/><link linkend="_a00856_1a58e43f09a06ce4e29b192c4e17ce7915">00024</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00856_1a58e43f09a06ce4e29b192c4e17ce7915">getContent</link>():string{
+<anchor xml:id="_a00284_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;fileContent;
+<anchor xml:id="_a00284_source_1l00026"/>00026 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00284_source_1l00027"/>00027 
+<anchor xml:id="_a00284_source_1l00032"/><link linkend="_a00856_1a256f572119148794dfe0d094e9d926e8">00032</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00856_1a256f572119148794dfe0d094e9d926e8">getJsonContent</link>():array{
+<anchor xml:id="_a00284_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$convertedContent&#32;=&#32;@json_decode(json:&#32;$this-&gt;fileContent,associative:&#32;true);
+<anchor xml:id="_a00284_source_1l00034"/>00034 
+<anchor xml:id="_a00284_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(gettype(value:&#32;$convertedContent)&#32;!==&#32;<emphasis role="stringliteral">&quot;array&quot;</emphasis>)
+<anchor xml:id="_a00284_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00844">TreatmentException</link>(message:&#32;<emphasis role="stringliteral">&quot;Le&#32;fichier&#32;ne&#32;peut&#32;être&#32;converti&#32;au&#32;format&#32;json&quot;</emphasis>,isDisplayable:&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="_a00284_source_1l00037"/>00037 
+<anchor xml:id="_a00284_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$convertedContent;
+<anchor xml:id="_a00284_source_1l00039"/>00039 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00284_source_1l00040"/>00040 }
+</programlisting></section>

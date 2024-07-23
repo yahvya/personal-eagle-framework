@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00548" xml:lang="fr">
+<title>Référence de la classe CliArgument</title>
+<indexterm><primary>CliArgument</primary></indexterm>
+<para>
+
+<para>Argument de ligne de commande. </para>
+ 
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00548_1ad5900c7299bdff07295ca71ec625a932">__construct</link> (string $argument)</para>
+</listitem>
+            <listitem><para><link linkend="_a00548_1a18be5a647f56ff5c2e61575fed749eb6">getOption</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00548_1af18a30d4b469a874d921b3f797aaae61">getArgumentValue</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00548_1a88ec9370bcbdb60301f89e401c9e64e1">getArgument</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Fonctions membres publiques statiques    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_a00548_1af555fbdb43b8001807dd8e11daf3b96b">extractArgDatas</link> (string $argument)</para>
+
+<para>Extrait l&apos;option et la valeur à partir d&apos;une chaine au format argument de ligne de commande. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Attributs protégés    </title>
+        <itemizedlist>
+            <listitem><para>string null <link linkend="_a00548_1ab3d240c75b994bff3338ce43210866b2">$option</link></para>
+</listitem>
+            <listitem><para>string <link linkend="_a00548_1a5e4323254fd7b72491b86c27166387ef">$argumentValue</link></para>
+</listitem>
+            <listitem><para>string <link linkend="_a00548_1a5318be7b120bbfe7418f2c3fc0eaafd3">$argument</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Argument de ligne de commande. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00011_source_1l00009">9</link> du fichier <link linkend="_a00011_source">CliArgument.php</link>.</para>
+</section>
+<section>
+<title>Documentation des constructeurs et destructeur</title>
+<anchor xml:id="_a00548_1ad5900c7299bdff07295ca71ec625a932"/><section>
+    <title>__construct()</title>
+<indexterm><primary>__construct</primary><secondary>CliArgument</secondary></indexterm>
+<indexterm><primary>CliArgument</primary><secondary>__construct</secondary></indexterm>
+<para><computeroutput>__construct (string $argument)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$argument</entry><entry>
+<para>Argument complet saisi en ligne de commande </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00011_source_1l00028">28</link> du fichier <link linkend="_a00011_source">CliArgument.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00548_1af555fbdb43b8001807dd8e11daf3b96b"/><section>
+    <title>extractArgDatas()</title>
+<indexterm><primary>extractArgDatas</primary><secondary>CliArgument</secondary></indexterm>
+<indexterm><primary>CliArgument</primary><secondary>extractArgDatas</secondary></indexterm>
+<para><computeroutput>static extractArgDatas (string $argument)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Extrait l&apos;option et la valeur à partir d&apos;une chaine au format argument de ligne de commande. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$argument</entry><entry>
+<para>Argument complet </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>array les données extraites au format [&quot;option&quot; → ..., &quot;argumentValue&quot; → ...] </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00011_source_1l00059">59</link> du fichier <link linkend="_a00011_source">CliArgument.php</link>.</para>
+</section>
+<anchor xml:id="_a00548_1a88ec9370bcbdb60301f89e401c9e64e1"/><section>
+    <title>getArgument()</title>
+<indexterm><primary>getArgument</primary><secondary>CliArgument</secondary></indexterm>
+<indexterm><primary>CliArgument</primary><secondary>getArgument</secondary></indexterm>
+<para><computeroutput>getArgument ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string Chaine complète de l&apos;argument </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00011_source_1l00050">50</link> du fichier <link linkend="_a00011_source">CliArgument.php</link>.</para>
+</section>
+<anchor xml:id="_a00548_1af18a30d4b469a874d921b3f797aaae61"/><section>
+    <title>getArgumentValue()</title>
+<indexterm><primary>getArgumentValue</primary><secondary>CliArgument</secondary></indexterm>
+<indexterm><primary>CliArgument</primary><secondary>getArgumentValue</secondary></indexterm>
+<para><computeroutput>getArgumentValue ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string contenu de l&apos;argument sans l&apos;option potentielle </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00011_source_1l00043">43</link> du fichier <link linkend="_a00011_source">CliArgument.php</link>.</para>
+</section>
+<anchor xml:id="_a00548_1a18be5a647f56ff5c2e61575fed749eb6"/><section>
+    <title>getOption()</title>
+<indexterm><primary>getOption</primary><secondary>CliArgument</secondary></indexterm>
+<indexterm><primary>CliArgument</primary><secondary>getOption</secondary></indexterm>
+<para><computeroutput>getOption ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string|null option trouvée (&#8211;option=....) ou null si pas d&apos;option </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00011_source_1l00036">36</link> du fichier <link linkend="_a00011_source">CliArgument.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des champs</title>
+<anchor xml:id="_a00548_1a5318be7b120bbfe7418f2c3fc0eaafd3"/><section>
+    <title>$argument</title>
+<indexterm><primary>$argument</primary><secondary>CliArgument</secondary></indexterm>
+<indexterm><primary>CliArgument</primary><secondary>$argument</secondary></indexterm>
+<para><computeroutput>string $argument<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00011_source_1l00023">23</link> du fichier <link linkend="_a00011_source">CliArgument.php</link>.</para>
+</section>
+<anchor xml:id="_a00548_1a5e4323254fd7b72491b86c27166387ef"/><section>
+    <title>$argumentValue</title>
+<indexterm><primary>$argumentValue</primary><secondary>CliArgument</secondary></indexterm>
+<indexterm><primary>CliArgument</primary><secondary>$argumentValue</secondary></indexterm>
+<para><computeroutput>string $argumentValue<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00011_source_1l00018">18</link> du fichier <link linkend="_a00011_source">CliArgument.php</link>.</para>
+</section>
+<anchor xml:id="_a00548_1ab3d240c75b994bff3338ce43210866b2"/><section>
+    <title>$option</title>
+<indexterm><primary>$option</primary><secondary>CliArgument</secondary></indexterm>
+<indexterm><primary>CliArgument</primary><secondary>$option</secondary></indexterm>
+<para><computeroutput>string null $option<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00011_source_1l00013">13</link> du fichier <link linkend="_a00011_source">CliArgument.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00011">CliArgument.php</link></section>
+</section>

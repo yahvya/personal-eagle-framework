@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00415" xml:lang="fr">
+<title>Référence de l&apos;espace de nommage SaboCore\Database\System</title>
+<indexterm><primary>SaboCore\Database\System</primary></indexterm>
+<simplesect>
+    <title>Structures de données    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_a00764">DatabaseActionException</link></para>
+
+<para>Exception d&apos;action sur un processus de la base de données. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00768">DatabaseComparator</link></para>
+
+<para>Représentation de la fonction de comparaison. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00772">DatabaseCondition</link></para>
+
+<para>Condition de récupération. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00776">DatabaseCondSeparator</link></para>
+
+<para>Représentation de la séparation entre deux conditions. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00780">DatabaseModel</link></para>
+
+<para>Modèle de la base de données. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Énumérations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_a00415_1a1e9821eaec23ae2ec90932c730046b80">DatabaseActions</link> : int { <link linkend="_a00415_1a1e9821eaec23ae2ec90932c730046b80a98196288f83d9ed6f1e32d7e1c97df99">BEFORE_GENERATION</link> = 12
+ }</para>
+
+<para>Actions de la base de données. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Documentation du type de l&apos;énumération</title>
+<anchor xml:id="_a00415_1a1e9821eaec23ae2ec90932c730046b80"/><section>
+    <title>DatabaseActions</title>
+<indexterm><primary>DatabaseActions</primary><secondary>SaboCore\Database\System</secondary></indexterm>
+<indexterm><primary>SaboCore\Database\System</primary><secondary>DatabaseActions</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_a00415_1a1e9821eaec23ae2ec90932c730046b80">DatabaseActions</link> : int</computeroutput></para><para>
+
+<para>Actions de la base de données. </para>
+</para>
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<informaltable frame="all">
+<title>Valeurs énumérées</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>BEFORE_GENERATION</primary><secondary>SaboCore\Database\System</secondary></indexterm>
+<indexterm><primary>SaboCore\Database\System</primary><secondary>BEFORE_GENERATION</secondary></indexterm>
+<anchor xml:id="_a00415_1a1e9821eaec23ae2ec90932c730046b80a98196288f83d9ed6f1e32d7e1c97df99"/>BEFORE_GENERATION</entry><entry>
+<para>Création du model en base de données. </para>
+
+<para>Actions avant création du model en base de données</para>
+
+<para>Actions après création du model en base de données</para>
+
+<para>Mise à jour du model en base de données</para>
+
+<para>Actions avant mise à jour du model en base de données</para>
+
+<para>Actions après mise à jour du model en base de données</para>
+
+<para>Suppression du model en base de données</para>
+
+<para>Actions avant suppression du model en base de données</para>
+
+<para>Actions après suppression du model en base de données</para>
+
+<para>Durant la génération du model</para>
+
+<para>Après génération du model lors du find</para>
+
+<para>Avant génération du model lors du find </para>
+</entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+<para>
+Définition à la ligne <link linkend="_a00203_source_1l00009">9</link> du fichier <link linkend="_a00203_source">DatabaseActions.php</link>.</para>
+</section>
+</section>
+</section>

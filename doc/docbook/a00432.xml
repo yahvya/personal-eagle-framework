@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00432" xml:lang="fr">
+<title>Référence de l&apos;espace de nommage SaboCore\Utils\String</title>
+<indexterm><primary>SaboCore\Utils\String</primary></indexterm>
+<simplesect>
+    <title>Structures de données    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_a00912">RandomStringGenerator</link></para>
+
+<para>Générateur de chaine aléatoire. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Énumérations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_a00432_1add4f75f97db16032d6f41b34f8a28222">RandomStringType</link> : string { <link linkend="_a00432_1add4f75f97db16032d6f41b34f8a28222ad22e5fea7341e7227ef734951f404c8c">SPECIALCHARS</link> = &quot;specialchars&quot;
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Documentation du type de l&apos;énumération</title>
+<anchor xml:id="_a00432_1add4f75f97db16032d6f41b34f8a28222"/><section>
+    <title>RandomStringType</title>
+<indexterm><primary>RandomStringType</primary><secondary>SaboCore\Utils\String</secondary></indexterm>
+<indexterm><primary>SaboCore\Utils\String</primary><secondary>RandomStringType</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_a00432_1add4f75f97db16032d6f41b34f8a28222">RandomStringType</link> : string</computeroutput></para>
+<para>liste les types de caractères utilisables </para>
+<informaltable frame="all">
+<title>Valeurs énumérées</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>SPECIALCHARS</primary><secondary>SaboCore\Utils\String</secondary></indexterm>
+<indexterm><primary>SaboCore\Utils\String</primary><secondary>SPECIALCHARS</secondary></indexterm>
+<anchor xml:id="_a00432_1add4f75f97db16032d6f41b34f8a28222ad22e5fea7341e7227ef734951f404c8c"/>SPECIALCHARS</entry><entry>
+<para>caractères majuscules caractères minuscules nombres caractère spéciaux </para>
+</entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+<para>
+Définition à la ligne <link linkend="_a00335_source_1l00008">8</link> du fichier <link linkend="_a00335_source">RandomStringType.php</link>.</para>
+</section>
+</section>
+</section>

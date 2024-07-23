@@ -1,0 +1,107 @@
+.TH "DefaultExtensions" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+DefaultExtensions \- Extensions par défaut de twig\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de AbstractExtension\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fBgetFunctions\fP ()"
+.br
+.ti -1c
+.RI "\fBroute\fP (string $requestMethod, string $routeName, array $replaces=[])"
+.br
+.RI "Recherche une route pour la fournir\&. "
+.ti -1c
+.RI "\fBgenerateCsrf\fP ()"
+.br
+.RI "Génère un token csrf\&. "
+.ti -1c
+.RI "\fBcheckCsrf\fP (string $token)"
+.br
+.RI "Vérifie que le token soit valide et le supprime si valide\&. "
+.in -1c
+.SH "Description détaillée"
+.PP 
+Extensions par défaut de twig\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB13\fP du fichier \fBDefaultExtensions\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "checkCsrf (string $token)"
+
+.PP
+Vérifie que le token soit valide et le supprime si valide\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$token\fP 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+bool si le token est valide 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB46\fP du fichier \fBDefaultExtensions\&.php\fP\&.
+.SS "generateCsrf ()"
+
+.PP
+Génère un token csrf\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+CsrfManager le gestion de token 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB37\fP du fichier \fBDefaultExtensions\&.php\fP\&.
+.SS "getFunctions ()"
+
+.PP
+Définition à la ligne \fB14\fP du fichier \fBDefaultExtensions\&.php\fP\&.
+.SS "route (string $requestMethod, string $routeName, array $replaces = \fC[]\fP)"
+
+.PP
+Recherche une route pour la fournir\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$requestMethod\fP méthode de requête 
+.br
+\fI$routeName\fP nom de la route 
+.br
+\fIarray<string,string>\fP $replaces éléments de remplacements dans le lien 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+string|null le lien lié à la route 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB29\fP du fichier \fBDefaultExtensions\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

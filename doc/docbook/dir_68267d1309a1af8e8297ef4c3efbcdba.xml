@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_68267d1309a1af8e8297ef4c3efbcdba" xml:lang="fr">
+<title>Répertoire de référence de src</title>
+<indexterm><primary>Répertoire de référence de src</primary></indexterm>
+<simplesect>
+    <title>Répertoires    </title>
+        <itemizedlist>
+            <listitem><para>répertoire <link linkend="_dir_5e44f741ef78961d5b384b3270a82363">configs</link></para>
+</listitem>
+            <listitem><para>répertoire <link linkend="_dir_bbd6674d859f4cefaacb708974cac240">controllers</link></para>
+</listitem>
+            <listitem><para>répertoire <link linkend="_dir_bdeba5f06b852fec80257c0bf4c3c36e">models</link></para>
+</listitem>
+            <listitem><para>répertoire <link linkend="_dir_29f5acfcb9774392b15237ff4f3488c0">routes</link></para>
+</listitem>
+            <listitem><para>répertoire <link linkend="_dir_452baf35e1d7639c9f2a5ece4ec85855">storage</link></para>
+</listitem>
+            <listitem><para>répertoire <link linkend="_dir_9678ed6e3d8f9cea9c46a1cb47934d72">treatment</link></para>
+</listitem>
+            <listitem><para>répertoire <link linkend="_dir_1e071d60a48aca1189e1d43f5e2d0cd5">views</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

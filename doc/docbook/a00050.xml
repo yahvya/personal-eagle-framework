@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00050" xml:lang="fr">
+<title>Référence du fichier DatabaseConfig.php</title>
+<indexterm><primary>DatabaseConfig.php</primary></indexterm>
+<simplesect>
+    <title>Espaces de nommage    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_a00403">SaboCore\Config</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Énumérations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_a00403_1a4faa51b0e299a3f79c5dcf2fc69d3bdb">DatabaseConfig</link> : string { <link linkend="_a00403_1a4faa51b0e299a3f79c5dcf2fc69d3bdba8ba9dbf3ed1779330cd1d05ecb1b4157">PROVIDER_CONFIG</link> = &quot;providerConfig&quot;
+ }</para>
+
+<para>Configuration de la base de donnée. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

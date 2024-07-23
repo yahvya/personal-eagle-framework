@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00299" xml:lang="fr">
+<title>Référence du fichier MailerTemplateProvider.php</title>
+<indexterm><primary>MailerTemplateProvider.php</primary></indexterm>
+<simplesect>
+    <title>Structures de données    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_a00876">MailerTemplateProvider</link></para>
+
+<para>Représente un fournisseur html pour mail à partir d&apos;un template. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Espaces de nommage    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_a00427">SaboCore\Utils\Mailer</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

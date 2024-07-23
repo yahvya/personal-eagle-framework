@@ -1,0 +1,27 @@
+\hypertarget{a00164_source}{}\doxysection{Json\+Reformer.\+php}
+\label{a00164_source}\index{JsonReformer.php@{JsonReformer.php}}
+\mbox{\hyperlink{a00164}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{a00164_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{a00164_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{a00164_source_l00003}00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{a00410}{SaboCore\(\backslash\)Database\(\backslash\)Default\(\backslash\)Formatters}};}
+\DoxyCodeLine{\Hypertarget{a00164_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{a00164_source_l00005}00005\ use\ Override;}
+\DoxyCodeLine{\Hypertarget{a00164_source_l00006}00006\ use\ \mbox{\hyperlink{a00752}{SaboCore\(\backslash\)Database\(\backslash\)Default\(\backslash\)System\(\backslash\)MysqlModel}};}
+\DoxyCodeLine{\Hypertarget{a00164_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{a00164_source_l00012}\mbox{\hyperlink{a00716}{00012}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{a00716}{JsonReformer}}\ \textcolor{keyword}{implements}\ \mbox{\hyperlink{a00704}{Formater}}\{}
+\DoxyCodeLine{\Hypertarget{a00164_source_l00013}00013\ \textcolor{preprocessor}{\ \ \ \ \#[Override]}}
+\DoxyCodeLine{\Hypertarget{a00164_source_l00014}\mbox{\hyperlink{a00716_a195b10c024dfd48be18e6adc2b014d42}{00014}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00716_a195b10c024dfd48be18e6adc2b014d42}{format}}(\mbox{\hyperlink{a00752}{MysqlModel}}\ \$baseModel,mixed\ \$data):\ string\{}
+\DoxyCodeLine{\Hypertarget{a00164_source_l00015}00015\ \ \ \ \ \ \ \ \ if(!json\_validate(json:\ \$data)\ ===\ false)}
+\DoxyCodeLine{\Hypertarget{a00164_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ throw\ new\ \mbox{\hyperlink{a00708}{FormaterException}}(failedFormater:\ \$this,\ errorMessage:\ \textcolor{stringliteral}{"{}La\ donnée\ fournie\ n'est\ pas\ une\ chaine\ json"{}},isDisplayable:\ false);}
+\DoxyCodeLine{\Hypertarget{a00164_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{a00164_source_l00018}00018\ \ \ \ \ \ \ \ \ \$json\ =\ @json\_decode(json:\ \$data,associative:\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{a00164_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{a00164_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\$json\ ===\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{a00164_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{a00708}{FormaterException}}(failedFormater:\ \$this,\ errorMessage:\ \textcolor{stringliteral}{"{}Echec\ de\ décodage\ du\ json"{}},isDisplayable:\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{a00164_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{a00164_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$json;}
+\DoxyCodeLine{\Hypertarget{a00164_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00164_source_l00025}00025\ \}}
+
+\end{DoxyCode}

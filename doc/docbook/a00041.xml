@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00041" xml:lang="fr">
+<title>Référence du fichier ApplicationPathConfig.php</title>
+<indexterm><primary>ApplicationPathConfig.php</primary></indexterm>
+<simplesect>
+    <title>Espaces de nommage    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_a00403">SaboCore\Config</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Énumérations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_a00403_1a5ac724992dae83d1796fa6e40bfeb541">ApplicationPathConfig</link> : string { <link linkend="_a00403_1a5ac724992dae83d1796fa6e40bfeb541ab30216d29ec5ef4fd6b10797e995c09e">TWIG_FUNCTIONS_CONFIG_FILEPATH</link> = &quot;TWIG_FUNCTIONS_CONFIG_FILEPATH&quot;
+ }</para>
+
+<para>Configuration des chemins de l&apos;application. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

@@ -1,0 +1,165 @@
+.TH "ArgumentManager" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ArgumentManager \- Gestionnaire d'arguments de la ligne de commandes\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP (array $argv)"
+.br
+.ti -1c
+.RI "\fBprevious\fP ()"
+.br
+.RI "Recherche l'argument précédent à consumer et place le curseur sur le précédent\&. "
+.ti -1c
+.RI "\fBnext\fP ()"
+.br
+.RI "Recherche l'argument actuel à consumer et place le curseur sur le suivant\&. "
+.ti -1c
+.RI "\fBfind\fP (string $optionName, bool $fromCurrentIndex=false)"
+.br
+.RI "Recherche un argument à partir du nom de l'option fourni\&. "
+.ti -1c
+.RI "\fBgetCount\fP ()"
+.br
+.ti -1c
+.RI "\fBgetArgs\fP ()"
+.br
+.in -1c
+.SS "Attributs protégés"
+
+.in +1c
+.ti -1c
+.RI "array \fB$args\fP = []"
+.br
+.ti -1c
+.RI "int \fB$currentIndex\fP = 0"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Gestionnaire d'arguments de la ligne de commandes\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya/ 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB9\fP du fichier \fBArgumentManager\&.php\fP\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "__construct (array $argv)"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$argv\fP variable argv 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB23\fP du fichier \fBArgumentManager\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "find (string $optionName, bool $fromCurrentIndex = \fCfalse\fP)"
+
+.PP
+Recherche un argument à partir du nom de l'option fourni\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$optionName\fP Nom de l'option (comparaison sensible à la casse) 
+.br
+\fI$fromCurrentIndex\fP Si true alors la recherche débute à l'index interne laissé suite à l'utilisation de (previous / next) 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+CliArgument|null L'argument trouvé ou null si aucun trouvé 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB55\fP du fichier \fBArgumentManager\&.php\fP\&.
+.SS "getArgs ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+CliArgument[] les arguments de la ligne de commande 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB80\fP du fichier \fBArgumentManager\&.php\fP\&.
+.SS "getCount ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+int le nombre d'arguments de la ligne de commande 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB73\fP du fichier \fBArgumentManager\&.php\fP\&.
+.SS "next ()"
+
+.PP
+Recherche l'argument actuel à consumer et place le curseur sur le suivant\&. 
+.PP
+\fBAttention\fP
+.RS 4
+quand l'argument n'a pas été trouvé le curseur ne bouge pas 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+CliArgument|null l'argument s'il est trouvé ou null 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB45\fP du fichier \fBArgumentManager\&.php\fP\&.
+.SS "previous ()"
+
+.PP
+Recherche l'argument précédent à consumer et place le curseur sur le précédent\&. 
+.PP
+\fBAttention\fP
+.RS 4
+quand l'argument n'a pas été trouvé le curseur ne bouge pas 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+CliArgument|null l'argument s'il est trouvé ou null 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB36\fP du fichier \fBArgumentManager\&.php\fP\&.
+.SH "Documentation des champs"
+.PP 
+.SS "array $args = []\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB13\fP du fichier \fBArgumentManager\&.php\fP\&.
+.SS "int $currentIndex = 0\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB18\fP du fichier \fBArgumentManager\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

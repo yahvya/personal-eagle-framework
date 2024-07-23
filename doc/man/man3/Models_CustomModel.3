@@ -1,0 +1,243 @@
+.TH "CustomModel" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CustomModel \- Model customisé de l'application\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de \fBMysqlModel\fP\&.
+.SS "Membres hérités additionnels"
+
+
+Fonctions membres publiques hérités de \fBMysqlModel\fP
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP ()"
+.br
+.ti -1c
+.RI "\fBcreate\fP ()"
+.br
+.RI "Crée la ligne dans la base de données\&. "
+.ti -1c
+.RI "\fBupdate\fP ()"
+.br
+.RI "Met à jour la ligne en base de données, basé sur les clés primaires\&. "
+.ti -1c
+.RI "\fBdelete\fP ()"
+.br
+.RI "Supprime la ligne en base de données, basé sur les clés primaires\&. "
+.ti -1c
+.RI "\fBsetAttribute\fP (string $attributeName, mixed $value)"
+.br
+.RI "Met à jour la valeur d'un attribut\&. "
+.ti -1c
+.RI "\fBgetAttribute\fP (string $attributeName, bool $reform=true)"
+.br
+.RI "Fourni la valeur de l'attribut\&. "
+.ti -1c
+.RI "\fBgetAttributOriginal\fP (string $attributeName)"
+.br
+.RI "Fourni la valeur originale non formatée de l'attribut\&. "
+.ti -1c
+.RI "\fBgetColumnsConfig\fP ()"
+.br
+.ti -1c
+.RI "\fBgetColumnConfig\fP (string $attributName)"
+.br
+.RI "Fourni la configuration de colonne d'un attribut en particulier\&. "
+.ti -1c
+.RI "\fBgetJoinedColumnsConfig\fP ()"
+.br
+.ti -1c
+.RI "\fBgetTableNameManager\fP ()"
+.br
+.ti -1c
+.RI "\fBgetAsArray\fP (bool $addJoinedColumns=true)"
+.br
+.RI "Transforme les données du model en tableau\&. "
+.ti -1c
+.RI "\fBsetAttributesOriginalValues\fP (array $attributesOriginalValues)"
+.br
+.ti -1c
+.RI "\fBafterGeneration\fP (mixed $datas=[])"
+.br
+.RI "Actions à faire après la génération du model à partir de la méthode find\&. "
+.in -1c
+.in +1c
+.ti -1c
+.RI "\fBcreate\fP ()"
+.br
+.RI "Crée la ligne dans la base de données\&. "
+.ti -1c
+.RI "\fBupdate\fP ()"
+.br
+.RI "Met à jour la ligne dans la base de données\&. "
+.ti -1c
+.RI "\fBdelete\fP ()"
+.br
+.RI "Met à jour la ligne dans la base de données\&. "
+.in -1c
+
+Fonctions membres publiques statiques hérités de \fBMysqlModel\fP
+.in +1c
+.ti -1c
+.RI "static \fBcreateFromDatabaseLine\fP (?PDOStatement $statement, \fBMysqlQueryBuilder\fP $queryBuilder)"
+.br
+.RI "Génère un model à partir de la première ligne fetch\&. "
+.ti -1c
+.RI "static \fBcreateFromDatabaseLines\fP (?PDOStatement $statement, \fBMysqlQueryBuilder\fP $queryBuilder)"
+.br
+.RI "Génère un model à partir de la première ligne fetch\&. "
+.ti -1c
+.RI "static \fBfindOne\fP (\fBDatabaseCondition\fP|\fBDatabaseCondSeparator\fP \&.\&.\&. $findBuilders)"
+.br
+.RI "Récupère la première ligne fournie par les résultats de la requête\&. "
+.ti -1c
+.RI "static \fBfindAll\fP (\fBDatabaseCondition\fP|\fBDatabaseCondSeparator\fP \&.\&.\&. $findBuilders)"
+.br
+.ti -1c
+.RI "static \fBnewInstanceOfModel\fP (string $modelClass)"
+.br
+.ti -1c
+.RI "static \fBexecQuery\fP (\fBMysqlQueryBuilder\fP $queryBuilder, bool $execute=true)"
+.br
+.RI "Exécute la requête et fourni le statement de réponse\&. "
+.ti -1c
+.RI "static \fBloadJoinedColumns\fP (\fBMysqlModel\fP $model, \fBJoinedColumn\fP $joinedColumn)"
+.br
+.RI "Charge les données de la colonne jointe fournie\&. "
+.ti -1c
+.RI "static \fBcreateModelFromLine\fP (array $line, string $modelClass)"
+.br
+.RI "Crée un model à partir de la configuration\&. "
+.ti -1c
+.RI "static \fBbuildPrimaryKeysCondOn\fP (\fBMysqlModel\fP $model, \fBMysqlQueryBuilder\fP $queryBuilder, bool $addWhere=true)"
+.br
+.RI "Ajoute au queryBuilder les conditions de vérification de clé primaire du model\&. "
+.in -1c
+.in +1c
+.ti -1c
+.RI "static \fBfindOne\fP (\fBDatabaseCondition\fP|\fBDatabaseCondSeparator\fP \&.\&.\&. $findBuilders)"
+.br
+.RI "Recherche une occurrence\&. "
+.ti -1c
+.RI "static \fBfindAll\fP (\fBDatabaseCondition\fP|\fBDatabaseCondSeparator\fP \&.\&.\&. $findBuilders)"
+.br
+.RI "Recherche toutes les occurrences\&. "
+.in -1c
+
+Fonctions membres protégées hérités de \fBMysqlModel\fP
+.in +1c
+.ti -1c
+.RI "\fBbeforeCreate\fP (mixed $datas=[])"
+.br
+.RI "Actions à faire avant la création du model\&. "
+.ti -1c
+.RI "\fBafterCreate\fP (mixed $datas=[])"
+.br
+.RI "Actions à faire après la création du model\&. "
+.ti -1c
+.RI "\fBafterUpdate\fP (mixed $datas=[])"
+.br
+.RI "Actions à faire après la mise à jour du model\&. "
+.ti -1c
+.RI "\fBbeforeUpdate\fP (mixed $datas=[])"
+.br
+.RI "Actions à faire avant la mise à jour du model\&. "
+.ti -1c
+.RI "\fBafterDelete\fP (mixed $datas=[])"
+.br
+.RI "Actions à faire après la suppression du model\&. "
+.ti -1c
+.RI "\fBbeforeDelete\fP (mixed $datas=[])"
+.br
+.RI "Actions à faire avant la suppression du model\&. "
+.ti -1c
+.RI "\fBbeforeGeneration\fP (mixed $datas=[])"
+.br
+.RI "Action à exécuter avant génération du model\&. "
+.ti -1c
+.RI "\fBloadConfiguration\fP ()"
+.br
+.RI "Charge la configuration du modèle\&. "
+.ti -1c
+.RI "\fBprepareForNewQuery\fP ()"
+.br
+.RI "Prépare le queryBuilder interne pour une nouvelle requête\&. "
+.ti -1c
+.RI "\fBlastInsertId\fP ()"
+.br
+.RI "Fourni le dernier id inséré "
+.in -1c
+.in +1c
+.ti -1c
+.RI "\fBafterCreate\fP (mixed $datas)"
+.br
+.RI "Actions à faire après la création du model\&. "
+.ti -1c
+.RI "\fBbeforeCreate\fP (mixed $datas)"
+.br
+.RI "Actions à faire avant la création du model\&. "
+.ti -1c
+.RI "\fBafterUpdate\fP (mixed $datas)"
+.br
+.RI "Actions à faire après la mise à jour du model\&. "
+.ti -1c
+.RI "\fBbeforeUpdate\fP (mixed $datas)"
+.br
+.RI "Actions à faire avant la mise à jour du model\&. "
+.ti -1c
+.RI "\fBafterDelete\fP (mixed $datas)"
+.br
+.RI "Actions à faire après la suppression du model\&. "
+.ti -1c
+.RI "\fBbeforeDelete\fP (mixed $datas)"
+.br
+.RI "Actions à faire avant la suppression du model\&. "
+.ti -1c
+.RI "\fBbeforeGeneration\fP (mixed $datas)"
+.br
+.RI "Actions à faire avant la génération du model à partir de la méthode find\&. "
+.ti -1c
+.RI "\fBafterGeneration\fP (mixed $datas)"
+.br
+.RI "Actions à faire après la génération du model à partir de la méthode find\&. "
+.in -1c
+
+Fonctions membres protégées statiques hérités de \fBMysqlModel\fP
+.in +1c
+.ti -1c
+.RI "static \fBgetDatabaseConfig\fP ()"
+.br
+.in -1c
+
+Attributs protégés hérités de \fBMysqlModel\fP
+.in +1c
+.ti -1c
+.RI "\fBTableName\fP \fB$tableName\fP"
+.br
+.ti -1c
+.RI "array \fB$dbColumnsConfig\fP"
+.br
+.ti -1c
+.RI "array \fB$joinedColumnsConfig\fP"
+.br
+.ti -1c
+.RI "array \fB$attributesOriginalValues\fP = []"
+.br
+.ti -1c
+.RI "\fBMysqlQueryBuilder\fP \fB$queryBuilder\fP"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Model customisé de l'application\&. 
+.PP
+Définition à la ligne \fB10\fP du fichier \fBCustomModel\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

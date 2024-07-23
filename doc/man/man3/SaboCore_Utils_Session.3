@@ -1,0 +1,75 @@
+.TH "SaboCore\Utils\Session" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SaboCore\Utils\Session
+.SH SYNOPSIS
+.br
+.PP
+.SS "Structures de données"
+
+.in +1c
+.ti -1c
+.RI "class \fBSessionStorage\fP"
+.br
+.RI "Gestionnaire de session\&. "
+.in -1c
+.SS "Énumérations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBFrameworkSession\fP : string { \fBMAINTENANCE_ACCESS\fP = 'maintenanceAccess' }"
+.br
+.RI "Clés de session du framework\&. "
+.ti -1c
+.RI "enum \fBSessionStorageKeymap\fP : string { \fBFOR_CSRF_TOKEN\fP = 'FOR_CSRF_TOKEN' }"
+.br
+.RI "Clés de session\&. "
+.in -1c
+.SH "Documentation du type de l'énumération"
+.PP 
+.SS "enum \fBFrameworkSession\fP : string"
+
+.PP
+Clés de session du framework\&. 
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+\fBValeurs énumérées\fP
+.in +1c
+.TP
+\fB\fIMAINTENANCE_ACCESS \fP\fP
+Stockage de l'accès autorisé durant la maintenance\&. 
+.PP
+Définition à la ligne \fB9\fP du fichier \fBFrameworkSession\&.php\fP\&.
+.SS "enum \fBSessionStorageKeymap\fP : string"
+
+.PP
+Clés de session\&. 
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+\fBValeurs énumérées\fP
+.in +1c
+.TP
+\fB\fIFOR_CSRF_TOKEN \fP\fP
+Clé pour les valeurs stockées par l'utilisateur\&. Clé pour les valeurs des données flash
+.PP
+Clé pour les valeurs réservées au framework
+.PP
+Clé pour les tokens csrf 
+.PP
+Définition à la ligne \fB9\fP du fichier \fBSessionStorageKeymap\&.php\fP\&.
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00920" xml:lang="fr">
+<title>Référence de la classe Verifier</title>
+<indexterm><primary>Verifier</primary></indexterm>
+<para>
+
+<para>Gestionnaire de vérification. </para>
+ 
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00920_1a10d70e54686556531a0958588b56a5a4">__construct</link> (Callable $verifier, Callable|null $onFailure=null, ?Callable $onSuccess=null)</para>
+</listitem>
+            <listitem><para><link linkend="_a00920_1a0fc8cb974ea100bf35a631ff2f861336">verify</link> (array $verifierArgs)</para>
+
+<para>Exécute la condition de vérification et fourni son résultat. </para>
+</listitem>
+            <listitem><para><link linkend="_a00920_1adff269ca2bb2a827b52c1569a1fc818b">execVerification</link> (array $verifierArgs, array $onSuccessArgs=[], array $onFailureArgs=[])</para>
+
+<para>Exécute le processus de vérification en exécutant les fonctions success ou failure. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Attributs protégés    </title>
+        <itemizedlist>
+            <listitem><para>array Closure <link linkend="_a00920_1a06573a3b3ba965a9dec477b750502f76">$verifier</link></para>
+</listitem>
+            <listitem><para>array Closure null <link linkend="_a00920_1a94aa59d3a3fe25b6fb4b832a3c45629e">$onFailure</link></para>
+</listitem>
+            <listitem><para>array Closure null <link linkend="_a00920_1aaa0cf5ebb1f59a7750546e4d7dd92316">$onSuccess</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Gestionnaire de vérification. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00341_source_1l00011">11</link> du fichier <link linkend="_a00341_source">Verifier.php</link>.</para>
+</section>
+<section>
+<title>Documentation des constructeurs et destructeur</title>
+<anchor xml:id="_a00920_1a10d70e54686556531a0958588b56a5a4"/><section>
+    <title>__construct()</title>
+<indexterm><primary>__construct</primary><secondary>Verifier</secondary></indexterm>
+<indexterm><primary>Verifier</primary><secondary>__construct</secondary></indexterm>
+<para><computeroutput>__construct (Callable $verifier, Callable|null $onFailure = <computeroutput>null</computeroutput>
+, ?Callable $onSuccess = <computeroutput>null</computeroutput>
+)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>callable</entry><entry>$verifier</entry><entry>
+<para>condition de vérification à retour booléen </para>
+</entry>
+                            </row>
+                            <row>
+<entry>callable | null</entry><entry>$onFailure</entry><entry>
+<para>action à faire en cas d&apos;échec </para>
+</entry>
+                            </row>
+                            <row>
+<entry>callable | null</entry><entry>$onSuccess</entry><entry>
+<para>action à faire en cas de succès </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00341_source_1l00032">32</link> du fichier <link linkend="_a00341_source">Verifier.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00920_1adff269ca2bb2a827b52c1569a1fc818b"/><section>
+    <title>execVerification()</title>
+<indexterm><primary>execVerification</primary><secondary>Verifier</secondary></indexterm>
+<indexterm><primary>Verifier</primary><secondary>execVerification</secondary></indexterm>
+<para><computeroutput>execVerification (array $verifierArgs, array $onSuccessArgs = <computeroutput>[]</computeroutput>
+, array $onFailureArgs = <computeroutput>[]</computeroutput>
+)</computeroutput></para><para>
+
+<para>Exécute le processus de vérification en exécutant les fonctions success ou failure. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>array</entry><entry>$verifierArgs</entry><entry>
+<para>paramètres à envoyer à la fonction de vérification </para>
+</entry>
+                            </row>
+                            <row>
+<entry>array</entry><entry>$onSuccessArgs</entry><entry>
+<para>arguments à envoyer à la fonction de succès </para>
+</entry>
+                            </row>
+                            <row>
+<entry>array</entry><entry>$onFailureArgs</entry><entry>
+<para>arguments à envoyer à la fonction d&apos;échec </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>array le résultat de la vérification [&quot;success&quot; → ...] ou [&quot;failure&quot; → ...] ou [&quot;verifier&quot; → ...] </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00341_source_1l00054">54</link> du fichier <link linkend="_a00341_source">Verifier.php</link>.</para>
+</section>
+<anchor xml:id="_a00920_1a0fc8cb974ea100bf35a631ff2f861336"/><section>
+    <title>verify()</title>
+<indexterm><primary>verify</primary><secondary>Verifier</secondary></indexterm>
+<indexterm><primary>Verifier</primary><secondary>verify</secondary></indexterm>
+<para><computeroutput>verify (array $verifierArgs)</computeroutput></para><para>
+
+<para>Exécute la condition de vérification et fourni son résultat. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>array</entry><entry>$verifierArgs</entry><entry>
+<para>paramètres à envoyer à la fonction de vérification </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>bool le résultat de la vérification </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00341_source_1l00043">43</link> du fichier <link linkend="_a00341_source">Verifier.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des champs</title>
+<anchor xml:id="_a00920_1a94aa59d3a3fe25b6fb4b832a3c45629e"/><section>
+    <title>$onFailure</title>
+<indexterm><primary>$onFailure</primary><secondary>Verifier</secondary></indexterm>
+<indexterm><primary>Verifier</primary><secondary>$onFailure</secondary></indexterm>
+<para><computeroutput>array Closure null $onFailure<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00341_source_1l00020">20</link> du fichier <link linkend="_a00341_source">Verifier.php</link>.</para>
+</section>
+<anchor xml:id="_a00920_1aaa0cf5ebb1f59a7750546e4d7dd92316"/><section>
+    <title>$onSuccess</title>
+<indexterm><primary>$onSuccess</primary><secondary>Verifier</secondary></indexterm>
+<indexterm><primary>Verifier</primary><secondary>$onSuccess</secondary></indexterm>
+<para><computeroutput>array Closure null $onSuccess<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00341_source_1l00025">25</link> du fichier <link linkend="_a00341_source">Verifier.php</link>.</para>
+</section>
+<anchor xml:id="_a00920_1a06573a3b3ba965a9dec477b750502f76"/><section>
+    <title>$verifier</title>
+<indexterm><primary>$verifier</primary><secondary>Verifier</secondary></indexterm>
+<indexterm><primary>Verifier</primary><secondary>$verifier</secondary></indexterm>
+<para><computeroutput>array Closure $verifier<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00341_source_1l00015">15</link> du fichier <link linkend="_a00341_source">Verifier.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00341">Verifier.php</link></section>
+</section>

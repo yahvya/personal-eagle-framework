@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sabo final:  Fichier source de MysqlFunction.php</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="favicon.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">Sabo final<span id="projectnumber">&#160;1.1.1</span>
+   </div>
+   <div id="projectbrief">Mini framework php</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('a00188_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">MysqlFunction.php</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="a00188.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span>&lt;?php</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">namespace </span><a class="code hl_namespace" href="a00413.html">SaboCore\Database\Default\System</a>;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="a00748.html">    9</a></span><span class="keyword">class </span><a class="code hl_class" href="a00748.html">MysqlFunction</a>{</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="a00748.html#a79348d1e1455a6f7d3d71462ea7de24f">   13</a></span>    <span class="keyword">protected</span> <span class="keywordtype">string</span> <a class="code hl_variable" href="a00748.html#a79348d1e1455a6f7d3d71462ea7de24f">$function</a>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="a00748.html#aed23c33cbbfca9eac8ab14e946080ec5">   18</a></span>    <span class="keyword">protected</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="a00748.html#aed23c33cbbfca9eac8ab14e946080ec5">$replaceAttributesName</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="a00748.html#ac1b6033540b7af4eeb40b90d3f7c4bf5">   23</a></span>    <span class="keyword">protected</span> ?<span class="keywordtype">string</span> <a class="code hl_variable" href="a00748.html#ac1b6033540b7af4eeb40b90d3f7c4bf5">$alias</a>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="a00748.html#ae89d65c99e75367c515435bb41ac963b">   29</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#ae89d65c99e75367c515435bb41ac963b">__construct</a>(<span class="keywordtype">string</span> <a class="code hl_variable" href="a00748.html#a79348d1e1455a6f7d3d71462ea7de24f">$function</a>,<span class="keywordtype">bool</span> <a class="code hl_variable" href="a00748.html#aed23c33cbbfca9eac8ab14e946080ec5">$replaceAttributesName</a> = <span class="keyword">true</span>){</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        $this-&gt;<span class="keyword">function</span> = <a class="code hl_variable" href="a00748.html#a79348d1e1455a6f7d3d71462ea7de24f">$function</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        $this-&gt;replaceAttributesName = <a class="code hl_variable" href="a00748.html#aed23c33cbbfca9eac8ab14e946080ec5">$replaceAttributesName</a>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        $this-&gt;alias = <span class="keyword">null</span>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="a00748.html#ae11fa93f5d6f384f8a5fff304a10c725">   40</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#ae11fa93f5d6f384f8a5fff304a10c725">as</a>(<span class="keywordtype">string</span> <a class="code hl_variable" href="a00748.html#ac1b6033540b7af4eeb40b90d3f7c4bf5">$alias</a>):<a class="code hl_class" href="a00748.html">MysqlFunction</a>{</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        $this-&gt;alias = <span class="stringliteral">&quot;&#39;$alias&#39;&quot;</span>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">return</span> $this;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    }</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="a00748.html#a26e3e0c627051b4287204b3575b81d97">   49</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#a26e3e0c627051b4287204b3575b81d97">getAlias</a>():string|null{</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        return $this-&gt;alias;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="a00748.html#ac83856f218e9caf5475a5478481a0814">   56</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#ac83856f218e9caf5475a5478481a0814">haveToReplaceAttributesName</a>():bool{</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        return $this-&gt;replaceAttributesName;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="a00748.html#a3cb728ca27acfebd282caecdb8a1f5fc">   63</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#a3cb728ca27acfebd282caecdb8a1f5fc">getFunction</a>():string{</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        return $this-&gt;function;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    }</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="a00748.html#a44670226d153783619776d10e7b7622b">   73</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#a44670226d153783619776d10e7b7622b">CONCAT</a>(<span class="keywordtype">string</span> ...$toConcat):<a class="code hl_class" href="a00748.html">MysqlFunction</a>{</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        return new <a class="code hl_class" href="a00748.html">MysqlFunction</a>(function: <span class="stringliteral">&quot;CONCAT(&quot;</span> . implode(separator: <span class="stringliteral">&quot;,&quot;</span>,array: $toConcat) . <span class="stringliteral">&quot;)&quot;</span>);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="a00748.html#ab88146fc6b6eb074dd4e6c922f0f2eb5">   85</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#ab88146fc6b6eb074dd4e6c922f0f2eb5">SUBSTRING</a>(<span class="keywordtype">string</span> $stringGetter,<span class="keywordtype">int</span> $start,<span class="keywordtype">int</span> $length):<a class="code hl_class" href="a00748.html">MysqlFunction</a>{</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        return new <a class="code hl_class" href="a00748.html">MysqlFunction</a>(function: <span class="stringliteral">&quot;SUBSTRING($stringGetter,$start,$length)&quot;</span>);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    }</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="a00748.html#aaea342834fbb0456bd2bad686ef08a76">   95</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#aaea342834fbb0456bd2bad686ef08a76">UPPER</a>(<span class="keywordtype">string</span> $stringGetter):<a class="code hl_class" href="a00748.html">MysqlFunction</a>{</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        return new <a class="code hl_class" href="a00748.html">MysqlFunction</a>(function: <span class="stringliteral">&quot;UPPER($stringGetter)&quot;</span>);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    }</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="a00748.html#ab3d345e2681103f9405796389a40d689">  105</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#ab3d345e2681103f9405796389a40d689">LOWER</a>(<span class="keywordtype">string</span> $stringGetter):<a class="code hl_class" href="a00748.html">MysqlFunction</a>{</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        return new <a class="code hl_class" href="a00748.html">MysqlFunction</a>(function: <span class="stringliteral">&quot;LOWER($stringGetter)&quot;</span>);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    }</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="a00748.html#a9bce6fae2c594fde79e20ddcb699ec04">  115</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#a9bce6fae2c594fde79e20ddcb699ec04">DISTINCT</a>(<span class="keywordtype">string</span> $toDistinct):<a class="code hl_class" href="a00748.html">MysqlFunction</a>{</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        return new <a class="code hl_class" href="a00748.html">MysqlFunction</a>(function: <span class="stringliteral">&quot;DISTINCT $toDistinct&quot;</span>);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    }</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="a00748.html#a9e1fb41d95b786ab44c0d7dd9231b86b">  125</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#a9e1fb41d95b786ab44c0d7dd9231b86b">LENGTH</a>(<span class="keywordtype">string</span> $stringGetter):<a class="code hl_class" href="a00748.html">MysqlFunction</a>{</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        return new <a class="code hl_class" href="a00748.html">MysqlFunction</a>(function: <span class="stringliteral">&quot;LENGTH($stringGetter)&quot;</span>);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    }</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="a00748.html#a84f1921a0e6ef1af146350935845148b">  133</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#a84f1921a0e6ef1af146350935845148b">RAND</a>():<a class="code hl_class" href="a00748.html">MysqlFunction</a>{</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        return new <a class="code hl_class" href="a00748.html">MysqlFunction</a>(function: <span class="stringliteral">&quot;RAND()&quot;</span>);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    }</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno"><a class="line" href="a00748.html#a080555ab5f8e8b7084a0b09e1576f67f">  143</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#a080555ab5f8e8b7084a0b09e1576f67f">ABS</a>(<span class="keywordtype">string</span> $numberGetter):<a class="code hl_class" href="a00748.html">MysqlFunction</a>{</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        return new <a class="code hl_class" href="a00748.html">MysqlFunction</a>(function: <span class="stringliteral">&quot;ABS($numberGetter)&quot;</span>);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    }</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="a00748.html#a0f9fa0a3c26d1ffdf533c2fd9f55aa45">  153</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#a0f9fa0a3c26d1ffdf533c2fd9f55aa45">SUM</a>(<span class="keywordtype">string</span> $numberGetter):<a class="code hl_class" href="a00748.html">MysqlFunction</a>{</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        return new <a class="code hl_class" href="a00748.html">MysqlFunction</a>(function: <span class="stringliteral">&quot;SUM($numberGetter)&quot;</span>);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    }</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="a00748.html#a7a9c122983d026ece0f8f5c513eb3cb7">  163</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#a7a9c122983d026ece0f8f5c513eb3cb7">AVG</a>(<span class="keywordtype">string</span> $numberGetter):<a class="code hl_class" href="a00748.html">MysqlFunction</a>{</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        return new <a class="code hl_class" href="a00748.html">MysqlFunction</a>(function: <span class="stringliteral">&quot;AVG($numberGetter)&quot;</span>);</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    }</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno"><a class="line" href="a00748.html#a988e6d98ae6b67636b03df3abc50f6ca">  173</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#a988e6d98ae6b67636b03df3abc50f6ca">COUNT</a>(<span class="keywordtype">string</span> $numberGetter):<a class="code hl_class" href="a00748.html">MysqlFunction</a>{</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        return new <a class="code hl_class" href="a00748.html">MysqlFunction</a>(function: <span class="stringliteral">&quot;COUNT($numberGetter)&quot;</span>);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    }</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno"><a class="line" href="a00748.html#a0f63514de83daffec5bc77ea94c280fd">  183</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#a0f63514de83daffec5bc77ea94c280fd">MIN</a>(<span class="keywordtype">string</span> $numberGetter):<a class="code hl_class" href="a00748.html">MysqlFunction</a>{</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        return new <a class="code hl_class" href="a00748.html">MysqlFunction</a>(function: <span class="stringliteral">&quot;MIN($numberGetter)&quot;</span>);</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    }</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno"><a class="line" href="a00748.html#a226d32da507609cfbc41c5f2de9b8343">  193</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#a226d32da507609cfbc41c5f2de9b8343">MAX</a>(<span class="keywordtype">string</span> $numberGetter):<a class="code hl_class" href="a00748.html">MysqlFunction</a>{</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        return new <a class="code hl_class" href="a00748.html">MysqlFunction</a>(function: <span class="stringliteral">&quot;MAX($numberGetter)&quot;</span>);</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    }</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno"><a class="line" href="a00748.html#a22da2044d66bf620f08adf6d3168ca48">  204</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#a22da2044d66bf620f08adf6d3168ca48">ROUND</a>(<span class="keywordtype">string</span> $numberGetter,<span class="keywordtype">int</span> $decimal = 2):<a class="code hl_class" href="a00748.html">MysqlFunction</a>{</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        return new <a class="code hl_class" href="a00748.html">MysqlFunction</a>(function: <span class="stringliteral">&quot;ROUND($numberGetter,$decimal)&quot;</span>);</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    }</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno"><a class="line" href="a00748.html#ab1659f28be37badd992f4b8500230d1d">  212</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#ab1659f28be37badd992f4b8500230d1d">NOW</a>():<a class="code hl_class" href="a00748.html">MysqlFunction</a>{</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        return new <a class="code hl_class" href="a00748.html">MysqlFunction</a>(function: <span class="stringliteral">&quot;NOW()&quot;</span>);</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    }</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno"><a class="line" href="a00748.html#a290a31832414d365de969280195a71ff">  220</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#a290a31832414d365de969280195a71ff">TIMESTAMP</a>():<a class="code hl_class" href="a00748.html">MysqlFunction</a>{</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        return new <a class="code hl_class" href="a00748.html">MysqlFunction</a>(function: <span class="stringliteral">&quot;NOW()&quot;</span>);</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    }</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno"><a class="line" href="a00748.html#a852d920b172bd343a1b4d212a1aa8653">  230</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#a852d920b172bd343a1b4d212a1aa8653">DATE_FORMAT</a>(<span class="keywordtype">string</span> $dateGetter,<span class="keywordtype">string</span> $format):<a class="code hl_class" href="a00748.html">MysqlFunction</a>{</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        return new <a class="code hl_class" href="a00748.html">MysqlFunction</a>(function: <span class="stringliteral">&quot;DATE_FORMAT($dateGetter,&#39;$format&#39;)&quot;</span>);</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    }</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno"><a class="line" href="a00748.html#acc81210dd38eb501c944e482ed498d26">  240</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00748.html#acc81210dd38eb501c944e482ed498d26">COLUMN_ALIAS</a>(<span class="keywordtype">string</span> $attributeName,<span class="keywordtype">string</span> $alias):<a class="code hl_class" href="a00748.html">MysqlFunction</a>{</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        return (new <a class="code hl_class" href="a00748.html">MysqlFunction</a>(function: $attributeName))-&gt;as(alias: $alias);</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    }</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>}</div>
+<div class="ttc" id="aa00413_html"><div class="ttname"><a href="a00413.html">SaboCore\Database\Default\System</a></div><div class="ttdef"><b>Definition:</b> <a href="a00173_source.html#l00003">MysqlBindDatas.php:3</a></div></div>
+<div class="ttc" id="aa00748_html"><div class="ttname"><a href="a00748.html">SaboCore\Database\Default\System\MysqlFunction</a></div><div class="ttdoc">Fonctions mysql.</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00009">MysqlFunction.php:9</a></div></div>
+<div class="ttc" id="aa00748_html_a080555ab5f8e8b7084a0b09e1576f67f"><div class="ttname"><a href="a00748.html#a080555ab5f8e8b7084a0b09e1576f67f">SaboCore\Database\Default\System\MysqlFunction\ABS</a></div><div class="ttdeci">static ABS(string $numberGetter)</div><div class="ttdoc">Fonction ABS mysql.</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00143">MysqlFunction.php:143</a></div></div>
+<div class="ttc" id="aa00748_html_a0f63514de83daffec5bc77ea94c280fd"><div class="ttname"><a href="a00748.html#a0f63514de83daffec5bc77ea94c280fd">SaboCore\Database\Default\System\MysqlFunction\MIN</a></div><div class="ttdeci">static MIN(string $numberGetter)</div><div class="ttdoc">Fonction MIN mysql.</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00183">MysqlFunction.php:183</a></div></div>
+<div class="ttc" id="aa00748_html_a0f9fa0a3c26d1ffdf533c2fd9f55aa45"><div class="ttname"><a href="a00748.html#a0f9fa0a3c26d1ffdf533c2fd9f55aa45">SaboCore\Database\Default\System\MysqlFunction\SUM</a></div><div class="ttdeci">static SUM(string $numberGetter)</div><div class="ttdoc">Fonction SUM mysql.</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00153">MysqlFunction.php:153</a></div></div>
+<div class="ttc" id="aa00748_html_a226d32da507609cfbc41c5f2de9b8343"><div class="ttname"><a href="a00748.html#a226d32da507609cfbc41c5f2de9b8343">SaboCore\Database\Default\System\MysqlFunction\MAX</a></div><div class="ttdeci">static MAX(string $numberGetter)</div><div class="ttdoc">Fonction MAX mysql.</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00193">MysqlFunction.php:193</a></div></div>
+<div class="ttc" id="aa00748_html_a22da2044d66bf620f08adf6d3168ca48"><div class="ttname"><a href="a00748.html#a22da2044d66bf620f08adf6d3168ca48">SaboCore\Database\Default\System\MysqlFunction\ROUND</a></div><div class="ttdeci">static ROUND(string $numberGetter, int $decimal=2)</div><div class="ttdoc">Fonction ROUND mysql.</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00204">MysqlFunction.php:204</a></div></div>
+<div class="ttc" id="aa00748_html_a26e3e0c627051b4287204b3575b81d97"><div class="ttname"><a href="a00748.html#a26e3e0c627051b4287204b3575b81d97">SaboCore\Database\Default\System\MysqlFunction\getAlias</a></div><div class="ttdeci">getAlias()</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00049">MysqlFunction.php:49</a></div></div>
+<div class="ttc" id="aa00748_html_a290a31832414d365de969280195a71ff"><div class="ttname"><a href="a00748.html#a290a31832414d365de969280195a71ff">SaboCore\Database\Default\System\MysqlFunction\TIMESTAMP</a></div><div class="ttdeci">static TIMESTAMP()</div><div class="ttdoc">Fonction NOW mysql.</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00220">MysqlFunction.php:220</a></div></div>
+<div class="ttc" id="aa00748_html_a3cb728ca27acfebd282caecdb8a1f5fc"><div class="ttname"><a href="a00748.html#a3cb728ca27acfebd282caecdb8a1f5fc">SaboCore\Database\Default\System\MysqlFunction\getFunction</a></div><div class="ttdeci">getFunction()</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00063">MysqlFunction.php:63</a></div></div>
+<div class="ttc" id="aa00748_html_a44670226d153783619776d10e7b7622b"><div class="ttname"><a href="a00748.html#a44670226d153783619776d10e7b7622b">SaboCore\Database\Default\System\MysqlFunction\CONCAT</a></div><div class="ttdeci">static CONCAT(string ... $toConcat)</div><div class="ttdoc">Fonction CONCAT mysql.</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00073">MysqlFunction.php:73</a></div></div>
+<div class="ttc" id="aa00748_html_a79348d1e1455a6f7d3d71462ea7de24f"><div class="ttname"><a href="a00748.html#a79348d1e1455a6f7d3d71462ea7de24f">SaboCore\Database\Default\System\MysqlFunction\$function</a></div><div class="ttdeci">string $function</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00013">MysqlFunction.php:13</a></div></div>
+<div class="ttc" id="aa00748_html_a7a9c122983d026ece0f8f5c513eb3cb7"><div class="ttname"><a href="a00748.html#a7a9c122983d026ece0f8f5c513eb3cb7">SaboCore\Database\Default\System\MysqlFunction\AVG</a></div><div class="ttdeci">static AVG(string $numberGetter)</div><div class="ttdoc">Fonction AVG mysql.</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00163">MysqlFunction.php:163</a></div></div>
+<div class="ttc" id="aa00748_html_a84f1921a0e6ef1af146350935845148b"><div class="ttname"><a href="a00748.html#a84f1921a0e6ef1af146350935845148b">SaboCore\Database\Default\System\MysqlFunction\RAND</a></div><div class="ttdeci">static RAND()</div><div class="ttdoc">Fonction RAND mysql.</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00133">MysqlFunction.php:133</a></div></div>
+<div class="ttc" id="aa00748_html_a852d920b172bd343a1b4d212a1aa8653"><div class="ttname"><a href="a00748.html#a852d920b172bd343a1b4d212a1aa8653">SaboCore\Database\Default\System\MysqlFunction\DATE_FORMAT</a></div><div class="ttdeci">static DATE_FORMAT(string $dateGetter, string $format)</div><div class="ttdoc">Fonction DATE_FORMAT mysql.</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00230">MysqlFunction.php:230</a></div></div>
+<div class="ttc" id="aa00748_html_a988e6d98ae6b67636b03df3abc50f6ca"><div class="ttname"><a href="a00748.html#a988e6d98ae6b67636b03df3abc50f6ca">SaboCore\Database\Default\System\MysqlFunction\COUNT</a></div><div class="ttdeci">static COUNT(string $numberGetter)</div><div class="ttdoc">Fonction COUNT mysql.</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00173">MysqlFunction.php:173</a></div></div>
+<div class="ttc" id="aa00748_html_a9bce6fae2c594fde79e20ddcb699ec04"><div class="ttname"><a href="a00748.html#a9bce6fae2c594fde79e20ddcb699ec04">SaboCore\Database\Default\System\MysqlFunction\DISTINCT</a></div><div class="ttdeci">static DISTINCT(string $toDistinct)</div><div class="ttdoc">Fonction DISTINCT mysql.</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00115">MysqlFunction.php:115</a></div></div>
+<div class="ttc" id="aa00748_html_a9e1fb41d95b786ab44c0d7dd9231b86b"><div class="ttname"><a href="a00748.html#a9e1fb41d95b786ab44c0d7dd9231b86b">SaboCore\Database\Default\System\MysqlFunction\LENGTH</a></div><div class="ttdeci">static LENGTH(string $stringGetter)</div><div class="ttdoc">Fonction LENGTH mysql.</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00125">MysqlFunction.php:125</a></div></div>
+<div class="ttc" id="aa00748_html_aaea342834fbb0456bd2bad686ef08a76"><div class="ttname"><a href="a00748.html#aaea342834fbb0456bd2bad686ef08a76">SaboCore\Database\Default\System\MysqlFunction\UPPER</a></div><div class="ttdeci">static UPPER(string $stringGetter)</div><div class="ttdoc">Fonction UPPER mysql.</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00095">MysqlFunction.php:95</a></div></div>
+<div class="ttc" id="aa00748_html_ab1659f28be37badd992f4b8500230d1d"><div class="ttname"><a href="a00748.html#ab1659f28be37badd992f4b8500230d1d">SaboCore\Database\Default\System\MysqlFunction\NOW</a></div><div class="ttdeci">static NOW()</div><div class="ttdoc">Fonction NOW mysql.</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00212">MysqlFunction.php:212</a></div></div>
+<div class="ttc" id="aa00748_html_ab3d345e2681103f9405796389a40d689"><div class="ttname"><a href="a00748.html#ab3d345e2681103f9405796389a40d689">SaboCore\Database\Default\System\MysqlFunction\LOWER</a></div><div class="ttdeci">static LOWER(string $stringGetter)</div><div class="ttdoc">Fonction LOWER mysql.</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00105">MysqlFunction.php:105</a></div></div>
+<div class="ttc" id="aa00748_html_ab88146fc6b6eb074dd4e6c922f0f2eb5"><div class="ttname"><a href="a00748.html#ab88146fc6b6eb074dd4e6c922f0f2eb5">SaboCore\Database\Default\System\MysqlFunction\SUBSTRING</a></div><div class="ttdeci">static SUBSTRING(string $stringGetter, int $start, int $length)</div><div class="ttdoc">Fonction SUBSTRING mysql.</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00085">MysqlFunction.php:85</a></div></div>
+<div class="ttc" id="aa00748_html_ac1b6033540b7af4eeb40b90d3f7c4bf5"><div class="ttname"><a href="a00748.html#ac1b6033540b7af4eeb40b90d3f7c4bf5">SaboCore\Database\Default\System\MysqlFunction\$alias</a></div><div class="ttdeci">string $alias</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00023">MysqlFunction.php:23</a></div></div>
+<div class="ttc" id="aa00748_html_ac83856f218e9caf5475a5478481a0814"><div class="ttname"><a href="a00748.html#ac83856f218e9caf5475a5478481a0814">SaboCore\Database\Default\System\MysqlFunction\haveToReplaceAttributesName</a></div><div class="ttdeci">haveToReplaceAttributesName()</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00056">MysqlFunction.php:56</a></div></div>
+<div class="ttc" id="aa00748_html_acc81210dd38eb501c944e482ed498d26"><div class="ttname"><a href="a00748.html#acc81210dd38eb501c944e482ed498d26">SaboCore\Database\Default\System\MysqlFunction\COLUMN_ALIAS</a></div><div class="ttdeci">static COLUMN_ALIAS(string $attributeName, string $alias)</div><div class="ttdoc">Colonne classique avec alias.</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00240">MysqlFunction.php:240</a></div></div>
+<div class="ttc" id="aa00748_html_ae11fa93f5d6f384f8a5fff304a10c725"><div class="ttname"><a href="a00748.html#ae11fa93f5d6f384f8a5fff304a10c725">SaboCore\Database\Default\System\MysqlFunction\as</a></div><div class="ttdeci">as(string $alias)</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00040">MysqlFunction.php:40</a></div></div>
+<div class="ttc" id="aa00748_html_ae89d65c99e75367c515435bb41ac963b"><div class="ttname"><a href="a00748.html#ae89d65c99e75367c515435bb41ac963b">SaboCore\Database\Default\System\MysqlFunction\__construct</a></div><div class="ttdeci">__construct(string $function, bool $replaceAttributesName=true)</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00029">MysqlFunction.php:29</a></div></div>
+<div class="ttc" id="aa00748_html_aed23c33cbbfca9eac8ab14e946080ec5"><div class="ttname"><a href="a00748.html#aed23c33cbbfca9eac8ab14e946080ec5">SaboCore\Database\Default\System\MysqlFunction\$replaceAttributesName</a></div><div class="ttdeci">bool $replaceAttributesName</div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00018">MysqlFunction.php:18</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_5a9687d32d98fbbdb60629c9ff0dd338.html">sabo-core</a></li><li class="navelem"><a class="el" href="dir_89c513611bcd58d1ab34b1b964a8ae28.html">database</a></li><li class="navelem"><a class="el" href="dir_f771857c7dddd917dca02925fdff3865.html">default</a></li><li class="navelem"><a class="el" href="dir_9d8b3ea081e33c55b8712866efb0efb2.html">system</a></li><li class="navelem"><a class="el" href="a00188.html">MysqlFunction.php</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
+</body>
+</html>

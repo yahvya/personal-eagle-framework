@@ -1,0 +1,145 @@
+.TH "Config" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Config \- Représente une configuration\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fBsetConfig\fP (string|int $name, mixed $value)"
+.br
+.RI "Ajoute / Modifie un élément de configuration\&. "
+.ti -1c
+.RI "\fBgetConfig\fP (string|int $name)"
+.br
+.RI "Recherche la configuration\&. "
+.ti -1c
+.RI "\fBcheckConfigs\fP (string|int \&.\&.\&. $keys)"
+.br
+.RI "Vérifie que les configurations fournies existent\&. "
+.in -1c
+.SS "Fonctions membres publiques statiques"
+
+.in +1c
+.ti -1c
+.RI "static \fBcreate\fP ()"
+.br
+.RI "Crée une nouvelle configuration\&. "
+.in -1c
+.SS "Attributs protégés"
+
+.in +1c
+.ti -1c
+.RI "array \fB$config\fP = []"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Représente une configuration\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya/ 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB9\fP du fichier \fBConfig\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "checkConfigs (string|int \&.\&.\&. $keys)"
+
+.PP
+Vérifie que les configurations fournies existent\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fIstring|int\fP \&.\&.\&.$keys nom des configurations 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+void 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas de clé nom trouvée 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB46\fP du fichier \fBConfig\&.php\fP\&.
+.SS "static create ()\fC [static]\fP"
+
+.PP
+Crée une nouvelle configuration\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+Config une nouvelle configuration 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB57\fP du fichier \fBConfig\&.php\fP\&.
+.SS "getConfig (string|int $name)"
+
+.PP
+Recherche la configuration\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$name\fP nom de la configuration recherchée 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+mixed la valeur associée 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas de configuration non trouvée 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB33\fP du fichier \fBConfig\&.php\fP\&.
+.SS "setConfig (string|int $name, mixed $value)"
+
+.PP
+Ajoute / Modifie un élément de configuration\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$name\fP clé de configuration 
+.br
+\fI$value\fP valeur associée 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB21\fP du fichier \fBConfig\&.php\fP\&.
+.SH "Documentation des champs"
+.PP 
+.SS "array $config = []\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB13\fP du fichier \fBConfig\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

@@ -1,0 +1,245 @@
+.TH "Application" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Application \- Gestionnaire de l'application\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Fonctions membres publiques statiques"
+
+.in +1c
+.ti -1c
+.RI "static \fBlaunchApplication\fP (\fBConfig\fP $applicationConfig, bool $startRouting=true)"
+.br
+.RI "Lance l'application\&. "
+.ti -1c
+.RI "static \fBgetApplicationConfig\fP ()"
+.br
+.ti -1c
+.RI "static \fBgetEnvConfig\fP ()"
+.br
+.ti -1c
+.RI "static \fBgetFrameworkConfig\fP ()"
+.br
+.ti -1c
+.RI "static \fBsetEnvConfig\fP (\fBConfig\fP $envConfig)"
+.br
+.ti -1c
+.RI "static \fBgetApplicationDefaultConfig\fP ()"
+.br
+.in -1c
+.SS "Fonctions membres protégées statiques"
+
+.in +1c
+.ti -1c
+.RI "static \fBrequireNeededFiles\fP ()"
+.br
+.RI "Inclus les fichiers requis\&. "
+.ti -1c
+.RI "static \fBcheckConfigs\fP ()"
+.br
+.RI "Vérifie les configurations\&. "
+.ti -1c
+.RI "static \fBinitDatabase\fP ()"
+.br
+.RI "Initialise la base de données si requise\&. "
+.ti -1c
+.RI "static \fBshowInternalErrorPage\fP ()"
+.br
+.RI "Affiche la page de page non trouvée\&. "
+.in -1c
+.SS "Attributs protégés statiques"
+
+.in +1c
+.ti -1c
+.RI "static \fBConfig\fP \fB$applicationConfig\fP = null"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Gestionnaire de l'application\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya/ 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB21\fP du fichier \fBApplication\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "static checkConfigs ()\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Vérifie les configurations\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+void 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas de configuration mal formée 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB172\fP du fichier \fBApplication\&.php\fP\&.
+.SS "static getApplicationConfig ()\fC [static]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+Config|null la configuration de l'application ou null si non défini 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB81\fP du fichier \fBApplication\&.php\fP\&.
+.SS "static getApplicationDefaultConfig ()\fC [static]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+Config la configuration par défaut de l'application 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB121\fP du fichier \fBApplication\&.php\fP\&.
+.SS "static getEnvConfig ()\fC [static]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+Config la configuration d'environnement 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas de configuration non défini 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB89\fP du fichier \fBApplication\&.php\fP\&.
+.SS "static getFrameworkConfig ()\fC [static]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+Config la configuration du framework 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas de configuration non défini 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB99\fP du fichier \fBApplication\&.php\fP\&.
+.SS "static initDatabase ()\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Initialise la base de données si requise\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+void 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas d'erreur 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB194\fP du fichier \fBApplication\&.php\fP\&.
+.SS "static launchApplication (\fBConfig\fP $applicationConfig, bool $startRouting = \fCtrue\fP)\fC [static]\fP"
+
+.PP
+Lance l'application\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$applicationConfig\fP configuration de l'application @param bool $startRouting si la recherche et le rendu de routing doit être fait 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+void 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB33\fP du fichier \fBApplication\&.php\fP\&.
+.SS "static requireNeededFiles ()\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Inclus les fichiers requis\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+void 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas d'erreur 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB153\fP du fichier \fBApplication\&.php\fP\&.
+.SS "static setEnvConfig (\fBConfig\fP $envConfig)\fC [static]\fP"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$envConfig\fP nouvelle configuration de l'environnement 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+void 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas de configuration non prédéfini 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB111\fP du fichier \fBApplication\&.php\fP\&.
+.SS "static showInternalErrorPage ()\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Affiche la page de page non trouvée\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+void 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB215\fP du fichier \fBApplication\&.php\fP\&.
+.SH "Documentation des champs"
+.PP 
+.SS "\fBConfig\fP $applicationConfig = null\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB25\fP du fichier \fBApplication\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

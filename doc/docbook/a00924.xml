@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00924" xml:lang="fr">
+<title>Référence de la classe CustomController</title>
+<indexterm><primary>CustomController</primary></indexterm>
+<para>
+
+<para>Controller customisé de l&apos;application. </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de CustomController:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00924.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Membres hérités additionnels    </title>
+Fonctions membres publiques hérités de <link linkend="_a00588">Controller</link>        <itemizedlist>
+            <listitem><para><link linkend="_a00588_1a095c5d389db211932136b53f25f39685">__construct</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Controller customisé de l&apos;application. </para>
+<para>
+Définition à la ligne <link linkend="_a00368_source_1l00010">10</link> du fichier <link linkend="_a00368_source">CustomController.php</link>.</para>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00368">CustomController.php</link></section>
+</section>

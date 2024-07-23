@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_525e76b1cf881fd6762b7c12d1c44972" xml:lang="fr">
+<title>Répertoire de référence de conditions</title>
+<indexterm><primary>Répertoire de référence de conditions</primary></indexterm>
+<simplesect>
+    <title>Fichiers    </title>
+        <itemizedlist>
+            <listitem><para>fichier <link linkend="_a00122">CallableCond.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00125">Cond.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00128">DateTimeCond.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00131">EnumValidityCond.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00134">FilterCond.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00137">JsonValidityCond.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00140">LenCond.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00143">MysqlCondException.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00146">RegexCond.php</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

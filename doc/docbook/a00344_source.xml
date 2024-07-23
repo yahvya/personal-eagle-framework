@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00344_source" xml:lang="fr">
+<title>7e031abeb83ecaae906c99f8a93d4f50.php</title>
+<indexterm><primary>7e031abeb83ecaae906c99f8a93d4f50.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00344_source_1l00001"/>00001 &lt;!DOCTYPE&#32;html&gt;
+<anchor xml:id="_a00344_source_1l00002"/>00002 &lt;html&#32;lang=<emphasis role="stringliteral">&quot;en&quot;</emphasis>&gt;
+<anchor xml:id="_a00344_source_1l00003"/>00003 &lt;head&gt;
+<anchor xml:id="_a00344_source_1l00004"/>00004 &#32;&#32;&#32;&#32;&lt;meta&#32;charset=<emphasis role="stringliteral">&quot;UTF-8&quot;</emphasis>&gt;
+<anchor xml:id="_a00344_source_1l00005"/>00005 &#32;&#32;&#32;&#32;&lt;meta&#32;name=<emphasis role="stringliteral">&quot;viewport&quot;</emphasis>&#32;content=<emphasis role="stringliteral">&quot;width=device-width,&#32;initial-scale=1.0&quot;</emphasis>&gt;
+<anchor xml:id="_a00344_source_1l00006"/>00006 &#32;&#32;&#32;&#32;&lt;title&gt;Sse&lt;/title&gt;
+<anchor xml:id="_a00344_source_1l00007"/>00007 &lt;/head&gt;
+<anchor xml:id="_a00344_source_1l00008"/>00008 &lt;body&gt;&#32;&#32;
+<anchor xml:id="_a00344_source_1l00009"/>00009 &#32;&#32;&#32;&#32;&lt;form&gt;
+<anchor xml:id="_a00344_source_1l00010"/>00010 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;input&#32;type=<emphasis role="stringliteral">&quot;text&quot;</emphasis>&#32;name=<emphasis role="stringliteral">&quot;name&quot;</emphasis>&#32;placeholder=<emphasis role="stringliteral">&quot;Name&quot;</emphasis>&gt;
+<anchor xml:id="_a00344_source_1l00011"/>00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;button&gt;Lancer&#32;test&lt;/button&gt;
+<anchor xml:id="_a00344_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&lt;/form&gt;
+<anchor xml:id="_a00344_source_1l00013"/>00013 
+<anchor xml:id="_a00344_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&lt;div&#32;<emphasis role="keyword">class</emphasis>=<emphasis role="stringliteral">&quot;messages&quot;</emphasis>&gt;
+<anchor xml:id="_a00344_source_1l00015"/>00015 
+<anchor xml:id="_a00344_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&lt;/div&gt;
+<anchor xml:id="_a00344_source_1l00017"/>00017 
+<anchor xml:id="_a00344_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&lt;script&gt;
+<anchor xml:id="_a00344_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;form&#32;=&#32;document.querySelector(<emphasis role="stringliteral">&quot;form&quot;</emphasis>);
+<anchor xml:id="_a00344_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;messagesContainer&#32;=&#32;document.querySelector(<emphasis role="stringliteral">&quot;.messages&quot;</emphasis>);
+<anchor xml:id="_a00344_source_1l00021"/>00021 
+<anchor xml:id="_a00344_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;form.addEventListener(<emphasis role="stringliteral">&quot;submit&quot;</emphasis>,(e)&#32;=&gt;&#32;{
+<anchor xml:id="_a00344_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;e.preventDefault();
+<anchor xml:id="_a00344_source_1l00024"/>00024 
+<anchor xml:id="_a00344_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;inputName&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;FormData(form).get(<emphasis role="stringliteral">&quot;name&quot;</emphasis>);
+<anchor xml:id="_a00344_source_1l00026"/>00026 
+<anchor xml:id="_a00344_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;source&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;EventSource(`/sse/${inputName}`);
+<anchor xml:id="_a00344_source_1l00028"/>00028 
+<anchor xml:id="_a00344_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;source.addEventListener(<emphasis role="stringliteral">&quot;close&quot;</emphasis>,(e)&#32;=&gt;&#32;{
+<anchor xml:id="_a00344_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;console.log(<emphasis role="stringliteral">&quot;fermeture&quot;</emphasis>,e);
+<anchor xml:id="_a00344_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;source.close();
+<anchor xml:id="_a00344_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="_a00344_source_1l00033"/>00033 
+<anchor xml:id="_a00344_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;source.addEventListener(<emphasis role="stringliteral">&quot;error&quot;</emphasis>,(e)&#32;=&gt;&#32;{
+<anchor xml:id="_a00344_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;console.log(<emphasis role="stringliteral">&quot;erreur&quot;</emphasis>,e);
+<anchor xml:id="_a00344_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="_a00344_source_1l00037"/>00037 
+<anchor xml:id="_a00344_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;source.addEventListener(<emphasis role="stringliteral">&quot;open&quot;</emphasis>,(e)&#32;=&gt;&#32;{
+<anchor xml:id="_a00344_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;console.log(<emphasis role="stringliteral">&quot;ouverture&quot;</emphasis>,e);
+<anchor xml:id="_a00344_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="_a00344_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;source.addEventListener(<emphasis role="stringliteral">&quot;customevent&quot;</emphasis>,(e)&#32;=&gt;&#32;{
+<anchor xml:id="_a00344_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;console.log(e);
+<anchor xml:id="_a00344_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="_a00344_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;source.addEventListener(&quot;messageEVent&quot;,(e)&#32;=&gt;&#32;{</emphasis>
+<anchor xml:id="_a00344_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;console.log(&quot;messageEVent&quot;,e);</emphasis>
+<anchor xml:id="_a00344_source_1l00046"/>00046 
+<anchor xml:id="_a00344_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;const&#32;messageContent&#32;=&#32;JSON.parse(e.data);</emphasis>
+<anchor xml:id="_a00344_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;const&#32;messageContainer&#32;=&#32;document.createElement(&quot;p&quot;);</emphasis>
+<anchor xml:id="_a00344_source_1l00049"/>00049 
+<anchor xml:id="_a00344_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;messageContainer.append(document.createTextNode(messageContent.message));</emphasis>
+<anchor xml:id="_a00344_source_1l00051"/>00051 
+<anchor xml:id="_a00344_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;messagesContainer.append(messageContainer);</emphasis>
+<anchor xml:id="_a00344_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;});</emphasis>
+<anchor xml:id="_a00344_source_1l00054"/>00054 
+<anchor xml:id="_a00344_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;window.onbeforeunload&#32;=&#32;<emphasis role="keyword">function</emphasis>&#32;()&#32;{
+<anchor xml:id="_a00344_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;source.close();
+<anchor xml:id="_a00344_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="_a00344_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;});
+<anchor xml:id="_a00344_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&lt;/script&gt;
+<anchor xml:id="_a00344_source_1l00060"/>00060 &lt;/body&gt;
+<anchor xml:id="_a00344_source_1l00061"/>00061 &lt;/html&gt;
+<anchor xml:id="_a00344_source_1l00062"/>00062 &lt;?php&#32;&#32;?&gt;
+</programlisting></section>

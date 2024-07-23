@@ -1,0 +1,99 @@
+.TH "MysqlException" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MysqlException \- Exception mysql\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de Exception\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP (string $message, bool $isDisplayable=false)"
+.br
+.ti -1c
+.RI "\fBgetIsDisplayable\fP ()"
+.br
+.ti -1c
+.RI "\fBgetErrorMessage\fP (string $defaultMessage='Une erreur technique s'est produite')"
+.br
+.in -1c
+.SS "Attributs protégés"
+
+.in +1c
+.ti -1c
+.RI "bool \fB$isDisplayable\fP"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Exception mysql\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB11\fP du fichier \fBMysqlException\&.php\fP\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "__construct (string $message, bool $isDisplayable = \fCfalse\fP)"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$message\fP message d'erreur 
+.br
+\fI$isDisplayable\fP si le message peut être affiché 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB21\fP du fichier \fBMysqlException\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "getErrorMessage (string $defaultMessage = \fC'Une erreur technique s'est produite'\fP)"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$defaultMessage\fP message par défaut 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+string le message d'erreur s'il peut être affiché sinon le message par défaut 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB38\fP du fichier \fBMysqlException\&.php\fP\&.
+.SS "getIsDisplayable ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+bool Si le message peut être affiché 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB30\fP du fichier \fBMysqlException\&.php\fP\&.
+.SH "Documentation des champs"
+.PP 
+.SS "bool $isDisplayable\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB15\fP du fichier \fBMysqlException\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

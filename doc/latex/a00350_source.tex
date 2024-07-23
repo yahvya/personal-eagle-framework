@@ -1,0 +1,56 @@
+\hypertarget{a00350_source}{}\doxysection{blade-\/config.php}
+\label{a00350_source}\index{blade-\/config.php@{blade-\/config.php}}
+\mbox{\hyperlink{a00350}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{a00350_source_l00003}00003\ use\ \mbox{\hyperlink{a00836}{SaboCore\(\backslash\)Routing\(\backslash\)Routes\(\backslash\)RouteManager}};}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{a00350_source_l00009}00009\ \textcolor{comment}{//\ Créez\ ici\ les\ fonctions.\ Il\ est\ recommandé\ de\ préfixer\ les\ fonctions\ par\ blade\ (ex\ :\ function\ bladeCustomFunction()\{\})}}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{a00350_source_l00018}\mbox{\hyperlink{a00350_a85a30ef1717c24c6781e81c851ff79fc}{00018}}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00350_a85a30ef1717c24c6781e81c851ff79fc}{bladeJsRoutes}}(array\ \$routes,?\textcolor{keywordtype}{string}\ \$funcNameReplace\ =\ \textcolor{keyword}{null},?\textcolor{keywordtype}{string}\ \$customIdReplace\ =\ \textcolor{keyword}{null}):string\{}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00019}00019\ \ \ \ \ \$jsRoutes\ =\ [];}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{a00350_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{foreach}(\$routes\ as\ \$routeData)\{}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00022}00022\ \ \ \ \ \ \ \ \ list(\$method,\$name,)\ =\ \$routeData;}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{a00350_source_l00024}00024\ \ \ \ \ \ \ \ \ \$route\ =\ RouteManager::findRouteByName(routeName:\ \$name,method:\ \$method);}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{a00350_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\$route\ ===\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{a00350_source_l00028}00028\ \ \ \ \ \ \ \ \ \$jsRoutes[\$name]\ =\ \$route-\/>getRouteLink();}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{a00350_source_l00031}00031\ \ \ \ \ \$jsRoutes\ =\ @json\_encode(value:\ \$jsRoutes);}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{a00350_source_l00033}00033\ \ \ \ \ \$name\ =\ \$funcNameReplace\ ??\ \textcolor{stringliteral}{"{}getRouteManager"{}};}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00034}00034\ \ \ \ \ \$scriptId\ =\ \$customIdReplace\ ??\ \textcolor{stringliteral}{"{}routes-\/script"{}};}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{a00350_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{return}\ <<<HTML}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ <script\ \textcolor{keywordtype}{id}=\textcolor{stringliteral}{"{}\{\$scriptId\}"{}}>}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{function}\ \{\$name\}()\{}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ routesCopy\ =\ JSON.parse(\textcolor{stringliteral}{'\{\$jsRoutes\}'});}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{a00350_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ let\ \mbox{\hyperlink{a00362_ae51039edf7ff9675adb95522e00d4583}{route}}\ =\ (\mbox{\hyperlink{a00362_ae51039edf7ff9675adb95522e00d4583}{route}},replaces)\ =>\ \{}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{const}\ [toReplace,replace]\ of\ Object.entries(replaces)\ )\ \mbox{\hyperlink{a00362_ae51039edf7ff9675adb95522e00d4583}{route}}\ =\ \mbox{\hyperlink{a00362_ae51039edf7ff9675adb95522e00d4583}{route}}.replace(`\{\(\backslash\)\$\{toReplace\}\}`,replace)}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{a00350_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{a00362_ae51039edf7ff9675adb95522e00d4583}{route}};}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{a00350_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ document.getElementById(\textcolor{stringliteral}{"{}\{\$scriptId\}"{}}).remove();}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{a00350_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\textcolor{stringliteral}{"{}routes"{}}\ :\ routesCopy,\textcolor{stringliteral}{"{}routeReplace"{}}\ :\ \mbox{\hyperlink{a00362_ae51039edf7ff9675adb95522e00d4583}{route}}\};}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ </script>}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00052}00052\ \ \ \ \ \ \ \ \ HTML;}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00053}00053\ \}}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{a00350_source_l00055}00055\ \textcolor{comment}{//\ Remplissez\ la\ tableau\ de\ vos\ directives\ blades}}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{a00350_source_l00060}00060\ \textcolor{keyword}{function}\ registerBladeDirectives():array\{}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00061}00061\ \ \ \ \ return\ [}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{a00350_source_l00063}00063\ \ \ \ \ ];}
+\DoxyCodeLine{\Hypertarget{a00350_source_l00064}00064\ \}}
+
+\end{DoxyCode}

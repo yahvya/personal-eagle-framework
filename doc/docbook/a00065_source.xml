@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00065_source" xml:lang="fr">
+<title>Controller.php</title>
+<indexterm><primary>Controller.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00065_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00065_source_1l00002"/>00002 
+<anchor xml:id="_a00065_source_1l00003"/><link linkend="_a00404">00003</link> <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00404">SaboCore\Controller</link>;
+<anchor xml:id="_a00065_source_1l00004"/>00004 
+<anchor xml:id="_a00065_source_1l00009"/><link linkend="_a00588">00009</link> <emphasis role="keyword">abstract</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_a00588">Controller</link>{
+<anchor xml:id="_a00065_source_1l00010"/><link linkend="_a00588_1a095c5d389db211932136b53f25f39685">00010</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00588_1a095c5d389db211932136b53f25f39685">__construct</link>(){}
+<anchor xml:id="_a00065_source_1l00011"/>00011 }
+</programlisting></section>

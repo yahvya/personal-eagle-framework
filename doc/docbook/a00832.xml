@@ -1,0 +1,891 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00832" xml:lang="fr">
+<title>Référence de la classe Route</title>
+<indexterm><primary>Route</primary></indexterm>
+<para>
+
+<para>Route de l&apos;application. </para>
+ 
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00832_1a464da607dd37e42b8abf3e0f0971fb93">__construct</link> (string $requestMethod, string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex=[], array $accessVerifiers=[])</para>
+</listitem>
+            <listitem><para><link linkend="_a00832_1a98efd7c3dee2e7538696011296540435">addPrefix</link> (string $prefix, array $genericParameters=[], array $accessVerifiers=[])</para>
+
+<para>Ajoute un préfix au lien. </para>
+</listitem>
+            <listitem><para><link linkend="_a00832_1aeb679036f1be14a7f6fc962dc53e715c">matchWith</link> (string $url)</para>
+
+<para>Vérifie si la route match avec l&apos;URL. </para>
+</listitem>
+            <listitem><para><link linkend="_a00832_1a7817c28babd63fcb8f0c52cf578a9663">getToExecute</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00832_1a897435a606a30ceac91090e697691c94">getAccessVerifiers</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00832_1ae534469d94a650b89ceb36b968bd3727">getRequestMethod</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00832_1a99c12aa19c44c2f438746ee95bb61a58">getRouteName</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00832_1ae034a45e29b386b51d2510001f424cd2">getRouteLink</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Fonctions membres publiques statiques    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_a00832_1afbfc51c65b859adb0d5623e667db6c60">get</link> (string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex=[], array $accessVerifiers=[])</para>
+
+<para>Crée une route get. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00832_1aece2ac5292befb42e88e07f79dee9cc9">delete</link> (string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex=[], array $accessVerifiers=[])</para>
+
+<para>Crée une route DELETE. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00832_1adb6c95da810e97fe0990bb53d1c6116d">post</link> (string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex=[], array $accessVerifiers=[])</para>
+
+<para>Crée une route POST. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00832_1a967554d060dc663668f3cbdf7f26adf0">put</link> (string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex=[], array $accessVerifiers=[])</para>
+
+<para>Crée une route PUT. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00832_1a5d161347022535aa7ce3b2ccd55bc4eb">patch</link> (string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex=[], array $accessVerifiers=[])</para>
+
+<para>Crée une route PATCH. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00832_1a292acc0ed636e87e073170ba52c7dfaa">options</link> (string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex=[], array $accessVerifiers=[])</para>
+
+<para>Crée une route OPTIONS. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00832_1a97f8d23113a1d980e9ef18a4a42e8360">head</link> (string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex=[], array $accessVerifiers=[])</para>
+
+<para>Crée une route HEAD. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00832_1ad118014b03a30ccc3275c0d2f00ba012">trace</link> (string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex=[], array $accessVerifiers=[])</para>
+
+<para>Crée une route TRACE. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Fonctions membres protégées    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00832_1a7a3b4c76f3cbede5d8ca55690ad1c6d8">updateConfig</link> ()</para>
+
+<para>Met à jour les données de la route à partir des informations contenues dans le lien ainsi que les paramètres génériques. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Attributs protégés    </title>
+        <itemizedlist>
+            <listitem><para>string <link linkend="_a00832_1acc98016c3c6ca84b3a612edbedc79eab">$requestMethod</link></para>
+</listitem>
+            <listitem><para>string <link linkend="_a00832_1a24b2401fa4ae31fae08557d2ad8adc44">$link</link></para>
+</listitem>
+            <listitem><para>string <link linkend="_a00832_1a9f391a5532d36b76fc659d09b3897778">$verificationRegex</link></para>
+</listitem>
+            <listitem><para>string <link linkend="_a00832_1aab06b80ef8973fd27a5b1db7a1dd3d3c">$routeName</link></para>
+</listitem>
+            <listitem><para>array <link linkend="_a00832_1a37e16b46d404949d8b0c883c77b4b015">$genericParamsRegex</link></para>
+</listitem>
+            <listitem><para>array <link linkend="_a00832_1ab559e3d6be17c6c3a599d6c805ce51c7">$genericParamsOrder</link> = []</para>
+</listitem>
+            <listitem><para>array <link linkend="_a00832_1a8c05b6055c60a647347dc747e9a81a1a">$accessVerifiers</link></para>
+</listitem>
+            <listitem><para>Closure array <link linkend="_a00832_1a6e94bb77d417f3fd760a6d03090f5979">$toExecute</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Route de l&apos;application. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00260_source_1l00015">15</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<section>
+<title>Documentation des constructeurs et destructeur</title>
+<anchor xml:id="_a00832_1a464da607dd37e42b8abf3e0f0971fb93"/><section>
+    <title>__construct()</title>
+<indexterm><primary>__construct</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>__construct</secondary></indexterm>
+<para><computeroutput>__construct (string $requestMethod, string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = <computeroutput>[]</computeroutput>
+, array $accessVerifiers = <computeroutput>[]</computeroutput>
+)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$requestMethod</entry><entry>
+<para>méthode de requête (get, post, ...) </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$link</entry><entry>
+<para>lien </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Closure | array</entry><entry>$toExecute</entry><entry>
+<para>à exécuter pour traiter la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$routeName</entry><entry>
+<para>nom de la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>array</entry><entry>$genericParamsRegex</entry><entry>
+<para>expressions régulières associées aux paramètres génériques </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Verifier[]</entry><entry>$accessVerifiers</entry><entry>
+<para>vérificateurs d&apos;accès à la route, seuls les fonctions failures sont prises en compte et retournent Response </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00260_source_1l00064">64</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00832_1a98efd7c3dee2e7538696011296540435"/><section>
+    <title>addPrefix()</title>
+<indexterm><primary>addPrefix</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>addPrefix</secondary></indexterm>
+<para><computeroutput>addPrefix (string $prefix, array $genericParameters = <computeroutput>[]</computeroutput>
+, array $accessVerifiers = <computeroutput>[]</computeroutput>
+)</computeroutput></para><para>
+
+<para>Ajoute un préfix au lien. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$prefix</entry><entry>
+<para>préfixe à ajouter à la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>array</entry><entry>$genericParameters</entry><entry>
+<para>paramètres génériques à ajouter à la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Verifier[]</entry><entry>$accessVerifiers</entry><entry>
+<para>vérificateurs d&apos;accès à la route, seuls les fonctions failures sont prises en compte et retournent Response </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>$this </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00260_source_1l00086">86</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1aece2ac5292befb42e88e07f79dee9cc9"/><section>
+    <title>delete()</title>
+<indexterm><primary>delete</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>delete</secondary></indexterm>
+<para><computeroutput>static delete (string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = <computeroutput>[]</computeroutput>
+, array $accessVerifiers = <computeroutput>[]</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Crée une route DELETE. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$link</entry><entry>
+<para>Lien de la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Closure | array</entry><entry>$toExecute</entry><entry>
+<para>Fonction à exécuter pour traiter la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$routeName</entry><entry>
+<para>Nom de la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>array</entry><entry>$genericParamsRegex</entry><entry>
+<para>Expressions régulières associées aux paramètres génériques </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Verifier[]</entry><entry>$accessVerifiers</entry><entry>
+<para>Vérificateurs d&apos;accès à la route, seuls les fonctions failures sont prises en compte et retournent Response </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>Route La route créée </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00260_source_1l00219">219</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1afbfc51c65b859adb0d5623e667db6c60"/><section>
+    <title>get()</title>
+<indexterm><primary>get</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>get</secondary></indexterm>
+<para><computeroutput>static get (string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = <computeroutput>[]</computeroutput>
+, array $accessVerifiers = <computeroutput>[]</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Crée une route get. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$link</entry><entry>
+<para>lien </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Closure | array</entry><entry>$toExecute</entry><entry>
+<para>à exécuter pour traiter la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$routeName</entry><entry>
+<para>nom de la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>array</entry><entry>$genericParamsRegex</entry><entry>
+<para>expressions régulières associées aux paramètres génériques </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Verifier[]</entry><entry>$accessVerifiers</entry><entry>
+<para>vérificateurs d&apos;accès à la route, seuls les fonctions failures sont prises en compte et retournent Response </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>Route la route crée </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00260_source_1l00199">199</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1a897435a606a30ceac91090e697691c94"/><section>
+    <title>getAccessVerifiers()</title>
+<indexterm><primary>getAccessVerifiers</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>getAccessVerifiers</secondary></indexterm>
+<para><computeroutput>getAccessVerifiers ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>Verifier[] les vérificateurs de la route </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00260_source_1l00131">131</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1ae534469d94a650b89ceb36b968bd3727"/><section>
+    <title>getRequestMethod()</title>
+<indexterm><primary>getRequestMethod</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>getRequestMethod</secondary></indexterm>
+<para><computeroutput>getRequestMethod ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string la méthode de requête </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00260_source_1l00138">138</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1ae034a45e29b386b51d2510001f424cd2"/><section>
+    <title>getRouteLink()</title>
+<indexterm><primary>getRouteLink</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>getRouteLink</secondary></indexterm>
+<para><computeroutput>getRouteLink ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string le lien associé </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00260_source_1l00152">152</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1a99c12aa19c44c2f438746ee95bb61a58"/><section>
+    <title>getRouteName()</title>
+<indexterm><primary>getRouteName</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>getRouteName</secondary></indexterm>
+<para><computeroutput>getRouteName ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string le nom de la route </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00260_source_1l00145">145</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1a7817c28babd63fcb8f0c52cf578a9663"/><section>
+    <title>getToExecute()</title>
+<indexterm><primary>getToExecute</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>getToExecute</secondary></indexterm>
+<para><computeroutput>getToExecute ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>Closure|array l&apos;action d&apos;exécution </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00260_source_1l00124">124</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1a97f8d23113a1d980e9ef18a4a42e8360"/><section>
+    <title>head()</title>
+<indexterm><primary>head</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>head</secondary></indexterm>
+<para><computeroutput>static head (string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = <computeroutput>[]</computeroutput>
+, array $accessVerifiers = <computeroutput>[]</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Crée une route HEAD. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$link</entry><entry>
+<para>Lien de la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Closure | array</entry><entry>$toExecute</entry><entry>
+<para>Fonction à exécuter pour traiter la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$routeName</entry><entry>
+<para>Nom de la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>array</entry><entry>$genericParamsRegex</entry><entry>
+<para>Expressions régulières associées aux paramètres génériques </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Verifier[]</entry><entry>$accessVerifiers</entry><entry>
+<para>Vérificateurs d&apos;accès à la route, seuls les fonctions failures sont prises en compte et retournent Response </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>Route La route créée </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00260_source_1l00319">319</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1aeb679036f1be14a7f6fc962dc53e715c"/><section>
+    <title>matchWith()</title>
+<indexterm><primary>matchWith</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>matchWith</secondary></indexterm>
+<para><computeroutput>matchWith (string $url)</computeroutput></para><para>
+
+<para>Vérifie si la route match avec l&apos;URL. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$url</entry><entry>
+<para>l&apos;URL </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>MatchResult le résultat du match contenant l&apos;association si match </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00260_source_1l00104">104</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1a292acc0ed636e87e073170ba52c7dfaa"/><section>
+    <title>options()</title>
+<indexterm><primary>options</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>options</secondary></indexterm>
+<para><computeroutput>static options (string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = <computeroutput>[]</computeroutput>
+, array $accessVerifiers = <computeroutput>[]</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Crée une route OPTIONS. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$link</entry><entry>
+<para>Lien de la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Closure | array</entry><entry>$toExecute</entry><entry>
+<para>Fonction à exécuter pour traiter la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$routeName</entry><entry>
+<para>Nom de la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>array</entry><entry>$genericParamsRegex</entry><entry>
+<para>Expressions régulières associées aux paramètres génériques </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Verifier[]</entry><entry>$accessVerifiers</entry><entry>
+<para>Vérificateurs d&apos;accès à la route, seuls les fonctions failures sont prises en compte et retournent Response </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>Route La route créée </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00260_source_1l00299">299</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1a5d161347022535aa7ce3b2ccd55bc4eb"/><section>
+    <title>patch()</title>
+<indexterm><primary>patch</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>patch</secondary></indexterm>
+<para><computeroutput>static patch (string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = <computeroutput>[]</computeroutput>
+, array $accessVerifiers = <computeroutput>[]</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Crée une route PATCH. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$link</entry><entry>
+<para>Lien de la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Closure | array</entry><entry>$toExecute</entry><entry>
+<para>Fonction à exécuter pour traiter la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$routeName</entry><entry>
+<para>Nom de la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>array</entry><entry>$genericParamsRegex</entry><entry>
+<para>Expressions régulières associées aux paramètres génériques </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Verifier[]</entry><entry>$accessVerifiers</entry><entry>
+<para>Vérificateurs d&apos;accès à la route, seuls les fonctions failures sont prises en compte et retournent Response </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>Route La route créée </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00260_source_1l00279">279</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1adb6c95da810e97fe0990bb53d1c6116d"/><section>
+    <title>post()</title>
+<indexterm><primary>post</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>post</secondary></indexterm>
+<para><computeroutput>static post (string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = <computeroutput>[]</computeroutput>
+, array $accessVerifiers = <computeroutput>[]</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Crée une route POST. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$link</entry><entry>
+<para>Lien de la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Closure | array</entry><entry>$toExecute</entry><entry>
+<para>Fonction à exécuter pour traiter la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$routeName</entry><entry>
+<para>Nom de la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>array</entry><entry>$genericParamsRegex</entry><entry>
+<para>Expressions régulières associées aux paramètres génériques </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Verifier[]</entry><entry>$accessVerifiers</entry><entry>
+<para>Vérificateurs d&apos;accès à la route, seuls les fonctions failures sont prises en compte et retournent Response </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>Route La route créée </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00260_source_1l00239">239</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1a967554d060dc663668f3cbdf7f26adf0"/><section>
+    <title>put()</title>
+<indexterm><primary>put</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>put</secondary></indexterm>
+<para><computeroutput>static put (string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = <computeroutput>[]</computeroutput>
+, array $accessVerifiers = <computeroutput>[]</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Crée une route PUT. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$link</entry><entry>
+<para>Lien de la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Closure | array</entry><entry>$toExecute</entry><entry>
+<para>Fonction à exécuter pour traiter la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$routeName</entry><entry>
+<para>Nom de la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>array</entry><entry>$genericParamsRegex</entry><entry>
+<para>Expressions régulières associées aux paramètres génériques </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Verifier[]</entry><entry>$accessVerifiers</entry><entry>
+<para>Vérificateurs d&apos;accès à la route, seuls les fonctions failures sont prises en compte et retournent Response </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>Route La route créée </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00260_source_1l00259">259</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1ad118014b03a30ccc3275c0d2f00ba012"/><section>
+    <title>trace()</title>
+<indexterm><primary>trace</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>trace</secondary></indexterm>
+<para><computeroutput>static trace (string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = <computeroutput>[]</computeroutput>
+, array $accessVerifiers = <computeroutput>[]</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Crée une route TRACE. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$link</entry><entry>
+<para>Lien de la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Closure | array</entry><entry>$toExecute</entry><entry>
+<para>Fonction à exécuter pour traiter la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$routeName</entry><entry>
+<para>Nom de la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>array</entry><entry>$genericParamsRegex</entry><entry>
+<para>Expressions régulières associées aux paramètres génériques </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Verifier[]</entry><entry>$accessVerifiers</entry><entry>
+<para>Vérificateurs d&apos;accès à la route, seuls les fonctions failures sont prises en compte et retournent Response </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>Route La route créée </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00260_source_1l00339">339</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1a7a3b4c76f3cbede5d8ca55690ad1c6d8"/><section>
+    <title>updateConfig()</title>
+<indexterm><primary>updateConfig</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>updateConfig</secondary></indexterm>
+<para><computeroutput>updateConfig ( )<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+
+<para>Met à jour les données de la route à partir des informations contenues dans le lien ainsi que les paramètres génériques. </para>
+</para>
+
+<para><formalpara><title>Renvoie</title>
+
+<para>$this </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00260_source_1l00160">160</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des champs</title>
+<anchor xml:id="_a00832_1a8c05b6055c60a647347dc747e9a81a1a"/><section>
+    <title>$accessVerifiers</title>
+<indexterm><primary>$accessVerifiers</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>$accessVerifiers</secondary></indexterm>
+<para><computeroutput>array $accessVerifiers<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00260_source_1l00049">49</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1ab559e3d6be17c6c3a599d6c805ce51c7"/><section>
+    <title>$genericParamsOrder</title>
+<indexterm><primary>$genericParamsOrder</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>$genericParamsOrder</secondary></indexterm>
+<para><computeroutput>array $genericParamsOrder = []<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00260_source_1l00044">44</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1a37e16b46d404949d8b0c883c77b4b015"/><section>
+    <title>$genericParamsRegex</title>
+<indexterm><primary>$genericParamsRegex</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>$genericParamsRegex</secondary></indexterm>
+<para><computeroutput>array $genericParamsRegex<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00260_source_1l00039">39</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1a24b2401fa4ae31fae08557d2ad8adc44"/><section>
+    <title>$link</title>
+<indexterm><primary>$link</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>$link</secondary></indexterm>
+<para><computeroutput>string $link<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00260_source_1l00024">24</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1acc98016c3c6ca84b3a612edbedc79eab"/><section>
+    <title>$requestMethod</title>
+<indexterm><primary>$requestMethod</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>$requestMethod</secondary></indexterm>
+<para><computeroutput>string $requestMethod<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00260_source_1l00019">19</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1aab06b80ef8973fd27a5b1db7a1dd3d3c"/><section>
+    <title>$routeName</title>
+<indexterm><primary>$routeName</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>$routeName</secondary></indexterm>
+<para><computeroutput>string $routeName<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00260_source_1l00034">34</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1a6e94bb77d417f3fd760a6d03090f5979"/><section>
+    <title>$toExecute</title>
+<indexterm><primary>$toExecute</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>$toExecute</secondary></indexterm>
+<para><computeroutput>Closure array $toExecute<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00260_source_1l00054">54</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<anchor xml:id="_a00832_1a9f391a5532d36b76fc659d09b3897778"/><section>
+    <title>$verificationRegex</title>
+<indexterm><primary>$verificationRegex</primary><secondary>Route</secondary></indexterm>
+<indexterm><primary>Route</primary><secondary>$verificationRegex</secondary></indexterm>
+<para><computeroutput>string $verificationRegex<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00260_source_1l00029">29</link> du fichier <link linkend="_a00260_source">Route.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00260">Route.php</link></section>
+</section>

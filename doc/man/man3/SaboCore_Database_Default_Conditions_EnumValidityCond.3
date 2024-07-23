@@ -1,0 +1,143 @@
+.TH "EnumValidityCond" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EnumValidityCond \- Vérifie la possibilité d'utiliser la donnée\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de \fBCond\fP\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP (string $errorMessage='Valeur invalide', bool $isDisplayable=true)"
+.br
+.ti -1c
+.RI "\fBverifyData\fP (\fBMysqlModel\fP $baseModel, string $attributeName, mixed $data)"
+.br
+.RI "Vérifie si la donnée est valide\&. "
+.ti -1c
+.RI "\fBgetErrorMessage\fP ()"
+.br
+.ti -1c
+.RI "\fBgetIsDisplayable\fP ()"
+.br
+.in -1c
+.in +1c
+.ti -1c
+.RI "\fBverifyData\fP (\fBMysqlModel\fP $baseModel, string $attributeName, mixed $data)"
+.br
+.RI "Vérifie si la donnée est valide\&. "
+.ti -1c
+.RI "\fBgetErrorMessage\fP ()"
+.br
+.ti -1c
+.RI "\fBgetIsDisplayable\fP ()"
+.br
+.in -1c
+.SS "Attributs protégés"
+
+.in +1c
+.ti -1c
+.RI "string \fB$errorMessage\fP"
+.br
+.ti -1c
+.RI "bool \fB$isDisplayable\fP"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Vérifie la possibilité d'utiliser la donnée\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB14\fP du fichier \fBEnumValidityCond\&.php\fP\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "__construct (string $errorMessage = \fC'Valeur invalide'\fP, bool $isDisplayable = \fCtrue\fP)"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$errorMessage\fP Message d'erreur en cas de non validité 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB28\fP du fichier \fBEnumValidityCond\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "getErrorMessage ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+string Le message d'erreur 
+.RE
+.PP
+
+.PP
+Implémente \fBCond\fP\&.
+.PP
+Définition à la ligne \fB48\fP du fichier \fBEnumValidityCond\&.php\fP\&.
+.SS "getIsDisplayable ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+bool Si le message d'erreur peut être affiché 
+.RE
+.PP
+
+.PP
+Implémente \fBCond\fP\&.
+.PP
+Définition à la ligne \fB53\fP du fichier \fBEnumValidityCond\&.php\fP\&.
+.SS "verifyData (\fBMysqlModel\fP $baseModel, string $attributeName, mixed $data)"
+
+.PP
+Vérifie si la donnée est valide\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$baseModel\fP Model de base 
+.br
+\fI$attributeName\fP Nom de l'attribut 
+.br
+\fI$data\fP donnée à vérifier 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+bool si la donnée est valide 
+.RE
+.PP
+
+.PP
+Implémente \fBCond\fP\&.
+.PP
+Définition à la ligne \fB34\fP du fichier \fBEnumValidityCond\&.php\fP\&.
+.SH "Documentation des champs"
+.PP 
+.SS "string $errorMessage\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB18\fP du fichier \fBEnumValidityCond\&.php\fP\&.
+.SS "bool $isDisplayable\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB23\fP du fichier \fBEnumValidityCond\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

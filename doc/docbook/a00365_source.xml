@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00365_source" xml:lang="fr">
+<title>twig-config.php</title>
+<indexterm><primary>twig-config.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00365_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00365_source_1l00002"/>00002 
+<anchor xml:id="_a00365_source_1l00007"/>00007 use&#32;<link linkend="_a00916">SaboCore\Utils\TwigExtensions\DefaultExtensions</link>;
+<anchor xml:id="_a00365_source_1l00008"/>00008 
+<anchor xml:id="_a00365_source_1l00013"/><link linkend="_a00365_1a27d26ed3c2637e618b90445d628d4f48">00013</link> <emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00365_1a27d26ed3c2637e618b90445d628d4f48">registerTwigExtensions</link>():array{
+<anchor xml:id="_a00365_source_1l00014"/>00014 &#32;&#32;&#32;&#32;return&#32;[<link linkend="_a00916">DefaultExtensions</link>::class];
+<anchor xml:id="_a00365_source_1l00015"/>00015 }
+</programlisting></section>

@@ -1,0 +1,157 @@
+\hypertarget{a00740}{}\doxysection{Référence de la classe Mysql\+Cond\+Separator}
+\label{a00740}\index{MysqlCondSeparator@{MysqlCondSeparator}}
+
+
+Séparateurs mysql.  
+
+
+Graphe d\textquotesingle{}héritage de Mysql\+Cond\+Separator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{a00740}
+\end{center}
+\end{figure}
+\doxysubsection*{Fonctions membres publiques statiques}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{a00740_a7216cb428a8b2eddf9e4f4fa012640c8}{AND}} ()
+\item 
+static \mbox{\hyperlink{a00740_a4fdb9ff13d63065ab8ab02e83943fe3b}{OR}} ()
+\item 
+static \mbox{\hyperlink{a00740_a2dc97e6d7e778c843b682592142d385c}{NOT}} ()
+\item 
+static \mbox{\hyperlink{a00740_a786d9438f48b1b62030546b8d520bbaf}{IS\+\_\+\+NULL}} ()
+\item 
+static \mbox{\hyperlink{a00740_a2e179afb4ae143ddb8b0bdaae38fb76c}{IS\+\_\+\+NOT\+\_\+\+NULL}} ()
+\item 
+static \mbox{\hyperlink{a00740_a2f33bc5560c0470ca048714060fc932d}{GROUP\+\_\+\+START}} ()
+\item 
+static \mbox{\hyperlink{a00740_ac61503e3dceff0b80c72368533dbb30f}{GROUP\+\_\+\+END}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Membres hérités additionnels}
+\doxysubsubsection*{Fonctions membres publiques hérités de \mbox{\hyperlink{a00776}{Database\+Cond\+Separator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00776_a8df509f18778352002dfb2b5088fb25a}{get\+Separator}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions membres protégées hérités de \mbox{\hyperlink{a00776}{Database\+Cond\+Separator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00776_a73b7ae15ae571603918f92c41aea423b}{\+\_\+\+\_\+construct}} (string \$separator)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributs protégés hérités de \mbox{\hyperlink{a00776}{Database\+Cond\+Separator}}}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{a00776_a611f1e5e14d767be85ecd7326764fcc1}{\$separator}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Séparateurs mysql. 
+
+\begin{DoxyAuthor}{Auteur}
+yahaya bathily \href{https://github.com/yahvya}{\texttt{ https\+://github.\+com/yahvya}} 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \mbox{\hyperlink{a00182_source_l00011}{11}} du fichier \mbox{\hyperlink{a00182_source}{Mysql\+Cond\+Separator.\+php}}.
+
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{a00740_a7216cb428a8b2eddf9e4f4fa012640c8}\label{a00740_a7216cb428a8b2eddf9e4f4fa012640c8}} 
+\index{MysqlCondSeparator@{MysqlCondSeparator}!AND@{AND}}
+\index{AND@{AND}!MysqlCondSeparator@{MysqlCondSeparator}}
+\doxysubsubsection{\texorpdfstring{AND()}{AND()}}
+{\footnotesize\ttfamily static AND (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Renvoie}
+Mysql\+Cond\+Separator Séparateur AND 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00182_source_l00015}{15}} du fichier \mbox{\hyperlink{a00182_source}{Mysql\+Cond\+Separator.\+php}}.
+
+\mbox{\Hypertarget{a00740_ac61503e3dceff0b80c72368533dbb30f}\label{a00740_ac61503e3dceff0b80c72368533dbb30f}} 
+\index{MysqlCondSeparator@{MysqlCondSeparator}!GROUP\_END@{GROUP\_END}}
+\index{GROUP\_END@{GROUP\_END}!MysqlCondSeparator@{MysqlCondSeparator}}
+\doxysubsubsection{\texorpdfstring{GROUP\_END()}{GROUP\_END()}}
+{\footnotesize\ttfamily static GROUP\+\_\+\+END (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Renvoie}
+Mysql\+Cond\+Separator Ferme un groupe de condition 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00182_source_l00057}{57}} du fichier \mbox{\hyperlink{a00182_source}{Mysql\+Cond\+Separator.\+php}}.
+
+\mbox{\Hypertarget{a00740_a2f33bc5560c0470ca048714060fc932d}\label{a00740_a2f33bc5560c0470ca048714060fc932d}} 
+\index{MysqlCondSeparator@{MysqlCondSeparator}!GROUP\_START@{GROUP\_START}}
+\index{GROUP\_START@{GROUP\_START}!MysqlCondSeparator@{MysqlCondSeparator}}
+\doxysubsubsection{\texorpdfstring{GROUP\_START()}{GROUP\_START()}}
+{\footnotesize\ttfamily static GROUP\+\_\+\+START (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Renvoie}
+Mysql\+Cond\+Separator Démarre un groupe de condition 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00182_source_l00050}{50}} du fichier \mbox{\hyperlink{a00182_source}{Mysql\+Cond\+Separator.\+php}}.
+
+\mbox{\Hypertarget{a00740_a2e179afb4ae143ddb8b0bdaae38fb76c}\label{a00740_a2e179afb4ae143ddb8b0bdaae38fb76c}} 
+\index{MysqlCondSeparator@{MysqlCondSeparator}!IS\_NOT\_NULL@{IS\_NOT\_NULL}}
+\index{IS\_NOT\_NULL@{IS\_NOT\_NULL}!MysqlCondSeparator@{MysqlCondSeparator}}
+\doxysubsubsection{\texorpdfstring{IS\_NOT\_NULL()}{IS\_NOT\_NULL()}}
+{\footnotesize\ttfamily static IS\+\_\+\+NOT\+\_\+\+NULL (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Renvoie}
+Mysql\+Cond\+Separator Séparateur IS NOT NULL 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00182_source_l00043}{43}} du fichier \mbox{\hyperlink{a00182_source}{Mysql\+Cond\+Separator.\+php}}.
+
+\mbox{\Hypertarget{a00740_a786d9438f48b1b62030546b8d520bbaf}\label{a00740_a786d9438f48b1b62030546b8d520bbaf}} 
+\index{MysqlCondSeparator@{MysqlCondSeparator}!IS\_NULL@{IS\_NULL}}
+\index{IS\_NULL@{IS\_NULL}!MysqlCondSeparator@{MysqlCondSeparator}}
+\doxysubsubsection{\texorpdfstring{IS\_NULL()}{IS\_NULL()}}
+{\footnotesize\ttfamily static IS\+\_\+\+NULL (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Renvoie}
+Mysql\+Cond\+Separator Séparateur IS NULL 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00182_source_l00036}{36}} du fichier \mbox{\hyperlink{a00182_source}{Mysql\+Cond\+Separator.\+php}}.
+
+\mbox{\Hypertarget{a00740_a2dc97e6d7e778c843b682592142d385c}\label{a00740_a2dc97e6d7e778c843b682592142d385c}} 
+\index{MysqlCondSeparator@{MysqlCondSeparator}!NOT@{NOT}}
+\index{NOT@{NOT}!MysqlCondSeparator@{MysqlCondSeparator}}
+\doxysubsubsection{\texorpdfstring{NOT()}{NOT()}}
+{\footnotesize\ttfamily static NOT (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Renvoie}
+Mysql\+Cond\+Separator Séparateur NOT 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00182_source_l00029}{29}} du fichier \mbox{\hyperlink{a00182_source}{Mysql\+Cond\+Separator.\+php}}.
+
+\mbox{\Hypertarget{a00740_a4fdb9ff13d63065ab8ab02e83943fe3b}\label{a00740_a4fdb9ff13d63065ab8ab02e83943fe3b}} 
+\index{MysqlCondSeparator@{MysqlCondSeparator}!OR@{OR}}
+\index{OR@{OR}!MysqlCondSeparator@{MysqlCondSeparator}}
+\doxysubsubsection{\texorpdfstring{OR()}{OR()}}
+{\footnotesize\ttfamily static OR (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Renvoie}
+Mysql\+Cond\+Separator Séparateur OR 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00182_source_l00022}{22}} du fichier \mbox{\hyperlink{a00182_source}{Mysql\+Cond\+Separator.\+php}}.
+
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00182}{Mysql\+Cond\+Separator.\+php}}\end{DoxyCompactItemize}

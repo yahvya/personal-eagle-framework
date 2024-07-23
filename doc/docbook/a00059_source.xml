@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00059_source" xml:lang="fr">
+<title>MailerConfig.php</title>
+<indexterm><primary>MailerConfig.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00059_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00059_source_1l00002"/>00002 
+<anchor xml:id="_a00059_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00403">SaboCore\Config</link>;
+<anchor xml:id="_a00059_source_1l00004"/>00004 
+<anchor xml:id="_a00059_source_1l00009"/><link linkend="_a00403_1aacba5d64694ffba3146214e337356afc">00009</link> <emphasis role="keyword">enum</emphasis>&#32;<link linkend="_a00403_1aacba5d64694ffba3146214e337356afc">MailerConfig</link>:<emphasis role="keywordtype">string</emphasis>{
+<anchor xml:id="_a00059_source_1l00014"/>00014 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;FROM_EMAIL&#32;=&#32;<emphasis role="stringliteral">&quot;fromEmail&quot;</emphasis>;
+<anchor xml:id="_a00059_source_1l00015"/>00015 
+<anchor xml:id="_a00059_source_1l00020"/>00020 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;FROM_NAME&#32;=&#32;<emphasis role="stringliteral">&quot;fromName&quot;</emphasis>;
+<anchor xml:id="_a00059_source_1l00021"/>00021 
+<anchor xml:id="_a00059_source_1l00026"/>00026 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;MAILER_PROVIDER_HOST&#32;=&#32;<emphasis role="stringliteral">&quot;mailerProviderHost&quot;</emphasis>;
+<anchor xml:id="_a00059_source_1l00027"/>00027 
+<anchor xml:id="_a00059_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;MAILER_PROVIDER_USERNAME&#32;=&#32;<emphasis role="stringliteral">&quot;mailerProviderUsername&quot;</emphasis>;
+<anchor xml:id="_a00059_source_1l00033"/>00033 
+<anchor xml:id="_a00059_source_1l00038"/>00038 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;MAILER_PROVIDER_PASSWORD&#32;=&#32;<emphasis role="stringliteral">&quot;mailerProviderPassword&quot;</emphasis>;
+<anchor xml:id="_a00059_source_1l00039"/>00039 
+<anchor xml:id="_a00059_source_1l00044"/>00044 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;MAIL_TEMPLATES_DIR_PATH&#32;=&#32;<emphasis role="stringliteral">&quot;mailTemplatesDirPath&quot;</emphasis>;
+<anchor xml:id="_a00059_source_1l00045"/>00045 
+<anchor xml:id="_a00059_source_1l00050"/>00050 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_a00403_1aacba5d64694ffba3146214e337356afca98a4451e03e8e01921a103c2935431dd">PROVIDER_PORT</link>&#32;=&#32;<emphasis role="stringliteral">&quot;mailerProviderPort&quot;</emphasis>;
+<anchor xml:id="_a00059_source_1l00051"/><link linkend="_a00403_1aacba5d64694ffba3146214e337356afca98a4451e03e8e01921a103c2935431dd">00051</link> }
+</programlisting></section>

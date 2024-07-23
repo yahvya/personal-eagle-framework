@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00134_source" xml:lang="fr">
+<title>FilterCond.php</title>
+<indexterm><primary>FilterCond.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00134_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00134_source_1l00002"/>00002 
+<anchor xml:id="_a00134_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00408">SaboCore\Database\Default\Conditions</link>;
+<anchor xml:id="_a00134_source_1l00004"/>00004 
+<anchor xml:id="_a00134_source_1l00005"/>00005 use&#32;Attribute;
+<anchor xml:id="_a00134_source_1l00006"/>00006 use&#32;Override;
+<anchor xml:id="_a00134_source_1l00007"/>00007 use&#32;<link linkend="_a00752">SaboCore\Database\Default\System\MysqlModel</link>;
+<anchor xml:id="_a00134_source_1l00008"/>00008 
+<anchor xml:id="_a00134_source_1l00013"/>00013 <emphasis role="preprocessor">#[Attribute]</emphasis>
+<anchor xml:id="_a00134_source_1l00014"/><link linkend="_a00676">00014</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00676">FilterCond</link>&#32;<emphasis role="keyword">implements</emphasis>&#32;<link linkend="_a00664">Cond</link>{
+<anchor xml:id="_a00134_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;$errorMessage;
+<anchor xml:id="_a00134_source_1l00019"/>00019 
+<anchor xml:id="_a00134_source_1l00023"/>00023 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;$filter;
+<anchor xml:id="_a00134_source_1l00024"/>00024 
+<anchor xml:id="_a00134_source_1l00029"/><link linkend="_a00676_1a66844f5d9dcb8aa8b20ca4e79feb00e1">00029</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00676_1a66844f5d9dcb8aa8b20ca4e79feb00e1">__construct</link>(<emphasis role="keywordtype">int</emphasis>&#32;$filter,<emphasis role="keywordtype">string</emphasis>&#32;$errorMessage){
+<anchor xml:id="_a00134_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;filter&#32;=&#32;$filter;
+<anchor xml:id="_a00134_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;errorMessage&#32;=&#32;$errorMessage;
+<anchor xml:id="_a00134_source_1l00032"/>00032 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00134_source_1l00033"/>00033 
+<anchor xml:id="_a00134_source_1l00034"/>00034 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00134_source_1l00035"/><link linkend="_a00676_1aaab6c4c9f3ed625334aa5024eb645ba0">00035</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00676_1aaab6c4c9f3ed625334aa5024eb645ba0">verifyData</link>(<link linkend="_a00752">MysqlModel</link>&#32;$baseModel,<emphasis role="keywordtype">string</emphasis>&#32;$attributeName,mixed&#32;$data):bool{
+<anchor xml:id="_a00134_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;filter_var(value:&#32;$data,filter:&#32;$this-&gt;filter);
+<anchor xml:id="_a00134_source_1l00037"/>00037 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00134_source_1l00038"/>00038 
+<anchor xml:id="_a00134_source_1l00039"/>00039 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00134_source_1l00043"/><link linkend="_a00676_1a2bd06fb688dc4a272e4a92500cb3a4ce">00043</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00676_1a2bd06fb688dc4a272e4a92500cb3a4ce">getIsDisplayable</link>():bool{
+<anchor xml:id="_a00134_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;true;
+<anchor xml:id="_a00134_source_1l00045"/>00045 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00134_source_1l00046"/>00046 
+<anchor xml:id="_a00134_source_1l00047"/>00047 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00134_source_1l00051"/><link linkend="_a00676_1a3d24ed0e93b212b4d5e382fa795bf4ef">00051</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00676_1a3d24ed0e93b212b4d5e382fa795bf4ef">getErrorMessage</link>():string{
+<anchor xml:id="_a00134_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;errorMessage;
+<anchor xml:id="_a00134_source_1l00053"/>00053 &#32;&#32;&#32;&#32;}&#32;&#32;&#32;
+<anchor xml:id="_a00134_source_1l00054"/>00054 }
+</programlisting></section>

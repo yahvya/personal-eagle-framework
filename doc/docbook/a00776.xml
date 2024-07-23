@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00776" xml:lang="fr">
+<title>Référence de la classe DatabaseCondSeparator</title>
+<indexterm><primary>DatabaseCondSeparator</primary></indexterm>
+<para>
+
+<para>Représentation de la séparation entre deux conditions. </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de DatabaseCondSeparator:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00776.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00776_1a8df509f18778352002dfb2b5088fb25a">getSeparator</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Fonctions membres protégées    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00776_1a73b7ae15ae571603918f92c41aea423b">__construct</link> (string $separator)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Attributs protégés    </title>
+        <itemizedlist>
+            <listitem><para>string <link linkend="_a00776_1a611f1e5e14d767be85ecd7326764fcc1">$separator</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Représentation de la séparation entre deux conditions. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00212_source_1l00009">9</link> du fichier <link linkend="_a00212_source">DatabaseCondSeparator.php</link>.</para>
+</section>
+<section>
+<title>Documentation des constructeurs et destructeur</title>
+<anchor xml:id="_a00776_1a73b7ae15ae571603918f92c41aea423b"/><section>
+    <title>__construct()</title>
+<indexterm><primary>__construct</primary><secondary>DatabaseCondSeparator</secondary></indexterm>
+<indexterm><primary>DatabaseCondSeparator</primary><secondary>__construct</secondary></indexterm>
+<para><computeroutput>__construct (string $separator)<computeroutput>[protected]</computeroutput></computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$separator</entry><entry>
+<para>Séparateur </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00212_source_1l00018">18</link> du fichier <link linkend="_a00212_source">DatabaseCondSeparator.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00776_1a8df509f18778352002dfb2b5088fb25a"/><section>
+    <title>getSeparator()</title>
+<indexterm><primary>getSeparator</primary><secondary>DatabaseCondSeparator</secondary></indexterm>
+<indexterm><primary>DatabaseCondSeparator</primary><secondary>getSeparator</secondary></indexterm>
+<para><computeroutput>getSeparator ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string Séparateur </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00212_source_1l00025">25</link> du fichier <link linkend="_a00212_source">DatabaseCondSeparator.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des champs</title>
+<anchor xml:id="_a00776_1a611f1e5e14d767be85ecd7326764fcc1"/><section>
+    <title>$separator</title>
+<indexterm><primary>$separator</primary><secondary>DatabaseCondSeparator</secondary></indexterm>
+<indexterm><primary>DatabaseCondSeparator</primary><secondary>$separator</secondary></indexterm>
+<para><computeroutput>string $separator<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00212_source_1l00013">13</link> du fichier <link linkend="_a00212_source">DatabaseCondSeparator.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00212">DatabaseCondSeparator.php</link></section>
+</section>

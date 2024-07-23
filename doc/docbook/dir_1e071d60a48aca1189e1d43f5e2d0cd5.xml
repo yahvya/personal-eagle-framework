@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_1e071d60a48aca1189e1d43f5e2d0cd5" xml:lang="fr">
+<title>Répertoire de référence de views</title>
+<indexterm><primary>Répertoire de référence de views</primary></indexterm>
+<simplesect>
+    <title>Répertoires    </title>
+        <itemizedlist>
+            <listitem><para>répertoire <link linkend="_dir_2f92cec8050cf7f256d8d5a6ca0bb438">maintenance</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Fichiers    </title>
+        <itemizedlist>
+            <listitem><para>fichier <link linkend="_a00395">sabo.blade.php</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

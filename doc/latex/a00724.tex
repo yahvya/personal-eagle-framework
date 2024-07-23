@@ -1,0 +1,674 @@
+\hypertarget{a00724}{}\doxysection{Référence de la classe Mysql\+Query\+Builder}
+\label{a00724}\index{MysqlQueryBuilder@{MysqlQueryBuilder}}
+
+
+Constructeur de requête.  
+
+
+\doxysubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00724_afc2e07bfdf1b87e1edd8e825b7fdb533}{\+\_\+\+\_\+construct}} (\mbox{\hyperlink{a00752}{Mysql\+Model}} \$model)
+\item 
+\mbox{\hyperlink{a00724_a4a20559544fdf4dcb457e258dc976cf8}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Remet à 0 le contenu du Query\+Builder. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00724_ad4fc9ceb9f4a748179c2302c36b8bfeb}{prepare\+Request}} (PDO \$pdo)
+\begin{DoxyCompactList}\small\item\em Prépare la requête. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00724_ae11fa93f5d6f384f8a5fff304a10c725}{as}} (string \$alias)
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}alias de la table. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00724_a0c26916dcbc48b8ba4c5adddeb7966ca}{get\+Real\+Sql}} ()
+\item 
+\mbox{\hyperlink{a00724_ad53d6d06affd7337d46e4efce0f6b2a1}{get\+Sql}} ()
+\item 
+\mbox{\hyperlink{a00724_aba3107b9a047d1ca05c264eaec4983d0}{get\+Base\+Model}} ()
+\item 
+\mbox{\hyperlink{a00724_a61cd3fa459b26f5b30726b9bd97ed9a9}{get\+Bind\+Values}} ()
+\item 
+\mbox{\hyperlink{a00724_a1dd73d00826544f9e23b141f9a28a8a6}{join\+Builder}} (\mbox{\hyperlink{a00724}{Mysql\+Query\+Builder}} \$to\+Join,?string \$sql\+Before=null,?string \$sql\+After=null)
+\begin{DoxyCompactList}\small\item\em Join la requête fournie dans la requête actuelle. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00724_a896014ee8ca6a0f73f68719b0b92b039}{static\+Request}} (string \$sql\+String, array \$to\+Bind=\mbox{[}$\,$\mbox{]}, bool \$just\+Concat=false)
+\begin{DoxyCompactList}\small\item\em Fonctions de requêtes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00724_aa26fe6f4ec7770e8e77a26a0a54d9daf}{select}} (string$\vert$\mbox{\hyperlink{a00748}{Mysql\+Function}} ... \$to\+Select)
+\begin{DoxyCompactList}\small\item\em Ajoute la chaine SELECT \mbox{[}\mbox{]} FROM table. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00724_ae21b14de27e3631b8ecd79ce5d605074}{insert}} (array \$insert\+Config)
+\begin{DoxyCompactList}\small\item\em Ajoute la chaine INSERT INTO. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00724_aeb12b20a8800bf40abc23f1c60b4869b}{update}} (array \$update\+Config)
+\begin{DoxyCompactList}\small\item\em Ajoute la chaine UPDATE table SET \mbox{[}\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00724_a13bdffdd926f26b825ea57066334ff01}{delete}} ()
+\begin{DoxyCompactList}\small\item\em Ajoute la chaine DELETE FROM table. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00724_a67ecf76c1603c22a9f286e71d3f2c2d2}{where}} ()
+\begin{DoxyCompactList}\small\item\em Ajoute la chaine WHERE. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00724_a1d0c475c6a685aae0941c846e82b266a}{cond}} (\mbox{\hyperlink{a00736}{Mysql\+Condition}}$\vert$\mbox{\hyperlink{a00740}{Mysql\+Cond\+Separator}} ... \$conditions)
+\begin{DoxyCompactList}\small\item\em Ajoute les conditions where. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00724_a1aa3c5c052952c6fd23823c1416855e7}{having}} (\mbox{\hyperlink{a00736}{Mysql\+Condition}}$\vert$\mbox{\hyperlink{a00740}{Mysql\+Cond\+Separator}} ... \$conditions)
+\begin{DoxyCompactList}\small\item\em Ajoute la chaine HAVING ... \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00724_ae5641c6871058232991ad687729a4300}{order\+By}} (array ... \$configs)
+\begin{DoxyCompactList}\small\item\em Ajoute la chaine ORDER BY ... (\$builder-\/\texorpdfstring{$>$}{>}order\+By(\mbox{[}\char`\"{}price\char`\"{},\char`\"{}\+ASC\char`\"{}\mbox{]},\mbox{[}\char`\"{}id\char`\"{},\char`\"{}\+DESC\char`\"{}\mbox{]} ) ) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00724_a29299a42882f531fb63f393a4c2510b2}{group\+By}} (string ... \$attributes\+Names)
+\begin{DoxyCompactList}\small\item\em Ajoute la chaine GROUP BY. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00724_a444602b3a500f06d2dd7212fa5bc8321}{limit}} (int \$count,?int \$offset=null)
+\begin{DoxyCompactList}\small\item\em Ajoute la clause limit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions membres publiques statiques}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{a00724_a211c11b4e36074d4a5aabd6401694bbc}{create\+From}} (string \$model\+Class)
+\begin{DoxyCompactList}\small\item\em Crée un query builder à partir du model fourni. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions membres protégées}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00724_a368d8ec291d5dfd1521bbdbe0dac955a}{manage\+Value\+Datas}} (\mbox{\hyperlink{a00632}{Table\+Column}} \$column\+Config, mixed \$data,?string \$sql\+Before=null,?string \$sql\+After=null)
+\begin{DoxyCompactList}\small\item\em Récupère les valeurs à bind en fonction de la valeur et fourni la chaine sql résultante. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00724_ab5cc6aff218af7007a869cfc98946545}{replace\+Attributes\+Name\+In}} (string \$string)
+\begin{DoxyCompactList}\small\item\em Remplace le nom des attributs par le nom de colonne associé \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00724_a0cb0e43349e5cd2b115425f6ca6e4576}{parse\+Condition}} (\mbox{\hyperlink{a00736}{Mysql\+Condition}} \$condition)
+\begin{DoxyCompactList}\small\item\em Parse les données de la condition. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00724_ab3723cdb5ab2cc68321e871b67e11b14}{parse\+Condition\+Sequence}} (array \$sequence)
+\begin{DoxyCompactList}\small\item\em Parse une séquence de conditions et de séparateurs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Attributs protégés}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{a00724_ad6cc6e119d82d5eaab864674bf6ef70b}{\$sql\+String}}
+\item 
+array \mbox{\hyperlink{a00724_ab9d893adde3eef81d7d28c94c89700b4}{\$to\+Bind}}
+\item 
+\mbox{\hyperlink{a00752}{Mysql\+Model}} \mbox{\hyperlink{a00724_a9de88a770502a9490841dc498cb93cd3}{\$base\+Model}}
+\item 
+string \mbox{\hyperlink{a00724_a257aeb0a75151f60d6d6e6cf790e73c8}{\$table\+Alias}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Constructeur de requête. 
+
+\begin{DoxyAuthor}{Auteur}
+yahaya bathily \href{https://github.com/yahvya}{\texttt{ https\+://github.\+com/yahvya}} 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00021}{21}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+
+
+\doxysubsection{Documentation des constructeurs et destructeur}
+\mbox{\Hypertarget{a00724_afc2e07bfdf1b87e1edd8e825b7fdb533}\label{a00724_afc2e07bfdf1b87e1edd8e825b7fdb533}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!\_\_construct@{\_\_construct}}
+\index{\_\_construct@{\_\_construct}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{\_\_construct()}{\_\_construct()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+construct (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{a00752}{Mysql\+Model}}}]{\$model }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}[1]{Paramètres}
+Mysql\+Model & {\em \$model} & instance du model \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00045}{45}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{a00724_ae11fa93f5d6f384f8a5fff304a10c725}\label{a00724_ae11fa93f5d6f384f8a5fff304a10c725}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!as@{as}}
+\index{as@{as}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{as()}{as()}}
+{\footnotesize\ttfamily as (\begin{DoxyParamCaption}\item[{string}]{\$alias }\end{DoxyParamCaption})}
+
+
+
+Met à jour l\textquotesingle{}alias de la table. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$alias} & nouvel alias \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+\$this 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00107}{107}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_a1d0c475c6a685aae0941c846e82b266a}\label{a00724_a1d0c475c6a685aae0941c846e82b266a}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!cond@{cond}}
+\index{cond@{cond}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{cond()}{cond()}}
+{\footnotesize\ttfamily cond (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{a00736}{Mysql\+Condition}}$\vert$\mbox{\hyperlink{a00740}{Mysql\+Cond\+Separator}} ...}]{\$conditions }\end{DoxyParamCaption})}
+
+
+
+Ajoute les conditions where. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em Mysql\+Condition$\vert$\+Mysql\+Cond\+Separator} & ...\$conditions conditions de vérification \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+\$this 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00437}{437}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_a211c11b4e36074d4a5aabd6401694bbc}\label{a00724_a211c11b4e36074d4a5aabd6401694bbc}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!createFrom@{createFrom}}
+\index{createFrom@{createFrom}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{createFrom()}{createFrom()}}
+{\footnotesize\ttfamily static create\+From (\begin{DoxyParamCaption}\item[{string}]{\$model\+Class }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Crée un query builder à partir du model fourni. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$model\+Class} & model de la class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Mysql\+Query\+Builder l\textquotesingle{}instance crée 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Config\+Exception} & en cas d\textquotesingle{}erreur de configuration \\
+\hline
+\end{DoxyExceptions}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00056}{56}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_a13bdffdd926f26b825ea57066334ff01}\label{a00724_a13bdffdd926f26b825ea57066334ff01}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!delete@{delete}}
+\index{delete@{delete}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{delete()}{delete()}}
+{\footnotesize\ttfamily delete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Ajoute la chaine DELETE FROM table. 
+
+\begin{DoxyReturn}{Renvoie}
+\$this 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00416}{416}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_aba3107b9a047d1ca05c264eaec4983d0}\label{a00724_aba3107b9a047d1ca05c264eaec4983d0}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!getBaseModel@{getBaseModel}}
+\index{getBaseModel@{getBaseModel}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{getBaseModel()}{getBaseModel()}}
+{\footnotesize\ttfamily get\+Base\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+Mysql\+Model instance du model de base 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00135}{135}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_a61cd3fa459b26f5b30726b9bd97ed9a9}\label{a00724_a61cd3fa459b26f5b30726b9bd97ed9a9}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!getBindValues@{getBindValues}}
+\index{getBindValues@{getBindValues}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{getBindValues()}{getBindValues()}}
+{\footnotesize\ttfamily get\+Bind\+Values (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+Mysql\+Bind\+Datas\mbox{[}\mbox{]} les valeurs à bind 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00142}{142}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_a0c26916dcbc48b8ba4c5adddeb7966ca}\label{a00724_a0c26916dcbc48b8ba4c5adddeb7966ca}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!getRealSql@{getRealSql}}
+\index{getRealSql@{getRealSql}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{getRealSql()}{getRealSql()}}
+{\footnotesize\ttfamily get\+Real\+Sql (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+string La chaine sql sans modification 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+La chaine fournie peut ne pas être utilisable 
+\end{DoxyAttention}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00117}{117}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_ad53d6d06affd7337d46e4efce0f6b2a1}\label{a00724_ad53d6d06affd7337d46e4efce0f6b2a1}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!getSql@{getSql}}
+\index{getSql@{getSql}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{getSql()}{getSql()}}
+{\footnotesize\ttfamily get\+Sql (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+string La chaine sql formaté pour une requête 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00124}{124}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_a29299a42882f531fb63f393a4c2510b2}\label{a00724_a29299a42882f531fb63f393a4c2510b2}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!groupBy@{groupBy}}
+\index{groupBy@{groupBy}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{groupBy()}{groupBy()}}
+{\footnotesize\ttfamily group\+By (\begin{DoxyParamCaption}\item[{string ...}]{\$attributes\+Names }\end{DoxyParamCaption})}
+
+
+
+Ajoute la chaine GROUP BY. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em string} & ...\$attributes\+Names nom des attributs \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+\$this 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00485}{485}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_a1aa3c5c052952c6fd23823c1416855e7}\label{a00724_a1aa3c5c052952c6fd23823c1416855e7}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!having@{having}}
+\index{having@{having}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{having()}{having()}}
+{\footnotesize\ttfamily having (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{a00736}{Mysql\+Condition}}$\vert$\mbox{\hyperlink{a00740}{Mysql\+Cond\+Separator}} ...}]{\$conditions }\end{DoxyParamCaption})}
+
+
+
+Ajoute la chaine HAVING ... 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em Mysql\+Condition$\vert$\+Mysql\+Cond\+Separator} & ...\$conditions conditions de vérification \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+\$this 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00451}{451}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_ae21b14de27e3631b8ecd79ce5d605074}\label{a00724_ae21b14de27e3631b8ecd79ce5d605074}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!insert@{insert}}
+\index{insert@{insert}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily insert (\begin{DoxyParamCaption}\item[{array}]{\$insert\+Config }\end{DoxyParamCaption})}
+
+
+
+Ajoute la chaine INSERT INTO. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+Mysql\+Function\mbox{[}$\,$\mbox{]} | Mysql\+Query\+Builder | mixed & {\em \$insert\+Config} & Tableau indicé par le nom des attributs à changer et avec valeur associé valeur$\vert$\+Mysql\+Function$\vert$\+Mysql\+Query\+Builder \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+\$this 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+en cas de fonction ne pas y placer d\textquotesingle{}alias 
+\end{DoxyAttention}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00352}{352}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_a1dd73d00826544f9e23b141f9a28a8a6}\label{a00724_a1dd73d00826544f9e23b141f9a28a8a6}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!joinBuilder@{joinBuilder}}
+\index{joinBuilder@{joinBuilder}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{joinBuilder()}{joinBuilder()}}
+{\footnotesize\ttfamily join\+Builder (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{a00724}{Mysql\+Query\+Builder}}}]{\$to\+Join,  }\item[{?string}]{\$sql\+Before = {\ttfamily null},  }\item[{?string}]{\$sql\+After = {\ttfamily null} }\end{DoxyParamCaption})}
+
+
+
+Join la requête fournie dans la requête actuelle. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+Mysql\+Query\+Builder & {\em \$to\+Join} & Builder à joindre \\
+\hline
+string | null & {\em \$sql\+Before} & Chaine sql à placer à avant ou null \\
+\hline
+string | null & {\em \$sql\+After} & Chaine sql à placer après ou null \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+\$this 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00153}{153}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_a444602b3a500f06d2dd7212fa5bc8321}\label{a00724_a444602b3a500f06d2dd7212fa5bc8321}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!limit@{limit}}
+\index{limit@{limit}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{limit()}{limit()}}
+{\footnotesize\ttfamily limit (\begin{DoxyParamCaption}\item[{int}]{\$count,  }\item[{?int}]{\$offset = {\ttfamily null} }\end{DoxyParamCaption})}
+
+
+
+Ajoute la clause limit. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+int & {\em \$count} & Nombre d\textquotesingle{}éléments \\
+\hline
+int | null & {\em \$offset} & Offset \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+\$this 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00503}{503}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_a368d8ec291d5dfd1521bbdbe0dac955a}\label{a00724_a368d8ec291d5dfd1521bbdbe0dac955a}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!manageValueDatas@{manageValueDatas}}
+\index{manageValueDatas@{manageValueDatas}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{manageValueDatas()}{manageValueDatas()}}
+{\footnotesize\ttfamily manage\+Value\+Datas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{a00632}{Table\+Column}}}]{\$column\+Config,  }\item[{mixed}]{\$data,  }\item[{?string}]{\$sql\+Before = {\ttfamily null},  }\item[{?string}]{\$sql\+After = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Récupère les valeurs à bind en fonction de la valeur et fourni la chaine sql résultante. 
+
+\begin{DoxyAttention}{Attention}
+Ne modifie pas la chaine sql 
+\end{DoxyAttention}
+
+\begin{DoxyParams}[1]{Paramètres}
+Table\+Column & {\em \$column\+Config} & Configuration de la colonne traitée \\
+\hline
+mixed | Mysql\+Function | Mysql\+Query\+Builder & {\em \$data} & le type de donnée à traiter \\
+\hline
+string | null & {\em \$sql\+Before} & Chaine sql à placer avant en cas de Builder \\
+\hline
+string | null & {\em \$sql\+After} & Chaine sql à placer après en cas de Builder \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+array les données au format \mbox{[}\char`\"{}sql\char`\"{} =\texorpdfstring{$>$}{>} ...,\char`\"{}to\+Bind\char`\"{} =\texorpdfstring{$>$}{>} \mbox{[}Mysql\+Bind\+Datas, ...\mbox{]} 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00169}{169}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_ae5641c6871058232991ad687729a4300}\label{a00724_ae5641c6871058232991ad687729a4300}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!orderBy@{orderBy}}
+\index{orderBy@{orderBy}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{orderBy()}{orderBy()}}
+{\footnotesize\ttfamily order\+By (\begin{DoxyParamCaption}\item[{array ...}]{\$configs }\end{DoxyParamCaption})}
+
+
+
+Ajoute la chaine ORDER BY ... (\$builder-\/\texorpdfstring{$>$}{>}order\+By(\mbox{[}\char`\"{}price\char`\"{},\char`\"{}\+ASC\char`\"{}\mbox{]},\mbox{[}\char`\"{}id\char`\"{},\char`\"{}\+DESC\char`\"{}\mbox{]} ) ) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em array} & ...\$configs Tableaux de deux éléments contenant en premier le nom de l\textquotesingle{}attribut suivi de \char`\"{}\+ASC\char`\"{} ou \char`\"{}\+DESC\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+\$this 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00465}{465}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_a0cb0e43349e5cd2b115425f6ca6e4576}\label{a00724_a0cb0e43349e5cd2b115425f6ca6e4576}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!parseCondition@{parseCondition}}
+\index{parseCondition@{parseCondition}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{parseCondition()}{parseCondition()}}
+{\footnotesize\ttfamily parse\+Condition (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{a00736}{Mysql\+Condition}}}]{\$condition }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Parse les données de la condition. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+Mysql\+Condition & {\em \$condition} & condition \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+array les données de la condition \mbox{[}\char`\"{}sql\char`\"{} =\texorpdfstring{$>$}{>} ...,\char`\"{}to\+Bind\char`\"{} =\texorpdfstring{$>$}{>} Mysql\+Bind\+Datas\mbox{]} 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00224}{224}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_ab3723cdb5ab2cc68321e871b67e11b14}\label{a00724_ab3723cdb5ab2cc68321e871b67e11b14}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!parseConditionSequence@{parseConditionSequence}}
+\index{parseConditionSequence@{parseConditionSequence}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{parseConditionSequence()}{parseConditionSequence()}}
+{\footnotesize\ttfamily parse\+Condition\+Sequence (\begin{DoxyParamCaption}\item[{array}]{\$sequence }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Parse une séquence de conditions et de séparateurs. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em (\+Mysql\+Condition$\vert$\+Mysql\+Cond\+Separator)\mbox{[}$\,$\mbox{]}} & \$sequence séquence \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+array les données de la séquence \mbox{[}\char`\"{}sql\char`\"{} =\texorpdfstring{$>$}{>} ...,\char`\"{}to\+Bind\char`\"{} =\texorpdfstring{$>$}{>} \mbox{[}Mysql\+Bind\+Datas, ...\mbox{]}\mbox{]} 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00262}{262}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_ad4fc9ceb9f4a748179c2302c36b8bfeb}\label{a00724_ad4fc9ceb9f4a748179c2302c36b8bfeb}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!prepareRequest@{prepareRequest}}
+\index{prepareRequest@{prepareRequest}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{prepareRequest()}{prepareRequest()}}
+{\footnotesize\ttfamily prepare\+Request (\begin{DoxyParamCaption}\item[{PDO}]{\$pdo }\end{DoxyParamCaption})}
+
+
+
+Prépare la requête. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+PDO & {\em \$pdo} & instance pdo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+PDOStatement$\vert$null Résultat de la préparation 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00077}{77}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_ab5cc6aff218af7007a869cfc98946545}\label{a00724_ab5cc6aff218af7007a869cfc98946545}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!replaceAttributesNameIn@{replaceAttributesNameIn}}
+\index{replaceAttributesNameIn@{replaceAttributesNameIn}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{replaceAttributesNameIn()}{replaceAttributesNameIn()}}
+{\footnotesize\ttfamily replace\+Attributes\+Name\+In (\begin{DoxyParamCaption}\item[{string}]{\$string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Remplace le nom des attributs par le nom de colonne associé 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$string} & chaine à traiter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+string résultat 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+Le nom d\textquotesingle{}un attribut doit être placé entre \{\} 
+\end{DoxyAttention}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00209}{209}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_a4a20559544fdf4dcb457e258dc976cf8}\label{a00724_a4a20559544fdf4dcb457e258dc976cf8}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!reset@{reset}}
+\index{reset@{reset}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Remet à 0 le contenu du Query\+Builder. 
+
+\begin{DoxyReturn}{Renvoie}
+\$this 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00064}{64}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_aa26fe6f4ec7770e8e77a26a0a54d9daf}\label{a00724_aa26fe6f4ec7770e8e77a26a0a54d9daf}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!select@{select}}
+\index{select@{select}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{select()}{select()}}
+{\footnotesize\ttfamily select (\begin{DoxyParamCaption}\item[{string$\vert$\mbox{\hyperlink{a00748}{Mysql\+Function}} ...}]{\$to\+Select }\end{DoxyParamCaption})}
+
+
+
+Ajoute la chaine SELECT \mbox{[}\mbox{]} FROM table. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em string$\vert$\+Mysql\+Function} & ...\$to\+Select \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+\$this 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+en fonction des champs sélectionnés le / les models générés seront partiellement construit s\textquotesingle{}il manque des champs. 
+\end{DoxyAttention}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00316}{316}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_a896014ee8ca6a0f73f68719b0b92b039}\label{a00724_a896014ee8ca6a0f73f68719b0b92b039}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!staticRequest@{staticRequest}}
+\index{staticRequest@{staticRequest}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{staticRequest()}{staticRequest()}}
+{\footnotesize\ttfamily static\+Request (\begin{DoxyParamCaption}\item[{string}]{\$sql\+String,  }\item[{array}]{\$to\+Bind = {\ttfamily \mbox{[}\mbox{]}},  }\item[{bool}]{\$just\+Concat = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Fonctions de requêtes. 
+
+Démarre une requête statique 
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$sql\+String} & requête sql \\
+\hline
+Mysql\+Bind\+Datas\mbox{[}$\,$\mbox{]} & {\em \$to\+Bind} & Valeur à bind \\
+\hline
+bool & {\em \$just\+Concat} & Si true concatène sinon remplace \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+\$this 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00297}{297}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_aeb12b20a8800bf40abc23f1c60b4869b}\label{a00724_aeb12b20a8800bf40abc23f1c60b4869b}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!update@{update}}
+\index{update@{update}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily update (\begin{DoxyParamCaption}\item[{array}]{\$update\+Config }\end{DoxyParamCaption})}
+
+
+
+Ajoute la chaine UPDATE table SET \mbox{[}\mbox{]}. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+Mysql\+Function\mbox{[}$\,$\mbox{]} | Mysql\+Query\+Builder | mixed & {\em \$update\+Config} & Tableau indicé par le nom des attributs à changer et avec valeur associé valeur$\vert$\+Mysql\+Function$\vert$\+Mysql\+Query\+Builder \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+\$this 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+en cas de fonction ne pas y placer d\textquotesingle{}alias 
+\end{DoxyAttention}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00385}{385}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_a67ecf76c1603c22a9f286e71d3f2c2d2}\label{a00724_a67ecf76c1603c22a9f286e71d3f2c2d2}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!where@{where}}
+\index{where@{where}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{where()}{where()}}
+{\footnotesize\ttfamily where (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Ajoute la chaine WHERE. 
+
+\begin{DoxyReturn}{Renvoie}
+\$this 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00426}{426}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+
+
+\doxysubsection{Documentation des champs}
+\mbox{\Hypertarget{a00724_a9de88a770502a9490841dc498cb93cd3}\label{a00724_a9de88a770502a9490841dc498cb93cd3}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!\$baseModel@{\$baseModel}}
+\index{\$baseModel@{\$baseModel}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{\$baseModel}{$baseModel}}
+{\footnotesize\ttfamily \mbox{\hyperlink{a00752}{Mysql\+Model}} \$base\+Model\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00035}{35}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_ad6cc6e119d82d5eaab864674bf6ef70b}\label{a00724_ad6cc6e119d82d5eaab864674bf6ef70b}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!\$sqlString@{\$sqlString}}
+\index{\$sqlString@{\$sqlString}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{\$sqlString}{$sqlString}}
+{\footnotesize\ttfamily string \$sql\+String\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00025}{25}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_a257aeb0a75151f60d6d6e6cf790e73c8}\label{a00724_a257aeb0a75151f60d6d6e6cf790e73c8}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!\$tableAlias@{\$tableAlias}}
+\index{\$tableAlias@{\$tableAlias}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{\$tableAlias}{$tableAlias}}
+{\footnotesize\ttfamily string \$table\+Alias\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00040}{40}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+\mbox{\Hypertarget{a00724_ab9d893adde3eef81d7d28c94c89700b4}\label{a00724_ab9d893adde3eef81d7d28c94c89700b4}} 
+\index{MysqlQueryBuilder@{MysqlQueryBuilder}!\$toBind@{\$toBind}}
+\index{\$toBind@{\$toBind}!MysqlQueryBuilder@{MysqlQueryBuilder}}
+\doxysubsubsection{\texorpdfstring{\$toBind}{$toBind}}
+{\footnotesize\ttfamily array \$to\+Bind\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00170_source_l00030}{30}} du fichier \mbox{\hyperlink{a00170_source}{Mysql\+Query\+Builder.\+php}}.
+
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00170}{Mysql\+Query\+Builder.\+php}}\end{DoxyCompactItemize}

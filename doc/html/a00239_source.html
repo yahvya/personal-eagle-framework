@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sabo final:  Fichier source de JsonResponse.php</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="favicon.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">Sabo final<span id="projectnumber">&#160;1.1.1</span>
+   </div>
+   <div id="projectbrief">Mini framework php</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('a00239_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">JsonResponse.php</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="a00239.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span>&lt;?php</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">namespace </span><a class="code hl_namespace" href="a00419.html">SaboCore\Routing\Response</a>;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>use Override;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="a00808.html">   11</a></span><span class="keyword">class </span><a class="code hl_class" href="a00808.html">JsonResponse</a> <span class="keyword">extends</span> <a class="code hl_class" href="a00820.html">Response</a>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="a00808.html#ab9a6ef17bd966f14154a4f01343d249f">   15</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00808.html#ab9a6ef17bd966f14154a4f01343d249f">__construct</a>(array $json){</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        $this-&gt;content = $json;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        $this-&gt;<a class="code hl_function" href="a00820.html#ac5219f5de9d65547e105f56bfdbadf38">setHeader</a>(name: <span class="stringliteral">&quot;Content-Type&quot;</span>,value: <span class="stringliteral">&quot;application/json&quot;</span>);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    }</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">    #[Override]</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="a00808.html#a0d304720b71e3fabb0b602754043e1b6">   22</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00808.html#a0d304720b71e3fabb0b602754043e1b6">renderContent</a>():never{</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        $jsonContent = @json_encode(value: $this-&gt;content);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        die(!$jsonContent ? <span class="stringliteral">&quot;{}&quot;</span> : $jsonContent);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>}</div>
+<div class="ttc" id="aa00419_html"><div class="ttname"><a href="a00419.html">SaboCore\Routing\Response</a></div><div class="ttdef"><b>Definition:</b> <a href="a00230_source.html#l00003">BladeResponse.php:3</a></div></div>
+<div class="ttc" id="aa00808_html"><div class="ttname"><a href="a00808.html">SaboCore\Routing\Response\JsonResponse</a></div><div class="ttdoc">Réponse json.</div><div class="ttdef"><b>Definition:</b> <a href="a00239_source.html#l00011">JsonResponse.php:11</a></div></div>
+<div class="ttc" id="aa00808_html_a0d304720b71e3fabb0b602754043e1b6"><div class="ttname"><a href="a00808.html#a0d304720b71e3fabb0b602754043e1b6">SaboCore\Routing\Response\JsonResponse\renderContent</a></div><div class="ttdeci">renderContent()</div><div class="ttdoc">Rend le contenu de la réponse.</div><div class="ttdef"><b>Definition:</b> <a href="a00239_source.html#l00022">JsonResponse.php:22</a></div></div>
+<div class="ttc" id="aa00808_html_ab9a6ef17bd966f14154a4f01343d249f"><div class="ttname"><a href="a00808.html#ab9a6ef17bd966f14154a4f01343d249f">SaboCore\Routing\Response\JsonResponse\__construct</a></div><div class="ttdeci">__construct(array $json)</div><div class="ttdef"><b>Definition:</b> <a href="a00239_source.html#l00015">JsonResponse.php:15</a></div></div>
+<div class="ttc" id="aa00820_html"><div class="ttname"><a href="a00820.html">SaboCore\Routing\Response\Response</a></div><div class="ttdoc">Gestionnaire de retour de réponse.</div><div class="ttdef"><b>Definition:</b> <a href="a00248_source.html#l00009">Response.php:9</a></div></div>
+<div class="ttc" id="aa00820_html_ac5219f5de9d65547e105f56bfdbadf38"><div class="ttname"><a href="a00820.html#ac5219f5de9d65547e105f56bfdbadf38">SaboCore\Routing\Response\Response\setHeader</a></div><div class="ttdeci">setHeader(string $name, string $value)</div><div class="ttdoc">Ajoute un en-tête à la réponse.</div><div class="ttdef"><b>Definition:</b> <a href="a00248_source.html#l00035">Response.php:35</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_5a9687d32d98fbbdb60629c9ff0dd338.html">sabo-core</a></li><li class="navelem"><a class="el" href="dir_d54a8198be41f8f99f9c5ea86cb625dd.html">routing</a></li><li class="navelem"><a class="el" href="dir_0ffbf9a26c4c7da35d590d3782932a04.html">response</a></li><li class="navelem"><a class="el" href="a00239.html">JsonResponse.php</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
+</body>
+</html>

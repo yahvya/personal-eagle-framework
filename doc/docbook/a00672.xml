@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00672" xml:lang="fr">
+<title>Référence de la classe EnumValidityCond</title>
+<indexterm><primary>EnumValidityCond</primary></indexterm>
+<para>
+
+<para>Vérifie la possibilité d&apos;utiliser la donnée. </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de EnumValidityCond:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00672.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00672_1ab55128edb0a39215afef2810f4a480a6">__construct</link> (string $errorMessage=&quot;Valeur invalide&quot;, bool $isDisplayable=true)</para>
+</listitem>
+            <listitem><para><link linkend="_a00672_1aaab6c4c9f3ed625334aa5024eb645ba0">verifyData</link> (<link linkend="_a00752">MysqlModel</link> $baseModel, string $attributeName, mixed $data)</para>
+
+<para>Vérifie si la donnée est valide. </para>
+</listitem>
+            <listitem><para><link linkend="_a00672_1a3d24ed0e93b212b4d5e382fa795bf4ef">getErrorMessage</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00672_1a2bd06fb688dc4a272e4a92500cb3a4ce">getIsDisplayable</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00664_1aaab6c4c9f3ed625334aa5024eb645ba0">verifyData</link> (<link linkend="_a00752">MysqlModel</link> $baseModel, string $attributeName, mixed $data)</para>
+
+<para>Vérifie si la donnée est valide. </para>
+</listitem>
+            <listitem><para><link linkend="_a00664_1a3d24ed0e93b212b4d5e382fa795bf4ef">getErrorMessage</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00664_1a2bd06fb688dc4a272e4a92500cb3a4ce">getIsDisplayable</link> ()</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Attributs protégés    </title>
+        <itemizedlist>
+            <listitem><para>string <link linkend="_a00672_1ac97fcc0af722602bf40bc016e5720459">$errorMessage</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_a00672_1a919a243061a1986ae430fd787760bbf9">$isDisplayable</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Vérifie la possibilité d&apos;utiliser la donnée. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00131_source_1l00014">14</link> du fichier <link linkend="_a00131_source">EnumValidityCond.php</link>.</para>
+</section>
+<section>
+<title>Documentation des constructeurs et destructeur</title>
+<anchor xml:id="_a00672_1ab55128edb0a39215afef2810f4a480a6"/><section>
+    <title>__construct()</title>
+<indexterm><primary>__construct</primary><secondary>EnumValidityCond</secondary></indexterm>
+<indexterm><primary>EnumValidityCond</primary><secondary>__construct</secondary></indexterm>
+<para><computeroutput>__construct (string $errorMessage = <computeroutput>&quot;Valeur&#160;invalide&quot;</computeroutput>
+, bool $isDisplayable = <computeroutput>true</computeroutput>
+)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$errorMessage</entry><entry>
+<para>Message d&apos;erreur en cas de non validité </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00131_source_1l00028">28</link> du fichier <link linkend="_a00131_source">EnumValidityCond.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00672_1a3d24ed0e93b212b4d5e382fa795bf4ef"/><section>
+    <title>getErrorMessage()</title>
+<indexterm><primary>getErrorMessage</primary><secondary>EnumValidityCond</secondary></indexterm>
+<indexterm><primary>EnumValidityCond</primary><secondary>getErrorMessage</secondary></indexterm>
+<para><computeroutput>getErrorMessage ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string Le message d&apos;erreur </para>
+</formalpara>
+</para>
+<para>
+Implémente <link linkend="_a00664_1a3d24ed0e93b212b4d5e382fa795bf4ef">Cond</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00131_source_1l00048">48</link> du fichier <link linkend="_a00131_source">EnumValidityCond.php</link>.</para>
+</section>
+<anchor xml:id="_a00672_1a2bd06fb688dc4a272e4a92500cb3a4ce"/><section>
+    <title>getIsDisplayable()</title>
+<indexterm><primary>getIsDisplayable</primary><secondary>EnumValidityCond</secondary></indexterm>
+<indexterm><primary>EnumValidityCond</primary><secondary>getIsDisplayable</secondary></indexterm>
+<para><computeroutput>getIsDisplayable ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>bool Si le message d&apos;erreur peut être affiché </para>
+</formalpara>
+</para>
+<para>
+Implémente <link linkend="_a00664_1a2bd06fb688dc4a272e4a92500cb3a4ce">Cond</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00131_source_1l00053">53</link> du fichier <link linkend="_a00131_source">EnumValidityCond.php</link>.</para>
+</section>
+<anchor xml:id="_a00672_1aaab6c4c9f3ed625334aa5024eb645ba0"/><section>
+    <title>verifyData()</title>
+<indexterm><primary>verifyData</primary><secondary>EnumValidityCond</secondary></indexterm>
+<indexterm><primary>EnumValidityCond</primary><secondary>verifyData</secondary></indexterm>
+<para><computeroutput>verifyData (<link linkend="_a00752">MysqlModel</link> $baseModel, string $attributeName, mixed $data)</computeroutput></para><para>
+
+<para>Vérifie si la donnée est valide. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>MysqlModel</entry><entry>$baseModel</entry><entry>
+<para>Model de base </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$attributeName</entry><entry>
+<para>Nom de l&apos;attribut </para>
+</entry>
+                            </row>
+                            <row>
+<entry>mixed</entry><entry>$data</entry><entry>
+<para>donnée à vérifier </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>bool si la donnée est valide </para>
+</formalpara>
+</para>
+<para>
+Implémente <link linkend="_a00664_1aaab6c4c9f3ed625334aa5024eb645ba0">Cond</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00131_source_1l00034">34</link> du fichier <link linkend="_a00131_source">EnumValidityCond.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des champs</title>
+<anchor xml:id="_a00672_1ac97fcc0af722602bf40bc016e5720459"/><section>
+    <title>$errorMessage</title>
+<indexterm><primary>$errorMessage</primary><secondary>EnumValidityCond</secondary></indexterm>
+<indexterm><primary>EnumValidityCond</primary><secondary>$errorMessage</secondary></indexterm>
+<para><computeroutput>string $errorMessage<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00131_source_1l00018">18</link> du fichier <link linkend="_a00131_source">EnumValidityCond.php</link>.</para>
+</section>
+<anchor xml:id="_a00672_1a919a243061a1986ae430fd787760bbf9"/><section>
+    <title>$isDisplayable</title>
+<indexterm><primary>$isDisplayable</primary><secondary>EnumValidityCond</secondary></indexterm>
+<indexterm><primary>EnumValidityCond</primary><secondary>$isDisplayable</secondary></indexterm>
+<para><computeroutput>bool $isDisplayable<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00131_source_1l00023">23</link> du fichier <link linkend="_a00131_source">EnumValidityCond.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00131">EnumValidityCond.php</link></section>
+</section>

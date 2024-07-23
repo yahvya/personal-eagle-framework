@@ -1,0 +1,113 @@
+\hypertarget{a00272_source}{}\doxysection{Sabo\+Api.\+php}
+\label{a00272_source}\index{SaboApi.php@{SaboApi.php}}
+\mbox{\hyperlink{a00272}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00003}\mbox{\hyperlink{a00422}{00003}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{a00422}{SaboCore\(\backslash\)Utils\(\backslash\)Api}};}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00005}00005\ use\ Exception;}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00006}00006\ use\ ReflectionClass;}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00012}\mbox{\hyperlink{a00848}{00012}}\ \textcolor{keyword}{abstract}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{a00848}{SaboApi}}\{\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00016}\mbox{\hyperlink{a00848_af78d9e4c18281250e7f2aaaaf8f0c2b8}{00016}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{a00848_af78d9e4c18281250e7f2aaaaf8f0c2b8}{\$apiUrlPrefix}};}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00021}\mbox{\hyperlink{a00848_afbe2955948872cfbce7b5d1abc605424}{00021}}\ \ \ \ \ \textcolor{keyword}{protected}\ array\ \mbox{\hyperlink{a00848_afbe2955948872cfbce7b5d1abc605424}{\$storedRequestResult}};}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00026}00026\ \ \ \ \ \textcolor{keyword}{private}\ ?\textcolor{keywordtype}{string}\ \$lastRequestResult;}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00031}\mbox{\hyperlink{a00848_afb65389fab3955f96d2d40e9b46a2d21}{00031}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00848_afb65389fab3955f96d2d40e9b46a2d21}{\_\_construct}}(\textcolor{keywordtype}{string}\ \mbox{\hyperlink{a00848_af78d9e4c18281250e7f2aaaaf8f0c2b8}{\$apiUrlPrefix}})\{}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00032}00032\ \ \ \ \ \ \ \ \ \$this-\/>apiUrlPrefix\ =\ !str\_ends\_with(haystack:\ \mbox{\hyperlink{a00848_af78d9e4c18281250e7f2aaaaf8f0c2b8}{\$apiUrlPrefix}},needle:\ \textcolor{stringliteral}{"{}/"{}})\ \&\&\ !str\_ends\_with(haystack:\ \mbox{\hyperlink{a00848_af78d9e4c18281250e7f2aaaaf8f0c2b8}{\$apiUrlPrefix}},needle:\ \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)"{}})\ ?\ \mbox{\hyperlink{a00848_af78d9e4c18281250e7f2aaaaf8f0c2b8}{\$apiUrlPrefix}}\ .\ \textcolor{stringliteral}{"{}/"{}}\ :\ \mbox{\hyperlink{a00848_af78d9e4c18281250e7f2aaaaf8f0c2b8}{\$apiUrlPrefix}};}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00033}00033\ \ \ \ \ \ \ \ \ \$this-\/>lastRequestResult\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00034}00034\ \ \ \ \ \ \ \ \ \$this-\/>storedRequestResult\ =\ [];}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00042}\mbox{\hyperlink{a00848_ac5d3575cc64f5864b0073d7f1015dade}{00042}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00848_ac5d3575cc64f5864b0073d7f1015dade}{apiUrl}}(\textcolor{keywordtype}{string}\ \$apiSuffix):string\{}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00043}00043\ \ \ \ \ \ \ \ \ return\ \$this-\/>apiUrlPrefix\ .\ \$apiSuffix;}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00056}\mbox{\hyperlink{a00848_a8d7f956d9e489f37ade40c5fa214bc22}{00056}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00848_a8d7f956d9e489f37ade40c5fa214bc22}{request}}(\textcolor{keywordtype}{string}\ \$requestUrl,array\ \$headers,mixed\ \$data,\mbox{\hyperlink{a00422_acded770c3134ecbf623b0f68863c903b}{SaboApiRequest}}\ \$dataConversionType,array\ \$overrideCurlOptions\ =\ [],?\textcolor{keywordtype}{string}\ \$storeIn\ =\ \textcolor{keyword}{null}):bool\{}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00057}00057\ \ \ \ \ \ \ \ \ \$curl\ =\ curl\_init();}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\$curl\ ===\ \textcolor{keyword}{false})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ options\ par\ défaut}}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00062}00062\ \ \ \ \ \ \ \ \ \$options\ =\ [}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ CURLOPT\_HEADER\ =>\ \textcolor{keyword}{false},}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ CURLOPT\_RETURNTRANSFER\ =>\ true}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00065}00065\ \ \ \ \ \ \ \ \ ];}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ override\ des\ options}}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}(\$overrideCurlOptions\ as\ \$curlOption\ =>\ \$value)\ \$options[\$curlOption]\ =\ \$value;}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00070}00070\ \ \ \ \ \ \ \ \ \$options[CURLOPT\_HTTPHEADER]\ =\ \$headers;}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00071}00071\ \ \ \ \ \ \ \ \ \$options[CURLOPT\_URL]\ =\ \$requestUrl;}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(SaboApiRequest::NO\_DATA\ !=\ \$dataConversionType)}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \$options[CURLOPT\_POSTFIELDS]\ =\ \$dataConversionType\ ==\ SaboApiRequest::HTTP\_BUILD\_QUERY\ ?\ http\_build\_query(data:\ \$data)\ :\ @json\_encode(value:\ \$data);}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!curl\_setopt\_array(handle:\ \$curl,options:\ \$options)\ )\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00078}00078\ \ \ \ \ \ \ \ \ \$result\ =\ curl\_exec(handle:\ \$curl);}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\$storeIn\ !==\ \textcolor{keyword}{null})\ \$this-\/>storedRequestResult[\$storeIn]\ =\ \$result;}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\$options[CURLOPT\_RETURNTRANSFER])\{}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\$result\ ===\ \textcolor{keyword}{false})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \$this-\/>lastRequestResult\ =\ \$result;}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00088}00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00089}00089\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$result;}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00091}00091\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00097}\mbox{\hyperlink{a00848_aa9ec11dc15d7b6b1484c76dc866642bd}{00097}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00848_aa9ec11dc15d7b6b1484c76dc866642bd}{getLastRequestResult}}(\mbox{\hyperlink{a00422_acded770c3134ecbf623b0f68863c903b}{SaboApiRequest}}\ \$as):string|array|null\{}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00098}00098\ \ \ \ \ \ \ \ \ if(\$this-\/>lastRequestResult\ ==\ null)\ return\ null;}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(\$as)\{}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ SaboApiRequest::RESULT\_AS\_JSON\_ARRAY\ :\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$jsonData\ =\ @json\_decode(json:\ \$this-\/>lastRequestResult,associative:\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ gettype(value:\ \$jsonData)\ !=\ \textcolor{stringliteral}{"{}array"{}}\ ?\ null\ :\ \$jsonData;}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ SaboApiRequest::RESULT\_AS\_STRING:\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>lastRequestResult;}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00111}00111\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00112}00112\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00120}\mbox{\hyperlink{a00848_a245efec83b622c3471913b872c3c4cf2}{00120}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00848_a245efec83b622c3471913b872c3c4cf2}{ifArrayContain}}(array\ \$toCheck,\textcolor{keywordtype}{string}\ ...\$keysToCheck):bool\{}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00121}00121\ \ \ \ \ \ \ \ \ foreach(\$keysToCheck\ as\ \$keyToCheck)\{}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \$arrayCopy\ =\ \$toCheck;}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \$keys\ =\ explode(separator:\ \textcolor{stringliteral}{"{}."{}},\textcolor{keywordtype}{string}:\ \$keyToCheck);}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}(\$keys\ as\ \$key)\{}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(gettype(value:\ \$arrayCopy)\ !=\ \textcolor{stringliteral}{"{}array"{}}\ ||\ !array\_key\_exists(key:\ \$key,array:\ \$arrayCopy)\ )\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$arrayCopy\ =\ \$arrayCopy[\$key];}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00131}00131\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00134}00134\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00142}\mbox{\hyperlink{a00848_a8595305dc051163ad23c9024ff5d5480}{00142}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00848_a8595305dc051163ad23c9024ff5d5480}{createFromConfig}}(array\ \$config):mixed\{}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00143}00143\ \ \ \ \ \ \ \ \ try\{}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \$reflection\ =\ new\ ReflectionClass(objectOrClass:\ get\_called\_class()\ );}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$reflection-\/>newInstance(}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$config[SaboApiConfig::URL-\/>value]}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00149}00149\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00150}00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}(Exception)\{}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00152}00152\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00272_source_l00153}00153\ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{a00272_source_l00154}00154\ \}}
+
+\end{DoxyCode}

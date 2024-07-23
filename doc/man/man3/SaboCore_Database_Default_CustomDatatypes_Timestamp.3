@@ -1,0 +1,152 @@
+.TH "Timestamp" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Timestamp \- Type custom timestamp\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP (?int $timestamp=null)"
+.br
+.ti -1c
+.RI "\fBconvertForDatabase\fP ()"
+.br
+.ti -1c
+.RI "\fBgetTimestamp\fP ()"
+.br
+.ti -1c
+.RI "\fBtoDateTime\fP ()"
+.br
+.ti -1c
+.RI "\fBformat\fP (string $format='Y\-m\-d H:i:s')"
+.br
+.RI "Formate le timestamp\&. "
+.in -1c
+.SS "Fonctions membres publiques statiques"
+
+.in +1c
+.ti -1c
+.RI "static \fBfromDatabase\fP (mixed $data)"
+.br
+.RI "Converti la donnée fournie en instance de timestamp\&. "
+.in -1c
+.SS "Attributs protégés"
+
+.in +1c
+.ti -1c
+.RI "DateTime \fB$dateManager\fP"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Type custom timestamp\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB11\fP du fichier \fBTimestamp\&.php\fP\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "__construct (?int $timestamp = \fCnull\fP)"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$timestamp\fP Timestamp à gérer\&. Si null timestamp actuel utilisé 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB20\fP du fichier \fBTimestamp\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "convertForDatabase ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+int le timestamp converti en entrée pour la base de donnée 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB31\fP du fichier \fBTimestamp\&.php\fP\&.
+.SS "format (string $format = \fC'Y\-m\-d H:i:s'\fP)"
+
+.PP
+Formate le timestamp\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$format\fP format 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+string le retour 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB54\fP du fichier \fBTimestamp\&.php\fP\&.
+.SS "static fromDatabase (mixed $data)\fC [static]\fP"
+
+.PP
+Converti la donnée fournie en instance de timestamp\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$data\fP timestamp stocké 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+Timestamp Le timestamp généré 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB63\fP du fichier \fBTimestamp\&.php\fP\&.
+.SS "getTimestamp ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+int Fourni le timestamp 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB38\fP du fichier \fBTimestamp\&.php\fP\&.
+.SS "toDateTime ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+DateTime fourni un datetime à partir du timestamp interne 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB45\fP du fichier \fBTimestamp\&.php\fP\&.
+.SH "Documentation des champs"
+.PP 
+.SS "DateTime $dateManager\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB15\fP du fichier \fBTimestamp\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

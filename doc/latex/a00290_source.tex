@@ -1,0 +1,66 @@
+\hypertarget{a00290_source}{}\doxysection{Form\+File\+Manager.\+php}
+\label{a00290_source}\index{FormFileManager.php@{FormFileManager.php}}
+\mbox{\hyperlink{a00290}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{a00290_source_l00003}00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{a00425}{SaboCore\(\backslash\)Utils\(\backslash\)FileManager}};}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{a00290_source_l00005}00005\ use\ Override;}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00006}00006\ use\ \mbox{\hyperlink{a00800}{SaboCore\(\backslash\)Routing\(\backslash\)Response\(\backslash\)DownloadResponse}};}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00007}00007\ use\ \mbox{\hyperlink{a00844}{SaboCore\(\backslash\)Treatment\(\backslash\)TreatmentException}};}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00008}00008\ use\ \mbox{\hyperlink{a00904}{SaboCore\(\backslash\)Utils\(\backslash\)Storage\(\backslash\)AppStorage}};}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{a00290_source_l00014}\mbox{\hyperlink{a00864}{00014}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{a00864}{FormFileManager}}\ \textcolor{keyword}{extends}\ \mbox{\hyperlink{a00860}{FileManager}}\{}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00018}\mbox{\hyperlink{a00864_aa5315ff3be6e97556315376efcdccec6}{00018}}\ \ \ \ \ \textcolor{keyword}{protected}\ array\ \mbox{\hyperlink{a00864_aa5315ff3be6e97556315376efcdccec6}{\$fileDatas}};}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{a00290_source_l00020}\mbox{\hyperlink{a00864_aefae9405137353cfb90c081874d8a4c7}{00020}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00864_aefae9405137353cfb90c081874d8a4c7}{\_\_construct}}(array\ \mbox{\hyperlink{a00864_aa5315ff3be6e97556315376efcdccec6}{\$fileDatas}})\{}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00021}00021\ \ \ \ \ \ \ \ \ parent::\_\_construct(fileAbsolutePath:\ \mbox{\hyperlink{a00864_aa5315ff3be6e97556315376efcdccec6}{\$fileDatas}}[\textcolor{stringliteral}{"{}tmp\_name"{}}]);}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{a00290_source_l00023}00023\ \ \ \ \ \ \ \ \ \$this-\/>fileDatas\ =\ \mbox{\hyperlink{a00864_aa5315ff3be6e97556315376efcdccec6}{\$fileDatas}};}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{a00290_source_l00031}00031\ \textcolor{preprocessor}{\ \ \ \ \#[Override]}}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00032}\mbox{\hyperlink{a00864_abc073d615c782d3e91ec0d06f6456c2a}{00032}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00864_abc073d615c782d3e91ec0d06f6456c2a}{getToDownload}}(?\textcolor{keywordtype}{string}\ \$fileName\ =\ \textcolor{keyword}{null}):\ \mbox{\hyperlink{a00800}{DownloadResponse}}\{}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00033}00033\ \ \ \ \ \ \ \ \ throw\ new\ \mbox{\hyperlink{a00844}{TreatmentException}}(message:\ \textcolor{stringliteral}{"{}Ce\ fichier\ ne\ peut\ pas\ être\ téléchargé"{}},isDisplayable:\ true);}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{a00290_source_l00036}00036\ \textcolor{preprocessor}{\ \ \ \ \#[Override]}}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00037}\mbox{\hyperlink{a00864_aa3742aafae0db54aaf752b2826176a72}{00037}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00864_aa3742aafae0db54aaf752b2826176a72}{storeIn}}(\textcolor{keywordtype}{string}\ \$path,\ \textcolor{keywordtype}{bool}\ \$createFoldersIfNotExists\ =\ \textcolor{keyword}{true}):\ bool\{}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00038}00038\ \ \ \ \ \ \ \ \ return}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \$this-\/>getErrorState()\ ==\ 0\ \&\&}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{a00904}{AppStorage}}::storeFormFile(}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ storagePath:\ \$path,}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fileTmpName:\ \$this-\/>fileAbsolutePath,}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createFoldersIfNotExists:\ \$createFoldersIfNotExists}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{a00290_source_l00051}00051\ \textcolor{preprocessor}{\ \ \ \ \#[Override]}}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00052}\mbox{\hyperlink{a00864_a9ac68df2af17ace6a2430d1fc34984ce}{00052}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00864_a9ac68df2af17ace6a2430d1fc34984ce}{getFromStorage}}():\ ?\mbox{\hyperlink{a00856}{FileContentManager}}\{}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00053}00053\ \ \ \ \ \ \ \ \ return\ null;}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{a00290_source_l00060}00060\ \textcolor{preprocessor}{\ \ \ \ \#[Override]}}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00061}\mbox{\hyperlink{a00864_a13bdffdd926f26b825ea57066334ff01}{00061}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \textcolor{keyword}{delete}():\ \textcolor{keywordtype}{bool}\{}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00062}00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{a00290_source_l00068}\mbox{\hyperlink{a00864_a830b5c75df72b32396701bc563fbe3c7}{00068}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00864_a830b5c75df72b32396701bc563fbe3c7}{getType}}():string\{}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00069}00069\ \ \ \ \ \ \ \ \ return\ \$this-\/>fileDatas[\textcolor{stringliteral}{"{}type"{}}]\ ??\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{a00290_source_l00077}\mbox{\hyperlink{a00864_a3e694ddaaa663c1abc74b9e30b143b89}{00077}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00864_a3e694ddaaa663c1abc74b9e30b143b89}{isInTypes}}(\textcolor{keywordtype}{string}\ ...\$typesToCheck):bool\{}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00078}00078\ \ \ \ \ \ \ \ \ return\ in\_array(needle:\ \$this-\/>getType(),haystack:\ \$typesToCheck);}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00079}00079\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{a00290_source_l00084}\mbox{\hyperlink{a00864_a7563c2998ef776441d5a3ad56bbc66b9}{00084}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00864_a7563c2998ef776441d5a3ad56bbc66b9}{getErrorState}}():int\{}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00085}00085\ \ \ \ \ \ \ \ \ return\ \$this-\/>fileDatas[\textcolor{stringliteral}{"{}error"{}}];}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{a00290_source_l00091}\mbox{\hyperlink{a00864_a75cce10cdf81be6dc84881c28b3379b7}{00091}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00864_a75cce10cdf81be6dc84881c28b3379b7}{getSize}}():int\{}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00092}00092\ \ \ \ \ \ \ \ \ return\ \$this-\/>fileDatas[\textcolor{stringliteral}{"{}size"{}}];}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00093}00093\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00290_source_l00094}00094\ \}}
+
+\end{DoxyCode}

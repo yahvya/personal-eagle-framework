@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_50d2f12cd322d329a68d56706bbd9da6" xml:lang="fr">
+<title>Répertoire de référence de blade</title>
+<indexterm><primary>Répertoire de référence de blade</primary></indexterm>
+<simplesect>
+    <title>Répertoires    </title>
+        <itemizedlist>
+            <listitem><para>répertoire <link linkend="_dir_0681a38b319e53abd546c8d9de8df3e7">compiled</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

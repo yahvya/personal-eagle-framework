@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00020" xml:lang="fr">
+<title>Référence du fichier HelpCommand.php</title>
+<indexterm><primary>HelpCommand.php</primary></indexterm>
+<simplesect>
+    <title>Structures de données    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_a00560">HelpCommand</link></para>
+
+<para>Commande d&apos;affichage d&apos;aide. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Espaces de nommage    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_a00401">SaboCore\Cli\Commands</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

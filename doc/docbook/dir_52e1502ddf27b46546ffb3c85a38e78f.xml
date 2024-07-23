@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_52e1502ddf27b46546ffb3c85a38e78f" xml:lang="fr">
+<title>Répertoire de référence de cli</title>
+<indexterm><primary>Répertoire de référence de cli</primary></indexterm>
+<simplesect>
+    <title>Fichiers    </title>
+        <itemizedlist>
+            <listitem><para>fichier <link linkend="_a00008">ArgumentManager.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00011">CliArgument.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00014">SaboCli.php</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

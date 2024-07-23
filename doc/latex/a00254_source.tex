@@ -1,0 +1,53 @@
+\hypertarget{a00254_source}{}\doxysection{Twig\+Response.\+php}
+\label{a00254_source}\index{TwigResponse.php@{TwigResponse.php}}
+\mbox{\hyperlink{a00254}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{a00254_source_l00003}00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{a00419}{SaboCore\(\backslash\)Routing\(\backslash\)Response}};}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{a00254_source_l00005}00005\ use\ ReflectionClass;}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00006}00006\ use\ \mbox{\hyperlink{a00403_a5f86f21fc1b2fcda9bfff7e5f1e64129}{SaboCore\(\backslash\)Config\(\backslash\)EnvConfig}};}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00007}00007\ use\ \mbox{\hyperlink{a00784}{SaboCore\(\backslash\)Routing\(\backslash\)Application\(\backslash\)Application}};}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00008}00008\ use\ Throwable;}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00009}00009\ use\ Twig\(\backslash\)Environment;}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00010}00010\ use\ Twig\(\backslash\)Loader\(\backslash\)FilesystemLoader;}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{a00254_source_l00016}\mbox{\hyperlink{a00824}{00016}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{a00824}{TwigResponse}}\ \textcolor{keyword}{extends}\ \mbox{\hyperlink{a00804}{HtmlResponse}}\{}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00021}\mbox{\hyperlink{a00824_aba3b3a591f0abc085326fd72a1b5dbe6}{00021}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00824_aba3b3a591f0abc085326fd72a1b5dbe6}{\_\_construct}}(\textcolor{keywordtype}{string}\ \$pathFromViews,array\ \$datas\ =\ [])\{}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\{}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \$environment\ =\ \mbox{\hyperlink{a00824_a8718ab84b075e0f6c9c22bdcad022e72}{self::newEnvironment}}(viewsPath:\ [APP\_CONFIG-\/>getConfig(name:\ \textcolor{stringliteral}{"{}ROOT"{}})\ .\ \textcolor{stringliteral}{"{}/src/views/"{}}]);}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{a00254_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ parent::\_\_construct(content:\ \$environment-\/>render(name:\ \$pathFromViews,context:\ \$datas)\ );}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00026}00026\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}(Throwable)\{}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ parent::\_\_construct(content:\ \textcolor{stringliteral}{"{}Veuillez\ rechargez\ la\ page"{}});}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00029}00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00030}00030\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{a00254_source_l00037}\mbox{\hyperlink{a00824_a8718ab84b075e0f6c9c22bdcad022e72}{00037}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00824_a8718ab84b075e0f6c9c22bdcad022e72}{newEnvironment}}(array\ \$viewsPath):Environment|null\{}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00038}00038\ \ \ \ \ \ \ \ \ try\{}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \$loader\ =\ new\ FilesystemLoader(paths:\ \$viewsPath);}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \$environment\ =\ \textcolor{keyword}{new}\ Environment(}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ loader:\ \$loader,}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ options:\ [}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}cache"{}}\ =>\ APP\_CONFIG-\/>getConfig(name:\ \textcolor{stringliteral}{"{}ROOT"{}})\ .\ \textcolor{stringliteral}{"{}/sabo-\/core/views/twig"{}},}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}debug"{}}\ =>\ Application::getEnvConfig()-\/>getConfig(name:\ EnvConfig::DEV\_MODE\_CONFIG-\/>value),}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{a00254_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ ]);}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{a00254_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ enregistrement\ des\ extensions\ twig}}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \$extensions\ =\ \mbox{\hyperlink{a00365_a27d26ed3c2637e618b90445d628d4f48}{registerTwigExtensions}}();}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{a00254_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}(\$extensions\ as\ \$extension)}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$environment-\/>addExtension(extension:\ (\textcolor{keyword}{new}\ ReflectionClass(objectOrClass:\ \$extension))-\/>newInstance()\ );}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{a00254_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$environment;}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}(Throwable)\{}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00058}00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00059}00059\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00254_source_l00060}00060\ \}}
+
+\end{DoxyCode}

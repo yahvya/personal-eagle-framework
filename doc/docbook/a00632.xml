@@ -1,0 +1,767 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00632" xml:lang="fr">
+<title>Référence de la classe TableColumn</title>
+<indexterm><primary>TableColumn</primary></indexterm>
+<para>
+
+<para>Représentation d&apos;une colonne. </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de TableColumn:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00632.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00632_1a66c1c7a592dee0f5c81ce8bc4f5aba79">__construct</link> (string $columnName, bool $<link linkend="_a00632_1ae8fae740d59f7524f81c796142d3a846">isNullable</link>=false, bool $<link linkend="_a00632_1a84d622ec43bb17c0e2dad555eb2e727f">isPrimaryKey</link>=false, bool $<link linkend="_a00632_1af8ed15bf71456982ef4e83bda6110b84">isUnique</link>=false, string $defaultValue=self::NO_DEFAULT_VALUE, bool $<link linkend="_a00632_1aef8eaaa57b12ba2f3af9bc43e86785f9">isForeignKey</link>=false,?string $referencedModel=null,?string $referencedAttributeName=null, array $setConditions=[], array $dataFormatters=[], array $datasReformers=[])</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1aaab6c4c9f3ed625334aa5024eb645ba0">verifyData</link> (<link linkend="_a00752">MysqlModel</link> $baseModel, string $attributeName, mixed $data)</para>
+
+<para>Vérifie la donnée à affecter. </para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1adbf13492c59987bedcd545a4a92e068a">formatData</link> (<link linkend="_a00752">MysqlModel</link> $baseModel, mixed $originalData)</para>
+
+<para>Formate la donnée originale en passant par les formateurs. </para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1a04bba9c06a9e7c7e22f3e2fd502462f1">reformData</link> (<link linkend="_a00752">MysqlModel</link> $baseModel, mixed $formatedData)</para>
+
+<para>Reforme la donnée originale en passant par les reconstructeurs. </para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1ad92bfdc0fefd5c464f9da10afa3380c8">getColumnName</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1a84d622ec43bb17c0e2dad555eb2e727f">isPrimaryKey</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1aef8eaaa57b12ba2f3af9bc43e86785f9">isForeignKey</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1ae8fae740d59f7524f81c796142d3a846">isNullable</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1af8ed15bf71456982ef4e83bda6110b84">isUnique</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1af4b6ceb378c2dae6a318da7e4dae47b6">getReferencedModel</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1acd86beef1d1792ff1f9fbf96251a346a">getSetConditions</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1abc3d98fd236692c0f7a687189107f693">getDefaultValueStr</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1a7b326430880e7e87c18f6331afabb1ef">haveDefaultValue</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1adbceac178490fa055ef59925eb68a3e8">getDatasFormatters</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1a49fc4860f790b90c3ec1b43f4457d1b8">getDatasReformers</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1ab85bdcdb8aa6018d0a443da6beb2a6d4">getReferencedAttributeName</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1a76b1e6a88663c88c3866a0a959a4507f">convertToValue</link> (mixed $data)</para>
+
+<para>Méthode appellé au montage de la propriété portant cet attribut. Transforme la donnée récupérée en base de donnée en la donnée finale. </para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1a91357cc34d10330cca617fdc3bc012cc">convertFromValue</link> (mixed $data)</para>
+
+<para>Méthode appellé à l&apos;insertion ou mise à jour de la propriété portant cet attribut. Transforme la donnée de l&apos;attribut en une donnée capable d&apos;être inséré en base de donnée. </para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1a5108b80166312a6a5db4f674414ac423">getColumnType</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Fonctions membres publiques hérités de <link linkend="_a00628">SqlAttribute</link>        <itemizedlist>
+            <listitem><para><link linkend="_a00628_1a77ed872e25498694d3063ef2da790f82">getCreationSql</link> ()</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Attributs protégés    </title>
+        <itemizedlist>
+            <listitem><para>const string <link linkend="_a00632_1a60c5df8609f676f3a37b03b36cc7ab35">NO_DEFAULT_VALUE</link> = &quot;ATTRIBUTE_NO_DEFAULT_VALUE&quot;</para>
+
+<para>Chaine représentant si l&apos;attribut n&apos;a pas de valeur par défaut. </para>
+</listitem>
+            <listitem><para>string <link linkend="_a00632_1a26f81287ec32ce8f110e8d82fbd1287b">$columnName</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_a00632_1a6684994e27b9c47a6a616bec069e9d6c">$isPrimaryKey</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_a00632_1a80dfa697ce68e86b57ac28e85fc94940">$isForeignKey</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_a00632_1a14fbc937b182e9c5e716e3d6c47a7a2b">$isNullable</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_a00632_1a3a2a468b0dce59773b37d8e0837386bf">$isUnique</link></para>
+</listitem>
+            <listitem><para>string <link linkend="_a00632_1a7cb26b7337faae66c684c41170aca703">$defaultValue</link></para>
+</listitem>
+            <listitem><para>string <link linkend="_a00632_1aea28bfaae2904f85413eeb372ae61930">$referencedModel</link></para>
+</listitem>
+            <listitem><para>string <link linkend="_a00632_1a932ca11214be628e42a3f4ace52ebb87">$referencedAttributeName</link></para>
+</listitem>
+            <listitem><para>array <link linkend="_a00632_1aff6fb07d968e6d11597786dfa631e093">$setConditions</link></para>
+</listitem>
+            <listitem><para>array <link linkend="_a00632_1a1305d69ee34337bbd87d14aadcc72ab8">$datasFormatters</link> = []</para>
+</listitem>
+            <listitem><para>array <link linkend="_a00632_1a4f639e69f23c00400112dadd89e91b62">$datasReformers</link> = []</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Représentation d&apos;une colonne. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00101_source_1l00015">15</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<section>
+<title>Documentation des constructeurs et destructeur</title>
+<anchor xml:id="_a00632_1a66c1c7a592dee0f5c81ce8bc4f5aba79"/><section>
+    <title>__construct()</title>
+<indexterm><primary>__construct</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>__construct</secondary></indexterm>
+<para><computeroutput>__construct (string $columnName, bool $isNullable = <computeroutput>false</computeroutput>
+, bool $isPrimaryKey = <computeroutput>false</computeroutput>
+, bool $isUnique = <computeroutput>false</computeroutput>
+, string $defaultValue = <computeroutput>self::NO_DEFAULT_VALUE</computeroutput>
+, bool $isForeignKey = <computeroutput>false</computeroutput>
+, ?string $referencedModel = <computeroutput>null</computeroutput>
+, ?string $referencedAttributeName = <computeroutput>null</computeroutput>
+, array $setConditions = <computeroutput>[]</computeroutput>
+, array $dataFormatters = <computeroutput>[]</computeroutput>
+, array $datasReformers = <computeroutput>[]</computeroutput>
+)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$columnName</entry><entry>
+<para>Nom de la colonne en base de donnée </para>
+</entry>
+                            </row>
+                            <row>
+<entry>bool</entry><entry>$isNullable</entry><entry>
+<para>si le champ est nullable (mis à false par défaut si clé primaire) </para>
+</entry>
+                            </row>
+                            <row>
+<entry>bool</entry><entry>$isPrimaryKey</entry><entry>
+<para>si le champ est une clé primaire </para>
+</entry>
+                            </row>
+                            <row>
+<entry>bool</entry><entry>$isUnique</entry><entry>
+<para>si le champ est unique </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$defaultValue</entry><entry>
+<para>Valeur par défaut de l&apos;attribut (sous la forme sql) </para>
+</entry>
+                            </row>
+                            <row>
+<entry>bool</entry><entry>$isForeignKey</entry><entry>
+<para>si le champ est une clé étrangère </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string | null</entry><entry>$referencedModel</entry><entry>
+<para>Class du modèle référencé par la clé </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string | null</entry><entry>$referencedAttributeName</entry><entry>
+<para>Nom de l&apos;attribut référencé </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Cond[]</entry><entry>$setConditions</entry><entry>
+<para>Conditions à vérifier sur la donnée originale avant de l&apos;accepter dans l&apos;attribut </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Formater[]</entry><entry>$dataFormatters</entry><entry>
+<para>Formateur de donnée pour transformer la donnée originale </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Formater[]</entry><entry>$datasReformers</entry><entry>
+<para>Formateur de donnée pour reformer la donnée </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <caution><title>Attention</title>
+
+<para>Les conditions sont appelées avant formatage sur la donnée originale </para>
+
+<para>Chaque formateur recevra le résultat du précédent </para>
+
+<para>L&apos;attribut par défaut doit contenir la chaine exacte qui sera saisie dans la création sql ex : &quot;&apos;default&apos;&quot; &quot;10&quot; ... </para>
+</caution>
+</para>
+<para>
+Réimplémentée dans <link linkend="_a00624_1a7822cf4fa624fdb926b8d990f9b84c63">JsonColumn</link>, <link linkend="_a00640_1a7822cf4fa624fdb926b8d990f9b84c63">TextColumn</link>, <link linkend="_a00644_1a7822cf4fa624fdb926b8d990f9b84c63">TimestampColumn</link>, et <link linkend="_a00648_1a7822cf4fa624fdb926b8d990f9b84c63">TinyIntColumn</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00101_source_1l00092">92</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00632_1a91357cc34d10330cca617fdc3bc012cc"/><section>
+    <title>convertFromValue()</title>
+<indexterm><primary>convertFromValue</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>convertFromValue</secondary></indexterm>
+<para><computeroutput>convertFromValue (mixed $data)</computeroutput></para><para>
+
+<para>Méthode appellé à l&apos;insertion ou mise à jour de la propriété portant cet attribut. Transforme la donnée de l&apos;attribut en une donnée capable d&apos;être inséré en base de donnée. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>mixed</entry><entry>$data</entry><entry>
+<para>La donnée de base </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>mixed la donnée convertie </para>
+</formalpara>
+</para>
+<para>
+Réimplémentée dans <link linkend="_a00644_1a91357cc34d10330cca617fdc3bc012cc">TimestampColumn</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00101_source_1l00260">260</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1a76b1e6a88663c88c3866a0a959a4507f"/><section>
+    <title>convertToValue()</title>
+<indexterm><primary>convertToValue</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>convertToValue</secondary></indexterm>
+<para><computeroutput>convertToValue (mixed $data)</computeroutput></para><para>
+
+<para>Méthode appellé au montage de la propriété portant cet attribut. Transforme la donnée récupérée en base de donnée en la donnée finale. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>mixed</entry><entry>$data</entry><entry>
+<para>La donnée de base </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>mixed la donnée convertie </para>
+</formalpara>
+</para>
+<para>
+Réimplémentée dans <link linkend="_a00644_1a76b1e6a88663c88c3866a0a959a4507f">TimestampColumn</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00101_source_1l00251">251</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1adbf13492c59987bedcd545a4a92e068a"/><section>
+    <title>formatData()</title>
+<indexterm><primary>formatData</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>formatData</secondary></indexterm>
+<para><computeroutput>formatData (<link linkend="_a00752">MysqlModel</link> $baseModel, mixed $originalData)</computeroutput></para><para>
+
+<para>Formate la donnée originale en passant par les formateurs. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>MysqlModel</entry><entry>$baseModel</entry><entry>
+<para>Model de base </para>
+</entry>
+                            </row>
+                            <row>
+<entry>mixed</entry><entry>$originalData</entry><entry>
+<para>Donnée originale </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>mixed La donnée totalement formatée </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Les conditions doivent être vérifiées avant formatage </para>
+</caution>
+
+                <formalpara>
+                    <title>
+Exceptions</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>FormaterException</entry><entry>
+<para>en cas d&apos;erreur de formatage </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00101_source_1l00134">134</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1ad92bfdc0fefd5c464f9da10afa3380c8"/><section>
+    <title>getColumnName()</title>
+<indexterm><primary>getColumnName</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>getColumnName</secondary></indexterm>
+<para><computeroutput>getColumnName ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string Nom de la colonne en base de donnée </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00101_source_1l00165">165</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1a5108b80166312a6a5db4f674414ac423"/><section>
+    <title>getColumnType()</title>
+<indexterm><primary>getColumnType</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>getColumnType</secondary></indexterm>
+<para><computeroutput>getColumnType ( )<computeroutput>[abstract]</computeroutput></computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>int Fourni le type de paramètre pdo </para>
+</formalpara>
+</para>
+<para>
+Réimplémentée dans <link linkend="_a00596_1a5108b80166312a6a5db4f674414ac423">BinaryColumn</link>, <link linkend="_a00600_1a5108b80166312a6a5db4f674414ac423">BoolColumn</link>, <link linkend="_a00604_1a5108b80166312a6a5db4f674414ac423">CharColumn</link>, <link linkend="_a00608_1a5108b80166312a6a5db4f674414ac423">DecimalColumn</link>, <link linkend="_a00612_1a5108b80166312a6a5db4f674414ac423">EnumColumn</link>, <link linkend="_a00616_1a5108b80166312a6a5db4f674414ac423">IntColumn</link>, <link linkend="_a00624_1a5108b80166312a6a5db4f674414ac423">JsonColumn</link>, <link linkend="_a00640_1a5108b80166312a6a5db4f674414ac423">TextColumn</link>, <link linkend="_a00644_1a5108b80166312a6a5db4f674414ac423">TimestampColumn</link>, <link linkend="_a00648_1a5108b80166312a6a5db4f674414ac423">TinyIntColumn</link>, <link linkend="_a00652_1a5108b80166312a6a5db4f674414ac423">VarBinaryColumn</link>, et <link linkend="_a00656_1a5108b80166312a6a5db4f674414ac423">VarcharColumn</link>.</para>
+</section>
+<anchor xml:id="_a00632_1adbceac178490fa055ef59925eb68a3e8"/><section>
+    <title>getDatasFormatters()</title>
+<indexterm><primary>getDatasFormatters</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>getDatasFormatters</secondary></indexterm>
+<para><computeroutput>getDatasFormatters ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>Formater[] formateurs de données </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00101_source_1l00228">228</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1a49fc4860f790b90c3ec1b43f4457d1b8"/><section>
+    <title>getDatasReformers()</title>
+<indexterm><primary>getDatasReformers</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>getDatasReformers</secondary></indexterm>
+<para><computeroutput>getDatasReformers ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>Formater[] Reconstructeurs de données </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00101_source_1l00235">235</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1abc3d98fd236692c0f7a687189107f693"/><section>
+    <title>getDefaultValueStr()</title>
+<indexterm><primary>getDefaultValueStr</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>getDefaultValueStr</secondary></indexterm>
+<para><computeroutput>getDefaultValueStr ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string La chaine sql de valeur par défaut ou vide si pas de valeur par défaut </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00101_source_1l00214">214</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1ab85bdcdb8aa6018d0a443da6beb2a6d4"/><section>
+    <title>getReferencedAttributeName()</title>
+<indexterm><primary>getReferencedAttributeName</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>getReferencedAttributeName</secondary></indexterm>
+<para><computeroutput>getReferencedAttributeName ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string|null Nom de l&apos;attribut référencé ou null en cas de foreign key </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00101_source_1l00242">242</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1af4b6ceb378c2dae6a318da7e4dae47b6"/><section>
+    <title>getReferencedModel()</title>
+<indexterm><primary>getReferencedModel</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>getReferencedModel</secondary></indexterm>
+<para><computeroutput>getReferencedModel ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string|null Class du model référencé en cas de foreign key sinon null </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00101_source_1l00200">200</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1acd86beef1d1792ff1f9fbf96251a346a"/><section>
+    <title>getSetConditions()</title>
+<indexterm><primary>getSetConditions</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>getSetConditions</secondary></indexterm>
+<para><computeroutput>getSetConditions ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>Cond[] Conditions de validation </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00101_source_1l00207">207</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1a7b326430880e7e87c18f6331afabb1ef"/><section>
+    <title>haveDefaultValue()</title>
+<indexterm><primary>haveDefaultValue</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>haveDefaultValue</secondary></indexterm>
+<para><computeroutput>haveDefaultValue ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>bool Si l&apos;attribut à une valeur par défaut </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00101_source_1l00221">221</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1aef8eaaa57b12ba2f3af9bc43e86785f9"/><section>
+    <title>isForeignKey()</title>
+<indexterm><primary>isForeignKey</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>isForeignKey</secondary></indexterm>
+<para><computeroutput>isForeignKey ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>bool Si le champ est une clé étrangère </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00101_source_1l00179">179</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1ae8fae740d59f7524f81c796142d3a846"/><section>
+    <title>isNullable()</title>
+<indexterm><primary>isNullable</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>isNullable</secondary></indexterm>
+<para><computeroutput>isNullable ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>bool Si le champ est nullable </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00101_source_1l00186">186</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1a84d622ec43bb17c0e2dad555eb2e727f"/><section>
+    <title>isPrimaryKey()</title>
+<indexterm><primary>isPrimaryKey</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>isPrimaryKey</secondary></indexterm>
+<para><computeroutput>isPrimaryKey ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>bool Si le champ est une clé primaire </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00101_source_1l00172">172</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1af8ed15bf71456982ef4e83bda6110b84"/><section>
+    <title>isUnique()</title>
+<indexterm><primary>isUnique</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>isUnique</secondary></indexterm>
+<para><computeroutput>isUnique ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>bool Si le champ est unique </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00101_source_1l00193">193</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1a04bba9c06a9e7c7e22f3e2fd502462f1"/><section>
+    <title>reformData()</title>
+<indexterm><primary>reformData</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>reformData</secondary></indexterm>
+<para><computeroutput>reformData (<link linkend="_a00752">MysqlModel</link> $baseModel, mixed $formatedData)</computeroutput></para><para>
+
+<para>Reforme la donnée originale en passant par les reconstructeurs. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>MysqlModel</entry><entry>$baseModel</entry><entry>
+<para>Model de base </para>
+</entry>
+                            </row>
+                            <row>
+<entry>mixed</entry><entry>$formatedData</entry><entry>
+<para>Donnée formatée </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>mixed La donnée totalement reformée </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Exceptions</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>FormaterException</entry><entry>
+<para>en cas d&apos;erreur de formatage </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00101_source_1l00153">153</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1aaab6c4c9f3ed625334aa5024eb645ba0"/><section>
+    <title>verifyData()</title>
+<indexterm><primary>verifyData</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>verifyData</secondary></indexterm>
+<para><computeroutput>verifyData (<link linkend="_a00752">MysqlModel</link> $baseModel, string $attributeName, mixed $data)</computeroutput></para><para>
+
+<para>Vérifie la donnée à affecter. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>MysqlModel</entry><entry>$baseModel</entry><entry>
+<para>Model de base </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$attributeName</entry><entry>
+<para>Nom de l&apos;attribut </para>
+</entry>
+                            </row>
+                            <row>
+<entry>mixed</entry><entry>$data</entry><entry>
+<para>La donnée à vérifier </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>$this </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Exceptions</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>MysqlCondException</entry><entry>
+<para>en cas de condition invalide </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00101_source_1l00114">114</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des champs</title>
+<anchor xml:id="_a00632_1a26f81287ec32ce8f110e8d82fbd1287b"/><section>
+    <title>$columnName</title>
+<indexterm><primary>$columnName</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>$columnName</secondary></indexterm>
+<para><computeroutput>string $columnName<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00101_source_1l00024">24</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1a1305d69ee34337bbd87d14aadcc72ab8"/><section>
+    <title>$datasFormatters</title>
+<indexterm><primary>$datasFormatters</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>$datasFormatters</secondary></indexterm>
+<para><computeroutput>array $datasFormatters = []<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00101_source_1l00069">69</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1a4f639e69f23c00400112dadd89e91b62"/><section>
+    <title>$datasReformers</title>
+<indexterm><primary>$datasReformers</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>$datasReformers</secondary></indexterm>
+<para><computeroutput>array $datasReformers = []<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00101_source_1l00074">74</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1a7cb26b7337faae66c684c41170aca703"/><section>
+    <title>$defaultValue</title>
+<indexterm><primary>$defaultValue</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>$defaultValue</secondary></indexterm>
+<para><computeroutput>string $defaultValue<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00101_source_1l00049">49</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1a80dfa697ce68e86b57ac28e85fc94940"/><section>
+    <title>$isForeignKey</title>
+<indexterm><primary>$isForeignKey</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>$isForeignKey</secondary></indexterm>
+<para><computeroutput>bool $<link linkend="_a00632_1aef8eaaa57b12ba2f3af9bc43e86785f9">isForeignKey</link><computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00101_source_1l00034">34</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1a14fbc937b182e9c5e716e3d6c47a7a2b"/><section>
+    <title>$isNullable</title>
+<indexterm><primary>$isNullable</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>$isNullable</secondary></indexterm>
+<para><computeroutput>bool $<link linkend="_a00632_1ae8fae740d59f7524f81c796142d3a846">isNullable</link><computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00101_source_1l00039">39</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1a6684994e27b9c47a6a616bec069e9d6c"/><section>
+    <title>$isPrimaryKey</title>
+<indexterm><primary>$isPrimaryKey</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>$isPrimaryKey</secondary></indexterm>
+<para><computeroutput>bool $<link linkend="_a00632_1a84d622ec43bb17c0e2dad555eb2e727f">isPrimaryKey</link><computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00101_source_1l00029">29</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1a3a2a468b0dce59773b37d8e0837386bf"/><section>
+    <title>$isUnique</title>
+<indexterm><primary>$isUnique</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>$isUnique</secondary></indexterm>
+<para><computeroutput>bool $<link linkend="_a00632_1af8ed15bf71456982ef4e83bda6110b84">isUnique</link><computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00101_source_1l00044">44</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1a932ca11214be628e42a3f4ace52ebb87"/><section>
+    <title>$referencedAttributeName</title>
+<indexterm><primary>$referencedAttributeName</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>$referencedAttributeName</secondary></indexterm>
+<para><computeroutput>string $referencedAttributeName<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00101_source_1l00059">59</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1aea28bfaae2904f85413eeb372ae61930"/><section>
+    <title>$referencedModel</title>
+<indexterm><primary>$referencedModel</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>$referencedModel</secondary></indexterm>
+<para><computeroutput>string $referencedModel<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00101_source_1l00054">54</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1aff6fb07d968e6d11597786dfa631e093"/><section>
+    <title>$setConditions</title>
+<indexterm><primary>$setConditions</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>$setConditions</secondary></indexterm>
+<para><computeroutput>array $setConditions<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00101_source_1l00064">64</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00632_1a60c5df8609f676f3a37b03b36cc7ab35"/><section>
+    <title>NO_DEFAULT_VALUE</title>
+<indexterm><primary>NO_DEFAULT_VALUE</primary><secondary>TableColumn</secondary></indexterm>
+<indexterm><primary>TableColumn</primary><secondary>NO_DEFAULT_VALUE</secondary></indexterm>
+<para><computeroutput>const string NO_DEFAULT_VALUE = &quot;ATTRIBUTE_NO_DEFAULT_VALUE&quot;<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+
+<para>Chaine représentant si l&apos;attribut n&apos;a pas de valeur par défaut. </para>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00101_source_1l00019">19</link> du fichier <link linkend="_a00101_source">TableColumn.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00101">TableColumn.php</link></section>
+</section>

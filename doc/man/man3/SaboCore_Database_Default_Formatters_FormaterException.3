@@ -1,0 +1,121 @@
+.TH "FormaterException" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FormaterException \- Exception d'échec de formatage\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de Exception\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP (\fBFormater\fP $failedFormater, string $errorMessage, bool $isDisplayable=true)"
+.br
+.ti -1c
+.RI "\fBgetErrorMessage\fP (string $defaultMessage='Une erreur technique c'est produite')"
+.br
+.RI "Fourni le message d'erreur formaté en fonction de l'état isDisplayable\&. "
+.ti -1c
+.RI "\fBgetFailedFormater\fP ()"
+.br
+.ti -1c
+.RI "\fBgetIsDisplayable\fP ()"
+.br
+.in -1c
+.SS "Attributs protégés"
+
+.in +1c
+.ti -1c
+.RI "\fBFormater\fP \fB$failedFormater\fP"
+.br
+.ti -1c
+.RI "bool \fB$isDisplayable\fP"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Exception d'échec de formatage\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB11\fP du fichier \fBFormaterException\&.php\fP\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "__construct (\fBFormater\fP $failedFormater, string $errorMessage, bool $isDisplayable = \fCtrue\fP)"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$failedFormater\fP Formateur échoué 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB25\fP du fichier \fBFormaterException\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "getErrorMessage (string $defaultMessage = \fC'Une erreur technique c'est produite'\fP)"
+
+.PP
+Fourni le message d'erreur formaté en fonction de l'état isDisplayable\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$defaultMessage\fP message par défaut en cas de message non affichable 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+string Le message d'erreur affichable 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB37\fP du fichier \fBFormaterException\&.php\fP\&.
+.SS "getFailedFormater ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+Formater Le formateur échoué 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB44\fP du fichier \fBFormaterException\&.php\fP\&.
+.SS "getIsDisplayable ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+bool Si le message peut être affiché à l'utilisateur 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB51\fP du fichier \fBFormaterException\&.php\fP\&.
+.SH "Documentation des champs"
+.PP 
+.SS "\fBFormater\fP $failedFormater\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB15\fP du fichier \fBFormaterException\&.php\fP\&.
+.SS "bool $isDisplayable\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB20\fP du fichier \fBFormaterException\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

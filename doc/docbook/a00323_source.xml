@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00323_source" xml:lang="fr">
+<title>SaboSse.php</title>
+<indexterm><primary>SaboSse.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00323_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00323_source_1l00002"/>00002 
+<anchor xml:id="_a00323_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00430">SaboCore\Utils\Sse</link>;
+<anchor xml:id="_a00323_source_1l00004"/>00004 
+<anchor xml:id="_a00323_source_1l00005"/>00005 use&#32;Throwable;
+<anchor xml:id="_a00323_source_1l00006"/>00006 
+<anchor xml:id="_a00323_source_1l00011"/><link linkend="_a00900">00011</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00900">SaboSse</link>{
+<anchor xml:id="_a00323_source_1l00015"/><link linkend="_a00900_1acea9a85135f25316bc81b97c94f2423c">00015</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<link linkend="_a00896">ResourceManager</link>&#32;<link linkend="_a00900_1acea9a85135f25316bc81b97c94f2423c">$resourceManager</link>;
+<anchor xml:id="_a00323_source_1l00016"/>00016 
+<anchor xml:id="_a00323_source_1l00020"/><link linkend="_a00900_1a1f052c699df2de3d8c5b56f1186aa28d">00020</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_a00900_1a1f052c699df2de3d8c5b56f1186aa28d">$sleepTimeSec</link>;
+<anchor xml:id="_a00323_source_1l00021"/>00021 
+<anchor xml:id="_a00323_source_1l00026"/><link linkend="_a00900_1acb3d1cbe7f9b0b65f8dead4da1c02751">00026</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00900_1acb3d1cbe7f9b0b65f8dead4da1c02751">__construct</link>(?<link linkend="_a00896">ResourceManager</link>&#32;<link linkend="_a00900_1acea9a85135f25316bc81b97c94f2423c">$resourceManager</link>&#32;=&#32;<emphasis role="keyword">null</emphasis>,<emphasis role="keywordtype">int</emphasis>&#32;$defaultSleepTimeSec&#32;=&#32;1){
+<anchor xml:id="_a00323_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;resourceManager&#32;=&#32;<link linkend="_a00900_1acea9a85135f25316bc81b97c94f2423c">$resourceManager</link>&#32;??&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00896">ResourceManager</link>();
+<anchor xml:id="_a00323_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;sleepTimeSec&#32;=&#32;$defaultSleepTimeSec;
+<anchor xml:id="_a00323_source_1l00029"/>00029 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00323_source_1l00030"/>00030 
+<anchor xml:id="_a00323_source_1l00034"/><link linkend="_a00900_1a548405e009eb253665337ce207ca3885">00034</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00900_1a548405e009eb253665337ce207ca3885">getResourceManager</link>():<link linkend="_a00896">ResourceManager</link>{
+<anchor xml:id="_a00323_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;resourceManager;
+<anchor xml:id="_a00323_source_1l00036"/>00036 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00323_source_1l00037"/>00037 
+<anchor xml:id="_a00323_source_1l00046"/><link linkend="_a00900_1a29e69a9419dc21662515a0d80f0f246a">00046</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00900_1a29e69a9419dc21662515a0d80f0f246a">launch</link>(Callable&#32;$executor,?Callable&#32;$stopVerifier&#32;=&#32;<emphasis role="keyword">null</emphasis>,<emphasis role="keywordtype">string</emphasis>&#32;$stopEventName&#32;=&#32;<emphasis role="stringliteral">&quot;close&quot;</emphasis>):<link linkend="_a00900">SaboSse</link>{
+<anchor xml:id="_a00323_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;setup();
+<anchor xml:id="_a00323_source_1l00048"/>00048 
+<anchor xml:id="_a00323_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>(<emphasis role="keyword">true</emphasis>){
+<anchor xml:id="_a00323_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_a00323_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;exécution&#32;utilisateur</emphasis>
+<anchor xml:id="_a00323_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;call_user_func_array(callback:&#32;$executor,args:&#32;[$this]);
+<anchor xml:id="_a00323_source_1l00053"/>00053 
+<anchor xml:id="_a00323_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;vérification&#32;d&apos;arrêt&#32;par&#32;condition</emphasis>
+<anchor xml:id="_a00323_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($stopVerifier&#32;!==&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;call_user_func_array(callback:&#32;$stopVerifier,args:&#32;[$this])){
+<anchor xml:id="_a00323_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;sendEvent(eventName:&#32;$stopEventName,eventDatas:&#32;[]);
+<anchor xml:id="_a00323_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_a00323_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00323_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_a00323_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(connection_aborted())
+<anchor xml:id="_a00323_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_a00323_source_1l00062"/>00062 
+<anchor xml:id="_a00323_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sleep(seconds:&#32;$this-&gt;sleepTimeSec);
+<anchor xml:id="_a00323_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00323_source_1l00065"/>00065 
+<anchor xml:id="_a00323_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$this;
+<anchor xml:id="_a00323_source_1l00067"/>00067 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00323_source_1l00068"/>00068 
+<anchor xml:id="_a00323_source_1l00075"/><link linkend="_a00900_1aea8114711851dd2fcaf139ea1cc7c3df">00075</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00900_1aea8114711851dd2fcaf139ea1cc7c3df">sendEvent</link>(<emphasis role="keywordtype">string</emphasis>&#32;$eventName,array&#32;$eventDatas,?Callable&#32;$onError&#32;=&#32;<emphasis role="keyword">null</emphasis>):<link linkend="_a00900">SaboSse</link>{
+<anchor xml:id="_a00323_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;try{
+<anchor xml:id="_a00323_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$encodedDatas&#32;=&#32;@json_encode(value:&#32;$eventDatas);
+<anchor xml:id="_a00323_source_1l00078"/>00078 
+<anchor xml:id="_a00323_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;gestion&#32;de&#32;l&apos;échec&#32;d&apos;encodage</emphasis>
+<anchor xml:id="_a00323_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($encodedDatas&#32;===&#32;<emphasis role="keyword">false</emphasis>){
+<anchor xml:id="_a00323_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($onError&#32;!==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="_a00323_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;call_user_func_array(callback:&#32;$onError,args:&#32;[$this]);
+<anchor xml:id="_a00323_source_1l00083"/>00083 
+<anchor xml:id="_a00323_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$this;
+<anchor xml:id="_a00323_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00323_source_1l00086"/>00086 
+<anchor xml:id="_a00323_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;envoi&#32;du&#32;message</emphasis>
+<anchor xml:id="_a00323_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;echo&#32;<emphasis role="stringliteral">&quot;event:&#32;$eventName&quot;</emphasis>&#32;.&#32;PHP_EOL;
+<anchor xml:id="_a00323_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;echo&#32;<emphasis role="stringliteral">&quot;data:&#32;$encodedDatas&quot;</emphasis>;
+<anchor xml:id="_a00323_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;echo&#32;PHP_EOL&#32;.&#32;PHP_EOL;
+<anchor xml:id="_a00323_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ob_flush();
+<anchor xml:id="_a00323_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;flush();
+<anchor xml:id="_a00323_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00323_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>(Throwable){
+<anchor xml:id="_a00323_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($onError&#32;!==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="_a00323_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;call_user_func_array(callback:&#32;$onError,args:&#32;[$this]);
+<anchor xml:id="_a00323_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00323_source_1l00098"/>00098 
+<anchor xml:id="_a00323_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$this;
+<anchor xml:id="_a00323_source_1l00100"/>00100 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00323_source_1l00101"/>00101 
+<anchor xml:id="_a00323_source_1l00107"/><link linkend="_a00900_1a1644449a20ebe041572ff18356502db9">00107</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00900_1a1644449a20ebe041572ff18356502db9">setSleepTimeSec</link>(<emphasis role="keywordtype">int</emphasis>&#32;$sleepTimeSec):<link linkend="_a00900">SaboSse</link>{
+<anchor xml:id="_a00323_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;sleepTimeSec&#32;=&#32;$sleepTimeSec;
+<anchor xml:id="_a00323_source_1l00109"/>00109 
+<anchor xml:id="_a00323_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$this;
+<anchor xml:id="_a00323_source_1l00111"/>00111 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00323_source_1l00112"/>00112 
+<anchor xml:id="_a00323_source_1l00116"/><link linkend="_a00900_1a64e4179c19501e78276718e294b8fe90">00116</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00900_1a64e4179c19501e78276718e294b8fe90">getSleepTimeSec</link>():int{
+<anchor xml:id="_a00323_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;sleepTimeSec;
+<anchor xml:id="_a00323_source_1l00118"/>00118 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00323_source_1l00119"/>00119 
+<anchor xml:id="_a00323_source_1l00124"/><link linkend="_a00900_1a1d04139db3a5ad5713ecbd14d97da879">00124</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00900_1a1d04139db3a5ad5713ecbd14d97da879">setup</link>():<link linkend="_a00900">SaboSse</link>{
+<anchor xml:id="_a00323_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;session_write_close();
+<anchor xml:id="_a00323_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ignore_user_abort(enable:&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="_a00323_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;header(header:&#32;<emphasis role="stringliteral">&quot;Content-Type:&#32;text/event-stream&quot;</emphasis>);
+<anchor xml:id="_a00323_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;header(header:&#32;<emphasis role="stringliteral">&quot;Cache-Control:&#32;no-cache&quot;</emphasis>);
+<anchor xml:id="_a00323_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ob_flush();
+<anchor xml:id="_a00323_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;flush();
+<anchor xml:id="_a00323_source_1l00131"/>00131 
+<anchor xml:id="_a00323_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$this;
+<anchor xml:id="_a00323_source_1l00133"/>00133 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00323_source_1l00134"/>00134 }
+</programlisting></section>

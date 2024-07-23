@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00281_source" xml:lang="fr">
+<title>CsrfManager.php</title>
+<indexterm><primary>CsrfManager.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00281_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00281_source_1l00002"/>00002 
+<anchor xml:id="_a00281_source_1l00003"/><link linkend="_a00424">00003</link> <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00424">SaboCore\Utils\Csrf</link>;
+<anchor xml:id="_a00281_source_1l00004"/>00004 
+<anchor xml:id="_a00281_source_1l00005"/>00005 
+<anchor xml:id="_a00281_source_1l00010"/><link linkend="_a00852">00010</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00852">CsrfManager</link>{
+<anchor xml:id="_a00281_source_1l00014"/><link linkend="_a00852_1aefa280e5a5586c9671664c695016babd">00014</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00852_1aefa280e5a5586c9671664c695016babd">$token</link>;
+<anchor xml:id="_a00281_source_1l00015"/>00015 
+<anchor xml:id="_a00281_source_1l00019"/><link linkend="_a00852_1a173fd4473f6c8e2ec689c73a4bcfc2f2">00019</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00852_1a173fd4473f6c8e2ec689c73a4bcfc2f2">__construct</link>(<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00852_1aefa280e5a5586c9671664c695016babd">$token</link>){
+<anchor xml:id="_a00281_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;token&#32;=&#32;<link linkend="_a00852_1aefa280e5a5586c9671664c695016babd">$token</link>;
+<anchor xml:id="_a00281_source_1l00021"/>00021 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00281_source_1l00022"/>00022 
+<anchor xml:id="_a00281_source_1l00026"/><link linkend="_a00852_1a211a2979c22afcd7d9056a2bb55aa449">00026</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00852_1a211a2979c22afcd7d9056a2bb55aa449">getToken</link>():string{
+<anchor xml:id="_a00281_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;token;
+<anchor xml:id="_a00281_source_1l00028"/>00028 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00281_source_1l00029"/>00029 
+<anchor xml:id="_a00281_source_1l00033"/><link linkend="_a00852_1a4d9813fea8525b19a1d370eeb8fe41d6">00033</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00852_1a4d9813fea8525b19a1d370eeb8fe41d6">serialize</link>():string{
+<anchor xml:id="_a00281_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;serialize(value:&#32;$this);
+<anchor xml:id="_a00281_source_1l00035"/>00035 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00281_source_1l00036"/>00036 
+<anchor xml:id="_a00281_source_1l00041"/><link linkend="_a00852_1af11589e764757aa13ffc64803e022033">00041</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00852_1af11589e764757aa13ffc64803e022033">deserialize</link>(<emphasis role="keywordtype">string</emphasis>&#32;$instance):<link linkend="_a00852">CsrfManager</link>{
+<anchor xml:id="_a00281_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;unserialize(data:&#32;$instance);
+<anchor xml:id="_a00281_source_1l00043"/>00043 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00281_source_1l00044"/>00044 }
+</programlisting></section>

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00239_source" xml:lang="fr">
+<title>JsonResponse.php</title>
+<indexterm><primary>JsonResponse.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00239_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00239_source_1l00002"/>00002 
+<anchor xml:id="_a00239_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00419">SaboCore\Routing\Response</link>;
+<anchor xml:id="_a00239_source_1l00004"/>00004 
+<anchor xml:id="_a00239_source_1l00005"/>00005 use&#32;Override;
+<anchor xml:id="_a00239_source_1l00006"/>00006 
+<anchor xml:id="_a00239_source_1l00011"/><link linkend="_a00808">00011</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00808">JsonResponse</link>&#32;<emphasis role="keyword">extends</emphasis>&#32;<link linkend="_a00820">Response</link>{
+<anchor xml:id="_a00239_source_1l00015"/><link linkend="_a00808_1ab9a6ef17bd966f14154a4f01343d249f">00015</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00808_1ab9a6ef17bd966f14154a4f01343d249f">__construct</link>(array&#32;$json){
+<anchor xml:id="_a00239_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;content&#32;=&#32;$json;
+<anchor xml:id="_a00239_source_1l00017"/>00017 
+<anchor xml:id="_a00239_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;<link linkend="_a00820_1ac5219f5de9d65547e105f56bfdbadf38">setHeader</link>(name:&#32;<emphasis role="stringliteral">&quot;Content-Type&quot;</emphasis>,value:&#32;<emphasis role="stringliteral">&quot;application/json&quot;</emphasis>);
+<anchor xml:id="_a00239_source_1l00019"/>00019 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00239_source_1l00020"/>00020 
+<anchor xml:id="_a00239_source_1l00021"/>00021 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00239_source_1l00022"/><link linkend="_a00808_1a0d304720b71e3fabb0b602754043e1b6">00022</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00808_1a0d304720b71e3fabb0b602754043e1b6">renderContent</link>():never{
+<anchor xml:id="_a00239_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$jsonContent&#32;=&#32;@json_encode(value:&#32;$this-&gt;content);
+<anchor xml:id="_a00239_source_1l00024"/>00024 
+<anchor xml:id="_a00239_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;die(!$jsonContent&#32;?&#32;<emphasis role="stringliteral">&quot;{}&quot;</emphasis>&#32;:&#32;$jsonContent);
+<anchor xml:id="_a00239_source_1l00026"/>00026 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00239_source_1l00027"/>00027 }
+</programlisting></section>

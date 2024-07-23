@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00050_source" xml:lang="fr">
+<title>DatabaseConfig.php</title>
+<indexterm><primary>DatabaseConfig.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00050_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00050_source_1l00002"/>00002 
+<anchor xml:id="_a00050_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00403">SaboCore\Config</link>;
+<anchor xml:id="_a00050_source_1l00004"/>00004 
+<anchor xml:id="_a00050_source_1l00009"/><link linkend="_a00403_1a4faa51b0e299a3f79c5dcf2fc69d3bdb">00009</link> <emphasis role="keyword">enum</emphasis>&#32;<link linkend="_a00403_1a4faa51b0e299a3f79c5dcf2fc69d3bdb">DatabaseConfig</link>:<emphasis role="keywordtype">string</emphasis>{
+<anchor xml:id="_a00050_source_1l00014"/>00014 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;INIT_APP_WITH_CONNECTION&#32;=&#32;<emphasis role="stringliteral">&quot;initWithConnection&quot;</emphasis>;
+<anchor xml:id="_a00050_source_1l00015"/>00015 
+<anchor xml:id="_a00050_source_1l00020"/>00020 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;PROVIDER&#32;=&#32;<emphasis role="stringliteral">&quot;provider&quot;</emphasis>;
+<anchor xml:id="_a00050_source_1l00021"/>00021 
+<anchor xml:id="_a00050_source_1l00026"/>00026 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_a00403_1a4faa51b0e299a3f79c5dcf2fc69d3bdba8ba9dbf3ed1779330cd1d05ecb1b4157">PROVIDER_CONFIG</link>&#32;=&#32;<emphasis role="stringliteral">&quot;providerConfig&quot;</emphasis>;
+<anchor xml:id="_a00050_source_1l00027"/><link linkend="_a00403_1a4faa51b0e299a3f79c5dcf2fc69d3bdba8ba9dbf3ed1779330cd1d05ecb1b4157">00027</link> }
+</programlisting></section>

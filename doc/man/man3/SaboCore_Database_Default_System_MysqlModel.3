@@ -1,0 +1,1058 @@
+.TH "MysqlModel" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MysqlModel \- Modèle de la base de données mysql\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de \fBDatabaseModel\fP\&.
+.PP
+Dérivée par \fBCustomModel\fP\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP ()"
+.br
+.ti -1c
+.RI "\fBcreate\fP ()"
+.br
+.RI "Crée la ligne dans la base de données\&. "
+.ti -1c
+.RI "\fBupdate\fP ()"
+.br
+.RI "Met à jour la ligne en base de données, basé sur les clés primaires\&. "
+.ti -1c
+.RI "\fBdelete\fP ()"
+.br
+.RI "Supprime la ligne en base de données, basé sur les clés primaires\&. "
+.ti -1c
+.RI "\fBsetAttribute\fP (string $attributeName, mixed $value)"
+.br
+.RI "Met à jour la valeur d'un attribut\&. "
+.ti -1c
+.RI "\fBgetAttribute\fP (string $attributeName, bool $reform=true)"
+.br
+.RI "Fourni la valeur de l'attribut\&. "
+.ti -1c
+.RI "\fBgetAttributOriginal\fP (string $attributeName)"
+.br
+.RI "Fourni la valeur originale non formatée de l'attribut\&. "
+.ti -1c
+.RI "\fBgetColumnsConfig\fP ()"
+.br
+.ti -1c
+.RI "\fBgetColumnConfig\fP (string $attributName)"
+.br
+.RI "Fourni la configuration de colonne d'un attribut en particulier\&. "
+.ti -1c
+.RI "\fBgetJoinedColumnsConfig\fP ()"
+.br
+.ti -1c
+.RI "\fBgetTableNameManager\fP ()"
+.br
+.ti -1c
+.RI "\fBgetAsArray\fP (bool $addJoinedColumns=true)"
+.br
+.RI "Transforme les données du model en tableau\&. "
+.ti -1c
+.RI "\fBsetAttributesOriginalValues\fP (array $attributesOriginalValues)"
+.br
+.ti -1c
+.RI "\fBafterGeneration\fP (mixed $datas=[])"
+.br
+.RI "Actions à faire après la génération du model à partir de la méthode find\&. "
+.in -1c
+.in +1c
+.ti -1c
+.RI "\fBcreate\fP ()"
+.br
+.RI "Crée la ligne dans la base de données\&. "
+.ti -1c
+.RI "\fBupdate\fP ()"
+.br
+.RI "Met à jour la ligne dans la base de données\&. "
+.ti -1c
+.RI "\fBdelete\fP ()"
+.br
+.RI "Met à jour la ligne dans la base de données\&. "
+.in -1c
+.SS "Fonctions membres publiques statiques"
+
+.in +1c
+.ti -1c
+.RI "static \fBcreateFromDatabaseLine\fP (?PDOStatement $statement, \fBMysqlQueryBuilder\fP $queryBuilder)"
+.br
+.RI "Génère un model à partir de la première ligne fetch\&. "
+.ti -1c
+.RI "static \fBcreateFromDatabaseLines\fP (?PDOStatement $statement, \fBMysqlQueryBuilder\fP $queryBuilder)"
+.br
+.RI "Génère un model à partir de la première ligne fetch\&. "
+.ti -1c
+.RI "static \fBfindOne\fP (\fBDatabaseCondition\fP|\fBDatabaseCondSeparator\fP \&.\&.\&. $findBuilders)"
+.br
+.RI "Récupère la première ligne fournie par les résultats de la requête\&. "
+.ti -1c
+.RI "static \fBfindAll\fP (\fBDatabaseCondition\fP|\fBDatabaseCondSeparator\fP \&.\&.\&. $findBuilders)"
+.br
+.ti -1c
+.RI "static \fBnewInstanceOfModel\fP (string $modelClass)"
+.br
+.ti -1c
+.RI "static \fBexecQuery\fP (\fBMysqlQueryBuilder\fP $queryBuilder, bool $execute=true)"
+.br
+.RI "Exécute la requête et fourni le statement de réponse\&. "
+.ti -1c
+.RI "static \fBloadJoinedColumns\fP (\fBMysqlModel\fP $model, \fBJoinedColumn\fP $joinedColumn)"
+.br
+.RI "Charge les données de la colonne jointe fournie\&. "
+.ti -1c
+.RI "static \fBcreateModelFromLine\fP (array $line, string $modelClass)"
+.br
+.RI "Crée un model à partir de la configuration\&. "
+.ti -1c
+.RI "static \fBbuildPrimaryKeysCondOn\fP (\fBMysqlModel\fP $model, \fBMysqlQueryBuilder\fP $queryBuilder, bool $addWhere=true)"
+.br
+.RI "Ajoute au queryBuilder les conditions de vérification de clé primaire du model\&. "
+.in -1c
+.in +1c
+.ti -1c
+.RI "static \fBfindOne\fP (\fBDatabaseCondition\fP|\fBDatabaseCondSeparator\fP \&.\&.\&. $findBuilders)"
+.br
+.RI "Recherche une occurrence\&. "
+.ti -1c
+.RI "static \fBfindAll\fP (\fBDatabaseCondition\fP|\fBDatabaseCondSeparator\fP \&.\&.\&. $findBuilders)"
+.br
+.RI "Recherche toutes les occurrences\&. "
+.in -1c
+.SS "Fonctions membres protégées"
+
+.in +1c
+.ti -1c
+.RI "\fBbeforeCreate\fP (mixed $datas=[])"
+.br
+.RI "Actions à faire avant la création du model\&. "
+.ti -1c
+.RI "\fBafterCreate\fP (mixed $datas=[])"
+.br
+.RI "Actions à faire après la création du model\&. "
+.ti -1c
+.RI "\fBafterUpdate\fP (mixed $datas=[])"
+.br
+.RI "Actions à faire après la mise à jour du model\&. "
+.ti -1c
+.RI "\fBbeforeUpdate\fP (mixed $datas=[])"
+.br
+.RI "Actions à faire avant la mise à jour du model\&. "
+.ti -1c
+.RI "\fBafterDelete\fP (mixed $datas=[])"
+.br
+.RI "Actions à faire après la suppression du model\&. "
+.ti -1c
+.RI "\fBbeforeDelete\fP (mixed $datas=[])"
+.br
+.RI "Actions à faire avant la suppression du model\&. "
+.ti -1c
+.RI "\fBbeforeGeneration\fP (mixed $datas=[])"
+.br
+.RI "Action à exécuter avant génération du model\&. "
+.ti -1c
+.RI "\fBloadConfiguration\fP ()"
+.br
+.RI "Charge la configuration du modèle\&. "
+.ti -1c
+.RI "\fBprepareForNewQuery\fP ()"
+.br
+.RI "Prépare le queryBuilder interne pour une nouvelle requête\&. "
+.ti -1c
+.RI "\fBlastInsertId\fP ()"
+.br
+.RI "Fourni le dernier id inséré "
+.in -1c
+.in +1c
+.ti -1c
+.RI "\fBafterCreate\fP (mixed $datas)"
+.br
+.RI "Actions à faire après la création du model\&. "
+.ti -1c
+.RI "\fBbeforeCreate\fP (mixed $datas)"
+.br
+.RI "Actions à faire avant la création du model\&. "
+.ti -1c
+.RI "\fBafterUpdate\fP (mixed $datas)"
+.br
+.RI "Actions à faire après la mise à jour du model\&. "
+.ti -1c
+.RI "\fBbeforeUpdate\fP (mixed $datas)"
+.br
+.RI "Actions à faire avant la mise à jour du model\&. "
+.ti -1c
+.RI "\fBafterDelete\fP (mixed $datas)"
+.br
+.RI "Actions à faire après la suppression du model\&. "
+.ti -1c
+.RI "\fBbeforeDelete\fP (mixed $datas)"
+.br
+.RI "Actions à faire avant la suppression du model\&. "
+.ti -1c
+.RI "\fBbeforeGeneration\fP (mixed $datas)"
+.br
+.RI "Actions à faire avant la génération du model à partir de la méthode find\&. "
+.ti -1c
+.RI "\fBafterGeneration\fP (mixed $datas)"
+.br
+.RI "Actions à faire après la génération du model à partir de la méthode find\&. "
+.in -1c
+.SS "Fonctions membres protégées statiques"
+
+.in +1c
+.ti -1c
+.RI "static \fBgetDatabaseConfig\fP ()"
+.br
+.in -1c
+.SS "Attributs protégés"
+
+.in +1c
+.ti -1c
+.RI "\fBTableName\fP \fB$tableName\fP"
+.br
+.ti -1c
+.RI "array \fB$dbColumnsConfig\fP"
+.br
+.ti -1c
+.RI "array \fB$joinedColumnsConfig\fP"
+.br
+.ti -1c
+.RI "array \fB$attributesOriginalValues\fP = []"
+.br
+.ti -1c
+.RI "\fBMysqlQueryBuilder\fP \fB$queryBuilder\fP"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Modèle de la base de données mysql\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+les attributs utilisables doivent être protected|public 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB34\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "__construct ()"
+
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas d'erreur de configuration du model 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB64\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "afterCreate (mixed $datas = \fC[]\fP)\fC [protected]\fP"
+
+.PP
+Actions à faire après la création du model\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$datas\fP Données à fournir 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+il est recommandé d'appeler parent::afterCreate en cas de redéfinition 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIDatabaseActionException\fP pour stopper l'action en cas d'erreur 
+.RE
+.PP
+
+.PP
+Réimplémentée à partir de \fBDatabaseModel\fP\&.
+.PP
+Définition à la ligne \fB299\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "afterDelete (mixed $datas = \fC[]\fP)\fC [protected]\fP"
+
+.PP
+Actions à faire après la suppression du model\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$datas\fP Données à fournir 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+il est recommandé d'appeler parent::afterDelete en cas de redéfinition 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIDatabaseActionException\fP pour stopper l'action en cas d'erreur 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+
+.PP
+Réimplémentée à partir de \fBDatabaseModel\fP\&.
+.PP
+Définition à la ligne \fB314\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "afterGeneration (mixed $datas = \fC[]\fP)"
+
+.PP
+Actions à faire après la génération du model à partir de la méthode find\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$datas\fP Données à fournir 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+il est recommandé d'appeler parent::afterGeneration en cas de redéfinition 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIDatabaseActionException\fP pour stopper l'action en cas d'erreur 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+
+.PP
+Réimplémentée à partir de \fBDatabaseModel\fP\&.
+.PP
+Définition à la ligne \fB282\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "afterUpdate (mixed $datas = \fC[]\fP)\fC [protected]\fP"
+
+.PP
+Actions à faire après la mise à jour du model\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$datas\fP Données à fournir 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+il est recommandé d'appeler parent::afterUpdate en cas de redéfinition 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIDatabaseActionException\fP pour stopper l'action en cas d'erreur 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+
+.PP
+Réimplémentée à partir de \fBDatabaseModel\fP\&.
+.PP
+Définition à la ligne \fB304\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "beforeCreate (mixed $datas = \fC[]\fP)\fC [protected]\fP"
+
+.PP
+Actions à faire avant la création du model\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$datas\fP Données à fournir 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+il est recommandé d'appeler parent::beforeCreate en cas de redéfinition 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIDatabaseActionException\fP pour stopper l'action en cas d'erreur 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+
+.PP
+Réimplémentée à partir de \fBDatabaseModel\fP\&.
+.PP
+Définition à la ligne \fB294\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "beforeDelete (mixed $datas = \fC[]\fP)\fC [protected]\fP"
+
+.PP
+Actions à faire avant la suppression du model\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$datas\fP Données à fournir 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+il est recommandé d'appeler parent::beforeDelete en cas de redéfinition 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIDatabaseActionException\fP pour stopper l'action en cas d'erreur 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+
+.PP
+Réimplémentée à partir de \fBDatabaseModel\fP\&.
+.PP
+Définition à la ligne \fB319\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "beforeGeneration (mixed $datas = \fC[]\fP)\fC [protected]\fP"
+
+.PP
+Action à exécuter avant génération du model\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$datas\fP tableau indicé par les noms d'attributs, et avec comme valeur celle en base de données 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIDatabaseActionException\fP en cas d'erreur 
+.RE
+.PP
+
+.PP
+Réimplémentée à partir de \fBDatabaseModel\fP\&.
+.PP
+Définition à la ligne \fB330\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "beforeUpdate (mixed $datas = \fC[]\fP)\fC [protected]\fP"
+
+.PP
+Actions à faire avant la mise à jour du model\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$datas\fP Données à fournir 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+il est recommandé d'appeler parent::beforeUpdate en cas de redéfinition 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIDatabaseActionException\fP pour stopper l'action en cas d'erreur 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+
+.PP
+Réimplémentée à partir de \fBDatabaseModel\fP\&.
+.PP
+Définition à la ligne \fB309\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "static buildPrimaryKeysCondOn (\fBMysqlModel\fP $model, \fBMysqlQueryBuilder\fP $queryBuilder, bool $addWhere = \fCtrue\fP)\fC [static]\fP"
+
+.PP
+Ajoute au queryBuilder les conditions de vérification de clé primaire du model\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$model\fP le model 
+.br
+\fI$queryBuilder\fP constructeur 
+.br
+\fI$addWhere\fP si true ajoute ->where() suivi des conditions si false ajoute une condition AND avant d'ajouter le groupe de vérification des clés primaires 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlQueryBuilder le constructeur changé 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIMysqlException\fP en cas de clés primaires non présente 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB632\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "create ()"
+
+.PP
+Crée la ligne dans la base de données\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+bool Si la création réussie 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIDatabaseActionException\fP en cas d'erreur 
+.RE
+.PP
+
+.PP
+Réimplémentée à partir de \fBDatabaseModel\fP\&.
+.PP
+Définition à la ligne \fB70\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "static createFromDatabaseLine (?PDOStatement $statement, \fBMysqlQueryBuilder\fP $queryBuilder)\fC [static]\fP"
+
+.PP
+Génère un model à partir de la première ligne fetch\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$statement\fP statement 
+.br
+\fI$queryBuilder\fP constructeur 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlModel|null le model crée ou null 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIMysqlException\fP en cas d'erreur 
+.br
+\fIConfigException\fP en cas d'erreur 
+.br
+\fIDatabaseActionException\fP en cas d'erreur 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB408\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "static createFromDatabaseLines (?PDOStatement $statement, \fBMysqlQueryBuilder\fP $queryBuilder)\fC [static]\fP"
+
+.PP
+Génère un model à partir de la première ligne fetch\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$statement\fP statement 
+.br
+\fI$queryBuilder\fP constructeur 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+SaboList la liste des models générés 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIMysqlException\fP en cas d'erreur 
+.br
+\fIConfigException\fP en cas d'erreur 
+.br
+\fIDatabaseActionException\fP en cas d'erreur 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB432\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "static createModelFromLine (array $line, string $modelClass)\fC [static]\fP"
+
+.PP
+Crée un model à partir de la configuration\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$line\fP contenu de la ligne de la base de données 
+.br
+\fI$modelClass\fP class du model 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlModel model crée 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas d'erreur 
+.br
+\fIMysqlException\fP en cas d'erreur 
+.br
+\fIDatabaseActionException\fP en cas d'erreur 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB580\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "delete ()"
+
+.PP
+Supprime la ligne en base de données, basé sur les clés primaires\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+bool 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas d'erreur 
+.br
+\fIDatabaseActionException\fP en cas d'erreur 
+.br
+\fIMysqlException\fP en cas de clé primaire non fourni 
+.RE
+.PP
+
+.PP
+Réimplémentée à partir de \fBDatabaseModel\fP\&.
+.PP
+Définition à la ligne \fB142\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "static execQuery (\fBMysqlQueryBuilder\fP $queryBuilder, bool $execute = \fCtrue\fP)\fC [static]\fP"
+
+.PP
+Exécute la requête et fourni le statement de réponse\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$queryBuilder\fP constructeur de requête 
+.br
+\fI$execute\fP si true exécute la requête et fourni le statement sinon fourni le statement 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+PDOStatement|null le statement 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas d'erreur de configuration 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB526\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "static findAll (\fBDatabaseCondition\fP|\fBDatabaseCondSeparator\fP \&.\&.\&. $findBuilders)\fC [static]\fP"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fIDatabaseCondition|DatabaseCondSeparator\fP \&.\&.\&.$findBuilders 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+SaboList<MysqlModel> 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas d'erreur de configuration 
+.br
+\fIMysqlException\fP en cas d'erreur 
+.br
+\fIDatabaseActionException\fP en cas d'erreur 
+.RE
+.PP
+
+.PP
+Réimplémentée à partir de \fBDatabaseModel\fP\&.
+.PP
+Définition à la ligne \fB484\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "static findOne (\fBDatabaseCondition\fP|\fBDatabaseCondSeparator\fP \&.\&.\&. $findBuilders)\fC [static]\fP"
+
+.PP
+Récupère la première ligne fournie par les résultats de la requête\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fIMysqlCondition|MysqlCondSeparator\fP \&.\&.\&.$findBuilders Configuration de recherche 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlModel|null model trouvé ou null 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas d'erreur de configuration 
+.RE
+.PP
+
+.PP
+Réimplémentée à partir de \fBDatabaseModel\fP\&.
+.PP
+Définition à la ligne \fB454\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "getAsArray (bool $addJoinedColumns = \fCtrue\fP)"
+
+.PP
+Transforme les données du model en tableau\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$addJoinedColumns\fP si true ajoute les colonnes jointes 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+array le tableau indicé par les noms d'attributs et comme valeur celles récupérées 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB254\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "getAttribute (string $attributeName, bool $reform = \fCtrue\fP)"
+
+.PP
+Fourni la valeur de l'attribut\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$attributeName\fP nom de l'attribut 
+.br
+\fI$reform\fP si true reforme la donnée via les formateurs de reformation 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+mixed La donnée 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas d'attribut non trouvé 
+.br
+\fIFormaterException\fP en cas d'échec de formatage 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB194\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "getAttributOriginal (string $attributeName)"
+
+.PP
+Fourni la valeur originale non formatée de l'attribut\&. 
+.PP
+\fBAttention\fP
+.RS 4
+Si la valeur était inséré en base de données l'originale équivaut à la valeur formatée avant insertion 
+.RE
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$attributeName\fP non de l'attribut 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+mixed la valeur ou null 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB215\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "getColumnConfig (string $attributName)"
+
+.PP
+Fourni la configuration de colonne d'un attribut en particulier\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$attributName\fP Nom de l'attribut 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+TableColumn|EnumColumn|null la configuration de colonne ou null 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB231\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "getColumnsConfig ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+TableColumn[]|EnumColumn[] La configuration des colonnes 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB222\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "static getDatabaseConfig ()\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+Config la configuration de la base de donnée de l'application 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas d'erreur de configuration 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB669\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "getJoinedColumnsConfig ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+JoinedColumn[] Les configurations des colonnes de jointure 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB238\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "getTableNameManager ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+TableName Fournisseur du nom de la table 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB245\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "lastInsertId ()\fC [protected]\fP"
+
+.PP
+Fourni le dernier id inséré 
+.PP
+\fBRenvoie\fP
+.RS 4
+int|null le dernier id inséré 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas d'erreur de configuration 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB393\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "loadConfiguration ()\fC [protected]\fP"
+
+.PP
+Charge la configuration du modèle\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+void 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas de mauvaise configuration 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB339\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "static loadJoinedColumns (\fBMysqlModel\fP $model, \fBJoinedColumn\fP $joinedColumn)\fC [static]\fP"
+
+.PP
+Charge les données de la colonne jointe fournie\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$model\fP model de base dans laquelle charger les données 
+.br
+\fI$joinedColumn\fP Configuration de jointure 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+SaboList<MysqlModel> Résultats de la récupération 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIMysqlException\fP en cas d'erreur 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB544\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "static newInstanceOfModel (string $modelClass)\fC [static]\fP"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$modelClass\fP class du model 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlModel le model créé 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas d'erreur 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB500\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "prepareForNewQuery ()\fC [protected]\fP"
+
+.PP
+Prépare le queryBuilder interne pour une nouvelle requête\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlQueryBuilder le queryBuilder prêt pour une nouvelle requête 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB384\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "setAttribute (string $attributeName, mixed $value)"
+
+.PP
+Met à jour la valeur d'un attribut\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$attributeName\fP Nom de l'attribut à mettre à jour 
+.br
+\fI$value\fP valeur à placer 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas d'attribut non trouvé 
+.br
+\fIFormaterException\fP en cas d'erreur de formatage 
+.br
+\fIMysqlCondException\fP en cas d'erreur de validation 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB169\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "setAttributesOriginalValues (array $attributesOriginalValues)"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$attributesOriginalValues\fP 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB277\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "update ()"
+
+.PP
+Met à jour la ligne en base de données, basé sur les clés primaires\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+bool si la mise à jour s'est produite 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas d'erreur 
+.br
+\fIDatabaseActionException\fP en cas d'erreur 
+.br
+\fIMysqlException\fP en cas de clé primaire non fourni 
+.RE
+.PP
+
+.PP
+Réimplémentée à partir de \fBDatabaseModel\fP\&.
+.PP
+Définition à la ligne \fB110\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SH "Documentation des champs"
+.PP 
+.SS "array $attributesOriginalValues = []\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB53\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "array $dbColumnsConfig\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB43\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "array $joinedColumnsConfig\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB48\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "\fBMysqlQueryBuilder\fP $queryBuilder\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB59\fP du fichier \fBMysqlModel\&.php\fP\&.
+.SS "\fBTableName\fP $tableName\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB38\fP du fichier \fBMysqlModel\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

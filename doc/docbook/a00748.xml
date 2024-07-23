@@ -1,0 +1,966 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00748" xml:lang="fr">
+<title>Référence de la classe MysqlFunction</title>
+<indexterm><primary>MysqlFunction</primary></indexterm>
+<para>
+
+<para>Fonctions mysql. </para>
+ 
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00748_1ae89d65c99e75367c515435bb41ac963b">__construct</link> (string $function, bool $replaceAttributesName=true)</para>
+</listitem>
+            <listitem><para><link linkend="_a00748_1ae11fa93f5d6f384f8a5fff304a10c725">as</link> (string $alias)</para>
+</listitem>
+            <listitem><para><link linkend="_a00748_1a26e3e0c627051b4287204b3575b81d97">getAlias</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00748_1ac83856f218e9caf5475a5478481a0814">haveToReplaceAttributesName</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00748_1a3cb728ca27acfebd282caecdb8a1f5fc">getFunction</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Fonctions membres publiques statiques    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_a00748_1a44670226d153783619776d10e7b7622b">CONCAT</link> (string ... $toConcat)</para>
+
+<para>Fonction CONCAT mysql. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00748_1ab88146fc6b6eb074dd4e6c922f0f2eb5">SUBSTRING</link> (string $stringGetter, int $start, int $length)</para>
+
+<para>Fonction SUBSTRING mysql. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00748_1aaea342834fbb0456bd2bad686ef08a76">UPPER</link> (string $stringGetter)</para>
+
+<para>Fonction UPPER mysql. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00748_1ab3d345e2681103f9405796389a40d689">LOWER</link> (string $stringGetter)</para>
+
+<para>Fonction LOWER mysql. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00748_1a9bce6fae2c594fde79e20ddcb699ec04">DISTINCT</link> (string $toDistinct)</para>
+
+<para>Fonction DISTINCT mysql. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00748_1a9e1fb41d95b786ab44c0d7dd9231b86b">LENGTH</link> (string $stringGetter)</para>
+
+<para>Fonction LENGTH mysql. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00748_1a84f1921a0e6ef1af146350935845148b">RAND</link> ()</para>
+
+<para>Fonction RAND mysql. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00748_1a080555ab5f8e8b7084a0b09e1576f67f">ABS</link> (string $numberGetter)</para>
+
+<para>Fonction ABS mysql. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00748_1a0f9fa0a3c26d1ffdf533c2fd9f55aa45">SUM</link> (string $numberGetter)</para>
+
+<para>Fonction SUM mysql. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00748_1a7a9c122983d026ece0f8f5c513eb3cb7">AVG</link> (string $numberGetter)</para>
+
+<para>Fonction AVG mysql. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00748_1a988e6d98ae6b67636b03df3abc50f6ca">COUNT</link> (string $numberGetter)</para>
+
+<para>Fonction COUNT mysql. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00748_1a0f63514de83daffec5bc77ea94c280fd">MIN</link> (string $numberGetter)</para>
+
+<para>Fonction MIN mysql. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00748_1a226d32da507609cfbc41c5f2de9b8343">MAX</link> (string $numberGetter)</para>
+
+<para>Fonction MAX mysql. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00748_1a22da2044d66bf620f08adf6d3168ca48">ROUND</link> (string $numberGetter, int $decimal=2)</para>
+
+<para>Fonction ROUND mysql. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00748_1ab1659f28be37badd992f4b8500230d1d">NOW</link> ()</para>
+
+<para>Fonction NOW mysql. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00748_1a290a31832414d365de969280195a71ff">TIMESTAMP</link> ()</para>
+
+<para>Fonction NOW mysql. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00748_1a852d920b172bd343a1b4d212a1aa8653">DATE_FORMAT</link> (string $dateGetter, string $format)</para>
+
+<para>Fonction DATE_FORMAT mysql. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00748_1acc81210dd38eb501c944e482ed498d26">COLUMN_ALIAS</link> (string $attributeName, string $alias)</para>
+
+<para>Colonne classique avec alias. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Attributs protégés    </title>
+        <itemizedlist>
+            <listitem><para>string <link linkend="_a00748_1a79348d1e1455a6f7d3d71462ea7de24f">$function</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_a00748_1aed23c33cbbfca9eac8ab14e946080ec5">$replaceAttributesName</link></para>
+</listitem>
+            <listitem><para>string <link linkend="_a00748_1ac1b6033540b7af4eeb40b90d3f7c4bf5">$alias</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Fonctions mysql. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00009">9</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<section>
+<title>Documentation des constructeurs et destructeur</title>
+<anchor xml:id="_a00748_1ae89d65c99e75367c515435bb41ac963b"/><section>
+    <title>__construct()</title>
+<indexterm><primary>__construct</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>__construct</secondary></indexterm>
+<para><computeroutput>__construct (string $function, bool $replaceAttributesName = <computeroutput>true</computeroutput>
+)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$function</entry><entry>
+<para>Chaine complète de la fonction → &quot;COUNT({username})&quot; &quot;NOW()&quot; </para>
+</entry>
+                            </row>
+                            <row>
+<entry>bool</entry><entry>$replaceAttributeName</entry><entry>
+<para>Si un nom d&apos;attribut doit être remplacé dans la fonction </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00029">29</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00748_1a080555ab5f8e8b7084a0b09e1576f67f"/><section>
+    <title>ABS()</title>
+<indexterm><primary>ABS</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>ABS</secondary></indexterm>
+<para><computeroutput>static ABS (string $numberGetter)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Fonction ABS mysql. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$numberGetter</entry><entry>
+<para>valeur ou nom de l&apos;attribut entouré avec {}. ex: ABS({price}) ABS(10) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>MysqlFunction la fonction </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Cette fonction remplace les noms d&apos;attributs par défaut </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00143">143</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1ae11fa93f5d6f384f8a5fff304a10c725"/><section>
+    <title>as()</title>
+<indexterm><primary>as</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>as</secondary></indexterm>
+<para><computeroutput>as (string $alias)</computeroutput></para>
+<para>@défini un alias sur la fonction 
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$alias</entry><entry>
+<para>alias </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>$this </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00040">40</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1a7a9c122983d026ece0f8f5c513eb3cb7"/><section>
+    <title>AVG()</title>
+<indexterm><primary>AVG</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>AVG</secondary></indexterm>
+<para><computeroutput>static AVG (string $numberGetter)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Fonction AVG mysql. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$numberGetter</entry><entry>
+<para>nom de l&apos;attribut entouré avec {}. ex: AVG({price}) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>MysqlFunction la fonction </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Cette fonction remplace les noms d&apos;attributs par défaut </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00163">163</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1acc81210dd38eb501c944e482ed498d26"/><section>
+    <title>COLUMN_ALIAS()</title>
+<indexterm><primary>COLUMN_ALIAS</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>COLUMN_ALIAS</secondary></indexterm>
+<para><computeroutput>static COLUMN_ALIAS (string $attributeName, string $alias)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Colonne classique avec alias. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$attributeName</entry><entry>
+<para>nom de l&apos;attribut </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$alias</entry><entry>
+<para>alias </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>MysqlFunction la fonction </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00240">240</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1a44670226d153783619776d10e7b7622b"/><section>
+    <title>CONCAT()</title>
+<indexterm><primary>CONCAT</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>CONCAT</secondary></indexterm>
+<para><computeroutput>static CONCAT (string ... $toConcat)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Fonction CONCAT mysql. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>
+<para>...$toConcat Valeur à concaténer. Si un nom d&apos;attribut est fourni entouré avec {}. ex: CONCAT(&quot;val1&quot;,&quot;{attributeOne}&quot;,&quot;val2&quot;) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>MysqlFunction la fonction </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Cette fonction remplace les noms d&apos;attributs par défaut </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00073">73</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1a988e6d98ae6b67636b03df3abc50f6ca"/><section>
+    <title>COUNT()</title>
+<indexterm><primary>COUNT</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>COUNT</secondary></indexterm>
+<para><computeroutput>static COUNT (string $numberGetter)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Fonction COUNT mysql. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$numberGetter</entry><entry>
+<para>nom de l&apos;attribut entouré avec {}. ex: COUNT({price}) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>MysqlFunction la fonction </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Cette fonction remplace les noms d&apos;attributs par défaut </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00173">173</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1a852d920b172bd343a1b4d212a1aa8653"/><section>
+    <title>DATE_FORMAT()</title>
+<indexterm><primary>DATE_FORMAT</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>DATE_FORMAT</secondary></indexterm>
+<para><computeroutput>static DATE_FORMAT (string $dateGetter, string $format)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Fonction DATE_FORMAT mysql. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$dateGetter</entry><entry>
+<para>valeur ou nom de l&apos;attribut entouré avec {}. ex: DATE_FORMAT(&quot;&apos;2024-02-17 12:20:30&apos;&quot;,&quot;%Y&quot;) DATE_FORMAT({orderDate},&quot;%Y&quot;) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>MysqlFunction la fonction </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Cette fonction remplace les noms d&apos;attributs par défaut </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00230">230</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1a9bce6fae2c594fde79e20ddcb699ec04"/><section>
+    <title>DISTINCT()</title>
+<indexterm><primary>DISTINCT</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>DISTINCT</secondary></indexterm>
+<para><computeroutput>static DISTINCT (string $toDistinct)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Fonction DISTINCT mysql. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$toDistinct</entry><entry>
+<para>valeur ou nom de l&apos;attribut entouré avec {} ex : DISTINCT(&quot;*&quot;) DISTINCT(&quot;{username}&quot;) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>MysqlFunction la fonction </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Cette fonction remplace les noms d&apos;attributs par défaut </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00115">115</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1a26e3e0c627051b4287204b3575b81d97"/><section>
+    <title>getAlias()</title>
+<indexterm><primary>getAlias</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>getAlias</secondary></indexterm>
+<para><computeroutput>getAlias ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string|null l&apos;alias ou null si aucun </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00049">49</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1a3cb728ca27acfebd282caecdb8a1f5fc"/><section>
+    <title>getFunction()</title>
+<indexterm><primary>getFunction</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>getFunction</secondary></indexterm>
+<para><computeroutput>getFunction ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string La fonction </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00063">63</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1ac83856f218e9caf5475a5478481a0814"/><section>
+    <title>haveToReplaceAttributesName()</title>
+<indexterm><primary>haveToReplaceAttributesName</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>haveToReplaceAttributesName</secondary></indexterm>
+<para><computeroutput>haveToReplaceAttributesName ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>bool Si les noms des attributs doivent être remplacés </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00056">56</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1a9e1fb41d95b786ab44c0d7dd9231b86b"/><section>
+    <title>LENGTH()</title>
+<indexterm><primary>LENGTH</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>LENGTH</secondary></indexterm>
+<para><computeroutput>static LENGTH (string $stringGetter)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Fonction LENGTH mysql. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$stringGetter</entry><entry>
+<para>valeur ou nom de l&apos;attribut entouré avec {}. ex: LENGTH(&quot;value1&quot;) LENGTH(&quot;{username}&quot;) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>MysqlFunction la fonction </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Cette fonction remplace les noms d&apos;attributs par défaut </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00125">125</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1ab3d345e2681103f9405796389a40d689"/><section>
+    <title>LOWER()</title>
+<indexterm><primary>LOWER</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>LOWER</secondary></indexterm>
+<para><computeroutput>static LOWER (string $stringGetter)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Fonction LOWER mysql. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$stringGetter</entry><entry>
+<para>valeur ou nom de l&apos;attribut entouré avec {}. ex: LOWER(&quot;value1&quot;) LOWER(&quot;{username}&quot;) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>MysqlFunction la fonction </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Cette fonction remplace les noms d&apos;attributs par défaut </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00105">105</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1a226d32da507609cfbc41c5f2de9b8343"/><section>
+    <title>MAX()</title>
+<indexterm><primary>MAX</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>MAX</secondary></indexterm>
+<para><computeroutput>static MAX (string $numberGetter)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Fonction MAX mysql. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$numberGetter</entry><entry>
+<para>nom de l&apos;attribut entouré avec {}. ex: MAX({price}) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>MysqlFunction la fonction </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Cette fonction remplace les noms d&apos;attributs par défaut </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00193">193</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1a0f63514de83daffec5bc77ea94c280fd"/><section>
+    <title>MIN()</title>
+<indexterm><primary>MIN</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>MIN</secondary></indexterm>
+<para><computeroutput>static MIN (string $numberGetter)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Fonction MIN mysql. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$numberGetter</entry><entry>
+<para>nom de l&apos;attribut entouré avec {}. ex: MIN({price}) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>MysqlFunction la fonction </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Cette fonction remplace les noms d&apos;attributs par défaut </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00183">183</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1ab1659f28be37badd992f4b8500230d1d"/><section>
+    <title>NOW()</title>
+<indexterm><primary>NOW</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>NOW</secondary></indexterm>
+<para><computeroutput>static NOW ( )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Fonction NOW mysql. </para>
+</para>
+
+<para><formalpara><title>Renvoie</title>
+
+<para>MysqlFunction la fonction </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00212">212</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1a84f1921a0e6ef1af146350935845148b"/><section>
+    <title>RAND()</title>
+<indexterm><primary>RAND</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>RAND</secondary></indexterm>
+<para><computeroutput>static RAND ( )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Fonction RAND mysql. </para>
+</para>
+
+<para><formalpara><title>Renvoie</title>
+
+<para>MysqlFunction la fonction </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00133">133</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1a22da2044d66bf620f08adf6d3168ca48"/><section>
+    <title>ROUND()</title>
+<indexterm><primary>ROUND</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>ROUND</secondary></indexterm>
+<para><computeroutput>static ROUND (string $numberGetter, int $decimal = <computeroutput>2</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Fonction ROUND mysql. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$numberGetter</entry><entry>
+<para>valeur ou nom de l&apos;attribut entouré avec {}. ex: ROUND({price}) ROUND(10) </para>
+</entry>
+                            </row>
+                            <row>
+<entry>int</entry><entry>$decimal</entry><entry>
+<para>Précision </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>MysqlFunction la fonction </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Cette fonction remplace les noms d&apos;attributs par défaut </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00204">204</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1ab88146fc6b6eb074dd4e6c922f0f2eb5"/><section>
+    <title>SUBSTRING()</title>
+<indexterm><primary>SUBSTRING</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>SUBSTRING</secondary></indexterm>
+<para><computeroutput>static SUBSTRING (string $stringGetter, int $start, int $length)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Fonction SUBSTRING mysql. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$stringGetter</entry><entry>
+<para>valeur ou nom de l&apos;attribut entouré avec {}. ex: SUBSTRING(&quot;value1&quot;,1,3) SUBSTRING(&quot;{username}&quot;,1,4) </para>
+</entry>
+                            </row>
+                            <row>
+<entry>int</entry><entry>$start</entry><entry>
+<para>index de départ </para>
+</entry>
+                            </row>
+                            <row>
+<entry>int</entry><entry>$length</entry><entry>
+<para>taille </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>MysqlFunction la fonction </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Cette fonction remplace les noms d&apos;attributs par défaut </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00085">85</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1a0f9fa0a3c26d1ffdf533c2fd9f55aa45"/><section>
+    <title>SUM()</title>
+<indexterm><primary>SUM</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>SUM</secondary></indexterm>
+<para><computeroutput>static SUM (string $numberGetter)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Fonction SUM mysql. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$numberGetter</entry><entry>
+<para>nom de l&apos;attribut entouré avec {}. ex: SUM({price}) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>MysqlFunction la fonction </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Cette fonction remplace les noms d&apos;attributs par défaut </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00153">153</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1a290a31832414d365de969280195a71ff"/><section>
+    <title>TIMESTAMP()</title>
+<indexterm><primary>TIMESTAMP</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>TIMESTAMP</secondary></indexterm>
+<para><computeroutput>static TIMESTAMP ( )<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Fonction NOW mysql. </para>
+</para>
+
+<para><formalpara><title>Renvoie</title>
+
+<para>MysqlFunction la fonction </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00220">220</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1aaea342834fbb0456bd2bad686ef08a76"/><section>
+    <title>UPPER()</title>
+<indexterm><primary>UPPER</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>UPPER</secondary></indexterm>
+<para><computeroutput>static UPPER (string $stringGetter)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Fonction UPPER mysql. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$stringGetter</entry><entry>
+<para>valeur ou nom de l&apos;attribut entouré avec {}. ex: UPPER(&quot;value1&quot;) UPPER(&quot;{username}&quot;) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>MysqlFunction la fonction </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Cette fonction remplace les noms d&apos;attributs par défaut </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00188_source_1l00095">95</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des champs</title>
+<anchor xml:id="_a00748_1ac1b6033540b7af4eeb40b90d3f7c4bf5"/><section>
+    <title>$alias</title>
+<indexterm><primary>$alias</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>$alias</secondary></indexterm>
+<para><computeroutput>string $alias<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00188_source_1l00023">23</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1a79348d1e1455a6f7d3d71462ea7de24f"/><section>
+    <title>$function</title>
+<indexterm><primary>$function</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>$function</secondary></indexterm>
+<para><computeroutput>string $function<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00188_source_1l00013">13</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<anchor xml:id="_a00748_1aed23c33cbbfca9eac8ab14e946080ec5"/><section>
+    <title>$replaceAttributesName</title>
+<indexterm><primary>$replaceAttributesName</primary><secondary>MysqlFunction</secondary></indexterm>
+<indexterm><primary>MysqlFunction</primary><secondary>$replaceAttributesName</secondary></indexterm>
+<para><computeroutput>bool $replaceAttributesName<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00188_source_1l00018">18</link> du fichier <link linkend="_a00188_source">MysqlFunction.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00188">MysqlFunction.php</link></section>
+</section>

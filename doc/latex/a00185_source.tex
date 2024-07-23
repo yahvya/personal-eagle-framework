@@ -1,0 +1,29 @@
+\hypertarget{a00185_source}{}\doxysection{Mysql\+Exception.\+php}
+\label{a00185_source}\index{MysqlException.php@{MysqlException.php}}
+\mbox{\hyperlink{a00185}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{a00185_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{a00185_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{a00185_source_l00003}00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{a00413}{SaboCore\(\backslash\)Database\(\backslash\)Default\(\backslash\)System}};}
+\DoxyCodeLine{\Hypertarget{a00185_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{a00185_source_l00005}00005\ use\ Exception;}
+\DoxyCodeLine{\Hypertarget{a00185_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{a00185_source_l00011}\mbox{\hyperlink{a00744}{00011}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{a00744}{MysqlException}}\ \textcolor{keyword}{extends}\ Exception\{}
+\DoxyCodeLine{\Hypertarget{a00185_source_l00015}\mbox{\hyperlink{a00744_a919a243061a1986ae430fd787760bbf9}{00015}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{a00744_a919a243061a1986ae430fd787760bbf9}{\$isDisplayable}};}
+\DoxyCodeLine{\Hypertarget{a00185_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{a00185_source_l00021}\mbox{\hyperlink{a00744_ad244337e96952787bdf16fe66860d0d5}{00021}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00744_ad244337e96952787bdf16fe66860d0d5}{\_\_construct}}(\textcolor{keywordtype}{string}\ \$message,\textcolor{keywordtype}{bool}\ \mbox{\hyperlink{a00744_a919a243061a1986ae430fd787760bbf9}{\$isDisplayable}}\ =\ \textcolor{keyword}{false})\{}
+\DoxyCodeLine{\Hypertarget{a00185_source_l00022}00022\ \ \ \ \ \ \ \ \ parent::\_\_construct(message:\ \$message);}
+\DoxyCodeLine{\Hypertarget{a00185_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{a00185_source_l00024}00024\ \ \ \ \ \ \ \ \ \$this-\/>isDisplayable\ =\ \mbox{\hyperlink{a00744_a919a243061a1986ae430fd787760bbf9}{\$isDisplayable}};}
+\DoxyCodeLine{\Hypertarget{a00185_source_l00025}00025\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00185_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{a00185_source_l00030}\mbox{\hyperlink{a00744_a2bd06fb688dc4a272e4a92500cb3a4ce}{00030}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00744_a2bd06fb688dc4a272e4a92500cb3a4ce}{getIsDisplayable}}():\ bool\{}
+\DoxyCodeLine{\Hypertarget{a00185_source_l00031}00031\ \ \ \ \ \ \ \ \ return\ \$this-\/>isDisplayable;}
+\DoxyCodeLine{\Hypertarget{a00185_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00185_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{a00185_source_l00038}\mbox{\hyperlink{a00744_ac4b85211dd04576ac5120310fb7c57a7}{00038}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00744_ac4b85211dd04576ac5120310fb7c57a7}{getErrorMessage}}(\textcolor{keywordtype}{string}\ \$defaultMessage\ =\ \textcolor{stringliteral}{"{}Une\ erreur\ technique\ s'est\ produite"{}}):string\{}
+\DoxyCodeLine{\Hypertarget{a00185_source_l00039}00039\ \ \ \ \ \ \ \ \ return\ \$this-\/>isDisplayable\ ?\ \$this-\/>message\ :\ \$defaultMessage;}
+\DoxyCodeLine{\Hypertarget{a00185_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00185_source_l00041}00041\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sabo final:  Fichier source de MailerTemplateProvider.php</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="favicon.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">Sabo final<span id="projectnumber">&#160;1.1.1</span>
+   </div>
+   <div id="projectbrief">Mini framework php</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('a00299_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">MailerTemplateProvider.php</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="a00299.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span>&lt;?php</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">namespace </span><a class="code hl_namespace" href="a00427.html">SaboCore\Utils\Mailer</a>;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>use Throwable;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="a00876.html">   11</a></span><span class="keyword">abstract</span> <span class="keyword">class </span><a class="code hl_class" href="a00876.html">MailerTemplateProvider</a>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="a00876.html#a319d6e1ecd0e7dcbd39665569c20fe16">   15</a></span>    <span class="keyword">protected</span> <span class="keywordtype">string</span> <a class="code hl_variable" href="a00876.html#a319d6e1ecd0e7dcbd39665569c20fe16">$templatePath</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="a00876.html#a80397a2a552b6f04178f29e2b551b847">   20</a></span>    <span class="keyword">protected</span> <span class="keywordtype">string</span> <a class="code hl_variable" href="a00876.html#a80397a2a552b6f04178f29e2b551b847">$altContent</a>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="a00876.html#a2b73f685c41721359f46c11c63174bb7">   25</a></span>    <span class="keyword">protected</span> array <a class="code hl_variable" href="a00876.html#a2b73f685c41721359f46c11c63174bb7">$templateDatas</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="a00876.html#adc68840098799c096e28f1a6499ab8f4">   32</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00876.html#adc68840098799c096e28f1a6499ab8f4">__construct</a>(<span class="keywordtype">string</span> <a class="code hl_variable" href="a00876.html#a319d6e1ecd0e7dcbd39665569c20fe16">$templatePath</a>,<span class="keywordtype">string</span> <a class="code hl_variable" href="a00876.html#a80397a2a552b6f04178f29e2b551b847">$altContent</a>,array <a class="code hl_variable" href="a00876.html#a2b73f685c41721359f46c11c63174bb7">$templateDatas</a> = []){</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        $this-&gt;templatePath = <a class="code hl_variable" href="a00876.html#a319d6e1ecd0e7dcbd39665569c20fe16">$templatePath</a>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        $this-&gt;templateDatas = <a class="code hl_variable" href="a00876.html#a2b73f685c41721359f46c11c63174bb7">$templateDatas</a>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        $this-&gt;altContent = <a class="code hl_variable" href="a00876.html#a80397a2a552b6f04178f29e2b551b847">$altContent</a>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="a00876.html#aa47c28451c2aeca26f27a1f30f3afbdb">   41</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00876.html#aa47c28451c2aeca26f27a1f30f3afbdb">getAltContent</a>():string{</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        return $this-&gt;altContent;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="a00876.html#aa8c3eeb275898c4cb38be9b12770bf1b">   49</a></span>    <span class="keyword">abstract</span> <span class="keyword">function</span> <a class="code hl_function" href="a00876.html#aa8c3eeb275898c4cb38be9b12770bf1b">buildContent</a>():string;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
+<div class="ttc" id="aa00427_html"><div class="ttname"><a href="a00427.html">SaboCore\Utils\Mailer</a></div><div class="ttdef"><b>Definition:</b> <a href="a00296_source.html#l00003">BladeMailProvider.php:3</a></div></div>
+<div class="ttc" id="aa00876_html"><div class="ttname"><a href="a00876.html">SaboCore\Utils\Mailer\MailerTemplateProvider</a></div><div class="ttdoc">Représente un fournisseur html pour mail à partir d'un template.</div><div class="ttdef"><b>Definition:</b> <a href="a00299_source.html#l00011">MailerTemplateProvider.php:11</a></div></div>
+<div class="ttc" id="aa00876_html_a2b73f685c41721359f46c11c63174bb7"><div class="ttname"><a href="a00876.html#a2b73f685c41721359f46c11c63174bb7">SaboCore\Utils\Mailer\MailerTemplateProvider\$templateDatas</a></div><div class="ttdeci">array $templateDatas</div><div class="ttdef"><b>Definition:</b> <a href="a00299_source.html#l00025">MailerTemplateProvider.php:25</a></div></div>
+<div class="ttc" id="aa00876_html_a319d6e1ecd0e7dcbd39665569c20fe16"><div class="ttname"><a href="a00876.html#a319d6e1ecd0e7dcbd39665569c20fe16">SaboCore\Utils\Mailer\MailerTemplateProvider\$templatePath</a></div><div class="ttdeci">string $templatePath</div><div class="ttdef"><b>Definition:</b> <a href="a00299_source.html#l00015">MailerTemplateProvider.php:15</a></div></div>
+<div class="ttc" id="aa00876_html_a80397a2a552b6f04178f29e2b551b847"><div class="ttname"><a href="a00876.html#a80397a2a552b6f04178f29e2b551b847">SaboCore\Utils\Mailer\MailerTemplateProvider\$altContent</a></div><div class="ttdeci">string $altContent</div><div class="ttdef"><b>Definition:</b> <a href="a00299_source.html#l00020">MailerTemplateProvider.php:20</a></div></div>
+<div class="ttc" id="aa00876_html_aa47c28451c2aeca26f27a1f30f3afbdb"><div class="ttname"><a href="a00876.html#aa47c28451c2aeca26f27a1f30f3afbdb">SaboCore\Utils\Mailer\MailerTemplateProvider\getAltContent</a></div><div class="ttdeci">getAltContent()</div><div class="ttdef"><b>Definition:</b> <a href="a00299_source.html#l00041">MailerTemplateProvider.php:41</a></div></div>
+<div class="ttc" id="aa00876_html_aa8c3eeb275898c4cb38be9b12770bf1b"><div class="ttname"><a href="a00876.html#aa8c3eeb275898c4cb38be9b12770bf1b">SaboCore\Utils\Mailer\MailerTemplateProvider\buildContent</a></div><div class="ttdeci">buildContent()</div></div>
+<div class="ttc" id="aa00876_html_adc68840098799c096e28f1a6499ab8f4"><div class="ttname"><a href="a00876.html#adc68840098799c096e28f1a6499ab8f4">SaboCore\Utils\Mailer\MailerTemplateProvider\__construct</a></div><div class="ttdeci">__construct(string $templatePath, string $altContent, array $templateDatas=[])</div><div class="ttdef"><b>Definition:</b> <a href="a00299_source.html#l00032">MailerTemplateProvider.php:32</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_5a9687d32d98fbbdb60629c9ff0dd338.html">sabo-core</a></li><li class="navelem"><a class="el" href="dir_27d72d4b518677f61e722129f47020e8.html">utils</a></li><li class="navelem"><a class="el" href="dir_5e46656ede9d55f78fcf1ebc26992519.html">mailer</a></li><li class="navelem"><a class="el" href="a00299.html">MailerTemplateProvider.php</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
+</body>
+</html>

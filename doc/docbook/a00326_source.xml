@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00326_source" xml:lang="fr">
+<title>AppStorage.php</title>
+<indexterm><primary>AppStorage.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00326_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00326_source_1l00002"/>00002 
+<anchor xml:id="_a00326_source_1l00003"/><link linkend="_a00431">00003</link> <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00431">SaboCore\Utils\Storage</link>;
+<anchor xml:id="_a00326_source_1l00004"/>00004 
+<anchor xml:id="_a00326_source_1l00005"/>00005 use&#32;<link linkend="_a00403_1a80d9c58ff7f86d542bbc97aa01de382f">SaboCore\Config\FrameworkConfig</link>;
+<anchor xml:id="_a00326_source_1l00006"/>00006 use&#32;<link linkend="_a00784">SaboCore\Routing\Application\Application</link>;
+<anchor xml:id="_a00326_source_1l00007"/>00007 use&#32;Throwable;
+<anchor xml:id="_a00326_source_1l00008"/>00008 
+<anchor xml:id="_a00326_source_1l00013"/><link linkend="_a00904">00013</link> <emphasis role="keyword">abstract</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_a00904">AppStorage</link>{
+<anchor xml:id="_a00326_source_1l00021"/><link linkend="_a00904_1aa1b8b006c00e9aef2fc3f736be11f814">00021</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00904_1aa1b8b006c00e9aef2fc3f736be11f814">storeClassicFile</link>(<emphasis role="keywordtype">string</emphasis>&#32;$storagePath,<emphasis role="keywordtype">string</emphasis>&#32;$fileBasePath,<emphasis role="keywordtype">bool</emphasis>&#32;$createFoldersIfNotExists&#32;=&#32;<emphasis role="keyword">true</emphasis>):bool{
+<anchor xml:id="_a00326_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;try{
+<anchor xml:id="_a00326_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$storagePath&#32;=&#32;self::<link linkend="_a00904_1ad8dddd23b2640cd9a38d8e4bd304a5e9">buildStorageCompletePath</link>(pathFromStorage:&#32;$storagePath);
+<anchor xml:id="_a00326_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$dirname&#32;=&#32;@dirname(path:&#32;$storagePath);
+<anchor xml:id="_a00326_source_1l00025"/>00025 
+<anchor xml:id="_a00326_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;création&#32;du&#32;dossier&#32;résultat&#32;s&apos;il&#32;n&apos;existe&#32;pas</emphasis>
+<anchor xml:id="_a00326_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($createFoldersIfNotExists&#32;&amp;&amp;&#32;!is_dir(filename:&#32;$dirname)){
+<anchor xml:id="_a00326_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!@mkdir(directory:&#32;$dirname,recursive:&#32;<emphasis role="keyword">true</emphasis>)&#32;)
+<anchor xml:id="_a00326_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_a00326_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00326_source_1l00031"/>00031 
+<anchor xml:id="_a00326_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;@copy(from:&#32;$fileBasePath,to:&#32;$storagePath);
+<anchor xml:id="_a00326_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00326_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>(Throwable){
+<anchor xml:id="_a00326_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_a00326_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00326_source_1l00037"/>00037 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00326_source_1l00038"/>00038 
+<anchor xml:id="_a00326_source_1l00046"/><link linkend="_a00904_1a0876d33cb9c163f789800a6c69237670">00046</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00904_1a0876d33cb9c163f789800a6c69237670">storeContent</link>(<emphasis role="keywordtype">string</emphasis>&#32;$storagePath,<emphasis role="keywordtype">string</emphasis>&#32;$content,<emphasis role="keywordtype">bool</emphasis>&#32;$createFoldersIfNotExists&#32;=&#32;<emphasis role="keyword">true</emphasis>):bool{
+<anchor xml:id="_a00326_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;try{
+<anchor xml:id="_a00326_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$storagePath&#32;=&#32;self::buildStorageCompletePath(pathFromStorage:&#32;$storagePath);
+<anchor xml:id="_a00326_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$dirname&#32;=&#32;@dirname(path:&#32;$storagePath);
+<anchor xml:id="_a00326_source_1l00050"/>00050 
+<anchor xml:id="_a00326_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;création&#32;du&#32;dossier&#32;résultat&#32;s&apos;il&#32;n&apos;existe&#32;pas</emphasis>
+<anchor xml:id="_a00326_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($createFoldersIfNotExists&#32;&amp;&amp;&#32;!is_dir($dirname)){
+<anchor xml:id="_a00326_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!@mkdir(directory:&#32;$dirname,recursive:&#32;<emphasis role="keyword">true</emphasis>)&#32;)
+<anchor xml:id="_a00326_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_a00326_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00326_source_1l00056"/>00056 
+<anchor xml:id="_a00326_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;@file_put_contents(filename:&#32;$storagePath,data:&#32;$content)&#32;!==&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_a00326_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00326_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>(Throwable){
+<anchor xml:id="_a00326_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_a00326_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00326_source_1l00062"/>00062 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00326_source_1l00063"/>00063 
+<anchor xml:id="_a00326_source_1l00071"/><link linkend="_a00904_1ab075e381984d7595370791a976320498">00071</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00904_1ab075e381984d7595370791a976320498">storeFormFile</link>(<emphasis role="keywordtype">string</emphasis>&#32;$storagePath,&#32;<emphasis role="keywordtype">string</emphasis>&#32;$fileTmpName,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;$createFoldersIfNotExists&#32;=&#32;<emphasis role="keyword">true</emphasis>):bool{
+<anchor xml:id="_a00326_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;try{
+<anchor xml:id="_a00326_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$storagePath&#32;=&#32;self::buildStorageCompletePath(pathFromStorage:&#32;$storagePath);
+<anchor xml:id="_a00326_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$dirname&#32;=&#32;@dirname($storagePath);
+<anchor xml:id="_a00326_source_1l00075"/>00075 
+<anchor xml:id="_a00326_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;création&#32;du&#32;dossier&#32;résultat&#32;s&apos;il&#32;n&apos;existe&#32;pas</emphasis>
+<anchor xml:id="_a00326_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($createFoldersIfNotExists&#32;&amp;&amp;&#32;!is_dir(filename:&#32;$dirname)&#32;){
+<anchor xml:id="_a00326_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!@mkdir(directory:&#32;$dirname,recursive:&#32;<emphasis role="keyword">true</emphasis>)&#32;)
+<anchor xml:id="_a00326_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_a00326_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00326_source_1l00081"/>00081 
+<anchor xml:id="_a00326_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;@move_uploaded_file(from:&#32;$fileTmpName,to:&#32;$storagePath);
+<anchor xml:id="_a00326_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00326_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>(Throwable){
+<anchor xml:id="_a00326_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_a00326_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00326_source_1l00087"/>00087 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00326_source_1l00088"/>00088 
+<anchor xml:id="_a00326_source_1l00094"/><link linkend="_a00904_1ad8dddd23b2640cd9a38d8e4bd304a5e9">00094</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00904_1ad8dddd23b2640cd9a38d8e4bd304a5e9">buildStorageCompletePath</link>(<emphasis role="keywordtype">string</emphasis>&#32;$pathFromStorage):string{
+<anchor xml:id="_a00326_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;try{
+<anchor xml:id="_a00326_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$completePath&#32;=&#32;APP_CONFIG-&gt;getConfig(name:&#32;<emphasis role="stringliteral">&quot;ROOT&quot;</emphasis>)&#32;.&#32;<link linkend="_a00784">Application</link>::getFrameworkConfig()-&gt;getConfig(name:&#32;FrameworkConfig::STORAGE_DIR_PATH-&gt;value);
+<anchor xml:id="_a00326_source_1l00097"/>00097 
+<anchor xml:id="_a00326_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(str_ends_with(haystack:&#32;$completePath,needle:&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>)&#32;)&#32;$completePath&#32;=&#32;substr(<emphasis role="keywordtype">string</emphasis>:&#32;$completePath,offset:&#32;0,length:&#32;-1);
+<anchor xml:id="_a00326_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!str_starts_with(haystack:&#32;$pathFromStorage,needle:&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>)&#32;)&#32;$pathFromStorage&#32;=&#32;<emphasis role="stringliteral">&quot;/$pathFromStorage&quot;</emphasis>;
+<anchor xml:id="_a00326_source_1l00100"/>00100 
+<anchor xml:id="_a00326_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$completePath&#32;.&#32;$pathFromStorage;
+<anchor xml:id="_a00326_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00326_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>(Throwable){
+<anchor xml:id="_a00326_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$pathFromStorage;
+<anchor xml:id="_a00326_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00326_source_1l00106"/>00106 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00326_source_1l00107"/>00107 }
+</programlisting></section>

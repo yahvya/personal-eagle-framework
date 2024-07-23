@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00936" xml:lang="fr">
+<title>Référence de la classe CustomTreatment</title>
+<indexterm><primary>CustomTreatment</primary></indexterm>
+<para>
+
+<para>Gestionnaire de traitement customisé </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de CustomTreatment:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00936.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Membres hérités additionnels    </title>
+Fonctions membres protégées statiques hérités de <link linkend="_a00840">Treatment</link>        <itemizedlist>
+            <listitem><para>static <link linkend="_a00840_1af824b857142fd28d71b5879be59185dc">throwException</link> (string $errorMessage, bool $isDisplayable=true)</para>
+
+<para>Lèves une exception de traitement. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00840_1abf3978f576a1fa3b9d822b460175db45">throwModelException</link> (<link linkend="_a00744">MysqlException</link> $exception)</para>
+
+<para>Lèves une exception de traitement. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Gestionnaire de traitement customisé </para>
+<para>
+Définition à la ligne <link linkend="_a00389_source_1l00010">10</link> du fichier <link linkend="_a00389_source">CustomTreatment.php</link>.</para>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00389">CustomTreatment.php</link></section>
+</section>

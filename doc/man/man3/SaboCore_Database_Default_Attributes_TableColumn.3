@@ -1,0 +1,508 @@
+.TH "TableColumn" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TableColumn \- Représentation d'une colonne\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de \fBSqlAttribute\fP\&.
+.PP
+Dérivée par \fBBinaryColumn\fP, \fBCharColumn\fP, \fBDecimalColumn\fP, \fBEnumColumn\fP, \fBIntColumn\fP, \fBJsonColumn\fP, \fBTextColumn\fP, \fBTimestampColumn\fP, \fBTinyIntColumn\fP, \fBVarBinaryColumn\fP, et \fBVarcharColumn\fP\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP (string $columnName, bool $\fBisNullable\fP=false, bool $\fBisPrimaryKey\fP=false, bool $\fBisUnique\fP=false, string $defaultValue=self::NO_DEFAULT_VALUE, bool $\fBisForeignKey\fP=false,?string $referencedModel=null,?string $referencedAttributeName=null, array $setConditions=[], array $dataFormatters=[], array $datasReformers=[])"
+.br
+.ti -1c
+.RI "\fBverifyData\fP (\fBMysqlModel\fP $baseModel, string $attributeName, mixed $data)"
+.br
+.RI "Vérifie la donnée à affecter\&. "
+.ti -1c
+.RI "\fBformatData\fP (\fBMysqlModel\fP $baseModel, mixed $originalData)"
+.br
+.RI "Formate la donnée originale en passant par les formateurs\&. "
+.ti -1c
+.RI "\fBreformData\fP (\fBMysqlModel\fP $baseModel, mixed $formatedData)"
+.br
+.RI "Reforme la donnée originale en passant par les reconstructeurs\&. "
+.ti -1c
+.RI "\fBgetColumnName\fP ()"
+.br
+.ti -1c
+.RI "\fBisPrimaryKey\fP ()"
+.br
+.ti -1c
+.RI "\fBisForeignKey\fP ()"
+.br
+.ti -1c
+.RI "\fBisNullable\fP ()"
+.br
+.ti -1c
+.RI "\fBisUnique\fP ()"
+.br
+.ti -1c
+.RI "\fBgetReferencedModel\fP ()"
+.br
+.ti -1c
+.RI "\fBgetSetConditions\fP ()"
+.br
+.ti -1c
+.RI "\fBgetDefaultValueStr\fP ()"
+.br
+.ti -1c
+.RI "\fBhaveDefaultValue\fP ()"
+.br
+.ti -1c
+.RI "\fBgetDatasFormatters\fP ()"
+.br
+.ti -1c
+.RI "\fBgetDatasReformers\fP ()"
+.br
+.ti -1c
+.RI "\fBgetReferencedAttributeName\fP ()"
+.br
+.ti -1c
+.RI "\fBconvertToValue\fP (mixed $data)"
+.br
+.RI "Méthode appellé au montage de la propriété portant cet attribut\&. Transforme la donnée récupérée en base de donnée en la donnée finale\&. "
+.ti -1c
+.RI "\fBconvertFromValue\fP (mixed $data)"
+.br
+.RI "Méthode appellé à l'insertion ou mise à jour de la propriété portant cet attribut\&. Transforme la donnée de l'attribut en une donnée capable d'être inséré en base de donnée\&. "
+.ti -1c
+.RI "\fBgetColumnType\fP ()"
+.br
+.in -1c
+
+Fonctions membres publiques hérités de \fBSqlAttribute\fP
+.in +1c
+.ti -1c
+.RI "\fBgetCreationSql\fP ()"
+.br
+.in -1c
+.SS "Attributs protégés"
+
+.in +1c
+.ti -1c
+.RI "const string \fBNO_DEFAULT_VALUE\fP = 'ATTRIBUTE_NO_DEFAULT_VALUE'"
+.br
+.RI "Chaine représentant si l'attribut n'a pas de valeur par défaut\&. "
+.ti -1c
+.RI "string \fB$columnName\fP"
+.br
+.ti -1c
+.RI "bool \fB$isPrimaryKey\fP"
+.br
+.ti -1c
+.RI "bool \fB$isForeignKey\fP"
+.br
+.ti -1c
+.RI "bool \fB$isNullable\fP"
+.br
+.ti -1c
+.RI "bool \fB$isUnique\fP"
+.br
+.ti -1c
+.RI "string \fB$defaultValue\fP"
+.br
+.ti -1c
+.RI "string \fB$referencedModel\fP"
+.br
+.ti -1c
+.RI "string \fB$referencedAttributeName\fP"
+.br
+.ti -1c
+.RI "array \fB$setConditions\fP"
+.br
+.ti -1c
+.RI "array \fB$datasFormatters\fP = []"
+.br
+.ti -1c
+.RI "array \fB$datasReformers\fP = []"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Représentation d'une colonne\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB15\fP du fichier \fBTableColumn\&.php\fP\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "__construct (string $columnName, bool $isNullable = \fCfalse\fP, bool $isPrimaryKey = \fCfalse\fP, bool $isUnique = \fCfalse\fP, string $defaultValue = \fCself::NO_DEFAULT_VALUE\fP, bool $isForeignKey = \fCfalse\fP, ?string $referencedModel = \fCnull\fP, ?string $referencedAttributeName = \fCnull\fP, array $setConditions = \fC[]\fP, array $dataFormatters = \fC[]\fP, array $datasReformers = \fC[]\fP)"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$columnName\fP Nom de la colonne en base de donnée 
+.br
+\fI$isNullable\fP si le champ est nullable (mis à false par défaut si clé primaire) 
+.br
+\fI$isPrimaryKey\fP si le champ est une clé primaire 
+.br
+\fI$isUnique\fP si le champ est unique 
+.br
+\fI$defaultValue\fP Valeur par défaut de l'attribut (sous la forme sql) 
+.br
+\fI$isForeignKey\fP si le champ est une clé étrangère 
+.br
+\fI$referencedModel\fP Class du modèle référencé par la clé 
+.br
+\fI$referencedAttributeName\fP Nom de l'attribut référencé 
+.br
+\fI$setConditions\fP Conditions à vérifier sur la donnée originale avant de l'accepter dans l'attribut 
+.br
+\fI$dataFormatters\fP Formateur de donnée pour transformer la donnée originale 
+.br
+\fI$datasReformers\fP Formateur de donnée pour reformer la donnée 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Les conditions sont appelées avant formatage sur la donnée originale 
+.PP
+Chaque formateur recevra le résultat du précédent 
+.PP
+L'attribut par défaut doit contenir la chaine exacte qui sera saisie dans la création sql ex : ''default'' '10' \&.\&.\&. 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBJsonColumn\fP, \fBTextColumn\fP, \fBTimestampColumn\fP, et \fBTinyIntColumn\fP\&.
+.PP
+Définition à la ligne \fB92\fP du fichier \fBTableColumn\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "convertFromValue (mixed $data)"
+
+.PP
+Méthode appellé à l'insertion ou mise à jour de la propriété portant cet attribut\&. Transforme la donnée de l'attribut en une donnée capable d'être inséré en base de donnée\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$data\fP La donnée de base 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+mixed la donnée convertie 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBTimestampColumn\fP\&.
+.PP
+Définition à la ligne \fB260\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "convertToValue (mixed $data)"
+
+.PP
+Méthode appellé au montage de la propriété portant cet attribut\&. Transforme la donnée récupérée en base de donnée en la donnée finale\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$data\fP La donnée de base 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+mixed la donnée convertie 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBTimestampColumn\fP\&.
+.PP
+Définition à la ligne \fB251\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "formatData (\fBMysqlModel\fP $baseModel, mixed $originalData)"
+
+.PP
+Formate la donnée originale en passant par les formateurs\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$baseModel\fP Model de base 
+.br
+\fI$originalData\fP Donnée originale 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+mixed La donnée totalement formatée 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Les conditions doivent être vérifiées avant formatage 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIFormaterException\fP en cas d'erreur de formatage 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB134\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "getColumnName ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+string Nom de la colonne en base de donnée 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB165\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "getColumnType ()\fC [abstract]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+int Fourni le type de paramètre pdo 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBBinaryColumn\fP, \fBBoolColumn\fP, \fBCharColumn\fP, \fBDecimalColumn\fP, \fBEnumColumn\fP, \fBIntColumn\fP, \fBJsonColumn\fP, \fBTextColumn\fP, \fBTimestampColumn\fP, \fBTinyIntColumn\fP, \fBVarBinaryColumn\fP, et \fBVarcharColumn\fP\&.
+.SS "getDatasFormatters ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+Formater[] formateurs de données 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB228\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "getDatasReformers ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+Formater[] Reconstructeurs de données 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB235\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "getDefaultValueStr ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+string La chaine sql de valeur par défaut ou vide si pas de valeur par défaut 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB214\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "getReferencedAttributeName ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+string|null Nom de l'attribut référencé ou null en cas de foreign key 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB242\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "getReferencedModel ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+string|null Class du model référencé en cas de foreign key sinon null 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB200\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "getSetConditions ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+Cond[] Conditions de validation 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB207\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "haveDefaultValue ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+bool Si l'attribut à une valeur par défaut 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB221\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "isForeignKey ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+bool Si le champ est une clé étrangère 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB179\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "isNullable ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+bool Si le champ est nullable 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB186\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "isPrimaryKey ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+bool Si le champ est une clé primaire 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB172\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "isUnique ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+bool Si le champ est unique 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB193\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "reformData (\fBMysqlModel\fP $baseModel, mixed $formatedData)"
+
+.PP
+Reforme la donnée originale en passant par les reconstructeurs\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$baseModel\fP Model de base 
+.br
+\fI$formatedData\fP Donnée formatée 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+mixed La donnée totalement reformée 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIFormaterException\fP en cas d'erreur de formatage 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB153\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "verifyData (\fBMysqlModel\fP $baseModel, string $attributeName, mixed $data)"
+
+.PP
+Vérifie la donnée à affecter\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$baseModel\fP Model de base 
+.br
+\fI$attributeName\fP Nom de l'attribut 
+.br
+\fI$data\fP La donnée à vérifier 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIMysqlCondException\fP en cas de condition invalide 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB114\fP du fichier \fBTableColumn\&.php\fP\&.
+.SH "Documentation des champs"
+.PP 
+.SS "string $columnName\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB24\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "array $datasFormatters = []\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB69\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "array $datasReformers = []\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB74\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "string $defaultValue\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB49\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "bool $\fBisForeignKey\fP\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB34\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "bool $\fBisNullable\fP\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB39\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "bool $\fBisPrimaryKey\fP\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB29\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "bool $\fBisUnique\fP\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB44\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "string $referencedAttributeName\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB59\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "string $referencedModel\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB54\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "array $setConditions\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB64\fP du fichier \fBTableColumn\&.php\fP\&.
+.SS "const string NO_DEFAULT_VALUE = 'ATTRIBUTE_NO_DEFAULT_VALUE'\fC [protected]\fP"
+
+.PP
+Chaine représentant si l'attribut n'a pas de valeur par défaut\&. 
+.PP
+Définition à la ligne \fB19\fP du fichier \fBTableColumn\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

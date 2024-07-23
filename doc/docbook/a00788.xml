@@ -1,0 +1,430 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00788" xml:lang="fr">
+<title>Référence de la classe RoutingManager</title>
+<indexterm><primary>RoutingManager</primary></indexterm>
+<para>
+
+<para>Gestionnaire du routing de l&apos;application. </para>
+ 
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00788_1a095c5d389db211932136b53f25f39685">__construct</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00788_1af8fa59992209e36dccb3eefb0f75531f">start</link> ()</para>
+
+<para>Lance le routing de l&apos;application. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Fonctions membres publiques statiques    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_a00788_1a2550b6d28cd81d56896ab1ce09cdb535">notFoundPage</link> ()</para>
+</listitem>
+            <listitem><para>static <link linkend="_a00788_1aea312c001f299e85990d96bc26b6760b">maintenancePage</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Fonctions membres protégées    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00788_1a38b9478b6a62aea6257e974c03495002">isAccessibleRessource</link> ()</para>
+
+<para>Vérifie si le lien est celui d&apos;une ressource autorisée à l&apos;accès par lien. </para>
+</listitem>
+            <listitem><para><link linkend="_a00788_1a8107fc5e91a6dfa3a4a3aa1236079694">launch</link> (array|Closure $toExecute, array $matches, <link linkend="_a00792">Request</link> $request)</para>
+
+<para>lance la fonction de traitement </para>
+</listitem>
+            <listitem><para><link linkend="_a00788_1ad614f70970596f0763a50c0d295c89b3">checkMaintenance</link> (<link linkend="_a00792">Request</link> $request)</para>
+
+<para>Vérifie la gestion de la maintenance. </para>
+</listitem>
+            <listitem><para><link linkend="_a00788_1abfcef74d8afd039b70c3ce7679bae534">canAccessOnMaintenance</link> (<link linkend="_a00792">Request</link> $request)</para>
+</listitem>
+            <listitem><para><link linkend="_a00788_1a3710f57e123cb6e34a5575b8ac5955bf">authorizeAccessOnMaintenance</link> (<link linkend="_a00792">Request</link> $request)</para>
+
+<para>Autorise l&apos;accès durant la maintenance. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Attributs protégés    </title>
+        <itemizedlist>
+            <listitem><para>string <link linkend="_a00788_1a24b2401fa4ae31fae08557d2ad8adc44">$link</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Gestionnaire du routing de l&apos;application. </para>
+<para>
+Définition à la ligne <link linkend="_a00224_source_1l00026">26</link> du fichier <link linkend="_a00224_source">RoutingManager.php</link>.</para>
+</section>
+<section>
+<title>Documentation des constructeurs et destructeur</title>
+<anchor xml:id="_a00788_1a095c5d389db211932136b53f25f39685"/><section>
+    <title>__construct()</title>
+<indexterm><primary>__construct</primary><secondary>RoutingManager</secondary></indexterm>
+<indexterm><primary>RoutingManager</primary><secondary>__construct</secondary></indexterm>
+<para><computeroutput>__construct ( )</computeroutput></para><para>
+Définition à la ligne <link linkend="_a00224_source_1l00032">32</link> du fichier <link linkend="_a00224_source">RoutingManager.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00788_1a3710f57e123cb6e34a5575b8ac5955bf"/><section>
+    <title>authorizeAccessOnMaintenance()</title>
+<indexterm><primary>authorizeAccessOnMaintenance</primary><secondary>RoutingManager</secondary></indexterm>
+<indexterm><primary>RoutingManager</primary><secondary>authorizeAccessOnMaintenance</secondary></indexterm>
+<para><computeroutput>authorizeAccessOnMaintenance (<link linkend="_a00792">Request</link> $request)<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+
+<para>Autorise l&apos;accès durant la maintenance. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>Request</entry><entry>$request</entry><entry>
+<para>gestionnaire de requête </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>void </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00224_source_1l00190">190</link> du fichier <link linkend="_a00224_source">RoutingManager.php</link>.</para>
+</section>
+<anchor xml:id="_a00788_1abfcef74d8afd039b70c3ce7679bae534"/><section>
+    <title>canAccessOnMaintenance()</title>
+<indexterm><primary>canAccessOnMaintenance</primary><secondary>RoutingManager</secondary></indexterm>
+<indexterm><primary>RoutingManager</primary><secondary>canAccessOnMaintenance</secondary></indexterm>
+<para><computeroutput>canAccessOnMaintenance (<link linkend="_a00792">Request</link> $request)<computeroutput>[protected]</computeroutput></computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>Request</entry><entry>$request</entry><entry>
+<para>gestionnaire de requête </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>bool si l&apos;utilisateur a accès au site </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00224_source_1l00181">181</link> du fichier <link linkend="_a00224_source">RoutingManager.php</link>.</para>
+</section>
+<anchor xml:id="_a00788_1ad614f70970596f0763a50c0d295c89b3"/><section>
+    <title>checkMaintenance()</title>
+<indexterm><primary>checkMaintenance</primary><secondary>RoutingManager</secondary></indexterm>
+<indexterm><primary>RoutingManager</primary><secondary>checkMaintenance</secondary></indexterm>
+<para><computeroutput>checkMaintenance (<link linkend="_a00792">Request</link> $request)<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+
+<para>Vérifie la gestion de la maintenance. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>Request</entry><entry>$request</entry><entry>
+<para>requête </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>Response|null la réponse ou null si accès autorisé </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Exceptions</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>ConfigException|Throwable</entry><entry>
+<para>en cas d&apos;erreur </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00224_source_1l00152">152</link> du fichier <link linkend="_a00224_source">RoutingManager.php</link>.</para>
+</section>
+<anchor xml:id="_a00788_1a38b9478b6a62aea6257e974c03495002"/><section>
+    <title>isAccessibleRessource()</title>
+<indexterm><primary>isAccessibleRessource</primary><secondary>RoutingManager</secondary></indexterm>
+<indexterm><primary>RoutingManager</primary><secondary>isAccessibleRessource</secondary></indexterm>
+<para><computeroutput>isAccessibleRessource ( )<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+
+<para>Vérifie si le lien est celui d&apos;une ressource autorisée à l&apos;accès par lien. </para>
+</para>
+
+<para><formalpara><title>Renvoie</title>
+
+<para>bool si le lien est celui d&apos;une ressource autorisée à l&apos;accès par lien </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Exceptions</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>ConfigException</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00224_source_1l00083">83</link> du fichier <link linkend="_a00224_source">RoutingManager.php</link>.</para>
+</section>
+<anchor xml:id="_a00788_1a8107fc5e91a6dfa3a4a3aa1236079694"/><section>
+    <title>launch()</title>
+<indexterm><primary>launch</primary><secondary>RoutingManager</secondary></indexterm>
+<indexterm><primary>RoutingManager</primary><secondary>launch</secondary></indexterm>
+<para><computeroutput>launch (array|Closure $toExecute, array $matches, <link linkend="_a00792">Request</link> $request)<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+
+<para>lance la fonction de traitement </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>array | Closure</entry><entry>$toExecute</entry><entry>
+<para>l&apos;action à exécuter </para>
+</entry>
+                            </row>
+                            <row>
+<entry>array</entry><entry>$matches</entry><entry>
+<para>les matchs dans l&apos;URL </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Request</entry><entry>$request</entry><entry>
+<para>la requête </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>Response la réponse fournie </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Exceptions</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>Throwable</entry><entry>
+<para>en cas d&apos;erreur </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00224_source_1l00109">109</link> du fichier <link linkend="_a00224_source">RoutingManager.php</link>.</para>
+</section>
+<anchor xml:id="_a00788_1aea312c001f299e85990d96bc26b6760b"/><section>
+    <title>maintenancePage()</title>
+<indexterm><primary>maintenancePage</primary><secondary>RoutingManager</secondary></indexterm>
+<indexterm><primary>RoutingManager</primary><secondary>maintenancePage</secondary></indexterm>
+<para><computeroutput>static maintenancePage ( )<computeroutput>[static]</computeroutput></computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>HtmlResponse la page de maintenance </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Exceptions</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>ConfigException</entry><entry>
+<para>en cas d&apos;erreur de configuration </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00224_source_1l00209">209</link> du fichier <link linkend="_a00224_source">RoutingManager.php</link>.</para>
+</section>
+<anchor xml:id="_a00788_1a2550b6d28cd81d56896ab1ce09cdb535"/><section>
+    <title>notFoundPage()</title>
+<indexterm><primary>notFoundPage</primary><secondary>RoutingManager</secondary></indexterm>
+<indexterm><primary>RoutingManager</primary><secondary>notFoundPage</secondary></indexterm>
+<para><computeroutput>static notFoundPage ( )<computeroutput>[static]</computeroutput></computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>HtmlResponse la page non trouvée </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Exceptions</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>ConfigException</entry><entry>
+<para>en cas d&apos;erreur de configuration </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00224_source_1l00198">198</link> du fichier <link linkend="_a00224_source">RoutingManager.php</link>.</para>
+</section>
+<anchor xml:id="_a00788_1af8fa59992209e36dccb3eefb0f75531f"/><section>
+    <title>start()</title>
+<indexterm><primary>start</primary><secondary>RoutingManager</secondary></indexterm>
+<indexterm><primary>RoutingManager</primary><secondary>start</secondary></indexterm>
+<para><computeroutput>start ( )</computeroutput></para><para>
+
+<para>Lance le routing de l&apos;application. </para>
+</para>
+
+<para><formalpara><title>Renvoie</title>
+
+<para>Response la réponse à afficher </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Exceptions</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>ConfigException|Throwable</entry><entry>
+<para>en cas d&apos;erreur </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00224_source_1l00041">41</link> du fichier <link linkend="_a00224_source">RoutingManager.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des champs</title>
+<anchor xml:id="_a00788_1a24b2401fa4ae31fae08557d2ad8adc44"/><section>
+    <title>$link</title>
+<indexterm><primary>$link</primary><secondary>RoutingManager</secondary></indexterm>
+<indexterm><primary>RoutingManager</primary><secondary>$link</secondary></indexterm>
+<para><computeroutput>string $link<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00224_source_1l00030">30</link> du fichier <link linkend="_a00224_source">RoutingManager.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00224">RoutingManager.php</link></section>
+</section>

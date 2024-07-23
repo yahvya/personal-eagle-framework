@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00197" xml:lang="fr">
+<title>Référence du fichier DatabaseProvider.php</title>
+<indexterm><primary>DatabaseProvider.php</primary></indexterm>
+<simplesect>
+    <title>Structures de données    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_a00760">DatabaseProvider</link></para>
+
+<para>Classe parente de fournisseur d&apos;instance pour le système de base de donnée. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Espaces de nommage    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_a00414">SaboCore\Database\Providers</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

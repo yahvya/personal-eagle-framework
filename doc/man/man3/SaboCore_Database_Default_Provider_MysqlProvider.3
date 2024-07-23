@@ -1,0 +1,102 @@
+.TH "MysqlProvider" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MysqlProvider \- Fournisseur mysql\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de \fBDatabaseProvider\fP\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fBinitDatabase\fP (\fBConfig\fP $providerConfig)"
+.br
+.RI "Initialise la base de données\&. "
+.ti -1c
+.RI "\fBgetCon\fP ()"
+.br
+.in -1c
+.in +1c
+.ti -1c
+.RI "\fBinitDatabase\fP (\fBConfig\fP $providerConfig)"
+.br
+.RI "Initialise la base de données\&. "
+.ti -1c
+.RI "\fBgetCon\fP ()"
+.br
+.in -1c
+.SS "Attributs protégés statiques"
+
+.in +1c
+.ti -1c
+.RI "static PDO \fB$con\fP"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Fournisseur mysql\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya/ 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB16\fP du fichier \fBMysqlProvider\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "getCon ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+PDO|null la connexion crée à l'initialisation ou null 
+.RE
+.PP
+
+.PP
+Réimplémentée à partir de \fBDatabaseProvider\fP\&.
+.PP
+Définition à la ligne \fB48\fP du fichier \fBMysqlProvider\&.php\fP\&.
+.SS "initDatabase (\fBConfig\fP $providerConfig)"
+
+.PP
+Initialise la base de données\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$providerConfig\fP configuration du provider 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+void 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP en cas d'erreur 
+.RE
+.PP
+
+.PP
+Réimplémentée à partir de \fBDatabaseProvider\fP\&.
+.PP
+Définition à la ligne \fB23\fP du fichier \fBMysqlProvider\&.php\fP\&.
+.SH "Documentation des champs"
+.PP 
+.SS "PDO $con\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB20\fP du fichier \fBMysqlProvider\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

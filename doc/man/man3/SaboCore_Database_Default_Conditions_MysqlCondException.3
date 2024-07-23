@@ -1,0 +1,114 @@
+.TH "MysqlCondException" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MysqlCondException \- Exception de non-validité de condition\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de Exception\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP (\fBCond\fP $failedCond)"
+.br
+.ti -1c
+.RI "\fBgetErrorMessage\fP (string $defaultMessage='Une erreur technique c'est produite')"
+.br
+.RI "Fourni le message d'erreur formaté en fonction de l'état isDisplayable\&. "
+.ti -1c
+.RI "\fBgetFailedCond\fP ()"
+.br
+.ti -1c
+.RI "\fBgetIsDisplayable\fP ()"
+.br
+.in -1c
+.SS "Attributs protégés"
+
+.in +1c
+.ti -1c
+.RI "\fBCond\fP \fB$failedCond\fP"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Exception de non-validité de condition\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB11\fP du fichier \fBMysqlCondException\&.php\fP\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "__construct (\fBCond\fP $failedCond)"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$failedCond\fP Condition invalide 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB20\fP du fichier \fBMysqlCondException\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "getErrorMessage (string $defaultMessage = \fC'Une erreur technique c'est produite'\fP)"
+
+.PP
+Fourni le message d'erreur formaté en fonction de l'état isDisplayable\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$defaultMessage\fP message par défaut en cas de message non affichable 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+string Le message d'erreur affichable 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB31\fP du fichier \fBMysqlCondException\&.php\fP\&.
+.SS "getFailedCond ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+Cond L'action échouée 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB38\fP du fichier \fBMysqlCondException\&.php\fP\&.
+.SS "getIsDisplayable ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+bool Si le message peut être affiché à l'utilisateur 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB45\fP du fichier \fBMysqlCondException\&.php\fP\&.
+.SH "Documentation des champs"
+.PP 
+.SS "\fBCond\fP $failedCond\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB15\fP du fichier \fBMysqlCondException\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

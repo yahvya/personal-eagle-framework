@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00308_source" xml:lang="fr">
+<title>Printer.php</title>
+<indexterm><primary>Printer.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00308_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00308_source_1l00002"/>00002 
+<anchor xml:id="_a00308_source_1l00003"/><link linkend="_a00428">00003</link> <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00428">SaboCore\Utils\Printer</link>;
+<anchor xml:id="_a00308_source_1l00004"/>00004 
+<anchor xml:id="_a00308_source_1l00005"/>00005 use&#32;BeBat\ConsoleColor\Style;
+<anchor xml:id="_a00308_source_1l00006"/>00006 use&#32;BeBat\ConsoleColor\Style\Color;
+<anchor xml:id="_a00308_source_1l00007"/>00007 use&#32;BeBat\ConsoleColor\Style\BackgroundColor;
+<anchor xml:id="_a00308_source_1l00008"/>00008 use&#32;BeBat\ConsoleColor\Style\Composite;
+<anchor xml:id="_a00308_source_1l00009"/>00009 use&#32;BeBat\ConsoleColor\Style\Text;
+<anchor xml:id="_a00308_source_1l00010"/>00010 
+<anchor xml:id="_a00308_source_1l00015"/><link linkend="_a00888">00015</link> <emphasis role="keyword">abstract</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_a00888">Printer</link>{
+<anchor xml:id="_a00308_source_1l00024"/><link linkend="_a00888_1ae6b12b3e292166d0b8994409aa460bca">00024</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00888_1ae6b12b3e292166d0b8994409aa460bca">print</link>(<emphasis role="keywordtype">string</emphasis>&#32;$toPrint,Color&#32;$textColor,?BackgroundColor&#32;$backgroundColor&#32;=&#32;<emphasis role="keyword">null</emphasis>,<emphasis role="keywordtype">bool</emphasis>&#32;$isImportant&#32;=&#32;<emphasis role="keyword">false</emphasis>):void{
+<anchor xml:id="_a00308_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$styles&#32;=&#32;[$textColor];
+<anchor xml:id="_a00308_source_1l00026"/>00026 
+<anchor xml:id="_a00308_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($backgroundColor&#32;!==&#32;<emphasis role="keyword">null</emphasis>)&#32;$styles[]&#32;=&#32;$backgroundColor;
+<anchor xml:id="_a00308_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($isImportant)&#32;$styles[]&#32;=&#32;Text::Bold;
+<anchor xml:id="_a00308_source_1l00029"/>00029 
+<anchor xml:id="_a00308_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_a00888_1ad8adbbb8169dc40f3f02214c4fd9aa21">self::printStyle</link>(toPrint:&#32;$toPrint,compositeStyle:&#32;<emphasis role="keyword">new</emphasis>&#32;Composite(...$styles)&#32;);
+<anchor xml:id="_a00308_source_1l00031"/>00031 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00308_source_1l00032"/>00032 
+<anchor xml:id="_a00308_source_1l00040"/><link linkend="_a00888_1ad8adbbb8169dc40f3f02214c4fd9aa21">00040</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00888_1ad8adbbb8169dc40f3f02214c4fd9aa21">printStyle</link>(<emphasis role="keywordtype">string</emphasis>&#32;$toPrint,Composite&#32;$compositeStyle,<emphasis role="keywordtype">int</emphasis>&#32;$countOfLineBreak&#32;=&#32;0):void{
+<anchor xml:id="_a00308_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;echo&#32;(new&#32;Style)-&gt;apply(text:&#32;$toPrint,style:&#32;$compositeStyle);
+<anchor xml:id="_a00308_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;echo&#32;str_repeat(<emphasis role="keywordtype">string</emphasis>:&#32;PHP_EOL,times:&#32;$countOfLineBreak);
+<anchor xml:id="_a00308_source_1l00043"/>00043 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00308_source_1l00044"/>00044 }
+</programlisting></section>

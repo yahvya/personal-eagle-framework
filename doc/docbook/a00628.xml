@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00628" xml:lang="fr">
+<title>Référence de la classe SqlAttribute</title>
+<indexterm><primary>SqlAttribute</primary></indexterm>
+<para>
+
+<para>Représente un attribut pouvant être créé en sql. </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de SqlAttribute:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00628.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00628_1a77ed872e25498694d3063ef2da790f82">getCreationSql</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Représente un attribut pouvant être créé en sql. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00098_source_1l00009">9</link> du fichier <link linkend="_a00098_source">SqlAttribute.php</link>.</para>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00628_1a77ed872e25498694d3063ef2da790f82"/><section>
+    <title>getCreationSql()</title>
+<indexterm><primary>getCreationSql</primary><secondary>SqlAttribute</secondary></indexterm>
+<indexterm><primary>SqlAttribute</primary><secondary>getCreationSql</secondary></indexterm>
+<para><computeroutput>getCreationSql ( )<computeroutput>[abstract]</computeroutput></computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string Fourni le sql de création de l&apos;attribut </para>
+</formalpara>
+</para>
+<para>
+Réimplémentée dans <link linkend="_a00596_1a77ed872e25498694d3063ef2da790f82">BinaryColumn</link>, <link linkend="_a00604_1a77ed872e25498694d3063ef2da790f82">CharColumn</link>, <link linkend="_a00608_1a77ed872e25498694d3063ef2da790f82">DecimalColumn</link>, <link linkend="_a00612_1a77ed872e25498694d3063ef2da790f82">EnumColumn</link>, <link linkend="_a00616_1a77ed872e25498694d3063ef2da790f82">IntColumn</link>, <link linkend="_a00624_1a77ed872e25498694d3063ef2da790f82">JsonColumn</link>, <link linkend="_a00636_1a77ed872e25498694d3063ef2da790f82">TableName</link>, <link linkend="_a00640_1a77ed872e25498694d3063ef2da790f82">TextColumn</link>, <link linkend="_a00644_1a77ed872e25498694d3063ef2da790f82">TimestampColumn</link>, <link linkend="_a00648_1a77ed872e25498694d3063ef2da790f82">TinyIntColumn</link>, <link linkend="_a00652_1a77ed872e25498694d3063ef2da790f82">VarBinaryColumn</link>, et <link linkend="_a00656_1a77ed872e25498694d3063ef2da790f82">VarcharColumn</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00098">SqlAttribute.php</link></section>
+</section>

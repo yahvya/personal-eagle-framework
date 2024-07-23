@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sabo final:  Fichier source de MysqlProvider.php</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="favicon.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">Sabo final<span id="projectnumber">&#160;1.1.1</span>
+   </div>
+   <div id="projectbrief">Mini framework php</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('a00167_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">MysqlProvider.php</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="a00167.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span>&lt;?php</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="a00411.html">    3</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="a00411.html">SaboCore\Database\Default\Provider</a>;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>use Override;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>use PDO;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>use <a class="code hl_class" href="a00580.html">SaboCore\Config\Config</a>;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>use <a class="code hl_class" href="a00584.html">SaboCore\Config\ConfigException</a>;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>use <a class="code hl_class" href="a00760.html">SaboCore\Database\Providers\DatabaseProvider</a>;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>use Throwable;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="a00720.html">   16</a></span><span class="keyword">class </span><a class="code hl_class" href="a00720.html">MysqlProvider</a> <span class="keyword">extends</span> <a class="code hl_class" href="a00760.html">DatabaseProvider</a>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="a00720.html#a75035f29fe39a18f2c2279bc64661e17">   20</a></span>    <span class="keyword">protected</span> <span class="keyword">static</span> ?PDO <a class="code hl_variable" href="a00720.html#a75035f29fe39a18f2c2279bc64661e17">$con</a>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">    #[Override]</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="a00720.html#a13bf8f7c5746da746a88b0c71bab49dc">   23</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00720.html#a13bf8f7c5746da746a88b0c71bab49dc">initDatabase</a>(<a class="code hl_class" href="a00580.html">Config</a> $providerConfig):void{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="comment">// vérification de la configuration mysql</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        $providerConfig-&gt;checkConfigs(<span class="stringliteral">&quot;host&quot;</span>,<span class="stringliteral">&quot;user&quot;</span>,<span class="stringliteral">&quot;password&quot;</span>,<span class="stringliteral">&quot;dbname&quot;</span>);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordflow">try</span>{</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            self::$con = <span class="keyword">new</span> PDO(</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                dsn: <span class="stringliteral">&quot;mysql:host={$providerConfig-&gt;getConfig(name: &quot;</span>host<span class="stringliteral">&quot;)};dbname={$providerConfig-&gt;getConfig(name: &quot;</span>dbname<span class="stringliteral">&quot;)}&quot;</span>,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>                username: $providerConfig-&gt;<a class="code hl_function" href="a00580.html#a2caf4e7c6895e4ec724255f4730a1e06">getConfig</a>(name: <span class="stringliteral">&quot;user&quot;</span>),</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>                password: $providerConfig-&gt;<a class="code hl_function" href="a00580.html#a2caf4e7c6895e4ec724255f4730a1e06">getConfig</a>(name: <span class="stringliteral">&quot;password&quot;</span>),</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>                options: [</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                    PDO::MYSQL_ATTR_INIT_COMMAND =&gt; <span class="stringliteral">&quot;SET NAMES utf8&quot;</span>,</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                    PDO::ATTR_ERRMODE =&gt; PDO::ERRMODE_EXCEPTION,</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                    PDO::ATTR_DEFAULT_FETCH_MODE =&gt; PDO::FETCH_ASSOC</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                ]</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            );</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        }</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordflow">catch</span>(Throwable){</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code hl_class" href="a00584.html">ConfigException</a>(message: <span class="stringliteral">&quot;Echec de connexion à la base de donnée&quot;</span>);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">    #[Override]</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="a00720.html#a69d47b951343847eb872495590d43109">   48</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00720.html#a69d47b951343847eb872495590d43109">getCon</a>():?PDO{</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        return self::$con;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>}</div>
+<div class="ttc" id="aa00411_html"><div class="ttname"><a href="a00411.html">SaboCore\Database\Default\Provider</a></div><div class="ttdef"><b>Definition:</b> <a href="a00167_source.html#l00003">MysqlProvider.php:3</a></div></div>
+<div class="ttc" id="aa00580_html"><div class="ttname"><a href="a00580.html">SaboCore\Config\Config</a></div><div class="ttdoc">Représente une configuration.</div><div class="ttdef"><b>Definition:</b> <a href="a00044_source.html#l00009">Config.php:9</a></div></div>
+<div class="ttc" id="aa00580_html_a2caf4e7c6895e4ec724255f4730a1e06"><div class="ttname"><a href="a00580.html#a2caf4e7c6895e4ec724255f4730a1e06">SaboCore\Config\Config\getConfig</a></div><div class="ttdeci">getConfig(string|int $name)</div><div class="ttdoc">Recherche la configuration.</div><div class="ttdef"><b>Definition:</b> <a href="a00044_source.html#l00033">Config.php:33</a></div></div>
+<div class="ttc" id="aa00584_html"><div class="ttname"><a href="a00584.html">SaboCore\Config\ConfigException</a></div><div class="ttdoc">Exception de configuration.</div><div class="ttdef"><b>Definition:</b> <a href="a00047_source.html#l00011">ConfigException.php:11</a></div></div>
+<div class="ttc" id="aa00720_html"><div class="ttname"><a href="a00720.html">SaboCore\Database\Default\Provider\MysqlProvider</a></div><div class="ttdoc">Fournisseur mysql.</div><div class="ttdef"><b>Definition:</b> <a href="a00167_source.html#l00016">MysqlProvider.php:16</a></div></div>
+<div class="ttc" id="aa00720_html_a13bf8f7c5746da746a88b0c71bab49dc"><div class="ttname"><a href="a00720.html#a13bf8f7c5746da746a88b0c71bab49dc">SaboCore\Database\Default\Provider\MysqlProvider\initDatabase</a></div><div class="ttdeci">initDatabase(Config $providerConfig)</div><div class="ttdoc">Initialise la base de données.</div><div class="ttdef"><b>Definition:</b> <a href="a00167_source.html#l00023">MysqlProvider.php:23</a></div></div>
+<div class="ttc" id="aa00720_html_a69d47b951343847eb872495590d43109"><div class="ttname"><a href="a00720.html#a69d47b951343847eb872495590d43109">SaboCore\Database\Default\Provider\MysqlProvider\getCon</a></div><div class="ttdeci">getCon()</div><div class="ttdef"><b>Definition:</b> <a href="a00167_source.html#l00048">MysqlProvider.php:48</a></div></div>
+<div class="ttc" id="aa00720_html_a75035f29fe39a18f2c2279bc64661e17"><div class="ttname"><a href="a00720.html#a75035f29fe39a18f2c2279bc64661e17">SaboCore\Database\Default\Provider\MysqlProvider\$con</a></div><div class="ttdeci">static PDO $con</div><div class="ttdef"><b>Definition:</b> <a href="a00167_source.html#l00020">MysqlProvider.php:20</a></div></div>
+<div class="ttc" id="aa00760_html"><div class="ttname"><a href="a00760.html">SaboCore\Database\Providers\DatabaseProvider</a></div><div class="ttdoc">Classe parente de fournisseur d'instance pour le système de base de donnée.</div><div class="ttdef"><b>Definition:</b> <a href="a00197_source.html#l00012">DatabaseProvider.php:12</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_5a9687d32d98fbbdb60629c9ff0dd338.html">sabo-core</a></li><li class="navelem"><a class="el" href="dir_89c513611bcd58d1ab34b1b964a8ae28.html">database</a></li><li class="navelem"><a class="el" href="dir_f771857c7dddd917dca02925fdff3865.html">default</a></li><li class="navelem"><a class="el" href="dir_ff4f24571863ec65f07e62ea1554f1aa.html">provider</a></li><li class="navelem"><a class="el" href="a00167.html">MysqlProvider.php</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
+</body>
+</html>

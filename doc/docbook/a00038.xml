@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00038" xml:lang="fr">
+<title>Référence du fichier ApplicationConfig.php</title>
+<indexterm><primary>ApplicationConfig.php</primary></indexterm>
+<simplesect>
+    <title>Espaces de nommage    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_a00403">SaboCore\Config</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Énumérations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_a00403_1a478f02024b0b1a3c8a090559b002617d">ApplicationConfig</link> : string { <link linkend="_a00403_1a478f02024b0b1a3c8a090559b002617dadcd5d8018fc1764dfdc945dbbc97472f">FRAMEWORK_CONFIG</link> = &quot;FRAMEWORK_CONFIG&quot;
+ }</para>
+
+<para>Enumération de configuration de l&apos;application. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00128" xml:lang="fr">
+<title>Référence du fichier DateTimeCond.php</title>
+<indexterm><primary>DateTimeCond.php</primary></indexterm>
+<simplesect>
+    <title>Structures de données    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_a00668">DateTimeCond</link></para>
+
+<para>Condition représentant un champ de type datetime. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Espaces de nommage    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_a00408">SaboCore\Database\Default\Conditions</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

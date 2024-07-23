@@ -1,0 +1,91 @@
+.TH "Treatment" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Treatment \- Gestionnaire de traitement\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Dérivée par \fBCustomTreatment\fP\&.
+.SS "Fonctions membres protégées statiques"
+
+.in +1c
+.ti -1c
+.RI "static \fBthrowException\fP (string $errorMessage, bool $isDisplayable=true)"
+.br
+.RI "Lèves une exception de traitement\&. "
+.ti -1c
+.RI "static \fBthrowModelException\fP (\fBMysqlException\fP $exception)"
+.br
+.RI "Lèves une exception de traitement\&. "
+.in -1c
+.SH "Description détaillée"
+.PP 
+Gestionnaire de traitement\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB11\fP du fichier \fBTreatment\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "static throwException (string $errorMessage, bool $isDisplayable = \fCtrue\fP)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Lèves une exception de traitement\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$errorMessage\fP message d'erreur 
+.br
+\fI$isDisplayable\fP si le message peut être affiché 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+void 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fITreatmentException\fP l'exception 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB19\fP du fichier \fBTreatment\&.php\fP\&.
+.SS "static throwModelException (\fBMysqlException\fP $exception)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Lèves une exception de traitement\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$exception\fP l'exception de condition 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+void 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fITreatmentException\fP l'exception 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB29\fP du fichier \fBTreatment\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

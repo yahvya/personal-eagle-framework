@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00592" xml:lang="fr">
+<title>Référence de la classe MaintenanceController</title>
+<indexterm><primary>MaintenanceController</primary></indexterm>
+<para>
+
+<para>gestion de la maintenance </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de MaintenanceController:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00592.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00592_1a095c5d389db211932136b53f25f39685">__construct</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00592_1a4f434104446da9c32fe3cbd24f2e1d75">showMaintenancePage</link> (string $secretLink)</para>
+
+<para>Affiche la page d&apos;authentification. </para>
+</listitem>
+            <listitem><para><link linkend="_a00592_1af18de10cc83da13fac94c60a13fe0c1a">verifyLogin</link> (<link linkend="_a00792">Request</link> $request)</para>
+
+<para>Vérifie l&apos;accès au site. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00588_1a095c5d389db211932136b53f25f39685">__construct</link> ()</para>
+</listitem>
+        </itemizedlist>
+<section>
+<title>Description détaillée</title>
+
+<para>gestion de la maintenance </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00068_source_1l00013">13</link> du fichier <link linkend="_a00068_source">MaintenanceController.php</link>.</para>
+</section>
+<section>
+<title>Documentation des constructeurs et destructeur</title>
+<anchor xml:id="_a00592_1a095c5d389db211932136b53f25f39685"/><section>
+    <title>__construct()</title>
+<indexterm><primary>__construct</primary><secondary>MaintenanceController</secondary></indexterm>
+<indexterm><primary>MaintenanceController</primary><secondary>__construct</secondary></indexterm>
+<para><computeroutput>__construct ( )</computeroutput></para><para>
+Réimplémentée à partir de <link linkend="_a00588_1a095c5d389db211932136b53f25f39685">Controller</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00068_source_1l00014">14</link> du fichier <link linkend="_a00068_source">MaintenanceController.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00592_1a4f434104446da9c32fe3cbd24f2e1d75"/><section>
+    <title>showMaintenancePage()</title>
+<indexterm><primary>showMaintenancePage</primary><secondary>MaintenanceController</secondary></indexterm>
+<indexterm><primary>MaintenanceController</primary><secondary>showMaintenancePage</secondary></indexterm>
+<para><computeroutput>showMaintenancePage (string $secretLink)<computeroutput>[abstract]</computeroutput></computeroutput></para><para>
+
+<para>Affiche la page d&apos;authentification. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$secretLink</entry><entry>
+<para>lien secret de maintenance </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>Response la réponse de gestion de maintenance </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Exceptions</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>ConfigException</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Réimplémentée dans <link linkend="_a00928_1a4f434104446da9c32fe3cbd24f2e1d75">DefaultMaintenanceController</link>.</para>
+</section>
+<anchor xml:id="_a00592_1af18de10cc83da13fac94c60a13fe0c1a"/><section>
+    <title>verifyLogin()</title>
+<indexterm><primary>verifyLogin</primary><secondary>MaintenanceController</secondary></indexterm>
+<indexterm><primary>MaintenanceController</primary><secondary>verifyLogin</secondary></indexterm>
+<para><computeroutput>verifyLogin (<link linkend="_a00792">Request</link> $request)<computeroutput>[abstract]</computeroutput></computeroutput></para><para>
+
+<para>Vérifie l&apos;accès au site. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>Request</entry><entry>$request</entry><entry>
+<para>données de requête </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>bool si l&apos;accès est autorisé </para>
+</formalpara>
+</para>
+<para>
+Réimplémentée dans <link linkend="_a00928_1af18de10cc83da13fac94c60a13fe0c1a">DefaultMaintenanceController</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00068">MaintenanceController.php</link></section>
+</section>

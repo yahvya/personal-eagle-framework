@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_4577860d4cecc32cf88d160e5d61ad6f" xml:lang="fr">
+<title>Répertoire de référence de file-manager</title>
+<indexterm><primary>Répertoire de référence de file-manager</primary></indexterm>
+<simplesect>
+    <title>Fichiers    </title>
+        <itemizedlist>
+            <listitem><para>fichier <link linkend="_a00284">FileContentManager.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00287">FileManager.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00290">FormFileManager.php</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

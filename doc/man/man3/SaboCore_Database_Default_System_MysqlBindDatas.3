@@ -1,0 +1,113 @@
+.TH "MysqlBindDatas" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MysqlBindDatas \- Données de bind mysql\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP (int $countOfMarkers, array $toBindDatas)"
+.br
+.ti -1c
+.RI "\fBgetMarkersStr\fP ()"
+.br
+.ti -1c
+.RI "\fBgetCountOfMarkers\fP ()"
+.br
+.ti -1c
+.RI "\fBgetToBindDatas\fP ()"
+.br
+.in -1c
+.SS "Attributs protégés"
+
+.in +1c
+.ti -1c
+.RI "int \fB$countOfMarkers\fP"
+.br
+.ti -1c
+.RI "\fBSaboList\fP \fB$toBindDatas\fP"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Données de bind mysql\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB11\fP du fichier \fBMysqlBindDatas\&.php\fP\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "__construct (int $countOfMarkers, array $toBindDatas)"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$countOfMarkers\fP Nombre de marqueurs de bind 
+.br
+\fI$toBindDatas\fP [[tableau contenant dans l'ordre les paramètres de bindValue sans l'index en premier], \&.\&.\&.] 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB26\fP du fichier \fBMysqlBindDatas\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "getCountOfMarkers ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+int Nombre de marqueurs de bind 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB41\fP du fichier \fBMysqlBindDatas\&.php\fP\&.
+.SS "getMarkersStr ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+string Construis la chaine ?,? de la requête prepare à partir du nombre de marqueurs 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB34\fP du fichier \fBMysqlBindDatas\&.php\fP\&.
+.SS "getToBindDatas ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+SaboList<array> [[tableau contenant dans l'ordre les paramètres de bindValue sans l'index en premier], \&.\&.\&.] 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB48\fP du fichier \fBMysqlBindDatas\&.php\fP\&.
+.SH "Documentation des champs"
+.PP 
+.SS "int $countOfMarkers\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB15\fP du fichier \fBMysqlBindDatas\&.php\fP\&.
+.SS "\fBSaboList\fP $toBindDatas\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB20\fP du fichier \fBMysqlBindDatas\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

@@ -1,0 +1,595 @@
+\hypertarget{a00632}{}\doxysection{Référence de la classe Table\+Column}
+\label{a00632}\index{TableColumn@{TableColumn}}
+
+
+Représentation d\textquotesingle{}une colonne.  
+
+
+Graphe d\textquotesingle{}héritage de Table\+Column\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12.000000cm]{a00632}
+\end{center}
+\end{figure}
+\doxysubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00632_a66c1c7a592dee0f5c81ce8bc4f5aba79}{\+\_\+\+\_\+construct}} (string \$column\+Name, bool \$\mbox{\hyperlink{a00632_ae8fae740d59f7524f81c796142d3a846}{is\+Nullable}}=false, bool \$\mbox{\hyperlink{a00632_a84d622ec43bb17c0e2dad555eb2e727f}{is\+Primary\+Key}}=false, bool \$\mbox{\hyperlink{a00632_af8ed15bf71456982ef4e83bda6110b84}{is\+Unique}}=false, string \$default\+Value=self\+::\+NO\+\_\+\+DEFAULT\+\_\+\+VALUE, bool \$\mbox{\hyperlink{a00632_aef8eaaa57b12ba2f3af9bc43e86785f9}{is\+Foreign\+Key}}=false,?string \$referenced\+Model=null,?string \$referenced\+Attribute\+Name=null, array \$set\+Conditions=\mbox{[}$\,$\mbox{]}, array \$data\+Formatters=\mbox{[}$\,$\mbox{]}, array \$datas\+Reformers=\mbox{[}$\,$\mbox{]})
+\item 
+\mbox{\hyperlink{a00632_aaab6c4c9f3ed625334aa5024eb645ba0}{verify\+Data}} (\mbox{\hyperlink{a00752}{Mysql\+Model}} \$base\+Model, string \$attribute\+Name, mixed \$data)
+\begin{DoxyCompactList}\small\item\em Vérifie la donnée à affecter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00632_adbf13492c59987bedcd545a4a92e068a}{format\+Data}} (\mbox{\hyperlink{a00752}{Mysql\+Model}} \$base\+Model, mixed \$original\+Data)
+\begin{DoxyCompactList}\small\item\em Formate la donnée originale en passant par les formateurs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00632_a04bba9c06a9e7c7e22f3e2fd502462f1}{reform\+Data}} (\mbox{\hyperlink{a00752}{Mysql\+Model}} \$base\+Model, mixed \$formated\+Data)
+\begin{DoxyCompactList}\small\item\em Reforme la donnée originale en passant par les reconstructeurs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00632_ad92bfdc0fefd5c464f9da10afa3380c8}{get\+Column\+Name}} ()
+\item 
+\mbox{\hyperlink{a00632_a84d622ec43bb17c0e2dad555eb2e727f}{is\+Primary\+Key}} ()
+\item 
+\mbox{\hyperlink{a00632_aef8eaaa57b12ba2f3af9bc43e86785f9}{is\+Foreign\+Key}} ()
+\item 
+\mbox{\hyperlink{a00632_ae8fae740d59f7524f81c796142d3a846}{is\+Nullable}} ()
+\item 
+\mbox{\hyperlink{a00632_af8ed15bf71456982ef4e83bda6110b84}{is\+Unique}} ()
+\item 
+\mbox{\hyperlink{a00632_af4b6ceb378c2dae6a318da7e4dae47b6}{get\+Referenced\+Model}} ()
+\item 
+\mbox{\hyperlink{a00632_acd86beef1d1792ff1f9fbf96251a346a}{get\+Set\+Conditions}} ()
+\item 
+\mbox{\hyperlink{a00632_abc3d98fd236692c0f7a687189107f693}{get\+Default\+Value\+Str}} ()
+\item 
+\mbox{\hyperlink{a00632_a7b326430880e7e87c18f6331afabb1ef}{have\+Default\+Value}} ()
+\item 
+\mbox{\hyperlink{a00632_adbceac178490fa055ef59925eb68a3e8}{get\+Datas\+Formatters}} ()
+\item 
+\mbox{\hyperlink{a00632_a49fc4860f790b90c3ec1b43f4457d1b8}{get\+Datas\+Reformers}} ()
+\item 
+\mbox{\hyperlink{a00632_ab85bdcdb8aa6018d0a443da6beb2a6d4}{get\+Referenced\+Attribute\+Name}} ()
+\item 
+\mbox{\hyperlink{a00632_a76b1e6a88663c88c3866a0a959a4507f}{convert\+To\+Value}} (mixed \$data)
+\begin{DoxyCompactList}\small\item\em Méthode appellé au montage de la propriété portant cet attribut. Transforme la donnée récupérée en base de donnée en la donnée finale. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00632_a91357cc34d10330cca617fdc3bc012cc}{convert\+From\+Value}} (mixed \$data)
+\begin{DoxyCompactList}\small\item\em Méthode appellé à l\textquotesingle{}insertion ou mise à jour de la propriété portant cet attribut. Transforme la donnée de l\textquotesingle{}attribut en une donnée capable d\textquotesingle{}être inséré en base de donnée. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00632_a5108b80166312a6a5db4f674414ac423}{get\+Column\+Type}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions membres publiques hérités de \mbox{\hyperlink{a00628}{Sql\+Attribute}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00628_a77ed872e25498694d3063ef2da790f82}{get\+Creation\+Sql}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Attributs protégés}
+\begin{DoxyCompactItemize}
+\item 
+const string \mbox{\hyperlink{a00632_a60c5df8609f676f3a37b03b36cc7ab35}{NO\+\_\+\+DEFAULT\+\_\+\+VALUE}} = \char`\"{}ATTRIBUTE\+\_\+\+NO\+\_\+\+DEFAULT\+\_\+\+VALUE\char`\"{}
+\begin{DoxyCompactList}\small\item\em Chaine représentant si l\textquotesingle{}attribut n\textquotesingle{}a pas de valeur par défaut. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{a00632_a26f81287ec32ce8f110e8d82fbd1287b}{\$column\+Name}}
+\item 
+bool \mbox{\hyperlink{a00632_a6684994e27b9c47a6a616bec069e9d6c}{\$is\+Primary\+Key}}
+\item 
+bool \mbox{\hyperlink{a00632_a80dfa697ce68e86b57ac28e85fc94940}{\$is\+Foreign\+Key}}
+\item 
+bool \mbox{\hyperlink{a00632_a14fbc937b182e9c5e716e3d6c47a7a2b}{\$is\+Nullable}}
+\item 
+bool \mbox{\hyperlink{a00632_a3a2a468b0dce59773b37d8e0837386bf}{\$is\+Unique}}
+\item 
+string \mbox{\hyperlink{a00632_a7cb26b7337faae66c684c41170aca703}{\$default\+Value}}
+\item 
+string \mbox{\hyperlink{a00632_aea28bfaae2904f85413eeb372ae61930}{\$referenced\+Model}}
+\item 
+string \mbox{\hyperlink{a00632_a932ca11214be628e42a3f4ace52ebb87}{\$referenced\+Attribute\+Name}}
+\item 
+array \mbox{\hyperlink{a00632_aff6fb07d968e6d11597786dfa631e093}{\$set\+Conditions}}
+\item 
+array \mbox{\hyperlink{a00632_a1305d69ee34337bbd87d14aadcc72ab8}{\$datas\+Formatters}} = \mbox{[}$\,$\mbox{]}
+\item 
+array \mbox{\hyperlink{a00632_a4f639e69f23c00400112dadd89e91b62}{\$datas\+Reformers}} = \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Représentation d\textquotesingle{}une colonne. 
+
+\begin{DoxyAuthor}{Auteur}
+yahaya bathily \href{https://github.com/yahvya}{\texttt{ https\+://github.\+com/yahvya}} 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00015}{15}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+
+
+\doxysubsection{Documentation des constructeurs et destructeur}
+\mbox{\Hypertarget{a00632_a66c1c7a592dee0f5c81ce8bc4f5aba79}\label{a00632_a66c1c7a592dee0f5c81ce8bc4f5aba79}} 
+\index{TableColumn@{TableColumn}!\_\_construct@{\_\_construct}}
+\index{\_\_construct@{\_\_construct}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{\_\_construct()}{\_\_construct()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+construct (\begin{DoxyParamCaption}\item[{string}]{\$column\+Name,  }\item[{bool}]{\$is\+Nullable = {\ttfamily false},  }\item[{bool}]{\$is\+Primary\+Key = {\ttfamily false},  }\item[{bool}]{\$is\+Unique = {\ttfamily false},  }\item[{string}]{\$default\+Value = {\ttfamily self\+:\+:NO\+\_\+DEFAULT\+\_\+VALUE},  }\item[{bool}]{\$is\+Foreign\+Key = {\ttfamily false},  }\item[{?string}]{\$referenced\+Model = {\ttfamily null},  }\item[{?string}]{\$referenced\+Attribute\+Name = {\ttfamily null},  }\item[{array}]{\$set\+Conditions = {\ttfamily \mbox{[}\mbox{]}},  }\item[{array}]{\$data\+Formatters = {\ttfamily \mbox{[}\mbox{]}},  }\item[{array}]{\$datas\+Reformers = {\ttfamily \mbox{[}\mbox{]}} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$column\+Name} & Nom de la colonne en base de donnée \\
+\hline
+bool & {\em \$is\+Nullable} & si le champ est nullable (mis à false par défaut si clé primaire) \\
+\hline
+bool & {\em \$is\+Primary\+Key} & si le champ est une clé primaire \\
+\hline
+bool & {\em \$is\+Unique} & si le champ est unique \\
+\hline
+string & {\em \$default\+Value} & Valeur par défaut de l\textquotesingle{}attribut (sous la forme sql) \\
+\hline
+bool & {\em \$is\+Foreign\+Key} & si le champ est une clé étrangère \\
+\hline
+string | null & {\em \$referenced\+Model} & Class du modèle référencé par la clé \\
+\hline
+string | null & {\em \$referenced\+Attribute\+Name} & Nom de l\textquotesingle{}attribut référencé \\
+\hline
+Cond\mbox{[}$\,$\mbox{]} & {\em \$set\+Conditions} & Conditions à vérifier sur la donnée originale avant de l\textquotesingle{}accepter dans l\textquotesingle{}attribut \\
+\hline
+Formater\mbox{[}$\,$\mbox{]} & {\em \$data\+Formatters} & Formateur de donnée pour transformer la donnée originale \\
+\hline
+Formater\mbox{[}$\,$\mbox{]} & {\em \$datas\+Reformers} & Formateur de donnée pour reformer la donnée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAttention}{Attention}
+Les conditions sont appelées avant formatage sur la donnée originale 
+
+Chaque formateur recevra le résultat du précédent 
+
+L\textquotesingle{}attribut par défaut doit contenir la chaine exacte qui sera saisie dans la création sql ex \+: \char`\"{}\textquotesingle{}default\textquotesingle{}\char`\"{} \char`\"{}10\char`\"{} ... 
+\end{DoxyAttention}
+
+
+Réimplémentée dans \mbox{\hyperlink{a00624_a7822cf4fa624fdb926b8d990f9b84c63}{Json\+Column}}, \mbox{\hyperlink{a00640_a7822cf4fa624fdb926b8d990f9b84c63}{Text\+Column}}, \mbox{\hyperlink{a00644_a7822cf4fa624fdb926b8d990f9b84c63}{Timestamp\+Column}}, et \mbox{\hyperlink{a00648_a7822cf4fa624fdb926b8d990f9b84c63}{Tiny\+Int\+Column}}.
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00092}{92}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{a00632_a91357cc34d10330cca617fdc3bc012cc}\label{a00632_a91357cc34d10330cca617fdc3bc012cc}} 
+\index{TableColumn@{TableColumn}!convertFromValue@{convertFromValue}}
+\index{convertFromValue@{convertFromValue}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{convertFromValue()}{convertFromValue()}}
+{\footnotesize\ttfamily convert\+From\+Value (\begin{DoxyParamCaption}\item[{mixed}]{\$data }\end{DoxyParamCaption})}
+
+
+
+Méthode appellé à l\textquotesingle{}insertion ou mise à jour de la propriété portant cet attribut. Transforme la donnée de l\textquotesingle{}attribut en une donnée capable d\textquotesingle{}être inséré en base de donnée. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+mixed & {\em \$data} & La donnée de base \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+mixed la donnée convertie 
+\end{DoxyReturn}
+
+
+Réimplémentée dans \mbox{\hyperlink{a00644_a91357cc34d10330cca617fdc3bc012cc}{Timestamp\+Column}}.
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00260}{260}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_a76b1e6a88663c88c3866a0a959a4507f}\label{a00632_a76b1e6a88663c88c3866a0a959a4507f}} 
+\index{TableColumn@{TableColumn}!convertToValue@{convertToValue}}
+\index{convertToValue@{convertToValue}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{convertToValue()}{convertToValue()}}
+{\footnotesize\ttfamily convert\+To\+Value (\begin{DoxyParamCaption}\item[{mixed}]{\$data }\end{DoxyParamCaption})}
+
+
+
+Méthode appellé au montage de la propriété portant cet attribut. Transforme la donnée récupérée en base de donnée en la donnée finale. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+mixed & {\em \$data} & La donnée de base \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+mixed la donnée convertie 
+\end{DoxyReturn}
+
+
+Réimplémentée dans \mbox{\hyperlink{a00644_a76b1e6a88663c88c3866a0a959a4507f}{Timestamp\+Column}}.
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00251}{251}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_adbf13492c59987bedcd545a4a92e068a}\label{a00632_adbf13492c59987bedcd545a4a92e068a}} 
+\index{TableColumn@{TableColumn}!formatData@{formatData}}
+\index{formatData@{formatData}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{formatData()}{formatData()}}
+{\footnotesize\ttfamily format\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{a00752}{Mysql\+Model}}}]{\$base\+Model,  }\item[{mixed}]{\$original\+Data }\end{DoxyParamCaption})}
+
+
+
+Formate la donnée originale en passant par les formateurs. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+Mysql\+Model & {\em \$base\+Model} & Model de base \\
+\hline
+mixed & {\em \$original\+Data} & Donnée originale \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+mixed La donnée totalement formatée 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+Les conditions doivent être vérifiées avant formatage 
+\end{DoxyAttention}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Formater\+Exception} & en cas d\textquotesingle{}erreur de formatage \\
+\hline
+\end{DoxyExceptions}
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00134}{134}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_ad92bfdc0fefd5c464f9da10afa3380c8}\label{a00632_ad92bfdc0fefd5c464f9da10afa3380c8}} 
+\index{TableColumn@{TableColumn}!getColumnName@{getColumnName}}
+\index{getColumnName@{getColumnName}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{getColumnName()}{getColumnName()}}
+{\footnotesize\ttfamily get\+Column\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+string Nom de la colonne en base de donnée 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00165}{165}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_a5108b80166312a6a5db4f674414ac423}\label{a00632_a5108b80166312a6a5db4f674414ac423}} 
+\index{TableColumn@{TableColumn}!getColumnType@{getColumnType}}
+\index{getColumnType@{getColumnType}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{getColumnType()}{getColumnType()}}
+{\footnotesize\ttfamily get\+Column\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+\begin{DoxyReturn}{Renvoie}
+int Fourni le type de paramètre pdo 
+\end{DoxyReturn}
+
+
+Réimplémentée dans \mbox{\hyperlink{a00596_a5108b80166312a6a5db4f674414ac423}{Binary\+Column}}, \mbox{\hyperlink{a00600_a5108b80166312a6a5db4f674414ac423}{Bool\+Column}}, \mbox{\hyperlink{a00604_a5108b80166312a6a5db4f674414ac423}{Char\+Column}}, \mbox{\hyperlink{a00608_a5108b80166312a6a5db4f674414ac423}{Decimal\+Column}}, \mbox{\hyperlink{a00612_a5108b80166312a6a5db4f674414ac423}{Enum\+Column}}, \mbox{\hyperlink{a00616_a5108b80166312a6a5db4f674414ac423}{Int\+Column}}, \mbox{\hyperlink{a00624_a5108b80166312a6a5db4f674414ac423}{Json\+Column}}, \mbox{\hyperlink{a00640_a5108b80166312a6a5db4f674414ac423}{Text\+Column}}, \mbox{\hyperlink{a00644_a5108b80166312a6a5db4f674414ac423}{Timestamp\+Column}}, \mbox{\hyperlink{a00648_a5108b80166312a6a5db4f674414ac423}{Tiny\+Int\+Column}}, \mbox{\hyperlink{a00652_a5108b80166312a6a5db4f674414ac423}{Var\+Binary\+Column}}, et \mbox{\hyperlink{a00656_a5108b80166312a6a5db4f674414ac423}{Varchar\+Column}}.
+
+\mbox{\Hypertarget{a00632_adbceac178490fa055ef59925eb68a3e8}\label{a00632_adbceac178490fa055ef59925eb68a3e8}} 
+\index{TableColumn@{TableColumn}!getDatasFormatters@{getDatasFormatters}}
+\index{getDatasFormatters@{getDatasFormatters}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{getDatasFormatters()}{getDatasFormatters()}}
+{\footnotesize\ttfamily get\+Datas\+Formatters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+Formater\mbox{[}\mbox{]} formateurs de données 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00228}{228}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_a49fc4860f790b90c3ec1b43f4457d1b8}\label{a00632_a49fc4860f790b90c3ec1b43f4457d1b8}} 
+\index{TableColumn@{TableColumn}!getDatasReformers@{getDatasReformers}}
+\index{getDatasReformers@{getDatasReformers}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{getDatasReformers()}{getDatasReformers()}}
+{\footnotesize\ttfamily get\+Datas\+Reformers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+Formater\mbox{[}\mbox{]} Reconstructeurs de données 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00235}{235}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_abc3d98fd236692c0f7a687189107f693}\label{a00632_abc3d98fd236692c0f7a687189107f693}} 
+\index{TableColumn@{TableColumn}!getDefaultValueStr@{getDefaultValueStr}}
+\index{getDefaultValueStr@{getDefaultValueStr}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{getDefaultValueStr()}{getDefaultValueStr()}}
+{\footnotesize\ttfamily get\+Default\+Value\+Str (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+string La chaine sql de valeur par défaut ou vide si pas de valeur par défaut 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00214}{214}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_ab85bdcdb8aa6018d0a443da6beb2a6d4}\label{a00632_ab85bdcdb8aa6018d0a443da6beb2a6d4}} 
+\index{TableColumn@{TableColumn}!getReferencedAttributeName@{getReferencedAttributeName}}
+\index{getReferencedAttributeName@{getReferencedAttributeName}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{getReferencedAttributeName()}{getReferencedAttributeName()}}
+{\footnotesize\ttfamily get\+Referenced\+Attribute\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+string$\vert$null Nom de l\textquotesingle{}attribut référencé ou null en cas de foreign key 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00242}{242}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_af4b6ceb378c2dae6a318da7e4dae47b6}\label{a00632_af4b6ceb378c2dae6a318da7e4dae47b6}} 
+\index{TableColumn@{TableColumn}!getReferencedModel@{getReferencedModel}}
+\index{getReferencedModel@{getReferencedModel}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{getReferencedModel()}{getReferencedModel()}}
+{\footnotesize\ttfamily get\+Referenced\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+string$\vert$null Class du model référencé en cas de foreign key sinon null 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00200}{200}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_acd86beef1d1792ff1f9fbf96251a346a}\label{a00632_acd86beef1d1792ff1f9fbf96251a346a}} 
+\index{TableColumn@{TableColumn}!getSetConditions@{getSetConditions}}
+\index{getSetConditions@{getSetConditions}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{getSetConditions()}{getSetConditions()}}
+{\footnotesize\ttfamily get\+Set\+Conditions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+Cond\mbox{[}\mbox{]} Conditions de validation 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00207}{207}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_a7b326430880e7e87c18f6331afabb1ef}\label{a00632_a7b326430880e7e87c18f6331afabb1ef}} 
+\index{TableColumn@{TableColumn}!haveDefaultValue@{haveDefaultValue}}
+\index{haveDefaultValue@{haveDefaultValue}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{haveDefaultValue()}{haveDefaultValue()}}
+{\footnotesize\ttfamily have\+Default\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+bool Si l\textquotesingle{}attribut à une valeur par défaut 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00221}{221}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_aef8eaaa57b12ba2f3af9bc43e86785f9}\label{a00632_aef8eaaa57b12ba2f3af9bc43e86785f9}} 
+\index{TableColumn@{TableColumn}!isForeignKey@{isForeignKey}}
+\index{isForeignKey@{isForeignKey}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{isForeignKey()}{isForeignKey()}}
+{\footnotesize\ttfamily is\+Foreign\+Key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+bool Si le champ est une clé étrangère 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00179}{179}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_ae8fae740d59f7524f81c796142d3a846}\label{a00632_ae8fae740d59f7524f81c796142d3a846}} 
+\index{TableColumn@{TableColumn}!isNullable@{isNullable}}
+\index{isNullable@{isNullable}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{isNullable()}{isNullable()}}
+{\footnotesize\ttfamily is\+Nullable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+bool Si le champ est nullable 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00186}{186}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_a84d622ec43bb17c0e2dad555eb2e727f}\label{a00632_a84d622ec43bb17c0e2dad555eb2e727f}} 
+\index{TableColumn@{TableColumn}!isPrimaryKey@{isPrimaryKey}}
+\index{isPrimaryKey@{isPrimaryKey}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{isPrimaryKey()}{isPrimaryKey()}}
+{\footnotesize\ttfamily is\+Primary\+Key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+bool Si le champ est une clé primaire 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00172}{172}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_af8ed15bf71456982ef4e83bda6110b84}\label{a00632_af8ed15bf71456982ef4e83bda6110b84}} 
+\index{TableColumn@{TableColumn}!isUnique@{isUnique}}
+\index{isUnique@{isUnique}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{isUnique()}{isUnique()}}
+{\footnotesize\ttfamily is\+Unique (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+bool Si le champ est unique 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00193}{193}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_a04bba9c06a9e7c7e22f3e2fd502462f1}\label{a00632_a04bba9c06a9e7c7e22f3e2fd502462f1}} 
+\index{TableColumn@{TableColumn}!reformData@{reformData}}
+\index{reformData@{reformData}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{reformData()}{reformData()}}
+{\footnotesize\ttfamily reform\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{a00752}{Mysql\+Model}}}]{\$base\+Model,  }\item[{mixed}]{\$formated\+Data }\end{DoxyParamCaption})}
+
+
+
+Reforme la donnée originale en passant par les reconstructeurs. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+Mysql\+Model & {\em \$base\+Model} & Model de base \\
+\hline
+mixed & {\em \$formated\+Data} & Donnée formatée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+mixed La donnée totalement reformée 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Formater\+Exception} & en cas d\textquotesingle{}erreur de formatage \\
+\hline
+\end{DoxyExceptions}
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00153}{153}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_aaab6c4c9f3ed625334aa5024eb645ba0}\label{a00632_aaab6c4c9f3ed625334aa5024eb645ba0}} 
+\index{TableColumn@{TableColumn}!verifyData@{verifyData}}
+\index{verifyData@{verifyData}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{verifyData()}{verifyData()}}
+{\footnotesize\ttfamily verify\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{a00752}{Mysql\+Model}}}]{\$base\+Model,  }\item[{string}]{\$attribute\+Name,  }\item[{mixed}]{\$data }\end{DoxyParamCaption})}
+
+
+
+Vérifie la donnée à affecter. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+Mysql\+Model & {\em \$base\+Model} & Model de base \\
+\hline
+string & {\em \$attribute\+Name} & Nom de l\textquotesingle{}attribut \\
+\hline
+mixed & {\em \$data} & La donnée à vérifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+\$this 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Mysql\+Cond\+Exception} & en cas de condition invalide \\
+\hline
+\end{DoxyExceptions}
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00114}{114}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+
+
+\doxysubsection{Documentation des champs}
+\mbox{\Hypertarget{a00632_a26f81287ec32ce8f110e8d82fbd1287b}\label{a00632_a26f81287ec32ce8f110e8d82fbd1287b}} 
+\index{TableColumn@{TableColumn}!\$columnName@{\$columnName}}
+\index{\$columnName@{\$columnName}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{\$columnName}{$columnName}}
+{\footnotesize\ttfamily string \$column\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00024}{24}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_a1305d69ee34337bbd87d14aadcc72ab8}\label{a00632_a1305d69ee34337bbd87d14aadcc72ab8}} 
+\index{TableColumn@{TableColumn}!\$datasFormatters@{\$datasFormatters}}
+\index{\$datasFormatters@{\$datasFormatters}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{\$datasFormatters}{$datasFormatters}}
+{\footnotesize\ttfamily array \$datas\+Formatters = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00069}{69}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_a4f639e69f23c00400112dadd89e91b62}\label{a00632_a4f639e69f23c00400112dadd89e91b62}} 
+\index{TableColumn@{TableColumn}!\$datasReformers@{\$datasReformers}}
+\index{\$datasReformers@{\$datasReformers}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{\$datasReformers}{$datasReformers}}
+{\footnotesize\ttfamily array \$datas\+Reformers = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00074}{74}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_a7cb26b7337faae66c684c41170aca703}\label{a00632_a7cb26b7337faae66c684c41170aca703}} 
+\index{TableColumn@{TableColumn}!\$defaultValue@{\$defaultValue}}
+\index{\$defaultValue@{\$defaultValue}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{\$defaultValue}{$defaultValue}}
+{\footnotesize\ttfamily string \$default\+Value\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00049}{49}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_a80dfa697ce68e86b57ac28e85fc94940}\label{a00632_a80dfa697ce68e86b57ac28e85fc94940}} 
+\index{TableColumn@{TableColumn}!\$isForeignKey@{\$isForeignKey}}
+\index{\$isForeignKey@{\$isForeignKey}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{\$isForeignKey}{$isForeignKey}}
+{\footnotesize\ttfamily bool \$\mbox{\hyperlink{a00632_aef8eaaa57b12ba2f3af9bc43e86785f9}{is\+Foreign\+Key}}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00034}{34}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_a14fbc937b182e9c5e716e3d6c47a7a2b}\label{a00632_a14fbc937b182e9c5e716e3d6c47a7a2b}} 
+\index{TableColumn@{TableColumn}!\$isNullable@{\$isNullable}}
+\index{\$isNullable@{\$isNullable}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{\$isNullable}{$isNullable}}
+{\footnotesize\ttfamily bool \$\mbox{\hyperlink{a00632_ae8fae740d59f7524f81c796142d3a846}{is\+Nullable}}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00039}{39}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_a6684994e27b9c47a6a616bec069e9d6c}\label{a00632_a6684994e27b9c47a6a616bec069e9d6c}} 
+\index{TableColumn@{TableColumn}!\$isPrimaryKey@{\$isPrimaryKey}}
+\index{\$isPrimaryKey@{\$isPrimaryKey}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{\$isPrimaryKey}{$isPrimaryKey}}
+{\footnotesize\ttfamily bool \$\mbox{\hyperlink{a00632_a84d622ec43bb17c0e2dad555eb2e727f}{is\+Primary\+Key}}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00029}{29}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_a3a2a468b0dce59773b37d8e0837386bf}\label{a00632_a3a2a468b0dce59773b37d8e0837386bf}} 
+\index{TableColumn@{TableColumn}!\$isUnique@{\$isUnique}}
+\index{\$isUnique@{\$isUnique}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{\$isUnique}{$isUnique}}
+{\footnotesize\ttfamily bool \$\mbox{\hyperlink{a00632_af8ed15bf71456982ef4e83bda6110b84}{is\+Unique}}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00044}{44}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_a932ca11214be628e42a3f4ace52ebb87}\label{a00632_a932ca11214be628e42a3f4ace52ebb87}} 
+\index{TableColumn@{TableColumn}!\$referencedAttributeName@{\$referencedAttributeName}}
+\index{\$referencedAttributeName@{\$referencedAttributeName}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{\$referencedAttributeName}{$referencedAttributeName}}
+{\footnotesize\ttfamily string \$referenced\+Attribute\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00059}{59}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_aea28bfaae2904f85413eeb372ae61930}\label{a00632_aea28bfaae2904f85413eeb372ae61930}} 
+\index{TableColumn@{TableColumn}!\$referencedModel@{\$referencedModel}}
+\index{\$referencedModel@{\$referencedModel}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{\$referencedModel}{$referencedModel}}
+{\footnotesize\ttfamily string \$referenced\+Model\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00054}{54}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_aff6fb07d968e6d11597786dfa631e093}\label{a00632_aff6fb07d968e6d11597786dfa631e093}} 
+\index{TableColumn@{TableColumn}!\$setConditions@{\$setConditions}}
+\index{\$setConditions@{\$setConditions}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{\$setConditions}{$setConditions}}
+{\footnotesize\ttfamily array \$set\+Conditions\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00064}{64}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00632_a60c5df8609f676f3a37b03b36cc7ab35}\label{a00632_a60c5df8609f676f3a37b03b36cc7ab35}} 
+\index{TableColumn@{TableColumn}!NO\_DEFAULT\_VALUE@{NO\_DEFAULT\_VALUE}}
+\index{NO\_DEFAULT\_VALUE@{NO\_DEFAULT\_VALUE}!TableColumn@{TableColumn}}
+\doxysubsubsection{\texorpdfstring{NO\_DEFAULT\_VALUE}{NO\_DEFAULT\_VALUE}}
+{\footnotesize\ttfamily const string NO\+\_\+\+DEFAULT\+\_\+\+VALUE = \char`\"{}ATTRIBUTE\+\_\+\+NO\+\_\+\+DEFAULT\+\_\+\+VALUE\char`\"{}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Chaine représentant si l\textquotesingle{}attribut n\textquotesingle{}a pas de valeur par défaut. 
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00101_source_l00019}{19}} du fichier \mbox{\hyperlink{a00101_source}{Table\+Column.\+php}}.
+
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00101}{Table\+Column.\+php}}\end{DoxyCompactItemize}

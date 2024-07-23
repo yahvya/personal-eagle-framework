@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00311_source" xml:lang="fr">
+<title>FrameworkSession.php</title>
+<indexterm><primary>FrameworkSession.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00311_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00311_source_1l00002"/>00002 
+<anchor xml:id="_a00311_source_1l00003"/><link linkend="_a00429">00003</link> <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00429">SaboCore\Utils\Session</link>;
+<anchor xml:id="_a00311_source_1l00004"/>00004 
+<anchor xml:id="_a00311_source_1l00009"/><link linkend="_a00429_1aeb7857e9a3ddc256bba67f362c1254b7">00009</link> <emphasis role="keyword">enum</emphasis>&#32;<link linkend="_a00429_1aeb7857e9a3ddc256bba67f362c1254b7">FrameworkSession</link>:<emphasis role="keywordtype">string</emphasis>{
+<anchor xml:id="_a00311_source_1l00013"/>00013 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_a00429_1aeb7857e9a3ddc256bba67f362c1254b7a115d3e536bff9937d2c1dfa715056201">MAINTENANCE_ACCESS</link>&#32;=&#32;<emphasis role="stringliteral">&quot;maintenanceAccess&quot;</emphasis>;
+<anchor xml:id="_a00311_source_1l00014"/><link linkend="_a00429_1aeb7857e9a3ddc256bba67f362c1254b7a115d3e536bff9937d2c1dfa715056201">00014</link> }
+</programlisting></section>

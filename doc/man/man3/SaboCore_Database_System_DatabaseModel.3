@@ -1,0 +1,425 @@
+.TH "DatabaseModel" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+DatabaseModel \- Modèle de la base de données\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Dérivée par \fBMysqlModel\fP\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fBcreate\fP ()"
+.br
+.RI "Crée la ligne dans la base de données\&. "
+.ti -1c
+.RI "\fBupdate\fP ()"
+.br
+.RI "Met à jour la ligne dans la base de données\&. "
+.ti -1c
+.RI "\fBdelete\fP ()"
+.br
+.RI "Met à jour la ligne dans la base de données\&. "
+.in -1c
+.SS "Fonctions membres publiques statiques"
+
+.in +1c
+.ti -1c
+.RI "static \fBfindOne\fP (\fBDatabaseCondition\fP|\fBDatabaseCondSeparator\fP \&.\&.\&. $findBuilders)"
+.br
+.RI "Recherche une occurrence\&. "
+.ti -1c
+.RI "static \fBfindAll\fP (\fBDatabaseCondition\fP|\fBDatabaseCondSeparator\fP \&.\&.\&. $findBuilders)"
+.br
+.RI "Recherche toutes les occurrences\&. "
+.in -1c
+.SS "Fonctions membres protégées"
+
+.in +1c
+.ti -1c
+.RI "\fBafterCreate\fP (mixed $datas)"
+.br
+.RI "Actions à faire après la création du model\&. "
+.ti -1c
+.RI "\fBbeforeCreate\fP (mixed $datas)"
+.br
+.RI "Actions à faire avant la création du model\&. "
+.ti -1c
+.RI "\fBafterUpdate\fP (mixed $datas)"
+.br
+.RI "Actions à faire après la mise à jour du model\&. "
+.ti -1c
+.RI "\fBbeforeUpdate\fP (mixed $datas)"
+.br
+.RI "Actions à faire avant la mise à jour du model\&. "
+.ti -1c
+.RI "\fBafterDelete\fP (mixed $datas)"
+.br
+.RI "Actions à faire après la suppression du model\&. "
+.ti -1c
+.RI "\fBbeforeDelete\fP (mixed $datas)"
+.br
+.RI "Actions à faire avant la suppression du model\&. "
+.ti -1c
+.RI "\fBbeforeGeneration\fP (mixed $datas)"
+.br
+.RI "Actions à faire avant la génération du model à partir de la méthode find\&. "
+.ti -1c
+.RI "\fBafterGeneration\fP (mixed $datas)"
+.br
+.RI "Actions à faire après la génération du model à partir de la méthode find\&. "
+.in -1c
+.SH "Description détaillée"
+.PP 
+Modèle de la base de données\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB11\fP du fichier \fBDatabaseModel\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "afterCreate (mixed $datas)\fC [protected]\fP"
+
+.PP
+Actions à faire après la création du model\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$datas\fP Données à fournir 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+il est recommandé d'appeler parent::afterCreate en cas de redéfinition 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIDatabaseActionException\fP pour stopper l'action en cas d'erreur 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBMysqlModel\fP\&.
+.PP
+Définition à la ligne \fB26\fP du fichier \fBDatabaseModel\&.php\fP\&.
+.SS "afterDelete (mixed $datas)\fC [protected]\fP"
+
+.PP
+Actions à faire après la suppression du model\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$datas\fP Données à fournir 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+il est recommandé d'appeler parent::afterDelete en cas de redéfinition 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIDatabaseActionException\fP pour stopper l'action en cas d'erreur 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBMysqlModel\fP\&.
+.PP
+Définition à la ligne \fB84\fP du fichier \fBDatabaseModel\&.php\fP\&.
+.SS "afterGeneration (mixed $datas)\fC [protected]\fP"
+
+.PP
+Actions à faire après la génération du model à partir de la méthode find\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$datas\fP Données à fournir 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+il est recommandé d'appeler parent::afterGeneration en cas de redéfinition 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIDatabaseActionException\fP pour stopper l'action en cas d'erreur 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBMysqlModel\fP\&.
+.PP
+Définition à la ligne \fB117\fP du fichier \fBDatabaseModel\&.php\fP\&.
+.SS "afterUpdate (mixed $datas)\fC [protected]\fP"
+
+.PP
+Actions à faire après la mise à jour du model\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$datas\fP Données à fournir 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+il est recommandé d'appeler parent::afterUpdate en cas de redéfinition 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIDatabaseActionException\fP pour stopper l'action en cas d'erreur 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBMysqlModel\fP\&.
+.PP
+Définition à la ligne \fB55\fP du fichier \fBDatabaseModel\&.php\fP\&.
+.SS "beforeCreate (mixed $datas)\fC [protected]\fP"
+
+.PP
+Actions à faire avant la création du model\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$datas\fP Données à fournir 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+il est recommandé d'appeler parent::beforeCreate en cas de redéfinition 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIDatabaseActionException\fP pour stopper l'action en cas d'erreur 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBMysqlModel\fP\&.
+.PP
+Définition à la ligne \fB37\fP du fichier \fBDatabaseModel\&.php\fP\&.
+.SS "beforeDelete (mixed $datas)\fC [protected]\fP"
+
+.PP
+Actions à faire avant la suppression du model\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$datas\fP Données à fournir 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+il est recommandé d'appeler parent::beforeDelete en cas de redéfinition 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIDatabaseActionException\fP pour stopper l'action en cas d'erreur 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBMysqlModel\fP\&.
+.PP
+Définition à la ligne \fB95\fP du fichier \fBDatabaseModel\&.php\fP\&.
+.SS "beforeGeneration (mixed $datas)\fC [protected]\fP"
+
+.PP
+Actions à faire avant la génération du model à partir de la méthode find\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$datas\fP Données à fournir 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+il est recommandé d'appeler parent::beforeGeneration en cas de redéfinition 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIDatabaseActionException\fP pour stopper l'action en cas d'erreur 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBMysqlModel\fP\&.
+.PP
+Définition à la ligne \fB106\fP du fichier \fBDatabaseModel\&.php\fP\&.
+.SS "beforeUpdate (mixed $datas)\fC [protected]\fP"
+
+.PP
+Actions à faire avant la mise à jour du model\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$datas\fP Données à fournir 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+il est recommandé d'appeler parent::beforeUpdate en cas de redéfinition 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIDatabaseActionException\fP pour stopper l'action en cas d'erreur 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBMysqlModel\fP\&.
+.PP
+Définition à la ligne \fB66\fP du fichier \fBDatabaseModel\&.php\fP\&.
+.SS "create ()\fC [abstract]\fP"
+
+.PP
+Crée la ligne dans la base de données\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+bool Si la création réussie 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIDatabaseActionException\fP en cas d'erreur 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBMysqlModel\fP\&.
+.SS "delete ()\fC [abstract]\fP"
+
+.PP
+Met à jour la ligne dans la base de données\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+bool Si la mise à jour réussie 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIDatabaseActionException\fP en cas d'erreur 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBMysqlModel\fP\&.
+.SS "static findAll (\fBDatabaseCondition\fP|\fBDatabaseCondSeparator\fP \&.\&.\&. $findBuilders)\fC [static]\fP, \fC [abstract]\fP"
+
+.PP
+Recherche toutes les occurrences\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fIDatabaseCondition\fP \&.\&.\&.$findBuilders Configuration de recherche 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+SaboList<DatabaseModel> liste des occurrences 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBMysqlModel\fP\&.
+.SS "static findOne (\fBDatabaseCondition\fP|\fBDatabaseCondSeparator\fP \&.\&.\&. $findBuilders)\fC [static]\fP, \fC [abstract]\fP"
+
+.PP
+Recherche une occurrence\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fIDatabaseCondition\fP \&.\&.\&.$findBuilders Configuration de recherche 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+DatabaseModel|null le modèle trouvé ou null 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBMysqlModel\fP\&.
+.SS "update ()\fC [abstract]\fP"
+
+.PP
+Met à jour la ligne dans la base de données\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+bool Si la mise à jour réussie 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIDatabaseActionException\fP en cas d'erreur 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBMysqlModel\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

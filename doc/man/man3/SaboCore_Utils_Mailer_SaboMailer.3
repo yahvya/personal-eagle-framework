@@ -1,0 +1,119 @@
+.TH "SaboMailer" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SaboMailer \- Helper d'envoi de mail simplifié  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de PHPMailer\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fBsendMailFromTemplate\fP (string $subject, array $recipients, \fBMailerTemplateProvider\fP $templateProvider)"
+.br
+.RI "Envoi un mail aux destinataires\&. "
+.ti -1c
+.RI "\fBsendBasicMail\fP (string $subject, string $mailContent, array $recipients)"
+.br
+.RI "Envoi un mail aux destinataires\&. "
+.ti -1c
+.RI "\fBreset\fP ()"
+.br
+.RI "réinitialise le mailer "
+.in -1c
+.SH "Description détaillée"
+.PP 
+Helper d'envoi de mail simplifié 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB16\fP du fichier \fBSaboMailer\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "reset ()"
+
+.PP
+réinitialise le mailer 
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIThrowable\fP en cas d'erreur 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB111\fP du fichier \fBSaboMailer\&.php\fP\&.
+.SS "sendBasicMail (string $subject, string $mailContent, array $recipients)"
+
+.PP
+Envoi un mail aux destinataires\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$subject\fP le sujet du mail 
+.br
+\fI$mailContent\fP le contenu du mail 
+.br
+\fI$recipients\fP les destinataires 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+bool si le mail s'est bien envoyé 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIThrowable\fP en mode debug en cas d'échec d'envoi du mail ou destinataires incorrects 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB71\fP du fichier \fBSaboMailer\&.php\fP\&.
+.SS "sendMailFromTemplate (string $subject, array $recipients, \fBMailerTemplateProvider\fP $templateProvider)"
+
+.PP
+Envoi un mail aux destinataires\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$subject\fP le sujet du mail 
+.br
+\fI$recipients\fP les destinataires du mail 
+.br
+\fI$templateProvider\fP fournisseur de template 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+bool si l'envoi a réussi 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIThrowable\fP en mode debug en cas d'échec d'envoi du mail ou destinataires incorrects 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB25\fP du fichier \fBSaboMailer\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

@@ -1,0 +1,164 @@
+\hypertarget{a00548}{}\doxysection{Référence de la classe Cli\+Argument}
+\label{a00548}\index{CliArgument@{CliArgument}}
+
+
+Argument de ligne de commande.  
+
+
+\doxysubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00548_ad5900c7299bdff07295ca71ec625a932}{\+\_\+\+\_\+construct}} (string \$argument)
+\item 
+\mbox{\hyperlink{a00548_a18be5a647f56ff5c2e61575fed749eb6}{get\+Option}} ()
+\item 
+\mbox{\hyperlink{a00548_af18a30d4b469a874d921b3f797aaae61}{get\+Argument\+Value}} ()
+\item 
+\mbox{\hyperlink{a00548_a88ec9370bcbdb60301f89e401c9e64e1}{get\+Argument}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions membres publiques statiques}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{a00548_af555fbdb43b8001807dd8e11daf3b96b}{extract\+Arg\+Datas}} (string \$argument)
+\begin{DoxyCompactList}\small\item\em Extrait l\textquotesingle{}option et la valeur à partir d\textquotesingle{}une chaine au format argument de ligne de commande. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Attributs protégés}
+\begin{DoxyCompactItemize}
+\item 
+string null \mbox{\hyperlink{a00548_ab3d240c75b994bff3338ce43210866b2}{\$option}}
+\item 
+string \mbox{\hyperlink{a00548_a5e4323254fd7b72491b86c27166387ef}{\$argument\+Value}}
+\item 
+string \mbox{\hyperlink{a00548_a5318be7b120bbfe7418f2c3fc0eaafd3}{\$argument}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Argument de ligne de commande. 
+
+\begin{DoxyAuthor}{Auteur}
+yahaya bathily \href{https://github.com/yahvya}{\texttt{ https\+://github.\+com/yahvya}} 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \mbox{\hyperlink{a00011_source_l00009}{9}} du fichier \mbox{\hyperlink{a00011_source}{Cli\+Argument.\+php}}.
+
+
+
+\doxysubsection{Documentation des constructeurs et destructeur}
+\mbox{\Hypertarget{a00548_ad5900c7299bdff07295ca71ec625a932}\label{a00548_ad5900c7299bdff07295ca71ec625a932}} 
+\index{CliArgument@{CliArgument}!\_\_construct@{\_\_construct}}
+\index{\_\_construct@{\_\_construct}!CliArgument@{CliArgument}}
+\doxysubsubsection{\texorpdfstring{\_\_construct()}{\_\_construct()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+construct (\begin{DoxyParamCaption}\item[{string}]{\$argument }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$argument} & Argument complet saisi en ligne de commande \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \mbox{\hyperlink{a00011_source_l00028}{28}} du fichier \mbox{\hyperlink{a00011_source}{Cli\+Argument.\+php}}.
+
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{a00548_af555fbdb43b8001807dd8e11daf3b96b}\label{a00548_af555fbdb43b8001807dd8e11daf3b96b}} 
+\index{CliArgument@{CliArgument}!extractArgDatas@{extractArgDatas}}
+\index{extractArgDatas@{extractArgDatas}!CliArgument@{CliArgument}}
+\doxysubsubsection{\texorpdfstring{extractArgDatas()}{extractArgDatas()}}
+{\footnotesize\ttfamily static extract\+Arg\+Datas (\begin{DoxyParamCaption}\item[{string}]{\$argument }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Extrait l\textquotesingle{}option et la valeur à partir d\textquotesingle{}une chaine au format argument de ligne de commande. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$argument} & Argument complet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+array les données extraites au format \mbox{[}\char`\"{}option\char`\"{} → ..., \char`\"{}argument\+Value\char`\"{} → ...\mbox{]} 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00011_source_l00059}{59}} du fichier \mbox{\hyperlink{a00011_source}{Cli\+Argument.\+php}}.
+
+\mbox{\Hypertarget{a00548_a88ec9370bcbdb60301f89e401c9e64e1}\label{a00548_a88ec9370bcbdb60301f89e401c9e64e1}} 
+\index{CliArgument@{CliArgument}!getArgument@{getArgument}}
+\index{getArgument@{getArgument}!CliArgument@{CliArgument}}
+\doxysubsubsection{\texorpdfstring{getArgument()}{getArgument()}}
+{\footnotesize\ttfamily get\+Argument (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+string Chaine complète de l\textquotesingle{}argument 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00011_source_l00050}{50}} du fichier \mbox{\hyperlink{a00011_source}{Cli\+Argument.\+php}}.
+
+\mbox{\Hypertarget{a00548_af18a30d4b469a874d921b3f797aaae61}\label{a00548_af18a30d4b469a874d921b3f797aaae61}} 
+\index{CliArgument@{CliArgument}!getArgumentValue@{getArgumentValue}}
+\index{getArgumentValue@{getArgumentValue}!CliArgument@{CliArgument}}
+\doxysubsubsection{\texorpdfstring{getArgumentValue()}{getArgumentValue()}}
+{\footnotesize\ttfamily get\+Argument\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+string contenu de l\textquotesingle{}argument sans l\textquotesingle{}option potentielle 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00011_source_l00043}{43}} du fichier \mbox{\hyperlink{a00011_source}{Cli\+Argument.\+php}}.
+
+\mbox{\Hypertarget{a00548_a18be5a647f56ff5c2e61575fed749eb6}\label{a00548_a18be5a647f56ff5c2e61575fed749eb6}} 
+\index{CliArgument@{CliArgument}!getOption@{getOption}}
+\index{getOption@{getOption}!CliArgument@{CliArgument}}
+\doxysubsubsection{\texorpdfstring{getOption()}{getOption()}}
+{\footnotesize\ttfamily get\+Option (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+string$\vert$null option trouvée (--option=....) ou null si pas d\textquotesingle{}option 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00011_source_l00036}{36}} du fichier \mbox{\hyperlink{a00011_source}{Cli\+Argument.\+php}}.
+
+
+
+\doxysubsection{Documentation des champs}
+\mbox{\Hypertarget{a00548_a5318be7b120bbfe7418f2c3fc0eaafd3}\label{a00548_a5318be7b120bbfe7418f2c3fc0eaafd3}} 
+\index{CliArgument@{CliArgument}!\$argument@{\$argument}}
+\index{\$argument@{\$argument}!CliArgument@{CliArgument}}
+\doxysubsubsection{\texorpdfstring{\$argument}{$argument}}
+{\footnotesize\ttfamily string \$argument\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00011_source_l00023}{23}} du fichier \mbox{\hyperlink{a00011_source}{Cli\+Argument.\+php}}.
+
+\mbox{\Hypertarget{a00548_a5e4323254fd7b72491b86c27166387ef}\label{a00548_a5e4323254fd7b72491b86c27166387ef}} 
+\index{CliArgument@{CliArgument}!\$argumentValue@{\$argumentValue}}
+\index{\$argumentValue@{\$argumentValue}!CliArgument@{CliArgument}}
+\doxysubsubsection{\texorpdfstring{\$argumentValue}{$argumentValue}}
+{\footnotesize\ttfamily string \$argument\+Value\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00011_source_l00018}{18}} du fichier \mbox{\hyperlink{a00011_source}{Cli\+Argument.\+php}}.
+
+\mbox{\Hypertarget{a00548_ab3d240c75b994bff3338ce43210866b2}\label{a00548_ab3d240c75b994bff3338ce43210866b2}} 
+\index{CliArgument@{CliArgument}!\$option@{\$option}}
+\index{\$option@{\$option}!CliArgument@{CliArgument}}
+\doxysubsubsection{\texorpdfstring{\$option}{$option}}
+{\footnotesize\ttfamily string null \$option\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00011_source_l00013}{13}} du fichier \mbox{\hyperlink{a00011_source}{Cli\+Argument.\+php}}.
+
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00011}{Cli\+Argument.\+php}}\end{DoxyCompactItemize}

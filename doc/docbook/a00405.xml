@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00405" xml:lang="fr">
+<title>Référence de l&apos;espace de nommage SaboCore\Database\Default\Attributes</title>
+<indexterm><primary>SaboCore\Database\Default\Attributes</primary></indexterm>
+<simplesect>
+    <title>Structures de données    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_a00596">BinaryColumn</link></para>
+
+<para>Champs de type binary. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00600">BoolColumn</link></para>
+
+<para>Champs de type Booléen. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00604">CharColumn</link></para>
+
+<para>Champs de type char. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00608">DecimalColumn</link></para>
+
+<para>Champs de type decimal. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00612">EnumColumn</link></para>
+
+<para>Champs de type énumération. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00616">IntColumn</link></para>
+
+<para>Champs de type int. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00620">JoinedColumn</link></para>
+
+<para>Attribut de liaison de tables. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00624">JsonColumn</link></para>
+
+<para>Champs de type json. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00628">SqlAttribute</link></para>
+
+<para>Représente un attribut pouvant être créé en sql. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00632">TableColumn</link></para>
+
+<para>Représentation d&apos;une colonne. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00636">TableName</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_a00640">TextColumn</link></para>
+
+<para>Champs de type text. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00644">TimestampColumn</link></para>
+
+<para>Champs de type timestamp|date|time. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00648">TinyIntColumn</link></para>
+
+<para>Champs de type tinyint. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00652">VarBinaryColumn</link></para>
+
+<para>Champs de type binary à taille variable. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00656">VarcharColumn</link></para>
+
+<para>Champs de type varchar. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

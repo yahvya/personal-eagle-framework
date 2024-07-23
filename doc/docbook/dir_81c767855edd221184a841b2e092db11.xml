@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_81c767855edd221184a841b2e092db11" xml:lang="fr">
+<title>Répertoire de référence de attributes</title>
+<indexterm><primary>Répertoire de référence de attributes</primary></indexterm>
+<simplesect>
+    <title>Fichiers    </title>
+        <itemizedlist>
+            <listitem><para>fichier <link linkend="_a00074">BinaryColumn.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00077">BoolColumn.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00080">CharColumn.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00083">DecimalColumn.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00086">EnumColumn.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00089">IntColumn.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00092">JoinedColumn.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00095">JsonColumn.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00098">SqlAttribute.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00101">TableColumn.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00104">TableName.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00107">TextColumn.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00110">TimestampColumn.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00113">TinyIntColumn.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00116">VarBinaryColumn.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00119">VarcharColumn.php</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

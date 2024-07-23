@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00029_source" xml:lang="fr">
+<title>SaboCommand.php</title>
+<indexterm><primary>SaboCommand.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00029_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00029_source_1l00002"/>00002 
+<anchor xml:id="_a00029_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00401">SaboCore\Cli\Commands</link>;
+<anchor xml:id="_a00029_source_1l00004"/>00004 
+<anchor xml:id="_a00029_source_1l00005"/>00005 use&#32;<link linkend="_a00544">SaboCore\Cli\Cli\ArgumentManager</link>;
+<anchor xml:id="_a00029_source_1l00006"/>00006 use&#32;<link linkend="_a00552">SaboCore\Cli\Cli\SaboCli</link>;
+<anchor xml:id="_a00029_source_1l00007"/>00007 use&#32;<link linkend="_a00402_1a48a4d69dfa43ecb7cc2495c6d711def4">SaboCore\Cli\Theme\Theme</link>;
+<anchor xml:id="_a00029_source_1l00008"/>00008 use&#32;<link linkend="_a00580">SaboCore\Config\Config</link>;
+<anchor xml:id="_a00029_source_1l00009"/>00009 use&#32;<link linkend="_a00584">SaboCore\Config\ConfigException</link>;
+<anchor xml:id="_a00029_source_1l00010"/>00010 use&#32;<link linkend="_a00888">SaboCore\Utils\Printer\Printer</link>;
+<anchor xml:id="_a00029_source_1l00011"/>00011 use&#32;Throwable;
+<anchor xml:id="_a00029_source_1l00012"/>00012 
+<anchor xml:id="_a00029_source_1l00017"/><link linkend="_a00572">00017</link> <emphasis role="keyword">abstract</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_a00572">SaboCommand</link>{
+<anchor xml:id="_a00029_source_1l00021"/><link linkend="_a00572_1af14d58005b6b6d2bb97fb8985cf3e47a">00021</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00572_1af14d58005b6b6d2bb97fb8985cf3e47a">$commandName</link>;
+<anchor xml:id="_a00029_source_1l00022"/>00022 
+<anchor xml:id="_a00029_source_1l00026"/><link linkend="_a00572_1a0c75d1f64540e18a147ee02be38bf95c">00026</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00572_1a0c75d1f64540e18a147ee02be38bf95c">__construct</link>(<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00572_1af14d58005b6b6d2bb97fb8985cf3e47a">$commandName</link>){
+<anchor xml:id="_a00029_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;commandName&#32;=&#32;<link linkend="_a00572_1af14d58005b6b6d2bb97fb8985cf3e47a">$commandName</link>;
+<anchor xml:id="_a00029_source_1l00028"/>00028 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00029_source_1l00029"/>00029 
+<anchor xml:id="_a00029_source_1l00033"/><link linkend="_a00572_1a3d0963e68bb313b163a73f2803c64600">00033</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00572_1a3d0963e68bb313b163a73f2803c64600">getName</link>():string{
+<anchor xml:id="_a00029_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;commandName;
+<anchor xml:id="_a00029_source_1l00035"/>00035 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00029_source_1l00036"/>00036 
+<anchor xml:id="_a00029_source_1l00045"/><link linkend="_a00572_1a9704fa2bfd600fe1145fdf42a55e85de">00045</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00572_1a9704fa2bfd600fe1145fdf42a55e85de">getOptions</link>(<link linkend="_a00552">SaboCli</link>&#32;$cli,<emphasis role="keywordtype">string</emphasis>&#32;...$optionNames):array{
+<anchor xml:id="_a00029_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$result&#32;=&#32;[];
+<anchor xml:id="_a00029_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$argumentManager&#32;=&#32;$cli-&gt;<link linkend="_a00552_1a43a95794714b9eb37fe917450ae197b8">getArgumentManager</link>();
+<anchor xml:id="_a00029_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$themeConfig&#32;=&#32;$cli-&gt;<link linkend="_a00552_1a4cf8d7386802fb70f62aea05730a3cfe">getThemeConfig</link>();
+<anchor xml:id="_a00029_source_1l00049"/>00049 
+<anchor xml:id="_a00029_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($optionNames&#32;as&#32;$optionName){
+<anchor xml:id="_a00029_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$result[$optionName]&#32;=
+<anchor xml:id="_a00029_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;recherche&#32;de&#32;l&apos;option&#32;parmi&#32;les&#32;arguments</emphasis>
+<anchor xml:id="_a00029_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$argumentManager-&gt;find(optionName:&#32;$optionName)?-&gt;getArgumentValue()&#32;??
+<anchor xml:id="_a00029_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;demande&#32;de&#32;la&#32;valeur&#32;de&#32;l&apos;option</emphasis>
+<anchor xml:id="_a00029_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;ask(toAsk:&#32;<emphasis role="stringliteral">&quot;Veuillez&#32;fournir&#32;une&#32;valeur&#32;pour&#32;l&apos;option&#32;&lt;$optionName&gt;&quot;</emphasis>,themeConfig:&#32;$themeConfig);
+<anchor xml:id="_a00029_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00029_source_1l00057"/>00057 
+<anchor xml:id="_a00029_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$result;
+<anchor xml:id="_a00029_source_1l00059"/>00059 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00029_source_1l00060"/>00060 
+<anchor xml:id="_a00029_source_1l00068"/><link linkend="_a00572_1a1f2515bcb1ec0ba161dac344498ed16a">00068</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00572_1a1f2515bcb1ec0ba161dac344498ed16a">ask</link>(<emphasis role="keywordtype">string</emphasis>&#32;$toAsk,&#32;<link linkend="_a00580">Config</link>&#32;$themeConfig):string{
+<anchor xml:id="_a00029_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_a00888">Printer</link>::printStyle(toPrint:&#32;<emphasis role="stringliteral">&quot;&gt;&#32;$toAsk&#32;:&#32;&quot;</emphasis>,compositeStyle:&#32;$themeConfig-&gt;getConfig(name:&#32;Theme::SPECIAL_TEXT_STYLE-&gt;value)&#32;);
+<anchor xml:id="_a00029_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;trim(<emphasis role="keywordtype">string</emphasis>:&#32;fgets(stream:&#32;STDIN));
+<anchor xml:id="_a00029_source_1l00071"/>00071 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00029_source_1l00072"/>00072 
+<anchor xml:id="_a00029_source_1l00079"/><link linkend="_a00572_1aa69a5cf0c3844e397a8d8e18d82c9a99">00079</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">abstract</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00572_1aa69a5cf0c3844e397a8d8e18d82c9a99">execCommand</link>(<link linkend="_a00552">SaboCli</link>&#32;$cli):void;
+<anchor xml:id="_a00029_source_1l00080"/>00080 
+<anchor xml:id="_a00029_source_1l00084"/><link linkend="_a00572_1a0db9ebd6c097296b09d33cf24ab68235">00084</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">abstract</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00572_1a0db9ebd6c097296b09d33cf24ab68235">getHelpLines</link>():array;
+<anchor xml:id="_a00029_source_1l00085"/>00085 }
+</programlisting></section>

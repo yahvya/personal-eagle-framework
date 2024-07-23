@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00418" xml:lang="fr">
+<title>Référence de l&apos;espace de nommage SaboCore\Routing\Request</title>
+<indexterm><primary>SaboCore\Routing\Request</primary></indexterm>
+<simplesect>
+    <title>Structures de données    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_a00792">Request</link></para>
+
+<para>Gestionnaire des données de la requête. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

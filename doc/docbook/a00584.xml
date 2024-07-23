@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00584" xml:lang="fr">
+<title>Référence de la classe ConfigException</title>
+<indexterm><primary>ConfigException</primary></indexterm>
+<para>
+
+<para>Exception de configuration. </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de ConfigException:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00584.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<section>
+<title>Description détaillée</title>
+
+<para>Exception de configuration. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya/">https://github.com/yahvya/</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00047_source_1l00011">11</link> du fichier <link linkend="_a00047_source">ConfigException.php</link>.</para>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00047">ConfigException.php</link></section>
+</section>

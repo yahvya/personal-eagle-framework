@@ -1,0 +1,182 @@
+\hypertarget{a00552}{}\doxysection{Référence de la classe Sabo\+Cli}
+\label{a00552}\index{SaboCli@{SaboCli}}
+
+
+Gestionnaire de commande du framework.  
+
+
+\doxysubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00552_ad50e344b90386a93c1d995f3a743dce0}{\+\_\+\+\_\+construct}} (array \$argv, \mbox{\hyperlink{a00580}{Config}} \$theme\+Config)
+\item 
+\mbox{\hyperlink{a00552_a5cd24e45fe0761e91e45c3e44320d7ed}{register\+Command}} (\mbox{\hyperlink{a00572}{Sabo\+Command}} \$executor)
+\begin{DoxyCompactList}\small\item\em Enregistre une commande. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00552_a82f3474cee57fff1095b279dc4da9fc1}{get\+Commands}} ()
+\item 
+\mbox{\hyperlink{a00552_a4cf8d7386802fb70f62aea05730a3cfe}{get\+Theme\+Config}} ()
+\item 
+\mbox{\hyperlink{a00552_a43a95794714b9eb37fe917450ae197b8}{get\+Argument\+Manager}} ()
+\item 
+\mbox{\hyperlink{a00552_af8fa59992209e36dccb3eefb0f75531f}{start}} ()
+\begin{DoxyCompactList}\small\item\em Lance l\textquotesingle{}exécution du traitement cli. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Attributs protégés}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00544}{Argument\+Manager}} \mbox{\hyperlink{a00552_a0121576f9afc4c68d64fcadbd0afc2d3}{\$argument\+Manager}}
+\item 
+\mbox{\hyperlink{a00580}{Config}} \mbox{\hyperlink{a00552_a32fe970af03bfe525bda40d112085822}{\$theme\+Config}}
+\item 
+array \mbox{\hyperlink{a00552_a66b1e68b1e75069be45ae54c302a6e33}{\$commands}} = \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Gestionnaire de commande du framework. 
+
+\begin{DoxyAuthor}{Auteur}
+yahaya bathily \href{https://github.com/yahvya/}{\texttt{ https\+://github.\+com/yahvya/}} 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \mbox{\hyperlink{a00014_source_l00016}{16}} du fichier \mbox{\hyperlink{a00014_source}{Sabo\+Cli.\+php}}.
+
+
+
+\doxysubsection{Documentation des constructeurs et destructeur}
+\mbox{\Hypertarget{a00552_ad50e344b90386a93c1d995f3a743dce0}\label{a00552_ad50e344b90386a93c1d995f3a743dce0}} 
+\index{SaboCli@{SaboCli}!\_\_construct@{\_\_construct}}
+\index{\_\_construct@{\_\_construct}!SaboCli@{SaboCli}}
+\doxysubsubsection{\texorpdfstring{\_\_construct()}{\_\_construct()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+construct (\begin{DoxyParamCaption}\item[{array}]{\$argv,  }\item[{\mbox{\hyperlink{a00580}{Config}}}]{\$theme\+Config }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string\mbox{[}$\,$\mbox{]} & {\em \$argv} & arguments de la ligne de commande \\
+\hline
+Config & {\em \$theme\+Config} & configuration de thème \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \mbox{\hyperlink{a00014_source_l00036}{36}} du fichier \mbox{\hyperlink{a00014_source}{Sabo\+Cli.\+php}}.
+
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{a00552_a43a95794714b9eb37fe917450ae197b8}\label{a00552_a43a95794714b9eb37fe917450ae197b8}} 
+\index{SaboCli@{SaboCli}!getArgumentManager@{getArgumentManager}}
+\index{getArgumentManager@{getArgumentManager}!SaboCli@{SaboCli}}
+\doxysubsubsection{\texorpdfstring{getArgumentManager()}{getArgumentManager()}}
+{\footnotesize\ttfamily get\+Argument\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+Argument\+Manager le gestionnaire d\textquotesingle{}arguments 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00014_source_l00069}{69}} du fichier \mbox{\hyperlink{a00014_source}{Sabo\+Cli.\+php}}.
+
+\mbox{\Hypertarget{a00552_a82f3474cee57fff1095b279dc4da9fc1}\label{a00552_a82f3474cee57fff1095b279dc4da9fc1}} 
+\index{SaboCli@{SaboCli}!getCommands@{getCommands}}
+\index{getCommands@{getCommands}!SaboCli@{SaboCli}}
+\doxysubsubsection{\texorpdfstring{getCommands()}{getCommands()}}
+{\footnotesize\ttfamily get\+Commands (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+Sabo\+Command\mbox{[}\mbox{]} les commandes 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00014_source_l00055}{55}} du fichier \mbox{\hyperlink{a00014_source}{Sabo\+Cli.\+php}}.
+
+\mbox{\Hypertarget{a00552_a4cf8d7386802fb70f62aea05730a3cfe}\label{a00552_a4cf8d7386802fb70f62aea05730a3cfe}} 
+\index{SaboCli@{SaboCli}!getThemeConfig@{getThemeConfig}}
+\index{getThemeConfig@{getThemeConfig}!SaboCli@{SaboCli}}
+\doxysubsubsection{\texorpdfstring{getThemeConfig()}{getThemeConfig()}}
+{\footnotesize\ttfamily get\+Theme\+Config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+Config la configuration du thème 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00014_source_l00062}{62}} du fichier \mbox{\hyperlink{a00014_source}{Sabo\+Cli.\+php}}.
+
+\mbox{\Hypertarget{a00552_a5cd24e45fe0761e91e45c3e44320d7ed}\label{a00552_a5cd24e45fe0761e91e45c3e44320d7ed}} 
+\index{SaboCli@{SaboCli}!registerCommand@{registerCommand}}
+\index{registerCommand@{registerCommand}!SaboCli@{SaboCli}}
+\doxysubsubsection{\texorpdfstring{registerCommand()}{registerCommand()}}
+{\footnotesize\ttfamily register\+Command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{a00572}{Sabo\+Command}}}]{\$executor }\end{DoxyParamCaption})}
+
+
+
+Enregistre une commande. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+Sabo\+Command & {\em \$executor} & class d\textquotesingle{}exécution de la commande \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+\$this 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00014_source_l00046}{46}} du fichier \mbox{\hyperlink{a00014_source}{Sabo\+Cli.\+php}}.
+
+\mbox{\Hypertarget{a00552_af8fa59992209e36dccb3eefb0f75531f}\label{a00552_af8fa59992209e36dccb3eefb0f75531f}} 
+\index{SaboCli@{SaboCli}!start@{start}}
+\index{start@{start}!SaboCli@{SaboCli}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Lance l\textquotesingle{}exécution du traitement cli. 
+
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00014_source_l00077}{77}} du fichier \mbox{\hyperlink{a00014_source}{Sabo\+Cli.\+php}}.
+
+
+
+\doxysubsection{Documentation des champs}
+\mbox{\Hypertarget{a00552_a0121576f9afc4c68d64fcadbd0afc2d3}\label{a00552_a0121576f9afc4c68d64fcadbd0afc2d3}} 
+\index{SaboCli@{SaboCli}!\$argumentManager@{\$argumentManager}}
+\index{\$argumentManager@{\$argumentManager}!SaboCli@{SaboCli}}
+\doxysubsubsection{\texorpdfstring{\$argumentManager}{$argumentManager}}
+{\footnotesize\ttfamily \mbox{\hyperlink{a00544}{Argument\+Manager}} \$argument\+Manager\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00014_source_l00020}{20}} du fichier \mbox{\hyperlink{a00014_source}{Sabo\+Cli.\+php}}.
+
+\mbox{\Hypertarget{a00552_a66b1e68b1e75069be45ae54c302a6e33}\label{a00552_a66b1e68b1e75069be45ae54c302a6e33}} 
+\index{SaboCli@{SaboCli}!\$commands@{\$commands}}
+\index{\$commands@{\$commands}!SaboCli@{SaboCli}}
+\doxysubsubsection{\texorpdfstring{\$commands}{$commands}}
+{\footnotesize\ttfamily array \$commands = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00014_source_l00030}{30}} du fichier \mbox{\hyperlink{a00014_source}{Sabo\+Cli.\+php}}.
+
+\mbox{\Hypertarget{a00552_a32fe970af03bfe525bda40d112085822}\label{a00552_a32fe970af03bfe525bda40d112085822}} 
+\index{SaboCli@{SaboCli}!\$themeConfig@{\$themeConfig}}
+\index{\$themeConfig@{\$themeConfig}!SaboCli@{SaboCli}}
+\doxysubsubsection{\texorpdfstring{\$themeConfig}{$themeConfig}}
+{\footnotesize\ttfamily \mbox{\hyperlink{a00580}{Config}} \$theme\+Config\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00014_source_l00025}{25}} du fichier \mbox{\hyperlink{a00014_source}{Sabo\+Cli.\+php}}.
+
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00014}{Sabo\+Cli.\+php}}\end{DoxyCompactItemize}

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00398" xml:lang="fr">
+<title>Référence de l&apos;espace de nommage SaboCore\Cli\Cli</title>
+<indexterm><primary>SaboCore\Cli\Cli</primary></indexterm>
+<simplesect>
+    <title>Structures de données    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_a00544">ArgumentManager</link></para>
+
+<para>Gestionnaire d&apos;arguments de la ligne de commandes. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00548">CliArgument</link></para>
+
+<para>Argument de ligne de commande. </para>
+</listitem>
+            <listitem><para>class <link linkend="_a00552">SaboCli</link></para>
+
+<para>Gestionnaire de commande du framework. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

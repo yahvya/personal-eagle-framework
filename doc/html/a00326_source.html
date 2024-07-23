@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sabo final:  Fichier source de AppStorage.php</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="favicon.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">Sabo final<span id="projectnumber">&#160;1.1.1</span>
+   </div>
+   <div id="projectbrief">Mini framework php</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('a00326_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">AppStorage.php</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="a00326.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span>&lt;?php</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="a00431.html">    3</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="a00431.html">SaboCore\Utils\Storage</a>;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>use <a class="code hl_enumeration" href="a00403.html#a80d9c58ff7f86d542bbc97aa01de382f">SaboCore\Config\FrameworkConfig</a>;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>use <a class="code hl_class" href="a00784.html">SaboCore\Routing\Application\Application</a>;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>use Throwable;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="a00904.html">   13</a></span><span class="keyword">abstract</span> <span class="keyword">class </span><a class="code hl_class" href="a00904.html">AppStorage</a>{</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="a00904.html#aa1b8b006c00e9aef2fc3f736be11f814">   21</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00904.html#aa1b8b006c00e9aef2fc3f736be11f814">storeClassicFile</a>(<span class="keywordtype">string</span> $storagePath,<span class="keywordtype">string</span> $fileBasePath,<span class="keywordtype">bool</span> $createFoldersIfNotExists = <span class="keyword">true</span>):bool{</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        try{</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            $storagePath = self::<a class="code hl_function" href="a00904.html#ad8dddd23b2640cd9a38d8e4bd304a5e9">buildStorageCompletePath</a>(pathFromStorage: $storagePath);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            $dirname = @dirname(path: $storagePath);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="comment">// création du dossier résultat s&#39;il n&#39;existe pas</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            <span class="keywordflow">if</span>($createFoldersIfNotExists &amp;&amp; !is_dir(filename: $dirname)){</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                <span class="keywordflow">if</span>(!@mkdir(directory: $dirname,recursive: <span class="keyword">true</span>) )</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            }</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <span class="keywordflow">return</span> @copy(from: $fileBasePath,to: $storagePath);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordflow">catch</span>(Throwable){</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    }</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="a00904.html#a0876d33cb9c163f789800a6c69237670">   46</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00904.html#a0876d33cb9c163f789800a6c69237670">storeContent</a>(<span class="keywordtype">string</span> $storagePath,<span class="keywordtype">string</span> $content,<span class="keywordtype">bool</span> $createFoldersIfNotExists = <span class="keyword">true</span>):bool{</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        try{</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            $storagePath = self::buildStorageCompletePath(pathFromStorage: $storagePath);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            $dirname = @dirname(path: $storagePath);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="comment">// création du dossier résultat s&#39;il n&#39;existe pas</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="keywordflow">if</span>($createFoldersIfNotExists &amp;&amp; !is_dir($dirname)){</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                <span class="keywordflow">if</span>(!@mkdir(directory: $dirname,recursive: <span class="keyword">true</span>) )</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <span class="keywordflow">return</span> @file_put_contents(filename: $storagePath,data: $content) !== <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordflow">catch</span>(Throwable){</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="a00904.html#ab075e381984d7595370791a976320498">   71</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00904.html#ab075e381984d7595370791a976320498">storeFormFile</a>(<span class="keywordtype">string</span> $storagePath, <span class="keywordtype">string</span> $fileTmpName, <span class="keywordtype">bool</span> $createFoldersIfNotExists = <span class="keyword">true</span>):bool{</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        try{</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            $storagePath = self::buildStorageCompletePath(pathFromStorage: $storagePath);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            $dirname = @dirname($storagePath);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            <span class="comment">// création du dossier résultat s&#39;il n&#39;existe pas</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            <span class="keywordflow">if</span>($createFoldersIfNotExists &amp;&amp; !is_dir(filename: $dirname) ){</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                <span class="keywordflow">if</span>(!@mkdir(directory: $dirname,recursive: <span class="keyword">true</span>) )</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            }</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            <span class="keywordflow">return</span> @move_uploaded_file(from: $fileTmpName,to: $storagePath);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        }</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">catch</span>(Throwable){</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        }</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    }</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="a00904.html#ad8dddd23b2640cd9a38d8e4bd304a5e9">   94</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="a00904.html#ad8dddd23b2640cd9a38d8e4bd304a5e9">buildStorageCompletePath</a>(<span class="keywordtype">string</span> $pathFromStorage):string{</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        try{</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            $completePath = APP_CONFIG-&gt;getConfig(name: <span class="stringliteral">&quot;ROOT&quot;</span>) . <a class="code hl_class" href="a00784.html">Application</a>::getFrameworkConfig()-&gt;getConfig(name: FrameworkConfig::STORAGE_DIR_PATH-&gt;value);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            <span class="keywordflow">if</span>(str_ends_with(haystack: $completePath,needle: <span class="stringliteral">&quot;/&quot;</span>) ) $completePath = substr(<span class="keywordtype">string</span>: $completePath,offset: 0,length: -1);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            <span class="keywordflow">if</span>(!str_starts_with(haystack: $pathFromStorage,needle: <span class="stringliteral">&quot;/&quot;</span>) ) $pathFromStorage = <span class="stringliteral">&quot;/$pathFromStorage&quot;</span>;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            <span class="keywordflow">return</span> $completePath . $pathFromStorage;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keywordflow">catch</span>(Throwable){</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            <span class="keywordflow">return</span> $pathFromStorage;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    }</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>}</div>
+<div class="ttc" id="aa00403_html_a80d9c58ff7f86d542bbc97aa01de382f"><div class="ttname"><a href="a00403.html#a80d9c58ff7f86d542bbc97aa01de382f">SaboCore\Config\FrameworkConfig</a></div><div class="ttdeci">FrameworkConfig</div><div class="ttdoc">Configuration du framework.</div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.html#l00009">FrameworkConfig.php:9</a></div></div>
+<div class="ttc" id="aa00431_html"><div class="ttname"><a href="a00431.html">SaboCore\Utils\Storage</a></div><div class="ttdef"><b>Definition:</b> <a href="a00326_source.html#l00003">AppStorage.php:3</a></div></div>
+<div class="ttc" id="aa00784_html"><div class="ttname"><a href="a00784.html">SaboCore\Routing\Application\Application</a></div><div class="ttdoc">Gestionnaire de l'application.</div><div class="ttdef"><b>Definition:</b> <a href="a00221_source.html#l00021">Application.php:21</a></div></div>
+<div class="ttc" id="aa00904_html"><div class="ttname"><a href="a00904.html">SaboCore\Utils\Storage\AppStorage</a></div><div class="ttdoc">Gestionnaire de stockage de l'application.</div><div class="ttdef"><b>Definition:</b> <a href="a00326_source.html#l00013">AppStorage.php:13</a></div></div>
+<div class="ttc" id="aa00904_html_a0876d33cb9c163f789800a6c69237670"><div class="ttname"><a href="a00904.html#a0876d33cb9c163f789800a6c69237670">SaboCore\Utils\Storage\AppStorage\storeContent</a></div><div class="ttdeci">static storeContent(string $storagePath, string $content, bool $createFoldersIfNotExists=true)</div><div class="ttdoc">Stock le contenu fourni dans la destination de stockage.</div><div class="ttdef"><b>Definition:</b> <a href="a00326_source.html#l00046">AppStorage.php:46</a></div></div>
+<div class="ttc" id="aa00904_html_aa1b8b006c00e9aef2fc3f736be11f814"><div class="ttname"><a href="a00904.html#aa1b8b006c00e9aef2fc3f736be11f814">SaboCore\Utils\Storage\AppStorage\storeClassicFile</a></div><div class="ttdeci">static storeClassicFile(string $storagePath, string $fileBasePath, bool $createFoldersIfNotExists=true)</div><div class="ttdoc">Réalise une copie du fichier dans la destination de stockage.</div><div class="ttdef"><b>Definition:</b> <a href="a00326_source.html#l00021">AppStorage.php:21</a></div></div>
+<div class="ttc" id="aa00904_html_ab075e381984d7595370791a976320498"><div class="ttname"><a href="a00904.html#ab075e381984d7595370791a976320498">SaboCore\Utils\Storage\AppStorage\storeFormFile</a></div><div class="ttdeci">static storeFormFile(string $storagePath, string $fileTmpName, bool $createFoldersIfNotExists=true)</div><div class="ttdoc">Upload le fichier formulaire dans la destination de stockage.</div><div class="ttdef"><b>Definition:</b> <a href="a00326_source.html#l00071">AppStorage.php:71</a></div></div>
+<div class="ttc" id="aa00904_html_ad8dddd23b2640cd9a38d8e4bd304a5e9"><div class="ttname"><a href="a00904.html#ad8dddd23b2640cd9a38d8e4bd304a5e9">SaboCore\Utils\Storage\AppStorage\buildStorageCompletePath</a></div><div class="ttdeci">static buildStorageCompletePath(string $pathFromStorage)</div><div class="ttdoc">Construis le chemin absolu de stockage.</div><div class="ttdef"><b>Definition:</b> <a href="a00326_source.html#l00094">AppStorage.php:94</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_5a9687d32d98fbbdb60629c9ff0dd338.html">sabo-core</a></li><li class="navelem"><a class="el" href="dir_27d72d4b518677f61e722129f47020e8.html">utils</a></li><li class="navelem"><a class="el" href="dir_0b87abde7463f155f261e7df6c243828.html">storage</a></li><li class="navelem"><a class="el" href="a00326.html">AppStorage.php</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
+</body>
+</html>

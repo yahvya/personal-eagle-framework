@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00047_source" xml:lang="fr">
+<title>ConfigException.php</title>
+<indexterm><primary>ConfigException.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00047_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00047_source_1l00002"/>00002 
+<anchor xml:id="_a00047_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00403">SaboCore\Config</link>;
+<anchor xml:id="_a00047_source_1l00004"/>00004 
+<anchor xml:id="_a00047_source_1l00005"/>00005 use&#32;Exception;
+<anchor xml:id="_a00047_source_1l00006"/>00006 
+<anchor xml:id="_a00047_source_1l00011"/><link linkend="_a00584">00011</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00584">ConfigException</link>&#32;<emphasis role="keyword">extends</emphasis>&#32;Exception&#32;{
+<anchor xml:id="_a00047_source_1l00012"/>00012 
+<anchor xml:id="_a00047_source_1l00013"/>00013 }
+</programlisting></section>

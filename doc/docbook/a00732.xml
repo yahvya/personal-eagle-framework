@@ -1,0 +1,451 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00732" xml:lang="fr">
+<title>Référence de la classe MysqlComparator</title>
+<indexterm><primary>MysqlComparator</primary></indexterm>
+<para>
+
+<para>Comparateurs mysql. </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de MysqlComparator:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00732.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00732_1a9236f7d7a4aad5889177bb04224b9b6f">__construct</link> (string $comparator, Closure $toBindGetter)</para>
+</listitem>
+            <listitem><para><link linkend="_a00732_1a7b51122ee1da08536f6348e5d14c6d50">getBindDatas</link> (mixed $value)</para>
+
+<para>Fourni les données de bind PDO à partir des données fournies. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Fonctions membres publiques hérités de <link linkend="_a00768">DatabaseComparator</link>        <itemizedlist>
+            <listitem><para><link linkend="_a00768_1ad16a3785de3980107c4b2fc796819637">getComparator</link> ()</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Fonctions membres publiques statiques    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_a00732_1a025e6a116800b5ab712f49afceb383fc">REQUEST_COMPARATOR</link> (string $comparator, <link linkend="_a00724">MysqlQueryBuilder</link> $queryBuilder)</para>
+
+<para>Crée un comparateur sur une requête. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00732_1aa5f0e968454a414e12f4f2cc8d9feda1">EQUAL</link> ()</para>
+</listitem>
+            <listitem><para>static <link linkend="_a00732_1a8bb1239a5952fb89b6b0d51ac874cd8d">IN</link> ()</para>
+</listitem>
+            <listitem><para>static <link linkend="_a00732_1aaf5b1c9599e26109934a23ed8ac10764">SUPERIOR</link> ()</para>
+</listitem>
+            <listitem><para>static <link linkend="_a00732_1ace32c2b4521a47ad1aeea3ad16bf44d3">INFERIOR</link> ()</para>
+</listitem>
+            <listitem><para>static <link linkend="_a00732_1ac54227b60e583912769da70ce186befc">SUPERIOR_OR_EQUAL</link> ()</para>
+</listitem>
+            <listitem><para>static <link linkend="_a00732_1a8963f9b60cbc5ce1bc0f1740a020010a">INFERIOR_OR_EQUAL</link> ()</para>
+</listitem>
+            <listitem><para>static <link linkend="_a00732_1a1fb2efb049d96ce5d135c6ff3b3c324a">NOT_EQUAL</link> ()</para>
+</listitem>
+            <listitem><para>static <link linkend="_a00732_1accdb440b43d2e42e3f33f3f80eba8b26">BETWEEN</link> ()</para>
+</listitem>
+            <listitem><para>static <link linkend="_a00732_1ad551b744ccf647ed0020deed08505991">LIKE</link> ()</para>
+</listitem>
+            <listitem><para>static <link linkend="_a00732_1a9036fa1430924ddc04f86c4866c3b71c">REGEXP</link> ()</para>
+</listitem>
+            <listitem><para>static <link linkend="_a00732_1afd35e297709f18f025ac038b6343c4cd">SECURE_COMPARE</link> ()</para>
+</listitem>
+            <listitem><para>static <link linkend="_a00732_1a34d26cd84bfe74f1a6d6864262aee4bc">SOUNDS_LIKE</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Attributs protégés    </title>
+        <itemizedlist>
+            <listitem><para>Closure <link linkend="_a00732_1a2bcf1dc03deccd90c26a86bd5a3c8758">$toBindGetter</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Attributs protégés hérités de <link linkend="_a00768">DatabaseComparator</link>        <itemizedlist>
+            <listitem><para>string <link linkend="_a00768_1a2322d45fc4d1cf92f0ecaf5cc38e0b68">$comparator</link></para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Membres hérités additionnels    </title>
+Fonctions membres protégées hérités de <link linkend="_a00768">DatabaseComparator</link>        <itemizedlist>
+            <listitem><para><link linkend="_a00768_1a0b448ceb440b169f589649024baa554a">__construct</link> (string $comparator)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Comparateurs mysql. </para>
+
+
+
+<para><caution><title>Attention</title>
+
+<para>Pour comparer au résultat d&apos;une requête, utilisez REQUEST_COMPARATOR @markers singleMarker,bindMarkers </para>
+</caution>
+<formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00176_source_1l00015">15</link> du fichier <link linkend="_a00176_source">MysqlComparator.php</link>.</para>
+</section>
+<section>
+<title>Documentation des constructeurs et destructeur</title>
+<anchor xml:id="_a00732_1a9236f7d7a4aad5889177bb04224b9b6f"/><section>
+    <title>__construct()</title>
+<indexterm><primary>__construct</primary><secondary>MysqlComparator</secondary></indexterm>
+<indexterm><primary>MysqlComparator</primary><secondary>__construct</secondary></indexterm>
+<para><computeroutput>__construct (string $comparator, Closure $toBindGetter)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$comparator</entry><entry>
+<para>Comparateur </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Closure</entry><entry>$toBindGetter</entry><entry>
+<para>Fonction de récupération des données de bind du comparateur </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <caution><title>Attention</title>
+
+<para>Fonction doit retourner MysqlBindDatas </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00176_source_1l00026">26</link> du fichier <link linkend="_a00176_source">MysqlComparator.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00732_1accdb440b43d2e42e3f33f3f80eba8b26"/><section>
+    <title>BETWEEN()</title>
+<indexterm><primary>BETWEEN</primary><secondary>MysqlComparator</secondary></indexterm>
+<indexterm><primary>MysqlComparator</primary><secondary>BETWEEN</secondary></indexterm>
+<para><computeroutput>static BETWEEN ( )<computeroutput>[static]</computeroutput></computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>MysqlComparator Comparateur BETWEEN </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Tableau contenant les deux valeurs min max </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00176_source_1l00190">190</link> du fichier <link linkend="_a00176_source">MysqlComparator.php</link>.</para>
+</section>
+<anchor xml:id="_a00732_1aa5f0e968454a414e12f4f2cc8d9feda1"/><section>
+    <title>EQUAL()</title>
+<indexterm><primary>EQUAL</primary><secondary>MysqlComparator</secondary></indexterm>
+<indexterm><primary>MysqlComparator</primary><secondary>EQUAL</secondary></indexterm>
+<para><computeroutput>static EQUAL ( )<computeroutput>[static]</computeroutput></computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>MysqlComparator Comparateur égal </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Donnée simple </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00176_source_1l00075">75</link> du fichier <link linkend="_a00176_source">MysqlComparator.php</link>.</para>
+</section>
+<anchor xml:id="_a00732_1a7b51122ee1da08536f6348e5d14c6d50"/><section>
+    <title>getBindDatas()</title>
+<indexterm><primary>getBindDatas</primary><secondary>MysqlComparator</secondary></indexterm>
+<indexterm><primary>MysqlComparator</primary><secondary>getBindDatas</secondary></indexterm>
+<para><computeroutput>getBindDatas (mixed $value)</computeroutput></para><para>
+
+<para>Fourni les données de bind PDO à partir des données fournies. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>mixed</entry><entry>$value</entry><entry>
+<para>Données </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>MysqlBindDatas Données de bind au format </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00176_source_1l00037">37</link> du fichier <link linkend="_a00176_source">MysqlComparator.php</link>.</para>
+</section>
+<anchor xml:id="_a00732_1a8bb1239a5952fb89b6b0d51ac874cd8d"/><section>
+    <title>IN()</title>
+<indexterm><primary>IN</primary><secondary>MysqlComparator</secondary></indexterm>
+<indexterm><primary>MysqlComparator</primary><secondary>IN</secondary></indexterm>
+<para><computeroutput>static IN ( )<computeroutput>[static]</computeroutput></computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>MysqlComparator Comparateur in </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Tableau contenant les valeurs à vérifier </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00176_source_1l00091">91</link> du fichier <link linkend="_a00176_source">MysqlComparator.php</link>.</para>
+</section>
+<anchor xml:id="_a00732_1ace32c2b4521a47ad1aeea3ad16bf44d3"/><section>
+    <title>INFERIOR()</title>
+<indexterm><primary>INFERIOR</primary><secondary>MysqlComparator</secondary></indexterm>
+<indexterm><primary>MysqlComparator</primary><secondary>INFERIOR</secondary></indexterm>
+<para><computeroutput>static INFERIOR ( )<computeroutput>[static]</computeroutput></computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>MysqlComparator Comparateur &lt; </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Donnée simple </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00176_source_1l00126">126</link> du fichier <link linkend="_a00176_source">MysqlComparator.php</link>.</para>
+</section>
+<anchor xml:id="_a00732_1a8963f9b60cbc5ce1bc0f1740a020010a"/><section>
+    <title>INFERIOR_OR_EQUAL()</title>
+<indexterm><primary>INFERIOR_OR_EQUAL</primary><secondary>MysqlComparator</secondary></indexterm>
+<indexterm><primary>MysqlComparator</primary><secondary>INFERIOR_OR_EQUAL</secondary></indexterm>
+<para><computeroutput>static INFERIOR_OR_EQUAL ( )<computeroutput>[static]</computeroutput></computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>MysqlComparator Comparateur &lt;= </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Donnée simple </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00176_source_1l00158">158</link> du fichier <link linkend="_a00176_source">MysqlComparator.php</link>.</para>
+</section>
+<anchor xml:id="_a00732_1ad551b744ccf647ed0020deed08505991"/><section>
+    <title>LIKE()</title>
+<indexterm><primary>LIKE</primary><secondary>MysqlComparator</secondary></indexterm>
+<indexterm><primary>MysqlComparator</primary><secondary>LIKE</secondary></indexterm>
+<para><computeroutput>static LIKE ( )<computeroutput>[static]</computeroutput></computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>MysqlComparator Comparateur LIKE </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Donnée simple regex like mysql </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00176_source_1l00206">206</link> du fichier <link linkend="_a00176_source">MysqlComparator.php</link>.</para>
+</section>
+<anchor xml:id="_a00732_1a1fb2efb049d96ce5d135c6ff3b3c324a"/><section>
+    <title>NOT_EQUAL()</title>
+<indexterm><primary>NOT_EQUAL</primary><secondary>MysqlComparator</secondary></indexterm>
+<indexterm><primary>MysqlComparator</primary><secondary>NOT_EQUAL</secondary></indexterm>
+<para><computeroutput>static NOT_EQUAL ( )<computeroutput>[static]</computeroutput></computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>MysqlComparator Comparateur != </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Donnée simple </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00176_source_1l00174">174</link> du fichier <link linkend="_a00176_source">MysqlComparator.php</link>.</para>
+</section>
+<anchor xml:id="_a00732_1a9036fa1430924ddc04f86c4866c3b71c"/><section>
+    <title>REGEXP()</title>
+<indexterm><primary>REGEXP</primary><secondary>MysqlComparator</secondary></indexterm>
+<indexterm><primary>MysqlComparator</primary><secondary>REGEXP</secondary></indexterm>
+<para><computeroutput>static REGEXP ( )<computeroutput>[static]</computeroutput></computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>MysqlComparator Comparateur LIKE </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Donnée simple regex </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00176_source_1l00222">222</link> du fichier <link linkend="_a00176_source">MysqlComparator.php</link>.</para>
+</section>
+<anchor xml:id="_a00732_1a025e6a116800b5ab712f49afceb383fc"/><section>
+    <title>REQUEST_COMPARATOR()</title>
+<indexterm><primary>REQUEST_COMPARATOR</primary><secondary>MysqlComparator</secondary></indexterm>
+<indexterm><primary>MysqlComparator</primary><secondary>REQUEST_COMPARATOR</secondary></indexterm>
+<para><computeroutput>static REQUEST_COMPARATOR (string $comparator, <link linkend="_a00724">MysqlQueryBuilder</link> $queryBuilder)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Crée un comparateur sur une requête. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$comparator</entry><entry>
+<para>Chaine comparatrice contenant le marqueur {request} pour y placer la requête </para>
+</entry>
+                            </row>
+                            <row>
+<entry>MysqlQueryBuilder</entry><entry>$queryBuilder</entry><entry>
+<para>Requête à gérer </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <caution><title>Attention</title>
+
+<para>la fonction bindGetter généré prend en paramètre le queryBuilder (sur une &quot;MysqlCondition&quot; fournissez le queryBuilder) </para>
+
+<para>Une fois appellé le contenu de la requête n&apos;est pas modifiable </para>
+</caution>
+<formalpara><title>Renvoie</title>
+
+<para>MysqlComparator comparateur </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00176_source_1l00049">49</link> du fichier <link linkend="_a00176_source">MysqlComparator.php</link>.</para>
+</section>
+<anchor xml:id="_a00732_1afd35e297709f18f025ac038b6343c4cd"/><section>
+    <title>SECURE_COMPARE()</title>
+<indexterm><primary>SECURE_COMPARE</primary><secondary>MysqlComparator</secondary></indexterm>
+<indexterm><primary>MysqlComparator</primary><secondary>SECURE_COMPARE</secondary></indexterm>
+<para><computeroutput>static SECURE_COMPARE ( )<computeroutput>[static]</computeroutput></computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>MysqlComparator Comparateur comparaison null sécurisé </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Donnée simple </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00176_source_1l00238">238</link> du fichier <link linkend="_a00176_source">MysqlComparator.php</link>.</para>
+</section>
+<anchor xml:id="_a00732_1a34d26cd84bfe74f1a6d6864262aee4bc"/><section>
+    <title>SOUNDS_LIKE()</title>
+<indexterm><primary>SOUNDS_LIKE</primary><secondary>MysqlComparator</secondary></indexterm>
+<indexterm><primary>MysqlComparator</primary><secondary>SOUNDS_LIKE</secondary></indexterm>
+<para><computeroutput>static SOUNDS_LIKE ( )<computeroutput>[static]</computeroutput></computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>MysqlComparator Comparateur par son </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Donnée simple </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00176_source_1l00254">254</link> du fichier <link linkend="_a00176_source">MysqlComparator.php</link>.</para>
+</section>
+<anchor xml:id="_a00732_1aaf5b1c9599e26109934a23ed8ac10764"/><section>
+    <title>SUPERIOR()</title>
+<indexterm><primary>SUPERIOR</primary><secondary>MysqlComparator</secondary></indexterm>
+<indexterm><primary>MysqlComparator</primary><secondary>SUPERIOR</secondary></indexterm>
+<para><computeroutput>static SUPERIOR ( )<computeroutput>[static]</computeroutput></computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>MysqlComparator Comparateur &gt; </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Donnée simple </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00176_source_1l00110">110</link> du fichier <link linkend="_a00176_source">MysqlComparator.php</link>.</para>
+</section>
+<anchor xml:id="_a00732_1ac54227b60e583912769da70ce186befc"/><section>
+    <title>SUPERIOR_OR_EQUAL()</title>
+<indexterm><primary>SUPERIOR_OR_EQUAL</primary><secondary>MysqlComparator</secondary></indexterm>
+<indexterm><primary>MysqlComparator</primary><secondary>SUPERIOR_OR_EQUAL</secondary></indexterm>
+<para><computeroutput>static SUPERIOR_OR_EQUAL ( )<computeroutput>[static]</computeroutput></computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>MysqlComparator Comparateur &gt;= </para>
+</formalpara>
+<caution><title>Attention</title>
+
+<para>Donnée simple </para>
+</caution>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00176_source_1l00142">142</link> du fichier <link linkend="_a00176_source">MysqlComparator.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des champs</title>
+<anchor xml:id="_a00732_1a2bcf1dc03deccd90c26a86bd5a3c8758"/><section>
+    <title>$toBindGetter</title>
+<indexterm><primary>$toBindGetter</primary><secondary>MysqlComparator</secondary></indexterm>
+<indexterm><primary>MysqlComparator</primary><secondary>$toBindGetter</secondary></indexterm>
+<para><computeroutput>Closure $toBindGetter<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00176_source_1l00019">19</link> du fichier <link linkend="_a00176_source">MysqlComparator.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00176">MysqlComparator.php</link></section>
+</section>

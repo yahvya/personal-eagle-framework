@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00696" xml:lang="fr">
+<title>Référence de la classe JoinedList</title>
+<indexterm><primary>JoinedList</primary></indexterm>
+<para>
+
+<para>Lignes jointes. </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de JoinedList:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00696.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00696_1a46dec4fa86938abc6360a66efab1ed40">__construct</link> (<link linkend="_a00620">JoinedColumn</link> $descriptor, <link linkend="_a00752">MysqlModel</link> $linkedModel)</para>
+</listitem>
+            <listitem><para><link linkend="_a00696_1a7ade0fcadb2ad394ee06a2a8a6d73b7e">loadContent</link> ()</para>
+
+<para>Charge les données de la jointure. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Fonctions membres publiques hérités de <link linkend="_a00868">SaboList</link>        <itemizedlist>
+            <listitem><para><link linkend="_a00868_1add9700ccb82ce780fb2ab8743a2c3a32">__construct</link> (array $datas)</para>
+</listitem>
+            <listitem><para><link linkend="_a00868_1ac751e87b3d4c4bf2feb03bee8b092755">count</link> ()</para>
+
+<para>Retourne le nombre d&apos;éléments contenu dans la liste. </para>
+</listitem>
+            <listitem><para><link linkend="_a00868_1af343507d1926e6ecf964625d41db528c">current</link> ()</para>
+
+<para>Retourne l&apos;élément actuel de la liste. </para>
+</listitem>
+            <listitem><para><link linkend="_a00868_1a729e946b4ef600e71740113c6d4332c0">key</link> ()</para>
+
+<para>Retourne la clé de l&apos;élément actuel de la liste. </para>
+</listitem>
+            <listitem><para><link linkend="_a00868_1acea62048bfee7b3cd80ed446c86fb78a">next</link> ()</para>
+
+<para>Déplace le pointeur vers l&apos;élément suivant dans la liste. </para>
+</listitem>
+            <listitem><para><link linkend="_a00868_1ae619dcf2218c21549cb65d875bbc6c9c">rewind</link> ()</para>
+
+<para>Remet le pointeur à la première position dans la liste. </para>
+</listitem>
+            <listitem><para><link linkend="_a00868_1abb9f0d6adf1eb9b3b55712056861a247">valid</link> ()</para>
+
+<para>Vérifie si la position actuelle est valide dans la liste. </para>
+</listitem>
+            <listitem><para><link linkend="_a00868_1acac359f9ae56b80c7979f4a4feb736e5">getFirst</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00868_1a9316ede6960667d832997c8e20223623">getLast</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00868_1a0a0d23c7966e175decc37167e155abfc">setFinder</link> (Closure $finder)</para>
+
+<para>Met à jour la fonction de recherche interne. </para>
+</listitem>
+            <listitem><para><link linkend="_a00868_1aedcc52b3673b8df9425e52f13accb2a1">isEmpty</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00868_1a29d794d6fdd838b7012f768ca3186922">getDefaultFinder</link> ()</para>
+
+<para>Défini la fonction de recherche par défaut permettant. </para>
+</listitem>
+            <listitem><para><link linkend="_a00868_1a9060f5ce53f0bca2d919217fba1042c2">find</link> (mixed ... $toFinds)</para>
+
+<para>Recherche les correspondances des données fournies et crée une liste avec. </para>
+</listitem>
+            <listitem><para><link linkend="_a00868_1a658defb34762c8f40085aec87e16ba1a">toArray</link> ()</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Attributs protégés    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00620">JoinedColumn</link> <link linkend="_a00696_1ad849d24148a7a1a064ed0edaedcde316">$descriptor</link></para>
+</listitem>
+            <listitem><para><link linkend="_a00752">MysqlModel</link> <link linkend="_a00696_1ac4ea7676bc56fc88b2e67677cd303824">$linkedModel</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Attributs protégés hérités de <link linkend="_a00868">SaboList</link>        <itemizedlist>
+            <listitem><para>array <link linkend="_a00868_1a24f62d4b2d3331a3b86bead49c3cd307">$datas</link></para>
+</listitem>
+            <listitem><para>int <link linkend="_a00868_1a28ecc2ec5335ce3136b198aa8ecafb5e">$currentPos</link></para>
+</listitem>
+            <listitem><para>Closure <link linkend="_a00868_1a710a5c5adaa1e17d8e6eb412ef7a555e">$finder</link></para>
+</listitem>
+        </itemizedlist>
+<section>
+<title>Description détaillée</title>
+
+<para>Lignes jointes. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> @template ContainedType type d&apos;éléments contenu </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00149_source_1l00015">15</link> du fichier <link linkend="_a00149_source">JoinedList.php</link>.</para>
+</section>
+<section>
+<title>Documentation des constructeurs et destructeur</title>
+<anchor xml:id="_a00696_1a46dec4fa86938abc6360a66efab1ed40"/><section>
+    <title>__construct()</title>
+<indexterm><primary>__construct</primary><secondary>JoinedList</secondary></indexterm>
+<indexterm><primary>JoinedList</primary><secondary>__construct</secondary></indexterm>
+<para><computeroutput>__construct (<link linkend="_a00620">JoinedColumn</link> $descriptor, <link linkend="_a00752">MysqlModel</link> $linkedModel)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>JoinedColumn</entry><entry>$descriptor</entry><entry>
+<para>Descripteur de la jointure </para>
+</entry>
+                            </row>
+                            <row>
+<entry>MysqlModel</entry><entry>$linkedModel</entry><entry>
+<para>model lié </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00149_source_1l00030">30</link> du fichier <link linkend="_a00149_source">JoinedList.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00696_1a7ade0fcadb2ad394ee06a2a8a6d73b7e"/><section>
+    <title>loadContent()</title>
+<indexterm><primary>loadContent</primary><secondary>JoinedList</secondary></indexterm>
+<indexterm><primary>JoinedList</primary><secondary>loadContent</secondary></indexterm>
+<para><computeroutput>loadContent ( )</computeroutput></para><para>
+
+<para>Charge les données de la jointure. </para>
+</para>
+
+<para><formalpara><title>Renvoie</title>
+
+<para>$this </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Exceptions</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>MysqlException</entry><entry>
+<para>en cas d&apos;erreur lors du chargement </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00149_source_1l00042">42</link> du fichier <link linkend="_a00149_source">JoinedList.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des champs</title>
+<anchor xml:id="_a00696_1ad849d24148a7a1a064ed0edaedcde316"/><section>
+    <title>$descriptor</title>
+<indexterm><primary>$descriptor</primary><secondary>JoinedList</secondary></indexterm>
+<indexterm><primary>JoinedList</primary><secondary>$descriptor</secondary></indexterm>
+<para><computeroutput><link linkend="_a00620">JoinedColumn</link> $descriptor<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00149_source_1l00019">19</link> du fichier <link linkend="_a00149_source">JoinedList.php</link>.</para>
+</section>
+<anchor xml:id="_a00696_1ac4ea7676bc56fc88b2e67677cd303824"/><section>
+    <title>$linkedModel</title>
+<indexterm><primary>$linkedModel</primary><secondary>JoinedList</secondary></indexterm>
+<indexterm><primary>JoinedList</primary><secondary>$linkedModel</secondary></indexterm>
+<para><computeroutput><link linkend="_a00752">MysqlModel</link> $linkedModel<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00149_source_1l00024">24</link> du fichier <link linkend="_a00149_source">JoinedList.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00149">JoinedList.php</link></section>
+</section>

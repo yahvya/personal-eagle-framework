@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00209_source" xml:lang="fr">
+<title>DatabaseCondition.php</title>
+<indexterm><primary>DatabaseCondition.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00209_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00209_source_1l00002"/>00002 
+<anchor xml:id="_a00209_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00415">SaboCore\Database\System</link>;
+<anchor xml:id="_a00209_source_1l00004"/>00004 
+<anchor xml:id="_a00209_source_1l00009"/><link linkend="_a00772">00009</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00772">DatabaseCondition</link>{
+<anchor xml:id="_a00209_source_1l00013"/><link linkend="_a00772_1a5018d4400f34e6b02ef61b7469b12168">00013</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;mixed&#32;<link linkend="_a00772_1a5018d4400f34e6b02ef61b7469b12168">$condGetter</link>;
+<anchor xml:id="_a00209_source_1l00014"/>00014 
+<anchor xml:id="_a00209_source_1l00018"/><link linkend="_a00772_1a2a08198d3d58ef8320300020b9e05447">00018</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;mixed&#32;<link linkend="_a00772_1a2a08198d3d58ef8320300020b9e05447">$conditionValue</link>;
+<anchor xml:id="_a00209_source_1l00019"/>00019 
+<anchor xml:id="_a00209_source_1l00023"/><link linkend="_a00772_1a5e066e6cbcc55832af5d8d9c84997b41">00023</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<link linkend="_a00768">DatabaseComparator</link>&#32;<link linkend="_a00772_1a5e066e6cbcc55832af5d8d9c84997b41">$comparator</link>;
+<anchor xml:id="_a00209_source_1l00024"/>00024 
+<anchor xml:id="_a00209_source_1l00030"/><link linkend="_a00772_1af97c320645f51050f85729722bf8a375">00030</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00772_1af97c320645f51050f85729722bf8a375">__construct</link>(mixed&#32;<link linkend="_a00772_1a5018d4400f34e6b02ef61b7469b12168">$condGetter</link>,&#32;<link linkend="_a00768">DatabaseComparator</link>&#32;<link linkend="_a00772_1a5e066e6cbcc55832af5d8d9c84997b41">$comparator</link>,mixed&#32;<link linkend="_a00772_1a2a08198d3d58ef8320300020b9e05447">$conditionValue</link>){
+<anchor xml:id="_a00209_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;condGetter&#32;=&#32;<link linkend="_a00772_1a5018d4400f34e6b02ef61b7469b12168">$condGetter</link>;
+<anchor xml:id="_a00209_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;conditionValue&#32;=&#32;<link linkend="_a00772_1a2a08198d3d58ef8320300020b9e05447">$conditionValue</link>;
+<anchor xml:id="_a00209_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;comparator&#32;=&#32;<link linkend="_a00772_1a5e066e6cbcc55832af5d8d9c84997b41">$comparator</link>;
+<anchor xml:id="_a00209_source_1l00034"/>00034 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00209_source_1l00035"/>00035 
+<anchor xml:id="_a00209_source_1l00039"/><link linkend="_a00772_1a77af78f1052edadea4064d1f191da05a">00039</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00772_1a77af78f1052edadea4064d1f191da05a">getCondGetter</link>():&#32;mixed{
+<anchor xml:id="_a00209_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;condGetter;
+<anchor xml:id="_a00209_source_1l00041"/>00041 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00209_source_1l00042"/>00042 
+<anchor xml:id="_a00209_source_1l00046"/><link linkend="_a00772_1aed18d222c4a8cfbc1f544b7adb08ffeb">00046</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00772_1aed18d222c4a8cfbc1f544b7adb08ffeb">getConditionValue</link>():&#32;mixed{
+<anchor xml:id="_a00209_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;conditionValue;
+<anchor xml:id="_a00209_source_1l00048"/>00048 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00209_source_1l00049"/>00049 
+<anchor xml:id="_a00209_source_1l00053"/><link linkend="_a00772_1ad16a3785de3980107c4b2fc796819637">00053</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00772_1ad16a3785de3980107c4b2fc796819637">getComparator</link>():&#32;<link linkend="_a00768">DatabaseComparator</link>{
+<anchor xml:id="_a00209_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;comparator;
+<anchor xml:id="_a00209_source_1l00055"/>00055 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00209_source_1l00056"/>00056 }
+</programlisting></section>

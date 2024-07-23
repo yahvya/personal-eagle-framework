@@ -1,0 +1,49 @@
+.TH "SqlAttribute" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SqlAttribute \- Représente un attribut pouvant être créé en sql\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Dérivée par \fBTableColumn\fP, et \fBTableName\fP\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fBgetCreationSql\fP ()"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Représente un attribut pouvant être créé en sql\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB9\fP du fichier \fBSqlAttribute\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "getCreationSql ()\fC [abstract]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+string Fourni le sql de création de l'attribut 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBBinaryColumn\fP, \fBCharColumn\fP, \fBDecimalColumn\fP, \fBEnumColumn\fP, \fBIntColumn\fP, \fBJsonColumn\fP, \fBTableName\fP, \fBTextColumn\fP, \fBTimestampColumn\fP, \fBTinyIntColumn\fP, \fBVarBinaryColumn\fP, et \fBVarcharColumn\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

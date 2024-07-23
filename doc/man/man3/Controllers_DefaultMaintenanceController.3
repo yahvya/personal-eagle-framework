@@ -1,0 +1,99 @@
+.TH "DefaultMaintenanceController" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+DefaultMaintenanceController \- Controller de vérification de maintenance par défaut\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de \fBMaintenanceController\fP\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fBshowMaintenancePage\fP (string $secretLink)"
+.br
+.RI "Affiche la page d'authentification\&. "
+.ti -1c
+.RI "\fBverifyLogin\fP (\fBRequest\fP $request)"
+.br
+.RI "Vérifie l'accès au site\&. "
+.in -1c
+
+Fonctions membres publiques hérités de \fBMaintenanceController\fP
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP ()"
+.br
+.ti -1c
+.RI "\fBshowMaintenancePage\fP (string $secretLink)"
+.br
+.RI "Affiche la page d'authentification\&. "
+.ti -1c
+.RI "\fBverifyLogin\fP (\fBRequest\fP $request)"
+.br
+.RI "Vérifie l'accès au site\&. "
+.in -1c
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP ()"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Controller de vérification de maintenance par défaut\&. 
+.PP
+Définition à la ligne \fB17\fP du fichier \fBDefaultMaintenanceController\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "showMaintenancePage (string $secretLink)"
+
+.PP
+Affiche la page d'authentification\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$secretLink\fP lien secret de maintenance 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+Response la réponse de gestion de maintenance 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIConfigException\fP 
+.RE
+.PP
+
+.PP
+Réimplémentée à partir de \fBMaintenanceController\fP\&.
+.PP
+Définition à la ligne \fB19\fP du fichier \fBDefaultMaintenanceController\&.php\fP\&.
+.SS "verifyLogin (\fBRequest\fP $request)"
+
+.PP
+Vérifie l'accès au site\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$request\fP données de requête 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+bool si l'accès est autorisé 
+.RE
+.PP
+
+.PP
+Réimplémentée à partir de \fBMaintenanceController\fP\&.
+.PP
+Définition à la ligne \fB29\fP du fichier \fBDefaultMaintenanceController\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00383_source" xml:lang="fr">
+<title>web.php</title>
+<indexterm><primary>web.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00383_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00383_source_1l00002"/>00002 
+<anchor xml:id="_a00383_source_1l00003"/>00003 <emphasis role="comment">//&#32;routes&#32;web</emphasis>
+<anchor xml:id="_a00383_source_1l00004"/>00004 
+<anchor xml:id="_a00383_source_1l00005"/>00005 use&#32;<link linkend="_a00796">SaboCore\Routing\Response\BladeResponse</link>;
+<anchor xml:id="_a00383_source_1l00006"/>00006 use&#32;<link linkend="_a00832">SaboCore\Routing\Routes\Route</link>;
+<anchor xml:id="_a00383_source_1l00007"/>00007 use&#32;<link linkend="_a00836">SaboCore\Routing\Routes\RouteManager</link>;
+<anchor xml:id="_a00383_source_1l00008"/>00008 
+<anchor xml:id="_a00383_source_1l00009"/>00009 RouteManager::registerRoute(
+<anchor xml:id="_a00383_source_1l00010"/>00010 &#32;&#32;&#32;&#32;Route::get(
+<anchor xml:id="_a00383_source_1l00011"/>00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;link:&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>,
+<anchor xml:id="_a00383_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toExecute:&#32;fn():<link linkend="_a00796">BladeResponse</link>&#32;=&gt;&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00796">BladeResponse</link>(<emphasis role="stringliteral">&quot;sabo&quot;</emphasis>,[<emphasis role="stringliteral">&quot;websiteLink&quot;</emphasis>&#32;=&gt;&#32;<emphasis role="stringliteral">&quot;https://github.com/yahvya/sabo-final&quot;</emphasis>]),
+<anchor xml:id="_a00383_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;routeName:&#32;<emphasis role="stringliteral">&quot;sabo&quot;</emphasis>
+<anchor xml:id="_a00383_source_1l00014"/>00014 &#32;&#32;&#32;&#32;)
+<anchor xml:id="_a00383_source_1l00015"/>00015 );
+</programlisting></section>

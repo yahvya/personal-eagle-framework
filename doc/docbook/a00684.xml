@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00684" xml:lang="fr">
+<title>Référence de la classe LenCond</title>
+<indexterm><primary>LenCond</primary></indexterm>
+<para>
+
+<para>Condition de vérification de taille. </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de LenCond:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00684.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00684_1a398b1bfb35f7a524ff612bd5d6a8d2d8">__construct</link> (int $minLength=1, int $maxLength=255, string $errorMessage=&quot;Veuillez vérifier le contenu de la chaine saisie.&quot;)</para>
+</listitem>
+            <listitem><para><link linkend="_a00684_1aaab6c4c9f3ed625334aa5024eb645ba0">verifyData</link> (<link linkend="_a00752">MysqlModel</link> $baseModel, string $attributeName, mixed $data)</para>
+
+<para>Vérifie si la donnée est valide. </para>
+</listitem>
+            <listitem><para><link linkend="_a00684_1a3d24ed0e93b212b4d5e382fa795bf4ef">getErrorMessage</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00684_1a2bd06fb688dc4a272e4a92500cb3a4ce">getIsDisplayable</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00664_1aaab6c4c9f3ed625334aa5024eb645ba0">verifyData</link> (<link linkend="_a00752">MysqlModel</link> $baseModel, string $attributeName, mixed $data)</para>
+
+<para>Vérifie si la donnée est valide. </para>
+</listitem>
+            <listitem><para><link linkend="_a00664_1a3d24ed0e93b212b4d5e382fa795bf4ef">getErrorMessage</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00664_1a2bd06fb688dc4a272e4a92500cb3a4ce">getIsDisplayable</link> ()</para>
+</listitem>
+        </itemizedlist>
+<section>
+<title>Description détaillée</title>
+
+<para>Condition de vérification de taille. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00140_source_1l00014">14</link> du fichier <link linkend="_a00140_source">LenCond.php</link>.</para>
+</section>
+<section>
+<title>Documentation des constructeurs et destructeur</title>
+<anchor xml:id="_a00684_1a398b1bfb35f7a524ff612bd5d6a8d2d8"/><section>
+    <title>__construct()</title>
+<indexterm><primary>__construct</primary><secondary>LenCond</secondary></indexterm>
+<indexterm><primary>LenCond</primary><secondary>__construct</secondary></indexterm>
+<para><computeroutput>__construct (int $minLength = <computeroutput>1</computeroutput>
+, int $maxLength = <computeroutput>255</computeroutput>
+, string $errorMessage = <computeroutput>&quot;Veuillez&#160;vérifier&#160;le&#160;contenu&#160;de&#160;la&#160;chaine&#160;saisie.&quot;</computeroutput>
+)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>int</entry><entry>$minLength</entry><entry>
+<para>la taille minimum de la chaine contenue (par défaut 1) </para>
+</entry>
+                            </row>
+                            <row>
+<entry>int</entry><entry>$maxLength</entry><entry>
+<para>la taille maximum de la chaine contenue (par défaut 2) </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$errorMessage</entry><entry>
+<para>le message à afficher en cas de non validation </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00140_source_1l00035">35</link> du fichier <link linkend="_a00140_source">LenCond.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00684_1a3d24ed0e93b212b4d5e382fa795bf4ef"/><section>
+    <title>getErrorMessage()</title>
+<indexterm><primary>getErrorMessage</primary><secondary>LenCond</secondary></indexterm>
+<indexterm><primary>LenCond</primary><secondary>getErrorMessage</secondary></indexterm>
+<para><computeroutput>getErrorMessage ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string Le message d&apos;erreur </para>
+</formalpara>
+</para>
+<para>
+Implémente <link linkend="_a00664_1a3d24ed0e93b212b4d5e382fa795bf4ef">Cond</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00140_source_1l00053">53</link> du fichier <link linkend="_a00140_source">LenCond.php</link>.</para>
+</section>
+<anchor xml:id="_a00684_1a2bd06fb688dc4a272e4a92500cb3a4ce"/><section>
+    <title>getIsDisplayable()</title>
+<indexterm><primary>getIsDisplayable</primary><secondary>LenCond</secondary></indexterm>
+<indexterm><primary>LenCond</primary><secondary>getIsDisplayable</secondary></indexterm>
+<para><computeroutput>getIsDisplayable ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>bool Si le message d&apos;erreur peut être affiché </para>
+</formalpara>
+</para>
+<para>
+Implémente <link linkend="_a00664_1a2bd06fb688dc4a272e4a92500cb3a4ce">Cond</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00140_source_1l00058">58</link> du fichier <link linkend="_a00140_source">LenCond.php</link>.</para>
+</section>
+<anchor xml:id="_a00684_1aaab6c4c9f3ed625334aa5024eb645ba0"/><section>
+    <title>verifyData()</title>
+<indexterm><primary>verifyData</primary><secondary>LenCond</secondary></indexterm>
+<indexterm><primary>LenCond</primary><secondary>verifyData</secondary></indexterm>
+<para><computeroutput>verifyData (<link linkend="_a00752">MysqlModel</link> $baseModel, string $attributeName, mixed $data)</computeroutput></para><para>
+
+<para>Vérifie si la donnée est valide. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>MysqlModel</entry><entry>$baseModel</entry><entry>
+<para>Model de base </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$attributeName</entry><entry>
+<para>Nom de l&apos;attribut </para>
+</entry>
+                            </row>
+                            <row>
+<entry>mixed</entry><entry>$data</entry><entry>
+<para>donnée à vérifier </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>bool si la donnée est valide </para>
+</formalpara>
+</para>
+<para>
+Implémente <link linkend="_a00664_1aaab6c4c9f3ed625334aa5024eb645ba0">Cond</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00140_source_1l00042">42</link> du fichier <link linkend="_a00140_source">LenCond.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00140">LenCond.php</link></section>
+</section>

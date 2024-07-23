@@ -1,0 +1,85 @@
+.TH "TreatmentException" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TreatmentException \- Exception de traitement\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de Exception\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP (string $message, bool $isDisplayable)"
+.br
+.ti -1c
+.RI "\fBgetErrorMessage\fP (string $defaultMessage='Une erreur s'est produite')"
+.br
+.in -1c
+.SS "Attributs protégés"
+
+.in +1c
+.ti -1c
+.RI "bool \fB$isDisplayable\fP"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Exception de traitement\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github/yahvya.com 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB11\fP du fichier \fBTreatmentException\&.php\fP\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "__construct (string $message, bool $isDisplayable)"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$message\fP message d'erreur 
+.br
+\fI$isDisplayable\fP si l'erreur est affichable à l'utilisateur 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB21\fP du fichier \fBTreatmentException\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "getErrorMessage (string $defaultMessage = \fC'Une erreur s'est produite'\fP)"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$defaultMessage\fP message d'erreur par défaut en cas de message non affichable 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+string le message d'erreur 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB32\fP du fichier \fBTreatmentException\&.php\fP\&.
+.SH "Documentation des champs"
+.PP 
+.SS "bool $isDisplayable\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB15\fP du fichier \fBTreatmentException\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

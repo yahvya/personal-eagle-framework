@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00026_source" xml:lang="fr">
+<title>ModelMakerCommand.php</title>
+<indexterm><primary>ModelMakerCommand.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00026_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00026_source_1l00002"/>00002 
+<anchor xml:id="_a00026_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00401">SaboCore\Cli\Commands</link>;
+<anchor xml:id="_a00026_source_1l00004"/>00004 
+<anchor xml:id="_a00026_source_1l00005"/>00005 use&#32;Override;
+<anchor xml:id="_a00026_source_1l00006"/>00006 use&#32;<link linkend="_a00552">SaboCore\Cli\Cli\SaboCli</link>;
+<anchor xml:id="_a00026_source_1l00007"/>00007 use&#32;<link linkend="_a00402_1a48a4d69dfa43ecb7cc2495c6d711def4">SaboCore\Cli\Theme\Theme</link>;
+<anchor xml:id="_a00026_source_1l00008"/>00008 use&#32;<link linkend="_a00888">SaboCore\Utils\Printer\Printer</link>;
+<anchor xml:id="_a00026_source_1l00009"/>00009 
+<anchor xml:id="_a00026_source_1l00014"/><link linkend="_a00568">00014</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00568">ModelMakerCommand</link>&#32;<emphasis role="keyword">extends</emphasis>&#32;<link linkend="_a00576">SaboTemplateUserCommand</link>{
+<anchor xml:id="_a00026_source_1l00015"/>00015 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00026_source_1l00016"/><link linkend="_a00568_1aa69a5cf0c3844e397a8d8e18d82c9a99">00016</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00568_1aa69a5cf0c3844e397a8d8e18d82c9a99">execCommand</link>(<link linkend="_a00552">SaboCli</link>&#32;$cli):void{
+<anchor xml:id="_a00026_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$argumentManager&#32;=&#32;$cli-&gt;getArgumentManager();
+<anchor xml:id="_a00026_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$themeConfig&#32;=&#32;$cli-&gt;<link linkend="_a00552_1a4cf8d7386802fb70f62aea05730a3cfe">getThemeConfig</link>();
+<anchor xml:id="_a00026_source_1l00019"/>00019 
+<anchor xml:id="_a00026_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;récupération&#32;de&#32;la&#32;configuration&#32;descriptive&#32;du&#32;model</emphasis>
+<anchor xml:id="_a00026_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$parentClass&#32;=&#32;$argumentManager-&gt;find(optionName:&#32;<emphasis role="stringliteral">&quot;parent&quot;</emphasis>)?-&gt;getArgumentValue()&#32;??&#32;<emphasis role="stringliteral">&quot;CustomModel&quot;</emphasis>;
+<anchor xml:id="_a00026_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[
+<anchor xml:id="_a00026_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;name&quot;</emphasis>&#32;=&gt;&#32;$modelName,
+<anchor xml:id="_a00026_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;description&quot;</emphasis>&#32;=&gt;&#32;$description,
+<anchor xml:id="_a00026_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;table&quot;</emphasis>&#32;=&gt;&#32;$tableName
+<anchor xml:id="_a00026_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;]&#32;=&#32;&#32;$this-&gt;<link linkend="_a00572_1a9704fa2bfd600fe1145fdf42a55e85de">getOptions</link>($cli,<emphasis role="stringliteral">&quot;name&quot;</emphasis>,<emphasis role="stringliteral">&quot;description&quot;</emphasis>,<emphasis role="stringliteral">&quot;table&quot;</emphasis>);
+<anchor xml:id="_a00026_source_1l00027"/>00027 
+<anchor xml:id="_a00026_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;model&#32;non&#32;présent&#32;détaché</emphasis>
+<anchor xml:id="_a00026_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$lowerModelName&#32;=&#32;strtolower(<emphasis role="keywordtype">string</emphasis>:&#32;$modelName);
+<anchor xml:id="_a00026_source_1l00030"/>00030 
+<anchor xml:id="_a00026_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(
+<anchor xml:id="_a00026_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;!str_ends_with(haystack:&#32;$modelName,needle:&#32;<emphasis role="stringliteral">&quot;Model&quot;</emphasis>)
+<anchor xml:id="_a00026_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&amp;&amp;
+<anchor xml:id="_a00026_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;!str_ends_with(haystack:&#32;$lowerModelName,needle:&#32;<emphasis role="stringliteral">&quot;&#32;model&quot;</emphasis>)&#32;&amp;&amp;
+<anchor xml:id="_a00026_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;!str_ends_with(haystack:&#32;$modelName,needle:&#32;<emphasis role="stringliteral">&quot;model&quot;</emphasis>)
+<anchor xml:id="_a00026_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;)
+<anchor xml:id="_a00026_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$modelName&#32;.=&#32;<emphasis role="stringliteral">&quot;&#32;model&quot;</emphasis>;
+<anchor xml:id="_a00026_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;model&#32;présent&#32;mais&#32;attaché</emphasis>
+<anchor xml:id="_a00026_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="_a00026_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$modelName&#32;=&#32;substr(<emphasis role="keywordtype">string</emphasis>:&#32;$modelName,offset:&#32;0,length:&#32;-strlen(<emphasis role="keywordtype">string</emphasis>:&#32;<emphasis role="stringliteral">&quot;model&quot;</emphasis>)&#32;)&#32;.&#32;<emphasis role="stringliteral">&quot;&#32;model&quot;</emphasis>;
+<anchor xml:id="_a00026_source_1l00041"/>00041 
+<anchor xml:id="_a00026_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$modelName&#32;=&#32;<link linkend="_a00576_1a325101a9fa3b92adba02201aee4b6f1e">self::formatNameForClass</link>(baseName:&#32;$modelName);
+<anchor xml:id="_a00026_source_1l00043"/>00043 
+<anchor xml:id="_a00026_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;récupération&#32;des&#32;données&#32;de&#32;la&#32;class&#32;parent</emphasis>
+<anchor xml:id="_a00026_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$searchStartDirPath&#32;=&#32;APP_CONFIG-&gt;getConfig(name:&#32;<emphasis role="stringliteral">&quot;ROOT&quot;</emphasis>)&#32;.&#32;<emphasis role="stringliteral">&quot;/src/models&quot;</emphasis>;
+<anchor xml:id="_a00026_source_1l00046"/>00046 
+<anchor xml:id="_a00026_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$parentClassConfig&#32;=&#32;<link linkend="_a00576_1a7e7e444557db4f5e7998bf33da95d364">self::findClassDatas</link>(
+<anchor xml:id="_a00026_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;className:&#32;$parentClass,
+<anchor xml:id="_a00026_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;from:&#32;$searchStartDirPath
+<anchor xml:id="_a00026_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00026_source_1l00051"/>00051 
+<anchor xml:id="_a00026_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;échec&#32;de&#32;récupération&#32;de&#32;configuration&#32;du&#32;parent</emphasis>
+<anchor xml:id="_a00026_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($parentClassConfig&#32;===&#32;<emphasis role="keyword">null</emphasis>){
+<anchor xml:id="_a00026_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Printer::printStyle(
+<anchor xml:id="_a00026_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toPrint:&#32;<emphasis role="stringliteral">&quot;Données&#32;de&#32;la&#32;class&#32;parent&#32;non&#32;trouvée&#32;dans&#32;l&apos;un&#32;des&#32;dossiers&#32;/&#32;sous&#32;dossiers&#32;de&#32;&lt;$searchStartDirPath&gt;&quot;</emphasis>,
+<anchor xml:id="_a00026_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;compositeStyle:&#32;$themeConfig-&gt;getConfig(name:&#32;Theme::BASIC_ERROR_STYLE-&gt;value)
+<anchor xml:id="_a00026_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00026_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="_a00026_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00026_source_1l00060"/>00060 
+<anchor xml:id="_a00026_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;configuration&#32;de&#32;création</emphasis>
+<anchor xml:id="_a00026_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;[<emphasis role="stringliteral">&quot;namespace&quot;</emphasis>&#32;=&gt;&#32;$namespace,<emphasis role="stringliteral">&quot;directory&quot;</emphasis>&#32;=&gt;&#32;$parentClassDirPath]&#32;=&#32;$parentClassConfig;
+<anchor xml:id="_a00026_source_1l00063"/>00063 
+<anchor xml:id="_a00026_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$replacements&#32;=&#32;[
+<anchor xml:id="_a00026_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;model-description&quot;</emphasis>&#32;=&gt;&#32;$description,
+<anchor xml:id="_a00026_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;parent-class&quot;</emphasis>&#32;=&gt;&#32;$parentClass,
+<anchor xml:id="_a00026_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;model-import-config&quot;</emphasis>&#32;=&gt;&#32;$namespace&#32;!==&#32;<emphasis role="keyword">null</emphasis>&#32;?&#32;<emphasis role="stringliteral">&quot;namespace&#32;$namespace;&quot;</emphasis>&#32;:&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>,
+<anchor xml:id="_a00026_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;model-name&quot;</emphasis>&#32;=&gt;&#32;$modelName,
+<anchor xml:id="_a00026_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;represented-table&quot;</emphasis>&#32;=&gt;&#32;$tableName
+<anchor xml:id="_a00026_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;];
+<anchor xml:id="_a00026_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$destination&#32;=&#32;<emphasis role="stringliteral">&quot;$parentClassDirPath/$modelName.php&quot;</emphasis>;
+<anchor xml:id="_a00026_source_1l00072"/>00072 
+<anchor xml:id="_a00026_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;création&#32;du&#32;model</emphasis>
+<anchor xml:id="_a00026_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(self::createFromTemplate(templatePath:&#32;<emphasis role="stringliteral">&quot;/model-template.txt&quot;</emphasis>,dstPath:&#32;$destination,replacements:&#32;$replacements)&#32;){
+<anchor xml:id="_a00026_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Printer::printStyle(
+<anchor xml:id="_a00026_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toPrint:&#32;<emphasis role="stringliteral">&quot;Model&#32;&lt;$modelName&gt;&#32;crée&#32;dans&#32;&lt;$destination&gt;&quot;</emphasis>,
+<anchor xml:id="_a00026_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;compositeStyle:&#32;$themeConfig-&gt;getConfig(name:&#32;Theme::SPECIAL_TEXT_STYLE-&gt;value)
+<anchor xml:id="_a00026_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00026_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00026_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>{
+<anchor xml:id="_a00026_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Printer::printStyle(
+<anchor xml:id="_a00026_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toPrint:&#32;<emphasis role="stringliteral">&quot;Echec&#32;de&#32;création&#32;du&#32;model,&#32;veuillez&#32;retenter&quot;</emphasis>,
+<anchor xml:id="_a00026_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;compositeStyle:&#32;$themeConfig-&gt;getConfig(name:&#32;Theme::BASIC_ERROR_STYLE-&gt;value)
+<anchor xml:id="_a00026_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00026_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00026_source_1l00086"/>00086 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00026_source_1l00087"/>00087 
+<anchor xml:id="_a00026_source_1l00088"/>00088 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00026_source_1l00089"/><link linkend="_a00568_1a0db9ebd6c097296b09d33cf24ab68235">00089</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00568_1a0db9ebd6c097296b09d33cf24ab68235">getHelpLines</link>():array{
+<anchor xml:id="_a00026_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;[
+<anchor xml:id="_a00026_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;Crée&#32;un&#32;model&quot;</emphasis>,
+<anchor xml:id="_a00026_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;php&#32;sabo&#32;$this-&gt;commandName&#32;--name={nom&#32;du&#32;model}&quot;</emphasis>,
+<anchor xml:id="_a00026_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;Options&#32;requises&#32;:&quot;</emphasis>,
+<anchor xml:id="_a00026_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;\t--name&#32;:&#32;Nom&#32;du&#32;model&quot;</emphasis>,
+<anchor xml:id="_a00026_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;\t--description&#32;:&#32;Description&#32;du&#32;model&quot;</emphasis>,
+<anchor xml:id="_a00026_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;\t--table&#32;:&#32;Nom&#32;de&#32;la&#32;table&#32;représentée&#32;par&#32;le&#32;model&#32;en&#32;base&#32;de&#32;données&quot;</emphasis>,
+<anchor xml:id="_a00026_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;Options&#32;optionnelles&#32;:&quot;</emphasis>,
+<anchor xml:id="_a00026_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;\t--parent&#32;:&#32;Nom&#32;du&#32;fichier&#32;contenant&#32;la&#32;class&#32;dont&#32;va&#32;extends&#32;le&#32;model&#32;-&#32;par&#32;défaut&#32;le&#32;model&#32;extends&#32;de&#32;CustomModel.&#32;Recherche&#32;à&#32;partir&#32;du&#32;dossier&#32;src/models&quot;</emphasis>
+<anchor xml:id="_a00026_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;];
+<anchor xml:id="_a00026_source_1l00100"/>00100 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00026_source_1l00101"/>00101 }
+</programlisting></section>

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00278_source" xml:lang="fr">
+<title>SaboApiRequest.php</title>
+<indexterm><primary>SaboApiRequest.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00278_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00278_source_1l00002"/>00002 
+<anchor xml:id="_a00278_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00422">SaboCore\Utils\Api</link>;
+<anchor xml:id="_a00278_source_1l00004"/>00004 
+<anchor xml:id="_a00278_source_1l00009"/><link linkend="_a00422_1acded770c3134ecbf623b0f68863c903b">00009</link> <emphasis role="keyword">enum</emphasis>&#32;<link linkend="_a00422_1acded770c3134ecbf623b0f68863c903b">SaboApiRequest</link>{
+<anchor xml:id="_a00278_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;méthode&#32;de&#32;conversion&#32;des&#32;données</emphasis>
+<anchor xml:id="_a00278_source_1l00011"/>00011 
+<anchor xml:id="_a00278_source_1l00015"/>00015 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;JSON_BODY;
+<anchor xml:id="_a00278_source_1l00016"/>00016 
+<anchor xml:id="_a00278_source_1l00020"/>00020 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;HTTP_BUILD_QUERY;
+<anchor xml:id="_a00278_source_1l00021"/>00021 
+<anchor xml:id="_a00278_source_1l00025"/>00025 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;NO_DATA;
+<anchor xml:id="_a00278_source_1l00026"/>00026 
+<anchor xml:id="_a00278_source_1l00027"/>00027 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;mode&#32;de&#32;récupération&#32;du&#32;résultat&#32;d&apos;une&#32;requête</emphasis>
+<anchor xml:id="_a00278_source_1l00028"/>00028 
+<anchor xml:id="_a00278_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;RESULT_AS_STRING;
+<anchor xml:id="_a00278_source_1l00033"/>00033 
+<anchor xml:id="_a00278_source_1l00037"/>00037 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_a00422_1acded770c3134ecbf623b0f68863c903bac0901ae6e50d664ae65b524d70adf392">RESULT_AS_JSON_ARRAY</link>;
+<anchor xml:id="_a00278_source_1l00038"/><link linkend="_a00422_1acded770c3134ecbf623b0f68863c903bac0901ae6e50d664ae65b524d70adf392">00038</link> }
+</programlisting></section>

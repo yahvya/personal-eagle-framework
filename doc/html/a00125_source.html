@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sabo final:  Fichier source de Cond.php</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="favicon.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">Sabo final<span id="projectnumber">&#160;1.1.1</span>
+   </div>
+   <div id="projectbrief">Mini framework php</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('a00125_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Cond.php</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="a00125.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span>&lt;?php</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">namespace </span><a class="code hl_namespace" href="a00408.html">SaboCore\Database\Default\Conditions</a>;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>use <a class="code hl_class" href="a00752.html">SaboCore\Database\Default\System\MysqlModel</a>;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="a00664.html">   10</a></span><span class="keyword">interface </span><a class="code hl_interface" href="a00664.html">Cond</a>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="a00664.html#aaab6c4c9f3ed625334aa5024eb645ba0">   18</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00664.html#aaab6c4c9f3ed625334aa5024eb645ba0">verifyData</a>(<a class="code hl_class" href="a00752.html">MysqlModel</a> $baseModel,<span class="keywordtype">string</span> $attributeName,mixed $data):bool;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="a00664.html#a3d24ed0e93b212b4d5e382fa795bf4ef">   23</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00664.html#a3d24ed0e93b212b4d5e382fa795bf4ef">getErrorMessage</a>():string;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="a00664.html#a2bd06fb688dc4a272e4a92500cb3a4ce">   28</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00664.html#a2bd06fb688dc4a272e4a92500cb3a4ce">getIsDisplayable</a>():bool;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
+<div class="ttc" id="aa00408_html"><div class="ttname"><a href="a00408.html">SaboCore\Database\Default\Conditions</a></div><div class="ttdef"><b>Definition:</b> <a href="a00122_source.html#l00003">CallableCond.php:3</a></div></div>
+<div class="ttc" id="aa00664_html"><div class="ttname"><a href="a00664.html">SaboCore\Database\Default\Conditions\Cond</a></div><div class="ttdoc">Représente une condition de validation.</div><div class="ttdef"><b>Definition:</b> <a href="a00125_source.html#l00010">Cond.php:10</a></div></div>
+<div class="ttc" id="aa00664_html_a2bd06fb688dc4a272e4a92500cb3a4ce"><div class="ttname"><a href="a00664.html#a2bd06fb688dc4a272e4a92500cb3a4ce">SaboCore\Database\Default\Conditions\Cond\getIsDisplayable</a></div><div class="ttdeci">getIsDisplayable()</div></div>
+<div class="ttc" id="aa00664_html_a3d24ed0e93b212b4d5e382fa795bf4ef"><div class="ttname"><a href="a00664.html#a3d24ed0e93b212b4d5e382fa795bf4ef">SaboCore\Database\Default\Conditions\Cond\getErrorMessage</a></div><div class="ttdeci">getErrorMessage()</div></div>
+<div class="ttc" id="aa00664_html_aaab6c4c9f3ed625334aa5024eb645ba0"><div class="ttname"><a href="a00664.html#aaab6c4c9f3ed625334aa5024eb645ba0">SaboCore\Database\Default\Conditions\Cond\verifyData</a></div><div class="ttdeci">verifyData(MysqlModel $baseModel, string $attributeName, mixed $data)</div><div class="ttdoc">Vérifie si la donnée est valide.</div></div>
+<div class="ttc" id="aa00752_html"><div class="ttname"><a href="a00752.html">SaboCore\Database\Default\System\MysqlModel</a></div><div class="ttdoc">Modèle de la base de données mysql.</div><div class="ttdef"><b>Definition:</b> <a href="a00191_source.html#l00034">MysqlModel.php:34</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_5a9687d32d98fbbdb60629c9ff0dd338.html">sabo-core</a></li><li class="navelem"><a class="el" href="dir_89c513611bcd58d1ab34b1b964a8ae28.html">database</a></li><li class="navelem"><a class="el" href="dir_f771857c7dddd917dca02925fdff3865.html">default</a></li><li class="navelem"><a class="el" href="dir_525e76b1cf881fd6762b7c12d1c44972.html">conditions</a></li><li class="navelem"><a class="el" href="a00125.html">Cond.php</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
+</body>
+</html>

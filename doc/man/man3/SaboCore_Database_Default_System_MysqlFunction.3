@@ -1,0 +1,602 @@
+.TH "MysqlFunction" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MysqlFunction \- Fonctions mysql\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP (string $function, bool $replaceAttributesName=true)"
+.br
+.ti -1c
+.RI "\fBas\fP (string $alias)"
+.br
+.ti -1c
+.RI "\fBgetAlias\fP ()"
+.br
+.ti -1c
+.RI "\fBhaveToReplaceAttributesName\fP ()"
+.br
+.ti -1c
+.RI "\fBgetFunction\fP ()"
+.br
+.in -1c
+.SS "Fonctions membres publiques statiques"
+
+.in +1c
+.ti -1c
+.RI "static \fBCONCAT\fP (string \&.\&.\&. $toConcat)"
+.br
+.RI "Fonction CONCAT mysql\&. "
+.ti -1c
+.RI "static \fBSUBSTRING\fP (string $stringGetter, int $start, int $length)"
+.br
+.RI "Fonction SUBSTRING mysql\&. "
+.ti -1c
+.RI "static \fBUPPER\fP (string $stringGetter)"
+.br
+.RI "Fonction UPPER mysql\&. "
+.ti -1c
+.RI "static \fBLOWER\fP (string $stringGetter)"
+.br
+.RI "Fonction LOWER mysql\&. "
+.ti -1c
+.RI "static \fBDISTINCT\fP (string $toDistinct)"
+.br
+.RI "Fonction DISTINCT mysql\&. "
+.ti -1c
+.RI "static \fBLENGTH\fP (string $stringGetter)"
+.br
+.RI "Fonction LENGTH mysql\&. "
+.ti -1c
+.RI "static \fBRAND\fP ()"
+.br
+.RI "Fonction RAND mysql\&. "
+.ti -1c
+.RI "static \fBABS\fP (string $numberGetter)"
+.br
+.RI "Fonction ABS mysql\&. "
+.ti -1c
+.RI "static \fBSUM\fP (string $numberGetter)"
+.br
+.RI "Fonction SUM mysql\&. "
+.ti -1c
+.RI "static \fBAVG\fP (string $numberGetter)"
+.br
+.RI "Fonction AVG mysql\&. "
+.ti -1c
+.RI "static \fBCOUNT\fP (string $numberGetter)"
+.br
+.RI "Fonction COUNT mysql\&. "
+.ti -1c
+.RI "static \fBMIN\fP (string $numberGetter)"
+.br
+.RI "Fonction MIN mysql\&. "
+.ti -1c
+.RI "static \fBMAX\fP (string $numberGetter)"
+.br
+.RI "Fonction MAX mysql\&. "
+.ti -1c
+.RI "static \fBROUND\fP (string $numberGetter, int $decimal=2)"
+.br
+.RI "Fonction ROUND mysql\&. "
+.ti -1c
+.RI "static \fBNOW\fP ()"
+.br
+.RI "Fonction NOW mysql\&. "
+.ti -1c
+.RI "static \fBTIMESTAMP\fP ()"
+.br
+.RI "Fonction NOW mysql\&. "
+.ti -1c
+.RI "static \fBDATE_FORMAT\fP (string $dateGetter, string $format)"
+.br
+.RI "Fonction DATE_FORMAT mysql\&. "
+.ti -1c
+.RI "static \fBCOLUMN_ALIAS\fP (string $attributeName, string $alias)"
+.br
+.RI "Colonne classique avec alias\&. "
+.in -1c
+.SS "Attributs protégés"
+
+.in +1c
+.ti -1c
+.RI "string \fB$function\fP"
+.br
+.ti -1c
+.RI "bool \fB$replaceAttributesName\fP"
+.br
+.ti -1c
+.RI "string \fB$alias\fP"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Fonctions mysql\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB9\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "__construct (string $function, bool $replaceAttributesName = \fCtrue\fP)"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$function\fP Chaine complète de la fonction → 'COUNT({username})' 'NOW()' 
+.br
+\fI$replaceAttributeName\fP Si un nom d'attribut doit être remplacé dans la fonction 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB29\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "static ABS (string $numberGetter)\fC [static]\fP"
+
+.PP
+Fonction ABS mysql\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$numberGetter\fP valeur ou nom de l'attribut entouré avec {}\&. ex: ABS({price}) ABS(10) 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlFunction la fonction 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Cette fonction remplace les noms d'attributs par défaut 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB143\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "as (string $alias)"
+@défini un alias sur la fonction 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$alias\fP alias 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB40\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "static AVG (string $numberGetter)\fC [static]\fP"
+
+.PP
+Fonction AVG mysql\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$numberGetter\fP nom de l'attribut entouré avec {}\&. ex: AVG({price}) 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlFunction la fonction 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Cette fonction remplace les noms d'attributs par défaut 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB163\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "static COLUMN_ALIAS (string $attributeName, string $alias)\fC [static]\fP"
+
+.PP
+Colonne classique avec alias\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$attributeName\fP nom de l'attribut 
+.br
+\fI$alias\fP alias 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlFunction la fonction 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB240\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "static CONCAT (string \&.\&.\&. $toConcat)\fC [static]\fP"
+
+.PP
+Fonction CONCAT mysql\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fIstring\fP \&.\&.\&.$toConcat Valeur à concaténer\&. Si un nom d'attribut est fourni entouré avec {}\&. ex: CONCAT('val1','{attributeOne}','val2') 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlFunction la fonction 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Cette fonction remplace les noms d'attributs par défaut 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB73\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "static COUNT (string $numberGetter)\fC [static]\fP"
+
+.PP
+Fonction COUNT mysql\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$numberGetter\fP nom de l'attribut entouré avec {}\&. ex: COUNT({price}) 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlFunction la fonction 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Cette fonction remplace les noms d'attributs par défaut 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB173\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "static DATE_FORMAT (string $dateGetter, string $format)\fC [static]\fP"
+
+.PP
+Fonction DATE_FORMAT mysql\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$dateGetter\fP valeur ou nom de l'attribut entouré avec {}\&. ex: DATE_FORMAT(''2024-02-17 12:20:30'','%Y') DATE_FORMAT({orderDate},'%Y') 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlFunction la fonction 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Cette fonction remplace les noms d'attributs par défaut 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB230\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "static DISTINCT (string $toDistinct)\fC [static]\fP"
+
+.PP
+Fonction DISTINCT mysql\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$toDistinct\fP valeur ou nom de l'attribut entouré avec {} ex : DISTINCT('*') DISTINCT('{username}') 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlFunction la fonction 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Cette fonction remplace les noms d'attributs par défaut 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB115\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "getAlias ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+string|null l'alias ou null si aucun 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB49\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "getFunction ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+string La fonction 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB63\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "haveToReplaceAttributesName ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+bool Si les noms des attributs doivent être remplacés 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB56\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "static LENGTH (string $stringGetter)\fC [static]\fP"
+
+.PP
+Fonction LENGTH mysql\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$stringGetter\fP valeur ou nom de l'attribut entouré avec {}\&. ex: LENGTH('value1') LENGTH('{username}') 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlFunction la fonction 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Cette fonction remplace les noms d'attributs par défaut 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB125\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "static LOWER (string $stringGetter)\fC [static]\fP"
+
+.PP
+Fonction LOWER mysql\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$stringGetter\fP valeur ou nom de l'attribut entouré avec {}\&. ex: LOWER('value1') LOWER('{username}') 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlFunction la fonction 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Cette fonction remplace les noms d'attributs par défaut 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB105\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "static MAX (string $numberGetter)\fC [static]\fP"
+
+.PP
+Fonction MAX mysql\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$numberGetter\fP nom de l'attribut entouré avec {}\&. ex: MAX({price}) 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlFunction la fonction 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Cette fonction remplace les noms d'attributs par défaut 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB193\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "static MIN (string $numberGetter)\fC [static]\fP"
+
+.PP
+Fonction MIN mysql\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$numberGetter\fP nom de l'attribut entouré avec {}\&. ex: MIN({price}) 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlFunction la fonction 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Cette fonction remplace les noms d'attributs par défaut 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB183\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "static NOW ()\fC [static]\fP"
+
+.PP
+Fonction NOW mysql\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlFunction la fonction 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB212\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "static RAND ()\fC [static]\fP"
+
+.PP
+Fonction RAND mysql\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlFunction la fonction 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB133\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "static ROUND (string $numberGetter, int $decimal = \fC2\fP)\fC [static]\fP"
+
+.PP
+Fonction ROUND mysql\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$numberGetter\fP valeur ou nom de l'attribut entouré avec {}\&. ex: ROUND({price}) ROUND(10) 
+.br
+\fI$decimal\fP Précision 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlFunction la fonction 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Cette fonction remplace les noms d'attributs par défaut 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB204\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "static SUBSTRING (string $stringGetter, int $start, int $length)\fC [static]\fP"
+
+.PP
+Fonction SUBSTRING mysql\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$stringGetter\fP valeur ou nom de l'attribut entouré avec {}\&. ex: SUBSTRING('value1',1,3) SUBSTRING('{username}',1,4) 
+.br
+\fI$start\fP index de départ 
+.br
+\fI$length\fP taille 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlFunction la fonction 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Cette fonction remplace les noms d'attributs par défaut 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB85\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "static SUM (string $numberGetter)\fC [static]\fP"
+
+.PP
+Fonction SUM mysql\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$numberGetter\fP nom de l'attribut entouré avec {}\&. ex: SUM({price}) 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlFunction la fonction 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Cette fonction remplace les noms d'attributs par défaut 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB153\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "static TIMESTAMP ()\fC [static]\fP"
+
+.PP
+Fonction NOW mysql\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlFunction la fonction 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB220\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "static UPPER (string $stringGetter)\fC [static]\fP"
+
+.PP
+Fonction UPPER mysql\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$stringGetter\fP valeur ou nom de l'attribut entouré avec {}\&. ex: UPPER('value1') UPPER('{username}') 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlFunction la fonction 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Cette fonction remplace les noms d'attributs par défaut 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB95\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SH "Documentation des champs"
+.PP 
+.SS "string $alias\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB23\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "string $function\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB13\fP du fichier \fBMysqlFunction\&.php\fP\&.
+.SS "bool $replaceAttributesName\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB18\fP du fichier \fBMysqlFunction\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

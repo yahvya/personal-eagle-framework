@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_5e46656ede9d55f78fcf1ebc26992519" xml:lang="fr">
+<title>Répertoire de référence de mailer</title>
+<indexterm><primary>Répertoire de référence de mailer</primary></indexterm>
+<simplesect>
+    <title>Fichiers    </title>
+        <itemizedlist>
+            <listitem><para>fichier <link linkend="_a00296">BladeMailProvider.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00299">MailerTemplateProvider.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00302">SaboMailer.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00305">TwigMailProvider.php</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

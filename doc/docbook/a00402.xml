@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00402" xml:lang="fr">
+<title>Référence de l&apos;espace de nommage SaboCore\Cli\Theme</title>
+<indexterm><primary>SaboCore\Cli\Theme</primary></indexterm>
+<simplesect>
+    <title>Énumérations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_a00402_1a48a4d69dfa43ecb7cc2495c6d711def4">Theme</link> : string { <link linkend="_a00402_1a48a4d69dfa43ecb7cc2495c6d711def4a14015ab6ebd250bc853d0966b4379a64">IMPORTANT_ERROR_STYLE</link> = &quot;importantError&quot;
+ }</para>
+
+<para>Configuration de thème d&apos;affichage du cli. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Documentation du type de l&apos;énumération</title>
+<anchor xml:id="_a00402_1a48a4d69dfa43ecb7cc2495c6d711def4"/><section>
+    <title>Theme</title>
+<indexterm><primary>Theme</primary><secondary>SaboCore\Cli\Theme</secondary></indexterm>
+<indexterm><primary>SaboCore\Cli\Theme</primary><secondary>Theme</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_a00402_1a48a4d69dfa43ecb7cc2495c6d711def4">Theme</link> : string</computeroutput></para><para>
+
+<para>Configuration de thème d&apos;affichage du cli. </para>
+</para>
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya/">https://github.com/yahvya/</link> </para>
+</formalpara>
+</para>
+<informaltable frame="all">
+<title>Valeurs énumérées</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>IMPORTANT_ERROR_STYLE</primary><secondary>SaboCore\Cli\Theme</secondary></indexterm>
+<indexterm><primary>SaboCore\Cli\Theme</primary><secondary>IMPORTANT_ERROR_STYLE</secondary></indexterm>
+<anchor xml:id="_a00402_1a48a4d69dfa43ecb7cc2495c6d711def4a14015ab6ebd250bc853d0966b4379a64"/>IMPORTANT_ERROR_STYLE</entry><entry>
+<para>Style de texte basique. </para>
+
+<para>Style de texte spécial</para>
+
+<para>Style du texte non important</para>
+
+<para>Style du texte titre important</para>
+
+<para>Style du texte mis en avant</para>
+
+<para>erreur basique</para>
+
+<para>Erreur importante </para>
+</entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+<para>
+Définition à la ligne <link linkend="_a00035_source_1l00009">9</link> du fichier <link linkend="_a00035_source">Theme.php</link>.</para>
+</section>
+</section>
+</section>

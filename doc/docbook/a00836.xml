@@ -1,0 +1,351 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00836" xml:lang="fr">
+<title>Référence de la classe RouteManager</title>
+<indexterm><primary>RouteManager</primary></indexterm>
+<para>
+
+<para>Gestionnaire de routes. </para>
+ 
+</para>
+<simplesect>
+    <title>Fonctions membres publiques statiques    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_a00836_1aaa19ab55a6b8cbe00614d67cdd950de4">registerGroup</link> (string $linksPrefix, array $routes, array $genericParamsConfig=[], array $groupAccessVerifiers=[])</para>
+
+<para>Enregistre un groupe de route. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00836_1a811974955a3b8dbce9a51d2a976f3e5a">registerRoute</link> (<link linkend="_a00832">Route</link> $<link linkend="_a00362_1ae51039edf7ff9675adb95522e00d4583">route</link>)</para>
+
+<para>Enregistre une route. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00836_1aa9135deedb1da6c5e6e65f1d640f4e02">fromFile</link> (string $filename)</para>
+
+<para>Charge les routes écrites dans un fichier. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00836_1a6125ddfb65a46eadc3331dd4d2747e31">findRouteByName</link> (string $routeName,?string $method=null)</para>
+
+<para>Recherche une route par son nom. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00836_1a52aaba9248bf4e6447c45a793c2744b8">findRouteByLink</link> (string $link,?string $method=null)</para>
+
+<para>Recherche une route par match de lien. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Fonctions membres protégées statiques    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_a00836_1a9f5127ad9abe280bd45aa8f6e1dd99dc">getRoutesFrom</link> (?string $method)</para>
+
+<para>Forme les routes à partir de la méthode. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Attributs protégés statiques    </title>
+        <itemizedlist>
+            <listitem><para>static array <link linkend="_a00836_1aa17a7c8ad7c21ce9bdeaac17e332e6dc">$routes</link> = []</para>
+</listitem>
+            <listitem><para>static array <link linkend="_a00836_1a4d603901a6ebae9724325002e2c06c2f">$usedNames</link> = []</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Gestionnaire de routes. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00263_source_1l00016">16</link> du fichier <link linkend="_a00263_source">RouteManager.php</link>.</para>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00836_1a52aaba9248bf4e6447c45a793c2744b8"/><section>
+    <title>findRouteByLink()</title>
+<indexterm><primary>findRouteByLink</primary><secondary>RouteManager</secondary></indexterm>
+<indexterm><primary>RouteManager</primary><secondary>findRouteByLink</secondary></indexterm>
+<para><computeroutput>static findRouteByLink (string $link, ?string $method = <computeroutput>null</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Recherche une route par match de lien. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$link</entry><entry>
+<para>lien </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string | null</entry><entry>$method</entry><entry>
+<para>la méthode de requête </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>array&lt;string,Route|MatchResult&gt;|null null si non trouvé sinon [&quot;route&quot; =&gt; ...,&quot;match&quot; =&gt; ...] </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00263_source_1l00110">110</link> du fichier <link linkend="_a00263_source">RouteManager.php</link>.</para>
+</section>
+<anchor xml:id="_a00836_1a6125ddfb65a46eadc3331dd4d2747e31"/><section>
+    <title>findRouteByName()</title>
+<indexterm><primary>findRouteByName</primary><secondary>RouteManager</secondary></indexterm>
+<indexterm><primary>RouteManager</primary><secondary>findRouteByName</secondary></indexterm>
+<para><computeroutput>static findRouteByName (string $routeName, ?string $method = <computeroutput>null</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Recherche une route par son nom. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$routeName</entry><entry>
+<para>nom de la route </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string | null</entry><entry>$method</entry><entry>
+<para>la méthode de requête </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>Route|null la route ou null </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00263_source_1l00093">93</link> du fichier <link linkend="_a00263_source">RouteManager.php</link>.</para>
+</section>
+<anchor xml:id="_a00836_1aa9135deedb1da6c5e6e65f1d640f4e02"/><section>
+    <title>fromFile()</title>
+<indexterm><primary>fromFile</primary><secondary>RouteManager</secondary></indexterm>
+<indexterm><primary>RouteManager</primary><secondary>fromFile</secondary></indexterm>
+<para><computeroutput>static fromFile (string $filename)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Charge les routes écrites dans un fichier. </para>
+</para>
+
+<para><caution><title>Attention</title>
+
+<para>la recherche se fait à partir du dossier racine des routes </para>
+</caution>
+
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$filename</entry><entry>
+<para>nom du fichier sans l&apos;extension php </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>void </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00263_source_1l00078">78</link> du fichier <link linkend="_a00263_source">RouteManager.php</link>.</para>
+</section>
+<anchor xml:id="_a00836_1a9f5127ad9abe280bd45aa8f6e1dd99dc"/><section>
+    <title>getRoutesFrom()</title>
+<indexterm><primary>getRoutesFrom</primary><secondary>RouteManager</secondary></indexterm>
+<indexterm><primary>RouteManager</primary><secondary>getRoutesFrom</secondary></indexterm>
+<para><computeroutput>static getRoutesFrom (?string $method)<computeroutput>[static]</computeroutput>, <computeroutput>[protected]</computeroutput></computeroutput></para><para>
+
+<para>Forme les routes à partir de la méthode. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string | null</entry><entry>$method</entry><entry>
+<para>la méthode </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>Route[] </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00263_source_1l00128">128</link> du fichier <link linkend="_a00263_source">RouteManager.php</link>.</para>
+</section>
+<anchor xml:id="_a00836_1aaa19ab55a6b8cbe00614d67cdd950de4"/><section>
+    <title>registerGroup()</title>
+<indexterm><primary>registerGroup</primary><secondary>RouteManager</secondary></indexterm>
+<indexterm><primary>RouteManager</primary><secondary>registerGroup</secondary></indexterm>
+<para><computeroutput>static registerGroup (string $linksPrefix, array $routes, array $genericParamsConfig = <computeroutput>[]</computeroutput>
+, array $groupAccessVerifiers = <computeroutput>[]</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Enregistre un groupe de route. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$linksPrefix</entry><entry>
+<para>prefix des liens contenus dans le groupe </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Route[]</entry><entry>$routes</entry><entry>
+<para>liste des routes du groupe </para>
+</entry>
+                            </row>
+                            <row>
+<entry>array</entry><entry>$genericParamsConfig</entry><entry>
+<para>expressions régulières liées aux éléments génériques (appliquées à tous les liens du groupe) </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Verifier[]</entry><entry>$groupAccessVerifiers</entry><entry>
+<para>gestionnaires d&apos;accès (appliquées à tous les liens du groupe), reçoivent un objet Request en paramètre les fonctions, seuls les fonctions failures sont prises en compte et retournent Response </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>void </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00263_source_1l00035">35</link> du fichier <link linkend="_a00263_source">RouteManager.php</link>.</para>
+</section>
+<anchor xml:id="_a00836_1a811974955a3b8dbce9a51d2a976f3e5a"/><section>
+    <title>registerRoute()</title>
+<indexterm><primary>registerRoute</primary><secondary>RouteManager</secondary></indexterm>
+<indexterm><primary>RouteManager</primary><secondary>registerRoute</secondary></indexterm>
+<para><computeroutput>static registerRoute (<link linkend="_a00832">Route</link> $route)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Enregistre une route. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>Route</entry><entry>$route</entry><entry>
+<para>la route </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>void </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00263_source_1l00047">47</link> du fichier <link linkend="_a00263_source">RouteManager.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des champs</title>
+<anchor xml:id="_a00836_1aa17a7c8ad7c21ce9bdeaac17e332e6dc"/><section>
+    <title>$routes</title>
+<indexterm><primary>$routes</primary><secondary>RouteManager</secondary></indexterm>
+<indexterm><primary>RouteManager</primary><secondary>$routes</secondary></indexterm>
+<para><computeroutput>array $routes = []<computeroutput>[static]</computeroutput>, <computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00263_source_1l00020">20</link> du fichier <link linkend="_a00263_source">RouteManager.php</link>.</para>
+</section>
+<anchor xml:id="_a00836_1a4d603901a6ebae9724325002e2c06c2f"/><section>
+    <title>$usedNames</title>
+<indexterm><primary>$usedNames</primary><secondary>RouteManager</secondary></indexterm>
+<indexterm><primary>RouteManager</primary><secondary>$usedNames</secondary></indexterm>
+<para><computeroutput>array $usedNames = []<computeroutput>[static]</computeroutput>, <computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00263_source_1l00025">25</link> du fichier <link linkend="_a00263_source">RouteManager.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00263">RouteManager.php</link></section>
+</section>

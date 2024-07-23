@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00552" xml:lang="fr">
+<title>Référence de la classe SaboCli</title>
+<indexterm><primary>SaboCli</primary></indexterm>
+<para>
+
+<para>Gestionnaire de commande du framework. </para>
+ 
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00552_1ad50e344b90386a93c1d995f3a743dce0">__construct</link> (array $argv, <link linkend="_a00580">Config</link> $themeConfig)</para>
+</listitem>
+            <listitem><para><link linkend="_a00552_1a5cd24e45fe0761e91e45c3e44320d7ed">registerCommand</link> (<link linkend="_a00572">SaboCommand</link> $executor)</para>
+
+<para>Enregistre une commande. </para>
+</listitem>
+            <listitem><para><link linkend="_a00552_1a82f3474cee57fff1095b279dc4da9fc1">getCommands</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00552_1a4cf8d7386802fb70f62aea05730a3cfe">getThemeConfig</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00552_1a43a95794714b9eb37fe917450ae197b8">getArgumentManager</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00552_1af8fa59992209e36dccb3eefb0f75531f">start</link> ()</para>
+
+<para>Lance l&apos;exécution du traitement cli. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Attributs protégés    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00544">ArgumentManager</link> <link linkend="_a00552_1a0121576f9afc4c68d64fcadbd0afc2d3">$argumentManager</link></para>
+</listitem>
+            <listitem><para><link linkend="_a00580">Config</link> <link linkend="_a00552_1a32fe970af03bfe525bda40d112085822">$themeConfig</link></para>
+</listitem>
+            <listitem><para>array <link linkend="_a00552_1a66b1e68b1e75069be45ae54c302a6e33">$commands</link> = []</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Gestionnaire de commande du framework. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya/">https://github.com/yahvya/</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00014_source_1l00016">16</link> du fichier <link linkend="_a00014_source">SaboCli.php</link>.</para>
+</section>
+<section>
+<title>Documentation des constructeurs et destructeur</title>
+<anchor xml:id="_a00552_1ad50e344b90386a93c1d995f3a743dce0"/><section>
+    <title>__construct()</title>
+<indexterm><primary>__construct</primary><secondary>SaboCli</secondary></indexterm>
+<indexterm><primary>SaboCli</primary><secondary>__construct</secondary></indexterm>
+<para><computeroutput>__construct (array $argv, <link linkend="_a00580">Config</link> $themeConfig)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string[]</entry><entry>$argv</entry><entry>
+<para>arguments de la ligne de commande </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Config</entry><entry>$themeConfig</entry><entry>
+<para>configuration de thème </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00014_source_1l00036">36</link> du fichier <link linkend="_a00014_source">SaboCli.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00552_1a43a95794714b9eb37fe917450ae197b8"/><section>
+    <title>getArgumentManager()</title>
+<indexterm><primary>getArgumentManager</primary><secondary>SaboCli</secondary></indexterm>
+<indexterm><primary>SaboCli</primary><secondary>getArgumentManager</secondary></indexterm>
+<para><computeroutput>getArgumentManager ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>ArgumentManager le gestionnaire d&apos;arguments </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00014_source_1l00069">69</link> du fichier <link linkend="_a00014_source">SaboCli.php</link>.</para>
+</section>
+<anchor xml:id="_a00552_1a82f3474cee57fff1095b279dc4da9fc1"/><section>
+    <title>getCommands()</title>
+<indexterm><primary>getCommands</primary><secondary>SaboCli</secondary></indexterm>
+<indexterm><primary>SaboCli</primary><secondary>getCommands</secondary></indexterm>
+<para><computeroutput>getCommands ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>SaboCommand[] les commandes </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00014_source_1l00055">55</link> du fichier <link linkend="_a00014_source">SaboCli.php</link>.</para>
+</section>
+<anchor xml:id="_a00552_1a4cf8d7386802fb70f62aea05730a3cfe"/><section>
+    <title>getThemeConfig()</title>
+<indexterm><primary>getThemeConfig</primary><secondary>SaboCli</secondary></indexterm>
+<indexterm><primary>SaboCli</primary><secondary>getThemeConfig</secondary></indexterm>
+<para><computeroutput>getThemeConfig ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>Config la configuration du thème </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00014_source_1l00062">62</link> du fichier <link linkend="_a00014_source">SaboCli.php</link>.</para>
+</section>
+<anchor xml:id="_a00552_1a5cd24e45fe0761e91e45c3e44320d7ed"/><section>
+    <title>registerCommand()</title>
+<indexterm><primary>registerCommand</primary><secondary>SaboCli</secondary></indexterm>
+<indexterm><primary>SaboCli</primary><secondary>registerCommand</secondary></indexterm>
+<para><computeroutput>registerCommand (<link linkend="_a00572">SaboCommand</link> $executor)</computeroutput></para><para>
+
+<para>Enregistre une commande. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>SaboCommand</entry><entry>$executor</entry><entry>
+<para>class d&apos;exécution de la commande </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>$this </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00014_source_1l00046">46</link> du fichier <link linkend="_a00014_source">SaboCli.php</link>.</para>
+</section>
+<anchor xml:id="_a00552_1af8fa59992209e36dccb3eefb0f75531f"/><section>
+    <title>start()</title>
+<indexterm><primary>start</primary><secondary>SaboCli</secondary></indexterm>
+<indexterm><primary>SaboCli</primary><secondary>start</secondary></indexterm>
+<para><computeroutput>start ( )</computeroutput></para><para>
+
+<para>Lance l&apos;exécution du traitement cli. </para>
+</para>
+
+<para><formalpara><title>Renvoie</title>
+
+<para>void </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00014_source_1l00077">77</link> du fichier <link linkend="_a00014_source">SaboCli.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des champs</title>
+<anchor xml:id="_a00552_1a0121576f9afc4c68d64fcadbd0afc2d3"/><section>
+    <title>$argumentManager</title>
+<indexterm><primary>$argumentManager</primary><secondary>SaboCli</secondary></indexterm>
+<indexterm><primary>SaboCli</primary><secondary>$argumentManager</secondary></indexterm>
+<para><computeroutput><link linkend="_a00544">ArgumentManager</link> $argumentManager<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00014_source_1l00020">20</link> du fichier <link linkend="_a00014_source">SaboCli.php</link>.</para>
+</section>
+<anchor xml:id="_a00552_1a66b1e68b1e75069be45ae54c302a6e33"/><section>
+    <title>$commands</title>
+<indexterm><primary>$commands</primary><secondary>SaboCli</secondary></indexterm>
+<indexterm><primary>SaboCli</primary><secondary>$commands</secondary></indexterm>
+<para><computeroutput>array $commands = []<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00014_source_1l00030">30</link> du fichier <link linkend="_a00014_source">SaboCli.php</link>.</para>
+</section>
+<anchor xml:id="_a00552_1a32fe970af03bfe525bda40d112085822"/><section>
+    <title>$themeConfig</title>
+<indexterm><primary>$themeConfig</primary><secondary>SaboCli</secondary></indexterm>
+<indexterm><primary>SaboCli</primary><secondary>$themeConfig</secondary></indexterm>
+<para><computeroutput><link linkend="_a00580">Config</link> $themeConfig<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00014_source_1l00025">25</link> du fichier <link linkend="_a00014_source">SaboCli.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00014">SaboCli.php</link></section>
+</section>

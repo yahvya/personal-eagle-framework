@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00888" xml:lang="fr">
+<title>Référence de la classe Printer</title>
+<indexterm><primary>Printer</primary></indexterm>
+<para>
+
+<para>Afficheur terminal. </para>
+ 
+</para>
+<simplesect>
+    <title>Fonctions membres publiques statiques    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_a00888_1ae6b12b3e292166d0b8994409aa460bca">print</link> (string $toPrint, Color $textColor,?BackgroundColor $backgroundColor=null, bool $isImportant=false)</para>
+
+<para>Affiche le texte fournie sans modification. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00888_1ad8adbbb8169dc40f3f02214c4fd9aa21">printStyle</link> (string $toPrint, Composite $compositeStyle, int $countOfLineBreak=0)</para>
+
+<para>Affiche le texte fournie sans modification. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Afficheur terminal. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya/">https://github.com/yahvya/</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00308_source_1l00015">15</link> du fichier <link linkend="_a00308_source">Printer.php</link>.</para>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00888_1ae6b12b3e292166d0b8994409aa460bca"/><section>
+    <title>print()</title>
+<indexterm><primary>print</primary><secondary>Printer</secondary></indexterm>
+<indexterm><primary>Printer</primary><secondary>print</secondary></indexterm>
+<para><computeroutput>static print (string $toPrint, Color $textColor, ?BackgroundColor $backgroundColor = <computeroutput>null</computeroutput>
+, bool $isImportant = <computeroutput>false</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Affiche le texte fournie sans modification. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$toPrint</entry><entry>
+<para>texte à afficher </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Color</entry><entry>$textColor</entry><entry>
+<para>couleur du texte </para>
+</entry>
+                            </row>
+                            <row>
+<entry>BackgroundColor | null</entry><entry>$backgroundColor</entry><entry>
+<para>couleur de fond du texte </para>
+</entry>
+                            </row>
+                            <row>
+<entry>bool</entry><entry>$isImportant</entry><entry>
+<para>si le texte est important </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>void </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00308_source_1l00024">24</link> du fichier <link linkend="_a00308_source">Printer.php</link>.</para>
+</section>
+<anchor xml:id="_a00888_1ad8adbbb8169dc40f3f02214c4fd9aa21"/><section>
+    <title>printStyle()</title>
+<indexterm><primary>printStyle</primary><secondary>Printer</secondary></indexterm>
+<indexterm><primary>Printer</primary><secondary>printStyle</secondary></indexterm>
+<para><computeroutput>static printStyle (string $toPrint, Composite $compositeStyle, int $countOfLineBreak = <computeroutput>0</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Affiche le texte fournie sans modification. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$toPrint</entry><entry>
+<para>texte à afficher </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Composite</entry><entry>$compositeStyle</entry><entry>
+<para>style du texte </para>
+</entry>
+                            </row>
+                            <row>
+<entry>int</entry><entry>$countOfLineBreak</entry><entry>
+<para>nombre de sauts de ligne après </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>void </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00308_source_1l00040">40</link> du fichier <link linkend="_a00308_source">Printer.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00308">Printer.php</link></section>
+</section>

@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00137_source" xml:lang="fr">
+<title>JsonValidityCond.php</title>
+<indexterm><primary>JsonValidityCond.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00137_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00137_source_1l00002"/>00002 
+<anchor xml:id="_a00137_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00408">SaboCore\Database\Default\Conditions</link>;
+<anchor xml:id="_a00137_source_1l00004"/>00004 
+<anchor xml:id="_a00137_source_1l00005"/>00005 use&#32;Override;
+<anchor xml:id="_a00137_source_1l00006"/>00006 use&#32;<link linkend="_a00752">SaboCore\Database\Default\System\MysqlModel</link>;
+<anchor xml:id="_a00137_source_1l00007"/>00007 
+<anchor xml:id="_a00137_source_1l00012"/><link linkend="_a00680">00012</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00680">JsonValidityCond</link>&#32;<emphasis role="keyword">implements</emphasis>&#32;<link linkend="_a00664">Cond</link>{
+<anchor xml:id="_a00137_source_1l00013"/>00013 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00137_source_1l00014"/><link linkend="_a00680_1aaab6c4c9f3ed625334aa5024eb645ba0">00014</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00680_1aaab6c4c9f3ed625334aa5024eb645ba0">verifyData</link>(<link linkend="_a00752">MysqlModel</link>&#32;$baseModel,<emphasis role="keywordtype">string</emphasis>&#32;$attributeName,mixed&#32;$data):&#32;bool{
+<anchor xml:id="_a00137_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;is_array(value:&#32;$data);
+<anchor xml:id="_a00137_source_1l00016"/>00016 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00137_source_1l00017"/>00017 
+<anchor xml:id="_a00137_source_1l00018"/>00018 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00137_source_1l00019"/><link linkend="_a00680_1a3d24ed0e93b212b4d5e382fa795bf4ef">00019</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00680_1a3d24ed0e93b212b4d5e382fa795bf4ef">getErrorMessage</link>():&#32;string{
+<anchor xml:id="_a00137_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;<emphasis role="stringliteral">&quot;Json&#32;invalide&quot;</emphasis>;
+<anchor xml:id="_a00137_source_1l00021"/>00021 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00137_source_1l00022"/>00022 
+<anchor xml:id="_a00137_source_1l00023"/>00023 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00137_source_1l00024"/><link linkend="_a00680_1a2bd06fb688dc4a272e4a92500cb3a4ce">00024</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00680_1a2bd06fb688dc4a272e4a92500cb3a4ce">getIsDisplayable</link>():&#32;bool{
+<anchor xml:id="_a00137_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;false;
+<anchor xml:id="_a00137_source_1l00026"/>00026 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00137_source_1l00027"/>00027 }
+</programlisting></section>

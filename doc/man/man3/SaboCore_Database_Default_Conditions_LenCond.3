@@ -1,0 +1,127 @@
+.TH "LenCond" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LenCond \- Condition de vérification de taille\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de \fBCond\fP\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP (int $minLength=1, int $maxLength=255, string $errorMessage='Veuillez vérifier le contenu de la chaine saisie\&.')"
+.br
+.ti -1c
+.RI "\fBverifyData\fP (\fBMysqlModel\fP $baseModel, string $attributeName, mixed $data)"
+.br
+.RI "Vérifie si la donnée est valide\&. "
+.ti -1c
+.RI "\fBgetErrorMessage\fP ()"
+.br
+.ti -1c
+.RI "\fBgetIsDisplayable\fP ()"
+.br
+.in -1c
+.in +1c
+.ti -1c
+.RI "\fBverifyData\fP (\fBMysqlModel\fP $baseModel, string $attributeName, mixed $data)"
+.br
+.RI "Vérifie si la donnée est valide\&. "
+.ti -1c
+.RI "\fBgetErrorMessage\fP ()"
+.br
+.ti -1c
+.RI "\fBgetIsDisplayable\fP ()"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Condition de vérification de taille\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB14\fP du fichier \fBLenCond\&.php\fP\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "__construct (int $minLength = \fC1\fP, int $maxLength = \fC255\fP, string $errorMessage = \fC'Veuillez vérifier le contenu de la chaine saisie\&.'\fP)"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$minLength\fP la taille minimum de la chaine contenue (par défaut 1) 
+.br
+\fI$maxLength\fP la taille maximum de la chaine contenue (par défaut 2) 
+.br
+\fI$errorMessage\fP le message à afficher en cas de non validation 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB35\fP du fichier \fBLenCond\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "getErrorMessage ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+string Le message d'erreur 
+.RE
+.PP
+
+.PP
+Implémente \fBCond\fP\&.
+.PP
+Définition à la ligne \fB53\fP du fichier \fBLenCond\&.php\fP\&.
+.SS "getIsDisplayable ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+bool Si le message d'erreur peut être affiché 
+.RE
+.PP
+
+.PP
+Implémente \fBCond\fP\&.
+.PP
+Définition à la ligne \fB58\fP du fichier \fBLenCond\&.php\fP\&.
+.SS "verifyData (\fBMysqlModel\fP $baseModel, string $attributeName, mixed $data)"
+
+.PP
+Vérifie si la donnée est valide\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$baseModel\fP Model de base 
+.br
+\fI$attributeName\fP Nom de l'attribut 
+.br
+\fI$data\fP donnée à vérifier 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+bool si la donnée est valide 
+.RE
+.PP
+
+.PP
+Implémente \fBCond\fP\&.
+.PP
+Définition à la ligne \fB42\fP du fichier \fBLenCond\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

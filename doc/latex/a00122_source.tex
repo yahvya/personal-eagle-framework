@@ -1,0 +1,44 @@
+\hypertarget{a00122_source}{}\doxysection{Callable\+Cond.\+php}
+\label{a00122_source}\index{CallableCond.php@{CallableCond.php}}
+\mbox{\hyperlink{a00122}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{a00122_source_l00003}\mbox{\hyperlink{a00408}{00003}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{a00408}{SaboCore\(\backslash\)Database\(\backslash\)Default\(\backslash\)Conditions}};}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{a00122_source_l00005}00005\ use\ Attribute;}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00006}00006\ use\ Closure;}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00007}00007\ use\ Override;}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00008}00008\ use\ \mbox{\hyperlink{a00752}{SaboCore\(\backslash\)Database\(\backslash\)Default\(\backslash\)System\(\backslash\)MysqlModel}};}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{a00122_source_l00014}00014\ \textcolor{preprocessor}{\#[Attribute]}}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00015}\mbox{\hyperlink{a00660}{00015}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{a00660}{CallableCond}}\ \textcolor{keyword}{implements}\ \mbox{\hyperlink{a00664}{Cond}}\{}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{private}\ array|Closure\ \$toVerify;}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{a00122_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ \$errorMessage;}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{a00122_source_l00029}00029\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \$isDisplayable;}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00030}00030\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{a00122_source_l00036}\mbox{\hyperlink{a00660_a6f3e4504980aa60c2bb1093f8f1b4f8b}{00036}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00660_a6f3e4504980aa60c2bb1093f8f1b4f8b}{\_\_construct}}(callable\ \$toVerify,\textcolor{keywordtype}{string}\ \$errorMessage,\textcolor{keywordtype}{bool}\ \$isDisplayable)\{}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00037}00037\ \ \ \ \ \ \ \ \ \$this-\/>toVerify\ =\ \$toVerify;}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00038}00038\ \ \ \ \ \ \ \ \ \$this-\/>errorMessage\ =\ \$errorMessage;}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00039}00039\ \ \ \ \ \ \ \ \ \$this-\/>isDisplayable\ =\ \$isDisplayable;}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{a00122_source_l00042}00042\ \textcolor{preprocessor}{\ \ \ \ \#[Override]}}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00043}\mbox{\hyperlink{a00660_aaab6c4c9f3ed625334aa5024eb645ba0}{00043}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00660_aaab6c4c9f3ed625334aa5024eb645ba0}{verifyData}}(\mbox{\hyperlink{a00752}{MysqlModel}}\ \$baseModel,\textcolor{keywordtype}{string}\ \$attributeName,mixed\ \$data):bool\{}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00044}00044\ \ \ \ \ \ \ \ \ return\ call\_user\_func(callback:\ \$this-\/>toVerify,args:\ \$data);}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{a00122_source_l00047}00047\ \textcolor{preprocessor}{\ \ \ \ \#[Override]}}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00048}\mbox{\hyperlink{a00660_a2bd06fb688dc4a272e4a92500cb3a4ce}{00048}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00660_a2bd06fb688dc4a272e4a92500cb3a4ce}{getIsDisplayable}}():bool\{}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00049}00049\ \ \ \ \ \ \ \ \ return\ \$this-\/>isDisplayable;}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{a00122_source_l00052}00052\ \textcolor{preprocessor}{\ \ \ \ \#[Override]}}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00053}\mbox{\hyperlink{a00660_a3d24ed0e93b212b4d5e382fa795bf4ef}{00053}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00660_a3d24ed0e93b212b4d5e382fa795bf4ef}{getErrorMessage}}():string\{}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00054}00054\ \ \ \ \ \ \ \ \ return\ \$this-\/>errorMessage;}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00055}00055\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00122_source_l00056}00056\ \}}
+
+\end{DoxyCode}

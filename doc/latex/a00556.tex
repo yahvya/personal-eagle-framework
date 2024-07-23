@@ -1,0 +1,149 @@
+\hypertarget{a00556}{}\doxysection{Référence de la classe Controller\+Maker\+Command}
+\label{a00556}\index{ControllerMakerCommand@{ControllerMakerCommand}}
+
+
+Commande de création de controller.  
+
+
+Graphe d\textquotesingle{}héritage de Controller\+Maker\+Command\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{a00556}
+\end{center}
+\end{figure}
+\doxysubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00556_aa69a5cf0c3844e397a8d8e18d82c9a99}{exec\+Command}} (\mbox{\hyperlink{a00552}{Sabo\+Cli}} \$cli)
+\begin{DoxyCompactList}\small\item\em Exécute la commande. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00556_a0db9ebd6c097296b09d33cf24ab68235}{get\+Help\+Lines}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions membres publiques hérités de \mbox{\hyperlink{a00572}{Sabo\+Command}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00572_a0c75d1f64540e18a147ee02be38bf95c}{\+\_\+\+\_\+construct}} (string \$command\+Name)
+\item 
+\mbox{\hyperlink{a00572_a3d0963e68bb313b163a73f2803c64600}{get\+Name}} ()
+\item 
+\mbox{\hyperlink{a00572_aa69a5cf0c3844e397a8d8e18d82c9a99}{exec\+Command}} (\mbox{\hyperlink{a00552}{Sabo\+Cli}} \$cli)
+\begin{DoxyCompactList}\small\item\em Exécute la commande. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00572_a0db9ebd6c097296b09d33cf24ab68235}{get\+Help\+Lines}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Attributs protégés}
+\begin{DoxyCompactItemize}
+\item 
+const string \mbox{\hyperlink{a00556_adbd70baa75e0d3c76cb707eb8624b094}{CONTROLLER\+\_\+\+DEFAULT\+\_\+\+DESCRIPTION}} = \char`\"{}Controller\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributs protégés hérités de \mbox{\hyperlink{a00572}{Sabo\+Command}}}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{a00572_af14d58005b6b6d2bb97fb8985cf3e47a}{\$command\+Name}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Membres hérités additionnels}
+\doxysubsubsection*{Fonctions membres publiques statiques hérités de \mbox{\hyperlink{a00576}{Sabo\+Template\+User\+Command}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{a00576_afa02cc36d072ae9bda0c88f58672c572}{get\+Cli\+Root}} ()
+\item 
+static \mbox{\hyperlink{a00576_a325101a9fa3b92adba02201aee4b6f1e}{format\+Name\+For\+Class}} (string \$base\+Name)
+\begin{DoxyCompactList}\small\item\em Formate le nom fourni au format class. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{a00576_a7e7e444557db4f5e7998bf33da95d364}{find\+Class\+Datas}} (string \$class\+Name, string \$from)
+\begin{DoxyCompactList}\small\item\em Recherche le namespace et le dossier d\textquotesingle{}une class (psr-\/4) à partir du dossier fourni récursivement. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Champs de données hérités de \mbox{\hyperlink{a00576}{Sabo\+Template\+User\+Command}}}
+\begin{DoxyCompactItemize}
+\item 
+const string \mbox{\hyperlink{a00576_a1b10fcd9fd6243a67d553f24ceefe77b}{TEMPLATES\+\_\+\+DIR\+\_\+\+PATH}} = \char`\"{}/storage/templates\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions membres protégées hérités de \mbox{\hyperlink{a00576}{Sabo\+Template\+User\+Command}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00576_abc58648d19fd5a5ea08d19ab6040b3ac}{create\+From\+Template}} (string \$template\+Path, string \$dst\+Path, array \$replacements)
+\begin{DoxyCompactList}\small\item\em Crée un fichier à partir d\textquotesingle{}un template. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions membres protégées hérités de \mbox{\hyperlink{a00572}{Sabo\+Command}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00572_a9704fa2bfd600fe1145fdf42a55e85de}{get\+Options}} (\mbox{\hyperlink{a00552}{Sabo\+Cli}} \$cli, string ... \$option\+Names)
+\begin{DoxyCompactList}\small\item\em Récupère les valeurs des options recherchées ou les demandes si non trouvées. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00572_a1f2515bcb1ec0ba161dac344498ed16a}{ask}} (string \$to\+Ask, \mbox{\hyperlink{a00580}{Config}} \$theme\+Config)
+\begin{DoxyCompactList}\small\item\em Pose une question. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Commande de création de controller. 
+
+\begin{DoxyAuthor}{Auteur}
+yahaya bathily \href{https://github.com/yahvya}{\texttt{ https\+://github.\+com/yahvya}} 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \mbox{\hyperlink{a00017_source_l00014}{14}} du fichier \mbox{\hyperlink{a00017_source}{Controller\+Maker\+Command.\+php}}.
+
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{a00556_aa69a5cf0c3844e397a8d8e18d82c9a99}\label{a00556_aa69a5cf0c3844e397a8d8e18d82c9a99}} 
+\index{ControllerMakerCommand@{ControllerMakerCommand}!execCommand@{execCommand}}
+\index{execCommand@{execCommand}!ControllerMakerCommand@{ControllerMakerCommand}}
+\doxysubsubsection{\texorpdfstring{execCommand()}{execCommand()}}
+{\footnotesize\ttfamily exec\+Command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{a00552}{Sabo\+Cli}}}]{\$cli }\end{DoxyParamCaption})}
+
+
+
+Exécute la commande. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+Sabo\+Cli & {\em \$cli} & le gestionnaire cli lié \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Config\+Exception$\vert$\+Throwable} & en cas d\textquotesingle{}erreur interne \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Réimplémentée à partir de \mbox{\hyperlink{a00572_aa69a5cf0c3844e397a8d8e18d82c9a99}{Sabo\+Command}}.
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00017_source_l00021}{21}} du fichier \mbox{\hyperlink{a00017_source}{Controller\+Maker\+Command.\+php}}.
+
+\mbox{\Hypertarget{a00556_a0db9ebd6c097296b09d33cf24ab68235}\label{a00556_a0db9ebd6c097296b09d33cf24ab68235}} 
+\index{ControllerMakerCommand@{ControllerMakerCommand}!getHelpLines@{getHelpLines}}
+\index{getHelpLines@{getHelpLines}!ControllerMakerCommand@{ControllerMakerCommand}}
+\doxysubsubsection{\texorpdfstring{getHelpLines()}{getHelpLines()}}
+{\footnotesize\ttfamily get\+Help\+Lines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+string\mbox{[}\mbox{]} les lignes à afficher pour l\textquotesingle{}aide de la commande 
+\end{DoxyReturn}
+
+
+Réimplémentée à partir de \mbox{\hyperlink{a00572_a0db9ebd6c097296b09d33cf24ab68235}{Sabo\+Command}}.
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00017_source_l00089}{89}} du fichier \mbox{\hyperlink{a00017_source}{Controller\+Maker\+Command.\+php}}.
+
+
+
+\doxysubsection{Documentation des champs}
+\mbox{\Hypertarget{a00556_adbd70baa75e0d3c76cb707eb8624b094}\label{a00556_adbd70baa75e0d3c76cb707eb8624b094}} 
+\index{ControllerMakerCommand@{ControllerMakerCommand}!CONTROLLER\_DEFAULT\_DESCRIPTION@{CONTROLLER\_DEFAULT\_DESCRIPTION}}
+\index{CONTROLLER\_DEFAULT\_DESCRIPTION@{CONTROLLER\_DEFAULT\_DESCRIPTION}!ControllerMakerCommand@{ControllerMakerCommand}}
+\doxysubsubsection{\texorpdfstring{CONTROLLER\_DEFAULT\_DESCRIPTION}{CONTROLLER\_DEFAULT\_DESCRIPTION}}
+{\footnotesize\ttfamily const string CONTROLLER\+\_\+\+DEFAULT\+\_\+\+DESCRIPTION = \char`\"{}Controller\char`\"{}\hspace{0.3cm}{\ttfamily [protected]}}
+
+@const string Description par défaut du controller 
+
+Définition à la ligne \mbox{\hyperlink{a00017_source_l00018}{18}} du fichier \mbox{\hyperlink{a00017_source}{Controller\+Maker\+Command.\+php}}.
+
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00017}{Controller\+Maker\+Command.\+php}}\end{DoxyCompactItemize}

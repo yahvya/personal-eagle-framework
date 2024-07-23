@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00302_source" xml:lang="fr">
+<title>SaboMailer.php</title>
+<indexterm><primary>SaboMailer.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00302_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00302_source_1l00002"/>00002 
+<anchor xml:id="_a00302_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00427">SaboCore\Utils\Mailer</link>;
+<anchor xml:id="_a00302_source_1l00004"/>00004 
+<anchor xml:id="_a00302_source_1l00005"/>00005 use&#32;Exception;
+<anchor xml:id="_a00302_source_1l00006"/>00006 use&#32;PHPMailer\PHPMailer\PHPMailer;
+<anchor xml:id="_a00302_source_1l00007"/>00007 use&#32;<link linkend="_a00403_1a5f86f21fc1b2fcda9bfff7e5f1e64129">SaboCore\Config\EnvConfig</link>;
+<anchor xml:id="_a00302_source_1l00008"/>00008 use&#32;<link linkend="_a00403_1aacba5d64694ffba3146214e337356afc">SaboCore\Config\MailerConfig</link>;
+<anchor xml:id="_a00302_source_1l00009"/>00009 use&#32;<link linkend="_a00784">SaboCore\Routing\Application\Application</link>;
+<anchor xml:id="_a00302_source_1l00010"/>00010 use&#32;Throwable;
+<anchor xml:id="_a00302_source_1l00011"/>00011 
+<anchor xml:id="_a00302_source_1l00016"/><link linkend="_a00880">00016</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00880">SaboMailer</link>&#32;<emphasis role="keyword">extends</emphasis>&#32;PHPMailer&#32;{
+<anchor xml:id="_a00302_source_1l00025"/><link linkend="_a00880_1a51d8ef3e3c662dea562ab7697771d3f5">00025</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00880_1a51d8ef3e3c662dea562ab7697771d3f5">sendMailFromTemplate</link>(<emphasis role="keywordtype">string</emphasis>&#32;$subject,array&#32;$recipients,<link linkend="_a00876">MailerTemplateProvider</link>&#32;$templateProvider):bool{
+<anchor xml:id="_a00302_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;<link linkend="_a00880_1a4a20559544fdf4dcb457e258dc976cf8">reset</link>();
+<anchor xml:id="_a00302_source_1l00027"/>00027 
+<anchor xml:id="_a00302_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>{
+<anchor xml:id="_a00302_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$isDebugMode&#32;=&#32;Application::getEnvConfig()-&gt;getConfig(name:&#32;EnvConfig::DEV_MODE_CONFIG-&gt;value);
+<anchor xml:id="_a00302_source_1l00030"/>00030 
+<anchor xml:id="_a00302_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;vérification&#32;de&#32;l&apos;existence&#32;des&#32;destinataires</emphasis>
+<anchor xml:id="_a00302_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(empty($recipients)&#32;){
+<anchor xml:id="_a00302_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($isDebugMode)
+<anchor xml:id="_a00302_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;Exception(message:&#32;<emphasis role="stringliteral">&quot;Les&#32;destinataires&#32;d&apos;un&#32;mail&#32;ne&#32;peuvent&#32;être&#32;vide&quot;</emphasis>);
+<anchor xml:id="_a00302_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="_a00302_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_a00302_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00302_source_1l00038"/>00038 
+<anchor xml:id="_a00302_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;ajout&#32;des&#32;destinataires</emphasis>
+<anchor xml:id="_a00302_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($recipients&#32;as&#32;$recipient){
+<anchor xml:id="_a00302_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(gettype(value:&#32;$recipient)&#32;!=&#32;<emphasis role="stringliteral">&quot;array&quot;</emphasis>)&#32;$recipient&#32;=&#32;[$recipient];
+<anchor xml:id="_a00302_source_1l00042"/>00042 
+<anchor xml:id="_a00302_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;addAddress(...$recipient);
+<anchor xml:id="_a00302_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00302_source_1l00045"/>00045 
+<anchor xml:id="_a00302_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;isHTML();
+<anchor xml:id="_a00302_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;Body&#32;=&#32;$templateProvider-&gt;<link linkend="_a00876_1aa8c3eeb275898c4cb38be9b12770bf1b">buildContent</link>();
+<anchor xml:id="_a00302_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;AltBody&#32;=&#32;$templateProvider-&gt;<link linkend="_a00876_1aa47c28451c2aeca26f27a1f30f3afbdb">getAltContent</link>();
+<anchor xml:id="_a00302_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;Subject&#32;=&#32;$subject;
+<anchor xml:id="_a00302_source_1l00050"/>00050 
+<anchor xml:id="_a00302_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>{
+<anchor xml:id="_a00302_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$this-&gt;send();
+<anchor xml:id="_a00302_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00302_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>(Exception&#32;$e){
+<anchor xml:id="_a00302_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($isDebugMode)&#32;<emphasis role="keywordflow">throw</emphasis>&#32;$e;
+<anchor xml:id="_a00302_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00302_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00302_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>(Throwable){}
+<anchor xml:id="_a00302_source_1l00059"/>00059 
+<anchor xml:id="_a00302_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_a00302_source_1l00061"/>00061 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00302_source_1l00062"/>00062 
+<anchor xml:id="_a00302_source_1l00071"/><link linkend="_a00880_1a563667aa6dd122af3a802de4142b1283">00071</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00880_1a563667aa6dd122af3a802de4142b1283">sendBasicMail</link>(<emphasis role="keywordtype">string</emphasis>&#32;$subject,<emphasis role="keywordtype">string</emphasis>&#32;$mailContent,array&#32;$recipients):bool{
+<anchor xml:id="_a00302_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;reset();
+<anchor xml:id="_a00302_source_1l00073"/>00073 
+<anchor xml:id="_a00302_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>{
+<anchor xml:id="_a00302_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$isDebugMode&#32;=&#32;Application::getEnvConfig()-&gt;getConfig(name:&#32;EnvConfig::DEV_MODE_CONFIG-&gt;value);
+<anchor xml:id="_a00302_source_1l00076"/>00076 
+<anchor xml:id="_a00302_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;vérification&#32;des&#32;destinataires</emphasis>
+<anchor xml:id="_a00302_source_1l00078"/>00078 
+<anchor xml:id="_a00302_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(empty($recipients)&#32;){
+<anchor xml:id="_a00302_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($isDebugMode)
+<anchor xml:id="_a00302_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;Exception(<emphasis role="stringliteral">&quot;Les&#32;destinataires&#32;d&apos;un&#32;mail&#32;ne&#32;peuvent&#32;être&#32;vide&quot;</emphasis>);
+<anchor xml:id="_a00302_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="_a00302_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_a00302_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00302_source_1l00085"/>00085 
+<anchor xml:id="_a00302_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;ajout&#32;des&#32;destinataires</emphasis>
+<anchor xml:id="_a00302_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($recipients&#32;as&#32;$recipient)&#32;$this-&gt;addAddress($recipient);
+<anchor xml:id="_a00302_source_1l00088"/>00088 
+<anchor xml:id="_a00302_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;isHTML(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="_a00302_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;Subject&#32;=&#32;$subject;
+<anchor xml:id="_a00302_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;Body&#32;=&#32;$mailContent;
+<anchor xml:id="_a00302_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;AltBody&#32;=&#32;$mailContent;
+<anchor xml:id="_a00302_source_1l00093"/>00093 
+<anchor xml:id="_a00302_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>{
+<anchor xml:id="_a00302_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$this-&gt;send();
+<anchor xml:id="_a00302_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00302_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>(Exception&#32;$e){
+<anchor xml:id="_a00302_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($isDebugMode)&#32;<emphasis role="keywordflow">throw</emphasis>&#32;$e;
+<anchor xml:id="_a00302_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00302_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00302_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>(Throwable){}
+<anchor xml:id="_a00302_source_1l00102"/>00102 
+<anchor xml:id="_a00302_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_a00302_source_1l00104"/>00104 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00302_source_1l00105"/>00105 
+<anchor xml:id="_a00302_source_1l00111"/><link linkend="_a00880_1a4a20559544fdf4dcb457e258dc976cf8">00111</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00880_1a4a20559544fdf4dcb457e258dc976cf8">reset</link>():<link linkend="_a00880">SaboMailer</link>{
+<anchor xml:id="_a00302_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$config&#32;=&#32;<link linkend="_a00784">Application</link>::getEnvConfig()-&gt;getConfig(name:&#32;EnvConfig::MAILER_CONFIG-&gt;value);
+<anchor xml:id="_a00302_source_1l00113"/>00113 
+<anchor xml:id="_a00302_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$config-&gt;<link linkend="_a00784_1a167e55696c6cb4b5c17cc55ff1533b33">checkConfigs</link>(...array_map(fn(MailerConfig&#32;$case):<emphasis role="keywordtype">string</emphasis>&#32;=&gt;&#32;$case-&gt;value,MailerConfig::cases()));
+<anchor xml:id="_a00302_source_1l00115"/>00115 
+<anchor xml:id="_a00302_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;isSMTP();
+<anchor xml:id="_a00302_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;CharSet&#32;=&#32;<emphasis role="stringliteral">&quot;UTF-8&quot;</emphasis>;
+<anchor xml:id="_a00302_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;Encoding&#32;=&#32;<emphasis role="stringliteral">&quot;base64&quot;</emphasis>;
+<anchor xml:id="_a00302_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;SMTPAuth&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_a00302_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;Host&#32;=&#32;$config-&gt;getConfig(name:&#32;MailerConfig::MAILER_PROVIDER_HOST-&gt;value);
+<anchor xml:id="_a00302_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;Username&#32;=&#32;$config-&gt;getConfig(name:&#32;MailerConfig::MAILER_PROVIDER_USERNAME-&gt;value);
+<anchor xml:id="_a00302_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;Password&#32;=&#32;$config-&gt;getConfig(name:&#32;MailerConfig::MAILER_PROVIDER_PASSWORD-&gt;value);
+<anchor xml:id="_a00302_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;From&#32;=&#32;$config-&gt;getConfig(name:&#32;MailerConfig::FROM_EMAIL-&gt;value);
+<anchor xml:id="_a00302_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;FromName&#32;=&#32;$config-&gt;getConfig(name:&#32;MailerConfig::FROM_NAME-&gt;value);
+<anchor xml:id="_a00302_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;SMTPSecure&#32;=&#32;<emphasis role="stringliteral">&quot;ssl&quot;</emphasis>;
+<anchor xml:id="_a00302_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;Port&#32;=&#32;$config-&gt;getConfig(name:&#32;MailerConfig::PROVIDER_PORT-&gt;value);
+<anchor xml:id="_a00302_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;clearAddresses();
+<anchor xml:id="_a00302_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;clearAttachments();
+<anchor xml:id="_a00302_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;Subject&#32;=&#32;$this-&gt;AltBody&#32;=&#32;$this-&gt;Body&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>;
+<anchor xml:id="_a00302_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;isHTML(isHtml:&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="_a00302_source_1l00131"/>00131 
+<anchor xml:id="_a00302_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$this;
+<anchor xml:id="_a00302_source_1l00133"/>00133 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00302_source_1l00134"/>00134 }
+</programlisting></section>

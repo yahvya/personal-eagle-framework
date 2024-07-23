@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00257" xml:lang="fr">
+<title>Référence du fichier MatchResult.php</title>
+<indexterm><primary>MatchResult.php</primary></indexterm>
+<simplesect>
+    <title>Structures de données    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_a00828">MatchResult</link></para>
+
+<para>Résultat de match. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Espaces de nommage    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_a00420">SaboCore\Routing\Routes</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

@@ -1,0 +1,384 @@
+.TH "MysqlComparator" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MysqlComparator \- Comparateurs mysql\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de \fBDatabaseComparator\fP\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP (string $comparator, Closure $toBindGetter)"
+.br
+.ti -1c
+.RI "\fBgetBindDatas\fP (mixed $value)"
+.br
+.RI "Fourni les données de bind PDO à partir des données fournies\&. "
+.in -1c
+
+Fonctions membres publiques hérités de \fBDatabaseComparator\fP
+.in +1c
+.ti -1c
+.RI "\fBgetComparator\fP ()"
+.br
+.in -1c
+.SS "Fonctions membres publiques statiques"
+
+.in +1c
+.ti -1c
+.RI "static \fBREQUEST_COMPARATOR\fP (string $comparator, \fBMysqlQueryBuilder\fP $queryBuilder)"
+.br
+.RI "Crée un comparateur sur une requête\&. "
+.ti -1c
+.RI "static \fBEQUAL\fP ()"
+.br
+.ti -1c
+.RI "static \fBIN\fP ()"
+.br
+.ti -1c
+.RI "static \fBSUPERIOR\fP ()"
+.br
+.ti -1c
+.RI "static \fBINFERIOR\fP ()"
+.br
+.ti -1c
+.RI "static \fBSUPERIOR_OR_EQUAL\fP ()"
+.br
+.ti -1c
+.RI "static \fBINFERIOR_OR_EQUAL\fP ()"
+.br
+.ti -1c
+.RI "static \fBNOT_EQUAL\fP ()"
+.br
+.ti -1c
+.RI "static \fBBETWEEN\fP ()"
+.br
+.ti -1c
+.RI "static \fBLIKE\fP ()"
+.br
+.ti -1c
+.RI "static \fBREGEXP\fP ()"
+.br
+.ti -1c
+.RI "static \fBSECURE_COMPARE\fP ()"
+.br
+.ti -1c
+.RI "static \fBSOUNDS_LIKE\fP ()"
+.br
+.in -1c
+.SS "Attributs protégés"
+
+.in +1c
+.ti -1c
+.RI "Closure \fB$toBindGetter\fP"
+.br
+.in -1c
+
+Attributs protégés hérités de \fBDatabaseComparator\fP
+.in +1c
+.ti -1c
+.RI "string \fB$comparator\fP"
+.br
+.in -1c
+.SS "Membres hérités additionnels"
+
+
+Fonctions membres protégées hérités de \fBDatabaseComparator\fP
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP (string $comparator)"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Comparateurs mysql\&. 
+
+
+.PP
+\fBAttention\fP
+.RS 4
+Pour comparer au résultat d'une requête, utilisez REQUEST_COMPARATOR @markers singleMarker,bindMarkers 
+.RE
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB15\fP du fichier \fBMysqlComparator\&.php\fP\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "__construct (string $comparator, Closure $toBindGetter)"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$comparator\fP Comparateur 
+.br
+\fI$toBindGetter\fP Fonction de récupération des données de bind du comparateur 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Fonction doit retourner MysqlBindDatas 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB26\fP du fichier \fBMysqlComparator\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "static BETWEEN ()\fC [static]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlComparator Comparateur BETWEEN 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Tableau contenant les deux valeurs min max 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB190\fP du fichier \fBMysqlComparator\&.php\fP\&.
+.SS "static EQUAL ()\fC [static]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlComparator Comparateur égal 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Donnée simple 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB75\fP du fichier \fBMysqlComparator\&.php\fP\&.
+.SS "getBindDatas (mixed $value)"
+
+.PP
+Fourni les données de bind PDO à partir des données fournies\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$value\fP Données 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlBindDatas Données de bind au format 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB37\fP du fichier \fBMysqlComparator\&.php\fP\&.
+.SS "static IN ()\fC [static]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlComparator Comparateur in 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Tableau contenant les valeurs à vérifier 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB91\fP du fichier \fBMysqlComparator\&.php\fP\&.
+.SS "static INFERIOR ()\fC [static]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlComparator Comparateur < 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Donnée simple 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB126\fP du fichier \fBMysqlComparator\&.php\fP\&.
+.SS "static INFERIOR_OR_EQUAL ()\fC [static]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlComparator Comparateur <= 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Donnée simple 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB158\fP du fichier \fBMysqlComparator\&.php\fP\&.
+.SS "static LIKE ()\fC [static]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlComparator Comparateur LIKE 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Donnée simple regex like mysql 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB206\fP du fichier \fBMysqlComparator\&.php\fP\&.
+.SS "static NOT_EQUAL ()\fC [static]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlComparator Comparateur != 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Donnée simple 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB174\fP du fichier \fBMysqlComparator\&.php\fP\&.
+.SS "static REGEXP ()\fC [static]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlComparator Comparateur LIKE 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Donnée simple regex 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB222\fP du fichier \fBMysqlComparator\&.php\fP\&.
+.SS "static REQUEST_COMPARATOR (string $comparator, \fBMysqlQueryBuilder\fP $queryBuilder)\fC [static]\fP"
+
+.PP
+Crée un comparateur sur une requête\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$comparator\fP Chaine comparatrice contenant le marqueur {request} pour y placer la requête 
+.br
+\fI$queryBuilder\fP Requête à gérer 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+la fonction bindGetter généré prend en paramètre le queryBuilder (sur une 'MysqlCondition' fournissez le queryBuilder) 
+.PP
+Une fois appellé le contenu de la requête n'est pas modifiable 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlComparator comparateur 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB49\fP du fichier \fBMysqlComparator\&.php\fP\&.
+.SS "static SECURE_COMPARE ()\fC [static]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlComparator Comparateur comparaison null sécurisé 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Donnée simple 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB238\fP du fichier \fBMysqlComparator\&.php\fP\&.
+.SS "static SOUNDS_LIKE ()\fC [static]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlComparator Comparateur par son 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Donnée simple 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB254\fP du fichier \fBMysqlComparator\&.php\fP\&.
+.SS "static SUPERIOR ()\fC [static]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlComparator Comparateur > 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Donnée simple 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB110\fP du fichier \fBMysqlComparator\&.php\fP\&.
+.SS "static SUPERIOR_OR_EQUAL ()\fC [static]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+MysqlComparator Comparateur >= 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Donnée simple 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB142\fP du fichier \fBMysqlComparator\&.php\fP\&.
+.SH "Documentation des champs"
+.PP 
+.SS "Closure $toBindGetter\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB19\fP du fichier \fBMysqlComparator\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

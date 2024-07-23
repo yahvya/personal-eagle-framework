@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00095_source" xml:lang="fr">
+<title>JsonColumn.php</title>
+<indexterm><primary>JsonColumn.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00095_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00095_source_1l00002"/>00002 
+<anchor xml:id="_a00095_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00405">SaboCore\Database\Default\Attributes</link>;
+<anchor xml:id="_a00095_source_1l00004"/>00004 
+<anchor xml:id="_a00095_source_1l00005"/>00005 use&#32;Attribute;
+<anchor xml:id="_a00095_source_1l00006"/>00006 use&#32;Override;
+<anchor xml:id="_a00095_source_1l00007"/>00007 use&#32;PDO;
+<anchor xml:id="_a00095_source_1l00008"/>00008 
+<anchor xml:id="_a00095_source_1l00013"/>00013 <emphasis role="preprocessor">#[Attribute]</emphasis>
+<anchor xml:id="_a00095_source_1l00014"/><link linkend="_a00624">00014</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00624">JsonColumn</link>&#32;<emphasis role="keyword">extends</emphasis>&#32;<link linkend="_a00632">TableColumn</link>{
+<anchor xml:id="_a00095_source_1l00015"/><link linkend="_a00624_1a7822cf4fa624fdb926b8d990f9b84c63">00015</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00624_1a7822cf4fa624fdb926b8d990f9b84c63">__construct</link>(<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00632_1a26f81287ec32ce8f110e8d82fbd1287b">$columnName</link>,<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_a00632_1a14fbc937b182e9c5e716e3d6c47a7a2b">$isNullable</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_a00632_1a6684994e27b9c47a6a616bec069e9d6c">$isPrimaryKey</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_a00632_1a3a2a468b0dce59773b37d8e0837386bf">$isUnique</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00632_1a7cb26b7337faae66c684c41170aca703">$defaultValue</link>&#32;=&#32;self::NO_DEFAULT_VALUE,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_a00632_1a80dfa697ce68e86b57ac28e85fc94940">$isForeignKey</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;?<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00632_1aea28bfaae2904f85413eeb372ae61930">$referencedModel</link>&#32;=&#32;<emphasis role="keyword">null</emphasis>,&#32;?<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00632_1a932ca11214be628e42a3f4ace52ebb87">$referencedAttributeName</link>&#32;=&#32;<emphasis role="keyword">null</emphasis>,&#32;array&#32;<link linkend="_a00632_1aff6fb07d968e6d11597786dfa631e093">$setConditions</link>&#32;=&#32;[],&#32;array&#32;$dataFormatters&#32;=&#32;[],&#32;array&#32;<link linkend="_a00632_1a4f639e69f23c00400112dadd89e91b62">$datasReformers</link>&#32;=&#32;[]){
+<anchor xml:id="_a00095_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;parent::__construct(
+<anchor xml:id="_a00095_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;columnName:&#32;<link linkend="_a00632_1a26f81287ec32ce8f110e8d82fbd1287b">$columnName</link>,
+<anchor xml:id="_a00095_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_a00632_1ae8fae740d59f7524f81c796142d3a846">isNullable</link>:&#32;<link linkend="_a00632_1a14fbc937b182e9c5e716e3d6c47a7a2b">$isNullable</link>,
+<anchor xml:id="_a00095_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_a00632_1a84d622ec43bb17c0e2dad555eb2e727f">isPrimaryKey</link>:&#32;<link linkend="_a00632_1a6684994e27b9c47a6a616bec069e9d6c">$isPrimaryKey</link>,
+<anchor xml:id="_a00095_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_a00632_1af8ed15bf71456982ef4e83bda6110b84">isUnique</link>:&#32;<link linkend="_a00632_1a3a2a468b0dce59773b37d8e0837386bf">$isUnique</link>,
+<anchor xml:id="_a00095_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;defaultValue:&#32;<link linkend="_a00632_1a7cb26b7337faae66c684c41170aca703">$defaultValue</link>,
+<anchor xml:id="_a00095_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_a00632_1aef8eaaa57b12ba2f3af9bc43e86785f9">isForeignKey</link>:&#32;<link linkend="_a00632_1a80dfa697ce68e86b57ac28e85fc94940">$isForeignKey</link>,
+<anchor xml:id="_a00095_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;referencedModel:&#32;<link linkend="_a00632_1aea28bfaae2904f85413eeb372ae61930">$referencedModel</link>,
+<anchor xml:id="_a00095_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;referencedAttributeName:&#32;<link linkend="_a00632_1a932ca11214be628e42a3f4ace52ebb87">$referencedAttributeName</link>,
+<anchor xml:id="_a00095_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;setConditions:&#32;<link linkend="_a00632_1aff6fb07d968e6d11597786dfa631e093">$setConditions</link>,
+<anchor xml:id="_a00095_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;dataFormatters:&#32;$dataFormatters,
+<anchor xml:id="_a00095_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;datasReformers:&#32;<link linkend="_a00632_1a4f639e69f23c00400112dadd89e91b62">$datasReformers</link>
+<anchor xml:id="_a00095_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00095_source_1l00029"/>00029 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00095_source_1l00030"/>00030 
+<anchor xml:id="_a00095_source_1l00031"/>00031 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00095_source_1l00032"/><link linkend="_a00624_1a77ed872e25498694d3063ef2da790f82">00032</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00624_1a77ed872e25498694d3063ef2da790f82">getCreationSql</link>():&#32;string{
+<anchor xml:id="_a00095_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return
+<anchor xml:id="_a00095_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;$this-&gt;columnName&#32;JSON&quot;</emphasis>
+<anchor xml:id="_a00095_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.&#32;($this-&gt;<link linkend="_a00632_1ae8fae740d59f7524f81c796142d3a846">isNullable</link>&#32;?&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>&#32;:&#32;<emphasis role="stringliteral">&quot;&#32;NOT&#32;NULL&quot;</emphasis>)
+<anchor xml:id="_a00095_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.&#32;($this-&gt;<link linkend="_a00632_1af8ed15bf71456982ef4e83bda6110b84">isUnique</link>()&#32;?&#32;<emphasis role="stringliteral">&quot;&#32;UNIQUE&quot;</emphasis>:&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>)
+<anchor xml:id="_a00095_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.&#32;($this-&gt;<link linkend="_a00632_1a7b326430880e7e87c18f6331afabb1ef">haveDefaultValue</link>()&#32;?&#32;<emphasis role="stringliteral">&quot;&#32;DEFAULT&#32;{$this-&gt;getDefaultValueStr()}&quot;</emphasis>&#32;:&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+<anchor xml:id="_a00095_source_1l00038"/>00038 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00095_source_1l00039"/>00039 
+<anchor xml:id="_a00095_source_1l00040"/>00040 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00095_source_1l00041"/><link linkend="_a00624_1a5108b80166312a6a5db4f674414ac423">00041</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00624_1a5108b80166312a6a5db4f674414ac423">getColumnType</link>():int{
+<anchor xml:id="_a00095_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;PDO::PARAM_STR;
+<anchor xml:id="_a00095_source_1l00043"/>00043 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00095_source_1l00044"/>00044 }
+</programlisting></section>

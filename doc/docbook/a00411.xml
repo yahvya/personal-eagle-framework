@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00411" xml:lang="fr">
+<title>Référence de l&apos;espace de nommage SaboCore\Database\Default\Provider</title>
+<indexterm><primary>SaboCore\Database\Default\Provider</primary></indexterm>
+<simplesect>
+    <title>Structures de données    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_a00720">MysqlProvider</link></para>
+
+<para>Fournisseur mysql. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

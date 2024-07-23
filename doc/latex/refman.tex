@@ -1,0 +1,604 @@
+  % Handle batch mode
+  % to overcome problems with too many open files
+  \let\mypdfximage\pdfximage\def\pdfximage{\immediate\mypdfximage}
+  % Set document class depending on configuration
+  \documentclass[twoside]{book}
+  %% moved from doxygen.sty due to workaround for LaTex 2019 version and unmaintained tabu package
+  \usepackage{ifthen}
+  \ifx\requestedLaTeXdate\undefined
+    \usepackage{array}
+  \else
+    \usepackage{array}[=2016-10-06]
+  \fi
+  %%
+  % Packages required by doxygen
+  \usepackage{fixltx2e} % for \textsubscript
+  \usepackage{doxygen}
+  \usepackage{graphicx}
+  \usepackage[utf8]{inputenc}
+  \usepackage{makeidx}
+  \PassOptionsToPackage{warn}{textcomp}
+  \usepackage{textcomp}
+  \usepackage[nointegrals]{wasysym}
+  \usepackage{ifxetex}
+  % NLS support packages
+  \usepackage[french]{babel}
+\NoAutoSpaceBeforeFDP
+  % Define default fonts
+  % Font selection
+  \usepackage[T1]{fontenc}
+  % set main and monospaced font
+  \usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\renewcommand{\familydefault}{\sfdefault}
+  \usepackage{sectsty}
+  \allsectionsfont{%
+    \fontseries{bc}\selectfont%
+    \color{darkgray}%
+  }
+  \renewcommand{\DoxyLabelFont}{%
+    \fontseries{bc}\selectfont%
+    \color{darkgray}%
+  }
+  \newcommand{\+}{\discretionary{\mbox{\scriptsize$\hookleftarrow$}}{}{}}
+   % Arguments of doxygenemoji:
+   % 1) ':<text>:' form of the emoji, already LaTeX-escaped
+   % 2) file with the name of the emoji without the .png extension
+   % in case image exist use this otherwise use the ':<text>:' form
+   \newcommand{\doxygenemoji}[2]{%
+     \IfFileExists{./#2.png}{\raisebox{-0.1em}{\includegraphics[height=0.9em]{./#2.png}}}{#1}%
+   }
+  % Page & text layout
+  \usepackage{geometry}
+  \geometry{%
+    a4paper,%
+    top=2.5cm,%
+    bottom=2.5cm,%
+    left=2.5cm,%
+    right=2.5cm%
+  }
+  \usepackage{changepage}
+  % Allow a bit of overflow to go unnoticed by other means
+  \tolerance=750
+  \hfuzz=15pt
+  \hbadness=750
+  \setlength{\emergencystretch}{15pt}
+  \setlength{\parindent}{0cm}
+  \newcommand{\doxynormalparskip}{\setlength{\parskip}{3ex plus 2ex minus 2ex}}
+  \newcommand{\doxytocparskip}{\setlength{\parskip}{1ex plus 0ex minus 0ex}}
+  \doxynormalparskip
+  % Redefine paragraph/subparagraph environments, using sectsty fonts
+  \makeatletter
+  \renewcommand{\paragraph}{%
+    \@startsection{paragraph}{4}{0ex}{-1.0ex}{1.0ex}{%
+      \normalfont\normalsize\bfseries\SS@parafont%
+    }%
+  }
+  \renewcommand{\subparagraph}{%
+    \@startsection{subparagraph}{5}{0ex}{-1.0ex}{1.0ex}{%
+      \normalfont\normalsize\bfseries\SS@subparafont%
+    }%
+  }
+  \makeatother
+  \makeatletter
+  \newcommand\hrulefilll{\leavevmode\leaders\hrule\hskip 0pt plus 1filll\kern\z@}
+  \makeatother
+  % Headers & footers
+  \usepackage{fancyhdr}
+  \pagestyle{fancyplain}
+  \renewcommand{\footrulewidth}{0.4pt}
+  \fancypagestyle{fancyplain}{
+    \fancyhf{}
+    \fancyhead[LE, RO]{\bfseries\thepage}
+    \fancyhead[LO]{\bfseries\rightmark}
+    \fancyhead[RE]{\bfseries\leftmark}
+    \fancyfoot[LO, RE]{\bfseries\scriptsize Généré par Doxygen }
+  }
+  \fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[LO, RE]{\bfseries\scriptsize Généré par Doxygen }
+    \renewcommand{\headrulewidth}{0pt}
+  }
+  \pagestyle{fancyplain}
+  \renewcommand{\chaptermark}[1]{%
+    \markboth{#1}{}%
+  }
+  \renewcommand{\sectionmark}[1]{%
+    \markright{\thesection\ #1}%
+  }
+  % ToC, LoF, LoT, bibliography, and index
+  % Indices & bibliography
+  \usepackage{natbib}
+  \usepackage[titles]{tocloft}
+  \setcounter{tocdepth}{3}
+  \setcounter{secnumdepth}{5}
+  % creating indexes
+  \makeindex
+  \usepackage{newunicodechar}
+  \newunicodechar{⁻}{${}^{-}$}% Superscript minus
+  \newunicodechar{²}{${}^{2}$}% Superscript two
+  \newunicodechar{³}{${}^{3}$}% Superscript three
+  % Hyperlinks
+    % Hyperlinks (required, but should be loaded last)
+    \ifpdf
+      \usepackage[pdftex,pagebackref=true]{hyperref}
+    \else
+      \ifxetex
+        \usepackage[pagebackref=true]{hyperref}
+      \else
+        \usepackage[ps2pdf,pagebackref=true]{hyperref}
+      \fi
+    \fi
+    \hypersetup{%
+      colorlinks=true,%
+      linkcolor=blue,%
+      citecolor=blue,%
+      unicode,%
+      pdftitle={Sabo final},%
+      pdfsubject={Mini framework php}%
+    }
+  % Custom commands used by the header
+  % Custom commands
+  \newcommand{\clearemptydoublepage}{%
+    \newpage{\pagestyle{empty}\cleardoublepage}%
+  }
+  % caption style definition
+  \usepackage{caption}
+  \captionsetup{labelsep=space,justification=centering,font={bf},singlelinecheck=off,skip=4pt,position=top}
+  % in page table of contents
+  \usepackage{etoc}
+  \etocsettocstyle{\doxytocparskip}{\doxynormalparskip}
+  % prevent numbers overlap the titles in toc
+  \renewcommand{\numberline}[1]{#1~}
+% End of preamble, now comes the document contents
+%===== C O N T E N T S =====
+\begin{document}
+  \raggedbottom
+  % Titlepage & ToC
+    % To avoid duplicate page anchors due to reuse of same numbers for
+    % the index (be it as roman numbers)
+    \hypersetup{pageanchor=false,
+                bookmarksnumbered=true,
+                pdfencoding=unicode
+               }
+  \pagenumbering{alph}
+  \begin{titlepage}
+  \vspace*{7cm}
+  \begin{center}%
+  {\Large Sabo final}\\
+  [1ex]\large 1.\+1.\+1 \\
+  \vspace*{1cm}
+  {\large Généré par Doxygen 1.9.6}\\
+  \end{center}
+  \end{titlepage}
+  \clearemptydoublepage
+  \pagenumbering{roman}
+  \tableofcontents
+  \clearemptydoublepage
+  \pagenumbering{arabic}
+  % re-enable anchors again
+  \hypersetup{pageanchor=true}
+%--- Begin generated contents ---
+\chapter{Framework Sabo}
+\label{a01125}
+\Hypertarget{a01125}
+\input{a01125}
+\chapter{Index des espaces de nommage}
+\input{namespaces}
+\chapter{Index hiérarchique}
+\input{hierarchy}
+\chapter{Index des structures de données}
+\input{annotated}
+\chapter{Index des fichiers}
+\input{files}
+\chapter{Documentation des espaces de nommage}
+\input{a00435}
+\input{a00436}
+\input{a00398}
+\input{a00401}
+\input{a00402}
+\input{a00403}
+\input{a00404}
+\input{a00405}
+\input{a00408}
+\input{a00409}
+\input{a00410}
+\input{a00411}
+\input{a00412}
+\input{a00413}
+\input{a00414}
+\input{a00415}
+\input{a00416}
+\input{a00418}
+\input{a00419}
+\input{a00420}
+\input{a00421}
+\input{a00422}
+\input{a00424}
+\input{a00425}
+\input{a00426}
+\input{a00427}
+\input{a00428}
+\input{a00429}
+\input{a00430}
+\input{a00431}
+\input{a00432}
+\input{a00433}
+\input{a00434}
+\input{a00437}
+\chapter{Documentation des structures de données}
+\input{a00784}
+\input{a00904}
+\input{a00544}
+\input{a00596}
+\input{a00872}
+\input{a00796}
+\input{a00600}
+\input{a00660}
+\input{a00604}
+\input{a00548}
+\input{a00664}
+\input{a00580}
+\input{a00584}
+\input{a00588}
+\input{a00556}
+\input{a00852}
+\input{a00924}
+\input{a00932}
+\input{a00936}
+\input{a00764}
+\input{a00768}
+\input{a00772}
+\input{a00776}
+\input{a00780}
+\input{a00760}
+\input{a00668}
+\input{a00608}
+\input{a00916}
+\input{a00928}
+\input{a00800}
+\input{a00612}
+\input{a00672}
+\input{a00856}
+\input{a00860}
+\input{a00676}
+\input{a00704}
+\input{a00708}
+\input{a00864}
+\input{a00560}
+\input{a00804}
+\input{a00616}
+\input{a00620}
+\input{a00696}
+\input{a00624}
+\input{a00712}
+\input{a00716}
+\input{a00808}
+\input{a00680}
+\input{a00564}
+\input{a00684}
+\input{a00876}
+\input{a00592}
+\input{a00828}
+\input{a00568}
+\input{a00728}
+\input{a00732}
+\input{a00688}
+\input{a00736}
+\input{a00740}
+\input{a00744}
+\input{a00748}
+\input{a00752}
+\input{a00720}
+\input{a00724}
+\input{a00756}
+\input{a00888}
+\input{a00912}
+\input{a00812}
+\input{a00692}
+\input{a00792}
+\input{a00896}
+\input{a00816}
+\input{a00820}
+\input{a00832}
+\input{a00836}
+\input{a00788}
+\input{a00848}
+\input{a00552}
+\input{a00572}
+\input{a00868}
+\input{a00880}
+\input{a00900}
+\input{a00576}
+\input{a00892}
+\input{a00628}
+\input{a00908}
+\input{a00632}
+\input{a00636}
+\input{a00640}
+\input{a00700}
+\input{a00644}
+\input{a00648}
+\input{a00840}
+\input{a00844}
+\input{a00884}
+\input{a00824}
+\input{a00652}
+\input{a00656}
+\input{a00920}
+\chapter{Documentation des fichiers}
+\input{a00002}
+\input{a00002_source}
+\input{a01126}
+\input{a01126_source}
+\input{a00005}
+\input{a00008}
+\input{a00008_source}
+\input{a00011}
+\input{a00011_source}
+\input{a00014}
+\input{a00014_source}
+\input{a00017}
+\input{a00017_source}
+\input{a00020}
+\input{a00020_source}
+\input{a00023}
+\input{a00023_source}
+\input{a00026}
+\input{a00026_source}
+\input{a00029}
+\input{a00029_source}
+\input{a00032}
+\input{a00032_source}
+\input{a00035}
+\input{a00035_source}
+\input{a00038}
+\input{a00038_source}
+\input{a00041}
+\input{a00041_source}
+\input{a00044}
+\input{a00044_source}
+\input{a00047}
+\input{a00047_source}
+\input{a00050}
+\input{a00050_source}
+\input{a00053}
+\input{a00053_source}
+\input{a00056}
+\input{a00056_source}
+\input{a00059}
+\input{a00059_source}
+\input{a00062}
+\input{a00062_source}
+\input{a00065}
+\input{a00065_source}
+\input{a00068}
+\input{a00068_source}
+\input{a00071}
+\input{a00071_source}
+\input{a00074}
+\input{a00074_source}
+\input{a00077}
+\input{a00077_source}
+\input{a00080}
+\input{a00080_source}
+\input{a00083}
+\input{a00083_source}
+\input{a00086}
+\input{a00086_source}
+\input{a00089}
+\input{a00089_source}
+\input{a00092}
+\input{a00092_source}
+\input{a00095}
+\input{a00095_source}
+\input{a00098}
+\input{a00098_source}
+\input{a00101}
+\input{a00101_source}
+\input{a00104}
+\input{a00104_source}
+\input{a00107}
+\input{a00107_source}
+\input{a00110}
+\input{a00110_source}
+\input{a00113}
+\input{a00113_source}
+\input{a00116}
+\input{a00116_source}
+\input{a00119}
+\input{a00119_source}
+\input{a00122}
+\input{a00122_source}
+\input{a00125}
+\input{a00125_source}
+\input{a00128}
+\input{a00128_source}
+\input{a00131}
+\input{a00131_source}
+\input{a00134}
+\input{a00134_source}
+\input{a00137}
+\input{a00137_source}
+\input{a00140}
+\input{a00140_source}
+\input{a00143}
+\input{a00143_source}
+\input{a00146}
+\input{a00146_source}
+\input{a00149}
+\input{a00149_source}
+\input{a00152}
+\input{a00152_source}
+\input{a00155}
+\input{a00155_source}
+\input{a00158}
+\input{a00158_source}
+\input{a00161}
+\input{a00161_source}
+\input{a00164}
+\input{a00164_source}
+\input{a00167}
+\input{a00167_source}
+\input{a00170}
+\input{a00170_source}
+\input{a00173}
+\input{a00173_source}
+\input{a00176}
+\input{a00176_source}
+\input{a00179}
+\input{a00179_source}
+\input{a00182}
+\input{a00182_source}
+\input{a00185}
+\input{a00185_source}
+\input{a00188}
+\input{a00188_source}
+\input{a00191}
+\input{a00191_source}
+\input{a00194}
+\input{a00194_source}
+\input{a00197}
+\input{a00197_source}
+\input{a00200}
+\input{a00200_source}
+\input{a00203}
+\input{a00203_source}
+\input{a00206}
+\input{a00206_source}
+\input{a00209}
+\input{a00209_source}
+\input{a00212}
+\input{a00212_source}
+\input{a00215}
+\input{a00215_source}
+\input{a00218}
+\input{a00218_source}
+\input{a00221}
+\input{a00221_source}
+\input{a00224}
+\input{a00224_source}
+\input{a00227}
+\input{a00227_source}
+\input{a00230}
+\input{a00230_source}
+\input{a00233}
+\input{a00233_source}
+\input{a00236}
+\input{a00236_source}
+\input{a00239}
+\input{a00239_source}
+\input{a00242}
+\input{a00242_source}
+\input{a00245}
+\input{a00245_source}
+\input{a00248}
+\input{a00248_source}
+\input{a00251}
+\input{a00251_source}
+\input{a00254}
+\input{a00254_source}
+\input{a00257}
+\input{a00257_source}
+\input{a00260}
+\input{a00260_source}
+\input{a00263}
+\input{a00263_source}
+\input{a00266}
+\input{a00266_source}
+\input{a00269}
+\input{a00269_source}
+\input{a00272}
+\input{a00272_source}
+\input{a00275}
+\input{a00275_source}
+\input{a00278}
+\input{a00278_source}
+\input{a00281}
+\input{a00281_source}
+\input{a00284}
+\input{a00284_source}
+\input{a00287}
+\input{a00287_source}
+\input{a00290}
+\input{a00290_source}
+\input{a00293}
+\input{a00293_source}
+\input{a00296}
+\input{a00296_source}
+\input{a00299}
+\input{a00299_source}
+\input{a00302}
+\input{a00302_source}
+\input{a00305}
+\input{a00305_source}
+\input{a00308}
+\input{a00308_source}
+\input{a00311}
+\input{a00311_source}
+\input{a00314}
+\input{a00314_source}
+\input{a00317}
+\input{a00317_source}
+\input{a00320}
+\input{a00320_source}
+\input{a00323}
+\input{a00323_source}
+\input{a00326}
+\input{a00326_source}
+\input{a00329}
+\input{a00329_source}
+\input{a00332}
+\input{a00332_source}
+\input{a00335}
+\input{a00335_source}
+\input{a00338}
+\input{a00338_source}
+\input{a00341}
+\input{a00341_source}
+\input{a00344}
+\input{a00344_source}
+\input{a00347}
+\input{a00347_source}
+\input{a00350}
+\input{a00350_source}
+\input{a00353}
+\input{a00353_source}
+\input{a00356}
+\input{a00356_source}
+\input{a00359}
+\input{a00359_source}
+\input{a00362}
+\input{a00362_source}
+\input{a00365}
+\input{a00365_source}
+\input{a00368}
+\input{a00368_source}
+\input{a00371}
+\input{a00371_source}
+\input{a00374}
+\input{a00374_source}
+\input{a00377}
+\input{a00377_source}
+\input{a00380}
+\input{a00380_source}
+\input{a00383}
+\input{a00383_source}
+\input{a00386}
+\input{a00386_source}
+\input{a00389}
+\input{a00389_source}
+\input{a00392}
+\input{a00392_source}
+\input{a00395}
+\input{a00395_source}
+%--- End generated contents ---
+% Index
+  \backmatter
+  \newpage
+  \phantomsection
+  \clearemptydoublepage
+  \addcontentsline{toc}{chapter}{\indexname}
+  \printindex
+% Required for some languages (in combination with latexdocumentpre from the header)
+\end{document}

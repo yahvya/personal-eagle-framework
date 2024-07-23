@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00576" xml:lang="fr">
+<title>Référence de la classe SaboTemplateUserCommand</title>
+<indexterm><primary>SaboTemplateUserCommand</primary></indexterm>
+<para>
+
+<para>Commande de template d&apos;un template. </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de SaboTemplateUserCommand:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00576.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Fonctions membres publiques statiques    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_a00576_1afa02cc36d072ae9bda0c88f58672c572">getCliRoot</link> ()</para>
+</listitem>
+            <listitem><para>static <link linkend="_a00576_1a325101a9fa3b92adba02201aee4b6f1e">formatNameForClass</link> (string $baseName)</para>
+
+<para>Formate le nom fourni au format class. </para>
+</listitem>
+            <listitem><para>static <link linkend="_a00576_1a7e7e444557db4f5e7998bf33da95d364">findClassDatas</link> (string $className, string $from)</para>
+
+<para>Recherche le namespace et le dossier d&apos;une class (psr-4) à partir du dossier fourni récursivement. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Champs de données    </title>
+        <itemizedlist>
+            <listitem><para>const string <link linkend="_a00576_1a1b10fcd9fd6243a67d553f24ceefe77b">TEMPLATES_DIR_PATH</link> = &quot;/storage/templates&quot;</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Fonctions membres protégées    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00576_1abc58648d19fd5a5ea08d19ab6040b3ac">createFromTemplate</link> (string $templatePath, string $dstPath, array $replacements)</para>
+
+<para>Crée un fichier à partir d&apos;un template. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Fonctions membres protégées hérités de <link linkend="_a00572">SaboCommand</link>        <itemizedlist>
+            <listitem><para><link linkend="_a00572_1a9704fa2bfd600fe1145fdf42a55e85de">getOptions</link> (<link linkend="_a00552">SaboCli</link> $cli, string ... $optionNames)</para>
+
+<para>Récupère les valeurs des options recherchées ou les demandes si non trouvées. </para>
+</listitem>
+            <listitem><para><link linkend="_a00572_1a1f2515bcb1ec0ba161dac344498ed16a">ask</link> (string $toAsk, <link linkend="_a00580">Config</link> $themeConfig)</para>
+
+<para>Pose une question. </para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Membres hérités additionnels    </title>
+Fonctions membres publiques hérités de <link linkend="_a00572">SaboCommand</link>        <itemizedlist>
+            <listitem><para><link linkend="_a00572_1a0c75d1f64540e18a147ee02be38bf95c">__construct</link> (string $commandName)</para>
+</listitem>
+            <listitem><para><link linkend="_a00572_1a3d0963e68bb313b163a73f2803c64600">getName</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00572_1aa69a5cf0c3844e397a8d8e18d82c9a99">execCommand</link> (<link linkend="_a00552">SaboCli</link> $cli)</para>
+
+<para>Exécute la commande. </para>
+</listitem>
+            <listitem><para><link linkend="_a00572_1a0db9ebd6c097296b09d33cf24ab68235">getHelpLines</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Attributs protégés hérités de <link linkend="_a00572">SaboCommand</link>        <itemizedlist>
+            <listitem><para>string <link linkend="_a00572_1af14d58005b6b6d2bb97fb8985cf3e47a">$commandName</link></para>
+</listitem>
+        </itemizedlist>
+<section>
+<title>Description détaillée</title>
+
+<para>Commande de template d&apos;un template. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya/">https://github.com/yahvya/</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00032_source_1l00012">12</link> du fichier <link linkend="_a00032_source">SaboTemplateUserCommand.php</link>.</para>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00576_1abc58648d19fd5a5ea08d19ab6040b3ac"/><section>
+    <title>createFromTemplate()</title>
+<indexterm><primary>createFromTemplate</primary><secondary>SaboTemplateUserCommand</secondary></indexterm>
+<indexterm><primary>SaboTemplateUserCommand</primary><secondary>createFromTemplate</secondary></indexterm>
+<para><computeroutput>createFromTemplate (string $templatePath, string $dstPath, array $replacements)<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+
+<para>Crée un fichier à partir d&apos;un template. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$templatePath</entry><entry>
+<para>Chemin du template à partir du dossier de stockage des templates </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$dstPath</entry><entry>
+<para>Chemin absolu de destination du fichier </para>
+</entry>
+                            </row>
+                            <row>
+<entry>array</entry><entry>$replacements</entry><entry>
+<para>données à remplacer dans le template au format [&quot;clé&quot; → &quot;remplacement&quot;] </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>bool Si la création a bien réussi </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00032_source_1l00025">25</link> du fichier <link linkend="_a00032_source">SaboTemplateUserCommand.php</link>.</para>
+</section>
+<anchor xml:id="_a00576_1a7e7e444557db4f5e7998bf33da95d364"/><section>
+    <title>findClassDatas()</title>
+<indexterm><primary>findClassDatas</primary><secondary>SaboTemplateUserCommand</secondary></indexterm>
+<indexterm><primary>SaboTemplateUserCommand</primary><secondary>findClassDatas</secondary></indexterm>
+<para><computeroutput>static findClassDatas (string $className, string $from)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Recherche le namespace et le dossier d&apos;une class (psr-4) à partir du dossier fourni récursivement. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$className</entry><entry>
+<para>Nom de la class </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$from</entry><entry>
+<para>Chemin de départ de recherche </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>array|null null si non trouvé ou, données au format [&quot;namespace&quot; → &quot;...&quot; ou null si non trouvé,&quot;directory&quot; → &quot;...&quot;] </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00032_source_1l00072">72</link> du fichier <link linkend="_a00032_source">SaboTemplateUserCommand.php</link>.</para>
+</section>
+<anchor xml:id="_a00576_1a325101a9fa3b92adba02201aee4b6f1e"/><section>
+    <title>formatNameForClass()</title>
+<indexterm><primary>formatNameForClass</primary><secondary>SaboTemplateUserCommand</secondary></indexterm>
+<indexterm><primary>SaboTemplateUserCommand</primary><secondary>formatNameForClass</secondary></indexterm>
+<para><computeroutput>static formatNameForClass (string $baseName)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Formate le nom fourni au format class. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$baseName</entry><entry>
+<para>nom de base </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>string Le nom formaté </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00032_source_1l00056">56</link> du fichier <link linkend="_a00032_source">SaboTemplateUserCommand.php</link>.</para>
+</section>
+<anchor xml:id="_a00576_1afa02cc36d072ae9bda0c88f58672c572"/><section>
+    <title>getCliRoot()</title>
+<indexterm><primary>getCliRoot</primary><secondary>SaboTemplateUserCommand</secondary></indexterm>
+<indexterm><primary>SaboTemplateUserCommand</primary><secondary>getCliRoot</secondary></indexterm>
+<para><computeroutput>static getCliRoot ( )<computeroutput>[static]</computeroutput></computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string Le chemin root du dossier cli </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Exceptions</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>ConfigException</entry><entry>
+<para>en cas d&apos;erreur de configuration </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00032_source_1l00047">47</link> du fichier <link linkend="_a00032_source">SaboTemplateUserCommand.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des champs</title>
+<anchor xml:id="_a00576_1a1b10fcd9fd6243a67d553f24ceefe77b"/><section>
+    <title>TEMPLATES_DIR_PATH</title>
+<indexterm><primary>TEMPLATES_DIR_PATH</primary><secondary>SaboTemplateUserCommand</secondary></indexterm>
+<indexterm><primary>SaboTemplateUserCommand</primary><secondary>TEMPLATES_DIR_PATH</secondary></indexterm>
+<para><computeroutput>const string TEMPLATES_DIR_PATH = &quot;/storage/templates&quot;</computeroutput></para>
+<para>@const string Chemin du dossier des templates </para>
+<para>
+Définition à la ligne <link linkend="_a00032_source_1l00016">16</link> du fichier <link linkend="_a00032_source">SaboTemplateUserCommand.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00032">SaboTemplateUserCommand.php</link></section>
+</section>

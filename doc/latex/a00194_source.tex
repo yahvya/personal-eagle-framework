@@ -1,0 +1,56 @@
+\hypertarget{a00194_source}{}\doxysection{Mysql\+Table\+Creator.\+php}
+\label{a00194_source}\index{MysqlTableCreator.php@{MysqlTableCreator.php}}
+\mbox{\hyperlink{a00194}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{a00194_source_l00003}00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{a00413}{SaboCore\(\backslash\)Database\(\backslash\)Default\(\backslash\)System}};}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{a00194_source_l00005}00005\ use\ ReflectionClass;}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00006}00006\ use\ ReflectionException;}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{a00194_source_l00012}\mbox{\hyperlink{a00756}{00012}}\ \textcolor{keyword}{abstract}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{a00756}{MysqlTableCreator}}\{}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00020}\mbox{\hyperlink{a00756_a7a4a9754bcabdb89197c1239ef7cf5a2}{00020}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00756_a7a4a9754bcabdb89197c1239ef7cf5a2}{getTableCreationFrom}}(\mbox{\hyperlink{a00752}{MysqlModel}}\ \$model):string\{}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00021}00021\ \ \ \ \ \ \ \ \ \$creationScript\ =\ \textcolor{stringliteral}{"{}\{\$model-\/>getTableNameManager()-\/>getCreationSql()\}(\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{a00194_source_l00023}00023\ \ \ \ \ \ \ \ \ \$primaryKeys\ =\ [];}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00024}00024\ \ \ \ \ \ \ \ \ \$foreignKeys\ =\ [];}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{a00194_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}(\$model-\/>\mbox{\hyperlink{a00752_a367c73b2954a3aaaa9c017800eaabdc0}{getColumnsConfig}}()\ as\ \$\_\ =>\ \$column)\{}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \$creationScript\ .=\ \textcolor{stringliteral}{"{}\(\backslash\)t\{\$column-\/>getCreationSql()\},\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{a00194_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\$column-\/>isPrimaryKey())}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$primaryKeys[]\ =\ \$column-\/>getColumnName();}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{a00194_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\$column-\/>isForeignKey())\{}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ création\ du\ modèle\ référencé\ pour\ récupérer\ le\ nom\ de\ la\ table\ ainsi\ que\ la\ colonne\ référencée}}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$reflection\ =\ \textcolor{keyword}{new}\ ReflectionClass(objectOrClass:\ \$column-\/>getReferencedModel());}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{a00194_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$referencedModel\ =\ \$reflection-\/>newInstance();}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$referencedModelColumnsConfig\ =\ \$referencedModel-\/>getDbColumnsConfig();}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{a00194_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$foreignKeys[]\ =\ [}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}columnName"{}}\ =>\ \$column-\/>getColumnName(),}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}referencedTable"{}}\ =>\ \$referencedModel-\/>getTableName()-\/>getTableName(),}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}referencedColumnName"{}}\ =>\ \$referencedModelColumnsConfig[\$column-\/>getReferencedAttributeName()]-\/>getColumnName()}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ];}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00045}00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{a00194_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ajout\ des\ clés\ primaires}}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!empty(\$primaryKeys))}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \$creationScript\ .=\ \textcolor{stringliteral}{"{}\(\backslash\)tPRIMARY\ KEY\ ("{}}.\ implode(separator:\ \textcolor{stringliteral}{"{},"{}},array:\ \$primaryKeys).\textcolor{stringliteral}{"{}),\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{a00194_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ajout\ des\ clés\ étrangères}}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}(\$foreignKeys\ as\ \$foreignKey)\{}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \$creationScript\ .=\ \textcolor{stringliteral}{"{}\(\backslash\)tFOREIGN\ KEY(\{\$foreignKey["{}}columnName\textcolor{stringliteral}{"{}]\})\ REFERENCES\ \{\$foreignKey["{}}referencedTable\textcolor{stringliteral}{"{}]\}(\{\$foreignKey["{}}referencedColumnName\textcolor{stringliteral}{"{}]\}),\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00054}00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{a00194_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(str\_ends\_with(haystack:\ \$creationScript,needle:\ \textcolor{stringliteral}{"{},\(\backslash\)n"{}})\ )}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \$creationScript\ =\ substr(\textcolor{keywordtype}{string}:\ \$creationScript,offset:\ 0,length:\ -\/2)\ .\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{a00194_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$creationScript\ .\ \textcolor{stringliteral}{"{});"{}};}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00060}00060\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00194_source_l00061}00061\ \}}
+
+\end{DoxyCode}

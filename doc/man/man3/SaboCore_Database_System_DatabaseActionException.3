@@ -1,0 +1,132 @@
+.TH "DatabaseActionException" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+DatabaseActionException \- Exception d'action sur un processus de la base de données\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de Exception\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP (string $errorMessage, \fBDatabaseActions\fP $failedAction, bool $isDisplayable=true)"
+.br
+.ti -1c
+.RI "\fBgetErrorMessage\fP (string $defaultMessage='Une erreur technique c'est produite')"
+.br
+.RI "Fourni le message d'erreur formaté en fonction de l'état isDisplayable\&. "
+.ti -1c
+.RI "\fBgetFailedAction\fP ()"
+.br
+.ti -1c
+.RI "\fBgetIsDisplayable\fP ()"
+.br
+.in -1c
+.SS "Attributs protégés"
+
+.in +1c
+.ti -1c
+.RI "string \fB$errorMessage\fP"
+.br
+.ti -1c
+.RI "\fBDatabaseActions\fP \fB$failedAction\fP"
+.br
+.ti -1c
+.RI "bool \fB$isDisplayable\fP"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Exception d'action sur un processus de la base de données\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB11\fP du fichier \fBDatabaseActionException\&.php\fP\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "__construct (string $errorMessage, \fBDatabaseActions\fP $failedAction, bool $isDisplayable = \fCtrue\fP)"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$errorMessage\fP Message d'erreur 
+.br
+\fI$failedAction\fP Action échouée 
+.br
+\fI$isDisplayable\fP Si le message d'erreur peut être affiché 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB32\fP du fichier \fBDatabaseActionException\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "getErrorMessage (string $defaultMessage = \fC'Une erreur technique c'est produite'\fP)"
+
+.PP
+Fourni le message d'erreur formaté en fonction de l'état isDisplayable\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$defaultMessage\fP message par défaut en cas de message non affichable 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+string Le message d'erreur affichable 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB45\fP du fichier \fBDatabaseActionException\&.php\fP\&.
+.SS "getFailedAction ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+DatabaseActions L'action échouée 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB52\fP du fichier \fBDatabaseActionException\&.php\fP\&.
+.SS "getIsDisplayable ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+bool Si le message peut être affiché à l'utilisateur 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB59\fP du fichier \fBDatabaseActionException\&.php\fP\&.
+.SH "Documentation des champs"
+.PP 
+.SS "string $errorMessage\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB15\fP du fichier \fBDatabaseActionException\&.php\fP\&.
+.SS "\fBDatabaseActions\fP $failedAction\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB20\fP du fichier \fBDatabaseActionException\&.php\fP\&.
+.SS "bool $isDisplayable\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB25\fP du fichier \fBDatabaseActionException\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

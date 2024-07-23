@@ -1,0 +1,200 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_annotated" xml:lang="fr">
+<title>Structures de données</title>
+Liste des structures de données avec une brève description :<link linkend="_a00784">Application</link>
+<para>Gestionnaire de l&apos;application </para>
+<link linkend="_a00904">AppStorage</link>
+<para>Gestionnaire de stockage de l&apos;application </para>
+<link linkend="_a00544">ArgumentManager</link>
+<para>Gestionnaire d&apos;arguments de la ligne de commandes </para>
+<link linkend="_a00596">BinaryColumn</link>
+<para>Champs de type binary </para>
+<link linkend="_a00872">BladeMailProvider</link>
+<para>Fournisseur de mail template blade </para>
+<link linkend="_a00796">BladeResponse</link>
+<para>Réponse fichier blade </para>
+<link linkend="_a00600">BoolColumn</link>
+<para>Champs de type Booléen </para>
+<link linkend="_a00660">CallableCond</link>
+<para>Représente une condition pouvant être appellé </para>
+<link linkend="_a00604">CharColumn</link>
+<para>Champs de type char </para>
+<link linkend="_a00548">CliArgument</link>
+<para>Argument de ligne de commande </para>
+<link linkend="_a00664">Cond</link>
+<para>Représente une condition de validation </para>
+<link linkend="_a00580">Config</link>
+<para>Représente une configuration </para>
+<link linkend="_a00584">ConfigException</link>
+<para>Exception de configuration </para>
+<link linkend="_a00588">Controller</link>
+<para>Controller abstrait </para>
+<link linkend="_a00556">ControllerMakerCommand</link>
+<para>Commande de création de controller </para>
+<link linkend="_a00852">CsrfManager</link>
+<para>Gestionnaire de token csrf </para>
+<link linkend="_a00924">CustomController</link>
+<para>Controller customisé de l&apos;application </para>
+<link linkend="_a00932">CustomModel</link>
+<para>Model customisé de l&apos;application </para>
+<link linkend="_a00936">CustomTreatment</link>
+<para>Gestionnaire de traitement customisé </para>
+<link linkend="_a00764">DatabaseActionException</link>
+<para>Exception d&apos;action sur un processus de la base de données </para>
+<link linkend="_a00768">DatabaseComparator</link>
+<para>Représentation de la fonction de comparaison </para>
+<link linkend="_a00772">DatabaseCondition</link>
+<para>Condition de récupération </para>
+<link linkend="_a00776">DatabaseCondSeparator</link>
+<para>Représentation de la séparation entre deux conditions </para>
+<link linkend="_a00780">DatabaseModel</link>
+<para>Modèle de la base de données </para>
+<link linkend="_a00760">DatabaseProvider</link>
+<para>Classe parente de fournisseur d&apos;instance pour le système de base de donnée </para>
+<link linkend="_a00668">DateTimeCond</link>
+<para>Condition représentant un champ de type datetime </para>
+<link linkend="_a00608">DecimalColumn</link>
+<para>Champs de type decimal </para>
+<link linkend="_a00916">DefaultExtensions</link>
+<para>Extensions par défaut de twig </para>
+<link linkend="_a00928">DefaultMaintenanceController</link>
+<para>Controller de vérification de maintenance par défaut </para>
+<link linkend="_a00800">DownloadResponse</link>
+<para>Réponse de téléchargement </para>
+<link linkend="_a00612">EnumColumn</link>
+<para>Champs de type énumération </para>
+<link linkend="_a00672">EnumValidityCond</link>
+<para>Vérifie la possibilité d&apos;utiliser la donnée </para>
+<link linkend="_a00856">FileContentManager</link>
+<para>Gestionnaire de contenu de fichiers </para>
+<link linkend="_a00860">FileManager</link>
+<para>Gestionnaire de fichier serveur </para>
+<link linkend="_a00676">FilterCond</link>
+<para>Condition filter_var </para>
+<link linkend="_a00704">Formater</link>
+<para>Formateur de donnée </para>
+<link linkend="_a00708">FormaterException</link>
+<para>Exception d&apos;échec de formatage </para>
+<link linkend="_a00864">FormFileManager</link>
+<para>Gestionnaire de fichier provenant de formulaire ($_FILES) </para>
+<link linkend="_a00560">HelpCommand</link>
+<para>Commande d&apos;affichage d&apos;aide </para>
+<link linkend="_a00804">HtmlResponse</link>
+<para>Réponse html </para>
+<link linkend="_a00616">IntColumn</link>
+<para>Champs de type int </para>
+<link linkend="_a00620">JoinedColumn</link>
+<para>Attribut de liaison de tables </para>
+<link linkend="_a00696">JoinedList</link>
+<para>Lignes jointes </para>
+<link linkend="_a00624">JsonColumn</link>
+<para>Champs de type json </para>
+<link linkend="_a00712">JsonFormatter</link>
+<para>Formateur de donnée json en chaine json </para>
+<link linkend="_a00716">JsonReformer</link>
+<para>Reconstructeur de donnée json en chaine json </para>
+<link linkend="_a00808">JsonResponse</link>
+<para>Réponse json </para>
+<link linkend="_a00680">JsonValidityCond</link>
+<para>Condition de vérification de validité json </para>
+<link linkend="_a00564">LaunchServerCommand</link>
+<para>Commande de lancement de serveur </para>
+<link linkend="_a00684">LenCond</link>
+<para>Condition de vérification de taille </para>
+<link linkend="_a00876">MailerTemplateProvider</link>
+<para>Représente un fournisseur html pour mail à partir d&apos;un template </para>
+<link linkend="_a00592">MaintenanceController</link>
+<para>Gestion de la maintenance </para>
+<link linkend="_a00828">MatchResult</link>
+<para>Résultat de match </para>
+<link linkend="_a00568">ModelMakerCommand</link>
+<para>Commande de création de model </para>
+<link linkend="_a00728">MysqlBindDatas</link>
+<para>Données de bind mysql </para>
+<link linkend="_a00732">MysqlComparator</link>
+<para>Comparateurs mysql </para>
+<link linkend="_a00688">MysqlCondException</link>
+<para>Exception de non-validité de condition </para>
+<link linkend="_a00736">MysqlCondition</link>
+<para>Condition mysql </para>
+<link linkend="_a00740">MysqlCondSeparator</link>
+<para>Séparateurs mysql </para>
+<link linkend="_a00744">MysqlException</link>
+<para>Exception mysql </para>
+<link linkend="_a00748">MysqlFunction</link>
+<para>Fonctions mysql </para>
+<link linkend="_a00752">MysqlModel</link>
+<para>Modèle de la base de données mysql </para>
+<link linkend="_a00720">MysqlProvider</link>
+<para>Fournisseur mysql </para>
+<link linkend="_a00724">MysqlQueryBuilder</link>
+<para>Constructeur de requête </para>
+<link linkend="_a00756">MysqlTableCreator</link>
+<para>Fournisseur de création de table sql à partir d&apos;un model </para>
+<link linkend="_a00888">Printer</link>
+<para>Afficheur terminal </para>
+<link linkend="_a00912">RandomStringGenerator</link>
+<para>Générateur de chaine aléatoire </para>
+<link linkend="_a00812">RedirectResponse</link>
+<para>Réponse redirection </para>
+<link linkend="_a00692">RegexCond</link>
+<para>Attribut définissant une condition regex </para>
+<link linkend="_a00792">Request</link>
+<para>Gestionnaire des données de la requête </para>
+<link linkend="_a00896">ResourceManager</link>
+<para>Gestinonaire de ressource </para>
+<link linkend="_a00816">ResourceResponse</link>
+<para>Réponse ressource </para>
+<link linkend="_a00820">Response</link>
+<para>Gestionnaire de retour de réponse </para>
+<link linkend="_a00832">Route</link>
+<para>Route de l&apos;application </para>
+<link linkend="_a00836">RouteManager</link>
+<para>Gestionnaire de routes </para>
+<link linkend="_a00788">RoutingManager</link>
+<para>Gestionnaire du routing de l&apos;application </para>
+<link linkend="_a00848">SaboApi</link>
+<para>Utilitaire requête d&apos;api curl </para>
+<link linkend="_a00552">SaboCli</link>
+<para>Gestionnaire de commande du framework </para>
+<link linkend="_a00572">SaboCommand</link>
+<para>Commande </para>
+<link linkend="_a00868">SaboList</link>
+<para>Utilitaire de liste à contenu uniforme </para>
+<link linkend="_a00880">SaboMailer</link>
+<para>Helper d&apos;envoi de mail simplifié </para>
+<link linkend="_a00900">SaboSse</link>
+<para>Utilitaire d&apos;évènement sse </para>
+<link linkend="_a00576">SaboTemplateUserCommand</link>
+<para>Commande de template d&apos;un template </para>
+<link linkend="_a00892">SessionStorage</link>
+<para>Gestionnaire de session </para>
+<link linkend="_a00628">SqlAttribute</link>
+<para>Représente un attribut pouvant être créé en sql </para>
+<link linkend="_a00908">Storable</link>
+<para>Représente un élement pouvant être stocké </para>
+<link linkend="_a00632">TableColumn</link>
+<para>Représentation d&apos;une colonne </para>
+<link linkend="_a00636">TableName</link><link linkend="_a00640">TextColumn</link>
+<para>Champs de type text </para>
+<link linkend="_a00700">Timestamp</link>
+<para>Type custom timestamp </para>
+<link linkend="_a00644">TimestampColumn</link>
+<para>Champs de type timestamp|date|time </para>
+<link linkend="_a00648">TinyIntColumn</link>
+<para>Champs de type tinyint </para>
+<link linkend="_a00840">Treatment</link>
+<para>Gestionnaire de traitement </para>
+<link linkend="_a00844">TreatmentException</link>
+<para>Exception de traitement </para>
+<link linkend="_a00884">TwigMailProvider</link>
+<para>Fournisseur de mail template twig </para>
+<link linkend="_a00824">TwigResponse</link>
+<para>Réponse twig </para>
+<link linkend="_a00652">VarBinaryColumn</link>
+<para>Champs de type binary à taille variable </para>
+<link linkend="_a00656">VarcharColumn</link>
+<para>Champs de type varchar </para>
+<link linkend="_a00920">Verifier</link>
+<para>Gestionnaire de vérification </para>
+</section>

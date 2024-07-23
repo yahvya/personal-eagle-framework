@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00612" xml:lang="fr">
+<title>Référence de la classe EnumColumn</title>
+<indexterm><primary>EnumColumn</primary></indexterm>
+<para>
+
+<para>Champs de type énumération. </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de EnumColumn:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00612.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00612_1a631d2380bc313fc8db8feff57de9b4b7">__construct</link> (string $columnName, array $possibleValues, bool $<link linkend="_a00632_1ae8fae740d59f7524f81c796142d3a846">isNullable</link>=false, bool $<link linkend="_a00632_1a84d622ec43bb17c0e2dad555eb2e727f">isPrimaryKey</link>=false, bool $<link linkend="_a00632_1af8ed15bf71456982ef4e83bda6110b84">isUnique</link>=false, string $defaultValue=self::NO_DEFAULT_VALUE, bool $<link linkend="_a00632_1aef8eaaa57b12ba2f3af9bc43e86785f9">isForeignKey</link>=false, ?string $referencedModel=null, ?string $referencedAttributeName=null, array $setConditions=[], array $dataFormatters=[], array $datasReformers=[])</para>
+</listitem>
+            <listitem><para><link linkend="_a00612_1a77ed872e25498694d3063ef2da790f82">getCreationSql</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00612_1a0b2c476f50ddec2a78028e3a3c2827d4">getPossibleValues</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00612_1a5108b80166312a6a5db4f674414ac423">getColumnType</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Fonctions membres publiques hérités de <link linkend="_a00632">TableColumn</link>        <itemizedlist>
+            <listitem><para><link linkend="_a00632_1a66c1c7a592dee0f5c81ce8bc4f5aba79">__construct</link> (string $columnName, bool $<link linkend="_a00632_1ae8fae740d59f7524f81c796142d3a846">isNullable</link>=false, bool $<link linkend="_a00632_1a84d622ec43bb17c0e2dad555eb2e727f">isPrimaryKey</link>=false, bool $<link linkend="_a00632_1af8ed15bf71456982ef4e83bda6110b84">isUnique</link>=false, string $defaultValue=self::NO_DEFAULT_VALUE, bool $<link linkend="_a00632_1aef8eaaa57b12ba2f3af9bc43e86785f9">isForeignKey</link>=false,?string $referencedModel=null,?string $referencedAttributeName=null, array $setConditions=[], array $dataFormatters=[], array $datasReformers=[])</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1aaab6c4c9f3ed625334aa5024eb645ba0">verifyData</link> (<link linkend="_a00752">MysqlModel</link> $baseModel, string $attributeName, mixed $data)</para>
+
+<para>Vérifie la donnée à affecter. </para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1adbf13492c59987bedcd545a4a92e068a">formatData</link> (<link linkend="_a00752">MysqlModel</link> $baseModel, mixed $originalData)</para>
+
+<para>Formate la donnée originale en passant par les formateurs. </para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1a04bba9c06a9e7c7e22f3e2fd502462f1">reformData</link> (<link linkend="_a00752">MysqlModel</link> $baseModel, mixed $formatedData)</para>
+
+<para>Reforme la donnée originale en passant par les reconstructeurs. </para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1ad92bfdc0fefd5c464f9da10afa3380c8">getColumnName</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1a84d622ec43bb17c0e2dad555eb2e727f">isPrimaryKey</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1aef8eaaa57b12ba2f3af9bc43e86785f9">isForeignKey</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1ae8fae740d59f7524f81c796142d3a846">isNullable</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1af8ed15bf71456982ef4e83bda6110b84">isUnique</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1af4b6ceb378c2dae6a318da7e4dae47b6">getReferencedModel</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1acd86beef1d1792ff1f9fbf96251a346a">getSetConditions</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1abc3d98fd236692c0f7a687189107f693">getDefaultValueStr</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1a7b326430880e7e87c18f6331afabb1ef">haveDefaultValue</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1adbceac178490fa055ef59925eb68a3e8">getDatasFormatters</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1a49fc4860f790b90c3ec1b43f4457d1b8">getDatasReformers</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1ab85bdcdb8aa6018d0a443da6beb2a6d4">getReferencedAttributeName</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1a76b1e6a88663c88c3866a0a959a4507f">convertToValue</link> (mixed $data)</para>
+
+<para>Méthode appellé au montage de la propriété portant cet attribut. Transforme la donnée récupérée en base de donnée en la donnée finale. </para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1a91357cc34d10330cca617fdc3bc012cc">convertFromValue</link> (mixed $data)</para>
+
+<para>Méthode appellé à l&apos;insertion ou mise à jour de la propriété portant cet attribut. Transforme la donnée de l&apos;attribut en une donnée capable d&apos;être inséré en base de donnée. </para>
+</listitem>
+            <listitem><para><link linkend="_a00632_1a5108b80166312a6a5db4f674414ac423">getColumnType</link> ()</para>
+</listitem>
+        </itemizedlist>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00628_1a77ed872e25498694d3063ef2da790f82">getCreationSql</link> ()</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Attributs protégés    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00868">SaboList</link> <link linkend="_a00612_1ad42fe3538e50fac0cafb16ead6ba5528">$possibleValues</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Attributs protégés hérités de <link linkend="_a00632">TableColumn</link>        <itemizedlist>
+            <listitem><para>const string <link linkend="_a00632_1a60c5df8609f676f3a37b03b36cc7ab35">NO_DEFAULT_VALUE</link> = &quot;ATTRIBUTE_NO_DEFAULT_VALUE&quot;</para>
+
+<para>Chaine représentant si l&apos;attribut n&apos;a pas de valeur par défaut. </para>
+</listitem>
+            <listitem><para>string <link linkend="_a00632_1a26f81287ec32ce8f110e8d82fbd1287b">$columnName</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_a00632_1a6684994e27b9c47a6a616bec069e9d6c">$isPrimaryKey</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_a00632_1a80dfa697ce68e86b57ac28e85fc94940">$isForeignKey</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_a00632_1a14fbc937b182e9c5e716e3d6c47a7a2b">$isNullable</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_a00632_1a3a2a468b0dce59773b37d8e0837386bf">$isUnique</link></para>
+</listitem>
+            <listitem><para>string <link linkend="_a00632_1a7cb26b7337faae66c684c41170aca703">$defaultValue</link></para>
+</listitem>
+            <listitem><para>string <link linkend="_a00632_1aea28bfaae2904f85413eeb372ae61930">$referencedModel</link></para>
+</listitem>
+            <listitem><para>string <link linkend="_a00632_1a932ca11214be628e42a3f4ace52ebb87">$referencedAttributeName</link></para>
+</listitem>
+            <listitem><para>array <link linkend="_a00632_1aff6fb07d968e6d11597786dfa631e093">$setConditions</link></para>
+</listitem>
+            <listitem><para>array <link linkend="_a00632_1a1305d69ee34337bbd87d14aadcc72ab8">$datasFormatters</link> = []</para>
+</listitem>
+            <listitem><para>array <link linkend="_a00632_1a4f639e69f23c00400112dadd89e91b62">$datasReformers</link> = []</para>
+</listitem>
+        </itemizedlist>
+<section>
+<title>Description détaillée</title>
+
+<para>Champs de type énumération. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00086_source_1l00015">15</link> du fichier <link linkend="_a00086_source">EnumColumn.php</link>.</para>
+</section>
+<section>
+<title>Documentation des constructeurs et destructeur</title>
+<anchor xml:id="_a00612_1a631d2380bc313fc8db8feff57de9b4b7"/><section>
+    <title>__construct()</title>
+<indexterm><primary>__construct</primary><secondary>EnumColumn</secondary></indexterm>
+<indexterm><primary>EnumColumn</primary><secondary>__construct</secondary></indexterm>
+<para><computeroutput>__construct (string $columnName, array $possibleValues, bool $isNullable = <computeroutput>false</computeroutput>
+, bool $isPrimaryKey = <computeroutput>false</computeroutput>
+, bool $isUnique = <computeroutput>false</computeroutput>
+, string $defaultValue = <computeroutput>self::NO_DEFAULT_VALUE</computeroutput>
+, bool $isForeignKey = <computeroutput>false</computeroutput>
+, ?string $referencedModel = <computeroutput>null</computeroutput>
+, ?string $referencedAttributeName = <computeroutput>null</computeroutput>
+, array $setConditions = <computeroutput>[]</computeroutput>
+, array $dataFormatters = <computeroutput>[]</computeroutput>
+, array $datasReformers = <computeroutput>[]</computeroutput>
+)</computeroutput></para><para>
+Définition à la ligne <link linkend="_a00086_source_1l00021">21</link> du fichier <link linkend="_a00086_source">EnumColumn.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00612_1a5108b80166312a6a5db4f674414ac423"/><section>
+    <title>getColumnType()</title>
+<indexterm><primary>getColumnType</primary><secondary>EnumColumn</secondary></indexterm>
+<indexterm><primary>EnumColumn</primary><secondary>getColumnType</secondary></indexterm>
+<para><computeroutput>getColumnType ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>int Fourni le type de paramètre pdo </para>
+</formalpara>
+</para>
+<para>
+Réimplémentée à partir de <link linkend="_a00632_1a5108b80166312a6a5db4f674414ac423">TableColumn</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00086_source_1l00064">64</link> du fichier <link linkend="_a00086_source">EnumColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00612_1a77ed872e25498694d3063ef2da790f82"/><section>
+    <title>getCreationSql()</title>
+<indexterm><primary>getCreationSql</primary><secondary>EnumColumn</secondary></indexterm>
+<indexterm><primary>EnumColumn</primary><secondary>getCreationSql</secondary></indexterm>
+<para><computeroutput>getCreationSql ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string Fourni le sql de création de l&apos;attribut </para>
+</formalpara>
+</para>
+<para>
+Réimplémentée à partir de <link linkend="_a00628_1a77ed872e25498694d3063ef2da790f82">SqlAttribute</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00086_source_1l00040">40</link> du fichier <link linkend="_a00086_source">EnumColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00612_1a0b2c476f50ddec2a78028e3a3c2827d4"/><section>
+    <title>getPossibleValues()</title>
+<indexterm><primary>getPossibleValues</primary><secondary>EnumColumn</secondary></indexterm>
+<indexterm><primary>EnumColumn</primary><secondary>getPossibleValues</secondary></indexterm>
+<para><computeroutput>getPossibleValues ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>SaboList&lt;String&gt; la liste des valeurs possibles de l&apos;énumération </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00086_source_1l00059">59</link> du fichier <link linkend="_a00086_source">EnumColumn.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des champs</title>
+<anchor xml:id="_a00612_1ad42fe3538e50fac0cafb16ead6ba5528"/><section>
+    <title>$possibleValues</title>
+<indexterm><primary>$possibleValues</primary><secondary>EnumColumn</secondary></indexterm>
+<indexterm><primary>EnumColumn</primary><secondary>$possibleValues</secondary></indexterm>
+<para><computeroutput><link linkend="_a00868">SaboList</link> $possibleValues<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00086_source_1l00019">19</link> du fichier <link linkend="_a00086_source">EnumColumn.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00086">EnumColumn.php</link></section>
+</section>

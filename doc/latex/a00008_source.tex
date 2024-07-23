@@ -1,0 +1,54 @@
+\hypertarget{a00008_source}{}\doxysection{Argument\+Manager.\+php}
+\label{a00008_source}\index{ArgumentManager.php@{ArgumentManager.php}}
+\mbox{\hyperlink{a00008}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{a00008_source_l00003}\mbox{\hyperlink{a00398}{00003}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{a00398}{SaboCore\(\backslash\)Cli\(\backslash\)Cli}};}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{a00008_source_l00009}\mbox{\hyperlink{a00544}{00009}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{a00544}{ArgumentManager}}\{}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00013}\mbox{\hyperlink{a00544_a4eb471260e90dfc2e5b9e4854d3c8b8f}{00013}}\ \ \ \ \ \textcolor{keyword}{protected}\ array\ \mbox{\hyperlink{a00544_a4eb471260e90dfc2e5b9e4854d3c8b8f}{\$args}}\ =\ [];}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{a00008_source_l00018}\mbox{\hyperlink{a00544_a4b291df4b5a2e3927a5d64170ae34fae}{00018}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{a00544_a4b291df4b5a2e3927a5d64170ae34fae}{\$currentIndex}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{a00008_source_l00023}\mbox{\hyperlink{a00544_a3a1d261adb9cd711ad1ae39c61a6241b}{00023}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00544_a3a1d261adb9cd711ad1ae39c61a6241b}{\_\_construct}}(array\ \$argv)\{}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ conversion\ des\ arguments}}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00025}00025\ \ \ \ \ \ \ \ \ \$this-\/>args\ =\ array\_map(}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ callback:\ fn(\textcolor{keywordtype}{string}\ \$arg):\mbox{\hyperlink{a00548}{CliArgument}}\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{a00548}{CliArgument}}(argument:\ \$arg),}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ array:\ array\_slice(array:\ \$argv,offset:\ 1)}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00028}00028\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{a00008_source_l00036}\mbox{\hyperlink{a00544_ac9a4dce35165e556e7d45c45f138a265}{00036}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00544_ac9a4dce35165e556e7d45c45f138a265}{previous}}():?\mbox{\hyperlink{a00548}{CliArgument}}\{}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00037}00037\ \ \ \ \ \ \ \ \ return\ array\_key\_exists(key:\ \$this-\/>currentIndex\ -\/\ 1,\ array:\ \$this-\/>args)\ ?\ \$this-\/>args[-\/-\/\$this-\/>currentIndex]\ :\ null;}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{a00008_source_l00045}\mbox{\hyperlink{a00544_acea62048bfee7b3cd80ed446c86fb78a}{00045}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00544_acea62048bfee7b3cd80ed446c86fb78a}{next}}():?\mbox{\hyperlink{a00548}{CliArgument}}\{}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00046}00046\ \ \ \ \ \ \ \ \ return\ array\_key\_exists(key:\ \$this-\/>currentIndex,array:\ \$this-\/>args)\ ?\ \$this-\/>args[\$this-\/>currentIndex++]\ :\ null;}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{a00008_source_l00055}\mbox{\hyperlink{a00544_a91a8ac2826c641d95a4b6994baba9455}{00055}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00544_a91a8ac2826c641d95a4b6994baba9455}{find}}(\textcolor{keywordtype}{string}\ \$optionName,\textcolor{keywordtype}{bool}\ \$fromCurrentIndex\ =\ \textcolor{keyword}{false}):\mbox{\hyperlink{a00548}{CliArgument}}|null\{}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00056}00056\ \ \ \ \ \ \ \ \ \$searchIndex\ =\ \$fromCurrentIndex\ ?\ \$this-\/>currentIndex\ :\ 0;}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00057}00057\ \ \ \ \ \ \ \ \ \$countOfElements\ =\ count(value:\ \$this-\/>args);}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{a00008_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ recherche\ de\ l'option}}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(;\$searchIndex\ <\ \$countOfElements;\ \$searchIndex++)\{}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \$option\ =\ \$this-\/>args[\$searchIndex]-\/>getOption();}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{a00008_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\$option\ !==\ \textcolor{keyword}{null}\ \&\&\ strcmp(string1:\ \$option,string2:\ \$optionName)\ ===\ 0)}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$this-\/>args[\$searchIndex];}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00065}00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{a00008_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{a00008_source_l00073}\mbox{\hyperlink{a00544_a24d4dbc71552d9387256a3cc426e3898}{00073}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00544_a24d4dbc71552d9387256a3cc426e3898}{getCount}}():int\{}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00074}00074\ \ \ \ \ \ \ \ \ return\ count(value:\ \$this-\/>args);}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00075}00075\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{a00008_source_l00080}\mbox{\hyperlink{a00544_a19dde99d8deb1c2e72d40e191fee96b0}{00080}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00544_a19dde99d8deb1c2e72d40e191fee96b0}{getArgs}}():array\{}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00081}00081\ \ \ \ \ \ \ \ \ return\ \$this-\/>args;}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00082}00082\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00008_source_l00083}00083\ \}}
+
+\end{DoxyCode}

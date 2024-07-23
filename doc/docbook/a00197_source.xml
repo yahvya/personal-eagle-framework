@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00197_source" xml:lang="fr">
+<title>DatabaseProvider.php</title>
+<indexterm><primary>DatabaseProvider.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00197_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00197_source_1l00002"/>00002 
+<anchor xml:id="_a00197_source_1l00003"/><link linkend="_a00414">00003</link> <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00414">SaboCore\Database\Providers</link>;
+<anchor xml:id="_a00197_source_1l00004"/>00004 
+<anchor xml:id="_a00197_source_1l00005"/>00005 use&#32;<link linkend="_a00580">SaboCore\Config\Config</link>;
+<anchor xml:id="_a00197_source_1l00006"/>00006 use&#32;<link linkend="_a00584">SaboCore\Config\ConfigException</link>;
+<anchor xml:id="_a00197_source_1l00007"/>00007 
+<anchor xml:id="_a00197_source_1l00012"/><link linkend="_a00760">00012</link> <emphasis role="keyword">abstract</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_a00760">DatabaseProvider</link>{
+<anchor xml:id="_a00197_source_1l00019"/><link linkend="_a00760_1a13bf8f7c5746da746a88b0c71bab49dc">00019</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">abstract</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00760_1a13bf8f7c5746da746a88b0c71bab49dc">initDatabase</link>(<link linkend="_a00580">Config</link>&#32;$providerConfig):void;
+<anchor xml:id="_a00197_source_1l00020"/>00020 
+<anchor xml:id="_a00197_source_1l00024"/><link linkend="_a00760_1a69d47b951343847eb872495590d43109">00024</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">abstract</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00760_1a69d47b951343847eb872495590d43109">getCon</link>():mixed;
+<anchor xml:id="_a00197_source_1l00025"/>00025 }
+</programlisting></section>

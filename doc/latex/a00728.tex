@@ -1,0 +1,127 @@
+\hypertarget{a00728}{}\doxysection{Référence de la classe Mysql\+Bind\+Datas}
+\label{a00728}\index{MysqlBindDatas@{MysqlBindDatas}}
+
+
+Données de bind mysql.  
+
+
+\doxysubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00728_afafec22147481bb104e2ff4ca3340d3d}{\+\_\+\+\_\+construct}} (int \$count\+Of\+Markers, array \$to\+Bind\+Datas)
+\item 
+\mbox{\hyperlink{a00728_ae927ec59a37d5b03a1110e4d813e6254}{get\+Markers\+Str}} ()
+\item 
+\mbox{\hyperlink{a00728_aecd6dfd73eb7eb1f9a1ae48680cc3a92}{get\+Count\+Of\+Markers}} ()
+\item 
+\mbox{\hyperlink{a00728_ab705342c83439f46efb6c4e33b94cb9f}{get\+To\+Bind\+Datas}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Attributs protégés}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{a00728_a335a939f207afef2fe43900e496e5bac}{\$count\+Of\+Markers}}
+\item 
+\mbox{\hyperlink{a00868}{Sabo\+List}} \mbox{\hyperlink{a00728_a88cd4ba88bb922b1ae79a9d8889877e9}{\$to\+Bind\+Datas}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Données de bind mysql. 
+
+\begin{DoxyAuthor}{Auteur}
+yahaya bathily \href{https://github.com/yahvya}{\texttt{ https\+://github.\+com/yahvya}} 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \mbox{\hyperlink{a00173_source_l00011}{11}} du fichier \mbox{\hyperlink{a00173_source}{Mysql\+Bind\+Datas.\+php}}.
+
+
+
+\doxysubsection{Documentation des constructeurs et destructeur}
+\mbox{\Hypertarget{a00728_afafec22147481bb104e2ff4ca3340d3d}\label{a00728_afafec22147481bb104e2ff4ca3340d3d}} 
+\index{MysqlBindDatas@{MysqlBindDatas}!\_\_construct@{\_\_construct}}
+\index{\_\_construct@{\_\_construct}!MysqlBindDatas@{MysqlBindDatas}}
+\doxysubsubsection{\texorpdfstring{\_\_construct()}{\_\_construct()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+construct (\begin{DoxyParamCaption}\item[{int}]{\$count\+Of\+Markers,  }\item[{array}]{\$to\+Bind\+Datas }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}[1]{Paramètres}
+int & {\em \$count\+Of\+Markers} & Nombre de marqueurs de bind \\
+\hline
+array & {\em \$to\+Bind\+Datas} & \mbox{[}\mbox{[}tableau contenant dans l\textquotesingle{}ordre les paramètres de bind\+Value sans l\textquotesingle{}index en premier\mbox{]}, ...\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \mbox{\hyperlink{a00173_source_l00026}{26}} du fichier \mbox{\hyperlink{a00173_source}{Mysql\+Bind\+Datas.\+php}}.
+
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{a00728_aecd6dfd73eb7eb1f9a1ae48680cc3a92}\label{a00728_aecd6dfd73eb7eb1f9a1ae48680cc3a92}} 
+\index{MysqlBindDatas@{MysqlBindDatas}!getCountOfMarkers@{getCountOfMarkers}}
+\index{getCountOfMarkers@{getCountOfMarkers}!MysqlBindDatas@{MysqlBindDatas}}
+\doxysubsubsection{\texorpdfstring{getCountOfMarkers()}{getCountOfMarkers()}}
+{\footnotesize\ttfamily get\+Count\+Of\+Markers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+int Nombre de marqueurs de bind 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00173_source_l00041}{41}} du fichier \mbox{\hyperlink{a00173_source}{Mysql\+Bind\+Datas.\+php}}.
+
+\mbox{\Hypertarget{a00728_ae927ec59a37d5b03a1110e4d813e6254}\label{a00728_ae927ec59a37d5b03a1110e4d813e6254}} 
+\index{MysqlBindDatas@{MysqlBindDatas}!getMarkersStr@{getMarkersStr}}
+\index{getMarkersStr@{getMarkersStr}!MysqlBindDatas@{MysqlBindDatas}}
+\doxysubsubsection{\texorpdfstring{getMarkersStr()}{getMarkersStr()}}
+{\footnotesize\ttfamily get\+Markers\+Str (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+string Construis la chaine ?,? de la requête prepare à partir du nombre de marqueurs 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00173_source_l00034}{34}} du fichier \mbox{\hyperlink{a00173_source}{Mysql\+Bind\+Datas.\+php}}.
+
+\mbox{\Hypertarget{a00728_ab705342c83439f46efb6c4e33b94cb9f}\label{a00728_ab705342c83439f46efb6c4e33b94cb9f}} 
+\index{MysqlBindDatas@{MysqlBindDatas}!getToBindDatas@{getToBindDatas}}
+\index{getToBindDatas@{getToBindDatas}!MysqlBindDatas@{MysqlBindDatas}}
+\doxysubsubsection{\texorpdfstring{getToBindDatas()}{getToBindDatas()}}
+{\footnotesize\ttfamily get\+To\+Bind\+Datas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+Sabo\+List$<$array$>$ \mbox{[}\mbox{[}tableau contenant dans l\textquotesingle{}ordre les paramètres de bind\+Value sans l\textquotesingle{}index en premier\mbox{]}, ...\mbox{]} 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00173_source_l00048}{48}} du fichier \mbox{\hyperlink{a00173_source}{Mysql\+Bind\+Datas.\+php}}.
+
+
+
+\doxysubsection{Documentation des champs}
+\mbox{\Hypertarget{a00728_a335a939f207afef2fe43900e496e5bac}\label{a00728_a335a939f207afef2fe43900e496e5bac}} 
+\index{MysqlBindDatas@{MysqlBindDatas}!\$countOfMarkers@{\$countOfMarkers}}
+\index{\$countOfMarkers@{\$countOfMarkers}!MysqlBindDatas@{MysqlBindDatas}}
+\doxysubsubsection{\texorpdfstring{\$countOfMarkers}{$countOfMarkers}}
+{\footnotesize\ttfamily int \$count\+Of\+Markers\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00173_source_l00015}{15}} du fichier \mbox{\hyperlink{a00173_source}{Mysql\+Bind\+Datas.\+php}}.
+
+\mbox{\Hypertarget{a00728_a88cd4ba88bb922b1ae79a9d8889877e9}\label{a00728_a88cd4ba88bb922b1ae79a9d8889877e9}} 
+\index{MysqlBindDatas@{MysqlBindDatas}!\$toBindDatas@{\$toBindDatas}}
+\index{\$toBindDatas@{\$toBindDatas}!MysqlBindDatas@{MysqlBindDatas}}
+\doxysubsubsection{\texorpdfstring{\$toBindDatas}{$toBindDatas}}
+{\footnotesize\ttfamily \mbox{\hyperlink{a00868}{Sabo\+List}} \$to\+Bind\+Datas\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00173_source_l00020}{20}} du fichier \mbox{\hyperlink{a00173_source}{Mysql\+Bind\+Datas.\+php}}.
+
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00173}{Mysql\+Bind\+Datas.\+php}}\end{DoxyCompactItemize}

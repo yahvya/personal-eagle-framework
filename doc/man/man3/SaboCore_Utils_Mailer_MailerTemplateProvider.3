@@ -1,0 +1,115 @@
+.TH "MailerTemplateProvider" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MailerTemplateProvider \- Représente un fournisseur html pour mail à partir d'un template\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Dérivée par \fBBladeMailProvider\fP, et \fBTwigMailProvider\fP\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP (string $templatePath, string $altContent, array $templateDatas=[])"
+.br
+.ti -1c
+.RI "\fBgetAltContent\fP ()"
+.br
+.ti -1c
+.RI "\fBbuildContent\fP ()"
+.br
+.in -1c
+.SS "Attributs protégés"
+
+.in +1c
+.ti -1c
+.RI "string \fB$templatePath\fP"
+.br
+.ti -1c
+.RI "string \fB$altContent\fP"
+.br
+.ti -1c
+.RI "array \fB$templateDatas\fP"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Représente un fournisseur html pour mail à partir d'un template\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB11\fP du fichier \fBMailerTemplateProvider\&.php\fP\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "__construct (string $templatePath, string $altContent, array $templateDatas = \fC[]\fP)"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$templatePath\fP Chemin du template à partir du dossier 
+.br
+\fI$altContent\fP Le contenu alternatif au html 
+.br
+\fI$templateDatas\fP Données à fournir au template 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB32\fP du fichier \fBMailerTemplateProvider\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "buildContent ()\fC [abstract]\fP"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+string le contenu du template construit 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fIThrowable\fP en cas d'erreur 
+.RE
+.PP
+
+.PP
+Réimplémentée dans \fBBladeMailProvider\fP, et \fBTwigMailProvider\fP\&.
+.SS "getAltContent ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+string le contenu alternatif au html 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB41\fP du fichier \fBMailerTemplateProvider\&.php\fP\&.
+.SH "Documentation des champs"
+.PP 
+.SS "string $altContent\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB20\fP du fichier \fBMailerTemplateProvider\&.php\fP\&.
+.SS "array $templateDatas\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB25\fP du fichier \fBMailerTemplateProvider\&.php\fP\&.
+.SS "string $templatePath\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB15\fP du fichier \fBMailerTemplateProvider\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

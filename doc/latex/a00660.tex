@@ -1,0 +1,138 @@
+\hypertarget{a00660}{}\doxysection{Référence de la classe Callable\+Cond}
+\label{a00660}\index{CallableCond@{CallableCond}}
+
+
+Représente une condition pouvant être appellé  
+
+
+Graphe d\textquotesingle{}héritage de Callable\+Cond\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{a00660}
+\end{center}
+\end{figure}
+\doxysubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00660_a6f3e4504980aa60c2bb1093f8f1b4f8b}{\+\_\+\+\_\+construct}} (callable \$to\+Verify, string \$error\+Message, bool \$is\+Displayable)
+\item 
+\mbox{\hyperlink{a00660_aaab6c4c9f3ed625334aa5024eb645ba0}{verify\+Data}} (\mbox{\hyperlink{a00752}{Mysql\+Model}} \$base\+Model, string \$attribute\+Name, mixed \$data)
+\begin{DoxyCompactList}\small\item\em Vérifie si la donnée est valide. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00660_a2bd06fb688dc4a272e4a92500cb3a4ce}{get\+Is\+Displayable}} ()
+\item 
+\mbox{\hyperlink{a00660_a3d24ed0e93b212b4d5e382fa795bf4ef}{get\+Error\+Message}} ()
+\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00664_aaab6c4c9f3ed625334aa5024eb645ba0}{verify\+Data}} (\mbox{\hyperlink{a00752}{Mysql\+Model}} \$base\+Model, string \$attribute\+Name, mixed \$data)
+\begin{DoxyCompactList}\small\item\em Vérifie si la donnée est valide. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00664_a3d24ed0e93b212b4d5e382fa795bf4ef}{get\+Error\+Message}} ()
+\item 
+\mbox{\hyperlink{a00664_a2bd06fb688dc4a272e4a92500cb3a4ce}{get\+Is\+Displayable}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Représente une condition pouvant être appellé 
+
+\begin{DoxyAuthor}{Auteur}
+yahaya bathily \href{https://github.com/yahvya}{\texttt{ https\+://github.\+com/yahvya}} 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \mbox{\hyperlink{a00122_source_l00015}{15}} du fichier \mbox{\hyperlink{a00122_source}{Callable\+Cond.\+php}}.
+
+
+
+\doxysubsection{Documentation des constructeurs et destructeur}
+\mbox{\Hypertarget{a00660_a6f3e4504980aa60c2bb1093f8f1b4f8b}\label{a00660_a6f3e4504980aa60c2bb1093f8f1b4f8b}} 
+\index{CallableCond@{CallableCond}!\_\_construct@{\_\_construct}}
+\index{\_\_construct@{\_\_construct}!CallableCond@{CallableCond}}
+\doxysubsubsection{\texorpdfstring{\_\_construct()}{\_\_construct()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+construct (\begin{DoxyParamCaption}\item[{callable}]{\$to\+Verify,  }\item[{string}]{\$error\+Message,  }\item[{bool}]{\$is\+Displayable }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}[1]{Paramètres}
+callable & {\em \$to\+Verify} & le callable à vérifier, doit renvoyer un booléen \\
+\hline
+string & {\em \$error\+Message} & le message d\textquotesingle{}erreur \\
+\hline
+bool & {\em \$is\+Displayable} & défini si l\textquotesingle{}erreur peut être affichée \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \mbox{\hyperlink{a00122_source_l00036}{36}} du fichier \mbox{\hyperlink{a00122_source}{Callable\+Cond.\+php}}.
+
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{a00660_a3d24ed0e93b212b4d5e382fa795bf4ef}\label{a00660_a3d24ed0e93b212b4d5e382fa795bf4ef}} 
+\index{CallableCond@{CallableCond}!getErrorMessage@{getErrorMessage}}
+\index{getErrorMessage@{getErrorMessage}!CallableCond@{CallableCond}}
+\doxysubsubsection{\texorpdfstring{getErrorMessage()}{getErrorMessage()}}
+{\footnotesize\ttfamily get\+Error\+Message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+string Le message d\textquotesingle{}erreur 
+\end{DoxyReturn}
+
+
+Implémente \mbox{\hyperlink{a00664_a3d24ed0e93b212b4d5e382fa795bf4ef}{Cond}}.
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00122_source_l00053}{53}} du fichier \mbox{\hyperlink{a00122_source}{Callable\+Cond.\+php}}.
+
+\mbox{\Hypertarget{a00660_a2bd06fb688dc4a272e4a92500cb3a4ce}\label{a00660_a2bd06fb688dc4a272e4a92500cb3a4ce}} 
+\index{CallableCond@{CallableCond}!getIsDisplayable@{getIsDisplayable}}
+\index{getIsDisplayable@{getIsDisplayable}!CallableCond@{CallableCond}}
+\doxysubsubsection{\texorpdfstring{getIsDisplayable()}{getIsDisplayable()}}
+{\footnotesize\ttfamily get\+Is\+Displayable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+bool Si le message d\textquotesingle{}erreur peut être affiché 
+\end{DoxyReturn}
+
+
+Implémente \mbox{\hyperlink{a00664_a2bd06fb688dc4a272e4a92500cb3a4ce}{Cond}}.
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00122_source_l00048}{48}} du fichier \mbox{\hyperlink{a00122_source}{Callable\+Cond.\+php}}.
+
+\mbox{\Hypertarget{a00660_aaab6c4c9f3ed625334aa5024eb645ba0}\label{a00660_aaab6c4c9f3ed625334aa5024eb645ba0}} 
+\index{CallableCond@{CallableCond}!verifyData@{verifyData}}
+\index{verifyData@{verifyData}!CallableCond@{CallableCond}}
+\doxysubsubsection{\texorpdfstring{verifyData()}{verifyData()}}
+{\footnotesize\ttfamily verify\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{a00752}{Mysql\+Model}}}]{\$base\+Model,  }\item[{string}]{\$attribute\+Name,  }\item[{mixed}]{\$data }\end{DoxyParamCaption})}
+
+
+
+Vérifie si la donnée est valide. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+Mysql\+Model & {\em \$base\+Model} & Model de base \\
+\hline
+string & {\em \$attribute\+Name} & Nom de l\textquotesingle{}attribut \\
+\hline
+mixed & {\em \$data} & donnée à vérifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+bool si la donnée est valide 
+\end{DoxyReturn}
+
+
+Implémente \mbox{\hyperlink{a00664_aaab6c4c9f3ed625334aa5024eb645ba0}{Cond}}.
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00122_source_l00043}{43}} du fichier \mbox{\hyperlink{a00122_source}{Callable\+Cond.\+php}}.
+
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00122}{Callable\+Cond.\+php}}\end{DoxyCompactItemize}

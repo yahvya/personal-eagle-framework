@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00716" xml:lang="fr">
+<title>Référence de la classe JsonReformer</title>
+<indexterm><primary>JsonReformer</primary></indexterm>
+<para>
+
+<para>Reconstructeur de donnée json en chaine json. </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de JsonReformer:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00716.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00716_1a195b10c024dfd48be18e6adc2b014d42">format</link> (<link linkend="_a00752">MysqlModel</link> $baseModel, mixed $data)</para>
+
+<para>Formate la donnée fournie. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00704_1a195b10c024dfd48be18e6adc2b014d42">format</link> (<link linkend="_a00752">MysqlModel</link> $baseModel, mixed $data)</para>
+
+<para>Formate la donnée fournie. </para>
+</listitem>
+        </itemizedlist>
+<section>
+<title>Description détaillée</title>
+
+<para>Reconstructeur de donnée json en chaine json. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00164_source_1l00012">12</link> du fichier <link linkend="_a00164_source">JsonReformer.php</link>.</para>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00716_1a195b10c024dfd48be18e6adc2b014d42"/><section>
+    <title>format()</title>
+<indexterm><primary>format</primary><secondary>JsonReformer</secondary></indexterm>
+<indexterm><primary>JsonReformer</primary><secondary>format</secondary></indexterm>
+<para><computeroutput>format (<link linkend="_a00752">MysqlModel</link> $baseModel, mixed $data)</computeroutput></para><para>
+
+<para>Formate la donnée fournie. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>MysqlModel</entry><entry>$baseModel</entry><entry>
+<para>Model de base </para>
+</entry>
+                            </row>
+                            <row>
+<entry>mixed</entry><entry>$data</entry><entry>
+<para>La donnée à formater </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>mixed Le résultat formaté </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Exceptions</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>FormaterException</entry><entry>
+<para>en cas d&apos;erreur </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Implémente <link linkend="_a00704_1a195b10c024dfd48be18e6adc2b014d42">Formater</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00164_source_1l00014">14</link> du fichier <link linkend="_a00164_source">JsonReformer.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00164">JsonReformer.php</link></section>
+</section>

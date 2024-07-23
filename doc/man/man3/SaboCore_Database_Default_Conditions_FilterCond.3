@@ -1,0 +1,125 @@
+.TH "FilterCond" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FilterCond \- Condition filter_var\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de \fBCond\fP\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP (int $filter, string $errorMessage)"
+.br
+.ti -1c
+.RI "\fBverifyData\fP (\fBMysqlModel\fP $baseModel, string $attributeName, mixed $data)"
+.br
+.RI "Vérifie si la donnée est valide\&. "
+.ti -1c
+.RI "\fBgetIsDisplayable\fP ()"
+.br
+.ti -1c
+.RI "\fBgetErrorMessage\fP ()"
+.br
+.in -1c
+.in +1c
+.ti -1c
+.RI "\fBverifyData\fP (\fBMysqlModel\fP $baseModel, string $attributeName, mixed $data)"
+.br
+.RI "Vérifie si la donnée est valide\&. "
+.ti -1c
+.RI "\fBgetErrorMessage\fP ()"
+.br
+.ti -1c
+.RI "\fBgetIsDisplayable\fP ()"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Condition filter_var\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB14\fP du fichier \fBFilterCond\&.php\fP\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "__construct (int $filter, string $errorMessage)"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$filter\fP constante FILTER_VALIDATE_\&.\&.\&. 
+.br
+\fI$errorMessage\fP message d'erreur 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB29\fP du fichier \fBFilterCond\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "getErrorMessage ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+string le message d'erreur en cas d'échec de validation de la condition 
+.RE
+.PP
+
+.PP
+Implémente \fBCond\fP\&.
+.PP
+Définition à la ligne \fB51\fP du fichier \fBFilterCond\&.php\fP\&.
+.SS "getIsDisplayable ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+bool si l'erreur peut être envoyée à l'utilisateur 
+.RE
+.PP
+
+.PP
+Implémente \fBCond\fP\&.
+.PP
+Définition à la ligne \fB43\fP du fichier \fBFilterCond\&.php\fP\&.
+.SS "verifyData (\fBMysqlModel\fP $baseModel, string $attributeName, mixed $data)"
+
+.PP
+Vérifie si la donnée est valide\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$baseModel\fP Model de base 
+.br
+\fI$attributeName\fP Nom de l'attribut 
+.br
+\fI$data\fP donnée à vérifier 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+bool si la donnée est valide 
+.RE
+.PP
+
+.PP
+Implémente \fBCond\fP\&.
+.PP
+Définition à la ligne \fB35\fP du fichier \fBFilterCond\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

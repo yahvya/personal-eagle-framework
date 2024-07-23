@@ -1,0 +1,77 @@
+.TH "SaboCore\Utils\Api" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SaboCore\Utils\Api
+.SH SYNOPSIS
+.br
+.PP
+.SS "Structures de données"
+
+.in +1c
+.ti -1c
+.RI "class \fBSaboApi\fP"
+.br
+.RI "Utilitaire requête d'api curl\&. "
+.in -1c
+.SS "Énumérations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBSaboApiConfig\fP : int { \fBURL\fP = 1 }"
+.br
+.RI "Configuration données constructeur SaboApi\&. "
+.ti -1c
+.RI "enum \fBSaboApiRequest\fP { \fBRESULT_AS_JSON_ARRAY\fP }"
+.br
+.RI "Configuration des paramètres d'une requête\&. "
+.in -1c
+.SH "Documentation du type de l'énumération"
+.PP 
+.SS "enum \fBSaboApiConfig\fP : int"
+
+.PP
+Configuration données constructeur SaboApi\&. 
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+\fBValeurs énumérées\fP
+.in +1c
+.TP
+\fB\fIURL \fP\fP
+Lien de requête\&. 
+.PP
+Définition à la ligne \fB9\fP du fichier \fBSaboApiConfig\&.php\fP\&.
+.SS "enum \fBSaboApiRequest\fP"
+
+.PP
+Configuration des paramètres d'une requête\&. 
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+\fBValeurs énumérées\fP
+.in +1c
+.TP
+\fB\fIRESULT_AS_JSON_ARRAY \fP\fP
+Conversion json\&. Usage du http_build_query
+.PP
+Aucune donnée contenue
+.PP
+Conservation du résultat sous forme de chaine
+.PP
+Conversion d'un résultat sous forme de chaine json en tableau 
+.PP
+Définition à la ligne \fB9\fP du fichier \fBSaboApiRequest\&.php\fP\&.
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

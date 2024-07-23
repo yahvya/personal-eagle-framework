@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00206_source" xml:lang="fr">
+<title>DatabaseComparator.php</title>
+<indexterm><primary>DatabaseComparator.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00206_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00206_source_1l00002"/>00002 
+<anchor xml:id="_a00206_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00415">SaboCore\Database\System</link>;
+<anchor xml:id="_a00206_source_1l00004"/>00004 
+<anchor xml:id="_a00206_source_1l00009"/><link linkend="_a00768">00009</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00768">DatabaseComparator</link>{
+<anchor xml:id="_a00206_source_1l00013"/><link linkend="_a00768_1a2322d45fc4d1cf92f0ecaf5cc38e0b68">00013</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00768_1a2322d45fc4d1cf92f0ecaf5cc38e0b68">$comparator</link>;
+<anchor xml:id="_a00206_source_1l00014"/>00014 
+<anchor xml:id="_a00206_source_1l00018"/><link linkend="_a00768_1a0b448ceb440b169f589649024baa554a">00018</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00768_1a0b448ceb440b169f589649024baa554a">__construct</link>(<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00768_1a2322d45fc4d1cf92f0ecaf5cc38e0b68">$comparator</link>){
+<anchor xml:id="_a00206_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;comparator&#32;=&#32;<link linkend="_a00768_1a2322d45fc4d1cf92f0ecaf5cc38e0b68">$comparator</link>;
+<anchor xml:id="_a00206_source_1l00020"/>00020 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00206_source_1l00021"/>00021 
+<anchor xml:id="_a00206_source_1l00025"/><link linkend="_a00768_1ad16a3785de3980107c4b2fc796819637">00025</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00768_1ad16a3785de3980107c4b2fc796819637">getComparator</link>():&#32;string{
+<anchor xml:id="_a00206_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;comparator;
+<anchor xml:id="_a00206_source_1l00027"/>00027 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00206_source_1l00028"/>00028 }
+</programlisting></section>

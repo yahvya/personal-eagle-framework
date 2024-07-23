@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00377_source" xml:lang="fr">
+<title>api.php</title>
+<indexterm><primary>api.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00377_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00377_source_1l00002"/>00002 
+<anchor xml:id="_a00377_source_1l00003"/>00003 <emphasis role="comment">//&#32;routes&#32;d&apos;api</emphasis>
+</programlisting></section>

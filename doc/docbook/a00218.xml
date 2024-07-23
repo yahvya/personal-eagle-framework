@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00218" xml:lang="fr">
+<title>Référence du fichier index.php</title>
+<indexterm><primary>index.php</primary></indexterm>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00218_1a31a2d26d08c471bd7a040a5c9576d447">$appRoot</link> = __DIR__ . &quot;/..&quot;</para>
+
+<para>Point d&apos;entrée du site. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Documentation des variables</title>
+<anchor xml:id="_a00218_1a31a2d26d08c471bd7a040a5c9576d447"/><section>
+    <title>$appRoot</title>
+<indexterm><primary>$appRoot</primary><secondary>index.php</secondary></indexterm>
+<indexterm><primary>index.php</primary><secondary>$appRoot</secondary></indexterm>
+<para><computeroutput>$appRoot = __DIR__ . &quot;/..&quot;</computeroutput></para><para>
+
+<para>Point d&apos;entrée du site. </para>
+</para>
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya/">https://github.com/yahvya/</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00218_source_1l00009">9</link> du fichier <link linkend="_a00218_source">index.php</link>.</para>
+</section>
+</section>
+</section>

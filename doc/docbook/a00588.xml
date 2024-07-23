@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00588" xml:lang="fr">
+<title>Référence de la classe Controller</title>
+<indexterm><primary>Controller</primary></indexterm>
+<para>
+
+<para>Controller abstrait. </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de Controller:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00588.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00588_1a095c5d389db211932136b53f25f39685">__construct</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Controller abstrait. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00065_source_1l00009">9</link> du fichier <link linkend="_a00065_source">Controller.php</link>.</para>
+</section>
+<section>
+<title>Documentation des constructeurs et destructeur</title>
+<anchor xml:id="_a00588_1a095c5d389db211932136b53f25f39685"/><section>
+    <title>__construct()</title>
+<indexterm><primary>__construct</primary><secondary>Controller</secondary></indexterm>
+<indexterm><primary>Controller</primary><secondary>__construct</secondary></indexterm>
+<para><computeroutput>__construct ( )</computeroutput></para><para>
+Réimplémentée dans <link linkend="_a00592_1a095c5d389db211932136b53f25f39685">MaintenanceController</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00065_source_1l00010">10</link> du fichier <link linkend="_a00065_source">Controller.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00065">Controller.php</link></section>
+</section>

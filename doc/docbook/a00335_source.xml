@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00335_source" xml:lang="fr">
+<title>RandomStringType.php</title>
+<indexterm><primary>RandomStringType.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00335_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00335_source_1l00002"/>00002 
+<anchor xml:id="_a00335_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00432">SaboCore\Utils\String</link>;
+<anchor xml:id="_a00335_source_1l00004"/>00004 
+<anchor xml:id="_a00335_source_1l00008"/><link linkend="_a00432_1add4f75f97db16032d6f41b34f8a28222">00008</link> <emphasis role="keyword">enum</emphasis>&#32;<link linkend="_a00432_1add4f75f97db16032d6f41b34f8a28222">RandomStringType</link>:<emphasis role="keywordtype">string</emphasis>{
+<anchor xml:id="_a00335_source_1l00012"/>00012 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;UPPERCHARS&#32;=&#32;<emphasis role="stringliteral">&quot;upperchars&quot;</emphasis>;
+<anchor xml:id="_a00335_source_1l00016"/>00016 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;LOWERCHARS&#32;=&#32;<emphasis role="stringliteral">&quot;lowerchars&quot;</emphasis>;
+<anchor xml:id="_a00335_source_1l00020"/>00020 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;NUMBERS&#32;=&#32;<emphasis role="stringliteral">&quot;numbers&quot;</emphasis>;
+<anchor xml:id="_a00335_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_a00432_1add4f75f97db16032d6f41b34f8a28222ad22e5fea7341e7227ef734951f404c8c">SPECIALCHARS</link>&#32;=&#32;<emphasis role="stringliteral">&quot;specialchars&quot;</emphasis>;
+<anchor xml:id="_a00335_source_1l00025"/><link linkend="_a00432_1add4f75f97db16032d6f41b34f8a28222ad22e5fea7341e7227ef734951f404c8c">00025</link> }
+</programlisting></section>

@@ -1,0 +1,309 @@
+.TH "SaboList" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SaboList \- Utilitaire de liste à contenu uniforme\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de Countable, Iterator, et Arrayable\&.
+.PP
+Dérivée par \fBJoinedList\fP\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP (array $datas)"
+.br
+.ti -1c
+.RI "\fBcount\fP ()"
+.br
+.RI "Retourne le nombre d'éléments contenu dans la liste\&. "
+.ti -1c
+.RI "\fBcurrent\fP ()"
+.br
+.RI "Retourne l'élément actuel de la liste\&. "
+.ti -1c
+.RI "\fBkey\fP ()"
+.br
+.RI "Retourne la clé de l'élément actuel de la liste\&. "
+.ti -1c
+.RI "\fBnext\fP ()"
+.br
+.RI "Déplace le pointeur vers l'élément suivant dans la liste\&. "
+.ti -1c
+.RI "\fBrewind\fP ()"
+.br
+.RI "Remet le pointeur à la première position dans la liste\&. "
+.ti -1c
+.RI "\fBvalid\fP ()"
+.br
+.RI "Vérifie si la position actuelle est valide dans la liste\&. "
+.ti -1c
+.RI "\fBgetFirst\fP ()"
+.br
+.ti -1c
+.RI "\fBgetLast\fP ()"
+.br
+.ti -1c
+.RI "\fBsetFinder\fP (Closure $finder)"
+.br
+.RI "Met à jour la fonction de recherche interne\&. "
+.ti -1c
+.RI "\fBisEmpty\fP ()"
+.br
+.ti -1c
+.RI "\fBgetDefaultFinder\fP ()"
+.br
+.RI "Défini la fonction de recherche par défaut permettant\&. "
+.ti -1c
+.RI "\fBfind\fP (mixed \&.\&.\&. $toFinds)"
+.br
+.RI "Recherche les correspondances des données fournies et crée une liste avec\&. "
+.ti -1c
+.RI "\fBtoArray\fP ()"
+.br
+.in -1c
+.SS "Attributs protégés"
+
+.in +1c
+.ti -1c
+.RI "array \fB$datas\fP"
+.br
+.ti -1c
+.RI "int \fB$currentPos\fP"
+.br
+.ti -1c
+.RI "Closure \fB$finder\fP"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Utilitaire de liste à contenu uniforme\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya @template ContainedType type d'éléments contenu 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB16\fP du fichier \fBSaboList\&.php\fP\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "__construct (array $datas)"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$datas\fP données à traiter 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB35\fP du fichier \fBSaboList\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "count ()"
+
+.PP
+Retourne le nombre d'éléments contenu dans la liste\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+int Le nombre d'éléments dans la liste 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB45\fP du fichier \fBSaboList\&.php\fP\&.
+.SS "current ()"
+
+.PP
+Retourne l'élément actuel de la liste\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+ContainedType Élément actuel 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB53\fP du fichier \fBSaboList\&.php\fP\&.
+.SS "find (mixed \&.\&.\&. $toFinds)"
+
+.PP
+Recherche les correspondances des données fournies et crée une liste avec\&. 
+.PP
+\fBAttention\fP
+.RS 4
+L'algorithme de recherche doit être adapté aux données fournies 
+.RE
+.PP
+\fBParamètres\fP
+.RS 4
+\fImixed\fP \&.\&.\&.$toFinds données à trouver et utilisés pour la comparaison 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+SaboList<ContainedType> liste résultante 
+.RE
+.PP
+\fBExceptions\fP
+.RS 4
+\fITypeError\fP en cas d'erreur de type recherché par l'algorithme 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB141\fP du fichier \fBSaboList\&.php\fP\&.
+.SS "getDefaultFinder ()"
+
+.PP
+Défini la fonction de recherche par défaut permettant\&. 
+.PP
+\fBAttention\fP
+.RS 4
+Arguments de la fonction (donnée recherchée, liste de données au format [ContainedType]) 
+.PP
+Retour de la fonction [ContainedType] les données correspondantes 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+Closure La fonction de recherche par défaut 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB127\fP du fichier \fBSaboList\&.php\fP\&.
+.SS "getFirst ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+ContainedType|null première occurrence ou null si non existant 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB90\fP du fichier \fBSaboList\&.php\fP\&.
+.SS "getLast ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+ContainedType|null dernière occurrence ou null non existant 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB97\fP du fichier \fBSaboList\&.php\fP\&.
+.SS "isEmpty ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+bool Si le contenu est vide 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB117\fP du fichier \fBSaboList\&.php\fP\&.
+.SS "key ()"
+
+.PP
+Retourne la clé de l'élément actuel de la liste\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+int Clé actuelle 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB61\fP du fichier \fBSaboList\&.php\fP\&.
+.SS "next ()"
+
+.PP
+Déplace le pointeur vers l'élément suivant dans la liste\&. 
+.PP
+Définition à la ligne \fB68\fP du fichier \fBSaboList\&.php\fP\&.
+.SS "rewind ()"
+
+.PP
+Remet le pointeur à la première position dans la liste\&. 
+.PP
+Définition à la ligne \fB75\fP du fichier \fBSaboList\&.php\fP\&.
+.SS "setFinder (Closure $finder)"
+
+.PP
+Met à jour la fonction de recherche interne\&. 
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$finder\fP Nouvelle fonction de recherche 
+.RE
+.PP
+\fBAttention\fP
+.RS 4
+Arguments de la fonction (donnée recherchée, liste de données au format [ContainedType]) 
+.PP
+Retour de la fonction [ContainedType] les données correspondantes 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+$this 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB108\fP du fichier \fBSaboList\&.php\fP\&.
+.SS "toArray ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+ContainedType[] Fourni la liste réelle 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB157\fP du fichier \fBSaboList\&.php\fP\&.
+.SS "valid ()"
+
+.PP
+Vérifie si la position actuelle est valide dans la liste\&. 
+.PP
+\fBRenvoie\fP
+.RS 4
+bool True si la position actuelle est valide sinon false 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB83\fP du fichier \fBSaboList\&.php\fP\&.
+.SH "Documentation des champs"
+.PP 
+.SS "int $currentPos\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB25\fP du fichier \fBSaboList\&.php\fP\&.
+.SS "array $datas\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB20\fP du fichier \fBSaboList\&.php\fP\&.
+.SS "Closure $finder\fC [protected]\fP"
+
+.PP
+Définition à la ligne \fB30\fP du fichier \fBSaboList\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

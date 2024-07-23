@@ -1,0 +1,35 @@
+\hypertarget{a00338_source}{}\doxysection{Default\+Extensions.\+php}
+\label{a00338_source}\index{DefaultExtensions.php@{DefaultExtensions.php}}
+\mbox{\hyperlink{a00338}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{a00338_source_l00003}\mbox{\hyperlink{a00433}{00003}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{a00433}{SaboCore\(\backslash\)Utils\(\backslash\)TwigExtensions}};}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{a00338_source_l00005}00005\ use\ \mbox{\hyperlink{a00852}{SaboCore\(\backslash\)Utils\(\backslash\)Csrf\(\backslash\)CsrfManager}};}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00006}00006\ use\ Twig\(\backslash\)Extension\(\backslash\)AbstractExtension;}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00007}00007\ use\ Twig\(\backslash\)TwigFunction;}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{a00338_source_l00013}\mbox{\hyperlink{a00916}{00013}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{a00916}{DefaultExtensions}}\ \textcolor{keyword}{extends}\ AbstractExtension\ \{}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00014}\mbox{\hyperlink{a00916_a131c2522f07821f77cd1d038c216031b}{00014}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00916_a131c2522f07821f77cd1d038c216031b}{getFunctions}}():array\{}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00015}00015\ \ \ \ \ \ \ \ \ return\ [}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ new\ TwigFunction(name:\ \textcolor{stringliteral}{"{}route"{}},callable:\ [\$this,\textcolor{stringliteral}{"{}route"{}}]),}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ new\ TwigFunction(name:\ \textcolor{stringliteral}{"{}generateCsrf"{}},callable:\ [\$this,\textcolor{stringliteral}{"{}generateCsrf"{}}]),}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ new\ TwigFunction(name:\ \textcolor{stringliteral}{"{}checkCsrf"{}},callable:\ [\$this,\textcolor{stringliteral}{"{}checkCsrf"{}}]),}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00019}00019\ \ \ \ \ \ \ \ \ ];}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{a00338_source_l00029}\mbox{\hyperlink{a00916_ae51039edf7ff9675adb95522e00d4583}{00029}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00916_ae51039edf7ff9675adb95522e00d4583}{route}}(\textcolor{keywordtype}{string}\ \$requestMethod,\textcolor{keywordtype}{string}\ \$routeName,array\ \$replaces\ =\ []):string|null\{}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00030}00030\ \ \ \ \ \ \ \ \ return\ \mbox{\hyperlink{a00362_ae51039edf7ff9675adb95522e00d4583}{route}}(requestMethod:\ \$requestMethod,routeName:\ \$routeName,replaces:\ \$replaces);}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{a00338_source_l00037}\mbox{\hyperlink{a00916_a373d6145a4cffaddaff2c4c9ac2f6e65}{00037}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00916_a373d6145a4cffaddaff2c4c9ac2f6e65}{generateCsrf}}():\mbox{\hyperlink{a00852}{CsrfManager}}\{}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00038}00038\ \ \ \ \ \ \ \ \ return\ \mbox{\hyperlink{a00362_a373d6145a4cffaddaff2c4c9ac2f6e65}{generateCsrf}}();}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{a00338_source_l00046}\mbox{\hyperlink{a00916_a8be53ae6480c0f3c2133084a111bfe6b}{00046}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00916_a8be53ae6480c0f3c2133084a111bfe6b}{checkCsrf}}(\textcolor{keywordtype}{string}\ \$token):bool\{}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00047}00047\ \ \ \ \ \ \ \ \ return\ \mbox{\hyperlink{a00362_a8be53ae6480c0f3c2133084a111bfe6b}{checkCsrf}}(token:\ \$token);}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00048}00048\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00338_source_l00049}00049\ \}}
+
+\end{DoxyCode}

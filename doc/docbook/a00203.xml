@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00203" xml:lang="fr">
+<title>Référence du fichier DatabaseActions.php</title>
+<indexterm><primary>DatabaseActions.php</primary></indexterm>
+<simplesect>
+    <title>Espaces de nommage    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_a00415">SaboCore\Database\System</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Énumérations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_a00415_1a1e9821eaec23ae2ec90932c730046b80">DatabaseActions</link> : int { <link linkend="_a00415_1a1e9821eaec23ae2ec90932c730046b80a98196288f83d9ed6f1e32d7e1c97df99">BEFORE_GENERATION</link> = 12
+ }</para>
+
+<para>Actions de la base de données. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

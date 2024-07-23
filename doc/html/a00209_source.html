@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sabo final:  Fichier source de DatabaseCondition.php</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="favicon.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">Sabo final<span id="projectnumber">&#160;1.1.1</span>
+   </div>
+   <div id="projectbrief">Mini framework php</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('a00209_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">DatabaseCondition.php</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="a00209.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span>&lt;?php</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">namespace </span><a class="code hl_namespace" href="a00415.html">SaboCore\Database\System</a>;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="a00772.html">    9</a></span><span class="keyword">class </span><a class="code hl_class" href="a00772.html">DatabaseCondition</a>{</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="a00772.html#a5018d4400f34e6b02ef61b7469b12168">   13</a></span>    <span class="keyword">protected</span> mixed <a class="code hl_variable" href="a00772.html#a5018d4400f34e6b02ef61b7469b12168">$condGetter</a>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="a00772.html#a2a08198d3d58ef8320300020b9e05447">   18</a></span>    <span class="keyword">protected</span> mixed <a class="code hl_variable" href="a00772.html#a2a08198d3d58ef8320300020b9e05447">$conditionValue</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="a00772.html#a5e066e6cbcc55832af5d8d9c84997b41">   23</a></span>    <span class="keyword">protected</span> <a class="code hl_class" href="a00768.html">DatabaseComparator</a> <a class="code hl_variable" href="a00772.html#a5e066e6cbcc55832af5d8d9c84997b41">$comparator</a>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="a00772.html#af97c320645f51050f85729722bf8a375">   30</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00772.html#af97c320645f51050f85729722bf8a375">__construct</a>(mixed <a class="code hl_variable" href="a00772.html#a5018d4400f34e6b02ef61b7469b12168">$condGetter</a>, <a class="code hl_class" href="a00768.html">DatabaseComparator</a> <a class="code hl_variable" href="a00772.html#a5e066e6cbcc55832af5d8d9c84997b41">$comparator</a>,mixed <a class="code hl_variable" href="a00772.html#a2a08198d3d58ef8320300020b9e05447">$conditionValue</a>){</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        $this-&gt;condGetter = <a class="code hl_variable" href="a00772.html#a5018d4400f34e6b02ef61b7469b12168">$condGetter</a>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        $this-&gt;conditionValue = <a class="code hl_variable" href="a00772.html#a2a08198d3d58ef8320300020b9e05447">$conditionValue</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        $this-&gt;comparator = <a class="code hl_variable" href="a00772.html#a5e066e6cbcc55832af5d8d9c84997b41">$comparator</a>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    }</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="a00772.html#a77af78f1052edadea4064d1f191da05a">   39</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00772.html#a77af78f1052edadea4064d1f191da05a">getCondGetter</a>(): mixed{</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        return $this-&gt;condGetter;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="a00772.html#aed18d222c4a8cfbc1f544b7adb08ffeb">   46</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00772.html#aed18d222c4a8cfbc1f544b7adb08ffeb">getConditionValue</a>(): mixed{</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        return $this-&gt;conditionValue;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="a00772.html#ad16a3785de3980107c4b2fc796819637">   53</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00772.html#ad16a3785de3980107c4b2fc796819637">getComparator</a>(): <a class="code hl_class" href="a00768.html">DatabaseComparator</a>{</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        return $this-&gt;comparator;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
+<div class="ttc" id="aa00415_html"><div class="ttname"><a href="a00415.html">SaboCore\Database\System</a></div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00003">DatabaseActionException.php:3</a></div></div>
+<div class="ttc" id="aa00768_html"><div class="ttname"><a href="a00768.html">SaboCore\Database\System\DatabaseComparator</a></div><div class="ttdoc">Représentation de la fonction de comparaison.</div><div class="ttdef"><b>Definition:</b> <a href="a00206_source.html#l00009">DatabaseComparator.php:9</a></div></div>
+<div class="ttc" id="aa00772_html"><div class="ttname"><a href="a00772.html">SaboCore\Database\System\DatabaseCondition</a></div><div class="ttdoc">Condition de récupération.</div><div class="ttdef"><b>Definition:</b> <a href="a00209_source.html#l00009">DatabaseCondition.php:9</a></div></div>
+<div class="ttc" id="aa00772_html_a2a08198d3d58ef8320300020b9e05447"><div class="ttname"><a href="a00772.html#a2a08198d3d58ef8320300020b9e05447">SaboCore\Database\System\DatabaseCondition\$conditionValue</a></div><div class="ttdeci">mixed $conditionValue</div><div class="ttdef"><b>Definition:</b> <a href="a00209_source.html#l00018">DatabaseCondition.php:18</a></div></div>
+<div class="ttc" id="aa00772_html_a5018d4400f34e6b02ef61b7469b12168"><div class="ttname"><a href="a00772.html#a5018d4400f34e6b02ef61b7469b12168">SaboCore\Database\System\DatabaseCondition\$condGetter</a></div><div class="ttdeci">mixed $condGetter</div><div class="ttdef"><b>Definition:</b> <a href="a00209_source.html#l00013">DatabaseCondition.php:13</a></div></div>
+<div class="ttc" id="aa00772_html_a5e066e6cbcc55832af5d8d9c84997b41"><div class="ttname"><a href="a00772.html#a5e066e6cbcc55832af5d8d9c84997b41">SaboCore\Database\System\DatabaseCondition\$comparator</a></div><div class="ttdeci">DatabaseComparator $comparator</div><div class="ttdef"><b>Definition:</b> <a href="a00209_source.html#l00023">DatabaseCondition.php:23</a></div></div>
+<div class="ttc" id="aa00772_html_a77af78f1052edadea4064d1f191da05a"><div class="ttname"><a href="a00772.html#a77af78f1052edadea4064d1f191da05a">SaboCore\Database\System\DatabaseCondition\getCondGetter</a></div><div class="ttdeci">getCondGetter()</div><div class="ttdef"><b>Definition:</b> <a href="a00209_source.html#l00039">DatabaseCondition.php:39</a></div></div>
+<div class="ttc" id="aa00772_html_ad16a3785de3980107c4b2fc796819637"><div class="ttname"><a href="a00772.html#ad16a3785de3980107c4b2fc796819637">SaboCore\Database\System\DatabaseCondition\getComparator</a></div><div class="ttdeci">getComparator()</div><div class="ttdef"><b>Definition:</b> <a href="a00209_source.html#l00053">DatabaseCondition.php:53</a></div></div>
+<div class="ttc" id="aa00772_html_aed18d222c4a8cfbc1f544b7adb08ffeb"><div class="ttname"><a href="a00772.html#aed18d222c4a8cfbc1f544b7adb08ffeb">SaboCore\Database\System\DatabaseCondition\getConditionValue</a></div><div class="ttdeci">getConditionValue()</div><div class="ttdef"><b>Definition:</b> <a href="a00209_source.html#l00046">DatabaseCondition.php:46</a></div></div>
+<div class="ttc" id="aa00772_html_af97c320645f51050f85729722bf8a375"><div class="ttname"><a href="a00772.html#af97c320645f51050f85729722bf8a375">SaboCore\Database\System\DatabaseCondition\__construct</a></div><div class="ttdeci">__construct(mixed $condGetter, DatabaseComparator $comparator, mixed $conditionValue)</div><div class="ttdef"><b>Definition:</b> <a href="a00209_source.html#l00030">DatabaseCondition.php:30</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_5a9687d32d98fbbdb60629c9ff0dd338.html">sabo-core</a></li><li class="navelem"><a class="el" href="dir_89c513611bcd58d1ab34b1b964a8ae28.html">database</a></li><li class="navelem"><a class="el" href="dir_4e8f0d8ff4f9a8871888c52b59a14e88.html">system</a></li><li class="navelem"><a class="el" href="a00209.html">DatabaseCondition.php</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
+</body>
+</html>

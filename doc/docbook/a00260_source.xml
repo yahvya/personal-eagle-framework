@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00260_source" xml:lang="fr">
+<title>Route.php</title>
+<indexterm><primary>Route.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00260_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00260_source_1l00002"/>00002 
+<anchor xml:id="_a00260_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00420">SaboCore\Routing\Routes</link>;
+<anchor xml:id="_a00260_source_1l00004"/>00004 
+<anchor xml:id="_a00260_source_1l00005"/>00005 use&#32;Closure;
+<anchor xml:id="_a00260_source_1l00006"/>00006 use&#32;<link linkend="_a00403_1a80d9c58ff7f86d542bbc97aa01de382f">SaboCore\Config\FrameworkConfig</link>;
+<anchor xml:id="_a00260_source_1l00007"/>00007 use&#32;<link linkend="_a00784">SaboCore\Routing\Application\Application</link>;
+<anchor xml:id="_a00260_source_1l00008"/>00008 use&#32;<link linkend="_a00920">SaboCore\Utils\Verification\Verifier</link>;
+<anchor xml:id="_a00260_source_1l00009"/>00009 use&#32;Throwable;
+<anchor xml:id="_a00260_source_1l00010"/>00010 
+<anchor xml:id="_a00260_source_1l00015"/><link linkend="_a00832">00015</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00832">Route</link>{
+<anchor xml:id="_a00260_source_1l00019"/><link linkend="_a00832_1acc98016c3c6ca84b3a612edbedc79eab">00019</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00832_1acc98016c3c6ca84b3a612edbedc79eab">$requestMethod</link>;
+<anchor xml:id="_a00260_source_1l00020"/>00020 
+<anchor xml:id="_a00260_source_1l00024"/><link linkend="_a00832_1a24b2401fa4ae31fae08557d2ad8adc44">00024</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00832_1a24b2401fa4ae31fae08557d2ad8adc44">$link</link>;
+<anchor xml:id="_a00260_source_1l00025"/>00025 
+<anchor xml:id="_a00260_source_1l00029"/><link linkend="_a00832_1a9f391a5532d36b76fc659d09b3897778">00029</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00832_1a9f391a5532d36b76fc659d09b3897778">$verificationRegex</link>;
+<anchor xml:id="_a00260_source_1l00030"/>00030 
+<anchor xml:id="_a00260_source_1l00034"/><link linkend="_a00832_1aab06b80ef8973fd27a5b1db7a1dd3d3c">00034</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00832_1aab06b80ef8973fd27a5b1db7a1dd3d3c">$routeName</link>;
+<anchor xml:id="_a00260_source_1l00035"/>00035 
+<anchor xml:id="_a00260_source_1l00039"/><link linkend="_a00832_1a37e16b46d404949d8b0c883c77b4b015">00039</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;array&#32;<link linkend="_a00832_1a37e16b46d404949d8b0c883c77b4b015">$genericParamsRegex</link>;
+<anchor xml:id="_a00260_source_1l00040"/>00040 
+<anchor xml:id="_a00260_source_1l00044"/><link linkend="_a00832_1ab559e3d6be17c6c3a599d6c805ce51c7">00044</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;array&#32;<link linkend="_a00832_1ab559e3d6be17c6c3a599d6c805ce51c7">$genericParamsOrder</link>&#32;=&#32;[];
+<anchor xml:id="_a00260_source_1l00045"/>00045 
+<anchor xml:id="_a00260_source_1l00049"/><link linkend="_a00832_1a8c05b6055c60a647347dc747e9a81a1a">00049</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;array&#32;<link linkend="_a00832_1a8c05b6055c60a647347dc747e9a81a1a">$accessVerifiers</link>;
+<anchor xml:id="_a00260_source_1l00050"/>00050 
+<anchor xml:id="_a00260_source_1l00054"/><link linkend="_a00832_1a6e94bb77d417f3fd760a6d03090f5979">00054</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;Closure|array&#32;<link linkend="_a00832_1a6e94bb77d417f3fd760a6d03090f5979">$toExecute</link>;
+<anchor xml:id="_a00260_source_1l00055"/>00055 
+<anchor xml:id="_a00260_source_1l00064"/><link linkend="_a00832_1a464da607dd37e42b8abf3e0f0971fb93">00064</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00832_1a464da607dd37e42b8abf3e0f0971fb93">__construct</link>(<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00832_1acc98016c3c6ca84b3a612edbedc79eab">$requestMethod</link>,<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00832_1a24b2401fa4ae31fae08557d2ad8adc44">$link</link>,Closure|array&#32;<link linkend="_a00832_1a6e94bb77d417f3fd760a6d03090f5979">$toExecute</link>,<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00832_1aab06b80ef8973fd27a5b1db7a1dd3d3c">$routeName</link>,array&#32;<link linkend="_a00832_1a37e16b46d404949d8b0c883c77b4b015">$genericParamsRegex</link>&#32;=&#32;[],array&#32;<link linkend="_a00832_1a8c05b6055c60a647347dc747e9a81a1a">$accessVerifiers</link>&#32;=&#32;[]){
+<anchor xml:id="_a00260_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;formatage&#32;du&#32;lien</emphasis>
+<anchor xml:id="_a00260_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!str_starts_with(haystack:&#32;<link linkend="_a00832_1a24b2401fa4ae31fae08557d2ad8adc44">$link</link>,needle:&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>)&#32;)&#32;<link linkend="_a00832_1a24b2401fa4ae31fae08557d2ad8adc44">$link</link>&#32;=&#32;<emphasis role="stringliteral">&quot;/$link&quot;</emphasis>;
+<anchor xml:id="_a00260_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!str_ends_with(haystack:&#32;<link linkend="_a00832_1a24b2401fa4ae31fae08557d2ad8adc44">$link</link>,needle:&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>)&#32;)&#32;<link linkend="_a00832_1a24b2401fa4ae31fae08557d2ad8adc44">$link</link>&#32;=&#32;<emphasis role="stringliteral">&quot;$link/&quot;</emphasis>;
+<anchor xml:id="_a00260_source_1l00068"/>00068 
+<anchor xml:id="_a00260_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;requestMethod&#32;=&#32;strtolower(<emphasis role="keywordtype">string</emphasis>:&#32;<link linkend="_a00832_1acc98016c3c6ca84b3a612edbedc79eab">$requestMethod</link>);
+<anchor xml:id="_a00260_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;link&#32;=&#32;<link linkend="_a00832_1a24b2401fa4ae31fae08557d2ad8adc44">$link</link>;
+<anchor xml:id="_a00260_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;toExecute&#32;=&#32;<link linkend="_a00832_1a6e94bb77d417f3fd760a6d03090f5979">$toExecute</link>;
+<anchor xml:id="_a00260_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;routeName&#32;=&#32;<link linkend="_a00832_1aab06b80ef8973fd27a5b1db7a1dd3d3c">$routeName</link>;
+<anchor xml:id="_a00260_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;genericParamsRegex&#32;=&#32;<link linkend="_a00832_1a37e16b46d404949d8b0c883c77b4b015">$genericParamsRegex</link>;
+<anchor xml:id="_a00260_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;accessVerifiers&#32;=&#32;<link linkend="_a00832_1a8c05b6055c60a647347dc747e9a81a1a">$accessVerifiers</link>;
+<anchor xml:id="_a00260_source_1l00075"/>00075 
+<anchor xml:id="_a00260_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;<link linkend="_a00832_1a7a3b4c76f3cbede5d8ca55690ad1c6d8">updateConfig</link>();
+<anchor xml:id="_a00260_source_1l00077"/>00077 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00260_source_1l00078"/>00078 
+<anchor xml:id="_a00260_source_1l00086"/><link linkend="_a00832_1a98efd7c3dee2e7538696011296540435">00086</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00832_1a98efd7c3dee2e7538696011296540435">addPrefix</link>(<emphasis role="keywordtype">string</emphasis>&#32;$prefix,array&#32;$genericParameters&#32;=&#32;[],array&#32;<link linkend="_a00832_1a8c05b6055c60a647347dc747e9a81a1a">$accessVerifiers</link>&#32;=&#32;[]):<link linkend="_a00832">Route</link>{
+<anchor xml:id="_a00260_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;formatage&#32;du&#32;préfixe</emphasis>
+<anchor xml:id="_a00260_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if(!str_starts_with(haystack:&#32;$prefix,needle:&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>)&#32;)&#32;$prefix&#32;=&#32;<emphasis role="stringliteral">&quot;/$prefix&quot;</emphasis>;
+<anchor xml:id="_a00260_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(str_ends_with(haystack:&#32;$prefix,needle:&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>)&#32;)&#32;$prefix&#32;=&#32;substr(<emphasis role="keywordtype">string</emphasis>:&#32;$prefix,offset:&#32;0,length:&#32;-1);
+<anchor xml:id="_a00260_source_1l00090"/>00090 
+<anchor xml:id="_a00260_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;combinaison&#32;lien&#32;préfixe,&#32;vérificateurs&#32;et&#32;regex</emphasis>
+<anchor xml:id="_a00260_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;link&#32;=&#32;$prefix&#32;.&#32;<link linkend="_a00832_1a24b2401fa4ae31fae08557d2ad8adc44">$this-&gt;link</link>;
+<anchor xml:id="_a00260_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;genericParamsRegex&#32;=&#32;array_merge($this-&gt;genericParamsRegex,$genericParameters);
+<anchor xml:id="_a00260_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;accessVerifiers&#32;=&#32;array_merge($this-&gt;accessVerifiers,<link linkend="_a00832_1a8c05b6055c60a647347dc747e9a81a1a">$accessVerifiers</link>);
+<anchor xml:id="_a00260_source_1l00095"/>00095 
+<anchor xml:id="_a00260_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$this-&gt;<link linkend="_a00832_1a7a3b4c76f3cbede5d8ca55690ad1c6d8">updateConfig</link>();
+<anchor xml:id="_a00260_source_1l00097"/>00097 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00260_source_1l00098"/>00098 
+<anchor xml:id="_a00260_source_1l00104"/><link linkend="_a00832_1aeb679036f1be14a7f6fc962dc53e715c">00104</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00832_1aeb679036f1be14a7f6fc962dc53e715c">matchWith</link>(<emphasis role="keywordtype">string</emphasis>&#32;$url):<link linkend="_a00828">MatchResult</link>{
+<anchor xml:id="_a00260_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;@preg_match(pattern:&#32;<emphasis role="stringliteral">&quot;#^$this-&gt;verificationRegex$#&quot;</emphasis>,subject:&#32;$url,matches:&#32;$matches);
+<anchor xml:id="_a00260_source_1l00106"/>00106 
+<anchor xml:id="_a00260_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(empty($matches)&#32;)
+<anchor xml:id="_a00260_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00828">MatchResult</link>(haveMatch:&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="_a00260_source_1l00109"/>00109 
+<anchor xml:id="_a00260_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;association&#32;des&#32;paramètres&#32;récupérés&#32;avec&#32;leur&#32;ordre</emphasis>
+<anchor xml:id="_a00260_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$matchTable&#32;=&#32;[];
+<anchor xml:id="_a00260_source_1l00112"/>00112 
+<anchor xml:id="_a00260_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;unset($matches[0]);
+<anchor xml:id="_a00260_source_1l00114"/>00114 
+<anchor xml:id="_a00260_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($matches&#32;as&#32;$key&#32;=&gt;&#32;$value)
+<anchor xml:id="_a00260_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$matchTable[$this-&gt;genericParamsOrder[$key&#32;-&#32;1]&#32;]&#32;=&#32;$value;
+<anchor xml:id="_a00260_source_1l00117"/>00117 
+<anchor xml:id="_a00260_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00828">MatchResult</link>(haveMatch:&#32;<emphasis role="keyword">true</emphasis>,matchTable:&#32;$matchTable);
+<anchor xml:id="_a00260_source_1l00119"/>00119 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00260_source_1l00120"/>00120 
+<anchor xml:id="_a00260_source_1l00124"/><link linkend="_a00832_1a7817c28babd63fcb8f0c52cf578a9663">00124</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00832_1a7817c28babd63fcb8f0c52cf578a9663">getToExecute</link>():Closure|array{
+<anchor xml:id="_a00260_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;toExecute;
+<anchor xml:id="_a00260_source_1l00126"/>00126 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00260_source_1l00127"/>00127 
+<anchor xml:id="_a00260_source_1l00131"/><link linkend="_a00832_1a897435a606a30ceac91090e697691c94">00131</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00832_1a897435a606a30ceac91090e697691c94">getAccessVerifiers</link>():array{
+<anchor xml:id="_a00260_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;accessVerifiers;
+<anchor xml:id="_a00260_source_1l00133"/>00133 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00260_source_1l00134"/>00134 
+<anchor xml:id="_a00260_source_1l00138"/><link linkend="_a00832_1ae534469d94a650b89ceb36b968bd3727">00138</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00832_1ae534469d94a650b89ceb36b968bd3727">getRequestMethod</link>():string{
+<anchor xml:id="_a00260_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;requestMethod;
+<anchor xml:id="_a00260_source_1l00140"/>00140 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00260_source_1l00141"/>00141 
+<anchor xml:id="_a00260_source_1l00145"/><link linkend="_a00832_1a99c12aa19c44c2f438746ee95bb61a58">00145</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00832_1a99c12aa19c44c2f438746ee95bb61a58">getRouteName</link>():string{
+<anchor xml:id="_a00260_source_1l00146"/>00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;routeName;
+<anchor xml:id="_a00260_source_1l00147"/>00147 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00260_source_1l00148"/>00148 
+<anchor xml:id="_a00260_source_1l00152"/><link linkend="_a00832_1ae034a45e29b386b51d2510001f424cd2">00152</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00832_1ae034a45e29b386b51d2510001f424cd2">getRouteLink</link>():string{
+<anchor xml:id="_a00260_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;link;
+<anchor xml:id="_a00260_source_1l00154"/>00154 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00260_source_1l00155"/>00155 
+<anchor xml:id="_a00260_source_1l00160"/><link linkend="_a00832_1a7a3b4c76f3cbede5d8ca55690ad1c6d8">00160</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00832_1a7a3b4c76f3cbede5d8ca55690ad1c6d8">updateConfig</link>():<link linkend="_a00832">Route</link>{
+<anchor xml:id="_a00260_source_1l00161"/>00161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;verificationRegex&#32;=&#32;str_replace(search:&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>,replace:&#32;<emphasis role="stringliteral">&quot;\/&quot;</emphasis>,subject:&#32;$this-&gt;link);
+<anchor xml:id="_a00260_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;genericParamsOrder&#32;=&#32;[];
+<anchor xml:id="_a00260_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$genericParameterMatcher&#32;=&#32;<emphasis role="stringliteral">&quot;:([a-zA-Z]+)&quot;</emphasis>;
+<anchor xml:id="_a00260_source_1l00164"/>00164 
+<anchor xml:id="_a00260_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>{
+<anchor xml:id="_a00260_source_1l00166"/>00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$genericParameterMatcher&#32;=&#32;Application::getFrameworkConfig()-&gt;getConfig(name:&#32;FrameworkConfig::ROUTE_GENERIC_PARAMETER_MATCHER-&gt;value);
+<anchor xml:id="_a00260_source_1l00167"/>00167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00260_source_1l00168"/>00168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>(Throwable){}
+<anchor xml:id="_a00260_source_1l00169"/>00169 
+<anchor xml:id="_a00260_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;match&#32;des&#32;variables</emphasis>
+<anchor xml:id="_a00260_source_1l00171"/>00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;@preg_match_all(pattern:&#32;<emphasis role="stringliteral">&quot;#$genericParameterMatcher#&quot;</emphasis>,subject:&#32;$this-&gt;link,matches:&#32;$matches);
+<anchor xml:id="_a00260_source_1l00172"/>00172 
+<anchor xml:id="_a00260_source_1l00173"/>00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;récupération&#32;des&#32;paramètres</emphasis>
+<anchor xml:id="_a00260_source_1l00174"/>00174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($matches[0]&#32;as&#32;$key&#32;=&gt;&#32;$completeMatch){
+<anchor xml:id="_a00260_source_1l00175"/>00175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$variableName&#32;=&#32;$matches[1][$key];
+<anchor xml:id="_a00260_source_1l00176"/>00176 
+<anchor xml:id="_a00260_source_1l00177"/>00177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;enregistrement&#32;dans&#32;le&#32;tableau&#32;de&#32;l&apos;ordre</emphasis>
+<anchor xml:id="_a00260_source_1l00178"/>00178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;genericParamsOrder[$key]&#32;=&#32;$variableName;
+<anchor xml:id="_a00260_source_1l00179"/>00179 
+<anchor xml:id="_a00260_source_1l00180"/>00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;transformation&#32;dans&#32;la&#32;chaine&#32;par&#32;regex</emphasis>
+<anchor xml:id="_a00260_source_1l00181"/>00181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$regex&#32;=&#32;$this-&gt;genericParamsRegex[$variableName]&#32;??&#32;<emphasis role="stringliteral">&quot;[^\/]+&quot;</emphasis>;
+<anchor xml:id="_a00260_source_1l00182"/>00182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;verificationRegex&#32;=&#32;str_replace(search:&#32;$completeMatch,replace:&#32;<emphasis role="stringliteral">&quot;($regex)&quot;</emphasis>,subject:&#32;$this-&gt;verificationRegex);
+<anchor xml:id="_a00260_source_1l00183"/>00183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00260_source_1l00184"/>00184 
+<anchor xml:id="_a00260_source_1l00185"/>00185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;verificationRegex&#32;.=&#32;<emphasis role="stringliteral">&quot;?&quot;</emphasis>;
+<anchor xml:id="_a00260_source_1l00186"/>00186 
+<anchor xml:id="_a00260_source_1l00187"/>00187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$this;
+<anchor xml:id="_a00260_source_1l00188"/>00188 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00260_source_1l00189"/>00189 
+<anchor xml:id="_a00260_source_1l00199"/><link linkend="_a00832_1afbfc51c65b859adb0d5623e667db6c60">00199</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<emphasis role="keyword">get</emphasis>(<emphasis role="keywordtype">string</emphasis>&#32;$link,Closure|array&#32;$toExecute,<emphasis role="keywordtype">string</emphasis>&#32;$routeName,array&#32;$genericParamsRegex&#32;=&#32;[],array&#32;$accessVerifiers&#32;=&#32;[]):<link linkend="_a00832">Route</link>{
+<anchor xml:id="_a00260_source_1l00200"/>00200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00832">Route</link>(
+<anchor xml:id="_a00260_source_1l00201"/>00201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;requestMethod:&#32;<emphasis role="stringliteral">&quot;get&quot;</emphasis>,
+<anchor xml:id="_a00260_source_1l00202"/>00202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;link:&#32;$link,
+<anchor xml:id="_a00260_source_1l00203"/>00203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toExecute:&#32;$toExecute,
+<anchor xml:id="_a00260_source_1l00204"/>00204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;routeName:&#32;$routeName,
+<anchor xml:id="_a00260_source_1l00205"/>00205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;genericParamsRegex:&#32;$genericParamsRegex,
+<anchor xml:id="_a00260_source_1l00206"/>00206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;accessVerifiers:&#32;$accessVerifiers
+<anchor xml:id="_a00260_source_1l00207"/>00207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00260_source_1l00208"/>00208 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00260_source_1l00209"/>00209 
+<anchor xml:id="_a00260_source_1l00219"/><link linkend="_a00832_1aece2ac5292befb42e88e07f79dee9cc9">00219</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<emphasis role="keyword">delete</emphasis>(<emphasis role="keywordtype">string</emphasis>&#32;$link,&#32;Closure|array&#32;$toExecute,&#32;<emphasis role="keywordtype">string</emphasis>&#32;$routeName,&#32;array&#32;$genericParamsRegex&#32;=&#32;[],&#32;array&#32;$accessVerifiers&#32;=&#32;[]):&#32;<link linkend="_a00832">Route</link>&#32;{
+<anchor xml:id="_a00260_source_1l00220"/>00220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00832">Route</link>(
+<anchor xml:id="_a00260_source_1l00221"/>00221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;requestMethod:&#32;<emphasis role="stringliteral">&quot;delete&quot;</emphasis>,
+<anchor xml:id="_a00260_source_1l00222"/>00222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;link:&#32;$link,
+<anchor xml:id="_a00260_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toExecute:&#32;$toExecute,
+<anchor xml:id="_a00260_source_1l00224"/>00224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;routeName:&#32;$routeName,
+<anchor xml:id="_a00260_source_1l00225"/>00225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;genericParamsRegex:&#32;$genericParamsRegex,
+<anchor xml:id="_a00260_source_1l00226"/>00226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;accessVerifiers:&#32;$accessVerifiers
+<anchor xml:id="_a00260_source_1l00227"/>00227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00260_source_1l00228"/>00228 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00260_source_1l00229"/>00229 
+<anchor xml:id="_a00260_source_1l00239"/><link linkend="_a00832_1adb6c95da810e97fe0990bb53d1c6116d">00239</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00832_1adb6c95da810e97fe0990bb53d1c6116d">post</link>(<emphasis role="keywordtype">string</emphasis>&#32;$link,&#32;Closure|array&#32;$toExecute,&#32;<emphasis role="keywordtype">string</emphasis>&#32;$routeName,&#32;array&#32;$genericParamsRegex&#32;=&#32;[],&#32;array&#32;$accessVerifiers&#32;=&#32;[]):&#32;<link linkend="_a00832">Route</link>&#32;{
+<anchor xml:id="_a00260_source_1l00240"/>00240 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00832">Route</link>(
+<anchor xml:id="_a00260_source_1l00241"/>00241 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;requestMethod:&#32;<emphasis role="stringliteral">&quot;post&quot;</emphasis>,
+<anchor xml:id="_a00260_source_1l00242"/>00242 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;link:&#32;$link,
+<anchor xml:id="_a00260_source_1l00243"/>00243 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toExecute:&#32;$toExecute,
+<anchor xml:id="_a00260_source_1l00244"/>00244 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;routeName:&#32;$routeName,
+<anchor xml:id="_a00260_source_1l00245"/>00245 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;genericParamsRegex:&#32;$genericParamsRegex,
+<anchor xml:id="_a00260_source_1l00246"/>00246 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;accessVerifiers:&#32;$accessVerifiers
+<anchor xml:id="_a00260_source_1l00247"/>00247 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00260_source_1l00248"/>00248 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00260_source_1l00249"/>00249 
+<anchor xml:id="_a00260_source_1l00259"/><link linkend="_a00832_1a967554d060dc663668f3cbdf7f26adf0">00259</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00832_1a967554d060dc663668f3cbdf7f26adf0">put</link>(<emphasis role="keywordtype">string</emphasis>&#32;$link,&#32;Closure|array&#32;$toExecute,&#32;<emphasis role="keywordtype">string</emphasis>&#32;$routeName,&#32;array&#32;$genericParamsRegex&#32;=&#32;[],&#32;array&#32;$accessVerifiers&#32;=&#32;[]):&#32;<link linkend="_a00832">Route</link>&#32;{
+<anchor xml:id="_a00260_source_1l00260"/>00260 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00832">Route</link>(
+<anchor xml:id="_a00260_source_1l00261"/>00261 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;requestMethod:&#32;<emphasis role="stringliteral">&quot;put&quot;</emphasis>,
+<anchor xml:id="_a00260_source_1l00262"/>00262 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;link:&#32;$link,
+<anchor xml:id="_a00260_source_1l00263"/>00263 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toExecute:&#32;$toExecute,
+<anchor xml:id="_a00260_source_1l00264"/>00264 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;routeName:&#32;$routeName,
+<anchor xml:id="_a00260_source_1l00265"/>00265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;genericParamsRegex:&#32;$genericParamsRegex,
+<anchor xml:id="_a00260_source_1l00266"/>00266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;accessVerifiers:&#32;$accessVerifiers
+<anchor xml:id="_a00260_source_1l00267"/>00267 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00260_source_1l00268"/>00268 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00260_source_1l00269"/>00269 
+<anchor xml:id="_a00260_source_1l00279"/><link linkend="_a00832_1a5d161347022535aa7ce3b2ccd55bc4eb">00279</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00832_1a5d161347022535aa7ce3b2ccd55bc4eb">patch</link>(<emphasis role="keywordtype">string</emphasis>&#32;$link,&#32;Closure|array&#32;$toExecute,&#32;<emphasis role="keywordtype">string</emphasis>&#32;$routeName,&#32;array&#32;$genericParamsRegex&#32;=&#32;[],&#32;array&#32;$accessVerifiers&#32;=&#32;[]):&#32;<link linkend="_a00832">Route</link>&#32;{
+<anchor xml:id="_a00260_source_1l00280"/>00280 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00832">Route</link>(
+<anchor xml:id="_a00260_source_1l00281"/>00281 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;requestMethod:&#32;<emphasis role="stringliteral">&quot;patch&quot;</emphasis>,
+<anchor xml:id="_a00260_source_1l00282"/>00282 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;link:&#32;$link,
+<anchor xml:id="_a00260_source_1l00283"/>00283 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toExecute:&#32;$toExecute,
+<anchor xml:id="_a00260_source_1l00284"/>00284 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;routeName:&#32;$routeName,
+<anchor xml:id="_a00260_source_1l00285"/>00285 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;genericParamsRegex:&#32;$genericParamsRegex,
+<anchor xml:id="_a00260_source_1l00286"/>00286 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;accessVerifiers:&#32;$accessVerifiers
+<anchor xml:id="_a00260_source_1l00287"/>00287 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00260_source_1l00288"/>00288 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00260_source_1l00289"/>00289 
+<anchor xml:id="_a00260_source_1l00299"/><link linkend="_a00832_1a292acc0ed636e87e073170ba52c7dfaa">00299</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00832_1a292acc0ed636e87e073170ba52c7dfaa">options</link>(<emphasis role="keywordtype">string</emphasis>&#32;$link,&#32;Closure|array&#32;$toExecute,&#32;<emphasis role="keywordtype">string</emphasis>&#32;$routeName,&#32;array&#32;$genericParamsRegex&#32;=&#32;[],&#32;array&#32;$accessVerifiers&#32;=&#32;[]):&#32;<link linkend="_a00832">Route</link>&#32;{
+<anchor xml:id="_a00260_source_1l00300"/>00300 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00832">Route</link>(
+<anchor xml:id="_a00260_source_1l00301"/>00301 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;requestMethod:&#32;<emphasis role="stringliteral">&quot;options&quot;</emphasis>,
+<anchor xml:id="_a00260_source_1l00302"/>00302 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;link:&#32;$link,
+<anchor xml:id="_a00260_source_1l00303"/>00303 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toExecute:&#32;$toExecute,
+<anchor xml:id="_a00260_source_1l00304"/>00304 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;routeName:&#32;$routeName,
+<anchor xml:id="_a00260_source_1l00305"/>00305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;genericParamsRegex:&#32;$genericParamsRegex,
+<anchor xml:id="_a00260_source_1l00306"/>00306 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;accessVerifiers:&#32;$accessVerifiers
+<anchor xml:id="_a00260_source_1l00307"/>00307 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00260_source_1l00308"/>00308 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00260_source_1l00309"/>00309 
+<anchor xml:id="_a00260_source_1l00319"/><link linkend="_a00832_1a97f8d23113a1d980e9ef18a4a42e8360">00319</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00832_1a97f8d23113a1d980e9ef18a4a42e8360">head</link>(<emphasis role="keywordtype">string</emphasis>&#32;$link,&#32;Closure|array&#32;$toExecute,&#32;<emphasis role="keywordtype">string</emphasis>&#32;$routeName,&#32;array&#32;$genericParamsRegex&#32;=&#32;[],&#32;array&#32;$accessVerifiers&#32;=&#32;[]):&#32;<link linkend="_a00832">Route</link>&#32;{
+<anchor xml:id="_a00260_source_1l00320"/>00320 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00832">Route</link>(
+<anchor xml:id="_a00260_source_1l00321"/>00321 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;requestMethod:&#32;<emphasis role="stringliteral">&quot;head&quot;</emphasis>,
+<anchor xml:id="_a00260_source_1l00322"/>00322 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;link:&#32;$link,
+<anchor xml:id="_a00260_source_1l00323"/>00323 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toExecute:&#32;$toExecute,
+<anchor xml:id="_a00260_source_1l00324"/>00324 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;routeName:&#32;$routeName,
+<anchor xml:id="_a00260_source_1l00325"/>00325 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;genericParamsRegex:&#32;$genericParamsRegex,
+<anchor xml:id="_a00260_source_1l00326"/>00326 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;accessVerifiers:&#32;$accessVerifiers
+<anchor xml:id="_a00260_source_1l00327"/>00327 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00260_source_1l00328"/>00328 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00260_source_1l00329"/>00329 
+<anchor xml:id="_a00260_source_1l00339"/><link linkend="_a00832_1ad118014b03a30ccc3275c0d2f00ba012">00339</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00832_1ad118014b03a30ccc3275c0d2f00ba012">trace</link>(<emphasis role="keywordtype">string</emphasis>&#32;$link,&#32;Closure|array&#32;$toExecute,&#32;<emphasis role="keywordtype">string</emphasis>&#32;$routeName,&#32;array&#32;$genericParamsRegex&#32;=&#32;[],&#32;array&#32;$accessVerifiers&#32;=&#32;[]):&#32;<link linkend="_a00832">Route</link>&#32;{
+<anchor xml:id="_a00260_source_1l00340"/>00340 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;new&#32;<link linkend="_a00832">Route</link>(
+<anchor xml:id="_a00260_source_1l00341"/>00341 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;requestMethod:&#32;<emphasis role="stringliteral">&quot;trace&quot;</emphasis>,
+<anchor xml:id="_a00260_source_1l00342"/>00342 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;link:&#32;$link,
+<anchor xml:id="_a00260_source_1l00343"/>00343 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toExecute:&#32;$toExecute,
+<anchor xml:id="_a00260_source_1l00344"/>00344 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;routeName:&#32;$routeName,
+<anchor xml:id="_a00260_source_1l00345"/>00345 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;genericParamsRegex:&#32;$genericParamsRegex,
+<anchor xml:id="_a00260_source_1l00346"/>00346 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;accessVerifiers:&#32;$accessVerifiers
+<anchor xml:id="_a00260_source_1l00347"/>00347 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00260_source_1l00348"/>00348 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00260_source_1l00349"/>00349 }
+</programlisting></section>

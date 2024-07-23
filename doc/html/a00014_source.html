@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sabo final:  Fichier source de SaboCli.php</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="favicon.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">Sabo final<span id="projectnumber">&#160;1.1.1</span>
+   </div>
+   <div id="projectbrief">Mini framework php</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('a00014_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">SaboCli.php</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="a00014.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span>&lt;?php</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">namespace </span><a class="code hl_namespace" href="a00398.html">SaboCore\Cli\Cli</a>;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>use BeBat\ConsoleColor\Style\Color;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>use <a class="code hl_class" href="a00572.html">SaboCore\Cli\Commands\SaboCommand</a>;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>use <a class="code hl_enumeration" href="a00402.html#a48a4d69dfa43ecb7cc2495c6d711def4">SaboCore\Cli\Theme\Theme</a>;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>use <a class="code hl_class" href="a00580.html">SaboCore\Config\Config</a>;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>use <a class="code hl_class" href="a00888.html">SaboCore\Utils\Printer\Printer</a>;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>use Throwable;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="a00552.html">   16</a></span><span class="keyword">class </span><a class="code hl_class" href="a00552.html">SaboCli</a>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="a00552.html#a0121576f9afc4c68d64fcadbd0afc2d3">   20</a></span>    <span class="keyword">protected</span> <a class="code hl_class" href="a00544.html">ArgumentManager</a> <a class="code hl_variable" href="a00552.html#a0121576f9afc4c68d64fcadbd0afc2d3">$argumentManager</a>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="a00552.html#a32fe970af03bfe525bda40d112085822">   25</a></span>    <span class="keyword">protected</span> <a class="code hl_class" href="a00580.html">Config</a> <a class="code hl_variable" href="a00552.html#a32fe970af03bfe525bda40d112085822">$themeConfig</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="a00552.html#a66b1e68b1e75069be45ae54c302a6e33">   30</a></span>    <span class="keyword">protected</span> array <a class="code hl_variable" href="a00552.html#a66b1e68b1e75069be45ae54c302a6e33">$commands</a> = [];</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="a00552.html#ad50e344b90386a93c1d995f3a743dce0">   36</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00552.html#ad50e344b90386a93c1d995f3a743dce0">__construct</a>(array $argv,<a class="code hl_class" href="a00580.html">Config</a> <a class="code hl_variable" href="a00552.html#a32fe970af03bfe525bda40d112085822">$themeConfig</a>){</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        $this-&gt;argumentManager = <span class="keyword">new</span> <a class="code hl_class" href="a00544.html">ArgumentManager</a>(argv: $argv);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        $this-&gt;themeConfig = <a class="code hl_variable" href="a00552.html#a32fe970af03bfe525bda40d112085822">$themeConfig</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    }</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="a00552.html#a5cd24e45fe0761e91e45c3e44320d7ed">   46</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00552.html#a5cd24e45fe0761e91e45c3e44320d7ed">registerCommand</a>(<a class="code hl_class" href="a00572.html">SaboCommand</a> $executor):<a class="code hl_class" href="a00552.html">SaboCli</a>{</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        $this-&gt;commands[$executor-&gt;getName()] = $executor;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">return</span> $this;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="a00552.html#a82f3474cee57fff1095b279dc4da9fc1">   55</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00552.html#a82f3474cee57fff1095b279dc4da9fc1">getCommands</a>():array{</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        return $this-&gt;commands;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    }</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="a00552.html#a4cf8d7386802fb70f62aea05730a3cfe">   62</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00552.html#a4cf8d7386802fb70f62aea05730a3cfe">getThemeConfig</a>():<a class="code hl_class" href="a00580.html">Config</a>{</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        return $this-&gt;themeConfig;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="a00552.html#a43a95794714b9eb37fe917450ae197b8">   69</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00552.html#a43a95794714b9eb37fe917450ae197b8">getArgumentManager</a>():<a class="code hl_class" href="a00544.html">ArgumentManager</a>{</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        return $this-&gt;argumentManager;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="a00552.html#af8fa59992209e36dccb3eefb0f75531f">   77</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00552.html#af8fa59992209e36dccb3eefb0f75531f">start</a>():void{</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        try{</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="comment">// recherche et exécution de la commande</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            $command = $this-&gt;argumentManager-&gt;next();</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            <span class="keywordflow">if</span>($command == <span class="keyword">null</span>){</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                Printer::printStyle(</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                    toPrint: <span class="stringliteral">&quot;Veuillez saisir la commande à lancer&quot;</span>,</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                    compositeStyle: $this-&gt;themeConfig-&gt;getConfig(Theme::IMPORTANT_ERROR_STYLE-&gt;value)</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                );</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            $commandName = $command-&gt;getArgumentValue();</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            <span class="keywordflow">if</span>(!array_key_exists(key: $commandName,array: $this-&gt;commands) ){</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                Printer::printStyle(</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                    <span class="stringliteral">&quot;Commande non trouvé, pensez à utilisez (help)&quot;</span>,</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                    $this-&gt;themeConfig-&gt;getConfig(Theme::BASIC_ERROR_STYLE-&gt;value)</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                );</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            }</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            <span class="comment">// exécution de la commande</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            $this-&gt;commands[$commandName]-&gt;execCommand(cli: $this);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keywordflow">catch</span>(Throwable){</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            Printer::print(toPrint: <span class="stringliteral">&quot;Echec d&#39;exécution de la commande&quot;</span>,textColor: Color::Red);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    }</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>}</div>
+<div class="ttc" id="aa00398_html"><div class="ttname"><a href="a00398.html">SaboCore\Cli\Cli</a></div><div class="ttdef"><b>Definition:</b> <a href="a00008_source.html#l00003">ArgumentManager.php:3</a></div></div>
+<div class="ttc" id="aa00402_html_a48a4d69dfa43ecb7cc2495c6d711def4"><div class="ttname"><a href="a00402.html#a48a4d69dfa43ecb7cc2495c6d711def4">SaboCore\Cli\Theme\Theme</a></div><div class="ttdeci">Theme</div><div class="ttdoc">Configuration de thème d'affichage du cli.</div><div class="ttdef"><b>Definition:</b> <a href="a00035_source.html#l00009">Theme.php:9</a></div></div>
+<div class="ttc" id="aa00544_html"><div class="ttname"><a href="a00544.html">SaboCore\Cli\Cli\ArgumentManager</a></div><div class="ttdoc">Gestionnaire d'arguments de la ligne de commandes.</div><div class="ttdef"><b>Definition:</b> <a href="a00008_source.html#l00009">ArgumentManager.php:9</a></div></div>
+<div class="ttc" id="aa00552_html"><div class="ttname"><a href="a00552.html">SaboCore\Cli\Cli\SaboCli</a></div><div class="ttdoc">Gestionnaire de commande du framework.</div><div class="ttdef"><b>Definition:</b> <a href="a00014_source.html#l00016">SaboCli.php:16</a></div></div>
+<div class="ttc" id="aa00552_html_a0121576f9afc4c68d64fcadbd0afc2d3"><div class="ttname"><a href="a00552.html#a0121576f9afc4c68d64fcadbd0afc2d3">SaboCore\Cli\Cli\SaboCli\$argumentManager</a></div><div class="ttdeci">ArgumentManager $argumentManager</div><div class="ttdef"><b>Definition:</b> <a href="a00014_source.html#l00020">SaboCli.php:20</a></div></div>
+<div class="ttc" id="aa00552_html_a32fe970af03bfe525bda40d112085822"><div class="ttname"><a href="a00552.html#a32fe970af03bfe525bda40d112085822">SaboCore\Cli\Cli\SaboCli\$themeConfig</a></div><div class="ttdeci">Config $themeConfig</div><div class="ttdef"><b>Definition:</b> <a href="a00014_source.html#l00025">SaboCli.php:25</a></div></div>
+<div class="ttc" id="aa00552_html_a43a95794714b9eb37fe917450ae197b8"><div class="ttname"><a href="a00552.html#a43a95794714b9eb37fe917450ae197b8">SaboCore\Cli\Cli\SaboCli\getArgumentManager</a></div><div class="ttdeci">getArgumentManager()</div><div class="ttdef"><b>Definition:</b> <a href="a00014_source.html#l00069">SaboCli.php:69</a></div></div>
+<div class="ttc" id="aa00552_html_a4cf8d7386802fb70f62aea05730a3cfe"><div class="ttname"><a href="a00552.html#a4cf8d7386802fb70f62aea05730a3cfe">SaboCore\Cli\Cli\SaboCli\getThemeConfig</a></div><div class="ttdeci">getThemeConfig()</div><div class="ttdef"><b>Definition:</b> <a href="a00014_source.html#l00062">SaboCli.php:62</a></div></div>
+<div class="ttc" id="aa00552_html_a5cd24e45fe0761e91e45c3e44320d7ed"><div class="ttname"><a href="a00552.html#a5cd24e45fe0761e91e45c3e44320d7ed">SaboCore\Cli\Cli\SaboCli\registerCommand</a></div><div class="ttdeci">registerCommand(SaboCommand $executor)</div><div class="ttdoc">Enregistre une commande.</div><div class="ttdef"><b>Definition:</b> <a href="a00014_source.html#l00046">SaboCli.php:46</a></div></div>
+<div class="ttc" id="aa00552_html_a66b1e68b1e75069be45ae54c302a6e33"><div class="ttname"><a href="a00552.html#a66b1e68b1e75069be45ae54c302a6e33">SaboCore\Cli\Cli\SaboCli\$commands</a></div><div class="ttdeci">array $commands</div><div class="ttdef"><b>Definition:</b> <a href="a00014_source.html#l00030">SaboCli.php:30</a></div></div>
+<div class="ttc" id="aa00552_html_a82f3474cee57fff1095b279dc4da9fc1"><div class="ttname"><a href="a00552.html#a82f3474cee57fff1095b279dc4da9fc1">SaboCore\Cli\Cli\SaboCli\getCommands</a></div><div class="ttdeci">getCommands()</div><div class="ttdef"><b>Definition:</b> <a href="a00014_source.html#l00055">SaboCli.php:55</a></div></div>
+<div class="ttc" id="aa00552_html_ad50e344b90386a93c1d995f3a743dce0"><div class="ttname"><a href="a00552.html#ad50e344b90386a93c1d995f3a743dce0">SaboCore\Cli\Cli\SaboCli\__construct</a></div><div class="ttdeci">__construct(array $argv, Config $themeConfig)</div><div class="ttdef"><b>Definition:</b> <a href="a00014_source.html#l00036">SaboCli.php:36</a></div></div>
+<div class="ttc" id="aa00552_html_af8fa59992209e36dccb3eefb0f75531f"><div class="ttname"><a href="a00552.html#af8fa59992209e36dccb3eefb0f75531f">SaboCore\Cli\Cli\SaboCli\start</a></div><div class="ttdeci">start()</div><div class="ttdoc">Lance l'exécution du traitement cli.</div><div class="ttdef"><b>Definition:</b> <a href="a00014_source.html#l00077">SaboCli.php:77</a></div></div>
+<div class="ttc" id="aa00572_html"><div class="ttname"><a href="a00572.html">SaboCore\Cli\Commands\SaboCommand</a></div><div class="ttdoc">Commande.</div><div class="ttdef"><b>Definition:</b> <a href="a00029_source.html#l00017">SaboCommand.php:17</a></div></div>
+<div class="ttc" id="aa00580_html"><div class="ttname"><a href="a00580.html">SaboCore\Config\Config</a></div><div class="ttdoc">Représente une configuration.</div><div class="ttdef"><b>Definition:</b> <a href="a00044_source.html#l00009">Config.php:9</a></div></div>
+<div class="ttc" id="aa00888_html"><div class="ttname"><a href="a00888.html">SaboCore\Utils\Printer\Printer</a></div><div class="ttdoc">Afficheur terminal.</div><div class="ttdef"><b>Definition:</b> <a href="a00308_source.html#l00015">Printer.php:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_5a9687d32d98fbbdb60629c9ff0dd338.html">sabo-core</a></li><li class="navelem"><a class="el" href="dir_8103721f2603d8fa51dc9f13854d4791.html">cli</a></li><li class="navelem"><a class="el" href="dir_52e1502ddf27b46546ffb3c85a38e78f.html">cli</a></li><li class="navelem"><a class="el" href="a00014.html">SaboCli.php</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
+</body>
+</html>

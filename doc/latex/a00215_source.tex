@@ -1,0 +1,55 @@
+\hypertarget{a00215_source}{}\doxysection{Database\+Model.\+php}
+\label{a00215_source}\index{DatabaseModel.php@{DatabaseModel.php}}
+\mbox{\hyperlink{a00215}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{a00215_source_l00003}00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{a00415}{SaboCore\(\backslash\)Database\(\backslash\)System}};}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{a00215_source_l00005}00005\ use\ \mbox{\hyperlink{a00868}{SaboCore\(\backslash\)Utils\(\backslash\)List\(\backslash\)SaboList}};}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{a00215_source_l00011}\mbox{\hyperlink{a00780}{00011}}\ \textcolor{keyword}{abstract}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{a00780}{DatabaseModel}}\{}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00017}\mbox{\hyperlink{a00780_a435e7d7525d4bcd0ed5e34a469f3adf6}{00017}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{abstract}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00780_a435e7d7525d4bcd0ed5e34a469f3adf6}{create}}():bool;}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{a00215_source_l00026}\mbox{\hyperlink{a00780_a089f2f9d3bc5e244bb046103eda5e68a}{00026}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00780_a089f2f9d3bc5e244bb046103eda5e68a}{afterCreate}}(mixed\ \$datas):\mbox{\hyperlink{a00780}{DatabaseModel}}\{}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00027}00027\ \ \ \ \ \ \ \ \ return\ \$this;}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{a00215_source_l00037}\mbox{\hyperlink{a00780_a0b5513e28076cdae5edbbc135347952e}{00037}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00780_a0b5513e28076cdae5edbbc135347952e}{beforeCreate}}(mixed\ \$datas):\mbox{\hyperlink{a00780}{DatabaseModel}}\{}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00038}00038\ \ \ \ \ \ \ \ \ return\ \$this;}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{a00215_source_l00046}\mbox{\hyperlink{a00780_a842e4774e3b3601a005b995c02f7e883}{00046}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{abstract}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00780_a842e4774e3b3601a005b995c02f7e883}{update}}():bool;}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{a00215_source_l00055}\mbox{\hyperlink{a00780_abac22adee1771b27007d99ef7c970fd6}{00055}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00780_abac22adee1771b27007d99ef7c970fd6}{afterUpdate}}(mixed\ \$datas):\mbox{\hyperlink{a00780}{DatabaseModel}}\{}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00056}00056\ \ \ \ \ \ \ \ \ return\ \$this;}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{a00215_source_l00066}\mbox{\hyperlink{a00780_a35b505cd63c26794e672b59521925ac4}{00066}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00780_a35b505cd63c26794e672b59521925ac4}{beforeUpdate}}(mixed\ \$datas):\mbox{\hyperlink{a00780}{DatabaseModel}}\{}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00067}00067\ \ \ \ \ \ \ \ \ return\ \$this;}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{a00215_source_l00075}\mbox{\hyperlink{a00780_a13bdffdd926f26b825ea57066334ff01}{00075}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{abstract}\ \textcolor{keyword}{function}\ \textcolor{keyword}{delete}():\textcolor{keywordtype}{bool};}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{a00215_source_l00084}\mbox{\hyperlink{a00780_a92e5ced3dbea2a85916d9ccb74b910e5}{00084}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00780_a92e5ced3dbea2a85916d9ccb74b910e5}{afterDelete}}(mixed\ \$datas):\mbox{\hyperlink{a00780}{DatabaseModel}}\{}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00085}00085\ \ \ \ \ \ \ \ \ return\ \$this;}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{a00215_source_l00095}\mbox{\hyperlink{a00780_a259eacc66c812fa6b8c9a8540852f171}{00095}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00780_a259eacc66c812fa6b8c9a8540852f171}{beforeDelete}}(mixed\ \$datas):\mbox{\hyperlink{a00780}{DatabaseModel}}\{}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00096}00096\ \ \ \ \ \ \ \ \ return\ \$this;}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00097}00097\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{a00215_source_l00106}\mbox{\hyperlink{a00780_a778260a14bf17b9217bea8af56d930e6}{00106}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00780_a778260a14bf17b9217bea8af56d930e6}{beforeGeneration}}(mixed\ \$datas):\mbox{\hyperlink{a00780}{DatabaseModel}}\{}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00107}00107\ \ \ \ \ \ \ \ \ return\ \$this;}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00108}00108\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{a00215_source_l00117}\mbox{\hyperlink{a00780_a1c3bb66c57dc01dc29b0028502d1ffcb}{00117}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00780_a1c3bb66c57dc01dc29b0028502d1ffcb}{afterGeneration}}(mixed\ \$datas):\mbox{\hyperlink{a00780}{DatabaseModel}}\{}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00118}00118\ \ \ \ \ \ \ \ \ return\ \$this;}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00119}00119\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{a00215_source_l00126}\mbox{\hyperlink{a00780_ad29e4ef1858f02bf16baf2705bb5fc93}{00126}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{abstract}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00780_ad29e4ef1858f02bf16baf2705bb5fc93}{findOne}}(\mbox{\hyperlink{a00772}{DatabaseCondition}}|\mbox{\hyperlink{a00776}{DatabaseCondSeparator}}\ ...\$findBuilders):\mbox{\hyperlink{a00780}{DatabaseModel}}|null;}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{a00215_source_l00133}\mbox{\hyperlink{a00780_a5c4801a810bd1777c2a40584beefc1f5}{00133}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{abstract}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00780_a5c4801a810bd1777c2a40584beefc1f5}{findAll}}(\mbox{\hyperlink{a00772}{DatabaseCondition}}|\mbox{\hyperlink{a00776}{DatabaseCondSeparator}}\ ...\$findBuilders):\mbox{\hyperlink{a00868}{SaboList}};}
+\DoxyCodeLine{\Hypertarget{a00215_source_l00134}00134\ \}}
+
+\end{DoxyCode}

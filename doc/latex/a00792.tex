@@ -1,0 +1,267 @@
+\hypertarget{a00792}{}\doxysection{Référence de la classe Request}
+\label{a00792}\index{Request@{Request}}
+
+
+Gestionnaire des données de la requête.  
+
+
+\doxysubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00792_a095c5d389db211932136b53f25f39685}{\+\_\+\+\_\+construct}} ()
+\item 
+\mbox{\hyperlink{a00792_a9d19a4bcdfa4320bd84722701142be6c}{get\+Session\+Storage}} ()
+\item 
+\mbox{\hyperlink{a00792_a4b229b89d0b6ca4f0d44543b98f13d20}{get\+Post\+Values}} (?string \$error\+Message=null, string ... \$to\+Get)
+\begin{DoxyCompactList}\small\item\em Recherche des données post. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00792_a0c3ba069790d5e6409f533ad51c09695}{get\+Get\+Values}} (?string \$error\+Message=null, string ... \$to\+Get)
+\begin{DoxyCompactList}\small\item\em Recherche des données get. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00792_aba481e84cd12098c0b3241f002a414e8}{get\+Cookie\+Values}} (?string \$error\+Message=null, string ... \$to\+Get)
+\begin{DoxyCompactList}\small\item\em Recherche des données cookies. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00792_ad4d871cfe8fbb92d209ee8f7d37ef329}{get\+Files\+Values}} (?string \$error\+Message=null, string ... \$to\+Get)
+\begin{DoxyCompactList}\small\item\em Recherche des données files. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00792_af21299b70630699e58d229fcee77bd8a}{get\+Header}} (string \$header)
+\begin{DoxyCompactList}\small\item\em Fourni un en tête requête. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions membres protégées statiques}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{a00792_a232babb4eab89d3ea0416cfb1f8f3505}{get\+Values\+From}} (array \$container, string ... \$to\+Get)
+\begin{DoxyCompactList}\small\item\em Récupère les valeurs présentes dans un conteneur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Attributs protégés}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00892}{Session\+Storage}} \mbox{\hyperlink{a00792_ae92a475429be44cd882f88415b8f56d5}{\$session\+Storage}}
+\item 
+array \mbox{\hyperlink{a00792_a914c4187a92589e98dc298a488c6f4ca}{\$headers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Gestionnaire des données de la requête. 
+
+\begin{DoxyAuthor}{Auteur}
+yahaya bathily \href{https://github.com/yahvya}{\texttt{ https\+://github.\+com/yahvya}} 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \mbox{\hyperlink{a00227_source_l00013}{13}} du fichier \mbox{\hyperlink{a00227_source}{Request.\+php}}.
+
+
+
+\doxysubsection{Documentation des constructeurs et destructeur}
+\mbox{\Hypertarget{a00792_a095c5d389db211932136b53f25f39685}\label{a00792_a095c5d389db211932136b53f25f39685}} 
+\index{Request@{Request}!\_\_construct@{\_\_construct}}
+\index{\_\_construct@{\_\_construct}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{\_\_construct()}{\_\_construct()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+construct (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00227_source_l00024}{24}} du fichier \mbox{\hyperlink{a00227_source}{Request.\+php}}.
+
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{a00792_aba481e84cd12098c0b3241f002a414e8}\label{a00792_aba481e84cd12098c0b3241f002a414e8}} 
+\index{Request@{Request}!getCookieValues@{getCookieValues}}
+\index{getCookieValues@{getCookieValues}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{getCookieValues()}{getCookieValues()}}
+{\footnotesize\ttfamily get\+Cookie\+Values (\begin{DoxyParamCaption}\item[{?string}]{\$error\+Message = {\ttfamily null},  }\item[{string ...}]{\$to\+Get }\end{DoxyParamCaption})}
+
+
+
+Recherche des données cookies. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string | null & {\em \$error\+Message} & Si valeur non nulle une exception Treatment\+Exception est levé en cas de clé non trouvée avec ce message displayable \\
+\hline
+ & {\em string} & ...\$to\+Get Les clés à chercher \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+array$\vert$null Les valeurs trouvées indicées par leurs clés ou null si une clé non trouvée et message d\textquotesingle{}erreur null 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Treatment\+Exception} & En cas de clé non trouvée et message d\textquotesingle{}erreur présent \\
+\hline
+\end{DoxyExceptions}
+
+
+Définition à la ligne \mbox{\hyperlink{a00227_source_l00084}{84}} du fichier \mbox{\hyperlink{a00227_source}{Request.\+php}}.
+
+\mbox{\Hypertarget{a00792_ad4d871cfe8fbb92d209ee8f7d37ef329}\label{a00792_ad4d871cfe8fbb92d209ee8f7d37ef329}} 
+\index{Request@{Request}!getFilesValues@{getFilesValues}}
+\index{getFilesValues@{getFilesValues}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{getFilesValues()}{getFilesValues()}}
+{\footnotesize\ttfamily get\+Files\+Values (\begin{DoxyParamCaption}\item[{?string}]{\$error\+Message = {\ttfamily null},  }\item[{string ...}]{\$to\+Get }\end{DoxyParamCaption})}
+
+
+
+Recherche des données files. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string | null & {\em \$error\+Message} & Si valeur non nulle une exception Treatment\+Exception est levé en cas de clé non trouvée avec ce message displayable \\
+\hline
+ & {\em string} & ...\$to\+Get Les clés à chercher \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+array$<$string,\+Form\+File\+Manager$>$$\vert$null Les valeurs trouvées (sous forme de l\textquotesingle{}utilitaire Form\+File\+Manager) indicées par leurs clés ou null si une clé non trouvée et message d\textquotesingle{}erreur null 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Treatment\+Exception} & En cas de clé non trouvée et message d\textquotesingle{}erreur présent \\
+\hline
+\end{DoxyExceptions}
+
+
+Définition à la ligne \mbox{\hyperlink{a00227_source_l00104}{104}} du fichier \mbox{\hyperlink{a00227_source}{Request.\+php}}.
+
+\mbox{\Hypertarget{a00792_a0c3ba069790d5e6409f533ad51c09695}\label{a00792_a0c3ba069790d5e6409f533ad51c09695}} 
+\index{Request@{Request}!getGetValues@{getGetValues}}
+\index{getGetValues@{getGetValues}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{getGetValues()}{getGetValues()}}
+{\footnotesize\ttfamily get\+Get\+Values (\begin{DoxyParamCaption}\item[{?string}]{\$error\+Message = {\ttfamily null},  }\item[{string ...}]{\$to\+Get }\end{DoxyParamCaption})}
+
+
+
+Recherche des données get. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string | null & {\em \$error\+Message} & Si valeur non nulle une exception Treatment\+Exception est levé en cas de clé non trouvée avec ce message displayable \\
+\hline
+ & {\em string} & ...\$to\+Get Les clés à chercher \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+array$\vert$null Les valeurs trouvées indicées par leurs clés ou null si une clé non trouvée et message d\textquotesingle{}erreur null 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Treatment\+Exception} & En cas de clé non trouvée et message d\textquotesingle{}erreur présent \\
+\hline
+\end{DoxyExceptions}
+
+
+Définition à la ligne \mbox{\hyperlink{a00227_source_l00064}{64}} du fichier \mbox{\hyperlink{a00227_source}{Request.\+php}}.
+
+\mbox{\Hypertarget{a00792_af21299b70630699e58d229fcee77bd8a}\label{a00792_af21299b70630699e58d229fcee77bd8a}} 
+\index{Request@{Request}!getHeader@{getHeader}}
+\index{getHeader@{getHeader}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{getHeader()}{getHeader()}}
+{\footnotesize\ttfamily get\+Header (\begin{DoxyParamCaption}\item[{string}]{\$header }\end{DoxyParamCaption})}
+
+
+
+Fourni un en tête requête. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$header} & nom de l\textquotesingle{}en tête \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+string$\vert$null l\textquotesingle{}en-\/tête ou null si non trouvé 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00227_source_l00126}{126}} du fichier \mbox{\hyperlink{a00227_source}{Request.\+php}}.
+
+\mbox{\Hypertarget{a00792_a4b229b89d0b6ca4f0d44543b98f13d20}\label{a00792_a4b229b89d0b6ca4f0d44543b98f13d20}} 
+\index{Request@{Request}!getPostValues@{getPostValues}}
+\index{getPostValues@{getPostValues}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{getPostValues()}{getPostValues()}}
+{\footnotesize\ttfamily get\+Post\+Values (\begin{DoxyParamCaption}\item[{?string}]{\$error\+Message = {\ttfamily null},  }\item[{string ...}]{\$to\+Get }\end{DoxyParamCaption})}
+
+
+
+Recherche des données post. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string | null & {\em \$error\+Message} & Si valeur non nulle une exception Treatment\+Exception est levé en cas de clé non trouvée avec ce message displayable \\
+\hline
+ & {\em string} & ...\$to\+Get Les clés à chercher \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+array$\vert$null Les valeurs trouvées indicées par leurs clés ou null si une clé non trouvée et message d\textquotesingle{}erreur null 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Treatment\+Exception} & En cas de clé non trouvée et message d\textquotesingle{}erreur présent \\
+\hline
+\end{DoxyExceptions}
+
+
+Définition à la ligne \mbox{\hyperlink{a00227_source_l00044}{44}} du fichier \mbox{\hyperlink{a00227_source}{Request.\+php}}.
+
+\mbox{\Hypertarget{a00792_a9d19a4bcdfa4320bd84722701142be6c}\label{a00792_a9d19a4bcdfa4320bd84722701142be6c}} 
+\index{Request@{Request}!getSessionStorage@{getSessionStorage}}
+\index{getSessionStorage@{getSessionStorage}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{getSessionStorage()}{getSessionStorage()}}
+{\footnotesize\ttfamily get\+Session\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+Session\+Storage le gestionnaire de stockage de la session 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00227_source_l00033}{33}} du fichier \mbox{\hyperlink{a00227_source}{Request.\+php}}.
+
+\mbox{\Hypertarget{a00792_a232babb4eab89d3ea0416cfb1f8f3505}\label{a00792_a232babb4eab89d3ea0416cfb1f8f3505}} 
+\index{Request@{Request}!getValuesFrom@{getValuesFrom}}
+\index{getValuesFrom@{getValuesFrom}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{getValuesFrom()}{getValuesFrom()}}
+{\footnotesize\ttfamily static get\+Values\+From (\begin{DoxyParamCaption}\item[{array}]{\$container,  }\item[{string ...}]{\$to\+Get }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Récupère les valeurs présentes dans un conteneur. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+array & {\em \$container} & le conteneur \\
+\hline
+ & {\em string} & ...\$to\+Get clé à rechercher \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+array$\vert$null le tableau des valeurs trouvées ou null si une des clés n\textquotesingle{}a pas été trouvée 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00227_source_l00136}{136}} du fichier \mbox{\hyperlink{a00227_source}{Request.\+php}}.
+
+
+
+\doxysubsection{Documentation des champs}
+\mbox{\Hypertarget{a00792_a914c4187a92589e98dc298a488c6f4ca}\label{a00792_a914c4187a92589e98dc298a488c6f4ca}} 
+\index{Request@{Request}!\$headers@{\$headers}}
+\index{\$headers@{\$headers}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{\$headers}{$headers}}
+{\footnotesize\ttfamily array \$headers\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00227_source_l00022}{22}} du fichier \mbox{\hyperlink{a00227_source}{Request.\+php}}.
+
+\mbox{\Hypertarget{a00792_ae92a475429be44cd882f88415b8f56d5}\label{a00792_ae92a475429be44cd882f88415b8f56d5}} 
+\index{Request@{Request}!\$sessionStorage@{\$sessionStorage}}
+\index{\$sessionStorage@{\$sessionStorage}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{\$sessionStorage}{$sessionStorage}}
+{\footnotesize\ttfamily \mbox{\hyperlink{a00892}{Session\+Storage}} \$session\+Storage\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00227_source_l00017}{17}} du fichier \mbox{\hyperlink{a00227_source}{Request.\+php}}.
+
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00227}{Request.\+php}}\end{DoxyCompactItemize}

@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00185_source" xml:lang="fr">
+<title>MysqlException.php</title>
+<indexterm><primary>MysqlException.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00185_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00185_source_1l00002"/>00002 
+<anchor xml:id="_a00185_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00413">SaboCore\Database\Default\System</link>;
+<anchor xml:id="_a00185_source_1l00004"/>00004 
+<anchor xml:id="_a00185_source_1l00005"/>00005 use&#32;Exception;
+<anchor xml:id="_a00185_source_1l00006"/>00006 
+<anchor xml:id="_a00185_source_1l00011"/><link linkend="_a00744">00011</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00744">MysqlException</link>&#32;<emphasis role="keyword">extends</emphasis>&#32;Exception{
+<anchor xml:id="_a00185_source_1l00015"/><link linkend="_a00744_1a919a243061a1986ae430fd787760bbf9">00015</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_a00744_1a919a243061a1986ae430fd787760bbf9">$isDisplayable</link>;
+<anchor xml:id="_a00185_source_1l00016"/>00016 
+<anchor xml:id="_a00185_source_1l00021"/><link linkend="_a00744_1ad244337e96952787bdf16fe66860d0d5">00021</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00744_1ad244337e96952787bdf16fe66860d0d5">__construct</link>(<emphasis role="keywordtype">string</emphasis>&#32;$message,<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_a00744_1a919a243061a1986ae430fd787760bbf9">$isDisplayable</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>){
+<anchor xml:id="_a00185_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;parent::__construct(message:&#32;$message);
+<anchor xml:id="_a00185_source_1l00023"/>00023 
+<anchor xml:id="_a00185_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;isDisplayable&#32;=&#32;<link linkend="_a00744_1a919a243061a1986ae430fd787760bbf9">$isDisplayable</link>;
+<anchor xml:id="_a00185_source_1l00025"/>00025 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00185_source_1l00026"/>00026 
+<anchor xml:id="_a00185_source_1l00030"/><link linkend="_a00744_1a2bd06fb688dc4a272e4a92500cb3a4ce">00030</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00744_1a2bd06fb688dc4a272e4a92500cb3a4ce">getIsDisplayable</link>():&#32;bool{
+<anchor xml:id="_a00185_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;isDisplayable;
+<anchor xml:id="_a00185_source_1l00032"/>00032 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00185_source_1l00033"/>00033 
+<anchor xml:id="_a00185_source_1l00038"/><link linkend="_a00744_1ac4b85211dd04576ac5120310fb7c57a7">00038</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00744_1ac4b85211dd04576ac5120310fb7c57a7">getErrorMessage</link>(<emphasis role="keywordtype">string</emphasis>&#32;$defaultMessage&#32;=&#32;<emphasis role="stringliteral">&quot;Une&#32;erreur&#32;technique&#32;s&apos;est&#32;produite&quot;</emphasis>):string{
+<anchor xml:id="_a00185_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;isDisplayable&#32;?&#32;$this-&gt;message&#32;:&#32;$defaultMessage;
+<anchor xml:id="_a00185_source_1l00040"/>00040 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00185_source_1l00041"/>00041 }
+</programlisting></section>

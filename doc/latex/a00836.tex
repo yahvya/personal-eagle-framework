@@ -1,0 +1,220 @@
+\hypertarget{a00836}{}\doxysection{Référence de la classe Route\+Manager}
+\label{a00836}\index{RouteManager@{RouteManager}}
+
+
+Gestionnaire de routes.  
+
+
+\doxysubsection*{Fonctions membres publiques statiques}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{a00836_aaa19ab55a6b8cbe00614d67cdd950de4}{register\+Group}} (string \$links\+Prefix, array \$routes, array \$generic\+Params\+Config=\mbox{[}$\,$\mbox{]}, array \$group\+Access\+Verifiers=\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Enregistre un groupe de route. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{a00836_a811974955a3b8dbce9a51d2a976f3e5a}{register\+Route}} (\mbox{\hyperlink{a00832}{Route}} \$\mbox{\hyperlink{a00362_ae51039edf7ff9675adb95522e00d4583}{route}})
+\begin{DoxyCompactList}\small\item\em Enregistre une route. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{a00836_aa9135deedb1da6c5e6e65f1d640f4e02}{from\+File}} (string \$filename)
+\begin{DoxyCompactList}\small\item\em Charge les routes écrites dans un fichier. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{a00836_a6125ddfb65a46eadc3331dd4d2747e31}{find\+Route\+By\+Name}} (string \$route\+Name,?string \$method=null)
+\begin{DoxyCompactList}\small\item\em Recherche une route par son nom. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{a00836_a52aaba9248bf4e6447c45a793c2744b8}{find\+Route\+By\+Link}} (string \$link,?string \$method=null)
+\begin{DoxyCompactList}\small\item\em Recherche une route par match de lien. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions membres protégées statiques}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{a00836_a9f5127ad9abe280bd45aa8f6e1dd99dc}{get\+Routes\+From}} (?string \$method)
+\begin{DoxyCompactList}\small\item\em Forme les routes à partir de la méthode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Attributs protégés statiques}
+\begin{DoxyCompactItemize}
+\item 
+static array \mbox{\hyperlink{a00836_aa17a7c8ad7c21ce9bdeaac17e332e6dc}{\$routes}} = \mbox{[}$\,$\mbox{]}
+\item 
+static array \mbox{\hyperlink{a00836_a4d603901a6ebae9724325002e2c06c2f}{\$used\+Names}} = \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Gestionnaire de routes. 
+
+\begin{DoxyAuthor}{Auteur}
+yahaya bathily \href{https://github.com/yahvya}{\texttt{ https\+://github.\+com/yahvya}} 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \mbox{\hyperlink{a00263_source_l00016}{16}} du fichier \mbox{\hyperlink{a00263_source}{Route\+Manager.\+php}}.
+
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{a00836_a52aaba9248bf4e6447c45a793c2744b8}\label{a00836_a52aaba9248bf4e6447c45a793c2744b8}} 
+\index{RouteManager@{RouteManager}!findRouteByLink@{findRouteByLink}}
+\index{findRouteByLink@{findRouteByLink}!RouteManager@{RouteManager}}
+\doxysubsubsection{\texorpdfstring{findRouteByLink()}{findRouteByLink()}}
+{\footnotesize\ttfamily static find\+Route\+By\+Link (\begin{DoxyParamCaption}\item[{string}]{\$link,  }\item[{?string}]{\$method = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Recherche une route par match de lien. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$link} & lien \\
+\hline
+string | null & {\em \$method} & la méthode de requête \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+array\texorpdfstring{$<$}{<}string,Route$\vert$\+Match\+Result\texorpdfstring{$>$}{>}$\vert$null null si non trouvé sinon \mbox{[}\char`\"{}route\char`\"{} =\texorpdfstring{$>$}{>} ...,\char`\"{}match\char`\"{} =\texorpdfstring{$>$}{>} ...\mbox{]} 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00263_source_l00110}{110}} du fichier \mbox{\hyperlink{a00263_source}{Route\+Manager.\+php}}.
+
+\mbox{\Hypertarget{a00836_a6125ddfb65a46eadc3331dd4d2747e31}\label{a00836_a6125ddfb65a46eadc3331dd4d2747e31}} 
+\index{RouteManager@{RouteManager}!findRouteByName@{findRouteByName}}
+\index{findRouteByName@{findRouteByName}!RouteManager@{RouteManager}}
+\doxysubsubsection{\texorpdfstring{findRouteByName()}{findRouteByName()}}
+{\footnotesize\ttfamily static find\+Route\+By\+Name (\begin{DoxyParamCaption}\item[{string}]{\$route\+Name,  }\item[{?string}]{\$method = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Recherche une route par son nom. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$route\+Name} & nom de la route \\
+\hline
+string | null & {\em \$method} & la méthode de requête \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Route$\vert$null la route ou null 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00263_source_l00093}{93}} du fichier \mbox{\hyperlink{a00263_source}{Route\+Manager.\+php}}.
+
+\mbox{\Hypertarget{a00836_aa9135deedb1da6c5e6e65f1d640f4e02}\label{a00836_aa9135deedb1da6c5e6e65f1d640f4e02}} 
+\index{RouteManager@{RouteManager}!fromFile@{fromFile}}
+\index{fromFile@{fromFile}!RouteManager@{RouteManager}}
+\doxysubsubsection{\texorpdfstring{fromFile()}{fromFile()}}
+{\footnotesize\ttfamily static from\+File (\begin{DoxyParamCaption}\item[{string}]{\$filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Charge les routes écrites dans un fichier. 
+
+\begin{DoxyAttention}{Attention}
+la recherche se fait à partir du dossier racine des routes 
+\end{DoxyAttention}
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$filename} & nom du fichier sans l\textquotesingle{}extension php \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00263_source_l00078}{78}} du fichier \mbox{\hyperlink{a00263_source}{Route\+Manager.\+php}}.
+
+\mbox{\Hypertarget{a00836_a9f5127ad9abe280bd45aa8f6e1dd99dc}\label{a00836_a9f5127ad9abe280bd45aa8f6e1dd99dc}} 
+\index{RouteManager@{RouteManager}!getRoutesFrom@{getRoutesFrom}}
+\index{getRoutesFrom@{getRoutesFrom}!RouteManager@{RouteManager}}
+\doxysubsubsection{\texorpdfstring{getRoutesFrom()}{getRoutesFrom()}}
+{\footnotesize\ttfamily static get\+Routes\+From (\begin{DoxyParamCaption}\item[{?string}]{\$method }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Forme les routes à partir de la méthode. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string | null & {\em \$method} & la méthode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Route\mbox{[}\mbox{]} 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00263_source_l00128}{128}} du fichier \mbox{\hyperlink{a00263_source}{Route\+Manager.\+php}}.
+
+\mbox{\Hypertarget{a00836_aaa19ab55a6b8cbe00614d67cdd950de4}\label{a00836_aaa19ab55a6b8cbe00614d67cdd950de4}} 
+\index{RouteManager@{RouteManager}!registerGroup@{registerGroup}}
+\index{registerGroup@{registerGroup}!RouteManager@{RouteManager}}
+\doxysubsubsection{\texorpdfstring{registerGroup()}{registerGroup()}}
+{\footnotesize\ttfamily static register\+Group (\begin{DoxyParamCaption}\item[{string}]{\$links\+Prefix,  }\item[{array}]{\$routes,  }\item[{array}]{\$generic\+Params\+Config = {\ttfamily \mbox{[}\mbox{]}},  }\item[{array}]{\$group\+Access\+Verifiers = {\ttfamily \mbox{[}\mbox{]}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Enregistre un groupe de route. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$links\+Prefix} & prefix des liens contenus dans le groupe \\
+\hline
+Route\mbox{[}$\,$\mbox{]} & {\em \$routes} & liste des routes du groupe \\
+\hline
+array & {\em \$generic\+Params\+Config} & expressions régulières liées aux éléments génériques (appliquées à tous les liens du groupe) \\
+\hline
+Verifier\mbox{[}$\,$\mbox{]} & {\em \$group\+Access\+Verifiers} & gestionnaires d\textquotesingle{}accès (appliquées à tous les liens du groupe), reçoivent un objet Request en paramètre les fonctions, seuls les fonctions failures sont prises en compte et retournent Response \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00263_source_l00035}{35}} du fichier \mbox{\hyperlink{a00263_source}{Route\+Manager.\+php}}.
+
+\mbox{\Hypertarget{a00836_a811974955a3b8dbce9a51d2a976f3e5a}\label{a00836_a811974955a3b8dbce9a51d2a976f3e5a}} 
+\index{RouteManager@{RouteManager}!registerRoute@{registerRoute}}
+\index{registerRoute@{registerRoute}!RouteManager@{RouteManager}}
+\doxysubsubsection{\texorpdfstring{registerRoute()}{registerRoute()}}
+{\footnotesize\ttfamily static register\+Route (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{a00832}{Route}}}]{\$route }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Enregistre une route. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+Route & {\em \$route} & la route \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00263_source_l00047}{47}} du fichier \mbox{\hyperlink{a00263_source}{Route\+Manager.\+php}}.
+
+
+
+\doxysubsection{Documentation des champs}
+\mbox{\Hypertarget{a00836_aa17a7c8ad7c21ce9bdeaac17e332e6dc}\label{a00836_aa17a7c8ad7c21ce9bdeaac17e332e6dc}} 
+\index{RouteManager@{RouteManager}!\$routes@{\$routes}}
+\index{\$routes@{\$routes}!RouteManager@{RouteManager}}
+\doxysubsubsection{\texorpdfstring{\$routes}{$routes}}
+{\footnotesize\ttfamily array \$routes = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00263_source_l00020}{20}} du fichier \mbox{\hyperlink{a00263_source}{Route\+Manager.\+php}}.
+
+\mbox{\Hypertarget{a00836_a4d603901a6ebae9724325002e2c06c2f}\label{a00836_a4d603901a6ebae9724325002e2c06c2f}} 
+\index{RouteManager@{RouteManager}!\$usedNames@{\$usedNames}}
+\index{\$usedNames@{\$usedNames}!RouteManager@{RouteManager}}
+\doxysubsubsection{\texorpdfstring{\$usedNames}{$usedNames}}
+{\footnotesize\ttfamily array \$used\+Names = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00263_source_l00025}{25}} du fichier \mbox{\hyperlink{a00263_source}{Route\+Manager.\+php}}.
+
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00263}{Route\+Manager.\+php}}\end{DoxyCompactItemize}

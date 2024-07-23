@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00620" xml:lang="fr">
+<title>Référence de la classe JoinedColumn</title>
+<indexterm><primary>JoinedColumn</primary></indexterm>
+<para>
+
+<para>Attribut de liaison de tables. </para>
+ 
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00620_1add3f65a5305917eef1b3266e7e00a4ef">__construct</link> (string $classModel, array $joinConfig, bool $loadOnGeneration=true)</para>
+</listitem>
+            <listitem><para><link linkend="_a00620_1a076e6f60e412926f7f6d80aa76d5653a">getClassModel</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00620_1aa9bd214250371f9210f42c6e8df27e95">getJoinConfig</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00620_1a647299dc5dd60dbf15f0be0b837961bd">getLoadOnGeneration</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Attributs protégés    </title>
+        <itemizedlist>
+            <listitem><para>string <link linkend="_a00620_1abf512a4f5bf2b1a3a6994ff542bb9e3d">$classModel</link></para>
+</listitem>
+            <listitem><para>array <link linkend="_a00620_1a58c31dfa753d0b3cf0fdeddc04167d98">$joinConfig</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_a00620_1aef934585a7fd557c3e6417a41416a4e1">$loadOnGeneration</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Attribut de liaison de tables. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00092_source_1l00012">12</link> du fichier <link linkend="_a00092_source">JoinedColumn.php</link>.</para>
+</section>
+<section>
+<title>Documentation des constructeurs et destructeur</title>
+<anchor xml:id="_a00620_1add3f65a5305917eef1b3266e7e00a4ef"/><section>
+    <title>__construct()</title>
+<indexterm><primary>__construct</primary><secondary>JoinedColumn</secondary></indexterm>
+<indexterm><primary>JoinedColumn</primary><secondary>__construct</secondary></indexterm>
+<para><computeroutput>__construct (string $classModel, array $joinConfig, bool $loadOnGeneration = <computeroutput>true</computeroutput>
+)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>string</entry><entry>$classModel</entry><entry>
+<para>Model la class </para>
+</entry>
+                            </row>
+                            <row>
+<entry>array</entry><entry>$joinConfig</entry><entry>
+<para>Configuration de jointure, indicé par les valeurs de la table actuelle et ayant comme valeur l&apos;attribut de la table lié </para>
+</entry>
+                            </row>
+                            <row>
+<entry>bool</entry><entry>$loadOnGeneration</entry><entry>
+<para>Si les données doivent être chargées à la génération du model. Si false la méthode &quot;loadContent&quot; devra être appellé sur la JoinedList avant utilisation </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00092_source_1l00033">33</link> du fichier <link linkend="_a00092_source">JoinedColumn.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00620_1a076e6f60e412926f7f6d80aa76d5653a"/><section>
+    <title>getClassModel()</title>
+<indexterm><primary>getClassModel</primary><secondary>JoinedColumn</secondary></indexterm>
+<indexterm><primary>JoinedColumn</primary><secondary>getClassModel</secondary></indexterm>
+<para><computeroutput>getClassModel ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string Model la class </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00092_source_1l00042">42</link> du fichier <link linkend="_a00092_source">JoinedColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00620_1aa9bd214250371f9210f42c6e8df27e95"/><section>
+    <title>getJoinConfig()</title>
+<indexterm><primary>getJoinConfig</primary><secondary>JoinedColumn</secondary></indexterm>
+<indexterm><primary>JoinedColumn</primary><secondary>getJoinConfig</secondary></indexterm>
+<para><computeroutput>getJoinConfig ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>array Configuration de jointure, indicé par les valeurs de la table actuelle et ayant comme valeur l&apos;attribut de la table lié </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00092_source_1l00049">49</link> du fichier <link linkend="_a00092_source">JoinedColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00620_1a647299dc5dd60dbf15f0be0b837961bd"/><section>
+    <title>getLoadOnGeneration()</title>
+<indexterm><primary>getLoadOnGeneration</primary><secondary>JoinedColumn</secondary></indexterm>
+<indexterm><primary>JoinedColumn</primary><secondary>getLoadOnGeneration</secondary></indexterm>
+<para><computeroutput>getLoadOnGeneration ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>bool Si les données doivent être chargées à la génération du model </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00092_source_1l00056">56</link> du fichier <link linkend="_a00092_source">JoinedColumn.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des champs</title>
+<anchor xml:id="_a00620_1abf512a4f5bf2b1a3a6994ff542bb9e3d"/><section>
+    <title>$classModel</title>
+<indexterm><primary>$classModel</primary><secondary>JoinedColumn</secondary></indexterm>
+<indexterm><primary>JoinedColumn</primary><secondary>$classModel</secondary></indexterm>
+<para><computeroutput>string $classModel<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00092_source_1l00016">16</link> du fichier <link linkend="_a00092_source">JoinedColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00620_1a58c31dfa753d0b3cf0fdeddc04167d98"/><section>
+    <title>$joinConfig</title>
+<indexterm><primary>$joinConfig</primary><secondary>JoinedColumn</secondary></indexterm>
+<indexterm><primary>JoinedColumn</primary><secondary>$joinConfig</secondary></indexterm>
+<para><computeroutput>array $joinConfig<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00092_source_1l00021">21</link> du fichier <link linkend="_a00092_source">JoinedColumn.php</link>.</para>
+</section>
+<anchor xml:id="_a00620_1aef934585a7fd557c3e6417a41416a4e1"/><section>
+    <title>$loadOnGeneration</title>
+<indexterm><primary>$loadOnGeneration</primary><secondary>JoinedColumn</secondary></indexterm>
+<indexterm><primary>JoinedColumn</primary><secondary>$loadOnGeneration</secondary></indexterm>
+<para><computeroutput>bool $loadOnGeneration<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00092_source_1l00026">26</link> du fichier <link linkend="_a00092_source">JoinedColumn.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00092">JoinedColumn.php</link></section>
+</section>

@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00422" xml:lang="fr">
+<title>Référence de l&apos;espace de nommage SaboCore\Utils\Api</title>
+<indexterm><primary>SaboCore\Utils\Api</primary></indexterm>
+<simplesect>
+    <title>Structures de données    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_a00848">SaboApi</link></para>
+
+<para>Utilitaire requête d&apos;api curl. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Énumérations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_a00422_1aee57d5d9f72c0790cf2ed92e047c28ed">SaboApiConfig</link> : int { <link linkend="_a00422_1aee57d5d9f72c0790cf2ed92e047c28eda7859c6fa207d555e4f392f308b4b9d7c">URL</link> = 1
+ }</para>
+
+<para>Configuration données constructeur SaboApi. </para>
+</listitem>
+            <listitem><para>enum <link linkend="_a00422_1acded770c3134ecbf623b0f68863c903b">SaboApiRequest</link> { <link linkend="_a00422_1acded770c3134ecbf623b0f68863c903bac0901ae6e50d664ae65b524d70adf392">RESULT_AS_JSON_ARRAY</link>
+ }</para>
+
+<para>Configuration des paramètres d&apos;une requête. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Documentation du type de l&apos;énumération</title>
+<anchor xml:id="_a00422_1aee57d5d9f72c0790cf2ed92e047c28ed"/><section>
+    <title>SaboApiConfig</title>
+<indexterm><primary>SaboApiConfig</primary><secondary>SaboCore\Utils\Api</secondary></indexterm>
+<indexterm><primary>SaboCore\Utils\Api</primary><secondary>SaboApiConfig</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_a00422_1aee57d5d9f72c0790cf2ed92e047c28ed">SaboApiConfig</link> : int</computeroutput></para><para>
+
+<para>Configuration données constructeur SaboApi. </para>
+</para>
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<informaltable frame="all">
+<title>Valeurs énumérées</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>URL</primary><secondary>SaboCore\Utils\Api</secondary></indexterm>
+<indexterm><primary>SaboCore\Utils\Api</primary><secondary>URL</secondary></indexterm>
+<anchor xml:id="_a00422_1aee57d5d9f72c0790cf2ed92e047c28eda7859c6fa207d555e4f392f308b4b9d7c"/>URL</entry><entry>
+<para>Lien de requête. </para>
+</entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+<para>
+Définition à la ligne <link linkend="_a00275_source_1l00009">9</link> du fichier <link linkend="_a00275_source">SaboApiConfig.php</link>.</para>
+</section>
+<anchor xml:id="_a00422_1acded770c3134ecbf623b0f68863c903b"/><section>
+    <title>SaboApiRequest</title>
+<indexterm><primary>SaboApiRequest</primary><secondary>SaboCore\Utils\Api</secondary></indexterm>
+<indexterm><primary>SaboCore\Utils\Api</primary><secondary>SaboApiRequest</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_a00422_1acded770c3134ecbf623b0f68863c903b">SaboApiRequest</link></computeroutput></para><para>
+
+<para>Configuration des paramètres d&apos;une requête. </para>
+</para>
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<informaltable frame="all">
+<title>Valeurs énumérées</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>RESULT_AS_JSON_ARRAY</primary><secondary>SaboCore\Utils\Api</secondary></indexterm>
+<indexterm><primary>SaboCore\Utils\Api</primary><secondary>RESULT_AS_JSON_ARRAY</secondary></indexterm>
+<anchor xml:id="_a00422_1acded770c3134ecbf623b0f68863c903bac0901ae6e50d664ae65b524d70adf392"/>RESULT_AS_JSON_ARRAY</entry><entry>
+<para>Conversion json. </para>
+
+<para>Usage du http_build_query</para>
+
+<para>Aucune donnée contenue</para>
+
+<para>Conservation du résultat sous forme de chaine</para>
+
+<para>Conversion d&apos;un résultat sous forme de chaine json en tableau </para>
+</entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+<para>
+Définition à la ligne <link linkend="_a00278_source_1l00009">9</link> du fichier <link linkend="_a00278_source">SaboApiRequest.php</link>.</para>
+</section>
+</section>
+</section>

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00251" xml:lang="fr">
+<title>Référence du fichier ResponseCode.php</title>
+<indexterm><primary>ResponseCode.php</primary></indexterm>
+<simplesect>
+    <title>Espaces de nommage    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_a00419">SaboCore\Routing\Response</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Énumérations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_a00419_1a60fc225caae1512201a1778eeaf1a0fb">ResponseCode</link> : int { <link linkend="_a00419_1a60fc225caae1512201a1778eeaf1a0fbaf584a9ea047509016d9b5653f3f1cd24">INTERNAL_SERVER_ERROR</link> = 500
+ }</para>
+
+<para>Codes retours http. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00429" xml:lang="fr">
+<title>Référence de l&apos;espace de nommage SaboCore\Utils\Session</title>
+<indexterm><primary>SaboCore\Utils\Session</primary></indexterm>
+<simplesect>
+    <title>Structures de données    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_a00892">SessionStorage</link></para>
+
+<para>Gestionnaire de session. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Énumérations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_a00429_1aeb7857e9a3ddc256bba67f362c1254b7">FrameworkSession</link> : string { <link linkend="_a00429_1aeb7857e9a3ddc256bba67f362c1254b7a115d3e536bff9937d2c1dfa715056201">MAINTENANCE_ACCESS</link> = &quot;maintenanceAccess&quot;
+ }</para>
+
+<para>Clés de session du framework. </para>
+</listitem>
+            <listitem><para>enum <link linkend="_a00429_1adae9ef061a4cd6fa8f58ba2b6805c50c">SessionStorageKeymap</link> : string { <link linkend="_a00429_1adae9ef061a4cd6fa8f58ba2b6805c50cab9cfe24cbc9bab74c202711502611479">FOR_CSRF_TOKEN</link> = &quot;FOR_CSRF_TOKEN&quot;
+ }</para>
+
+<para>Clés de session. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Documentation du type de l&apos;énumération</title>
+<anchor xml:id="_a00429_1aeb7857e9a3ddc256bba67f362c1254b7"/><section>
+    <title>FrameworkSession</title>
+<indexterm><primary>FrameworkSession</primary><secondary>SaboCore\Utils\Session</secondary></indexterm>
+<indexterm><primary>SaboCore\Utils\Session</primary><secondary>FrameworkSession</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_a00429_1aeb7857e9a3ddc256bba67f362c1254b7">FrameworkSession</link> : string</computeroutput></para><para>
+
+<para>Clés de session du framework. </para>
+</para>
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<informaltable frame="all">
+<title>Valeurs énumérées</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>MAINTENANCE_ACCESS</primary><secondary>SaboCore\Utils\Session</secondary></indexterm>
+<indexterm><primary>SaboCore\Utils\Session</primary><secondary>MAINTENANCE_ACCESS</secondary></indexterm>
+<anchor xml:id="_a00429_1aeb7857e9a3ddc256bba67f362c1254b7a115d3e536bff9937d2c1dfa715056201"/>MAINTENANCE_ACCESS</entry><entry>
+<para>Stockage de l&apos;accès autorisé durant la maintenance. </para>
+</entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+<para>
+Définition à la ligne <link linkend="_a00311_source_1l00009">9</link> du fichier <link linkend="_a00311_source">FrameworkSession.php</link>.</para>
+</section>
+<anchor xml:id="_a00429_1adae9ef061a4cd6fa8f58ba2b6805c50c"/><section>
+    <title>SessionStorageKeymap</title>
+<indexterm><primary>SessionStorageKeymap</primary><secondary>SaboCore\Utils\Session</secondary></indexterm>
+<indexterm><primary>SaboCore\Utils\Session</primary><secondary>SessionStorageKeymap</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_a00429_1adae9ef061a4cd6fa8f58ba2b6805c50c">SessionStorageKeymap</link> : string</computeroutput></para><para>
+
+<para>Clés de session. </para>
+</para>
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<informaltable frame="all">
+<title>Valeurs énumérées</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>FOR_CSRF_TOKEN</primary><secondary>SaboCore\Utils\Session</secondary></indexterm>
+<indexterm><primary>SaboCore\Utils\Session</primary><secondary>FOR_CSRF_TOKEN</secondary></indexterm>
+<anchor xml:id="_a00429_1adae9ef061a4cd6fa8f58ba2b6805c50cab9cfe24cbc9bab74c202711502611479"/>FOR_CSRF_TOKEN</entry><entry>
+<para>Clé pour les valeurs stockées par l&apos;utilisateur. </para>
+
+<para>Clé pour les valeurs des données flash</para>
+
+<para>Clé pour les valeurs réservées au framework</para>
+
+<para>Clé pour les tokens csrf </para>
+</entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+<para>
+Définition à la ligne <link linkend="_a00317_source_1l00009">9</link> du fichier <link linkend="_a00317_source">SessionStorageKeymap.php</link>.</para>
+</section>
+</section>
+</section>

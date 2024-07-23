@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00317" xml:lang="fr">
+<title>Référence du fichier SessionStorageKeymap.php</title>
+<indexterm><primary>SessionStorageKeymap.php</primary></indexterm>
+<simplesect>
+    <title>Espaces de nommage    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_a00429">SaboCore\Utils\Session</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Énumérations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_a00429_1adae9ef061a4cd6fa8f58ba2b6805c50c">SessionStorageKeymap</link> : string { <link linkend="_a00429_1adae9ef061a4cd6fa8f58ba2b6805c50cab9cfe24cbc9bab74c202711502611479">FOR_CSRF_TOKEN</link> = &quot;FOR_CSRF_TOKEN&quot;
+ }</para>
+
+<para>Clés de session. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

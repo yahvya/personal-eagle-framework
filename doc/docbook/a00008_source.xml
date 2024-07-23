@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00008_source" xml:lang="fr">
+<title>ArgumentManager.php</title>
+<indexterm><primary>ArgumentManager.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00008_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00008_source_1l00002"/>00002 
+<anchor xml:id="_a00008_source_1l00003"/><link linkend="_a00398">00003</link> <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00398">SaboCore\Cli\Cli</link>;
+<anchor xml:id="_a00008_source_1l00004"/>00004 
+<anchor xml:id="_a00008_source_1l00009"/><link linkend="_a00544">00009</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00544">ArgumentManager</link>{
+<anchor xml:id="_a00008_source_1l00013"/><link linkend="_a00544_1a4eb471260e90dfc2e5b9e4854d3c8b8f">00013</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;array&#32;<link linkend="_a00544_1a4eb471260e90dfc2e5b9e4854d3c8b8f">$args</link>&#32;=&#32;[];
+<anchor xml:id="_a00008_source_1l00014"/>00014 
+<anchor xml:id="_a00008_source_1l00018"/><link linkend="_a00544_1a4b291df4b5a2e3927a5d64170ae34fae">00018</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_a00544_1a4b291df4b5a2e3927a5d64170ae34fae">$currentIndex</link>&#32;=&#32;0;
+<anchor xml:id="_a00008_source_1l00019"/>00019 
+<anchor xml:id="_a00008_source_1l00023"/><link linkend="_a00544_1a3a1d261adb9cd711ad1ae39c61a6241b">00023</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00544_1a3a1d261adb9cd711ad1ae39c61a6241b">__construct</link>(array&#32;$argv){
+<anchor xml:id="_a00008_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;conversion&#32;des&#32;arguments</emphasis>
+<anchor xml:id="_a00008_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;args&#32;=&#32;array_map(
+<anchor xml:id="_a00008_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback:&#32;fn(<emphasis role="keywordtype">string</emphasis>&#32;$arg):<link linkend="_a00548">CliArgument</link>&#32;=&gt;&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00548">CliArgument</link>(argument:&#32;$arg),
+<anchor xml:id="_a00008_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;array:&#32;array_slice(array:&#32;$argv,offset:&#32;1)
+<anchor xml:id="_a00008_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00008_source_1l00029"/>00029 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00008_source_1l00030"/>00030 
+<anchor xml:id="_a00008_source_1l00036"/><link linkend="_a00544_1ac9a4dce35165e556e7d45c45f138a265">00036</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00544_1ac9a4dce35165e556e7d45c45f138a265">previous</link>():?<link linkend="_a00548">CliArgument</link>{
+<anchor xml:id="_a00008_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;array_key_exists(key:&#32;$this-&gt;currentIndex&#32;-&#32;1,&#32;array:&#32;$this-&gt;args)&#32;?&#32;$this-&gt;args[--$this-&gt;currentIndex]&#32;:&#32;null;
+<anchor xml:id="_a00008_source_1l00038"/>00038 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00008_source_1l00039"/>00039 
+<anchor xml:id="_a00008_source_1l00045"/><link linkend="_a00544_1acea62048bfee7b3cd80ed446c86fb78a">00045</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00544_1acea62048bfee7b3cd80ed446c86fb78a">next</link>():?<link linkend="_a00548">CliArgument</link>{
+<anchor xml:id="_a00008_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;array_key_exists(key:&#32;$this-&gt;currentIndex,array:&#32;$this-&gt;args)&#32;?&#32;$this-&gt;args[$this-&gt;currentIndex++]&#32;:&#32;null;
+<anchor xml:id="_a00008_source_1l00047"/>00047 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00008_source_1l00048"/>00048 
+<anchor xml:id="_a00008_source_1l00055"/><link linkend="_a00544_1a91a8ac2826c641d95a4b6994baba9455">00055</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00544_1a91a8ac2826c641d95a4b6994baba9455">find</link>(<emphasis role="keywordtype">string</emphasis>&#32;$optionName,<emphasis role="keywordtype">bool</emphasis>&#32;$fromCurrentIndex&#32;=&#32;<emphasis role="keyword">false</emphasis>):<link linkend="_a00548">CliArgument</link>|null{
+<anchor xml:id="_a00008_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$searchIndex&#32;=&#32;$fromCurrentIndex&#32;?&#32;$this-&gt;currentIndex&#32;:&#32;0;
+<anchor xml:id="_a00008_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$countOfElements&#32;=&#32;count(value:&#32;$this-&gt;args);
+<anchor xml:id="_a00008_source_1l00058"/>00058 
+<anchor xml:id="_a00008_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;recherche&#32;de&#32;l&apos;option</emphasis>
+<anchor xml:id="_a00008_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(;$searchIndex&#32;&lt;&#32;$countOfElements;&#32;$searchIndex++){
+<anchor xml:id="_a00008_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$option&#32;=&#32;$this-&gt;args[$searchIndex]-&gt;getOption();
+<anchor xml:id="_a00008_source_1l00062"/>00062 
+<anchor xml:id="_a00008_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($option&#32;!==&#32;<emphasis role="keyword">null</emphasis>&#32;&amp;&amp;&#32;strcmp(string1:&#32;$option,string2:&#32;$optionName)&#32;===&#32;0)
+<anchor xml:id="_a00008_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$this-&gt;args[$searchIndex];
+<anchor xml:id="_a00008_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00008_source_1l00066"/>00066 
+<anchor xml:id="_a00008_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="_a00008_source_1l00068"/>00068 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00008_source_1l00069"/>00069 
+<anchor xml:id="_a00008_source_1l00073"/><link linkend="_a00544_1a24d4dbc71552d9387256a3cc426e3898">00073</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00544_1a24d4dbc71552d9387256a3cc426e3898">getCount</link>():int{
+<anchor xml:id="_a00008_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;count(value:&#32;$this-&gt;args);
+<anchor xml:id="_a00008_source_1l00075"/>00075 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00008_source_1l00076"/>00076 
+<anchor xml:id="_a00008_source_1l00080"/><link linkend="_a00544_1a19dde99d8deb1c2e72d40e191fee96b0">00080</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00544_1a19dde99d8deb1c2e72d40e191fee96b0">getArgs</link>():array{
+<anchor xml:id="_a00008_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;args;
+<anchor xml:id="_a00008_source_1l00082"/>00082 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00008_source_1l00083"/>00083 }
+</programlisting></section>

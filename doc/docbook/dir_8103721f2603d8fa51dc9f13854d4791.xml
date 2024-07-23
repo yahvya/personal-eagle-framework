@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_8103721f2603d8fa51dc9f13854d4791" xml:lang="fr">
+<title>Répertoire de référence de cli</title>
+<indexterm><primary>Répertoire de référence de cli</primary></indexterm>
+<simplesect>
+    <title>Répertoires    </title>
+        <itemizedlist>
+            <listitem><para>répertoire <link linkend="_dir_52e1502ddf27b46546ffb3c85a38e78f">cli</link></para>
+</listitem>
+            <listitem><para>répertoire <link linkend="_dir_3124d41c52e2cd1c89dd7fcab7d42c00">commands</link></para>
+</listitem>
+            <listitem><para>répertoire <link linkend="_dir_b0e130be728572ed0b8ef29d0fe81462">theme</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00704" xml:lang="fr">
+<title>Référence de l&apos;interface Formater</title>
+<indexterm><primary>Formater</primary></indexterm>
+<para>
+
+<para>Formateur de donnée. </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de Formater:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00704.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00704_1a195b10c024dfd48be18e6adc2b014d42">format</link> (<link linkend="_a00752">MysqlModel</link> $baseModel, mixed $data)</para>
+
+<para>Formate la donnée fournie. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Formateur de donnée. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00155_source_1l00011">11</link> du fichier <link linkend="_a00155_source">Formater.php</link>.</para>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00704_1a195b10c024dfd48be18e6adc2b014d42"/><section>
+    <title>format()</title>
+<indexterm><primary>format</primary><secondary>Formater</secondary></indexterm>
+<indexterm><primary>Formater</primary><secondary>format</secondary></indexterm>
+<para><computeroutput>format (<link linkend="_a00752">MysqlModel</link> $baseModel, mixed $data)</computeroutput></para><para>
+
+<para>Formate la donnée fournie. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>MysqlModel</entry><entry>$baseModel</entry><entry>
+<para>Model de base </para>
+</entry>
+                            </row>
+                            <row>
+<entry>mixed</entry><entry>$data</entry><entry>
+<para>La donnée à formater </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>mixed Le résultat formaté </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Exceptions</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>FormaterException</entry><entry>
+<para>en cas d&apos;erreur </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Implémenté dans <link linkend="_a00712_1a195b10c024dfd48be18e6adc2b014d42">JsonFormatter</link>, et <link linkend="_a00716_1a195b10c024dfd48be18e6adc2b014d42">JsonReformer</link>.</para>
+</section>
+<para>
+La documentation de cette interface a été générée à partir du fichier suivant :</para>
+<link linkend="_a00155">Formater.php</link></section>
+</section>

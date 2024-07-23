@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00380_source" xml:lang="fr">
+<title>routes.php</title>
+<indexterm><primary>routes.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00380_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00380_source_1l00002"/>00002 
+<anchor xml:id="_a00380_source_1l00003"/>00003 use&#32;<link linkend="_a00836">SaboCore\Routing\Routes\RouteManager</link>;
+<anchor xml:id="_a00380_source_1l00004"/>00004 
+<anchor xml:id="_a00380_source_1l00005"/>00005 <emphasis role="comment">//&#32;enregistrement&#32;des&#32;routes</emphasis>
+<anchor xml:id="_a00380_source_1l00006"/>00006 RouteManager::fromFile(filename:&#32;<emphasis role="stringliteral">&quot;api&quot;</emphasis>);
+<anchor xml:id="_a00380_source_1l00007"/>00007 RouteManager::fromFile(filename:&#32;<emphasis role="stringliteral">&quot;web&quot;</emphasis>);
+</programlisting></section>

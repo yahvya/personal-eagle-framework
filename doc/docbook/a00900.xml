@@ -1,0 +1,303 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00900" xml:lang="fr">
+<title>Référence de la classe SaboSse</title>
+<indexterm><primary>SaboSse</primary></indexterm>
+<para>
+
+<para>Utilitaire d&apos;évènement sse. </para>
+ 
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00900_1acb3d1cbe7f9b0b65f8dead4da1c02751">__construct</link> (?<link linkend="_a00896">ResourceManager</link> $resourceManager=null, int $defaultSleepTimeSec=1)</para>
+</listitem>
+            <listitem><para><link linkend="_a00900_1a548405e009eb253665337ce207ca3885">getResourceManager</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00900_1a29e69a9419dc21662515a0d80f0f246a">launch</link> (Callable $executor,?Callable $stopVerifier=null, string $stopEventName=&quot;close&quot;)</para>
+
+<para>Lance l&apos;exécution sse. </para>
+</listitem>
+            <listitem><para><link linkend="_a00900_1aea8114711851dd2fcaf139ea1cc7c3df">sendEvent</link> (string $eventName, array $eventDatas,?Callable $onError=null)</para>
+
+<para>Envoi un évènement au format json. </para>
+</listitem>
+            <listitem><para><link linkend="_a00900_1a1644449a20ebe041572ff18356502db9">setSleepTimeSec</link> (int $sleepTimeSec)</para>
+
+<para>Met à jour le temps de pause dans l&apos;exécution. </para>
+</listitem>
+            <listitem><para><link linkend="_a00900_1a64e4179c19501e78276718e294b8fe90">getSleepTimeSec</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Fonctions membres protégées    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00900_1a1d04139db3a5ad5713ecbd14d97da879">setup</link> ()</para>
+
+<para>Configure l&apos;exécution pour sse. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Attributs protégés    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00896">ResourceManager</link> <link linkend="_a00900_1acea9a85135f25316bc81b97c94f2423c">$resourceManager</link></para>
+</listitem>
+            <listitem><para>int <link linkend="_a00900_1a1f052c699df2de3d8c5b56f1186aa28d">$sleepTimeSec</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Utilitaire d&apos;évènement sse. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya.com">https://github.com/yahvya.com</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00323_source_1l00011">11</link> du fichier <link linkend="_a00323_source">SaboSse.php</link>.</para>
+</section>
+<section>
+<title>Documentation des constructeurs et destructeur</title>
+<anchor xml:id="_a00900_1acb3d1cbe7f9b0b65f8dead4da1c02751"/><section>
+    <title>__construct()</title>
+<indexterm><primary>__construct</primary><secondary>SaboSse</secondary></indexterm>
+<indexterm><primary>SaboSse</primary><secondary>__construct</secondary></indexterm>
+<para><computeroutput>__construct (?<link linkend="_a00896">ResourceManager</link> $resourceManager = <computeroutput>null</computeroutput>
+, int $defaultSleepTimeSec = <computeroutput>1</computeroutput>
+)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry></entry><entry>ResourceManager|null</entry><entry>
+<para>Gestionnaire de ressource </para>
+</entry>
+                            </row>
+                            <row>
+<entry>int</entry><entry>$defaultSleepTimeSec</entry><entry>
+<para>temps de pause par défaut en secondes </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00323_source_1l00026">26</link> du fichier <link linkend="_a00323_source">SaboSse.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00900_1a548405e009eb253665337ce207ca3885"/><section>
+    <title>getResourceManager()</title>
+<indexterm><primary>getResourceManager</primary><secondary>SaboSse</secondary></indexterm>
+<indexterm><primary>SaboSse</primary><secondary>getResourceManager</secondary></indexterm>
+<para><computeroutput>getResourceManager ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>ResourceManager le gestionnaire de ressource </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00323_source_1l00034">34</link> du fichier <link linkend="_a00323_source">SaboSse.php</link>.</para>
+</section>
+<anchor xml:id="_a00900_1a64e4179c19501e78276718e294b8fe90"/><section>
+    <title>getSleepTimeSec()</title>
+<indexterm><primary>getSleepTimeSec</primary><secondary>SaboSse</secondary></indexterm>
+<indexterm><primary>SaboSse</primary><secondary>getSleepTimeSec</secondary></indexterm>
+<para><computeroutput>getSleepTimeSec ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>int le temps de pause entre chaque tour en secondes </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00323_source_1l00116">116</link> du fichier <link linkend="_a00323_source">SaboSse.php</link>.</para>
+</section>
+<anchor xml:id="_a00900_1a29e69a9419dc21662515a0d80f0f246a"/><section>
+    <title>launch()</title>
+<indexterm><primary>launch</primary><secondary>SaboSse</secondary></indexterm>
+<indexterm><primary>SaboSse</primary><secondary>launch</secondary></indexterm>
+<para><computeroutput>launch (Callable $executor, ?Callable $stopVerifier = <computeroutput>null</computeroutput>
+, string $stopEventName = <computeroutput>&quot;close&quot;</computeroutput>
+)</computeroutput></para><para>
+
+<para>Lance l&apos;exécution sse. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>Closure | array</entry><entry>$executor</entry><entry>
+<para>fonction de gestions des actions à exécuter dans la boucle d&apos;évènement, appelé à chaque tour, reçoit en argument $this </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Closure | array | null</entry><entry>$stopVerifier</entry><entry>
+<para>fonction à retour booléen , si true renvoi l&apos;évènement de fermeture et stoppe l&apos;exécution , reçoit en argument $this </para>
+</entry>
+                            </row>
+                            <row>
+<entry>string</entry><entry>$stopEventName</entry><entry>
+<para>nom de l&apos;évènement renvoyé à la fermeture par condition </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>$this après stoppage de l&apos;exécution par l&apos;utilisateur ou par condition @notice Vous pouvez redéfinir la méthode setup afin d&apos;ajouter du paramétrage supplémentaire </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00323_source_1l00046">46</link> du fichier <link linkend="_a00323_source">SaboSse.php</link>.</para>
+</section>
+<anchor xml:id="_a00900_1aea8114711851dd2fcaf139ea1cc7c3df"/><section>
+    <title>sendEvent()</title>
+<indexterm><primary>sendEvent</primary><secondary>SaboSse</secondary></indexterm>
+<indexterm><primary>SaboSse</primary><secondary>sendEvent</secondary></indexterm>
+<para><computeroutput>sendEvent (string $eventName, array $eventDatas, ?Callable $onError = <computeroutput>null</computeroutput>
+)</computeroutput></para><para>
+
+<para>Envoi un évènement au format json. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>array</entry><entry>$eventDatas</entry><entry>
+<para>contenu du message </para>
+</entry>
+                            </row>
+                            <row>
+<entry>array | Closure | null</entry><entry>$onError</entry><entry>
+<para>action à faire en cas d&apos;erreur d&apos;envoi, reçoit en argument $this </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>$this </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00323_source_1l00075">75</link> du fichier <link linkend="_a00323_source">SaboSse.php</link>.</para>
+</section>
+<anchor xml:id="_a00900_1a1644449a20ebe041572ff18356502db9"/><section>
+    <title>setSleepTimeSec()</title>
+<indexterm><primary>setSleepTimeSec</primary><secondary>SaboSse</secondary></indexterm>
+<indexterm><primary>SaboSse</primary><secondary>setSleepTimeSec</secondary></indexterm>
+<para><computeroutput>setSleepTimeSec (int $sleepTimeSec)</computeroutput></para><para>
+
+<para>Met à jour le temps de pause dans l&apos;exécution. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>int</entry><entry>$sleepTimeSec</entry><entry>
+<para>temps de pause entre chaque tour en secondes </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>$this </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00323_source_1l00107">107</link> du fichier <link linkend="_a00323_source">SaboSse.php</link>.</para>
+</section>
+<anchor xml:id="_a00900_1a1d04139db3a5ad5713ecbd14d97da879"/><section>
+    <title>setup()</title>
+<indexterm><primary>setup</primary><secondary>SaboSse</secondary></indexterm>
+<indexterm><primary>SaboSse</primary><secondary>setup</secondary></indexterm>
+<para><computeroutput>setup ( )<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+
+<para>Configure l&apos;exécution pour sse. </para>
+</para>
+
+<para><formalpara><title>Renvoie</title>
+
+<para>$this </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00323_source_1l00124">124</link> du fichier <link linkend="_a00323_source">SaboSse.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des champs</title>
+<anchor xml:id="_a00900_1acea9a85135f25316bc81b97c94f2423c"/><section>
+    <title>$resourceManager</title>
+<indexterm><primary>$resourceManager</primary><secondary>SaboSse</secondary></indexterm>
+<indexterm><primary>SaboSse</primary><secondary>$resourceManager</secondary></indexterm>
+<para><computeroutput><link linkend="_a00896">ResourceManager</link> $resourceManager<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00323_source_1l00015">15</link> du fichier <link linkend="_a00323_source">SaboSse.php</link>.</para>
+</section>
+<anchor xml:id="_a00900_1a1f052c699df2de3d8c5b56f1186aa28d"/><section>
+    <title>$sleepTimeSec</title>
+<indexterm><primary>$sleepTimeSec</primary><secondary>SaboSse</secondary></indexterm>
+<indexterm><primary>SaboSse</primary><secondary>$sleepTimeSec</secondary></indexterm>
+<para><computeroutput>int $sleepTimeSec<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Définition à la ligne <link linkend="_a00323_source_1l00020">20</link> du fichier <link linkend="_a00323_source">SaboSse.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00323">SaboSse.php</link></section>
+</section>

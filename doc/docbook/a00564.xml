@@ -1,0 +1,303 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00564" xml:lang="fr">
+<title>Référence de la classe LaunchServerCommand</title>
+<indexterm><primary>LaunchServerCommand</primary></indexterm>
+<para>
+
+<para>Commande de lancement de serveur. </para>
+ 
+</para>
+<para>Graphe d&apos;héritage de LaunchServerCommand:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="a00564.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Fonctions membres publiques    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_a00564_1aa69a5cf0c3844e397a8d8e18d82c9a99">execCommand</link> (<link linkend="_a00552">SaboCli</link> $cli)</para>
+
+<para>Exécute la commande. </para>
+</listitem>
+            <listitem><para><link linkend="_a00564_1a0db9ebd6c097296b09d33cf24ab68235">getHelpLines</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Fonctions membres publiques hérités de <link linkend="_a00572">SaboCommand</link>        <itemizedlist>
+            <listitem><para><link linkend="_a00572_1a0c75d1f64540e18a147ee02be38bf95c">__construct</link> (string $commandName)</para>
+</listitem>
+            <listitem><para><link linkend="_a00572_1a3d0963e68bb313b163a73f2803c64600">getName</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_a00572_1aa69a5cf0c3844e397a8d8e18d82c9a99">execCommand</link> (<link linkend="_a00552">SaboCli</link> $cli)</para>
+
+<para>Exécute la commande. </para>
+</listitem>
+            <listitem><para><link linkend="_a00572_1a0db9ebd6c097296b09d33cf24ab68235">getHelpLines</link> ()</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Fonctions membres publiques statiques    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_a00564_1a6472615829a9fd81c7d2ab0c0a6f79f2">manageSyncRequirements</link> (<link linkend="_a00552">SaboCli</link> $cli)</para>
+
+<para>Vérifie si la commande de synchronisation est présente sinon tente de l&apos;installer. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Attributs protégés    </title>
+        <itemizedlist>
+            <listitem><para>const string <link linkend="_a00564_1aa755b538e4eff70f19e6aa5e6e9c6510">DEFAULT_PORT</link> = &quot;8080&quot;</para>
+
+<para>Port par défaut. </para>
+</listitem>
+            <listitem><para>const string <link linkend="_a00564_1a71f1aac9b4b2f2c3b4fb834acac9a0b6">DEFAULT_HOST</link> = &quot;127.0.0.1&quot;</para>
+
+<para>Hôte par défaut. </para>
+</listitem>
+            <listitem><para>const string <link linkend="_a00564_1a04e54b72240bebfc74ab1312c2ecbcc8">FILES_SEPARATOR</link> = &quot;,&quot;</para>
+
+<para>Séparateur accepté sur les fichiers. </para>
+</listitem>
+            <listitem><para>const array <link linkend="_a00564_1ad5ae22569e9d2c1451ec69f935cdf487">DEFAULT_FILE_TYPES</link> = [&quot;php&quot;,&quot;js&quot;,&quot;css&quot;,&quot;twig&quot;,&quot;blade&quot;]</para>
+
+<para>Extensions de fichier par défaut écoutées. </para>
+</listitem>
+            <listitem><para>const string <link linkend="_a00564_1ac20dc6fb9922a4ffb5d19d392bd833c6">SYNC_COMMAND_NAME</link> = &quot;browser-sync&quot;</para>
+
+<para>Commande de synchronisation. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Attributs protégés hérités de <link linkend="_a00572">SaboCommand</link>        <itemizedlist>
+            <listitem><para>string <link linkend="_a00572_1af14d58005b6b6d2bb97fb8985cf3e47a">$commandName</link></para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Membres hérités additionnels    </title>
+Fonctions membres protégées hérités de <link linkend="_a00572">SaboCommand</link>        <itemizedlist>
+            <listitem><para><link linkend="_a00572_1a9704fa2bfd600fe1145fdf42a55e85de">getOptions</link> (<link linkend="_a00552">SaboCli</link> $cli, string ... $optionNames)</para>
+
+<para>Récupère les valeurs des options recherchées ou les demandes si non trouvées. </para>
+</listitem>
+            <listitem><para><link linkend="_a00572_1a1f2515bcb1ec0ba161dac344498ed16a">ask</link> (string $toAsk, <link linkend="_a00580">Config</link> $themeConfig)</para>
+
+<para>Pose une question. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Description détaillée</title>
+
+<para>Commande de lancement de serveur. </para>
+
+
+
+<para><formalpara><title>Auteur</title>
+
+<para>yahaya bathily <link xlink:href="https://github.com/yahvya">https://github.com/yahvya</link> </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00023_source_1l00015">15</link> du fichier <link linkend="_a00023_source">LaunchServerCommand.php</link>.</para>
+</section>
+<section>
+<title>Documentation des fonctions membres</title>
+<anchor xml:id="_a00564_1aa69a5cf0c3844e397a8d8e18d82c9a99"/><section>
+    <title>execCommand()</title>
+<indexterm><primary>execCommand</primary><secondary>LaunchServerCommand</secondary></indexterm>
+<indexterm><primary>LaunchServerCommand</primary><secondary>execCommand</secondary></indexterm>
+<para><computeroutput>execCommand (<link linkend="_a00552">SaboCli</link> $cli)</computeroutput></para><para>
+
+<para>Exécute la commande. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>SaboCli</entry><entry>$cli</entry><entry>
+<para>le gestionnaire cli lié </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                
+                <formalpara>
+                    <title>
+Exceptions</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>ConfigException|Throwable</entry><entry>
+<para>en cas d&apos;erreur interne </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>void </para>
+</formalpara>
+</para>
+<para>
+Réimplémentée à partir de <link linkend="_a00572_1aa69a5cf0c3844e397a8d8e18d82c9a99">SaboCommand</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00023_source_1l00042">42</link> du fichier <link linkend="_a00023_source">LaunchServerCommand.php</link>.</para>
+</section>
+<anchor xml:id="_a00564_1a0db9ebd6c097296b09d33cf24ab68235"/><section>
+    <title>getHelpLines()</title>
+<indexterm><primary>getHelpLines</primary><secondary>LaunchServerCommand</secondary></indexterm>
+<indexterm><primary>LaunchServerCommand</primary><secondary>getHelpLines</secondary></indexterm>
+<para><computeroutput>getHelpLines ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string[] les lignes à afficher pour l&apos;aide de la commande </para>
+</formalpara>
+</para>
+<para>
+Réimplémentée à partir de <link linkend="_a00572_1a0db9ebd6c097296b09d33cf24ab68235">SaboCommand</link>.</para>
+<para>
+Définition à la ligne <link linkend="_a00023_source_1l00119">119</link> du fichier <link linkend="_a00023_source">LaunchServerCommand.php</link>.</para>
+</section>
+<anchor xml:id="_a00564_1a6472615829a9fd81c7d2ab0c0a6f79f2"/><section>
+    <title>manageSyncRequirements()</title>
+<indexterm><primary>manageSyncRequirements</primary><secondary>LaunchServerCommand</secondary></indexterm>
+<indexterm><primary>LaunchServerCommand</primary><secondary>manageSyncRequirements</secondary></indexterm>
+<para><computeroutput>static manageSyncRequirements (<link linkend="_a00552">SaboCli</link> $cli)<computeroutput>[static]</computeroutput></computeroutput></para><para>
+
+<para>Vérifie si la commande de synchronisation est présente sinon tente de l&apos;installer. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Paramètres</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>SaboCli</entry><entry>$cli</entry><entry>
+<para>Cli </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Renvoie</title>
+
+<para>bool si la commande est disponible d&apos;utilisation </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Exceptions</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>ConfigException</entry><entry>
+<para>en cas d&apos;erreur de configuration </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Définition à la ligne <link linkend="_a00023_source_1l00137">137</link> du fichier <link linkend="_a00023_source">LaunchServerCommand.php</link>.</para>
+</section>
+</section>
+<section>
+<title>Documentation des champs</title>
+<anchor xml:id="_a00564_1ad5ae22569e9d2c1451ec69f935cdf487"/><section>
+    <title>DEFAULT_FILE_TYPES</title>
+<indexterm><primary>DEFAULT_FILE_TYPES</primary><secondary>LaunchServerCommand</secondary></indexterm>
+<indexterm><primary>LaunchServerCommand</primary><secondary>DEFAULT_FILE_TYPES</secondary></indexterm>
+<para><computeroutput>const array DEFAULT_FILE_TYPES = [&quot;php&quot;,&quot;js&quot;,&quot;css&quot;,&quot;twig&quot;,&quot;blade&quot;]<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+
+<para>Extensions de fichier par défaut écoutées. </para>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00023_source_1l00034">34</link> du fichier <link linkend="_a00023_source">LaunchServerCommand.php</link>.</para>
+</section>
+<anchor xml:id="_a00564_1a71f1aac9b4b2f2c3b4fb834acac9a0b6"/><section>
+    <title>DEFAULT_HOST</title>
+<indexterm><primary>DEFAULT_HOST</primary><secondary>LaunchServerCommand</secondary></indexterm>
+<indexterm><primary>LaunchServerCommand</primary><secondary>DEFAULT_HOST</secondary></indexterm>
+<para><computeroutput>const string DEFAULT_HOST = &quot;127.0.0.1&quot;<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+
+<para>Hôte par défaut. </para>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00023_source_1l00024">24</link> du fichier <link linkend="_a00023_source">LaunchServerCommand.php</link>.</para>
+</section>
+<anchor xml:id="_a00564_1aa755b538e4eff70f19e6aa5e6e9c6510"/><section>
+    <title>DEFAULT_PORT</title>
+<indexterm><primary>DEFAULT_PORT</primary><secondary>LaunchServerCommand</secondary></indexterm>
+<indexterm><primary>LaunchServerCommand</primary><secondary>DEFAULT_PORT</secondary></indexterm>
+<para><computeroutput>const string DEFAULT_PORT = &quot;8080&quot;<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+
+<para>Port par défaut. </para>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00023_source_1l00019">19</link> du fichier <link linkend="_a00023_source">LaunchServerCommand.php</link>.</para>
+</section>
+<anchor xml:id="_a00564_1a04e54b72240bebfc74ab1312c2ecbcc8"/><section>
+    <title>FILES_SEPARATOR</title>
+<indexterm><primary>FILES_SEPARATOR</primary><secondary>LaunchServerCommand</secondary></indexterm>
+<indexterm><primary>LaunchServerCommand</primary><secondary>FILES_SEPARATOR</secondary></indexterm>
+<para><computeroutput>const string FILES_SEPARATOR = &quot;,&quot;<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+
+<para>Séparateur accepté sur les fichiers. </para>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00023_source_1l00029">29</link> du fichier <link linkend="_a00023_source">LaunchServerCommand.php</link>.</para>
+</section>
+<anchor xml:id="_a00564_1ac20dc6fb9922a4ffb5d19d392bd833c6"/><section>
+    <title>SYNC_COMMAND_NAME</title>
+<indexterm><primary>SYNC_COMMAND_NAME</primary><secondary>LaunchServerCommand</secondary></indexterm>
+<indexterm><primary>LaunchServerCommand</primary><secondary>SYNC_COMMAND_NAME</secondary></indexterm>
+<para><computeroutput>const string SYNC_COMMAND_NAME = &quot;browser-sync&quot;<computeroutput>[protected]</computeroutput></computeroutput></para><para>
+
+<para>Commande de synchronisation. </para>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00023_source_1l00039">39</link> du fichier <link linkend="_a00023_source">LaunchServerCommand.php</link>.</para>
+</section>
+<para>
+La documentation de cette classe a été générée à partir du fichier suivant :</para>
+<link linkend="_a00023">LaunchServerCommand.php</link></section>
+</section>

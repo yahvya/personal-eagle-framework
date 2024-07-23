@@ -1,0 +1,75 @@
+.TH "md__c___users_devel__desktop_projets_info_perso_sabo_final__r_e_a_d_m_e" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md__c___users_devel__desktop_projets_info_perso_sabo_final__r_e_a_d_m_e \- Framework Sabo 
+.PP
+
+.PP
+.RS 4
+Sabo est un framework php visant à faciliter le développement d'applications web tout en conservant le plaisir d'écrire du PHP\&. 
+.RE
+.PP
+\fILe site de documentation du framework est en cours de création\fP
+.SH "Gestion du projet"
+.PP
+.SS "Créer un projet"
+.PP
+.nf
+mkdir <mondossierprojet>
+cd <mondossierprojet>
+git clone https://github\&.com/yahvya/sabo\-final\&.git \&.
+cd sabo\-core
+composer install
+cd \&.\&.
+composer install
+rm README\&.md
+cd src/views/mails
+rm \&.gitkeep
+cd \&.\&./\&.\&./configs
+mv env\&.example\&.php env\&.php
+cd \&.\&./storage/maintenance
+mv maintenance\&.secret\&.example maintenance\&.secret
+cd \&.\&./\&.\&./\&.\&./
+rm \-r \-fo \&.git
+rm \-r \&.git
+clear
+php sabo serve
+.fi
+.PP
+.SS "Lancement du site"
+.RS 4
+Vous pouvez utiliser un hôte virtuel (ex : généré par laragon) ou le serveur de développement intégré en utilisant la commande suivante 
+.RE
+.PP
+.PP
+.nf
+php sabo serve
+.fi
+.PP
+.SH "Structure"
+.PP
+.RS 4
+Le dossier src contient les éléments servant à la création de l'application 
+.RE
+.PP
+.IP "\(bu" 2
+Le dossier \fBconfigs\fP contient les fichiers de configurations (environnement, framework, configuration blade / twig ainsi que les fonctions globales à l'application)
+.IP "\(bu" 2
+Le dossier \fBcontrollers\fP vise à accueillir les controllers, par défaut la class abstraite CustomController y est ajoutée afin de servir de classe mère customisable aux futurs controllers ainsi que le controller d'accès à la maintenance par défaut
+.IP "\(bu" 2
+Le dossier \fBmodels\fP vise à accueillir les models, par défaut la class abstraite CustomModel y est ajoutée afin de servir de classe mère customisable aux futurs models
+.IP "\(bu" 2
+Le dossier \fBpublic\fP visant à accueillir toutes les ressources publiques
+.IP "\(bu" 2
+Le dossier \fBstorage\fP représente le dossier de stockage de l'application, par défaut contient le fichier hash d'accès à la maintenance
+.IP "\(bu" 2
+Le dossier \fBroutes\fP contenant les différentes routes de l'application
+.IP "\(bu" 2
+Le dossier \fBtreatment\fP visant à contenir les class de traitement contient par défaut CustomTreatment classe parent customisable des class de traitement
+.IP "\(bu" 2
+Le dossier \fBviews\fP racine de recherche des éléments de vue, peut contenir du css et js accessible 
+.br
+ 
+.PP
+

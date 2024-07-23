@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00023_source" xml:lang="fr">
+<title>LaunchServerCommand.php</title>
+<indexterm><primary>LaunchServerCommand.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00023_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00023_source_1l00002"/>00002 
+<anchor xml:id="_a00023_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00401">SaboCore\Cli\Commands</link>;
+<anchor xml:id="_a00023_source_1l00004"/>00004 
+<anchor xml:id="_a00023_source_1l00005"/>00005 use&#32;Override;
+<anchor xml:id="_a00023_source_1l00006"/>00006 use&#32;<link linkend="_a00552">SaboCore\Cli\Cli\SaboCli</link>;
+<anchor xml:id="_a00023_source_1l00007"/>00007 use&#32;<link linkend="_a00402_1a48a4d69dfa43ecb7cc2495c6d711def4">SaboCore\Cli\Theme\Theme</link>;
+<anchor xml:id="_a00023_source_1l00008"/>00008 use&#32;<link linkend="_a00584">SaboCore\Config\ConfigException</link>;
+<anchor xml:id="_a00023_source_1l00009"/>00009 use&#32;<link linkend="_a00888">SaboCore\Utils\Printer\Printer</link>;
+<anchor xml:id="_a00023_source_1l00010"/>00010 
+<anchor xml:id="_a00023_source_1l00015"/><link linkend="_a00564">00015</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00564">LaunchServerCommand</link>&#32;<emphasis role="keyword">extends</emphasis>&#32;<link linkend="_a00572">SaboCommand</link>{
+<anchor xml:id="_a00023_source_1l00019"/><link linkend="_a00564_1aa755b538e4eff70f19e6aa5e6e9c6510">00019</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00564_1aa755b538e4eff70f19e6aa5e6e9c6510">DEFAULT_PORT</link>&#32;=&#32;<emphasis role="stringliteral">&quot;8080&quot;</emphasis>;
+<anchor xml:id="_a00023_source_1l00020"/>00020 
+<anchor xml:id="_a00023_source_1l00024"/><link linkend="_a00564_1a71f1aac9b4b2f2c3b4fb834acac9a0b6">00024</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00564_1a71f1aac9b4b2f2c3b4fb834acac9a0b6">DEFAULT_HOST</link>&#32;=&#32;<emphasis role="stringliteral">&quot;127.0.0.1&quot;</emphasis>;
+<anchor xml:id="_a00023_source_1l00025"/>00025 
+<anchor xml:id="_a00023_source_1l00029"/><link linkend="_a00564_1a04e54b72240bebfc74ab1312c2ecbcc8">00029</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00564_1a04e54b72240bebfc74ab1312c2ecbcc8">FILES_SEPARATOR</link>&#32;=&#32;<emphasis role="stringliteral">&quot;,&quot;</emphasis>;
+<anchor xml:id="_a00023_source_1l00030"/>00030 
+<anchor xml:id="_a00023_source_1l00034"/><link linkend="_a00564_1ad5ae22569e9d2c1451ec69f935cdf487">00034</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;array&#32;<link linkend="_a00564_1ad5ae22569e9d2c1451ec69f935cdf487">DEFAULT_FILE_TYPES</link>&#32;=&#32;[<emphasis role="stringliteral">&quot;php&quot;</emphasis>,<emphasis role="stringliteral">&quot;js&quot;</emphasis>,<emphasis role="stringliteral">&quot;css&quot;</emphasis>,<emphasis role="stringliteral">&quot;twig&quot;</emphasis>,<emphasis role="stringliteral">&quot;blade&quot;</emphasis>];
+<anchor xml:id="_a00023_source_1l00035"/>00035 
+<anchor xml:id="_a00023_source_1l00039"/><link linkend="_a00564_1ac20dc6fb9922a4ffb5d19d392bd833c6">00039</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_a00564_1ac20dc6fb9922a4ffb5d19d392bd833c6">SYNC_COMMAND_NAME</link>&#32;=&#32;<emphasis role="stringliteral">&quot;browser-sync&quot;</emphasis>;
+<anchor xml:id="_a00023_source_1l00040"/>00040 
+<anchor xml:id="_a00023_source_1l00041"/>00041 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00023_source_1l00042"/><link linkend="_a00564_1aa69a5cf0c3844e397a8d8e18d82c9a99">00042</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00564_1aa69a5cf0c3844e397a8d8e18d82c9a99">execCommand</link>(<link linkend="_a00552">SaboCli</link>&#32;$cli):&#32;void{
+<anchor xml:id="_a00023_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$themeConfig&#32;=&#32;$cli-&gt;getThemeConfig();
+<anchor xml:id="_a00023_source_1l00044"/>00044 
+<anchor xml:id="_a00023_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;récupération&#32;des&#32;options</emphasis>
+<anchor xml:id="_a00023_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$argumentManager&#32;=&#32;$cli-&gt;<link linkend="_a00552_1a43a95794714b9eb37fe917450ae197b8">getArgumentManager</link>();
+<anchor xml:id="_a00023_source_1l00047"/>00047 
+<anchor xml:id="_a00023_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$port&#32;=&#32;$argumentManager-&gt;find(optionName:&#32;<emphasis role="stringliteral">&quot;port&quot;</emphasis>)?-&gt;getArgumentValue()&#32;??&#32;<link linkend="_a00564_1aa755b538e4eff70f19e6aa5e6e9c6510">self::DEFAULT_PORT</link>;
+<anchor xml:id="_a00023_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$host&#32;=&#32;$argumentManager-&gt;find(optionName:&#32;<emphasis role="stringliteral">&quot;host&quot;</emphasis>)?-&gt;getArgumentValue()&#32;??&#32;<link linkend="_a00564_1a71f1aac9b4b2f2c3b4fb834acac9a0b6">self::DEFAULT_HOST</link>;
+<anchor xml:id="_a00023_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$sync&#32;=&#32;$argumentManager-&gt;find(optionName:&#32;<emphasis role="stringliteral">&quot;sync&quot;</emphasis>);
+<anchor xml:id="_a00023_source_1l00051"/>00051 
+<anchor xml:id="_a00023_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$link&#32;=&#32;<emphasis role="stringliteral">&quot;$host:$port&quot;</emphasis>;
+<anchor xml:id="_a00023_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$rooter&#32;=&#32;APP_CONFIG-&gt;getConfig(name:&#32;<emphasis role="stringliteral">&quot;ROOT&quot;</emphasis>)&#32;.&#32;<emphasis role="stringliteral">&quot;/sabo-core/index.php&quot;</emphasis>;
+<anchor xml:id="_a00023_source_1l00054"/>00054 
+<anchor xml:id="_a00023_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;vérification&#32;de&#32;l&apos;utilisation&#32;de&#32;la&#32;synchronisation</emphasis>
+<anchor xml:id="_a00023_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($sync&#32;!==&#32;<emphasis role="keyword">null</emphasis>){
+<anchor xml:id="_a00023_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!self::manageSyncRequirements(cli:&#32;$cli)&#32;){
+<anchor xml:id="_a00023_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Printer::printStyle(
+<anchor xml:id="_a00023_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toPrint:&#32;<emphasis role="stringliteral">&quot;Echec&#32;de&#32;traitement&#32;de&#32;la&#32;commande&#32;de&#32;synchronisation&quot;</emphasis>,
+<anchor xml:id="_a00023_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;compositeStyle:&#32;$cli-&gt;getThemeConfig()-&gt;getConfig(name:&#32;Theme::BASIC_ERROR_STYLE-&gt;value)
+<anchor xml:id="_a00023_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00023_source_1l00062"/>00062 
+<anchor xml:id="_a00023_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="_a00023_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00023_source_1l00065"/>00065 
+<anchor xml:id="_a00023_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;récupération&#32;des&#32;extensions&#32;à&#32;traiter&#32;et&#32;formatage</emphasis>
+<anchor xml:id="_a00023_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$extensions&#32;=&#32;explode(separator:&#32;self::FILES_SEPARATOR,<emphasis role="keywordtype">string</emphasis>:&#32;$sync-&gt;getArgumentValue());
+<anchor xml:id="_a00023_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$extensions&#32;=&#32;implode(
+<anchor xml:id="_a00023_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;separator:&#32;<emphasis role="stringliteral">&quot;,&quot;</emphasis>,
+<anchor xml:id="_a00023_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;array:&#32;array_map(
+<anchor xml:id="_a00023_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback:&#32;fn(<emphasis role="keywordtype">string</emphasis>&#32;$extension):<emphasis role="keywordtype">string</emphasis>&#32;=&gt;&#32;<emphasis role="stringliteral">&quot;**/*.$extension&quot;</emphasis>,
+<anchor xml:id="_a00023_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;array:&#32;$extensions[0]&#32;===&#32;<emphasis role="stringliteral">&quot;default&quot;</emphasis>&#32;?&#32;self::DEFAULT_FILE_TYPES&#32;:&#32;$extensions
+<anchor xml:id="_a00023_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;)
+<anchor xml:id="_a00023_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00023_source_1l00075"/>00075 
+<anchor xml:id="_a00023_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;lancement&#32;de&#32;la&#32;commande</emphasis>
+<anchor xml:id="_a00023_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$syncProcess&#32;=&#32;popen(command:&#32;&#32;self::SYNC_COMMAND_NAME&#32;.&#32;<emphasis role="stringliteral">&quot;&#32;start&#32;--proxy&#32;$link&#32;--files&#32;\&quot;$extensions\&quot;&quot;</emphasis>,mode:&#32;<emphasis role="stringliteral">&quot;r&quot;</emphasis>);
+<anchor xml:id="_a00023_source_1l00078"/>00078 
+<anchor xml:id="_a00023_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($syncProcess&#32;===&#32;<emphasis role="keyword">false</emphasis>){
+<anchor xml:id="_a00023_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Printer::printStyle(
+<anchor xml:id="_a00023_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toPrint:&#32;<emphasis role="stringliteral">&quot;Echec&#32;de&#32;lancement&#32;de&#32;la&#32;synchronisation&quot;</emphasis>,
+<anchor xml:id="_a00023_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;compositeStyle:&#32;$themeConfig-&gt;getConfig(name:&#32;Theme::BASIC_ERROR_STYLE-&gt;value)
+<anchor xml:id="_a00023_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00023_source_1l00084"/>00084 
+<anchor xml:id="_a00023_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="_a00023_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00023_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00023_source_1l00088"/>00088 
+<anchor xml:id="_a00023_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Printer::printStyle(
+<anchor xml:id="_a00023_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toPrint:&#32;<emphasis role="stringliteral">&quot;Lancement&#32;du&#32;serveur&#32;($link)&quot;</emphasis>,
+<anchor xml:id="_a00023_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;compositeStyle:&#32;$themeConfig-&gt;getConfig(name:&#32;Theme::SPECIAL_TEXT_STYLE-&gt;value),
+<anchor xml:id="_a00023_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;countOfLineBreak:&#32;1
+<anchor xml:id="_a00023_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00023_source_1l00094"/>00094 
+<anchor xml:id="_a00023_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$serverProcess&#32;=&#32;@popen(command:&#32;<emphasis role="stringliteral">&quot;php&#32;-S&#32;$link&#32;$rooter&quot;</emphasis>,mode:&#32;<emphasis role="stringliteral">&quot;r&quot;</emphasis>);
+<anchor xml:id="_a00023_source_1l00096"/>00096 
+<anchor xml:id="_a00023_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($serverProcess&#32;===&#32;<emphasis role="keyword">false</emphasis>){
+<anchor xml:id="_a00023_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Printer::printStyle(
+<anchor xml:id="_a00023_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toPrint:&#32;<emphasis role="stringliteral">&quot;Echec&#32;de&#32;lancement&#32;du&#32;serveur&quot;</emphasis>,
+<anchor xml:id="_a00023_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;compositeStyle:&#32;$themeConfig-&gt;getConfig(name:&#32;Theme::BASIC_ERROR_STYLE-&gt;value)
+<anchor xml:id="_a00023_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00023_source_1l00102"/>00102 
+<anchor xml:id="_a00023_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="_a00023_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00023_source_1l00105"/>00105 
+<anchor xml:id="_a00023_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;lecture&#32;des&#32;sorties</emphasis>
+<anchor xml:id="_a00023_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>(<emphasis role="keyword">true</emphasis>){
+<anchor xml:id="_a00023_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(isset($syncProcess)){
+<anchor xml:id="_a00023_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>(($syncLine&#32;=&#32;fgets(stream:&#32;$syncProcess))&#32;!==&#32;<emphasis role="keyword">false</emphasis>)
+<anchor xml:id="_a00023_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;print($syncLine);
+<anchor xml:id="_a00023_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00023_source_1l00112"/>00112 
+<anchor xml:id="_a00023_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>(($processLine&#32;=&#32;fgets(stream:&#32;$serverProcess))&#32;!==&#32;<emphasis role="keyword">false</emphasis>)
+<anchor xml:id="_a00023_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;print($processLine);
+<anchor xml:id="_a00023_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00023_source_1l00116"/>00116 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00023_source_1l00117"/>00117 
+<anchor xml:id="_a00023_source_1l00118"/>00118 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00023_source_1l00119"/><link linkend="_a00564_1a0db9ebd6c097296b09d33cf24ab68235">00119</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00564_1a0db9ebd6c097296b09d33cf24ab68235">getHelpLines</link>():&#32;array{
+<anchor xml:id="_a00023_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;[
+<anchor xml:id="_a00023_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;Lance&#32;le&#32;serveur&#32;de&#32;développement&#32;-&#32;Port&#32;par&#32;défaut&#32;(&quot;</emphasis>&#32;.&#32;self::DEFAULT_PORT&#32;.&#32;<emphasis role="stringliteral">&quot;)&#32;-&#32;Hôte&#32;par&#32;défaut&#32;(&quot;</emphasis>.&#32;self::DEFAULT_HOST&#32;.<emphasis role="stringliteral">&quot;)&quot;</emphasis>,
+<anchor xml:id="_a00023_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;php&#32;sabo&#32;$this-&gt;commandName&quot;</emphasis>,
+<anchor xml:id="_a00023_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;Options&#32;optionnelles&quot;</emphasis>,
+<anchor xml:id="_a00023_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;\t--port&#32;:&#32;Numéro&#32;du&#32;port&quot;</emphasis>,
+<anchor xml:id="_a00023_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;\t--host&#32;:&#32;Adresse&#32;hôte&quot;</emphasis>,
+<anchor xml:id="_a00023_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;\t--sync:&#32;Si&#32;l&apos;option&#32;est&#32;présente&#32;la&#32;commande&#32;&lt;browser-sync&gt;&#32;sera&#32;utilisée&#32;(npm&#32;est&#32;nécessaire&#32;pour&#32;l&apos;installation&#32;de&#32;la&#32;commande)&quot;</emphasis>,
+<anchor xml:id="_a00023_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;\t\tVous&#32;pouvez&#32;spécifier&#32;comme&#32;valeur&#32;les&#32;types&#32;de&#32;fichiers&#32;à&#32;écouter&#32;séparés&#32;de&#32;&lt;&quot;</emphasis>.&#32;self::FILES_SEPARATOR&#32;.<emphasis role="stringliteral">&quot;&gt;.&#32;Types&#32;par&#32;défaut&#32;:&#32;(&quot;</emphasis>&#32;.&#32;implode(separator:&#32;<emphasis role="stringliteral">&quot;,&quot;</emphasis>,array:&#32;self::DEFAULT_FILE_TYPES)&#32;.&#32;<emphasis role="stringliteral">&quot;)&#32;sinon&#32;&lt;default&gt;&#32;comme&#32;valeur&quot;</emphasis>
+<anchor xml:id="_a00023_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;];
+<anchor xml:id="_a00023_source_1l00129"/>00129 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00023_source_1l00130"/>00130 
+<anchor xml:id="_a00023_source_1l00137"/><link linkend="_a00564_1a6472615829a9fd81c7d2ab0c0a6f79f2">00137</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00564_1a6472615829a9fd81c7d2ab0c0a6f79f2">manageSyncRequirements</link>(<link linkend="_a00552">SaboCli</link>&#32;$cli):bool{
+<anchor xml:id="_a00023_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;vérification&#32;d&apos;existence&#32;de&#32;la&#32;commande</emphasis>
+<anchor xml:id="_a00023_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if(@exec(command:&#32;<emphasis role="stringliteral">&quot;npm&#32;list&#32;-g&#32;--depth=0&#32;--parseable=true&quot;</emphasis>,output:&#32;$result)&#32;===&#32;false)
+<anchor xml:id="_a00023_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;false;
+<anchor xml:id="_a00023_source_1l00141"/>00141 
+<anchor xml:id="_a00023_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(empty($result))
+<anchor xml:id="_a00023_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_a00023_source_1l00144"/>00144 
+<anchor xml:id="_a00023_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!empty(
+<anchor xml:id="_a00023_source_1l00146"/>00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;array_filter(
+<anchor xml:id="_a00023_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;array:&#32;$result,
+<anchor xml:id="_a00023_source_1l00148"/>00148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback:&#32;fn(<emphasis role="keywordtype">string</emphasis>&#32;$line):<emphasis role="keywordtype">bool</emphasis>&#32;=&gt;&#32;str_contains(haystack:&#32;$line,needle:&#32;self::SYNC_COMMAND_NAME)
+<anchor xml:id="_a00023_source_1l00149"/>00149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;)
+<anchor xml:id="_a00023_source_1l00150"/>00150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;))
+<anchor xml:id="_a00023_source_1l00151"/>00151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_a00023_source_1l00152"/>00152 
+<anchor xml:id="_a00023_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;installation&#32;de&#32;la&#32;commande</emphasis>
+<anchor xml:id="_a00023_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$success&#32;=&#32;@system(command:&#32;<emphasis role="stringliteral">&quot;npm&#32;install&#32;-g&#32;&quot;</emphasis>.&#32;self::SYNC_COMMAND_NAME,result_code:&#32;$resultCode)&#32;===&#32;<emphasis role="keyword">false</emphasis>&#32;||&#32;$resultCode&#32;!==&#32;0;
+<anchor xml:id="_a00023_source_1l00155"/>00155 
+<anchor xml:id="_a00023_source_1l00156"/>00156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($success){
+<anchor xml:id="_a00023_source_1l00157"/>00157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Printer::printStyle(
+<anchor xml:id="_a00023_source_1l00158"/>00158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toPrint:&#32;<emphasis role="stringliteral">&quot;Installation&#32;de&#32;la&#32;commande&#32;&lt;&quot;</emphasis>&#32;.&#32;self::SYNC_COMMAND_NAME&#32;.<emphasis role="stringliteral">&quot;&gt;&quot;</emphasis>,
+<anchor xml:id="_a00023_source_1l00159"/>00159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;compositeStyle:&#32;$cli-&gt;<link linkend="_a00552_1a4cf8d7386802fb70f62aea05730a3cfe">getThemeConfig</link>()-&gt;getConfig(name:&#32;Theme::SPECIAL_TEXT_STYLE-&gt;value)
+<anchor xml:id="_a00023_source_1l00160"/>00160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00023_source_1l00161"/>00161 
+<anchor xml:id="_a00023_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_a00023_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00023_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>{
+<anchor xml:id="_a00023_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Printer::printStyle(
+<anchor xml:id="_a00023_source_1l00166"/>00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;toPrint:&#32;<emphasis role="stringliteral">&quot;Echec&#32;de&#32;l&apos;installation&#32;de&#32;la&#32;commande&#32;&lt;&quot;</emphasis>&#32;.&#32;self::SYNC_COMMAND_NAME&#32;.<emphasis role="stringliteral">&quot;&gt;&quot;</emphasis>,
+<anchor xml:id="_a00023_source_1l00167"/>00167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;compositeStyle:&#32;$cli-&gt;<link linkend="_a00552_1a4cf8d7386802fb70f62aea05730a3cfe">getThemeConfig</link>()-&gt;getConfig(name:&#32;Theme::BASIC_ERROR_STYLE-&gt;value)
+<anchor xml:id="_a00023_source_1l00168"/>00168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00023_source_1l00169"/>00169 
+<anchor xml:id="_a00023_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_a00023_source_1l00171"/>00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00023_source_1l00172"/>00172 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00023_source_1l00173"/>00173 }
+</programlisting></section>

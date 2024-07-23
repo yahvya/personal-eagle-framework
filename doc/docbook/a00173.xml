@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00173" xml:lang="fr">
+<title>Référence du fichier MysqlBindDatas.php</title>
+<indexterm><primary>MysqlBindDatas.php</primary></indexterm>
+<simplesect>
+    <title>Structures de données    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_a00728">MysqlBindDatas</link></para>
+
+<para>Données de bind mysql. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Espaces de nommage    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_a00413">SaboCore\Database\Default\System</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

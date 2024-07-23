@@ -1,0 +1,137 @@
+.TH "BladeResponse" 3 "Mardi 23 Juillet 2024" "Version 1.1.1" "Sabo final" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BladeResponse \- Réponse fichier blade\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de \fBHtmlResponse\fP\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP (string $pathFromViews, array $datas=[])"
+.br
+.in -1c
+
+Fonctions membres publiques hérités de \fBHtmlResponse\fP
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP (string $content)"
+.br
+.ti -1c
+.RI "\fBrenderContent\fP ()"
+.br
+.RI "Rend le contenu de la réponse\&. "
+.in -1c
+
+Fonctions membres publiques hérités de \fBResponse\fP
+.in +1c
+.ti -1c
+.RI "\fBsetHeader\fP (string $name, string $value)"
+.br
+.RI "Ajoute un en-tête à la réponse\&. "
+.ti -1c
+.RI "\fBsetContent\fP (mixed $content)"
+.br
+.RI "Met à jour le contenu de la réponse\&. "
+.ti -1c
+.RI "\fBsetResponseCode\fP (\fBResponseCode\fP $code)"
+.br
+.RI "Met à jour le code réponse\&. "
+.ti -1c
+.RI "\fBgetHeaders\fP ()"
+.br
+.ti -1c
+.RI "\fBgetContent\fP ()"
+.br
+.ti -1c
+.RI "\fBgetResponseCode\fP ()"
+.br
+.ti -1c
+.RI "\fBrenderResponse\fP ()"
+.br
+.RI "Rend la réponse entière\&. "
+.in -1c
+.SS "Fonctions membres publiques statiques"
+
+.in +1c
+.ti -1c
+.RI "static \fBnewFactory\fP (array $viewsPath)"
+.br
+.in -1c
+.SS "Membres hérités additionnels"
+
+.in +1c
+.ti -1c
+.RI "\fBrenderContent\fP ()"
+.br
+.RI "Rend le contenu de la réponse\&. "
+.in -1c
+
+Attributs protégés hérités de \fBResponse\fP
+.in +1c
+.ti -1c
+.RI "\fBResponseCode\fP \fB$responseCode\fP = ResponseCode::OK"
+.br
+.ti -1c
+.RI "mixed \fB$content\fP = null"
+.br
+.ti -1c
+.RI "array \fB$headers\fP"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Réponse fichier blade\&. 
+
+
+.PP
+\fBAuteur\fP
+.RS 4
+yahaya bathily https://github.com/yahvya 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB20\fP du fichier \fBBladeResponse\&.php\fP\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "__construct (string $pathFromViews, array $datas = \fC[]\fP)"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$pathFromViews\fP chemin à partir du dossier des vues 
+.br
+\fI$datas\fP données de la vue 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB25\fP du fichier \fBBladeResponse\&.php\fP\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "static newFactory (array $viewsPath)\fC [static]\fP"
+
+.PP
+\fBParamètres\fP
+.RS 4
+\fI$viewsPath\fP chemin du dossier des vues 
+.RE
+.PP
+\fBRenvoie\fP
+.RS 4
+Factory|null le factory crée 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB40\fP du fichier \fBBladeResponse\&.php\fP\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Sabo final à partir du code source\&.

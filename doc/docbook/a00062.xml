@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00062" xml:lang="fr">
+<title>Référence du fichier MaintenanceConfig.php</title>
+<indexterm><primary>MaintenanceConfig.php</primary></indexterm>
+<simplesect>
+    <title>Espaces de nommage    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_a00403">SaboCore\Config</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Énumérations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_a00403_1a80258719c93e5acf39c65d8274575fb5">MaintenanceConfig</link> : string { <link linkend="_a00403_1a80258719c93e5acf39c65d8274575fb5a4e3fa0177256511e834f01d31e74504e">ACCESS_MANAGER</link> = &quot;accessManager&quot;
+ }</para>
+
+<para>Configuration de maintenant. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

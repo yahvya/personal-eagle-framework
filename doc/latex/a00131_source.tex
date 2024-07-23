@@ -1,0 +1,49 @@
+\hypertarget{a00131_source}{}\doxysection{Enum\+Validity\+Cond.\+php}
+\label{a00131_source}\index{EnumValidityCond.php@{EnumValidityCond.php}}
+\mbox{\hyperlink{a00131}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{a00131_source_l00003}00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{a00408}{SaboCore\(\backslash\)Database\(\backslash\)Default\(\backslash\)Conditions}};}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{a00131_source_l00005}00005\ use\ Override;}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00006}00006\ use\ \mbox{\hyperlink{a00664}{SaboCore\(\backslash\)Database\(\backslash\)Default\(\backslash\)Conditions\(\backslash\)Cond}};}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00007}00007\ use\ \mbox{\hyperlink{a00752}{SaboCore\(\backslash\)Database\(\backslash\)Default\(\backslash\)System\(\backslash\)MysqlModel}};}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00008}00008\ use\ Throwable;}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{a00131_source_l00014}\mbox{\hyperlink{a00672}{00014}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{a00672}{EnumValidityCond}}\ \textcolor{keyword}{implements}\ \mbox{\hyperlink{a00664}{Cond}}\{}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00018}\mbox{\hyperlink{a00672_ac97fcc0af722602bf40bc016e5720459}{00018}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{a00672_ac97fcc0af722602bf40bc016e5720459}{\$errorMessage}};}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{a00131_source_l00023}\mbox{\hyperlink{a00672_a919a243061a1986ae430fd787760bbf9}{00023}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{a00672_a919a243061a1986ae430fd787760bbf9}{\$isDisplayable}};}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{a00131_source_l00028}\mbox{\hyperlink{a00672_ab55128edb0a39215afef2810f4a480a6}{00028}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00672_ab55128edb0a39215afef2810f4a480a6}{\_\_construct}}(\textcolor{keywordtype}{string}\ \mbox{\hyperlink{a00672_ac97fcc0af722602bf40bc016e5720459}{\$errorMessage}}\ =\ \textcolor{stringliteral}{"{}Valeur\ invalide"{}},\textcolor{keywordtype}{bool}\ \mbox{\hyperlink{a00672_a919a243061a1986ae430fd787760bbf9}{\$isDisplayable}}\ =\ \textcolor{keyword}{true})\{}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00029}00029\ \ \ \ \ \ \ \ \ \$this-\/>errorMessage\ =\ \mbox{\hyperlink{a00672_ac97fcc0af722602bf40bc016e5720459}{\$errorMessage}};}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00030}00030\ \ \ \ \ \ \ \ \ \$this-\/>isDisplayable\ =\ \mbox{\hyperlink{a00672_a919a243061a1986ae430fd787760bbf9}{\$isDisplayable}};}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{a00131_source_l00033}00033\ \textcolor{preprocessor}{\ \ \ \ \#[Override]}}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00034}\mbox{\hyperlink{a00672_aaab6c4c9f3ed625334aa5024eb645ba0}{00034}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00672_aaab6c4c9f3ed625334aa5024eb645ba0}{verifyData}}(\mbox{\hyperlink{a00752}{MysqlModel}}\ \$baseModel,\textcolor{keywordtype}{string}\ \$attributeName,mixed\ \$data):\ bool\{}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00035}00035\ \ \ \ \ \ \ \ \ try\{}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ récupération\ du\ tableau\ des\ valeurs\ possibles}}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \$possibleValues\ =\ \$baseModel-\/>getColumnConfig(attributName:\ \$attributeName)-\/>getPossibleValues()-\/>toArray();}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ in\_array(needle:\ \$data,haystack:\ \$possibleValues)\ ||}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_numeric(value:\ \$data)\ \&\&\ array\_key\_exists(key:\ \$data,array:\ \$possibleValues);}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00041}00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}(Throwable)\{}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00044}00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{a00131_source_l00047}00047\ \textcolor{preprocessor}{\ \ \ \ \#[Override]}}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00048}\mbox{\hyperlink{a00672_a3d24ed0e93b212b4d5e382fa795bf4ef}{00048}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00672_a3d24ed0e93b212b4d5e382fa795bf4ef}{getErrorMessage}}():\ string\{}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00049}00049\ \ \ \ \ \ \ \ \ return\ \$this-\/>errorMessage;}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{a00131_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{a00131_source_l00053}\mbox{\hyperlink{a00672_a2bd06fb688dc4a272e4a92500cb3a4ce}{00053}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00672_a2bd06fb688dc4a272e4a92500cb3a4ce}{getIsDisplayable}}():\ bool\{}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00054}00054\ \ \ \ \ \ \ \ \ return\ \$this-\/>isDisplayable;}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00055}00055\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00131_source_l00056}00056\ \}}
+
+\end{DoxyCode}

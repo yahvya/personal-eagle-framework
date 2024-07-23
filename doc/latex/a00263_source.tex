@@ -1,0 +1,98 @@
+\hypertarget{a00263_source}{}\doxysection{Route\+Manager.\+php}
+\label{a00263_source}\index{RouteManager.php@{RouteManager.php}}
+\mbox{\hyperlink{a00263}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00003}00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{a00420}{SaboCore\(\backslash\)Routing\(\backslash\)Routes}};}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00005}00005\ use\ \mbox{\hyperlink{a00584}{SaboCore\(\backslash\)Config\(\backslash\)ConfigException}};}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00006}00006\ use\ \mbox{\hyperlink{a00403_a5f86f21fc1b2fcda9bfff7e5f1e64129}{SaboCore\(\backslash\)Config\(\backslash\)EnvConfig}};}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00007}00007\ use\ \mbox{\hyperlink{a00403_a80d9c58ff7f86d542bbc97aa01de382f}{SaboCore\(\backslash\)Config\(\backslash\)FrameworkConfig}};}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00008}00008\ use\ \mbox{\hyperlink{a00784}{SaboCore\(\backslash\)Routing\(\backslash\)Application\(\backslash\)Application}};}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00009}00009\ use\ \mbox{\hyperlink{a00920}{SaboCore\(\backslash\)Utils\(\backslash\)Verification\(\backslash\)Verifier}};}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00010}00010\ use\ Throwable;}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00016}\mbox{\hyperlink{a00836}{00016}}\ \textcolor{keyword}{abstract}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{a00836}{RouteManager}}\{}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00020}\mbox{\hyperlink{a00836_aa17a7c8ad7c21ce9bdeaac17e332e6dc}{00020}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{static}\ array\ \mbox{\hyperlink{a00836_aa17a7c8ad7c21ce9bdeaac17e332e6dc}{\$routes}}\ =\ [];}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00025}\mbox{\hyperlink{a00836_a4d603901a6ebae9724325002e2c06c2f}{00025}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{static}\ array\ \mbox{\hyperlink{a00836_a4d603901a6ebae9724325002e2c06c2f}{\$usedNames}}\ =\ [];}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00035}\mbox{\hyperlink{a00836_aaa19ab55a6b8cbe00614d67cdd950de4}{00035}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00836_aaa19ab55a6b8cbe00614d67cdd950de4}{registerGroup}}(\textcolor{keywordtype}{string}\ \$linksPrefix,array\ \mbox{\hyperlink{a00836_aa17a7c8ad7c21ce9bdeaac17e332e6dc}{\$routes}},array\ \$genericParamsConfig\ =\ [],array\ \$groupAccessVerifiers\ =\ []):void\{}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00036}00036\ \ \ \ \ \ \ \ \ foreach(\mbox{\hyperlink{a00836_aa17a7c8ad7c21ce9bdeaac17e332e6dc}{\$routes}}\ as\ \$route)\{}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \$route-\/>addPrefix(prefix:\ \$linksPrefix,genericParameters:\ \$genericParamsConfig,accessVerifiers:\ \$groupAccessVerifiers);}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{a00836_a811974955a3b8dbce9a51d2a976f3e5a}{self::registerRoute}}(\mbox{\hyperlink{a00362_ae51039edf7ff9675adb95522e00d4583}{route}}:\ \$route);}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00039}00039\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00047}\mbox{\hyperlink{a00836_a811974955a3b8dbce9a51d2a976f3e5a}{00047}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00836_a811974955a3b8dbce9a51d2a976f3e5a}{registerRoute}}(\mbox{\hyperlink{a00832}{Route}}\ \$route):void\{}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00048}00048\ \ \ \ \ \ \ \ \ \$routeName\ =\ \$route-\/>getRouteName();}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\{}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \$isDebugMode\ =\ Application::getEnvConfig()-\/>getConfig(name:\ EnvConfig::DEV\_MODE\_CONFIG-\/>value);}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(in\_array(\$routeName,self::\$usedNames)\ )\{}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\$isDebugMode)}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{a00362_a7755ccc633d143394cb1be10c23a8483}{debugDie}}(\textcolor{stringliteral}{"{}Le\ nom\ de\ route\ \$routeName\ est\ déjà\ utilisé"{}});}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$method\ =\ \$route-\/>\mbox{\hyperlink{a00832_ae534469d94a650b89ceb36b968bd3727}{getRequestMethod}}();}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ sauvegarde\ du\ nom\ utilisé}}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self::\$usedNames[]\ =\ \$routeName;}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ enregistrement\ de\ la\ route}}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!array\_key\_exists(key:\ \$method,array:\ self::\$routes)\ )\ self::\$routes[\$method]\ =\ [];}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self::\$routes[\$method][]\ =\ \$route;}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00068}00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}(\mbox{\hyperlink{a00584}{ConfigException}})\{\}}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00078}\mbox{\hyperlink{a00836_aa9135deedb1da6c5e6e65f1d640f4e02}{00078}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00836_aa9135deedb1da6c5e6e65f1d640f4e02}{fromFile}}(\textcolor{keywordtype}{string}\ \$filename):void\{}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00079}00079\ \ \ \ \ \ \ \ \ try\{}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \$path\ =\ APP\_CONFIG-\/>getConfig(name:\ \textcolor{stringliteral}{"{}ROOT"{}})\ .\ \mbox{\hyperlink{a00784}{Application}}::getFrameworkConfig()-\/>getConfig(name:\ FrameworkConfig::ROUTES\_BASEDIR\_PATH-\/>value)\ .\ \textcolor{stringliteral}{"{}/\$filename.php"{}};}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(@file\_exists(filename:\ \$path)\ )\ require\_once(\$path);}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00083}00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}(Throwable)\{\}}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00093}\mbox{\hyperlink{a00836_a6125ddfb65a46eadc3331dd4d2747e31}{00093}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00836_a6125ddfb65a46eadc3331dd4d2747e31}{findRouteByName}}(\textcolor{keywordtype}{string}\ \$routeName,?\textcolor{keywordtype}{string}\ \$method\ =\ \textcolor{keyword}{null}):?\mbox{\hyperlink{a00832}{Route}}\{}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00094}00094\ \ \ \ \ \ \ \ \ \$routes\ =\ self::getRoutesFrom(method:\ \$method);}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}(\$routes\ as\ \$route)\{}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\$route-\/>getRouteName()\ ===\ \$routeName)}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$route;}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00099}00099\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00101}00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00102}00102\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00110}\mbox{\hyperlink{a00836_a52aaba9248bf4e6447c45a793c2744b8}{00110}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00836_a52aaba9248bf4e6447c45a793c2744b8}{findRouteByLink}}(\textcolor{keywordtype}{string}\ \$link,?\textcolor{keywordtype}{string}\ \$method\ =\ \textcolor{keyword}{null}):?array\{}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00111}00111\ \ \ \ \ \ \ \ \ \$routes\ =\ self::getRoutesFrom(method:\ \$method);}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\$routes\ as\ \$route)\{}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ recherche\ de\ la\ route\ par\ match}}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \$match\ =\ \$route-\/>matchWith(url:\ \$link);}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\$match-\/>getHaveMatch()\ )\ \textcolor{keywordflow}{return}\ [\textcolor{stringliteral}{"{}route"{}}\ =>\ \$route,\textcolor{stringliteral}{"{}match"{}}\ =>\ \$match];}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00118}00118\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00120}00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00121}00121\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00128}\mbox{\hyperlink{a00836_a9f5127ad9abe280bd45aa8f6e1dd99dc}{00128}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00836_a9f5127ad9abe280bd45aa8f6e1dd99dc}{getRoutesFrom}}(?\textcolor{keywordtype}{string}\ \$method):array\{}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00129}00129\ \ \ \ \ \ \ \ \ if(\$method\ !==\ null\ \&\&\ array\_key\_exists(key:\ \$method,array:\ self::\$routes)\ )}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \$routes\ =\ self::\$routes[strtolower(string:\ \$method)];}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(\$method\ ===\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \$routes\ =\ array\_merge(...array\_values(array:\ self::\$routes)\ );}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \$routes\ =\ [];}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{a00263_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$routes;}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00137}00137\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00263_source_l00138}00138\ \}}
+
+\end{DoxyCode}

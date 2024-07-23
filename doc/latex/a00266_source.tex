@@ -1,0 +1,21 @@
+\hypertarget{a00266_source}{}\doxysection{Treatment.\+php}
+\label{a00266_source}\index{Treatment.php@{Treatment.php}}
+\mbox{\hyperlink{a00266}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{a00266_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{a00266_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{a00266_source_l00003}\mbox{\hyperlink{a00421}{00003}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{a00421}{SaboCore\(\backslash\)Treatment}};}
+\DoxyCodeLine{\Hypertarget{a00266_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{a00266_source_l00005}00005\ use\ \mbox{\hyperlink{a00744}{SaboCore\(\backslash\)Database\(\backslash\)Default\(\backslash\)System\(\backslash\)MysqlException}};}
+\DoxyCodeLine{\Hypertarget{a00266_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{a00266_source_l00011}\mbox{\hyperlink{a00840}{00011}}\ \textcolor{keyword}{abstract}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{a00437}{Treatment}}\{}
+\DoxyCodeLine{\Hypertarget{a00266_source_l00019}\mbox{\hyperlink{a00840_af824b857142fd28d71b5879be59185dc}{00019}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00840_af824b857142fd28d71b5879be59185dc}{throwException}}(\textcolor{keywordtype}{string}\ \$errorMessage,\textcolor{keywordtype}{bool}\ \$isDisplayable\ =\ \textcolor{keyword}{true}):void\{}
+\DoxyCodeLine{\Hypertarget{a00266_source_l00020}00020\ \ \ \ \ \ \ \ \ throw\ new\ \mbox{\hyperlink{a00844}{TreatmentException}}(message:\ \$errorMessage,isDisplayable:\ \$isDisplayable);}
+\DoxyCodeLine{\Hypertarget{a00266_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00266_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{a00266_source_l00029}\mbox{\hyperlink{a00840_abf3978f576a1fa3b9d822b460175db45}{00029}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{static}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00840_abf3978f576a1fa3b9d822b460175db45}{throwModelException}}(\mbox{\hyperlink{a00744}{MysqlException}}\ \$exception):void\{}
+\DoxyCodeLine{\Hypertarget{a00266_source_l00030}00030\ \ \ \ \ \ \ \ \ throw\ new\ \mbox{\hyperlink{a00844}{TreatmentException}}(message:\ \$exception-\/>getMessage(),isDisplayable:\ \$exception-\/>getIsDisplayable()\ );}
+\DoxyCodeLine{\Hypertarget{a00266_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00266_source_l00032}00032\ \}}
+
+\end{DoxyCode}

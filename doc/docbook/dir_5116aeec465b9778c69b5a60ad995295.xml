@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_5116aeec465b9778c69b5a60ad995295" xml:lang="fr">
+<title>Répertoire de référence de formatters</title>
+<indexterm><primary>Répertoire de référence de formatters</primary></indexterm>
+<simplesect>
+    <title>Fichiers    </title>
+        <itemizedlist>
+            <listitem><para>fichier <link linkend="_a00155">Formater.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00158">FormaterException.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00161">JsonFormatter.php</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_a00164">JsonReformer.php</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

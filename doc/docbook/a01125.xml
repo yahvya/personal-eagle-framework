@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a01125" xml:lang="fr">
+
+<para><blockquote>
+<para>&#8205;Sabo est un framework php visant à faciliter le développement d&apos;applications web tout en conservant le plaisir d&apos;écrire du PHP. </para>
+</blockquote><emphasis>Le site de documentation du framework est en cours de création</emphasis></para>
+<section xml:id="_a01125_1autotoc_md1">
+<title>Gestion du projet</title>
+<section xml:id="_a01125_1autotoc_md2">
+<title>Créer un projet</title>
+
+<para><literallayout><computeroutput>mkdir&#32;&lt;mondossierprojet&gt;
+cd&#32;&lt;mondossierprojet&gt;
+git&#32;clone&#32;https://github.com/yahvya/sabo-final.git&#32;.
+cd&#32;sabo-core
+composer&#32;install
+cd&#32;..
+composer&#32;install
+rm&#32;README.md
+cd&#32;src/views/mails
+rm&#32;.gitkeep
+cd&#32;../../configs
+mv&#32;env.example.php&#32;env.php
+cd&#32;../storage/maintenance
+mv&#32;maintenance.secret.example&#32;maintenance.secret
+cd&#32;../../../
+rm&#32;-r&#32;-fo&#32;.git
+rm&#32;-r&#32;.git
+clear
+php&#32;sabo&#32;serve
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_a01125_1autotoc_md3">
+<title>Lancement du site</title>
+
+<para><blockquote>
+<para>&#8205;Vous pouvez utiliser un hôte virtuel (ex : généré par laragon) ou le serveur de développement intégré en utilisant la commande suivante </para>
+</blockquote><literallayout><computeroutput>php&#32;sabo&#32;serve
+</computeroutput></literallayout></para>
+</section>
+</section>
+<section xml:id="_a01125_1autotoc_md4">
+<title>Structure</title>
+
+<para><blockquote>
+<para>&#8205;Le dossier src contient les éléments servant à la création de l&apos;application </para>
+</blockquote><itemizedlist>
+<listitem>
+<para>Le dossier <emphasis role="bold">configs</emphasis> contient les fichiers de configurations (environnement, framework, configuration blade / twig ainsi que les fonctions globales à l&apos;application)</para>
+</listitem><listitem>
+<para>Le dossier <emphasis role="bold">controllers</emphasis> vise à accueillir les controllers, par défaut la class abstraite CustomController y est ajoutée afin de servir de classe mère customisable aux futurs controllers ainsi que le controller d&apos;accès à la maintenance par défaut</para>
+</listitem><listitem>
+<para>Le dossier <emphasis role="bold">models</emphasis> vise à accueillir les models, par défaut la class abstraite CustomModel y est ajoutée afin de servir de classe mère customisable aux futurs models</para>
+</listitem><listitem>
+<para>Le dossier <emphasis role="bold">public</emphasis> visant à accueillir toutes les ressources publiques</para>
+</listitem><listitem>
+<para>Le dossier <emphasis role="bold">storage</emphasis> représente le dossier de stockage de l&apos;application, par défaut contient le fichier hash d&apos;accès à la maintenance</para>
+</listitem><listitem>
+<para>Le dossier <emphasis role="bold">routes</emphasis> contenant les différentes routes de l&apos;application</para>
+</listitem><listitem>
+<para>Le dossier <emphasis role="bold">treatment</emphasis> visant à contenir les class de traitement contient par défaut CustomTreatment classe parent customisable des class de traitement</para>
+</listitem><listitem>
+<para>Le dossier <emphasis role="bold">views</emphasis> racine de recherche des éléments de vue, peut contenir du css et js accessible <?linebreak?> </para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>

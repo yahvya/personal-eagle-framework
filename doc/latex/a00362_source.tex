@@ -1,0 +1,77 @@
+\hypertarget{a00362_source}{}\doxysection{functions.\+php}
+\label{a00362_source}\index{functions.php@{functions.php}}
+\mbox{\hyperlink{a00362}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00001}00001\ <?php}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00009}00009\ use\ \mbox{\hyperlink{a00403_a80d9c58ff7f86d542bbc97aa01de382f}{SaboCore\(\backslash\)Config\(\backslash\)FrameworkConfig}};}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00010}00010\ use\ \mbox{\hyperlink{a00784}{SaboCore\(\backslash\)Routing\(\backslash\)Application\(\backslash\)Application}};}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00011}00011\ use\ \mbox{\hyperlink{a00836}{SaboCore\(\backslash\)Routing\(\backslash\)Routes\(\backslash\)RouteManager}};}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00012}00012\ use\ \mbox{\hyperlink{a00852}{SaboCore\(\backslash\)Utils\(\backslash\)Csrf\(\backslash\)CsrfManager}};}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00013}00013\ use\ \mbox{\hyperlink{a00892}{SaboCore\(\backslash\)Utils\(\backslash\)Session\(\backslash\)SessionStorage}};}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00014}00014\ use\ \mbox{\hyperlink{a00912}{SaboCore\(\backslash\)Utils\(\backslash\)String\(\backslash\)RandomStringGenerator}};}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00015}00015\ use\ \mbox{\hyperlink{a00432_add4f75f97db16032d6f41b34f8a28222}{SaboCore\(\backslash\)Utils\(\backslash\)String\(\backslash\)RandomStringType}};}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00022}\mbox{\hyperlink{a00362_a0d236ed64e37eb3249a05cfc95ff6bf7}{00022}}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00362_a0d236ed64e37eb3249a05cfc95ff6bf7}{debug}}(mixed\ ...\$toDebug):void\{}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00023}00023\ \ \ \ \ dump(...\$toDebug);}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00024}00024\ \}}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00030}\mbox{\hyperlink{a00362_a7755ccc633d143394cb1be10c23a8483}{00030}}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00362_a7755ccc633d143394cb1be10c23a8483}{debugDie}}(mixed\ ...\$toDebug):never\{}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00031}00031\ \ \ \ \ \mbox{\hyperlink{a00362_a0d236ed64e37eb3249a05cfc95ff6bf7}{debug}}(...\$toDebug);}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00032}00032\ \ \ \ \ die();}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00033}00033\ \}}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00042}\mbox{\hyperlink{a00362_ae51039edf7ff9675adb95522e00d4583}{00042}}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00362_ae51039edf7ff9675adb95522e00d4583}{route}}(\textcolor{keywordtype}{string}\ \$requestMethod,\textcolor{keywordtype}{string}\ \$routeName,array\ \$replaces\ =\ []):string|null\{}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00043}00043\ \ \ \ \ \$route\ =\ \mbox{\hyperlink{a00836}{RouteManager}}::findRouteByName(routeName:\ \$routeName,method:\ \$requestMethod);}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{if}(\$route\ ===\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00048}00048\ \ \ \ \ \textcolor{keywordflow}{try}\{}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00049}00049\ \ \ \ \ \ \ \ \ \$link\ =\ \$route-\/>getRouteLink();}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ recherche\ et\ remplacement\ des\ paramètres\ dans\ le\ lien}}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00052}00052\ \ \ \ \ \ \ \ \ \$variableMatcher\ =\ Application::getFrameworkConfig()-\/>getConfig(name:\ FrameworkConfig::ROUTE\_GENERIC\_PARAMETER\_MATCHER-\/>value);}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}(\$replaces\ as\ \$variableName\ =>\ \$replace)\{}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \$matcher\ =\ preg\_replace(pattern:\ \textcolor{stringliteral}{"{}\#\(\backslash\)(.*\(\backslash\))\#"{}},replacement:\ \$variableName,subject:\ \$variableMatcher);}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \$link\ =\ preg\_replace(pattern:\ \textcolor{stringliteral}{"{}\#\$matcher\#"{}},replacement:\ \$replace,subject:\ \$link);}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00058}00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$link;}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{catch}\ (Throwable)\{\}}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00065}00065\ \}}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00071}\mbox{\hyperlink{a00362_a373d6145a4cffaddaff2c4c9ac2f6e65}{00071}}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00362_a373d6145a4cffaddaff2c4c9ac2f6e65}{generateCsrf}}():\mbox{\hyperlink{a00852}{CsrfManager}}\{}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00072}00072\ \ \ \ \ \$sessionStorage\ =\ \mbox{\hyperlink{a00892}{SessionStorage}}::create();}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00074}00074\ \ \ \ \ \textcolor{comment}{//\ génération\ du\ token}}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00075}00075\ \ \ \ \ \textcolor{keywordflow}{do}}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00076}00076\ \ \ \ \ \ \ \ \ \$token\ =\ RandomStringGenerator::generateString(50,\textcolor{keyword}{false},RandomStringType::SPECIALCHARS);}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{while}(\$sessionStorage-\/>getCsrfFrom(token:\ \$token)\ !==\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00079}00079\ \ \ \ \ \$manager\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{a00852}{CsrfManager}}(token:\ \$token);}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00081}00081\ \ \ \ \ \$sessionStorage-\/>storeCsrf(csrfManager:\ \$manager);}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{return}\ \$manager;}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00084}00084\ \}}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00091}\mbox{\hyperlink{a00362_a8be53ae6480c0f3c2133084a111bfe6b}{00091}}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00362_a8be53ae6480c0f3c2133084a111bfe6b}{checkCsrf}}(\textcolor{keywordtype}{string}\ \$token):bool\{}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00092}00092\ \ \ \ \ \$sessionStorage\ =\ \mbox{\hyperlink{a00892}{SessionStorage}}::create();}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00094}00094\ \ \ \ \ \textcolor{comment}{//\ recherche\ du\ token}}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00095}00095\ \ \ \ \ \$csrfManager\ =\ \$sessionStorage-\/>\mbox{\hyperlink{a00892_a45e32506e0d92d0bdbb61e5b46e446b9}{getCsrfFrom}}(token:\ \$token);}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00097}00097\ \ \ \ \ \textcolor{keywordflow}{if}(\$csrfManager\ ===\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00099}00099\ \ \ \ \ \$sessionStorage-\/>deleteCsrf(csrfManager:\ \$csrfManager);}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{a00362_source_l00101}00101\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{a00362_source_l00102}00102\ \}}
+
+\end{DoxyCode}

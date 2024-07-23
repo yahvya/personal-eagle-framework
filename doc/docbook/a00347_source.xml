@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00347_source" xml:lang="fr">
+<title>a4dc7a46b8781bbc0328950f8f48c08a.php</title>
+<indexterm><primary>a4dc7a46b8781bbc0328950f8f48c08a.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00347_source_1l00001"/>00001 &lt;!doctype&#32;html&gt;
+<anchor xml:id="_a00347_source_1l00002"/>00002 &lt;html&#32;lang=<emphasis role="stringliteral">&quot;fr&quot;</emphasis>&gt;
+<anchor xml:id="_a00347_source_1l00003"/>00003 &lt;head&gt;
+<anchor xml:id="_a00347_source_1l00004"/>00004 &#32;&#32;&#32;&#32;&lt;meta&#32;charset=<emphasis role="stringliteral">&quot;UTF-8&quot;</emphasis>&gt;
+<anchor xml:id="_a00347_source_1l00005"/>00005 &#32;&#32;&#32;&#32;&lt;meta&#32;name=<emphasis role="stringliteral">&quot;viewport&quot;</emphasis>
+<anchor xml:id="_a00347_source_1l00006"/>00006 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;content=<emphasis role="stringliteral">&quot;width=device-width,&#32;user-scalable=no,&#32;initial-scale=1.0,&#32;maximum-scale=1.0,&#32;minimum-scale=1.0&quot;</emphasis>&gt;
+<anchor xml:id="_a00347_source_1l00007"/>00007 &#32;&#32;&#32;&#32;&lt;meta&#32;http-equiv=<emphasis role="stringliteral">&quot;X-UA-Compatible&quot;</emphasis>&#32;content=<emphasis role="stringliteral">&quot;ie=edge&quot;</emphasis>&gt;
+<anchor xml:id="_a00347_source_1l00008"/>00008 &#32;&#32;&#32;&#32;&lt;link&#32;href=<emphasis role="stringliteral">&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css&quot;</emphasis>&#32;rel=<emphasis role="stringliteral">&quot;stylesheet&quot;</emphasis>&#32;integrity=<emphasis role="stringliteral">&quot;sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH&quot;</emphasis>&#32;crossorigin=<emphasis role="stringliteral">&quot;anonymous&quot;</emphasis>&gt;
+<anchor xml:id="_a00347_source_1l00009"/>00009 &#32;&#32;&#32;&#32;&lt;link&#32;rel=<emphasis role="stringliteral">&quot;shortcut&#32;icon&quot;</emphasis>&#32;href=<emphasis role="stringliteral">&quot;/src/public/icons/favicon.ico&quot;</emphasis>&gt;
+<anchor xml:id="_a00347_source_1l00010"/>00010 &#32;&#32;&#32;&#32;&lt;title&gt;Sabo&lt;/title&gt;
+<anchor xml:id="_a00347_source_1l00011"/>00011 &lt;/head&gt;
+<anchor xml:id="_a00347_source_1l00012"/>00012 &lt;body&#32;<emphasis role="keyword">class</emphasis>=<emphasis role="stringliteral">&quot;bg-dark&#32;text-light&quot;</emphasis>&gt;
+<anchor xml:id="_a00347_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&lt;p&#32;<emphasis role="keyword">class</emphasis>=<emphasis role="stringliteral">&quot;text-center&#32;fs-1&#32;mt-5&quot;</emphasis>&gt;Développez&#32;votre&#32;site&#32;en&#32;php&#32;avec&#32;le&#32;framework&#32;Sabo&lt;/p&gt;
+<anchor xml:id="_a00347_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&lt;img&#32;src=<emphasis role="stringliteral">&quot;/src/public/icons/favicon.ico&quot;</emphasis>&#32;<emphasis role="keyword">class</emphasis>=<emphasis role="stringliteral">&quot;m-auto&#32;d-block&#32;rounded-circle&quot;</emphasis>&#32;style=<emphasis role="stringliteral">&quot;width:&#32;100px&quot;</emphasis>&#32;alt=<emphasis role="stringliteral">&quot;#&quot;</emphasis>&gt;
+<anchor xml:id="_a00347_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&lt;p&#32;<emphasis role="keyword">class</emphasis>=<emphasis role="stringliteral">&quot;text-center&#32;mt-5&quot;</emphasis>&gt;&lt;a&#32;href=<emphasis role="stringliteral">&quot;&lt;?php&#32;echo&#32;e($websiteLink);&#32;?&gt;&quot;</emphasis>&#32;<emphasis role="keyword">class</emphasis>=<emphasis role="stringliteral">&quot;btn&#32;btn-primary&quot;</emphasis>&#32;target=<emphasis role="stringliteral">&quot;_blank&quot;</emphasis>&gt;Accédez&#32;à&#32;la&#32;documentation&lt;/a&gt;&lt;/p&gt;
+<anchor xml:id="_a00347_source_1l00016"/>00016 &lt;/body&gt;
+<anchor xml:id="_a00347_source_1l00017"/>00017 &lt;/html&gt;
+<anchor xml:id="_a00347_source_1l00018"/>00018 &lt;?php&#32;&#32;?&gt;
+</programlisting></section>

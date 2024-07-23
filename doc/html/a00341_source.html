@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sabo final:  Fichier source de Verifier.php</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="favicon.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">Sabo final<span id="projectnumber">&#160;1.1.1</span>
+   </div>
+   <div id="projectbrief">Mini framework php</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('a00341_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Verifier.php</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="a00341.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span>&lt;?php</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="a00434.html">    3</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="a00434.html">SaboCore\Utils\Verification</a>;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>use Closure;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="a00920.html">   11</a></span><span class="keyword">class </span><a class="code hl_class" href="a00920.html">Verifier</a>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="a00920.html#a06573a3b3ba965a9dec477b750502f76">   15</a></span>    <span class="keyword">protected</span> array|Closure <a class="code hl_variable" href="a00920.html#a06573a3b3ba965a9dec477b750502f76">$verifier</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="a00920.html#a94aa59d3a3fe25b6fb4b832a3c45629e">   20</a></span>    <span class="keyword">protected</span> array|Closure|<span class="keyword">null</span> <a class="code hl_variable" href="a00920.html#a94aa59d3a3fe25b6fb4b832a3c45629e">$onFailure</a>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="a00920.html#aaa0cf5ebb1f59a7750546e4d7dd92316">   25</a></span>    <span class="keyword">protected</span> array|Closure|<span class="keyword">null</span> <a class="code hl_variable" href="a00920.html#aaa0cf5ebb1f59a7750546e4d7dd92316">$onSuccess</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="a00920.html#a10d70e54686556531a0958588b56a5a4">   32</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00920.html#a10d70e54686556531a0958588b56a5a4">__construct</a>(Callable <a class="code hl_variable" href="a00920.html#a06573a3b3ba965a9dec477b750502f76">$verifier</a>,Callable|<span class="keyword">null</span> <a class="code hl_variable" href="a00920.html#a94aa59d3a3fe25b6fb4b832a3c45629e">$onFailure</a> = <span class="keyword">null</span>, ?Callable <a class="code hl_variable" href="a00920.html#aaa0cf5ebb1f59a7750546e4d7dd92316">$onSuccess</a> = <span class="keyword">null</span>){</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        $this-&gt;verifier = <a class="code hl_variable" href="a00920.html#a06573a3b3ba965a9dec477b750502f76">$verifier</a>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        $this-&gt;onFailure = <a class="code hl_variable" href="a00920.html#a94aa59d3a3fe25b6fb4b832a3c45629e">$onFailure</a>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        $this-&gt;onSuccess = <a class="code hl_variable" href="a00920.html#aaa0cf5ebb1f59a7750546e4d7dd92316">$onSuccess</a>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="a00920.html#a0fc8cb974ea100bf35a631ff2f861336">   43</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00920.html#a0fc8cb974ea100bf35a631ff2f861336">verify</a>(array $verifierArgs):bool{</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        return call_user_func_array(callback: $this-&gt;verifier,args: $verifierArgs);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="a00920.html#adff269ca2bb2a827b52c1569a1fc818b">   54</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="a00920.html#adff269ca2bb2a827b52c1569a1fc818b">execVerification</a>(array $verifierArgs,array $onSuccessArgs = [],array $onFailureArgs = []):array{</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        $verificationResult = $this-&gt;verify(verifierArgs: $verifierArgs);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">if</span>($verificationResult &amp;&amp; $this-&gt;onSuccess !== <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <span class="keywordflow">return</span> [<span class="stringliteral">&quot;success&quot;</span> =&gt; call_user_func_array(callback: $this-&gt;onSuccess,args: $onSuccessArgs)];</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        elseif(!$verificationResult &amp;&amp; $this-&gt;onFailure !== <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            return [&quot;failure&quot; =&gt; call_user_func_array(callback: $this-&gt;onFailure,args: $onFailureArgs)];</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        return [&quot;verifier&quot; =&gt; $verificationResult];</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
+<div class="ttc" id="aa00434_html"><div class="ttname"><a href="a00434.html">SaboCore\Utils\Verification</a></div><div class="ttdef"><b>Definition:</b> <a href="a00341_source.html#l00003">Verifier.php:3</a></div></div>
+<div class="ttc" id="aa00920_html"><div class="ttname"><a href="a00920.html">SaboCore\Utils\Verification\Verifier</a></div><div class="ttdoc">Gestionnaire de vérification.</div><div class="ttdef"><b>Definition:</b> <a href="a00341_source.html#l00011">Verifier.php:11</a></div></div>
+<div class="ttc" id="aa00920_html_a06573a3b3ba965a9dec477b750502f76"><div class="ttname"><a href="a00920.html#a06573a3b3ba965a9dec477b750502f76">SaboCore\Utils\Verification\Verifier\$verifier</a></div><div class="ttdeci">array Closure $verifier</div><div class="ttdef"><b>Definition:</b> <a href="a00341_source.html#l00015">Verifier.php:15</a></div></div>
+<div class="ttc" id="aa00920_html_a0fc8cb974ea100bf35a631ff2f861336"><div class="ttname"><a href="a00920.html#a0fc8cb974ea100bf35a631ff2f861336">SaboCore\Utils\Verification\Verifier\verify</a></div><div class="ttdeci">verify(array $verifierArgs)</div><div class="ttdoc">Exécute la condition de vérification et fourni son résultat.</div><div class="ttdef"><b>Definition:</b> <a href="a00341_source.html#l00043">Verifier.php:43</a></div></div>
+<div class="ttc" id="aa00920_html_a10d70e54686556531a0958588b56a5a4"><div class="ttname"><a href="a00920.html#a10d70e54686556531a0958588b56a5a4">SaboCore\Utils\Verification\Verifier\__construct</a></div><div class="ttdeci">__construct(Callable $verifier, Callable|null $onFailure=null, ?Callable $onSuccess=null)</div><div class="ttdef"><b>Definition:</b> <a href="a00341_source.html#l00032">Verifier.php:32</a></div></div>
+<div class="ttc" id="aa00920_html_a94aa59d3a3fe25b6fb4b832a3c45629e"><div class="ttname"><a href="a00920.html#a94aa59d3a3fe25b6fb4b832a3c45629e">SaboCore\Utils\Verification\Verifier\$onFailure</a></div><div class="ttdeci">array Closure null $onFailure</div><div class="ttdef"><b>Definition:</b> <a href="a00341_source.html#l00020">Verifier.php:20</a></div></div>
+<div class="ttc" id="aa00920_html_aaa0cf5ebb1f59a7750546e4d7dd92316"><div class="ttname"><a href="a00920.html#aaa0cf5ebb1f59a7750546e4d7dd92316">SaboCore\Utils\Verification\Verifier\$onSuccess</a></div><div class="ttdeci">array Closure null $onSuccess</div><div class="ttdef"><b>Definition:</b> <a href="a00341_source.html#l00025">Verifier.php:25</a></div></div>
+<div class="ttc" id="aa00920_html_adff269ca2bb2a827b52c1569a1fc818b"><div class="ttname"><a href="a00920.html#adff269ca2bb2a827b52c1569a1fc818b">SaboCore\Utils\Verification\Verifier\execVerification</a></div><div class="ttdeci">execVerification(array $verifierArgs, array $onSuccessArgs=[], array $onFailureArgs=[])</div><div class="ttdoc">Exécute le processus de vérification en exécutant les fonctions success ou failure.</div><div class="ttdef"><b>Definition:</b> <a href="a00341_source.html#l00054">Verifier.php:54</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_5a9687d32d98fbbdb60629c9ff0dd338.html">sabo-core</a></li><li class="navelem"><a class="el" href="dir_27d72d4b518677f61e722129f47020e8.html">utils</a></li><li class="navelem"><a class="el" href="dir_e15d52f8b230c4ff1986843ff5cd4e20.html">verification</a></li><li class="navelem"><a class="el" href="a00341.html">Verifier.php</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
+</body>
+</html>

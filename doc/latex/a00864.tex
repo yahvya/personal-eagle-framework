@@ -1,0 +1,261 @@
+\hypertarget{a00864}{}\doxysection{Référence de la classe Form\+File\+Manager}
+\label{a00864}\index{FormFileManager@{FormFileManager}}
+
+
+Gestionnaire de fichier provenant de formulaire (\$\+\_\+\+FILES)  
+
+
+Graphe d\textquotesingle{}héritage de Form\+File\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{a00864}
+\end{center}
+\end{figure}
+\doxysubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00864_aefae9405137353cfb90c081874d8a4c7}{\+\_\+\+\_\+construct}} (array \$file\+Datas)
+\item 
+\mbox{\hyperlink{a00864_abc073d615c782d3e91ec0d06f6456c2a}{get\+To\+Download}} (?string \$file\+Name=null)
+\item 
+\mbox{\hyperlink{a00864_aa3742aafae0db54aaf752b2826176a72}{store\+In}} (string \$path, bool \$create\+Folders\+If\+Not\+Exists=true)
+\begin{DoxyCompactList}\small\item\em Stock le fichier dans le dossier de stockage (en conservant le fichier actuel) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00864_a9ac68df2af17ace6a2430d1fc34984ce}{get\+From\+Storage}} ()
+\item 
+\mbox{\hyperlink{a00864_a13bdffdd926f26b825ea57066334ff01}{delete}} ()
+\item 
+\mbox{\hyperlink{a00864_a830b5c75df72b32396701bc563fbe3c7}{get\+Type}} ()
+\item 
+\mbox{\hyperlink{a00864_a3e694ddaaa663c1abc74b9e30b143b89}{is\+In\+Types}} (string ... \$types\+To\+Check)
+\begin{DoxyCompactList}\small\item\em Vérifie si le type mime contenu du fichier est présent dans la liste fournie. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00864_a7563c2998ef776441d5a3ad56bbc66b9}{get\+Error\+State}} ()
+\item 
+\mbox{\hyperlink{a00864_a75cce10cdf81be6dc84881c28b3379b7}{get\+Size}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions membres publiques hérités de \mbox{\hyperlink{a00860}{File\+Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00860_a7dcecb10824b583fa8ca3ed90b973bcc}{\+\_\+\+\_\+construct}} (string \$file\+Absolute\+Path)
+\item 
+\mbox{\hyperlink{a00860_a7e44544f8ebf95b39ff8530b0fc3f2ea}{file\+Exists}} ()
+\item 
+\mbox{\hyperlink{a00860_adcb83e15c24611d68f56ca464b401c85}{get\+Extension}} (bool \$from\+First\+Occur=true, string \$extension\+Separator=\char`\"{}.\char`\"{})
+\begin{DoxyCompactList}\small\item\em Recherche l\textquotesingle{}extension du fichier. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00860_abc073d615c782d3e91ec0d06f6456c2a}{get\+To\+Download}} (?string \$file\+Name=null)
+\item 
+\mbox{\hyperlink{a00860_a30c5c67b2bf8e2e2ccc7e361faa20afe}{get\+Path}} ()
+\item 
+\mbox{\hyperlink{a00860_aa3742aafae0db54aaf752b2826176a72}{store\+In}} (string \$path, bool \$create\+Folders\+If\+Not\+Exists=true)
+\begin{DoxyCompactList}\small\item\em Stock le fichier dans le dossier de stockage (en conservant le fichier actuel) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00860_a13bdffdd926f26b825ea57066334ff01}{delete}} ()
+\begin{DoxyCompactList}\small\item\em Supprime le fichier. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00860_a9ac68df2af17ace6a2430d1fc34984ce}{get\+From\+Storage}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions membres publiques hérités de \mbox{\hyperlink{a00908}{Storable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00908_a66bef9ec7e8dca474b5b160c64190399}{store\+In}} (string \$path)
+\begin{DoxyCompactList}\small\item\em Stocke l\textquotesingle{}élément. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00908_a9ac68df2af17ace6a2430d1fc34984ce}{get\+From\+Storage}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Attributs protégés}
+\begin{DoxyCompactItemize}
+\item 
+array \mbox{\hyperlink{a00864_aa5315ff3be6e97556315376efcdccec6}{\$file\+Datas}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributs protégés hérités de \mbox{\hyperlink{a00860}{File\+Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{a00860_a0cd2aa3cd088d991d5b79e7f91386f12}{\$file\+Absolute\+Path}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Gestionnaire de fichier provenant de formulaire (\$\+\_\+\+FILES) 
+
+\begin{DoxyAuthor}{Auteur}
+yahaya bathily 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \mbox{\hyperlink{a00290_source_l00014}{14}} du fichier \mbox{\hyperlink{a00290_source}{Form\+File\+Manager.\+php}}.
+
+
+
+\doxysubsection{Documentation des constructeurs et destructeur}
+\mbox{\Hypertarget{a00864_aefae9405137353cfb90c081874d8a4c7}\label{a00864_aefae9405137353cfb90c081874d8a4c7}} 
+\index{FormFileManager@{FormFileManager}!\_\_construct@{\_\_construct}}
+\index{\_\_construct@{\_\_construct}!FormFileManager@{FormFileManager}}
+\doxysubsubsection{\texorpdfstring{\_\_construct()}{\_\_construct()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+construct (\begin{DoxyParamCaption}\item[{array}]{\$file\+Datas }\end{DoxyParamCaption})}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00290_source_l00020}{20}} du fichier \mbox{\hyperlink{a00290_source}{Form\+File\+Manager.\+php}}.
+
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{a00864_a13bdffdd926f26b825ea57066334ff01}\label{a00864_a13bdffdd926f26b825ea57066334ff01}} 
+\index{FormFileManager@{FormFileManager}!delete@{delete}}
+\index{delete@{delete}!FormFileManager@{FormFileManager}}
+\doxysubsubsection{\texorpdfstring{delete()}{delete()}}
+{\footnotesize\ttfamily delete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+@inherit\+Doc \begin{DoxyAttention}{Attention}
+fonction inactive pour les fichiers de formulaire, passer par File\+Manager 
+\end{DoxyAttention}
+
+
+Réimplémentée à partir de \mbox{\hyperlink{a00860_a13bdffdd926f26b825ea57066334ff01}{File\+Manager}}.
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00290_source_l00061}{61}} du fichier \mbox{\hyperlink{a00290_source}{Form\+File\+Manager.\+php}}.
+
+\mbox{\Hypertarget{a00864_a7563c2998ef776441d5a3ad56bbc66b9}\label{a00864_a7563c2998ef776441d5a3ad56bbc66b9}} 
+\index{FormFileManager@{FormFileManager}!getErrorState@{getErrorState}}
+\index{getErrorState@{getErrorState}!FormFileManager@{FormFileManager}}
+\doxysubsubsection{\texorpdfstring{getErrorState()}{getErrorState()}}
+{\footnotesize\ttfamily get\+Error\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+int l\textquotesingle{}état de l\textquotesingle{}erreur contenue 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00290_source_l00084}{84}} du fichier \mbox{\hyperlink{a00290_source}{Form\+File\+Manager.\+php}}.
+
+\mbox{\Hypertarget{a00864_a9ac68df2af17ace6a2430d1fc34984ce}\label{a00864_a9ac68df2af17ace6a2430d1fc34984ce}} 
+\index{FormFileManager@{FormFileManager}!getFromStorage@{getFromStorage}}
+\index{getFromStorage@{getFromStorage}!FormFileManager@{FormFileManager}}
+\doxysubsubsection{\texorpdfstring{getFromStorage()}{getFromStorage()}}
+{\footnotesize\ttfamily get\+From\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+@inherit\+Doc \begin{DoxyAttention}{Attention}
+fonction inactive pour les fichiers de formulaire, passer par File\+Manager 
+\end{DoxyAttention}
+
+
+Réimplémentée à partir de \mbox{\hyperlink{a00860_a9ac68df2af17ace6a2430d1fc34984ce}{File\+Manager}}.
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00290_source_l00052}{52}} du fichier \mbox{\hyperlink{a00290_source}{Form\+File\+Manager.\+php}}.
+
+\mbox{\Hypertarget{a00864_a75cce10cdf81be6dc84881c28b3379b7}\label{a00864_a75cce10cdf81be6dc84881c28b3379b7}} 
+\index{FormFileManager@{FormFileManager}!getSize@{getSize}}
+\index{getSize@{getSize}!FormFileManager@{FormFileManager}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+int la taille contenu 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00290_source_l00091}{91}} du fichier \mbox{\hyperlink{a00290_source}{Form\+File\+Manager.\+php}}.
+
+\mbox{\Hypertarget{a00864_abc073d615c782d3e91ec0d06f6456c2a}\label{a00864_abc073d615c782d3e91ec0d06f6456c2a}} 
+\index{FormFileManager@{FormFileManager}!getToDownload@{getToDownload}}
+\index{getToDownload@{getToDownload}!FormFileManager@{FormFileManager}}
+\doxysubsubsection{\texorpdfstring{getToDownload()}{getToDownload()}}
+{\footnotesize\ttfamily get\+To\+Download (\begin{DoxyParamCaption}\item[{?string}]{\$file\+Name = {\ttfamily null} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string | null & {\em \$file\+Name} & @inherit\+Doc \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAttention}{Attention}
+fonction inactive pour les fichiers de formulaire, passer par File\+Manager 
+\end{DoxyAttention}
+
+
+Réimplémentée à partir de \mbox{\hyperlink{a00860_abc073d615c782d3e91ec0d06f6456c2a}{File\+Manager}}.
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00290_source_l00032}{32}} du fichier \mbox{\hyperlink{a00290_source}{Form\+File\+Manager.\+php}}.
+
+\mbox{\Hypertarget{a00864_a830b5c75df72b32396701bc563fbe3c7}\label{a00864_a830b5c75df72b32396701bc563fbe3c7}} 
+\index{FormFileManager@{FormFileManager}!getType@{getType}}
+\index{getType@{getType}!FormFileManager@{FormFileManager}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+string le type mime contenu du fichier 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00290_source_l00068}{68}} du fichier \mbox{\hyperlink{a00290_source}{Form\+File\+Manager.\+php}}.
+
+\mbox{\Hypertarget{a00864_a3e694ddaaa663c1abc74b9e30b143b89}\label{a00864_a3e694ddaaa663c1abc74b9e30b143b89}} 
+\index{FormFileManager@{FormFileManager}!isInTypes@{isInTypes}}
+\index{isInTypes@{isInTypes}!FormFileManager@{FormFileManager}}
+\doxysubsubsection{\texorpdfstring{isInTypes()}{isInTypes()}}
+{\footnotesize\ttfamily is\+In\+Types (\begin{DoxyParamCaption}\item[{string ...}]{\$types\+To\+Check }\end{DoxyParamCaption})}
+
+
+
+Vérifie si le type mime contenu du fichier est présent dans la liste fournie. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em string} & ...\$types\+To\+Check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+bool 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00290_source_l00077}{77}} du fichier \mbox{\hyperlink{a00290_source}{Form\+File\+Manager.\+php}}.
+
+\mbox{\Hypertarget{a00864_aa3742aafae0db54aaf752b2826176a72}\label{a00864_aa3742aafae0db54aaf752b2826176a72}} 
+\index{FormFileManager@{FormFileManager}!storeIn@{storeIn}}
+\index{storeIn@{storeIn}!FormFileManager@{FormFileManager}}
+\doxysubsubsection{\texorpdfstring{storeIn()}{storeIn()}}
+{\footnotesize\ttfamily store\+In (\begin{DoxyParamCaption}\item[{string}]{\$path,  }\item[{bool}]{\$create\+Folders\+If\+Not\+Exists = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Stock le fichier dans le dossier de stockage (en conservant le fichier actuel) 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$path} & Chemin à partir du dossier de stockage comme racine (/) \\
+\hline
+bool & {\em \$create\+Folders\+If\+Not\+Exists} & si true et que le nouveau chemin contient des dossiers inexistants, ils seront créés \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+bool si le stockage a réussi 
+\end{DoxyReturn}
+
+
+Réimplémentée à partir de \mbox{\hyperlink{a00860_aa3742aafae0db54aaf752b2826176a72}{File\+Manager}}.
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00290_source_l00037}{37}} du fichier \mbox{\hyperlink{a00290_source}{Form\+File\+Manager.\+php}}.
+
+
+
+\doxysubsection{Documentation des champs}
+\mbox{\Hypertarget{a00864_aa5315ff3be6e97556315376efcdccec6}\label{a00864_aa5315ff3be6e97556315376efcdccec6}} 
+\index{FormFileManager@{FormFileManager}!\$fileDatas@{\$fileDatas}}
+\index{\$fileDatas@{\$fileDatas}!FormFileManager@{FormFileManager}}
+\doxysubsubsection{\texorpdfstring{\$fileDatas}{$fileDatas}}
+{\footnotesize\ttfamily array \$file\+Datas\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00290_source_l00018}{18}} du fichier \mbox{\hyperlink{a00290_source}{Form\+File\+Manager.\+php}}.
+
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00290}{Form\+File\+Manager.\+php}}\end{DoxyCompactItemize}

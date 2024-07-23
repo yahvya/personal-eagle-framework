@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00275_source" xml:lang="fr">
+<title>SaboApiConfig.php</title>
+<indexterm><primary>SaboApiConfig.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00275_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00275_source_1l00002"/>00002 
+<anchor xml:id="_a00275_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00422">SaboCore\Utils\Api</link>;
+<anchor xml:id="_a00275_source_1l00004"/>00004 
+<anchor xml:id="_a00275_source_1l00009"/><link linkend="_a00422_1aee57d5d9f72c0790cf2ed92e047c28ed">00009</link> <emphasis role="keyword">enum</emphasis>&#32;<link linkend="_a00422_1aee57d5d9f72c0790cf2ed92e047c28ed">SaboApiConfig</link>:<emphasis role="keywordtype">int</emphasis>{
+<anchor xml:id="_a00275_source_1l00013"/>00013 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_a00422_1aee57d5d9f72c0790cf2ed92e047c28eda7859c6fa207d555e4f392f308b4b9d7c">URL</link>&#32;=&#32;1;
+<anchor xml:id="_a00275_source_1l00014"/><link linkend="_a00422_1aee57d5d9f72c0790cf2ed92e047c28eda7859c6fa207d555e4f392f308b4b9d7c">00014</link> }
+</programlisting></section>

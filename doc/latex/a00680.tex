@@ -1,0 +1,114 @@
+\hypertarget{a00680}{}\doxysection{Référence de la classe Json\+Validity\+Cond}
+\label{a00680}\index{JsonValidityCond@{JsonValidityCond}}
+
+
+Condition de vérification de validité json.  
+
+
+Graphe d\textquotesingle{}héritage de Json\+Validity\+Cond\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{a00680}
+\end{center}
+\end{figure}
+\doxysubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00680_aaab6c4c9f3ed625334aa5024eb645ba0}{verify\+Data}} (\mbox{\hyperlink{a00752}{Mysql\+Model}} \$base\+Model, string \$attribute\+Name, mixed \$data)
+\begin{DoxyCompactList}\small\item\em Vérifie si la donnée est valide. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00680_a3d24ed0e93b212b4d5e382fa795bf4ef}{get\+Error\+Message}} ()
+\item 
+\mbox{\hyperlink{a00680_a2bd06fb688dc4a272e4a92500cb3a4ce}{get\+Is\+Displayable}} ()
+\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00664_aaab6c4c9f3ed625334aa5024eb645ba0}{verify\+Data}} (\mbox{\hyperlink{a00752}{Mysql\+Model}} \$base\+Model, string \$attribute\+Name, mixed \$data)
+\begin{DoxyCompactList}\small\item\em Vérifie si la donnée est valide. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00664_a3d24ed0e93b212b4d5e382fa795bf4ef}{get\+Error\+Message}} ()
+\item 
+\mbox{\hyperlink{a00664_a2bd06fb688dc4a272e4a92500cb3a4ce}{get\+Is\+Displayable}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Condition de vérification de validité json. 
+
+\begin{DoxyAuthor}{Auteur}
+yahaya bathily \href{https://github.com/yahvya}{\texttt{ https\+://github.\+com/yahvya}} 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \mbox{\hyperlink{a00137_source_l00012}{12}} du fichier \mbox{\hyperlink{a00137_source}{Json\+Validity\+Cond.\+php}}.
+
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{a00680_a3d24ed0e93b212b4d5e382fa795bf4ef}\label{a00680_a3d24ed0e93b212b4d5e382fa795bf4ef}} 
+\index{JsonValidityCond@{JsonValidityCond}!getErrorMessage@{getErrorMessage}}
+\index{getErrorMessage@{getErrorMessage}!JsonValidityCond@{JsonValidityCond}}
+\doxysubsubsection{\texorpdfstring{getErrorMessage()}{getErrorMessage()}}
+{\footnotesize\ttfamily get\+Error\+Message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+string Le message d\textquotesingle{}erreur 
+\end{DoxyReturn}
+
+
+Implémente \mbox{\hyperlink{a00664_a3d24ed0e93b212b4d5e382fa795bf4ef}{Cond}}.
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00137_source_l00019}{19}} du fichier \mbox{\hyperlink{a00137_source}{Json\+Validity\+Cond.\+php}}.
+
+\mbox{\Hypertarget{a00680_a2bd06fb688dc4a272e4a92500cb3a4ce}\label{a00680_a2bd06fb688dc4a272e4a92500cb3a4ce}} 
+\index{JsonValidityCond@{JsonValidityCond}!getIsDisplayable@{getIsDisplayable}}
+\index{getIsDisplayable@{getIsDisplayable}!JsonValidityCond@{JsonValidityCond}}
+\doxysubsubsection{\texorpdfstring{getIsDisplayable()}{getIsDisplayable()}}
+{\footnotesize\ttfamily get\+Is\+Displayable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+bool Si le message d\textquotesingle{}erreur peut être affiché 
+\end{DoxyReturn}
+
+
+Implémente \mbox{\hyperlink{a00664_a2bd06fb688dc4a272e4a92500cb3a4ce}{Cond}}.
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00137_source_l00024}{24}} du fichier \mbox{\hyperlink{a00137_source}{Json\+Validity\+Cond.\+php}}.
+
+\mbox{\Hypertarget{a00680_aaab6c4c9f3ed625334aa5024eb645ba0}\label{a00680_aaab6c4c9f3ed625334aa5024eb645ba0}} 
+\index{JsonValidityCond@{JsonValidityCond}!verifyData@{verifyData}}
+\index{verifyData@{verifyData}!JsonValidityCond@{JsonValidityCond}}
+\doxysubsubsection{\texorpdfstring{verifyData()}{verifyData()}}
+{\footnotesize\ttfamily verify\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{a00752}{Mysql\+Model}}}]{\$base\+Model,  }\item[{string}]{\$attribute\+Name,  }\item[{mixed}]{\$data }\end{DoxyParamCaption})}
+
+
+
+Vérifie si la donnée est valide. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+Mysql\+Model & {\em \$base\+Model} & Model de base \\
+\hline
+string & {\em \$attribute\+Name} & Nom de l\textquotesingle{}attribut \\
+\hline
+mixed & {\em \$data} & donnée à vérifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+bool si la donnée est valide 
+\end{DoxyReturn}
+
+
+Implémente \mbox{\hyperlink{a00664_aaab6c4c9f3ed625334aa5024eb645ba0}{Cond}}.
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00137_source_l00014}{14}} du fichier \mbox{\hyperlink{a00137_source}{Json\+Validity\+Cond.\+php}}.
+
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00137}{Json\+Validity\+Cond.\+php}}\end{DoxyCompactItemize}

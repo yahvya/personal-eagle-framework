@@ -1,0 +1,502 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_a00191_source" xml:lang="fr">
+<title>MysqlModel.php</title>
+<indexterm><primary>MysqlModel.php</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered"><anchor xml:id="_a00191_source_1l00001"/>00001 &lt;?php
+<anchor xml:id="_a00191_source_1l00002"/>00002 
+<anchor xml:id="_a00191_source_1l00003"/>00003 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_a00413">SaboCore\Database\Default\System</link>;
+<anchor xml:id="_a00191_source_1l00004"/>00004 
+<anchor xml:id="_a00191_source_1l00005"/>00005 use&#32;Override;
+<anchor xml:id="_a00191_source_1l00006"/>00006 use&#32;PDO;
+<anchor xml:id="_a00191_source_1l00007"/>00007 use&#32;PDOStatement;
+<anchor xml:id="_a00191_source_1l00008"/>00008 use&#32;ReflectionClass;
+<anchor xml:id="_a00191_source_1l00009"/>00009 use&#32;<link linkend="_a00580">SaboCore\Config\Config</link>;
+<anchor xml:id="_a00191_source_1l00010"/>00010 use&#32;<link linkend="_a00584">SaboCore\Config\ConfigException</link>;
+<anchor xml:id="_a00191_source_1l00011"/>00011 use&#32;<link linkend="_a00403_1a4faa51b0e299a3f79c5dcf2fc69d3bdb">SaboCore\Config\DatabaseConfig</link>;
+<anchor xml:id="_a00191_source_1l00012"/>00012 use&#32;<link linkend="_a00403_1a5f86f21fc1b2fcda9bfff7e5f1e64129">SaboCore\Config\EnvConfig</link>;
+<anchor xml:id="_a00191_source_1l00013"/>00013 use&#32;<link linkend="_a00612">SaboCore\Database\Default\Attributes\EnumColumn</link>;
+<anchor xml:id="_a00191_source_1l00014"/>00014 use&#32;<link linkend="_a00620">SaboCore\Database\Default\Attributes\JoinedColumn</link>;
+<anchor xml:id="_a00191_source_1l00015"/>00015 use&#32;<link linkend="_a00632">SaboCore\Database\Default\Attributes\TableColumn</link>;
+<anchor xml:id="_a00191_source_1l00016"/>00016 use&#32;<link linkend="_a00636">SaboCore\Database\Default\Attributes\TableName</link>;
+<anchor xml:id="_a00191_source_1l00017"/>00017 use&#32;<link linkend="_a00688">SaboCore\Database\Default\Conditions\MysqlCondException</link>;
+<anchor xml:id="_a00191_source_1l00018"/>00018 use&#32;<link linkend="_a00696">SaboCore\Database\Default\CustomDatatypes\JoinedList</link>;
+<anchor xml:id="_a00191_source_1l00019"/>00019 use&#32;<link linkend="_a00708">SaboCore\Database\Default\Formatters\FormaterException</link>;
+<anchor xml:id="_a00191_source_1l00020"/>00020 use&#32;<link linkend="_a00724">SaboCore\Database\Default\QueryBuilder\MysqlQueryBuilder</link>;
+<anchor xml:id="_a00191_source_1l00021"/>00021 use&#32;<link linkend="_a00764">SaboCore\Database\System\DatabaseActionException</link>;
+<anchor xml:id="_a00191_source_1l00022"/>00022 use&#32;<link linkend="_a00772">SaboCore\Database\System\DatabaseCondition</link>;
+<anchor xml:id="_a00191_source_1l00023"/>00023 use&#32;<link linkend="_a00776">SaboCore\Database\System\DatabaseCondSeparator</link>;
+<anchor xml:id="_a00191_source_1l00024"/>00024 use&#32;<link linkend="_a00780">SaboCore\Database\System\DatabaseModel</link>;
+<anchor xml:id="_a00191_source_1l00025"/>00025 use&#32;<link linkend="_a00784">SaboCore\Routing\Application\Application</link>;
+<anchor xml:id="_a00191_source_1l00026"/>00026 use&#32;<link linkend="_a00868">SaboCore\Utils\List\SaboList</link>;
+<anchor xml:id="_a00191_source_1l00027"/>00027 use&#32;Throwable;
+<anchor xml:id="_a00191_source_1l00028"/>00028 
+<anchor xml:id="_a00191_source_1l00034"/><link linkend="_a00752">00034</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00752">MysqlModel</link>&#32;<emphasis role="keyword">extends</emphasis>&#32;<link linkend="_a00780">DatabaseModel</link>{
+<anchor xml:id="_a00191_source_1l00038"/><link linkend="_a00752_1abced42f2140dfc5a48ef9fa19aeb93b9">00038</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<link linkend="_a00636">TableName</link>&#32;<link linkend="_a00752_1abced42f2140dfc5a48ef9fa19aeb93b9">$tableName</link>;
+<anchor xml:id="_a00191_source_1l00039"/>00039 
+<anchor xml:id="_a00191_source_1l00043"/><link linkend="_a00752_1afda78917b71f978012567fb1e676ee6b">00043</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;array&#32;<link linkend="_a00752_1afda78917b71f978012567fb1e676ee6b">$dbColumnsConfig</link>;
+<anchor xml:id="_a00191_source_1l00044"/>00044 
+<anchor xml:id="_a00191_source_1l00048"/><link linkend="_a00752_1a65936a38d4b0124124d4179b3fcf6b23">00048</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;array&#32;<link linkend="_a00752_1a65936a38d4b0124124d4179b3fcf6b23">$joinedColumnsConfig</link>;
+<anchor xml:id="_a00191_source_1l00049"/>00049 
+<anchor xml:id="_a00191_source_1l00053"/><link linkend="_a00752_1a89fc6011dc0ab1ed75a828e0a8114788">00053</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;array&#32;<link linkend="_a00752_1a89fc6011dc0ab1ed75a828e0a8114788">$attributesOriginalValues</link>&#32;=&#32;[];
+<anchor xml:id="_a00191_source_1l00054"/>00054 
+<anchor xml:id="_a00191_source_1l00059"/><link linkend="_a00752_1ad1fec4e3f0b8aa5ce0aa3e1d17882b55">00059</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<link linkend="_a00724">MysqlQueryBuilder</link>&#32;<link linkend="_a00752_1ad1fec4e3f0b8aa5ce0aa3e1d17882b55">$queryBuilder</link>;
+<anchor xml:id="_a00191_source_1l00060"/>00060 
+<anchor xml:id="_a00191_source_1l00064"/><link linkend="_a00752_1a095c5d389db211932136b53f25f39685">00064</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a095c5d389db211932136b53f25f39685">__construct</link>(){
+<anchor xml:id="_a00191_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;<link linkend="_a00752_1aa6f1fad776a35f7b12077fc27c53317f">loadConfiguration</link>();
+<anchor xml:id="_a00191_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;queryBuilder&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00724">MysqlQueryBuilder</link>(model:&#32;$this);
+<anchor xml:id="_a00191_source_1l00067"/>00067 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00068"/>00068 
+<anchor xml:id="_a00191_source_1l00069"/>00069 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00191_source_1l00070"/><link linkend="_a00752_1a435e7d7525d4bcd0ed5e34a469f3adf6">00070</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a435e7d7525d4bcd0ed5e34a469f3adf6">create</link>():&#32;bool{
+<anchor xml:id="_a00191_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;try{
+<anchor xml:id="_a00191_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;<link linkend="_a00752_1a0c75289d1fdda4fa217e3ca49cb05090">beforeCreate</link>();
+<anchor xml:id="_a00191_source_1l00073"/>00073 
+<anchor xml:id="_a00191_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;construction&#32;des&#32;champs&#32;à&#32;insérer</emphasis>
+<anchor xml:id="_a00191_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$insertConfig&#32;=&#32;[];
+<anchor xml:id="_a00191_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$columnsConfig&#32;=&#32;$this-&gt;<link linkend="_a00752_1a367c73b2954a3aaaa9c017800eaabdc0">getColumnsConfig</link>();
+<anchor xml:id="_a00191_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$reflection&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;ReflectionClass(objectOrClass:&#32;$this);
+<anchor xml:id="_a00191_source_1l00078"/>00078 
+<anchor xml:id="_a00191_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($columnsConfig&#32;as&#32;$attributeName&#32;=&gt;&#32;$columnConfig){
+<anchor xml:id="_a00191_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!$reflection-&gt;getProperty(name:&#32;$attributeName)-&gt;isInitialized(<emphasis role="keywordtype">object</emphasis>:&#32;$this)){
+<anchor xml:id="_a00191_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($columnConfig-&gt;isNullable()&#32;)
+<anchor xml:id="_a00191_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$insertConfig[$attributeName]&#32;=&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="_a00191_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="_a00191_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$insertConfig[$attributeName]&#32;=&#32;$columnConfig-&gt;convertFromValue(data:&#32;$this-&gt;$attributeName);
+<anchor xml:id="_a00191_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00087"/>00087 
+<anchor xml:id="_a00191_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$statement&#32;=&#32;<link linkend="_a00752_1a17779fbb2c5c4c6a5685a9d3dc678187">self::execQuery</link>(queryBuilder:&#32;$this-&gt;<link linkend="_a00752_1a5c8db3de51d8b47efff2aafecbcb793b">prepareForNewQuery</link>()-&gt;insert(insertConfig:&#32;$insertConfig));
+<anchor xml:id="_a00191_source_1l00089"/>00089 
+<anchor xml:id="_a00191_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($statement&#32;===&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="_a00191_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_a00191_source_1l00092"/>00092 
+<anchor xml:id="_a00191_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;<link linkend="_a00752_1a916e923749b5decc20fb6c7427a7f934">afterCreate</link>();
+<anchor xml:id="_a00191_source_1l00094"/>00094 
+<anchor xml:id="_a00191_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_a00191_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>(Throwable){
+<anchor xml:id="_a00191_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_a00191_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00100"/>00100 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00101"/>00101 
+<anchor xml:id="_a00191_source_1l00109"/>00109 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00191_source_1l00110"/><link linkend="_a00752_1a842e4774e3b3601a005b995c02f7e883">00110</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a842e4774e3b3601a005b995c02f7e883">update</link>():&#32;bool{
+<anchor xml:id="_a00191_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;beforeUpdate();
+<anchor xml:id="_a00191_source_1l00112"/>00112 
+<anchor xml:id="_a00191_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$updateConfig&#32;=&#32;[];
+<anchor xml:id="_a00191_source_1l00114"/>00114 
+<anchor xml:id="_a00191_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;récupération&#32;des&#32;valeurs&#32;actuelles&#32;des&#32;attributs</emphasis>
+<anchor xml:id="_a00191_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($this-&gt;dbColumnsConfig&#32;as&#32;$attributeName&#32;=&gt;&#32;$columnConfig)
+<anchor xml:id="_a00191_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$updateConfig[$attributeName]&#32;=&#32;$columnConfig-&gt;convertFromValue(data:&#32;$this-&gt;$attributeName);
+<anchor xml:id="_a00191_source_1l00118"/>00118 
+<anchor xml:id="_a00191_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$queryBuilder&#32;=&#32;$this-&gt;prepareForNewQuery()-&gt;<link linkend="_a00724_1aeb12b20a8800bf40abc23f1c60b4869b">update</link>(updateConfig:&#32;$updateConfig);
+<anchor xml:id="_a00191_source_1l00120"/>00120 
+<anchor xml:id="_a00191_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;exécution&#32;de&#32;la&#32;requête</emphasis>
+<anchor xml:id="_a00191_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$statement&#32;=&#32;self::execQuery(
+<anchor xml:id="_a00191_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;queryBuilder:&#32;self::buildPrimaryKeysCondOn(model:&#32;$this,queryBuilder:&#32;$queryBuilder)
+<anchor xml:id="_a00191_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00191_source_1l00125"/>00125 
+<anchor xml:id="_a00191_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($statement&#32;===&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="_a00191_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_a00191_source_1l00128"/>00128 
+<anchor xml:id="_a00191_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;beforeDelete();
+<anchor xml:id="_a00191_source_1l00130"/>00130 
+<anchor xml:id="_a00191_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_a00191_source_1l00132"/>00132 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00133"/>00133 
+<anchor xml:id="_a00191_source_1l00141"/>00141 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00191_source_1l00142"/><link linkend="_a00752_1a13bdffdd926f26b825ea57066334ff01">00142</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<emphasis role="keyword">delete</emphasis>():&#32;<emphasis role="keywordtype">bool</emphasis>{
+<anchor xml:id="_a00191_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;beforeDelete();
+<anchor xml:id="_a00191_source_1l00144"/>00144 
+<anchor xml:id="_a00191_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$queryBuilder&#32;=&#32;$this-&gt;prepareForNewQuery()-&gt;<link linkend="_a00724_1a13bdffdd926f26b825ea57066334ff01">delete</link>();
+<anchor xml:id="_a00191_source_1l00146"/>00146 
+<anchor xml:id="_a00191_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;exécution&#32;de&#32;la&#32;requête</emphasis>
+<anchor xml:id="_a00191_source_1l00148"/>00148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$statement&#32;=&#32;self::execQuery(
+<anchor xml:id="_a00191_source_1l00149"/>00149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;queryBuilder:&#32;self::buildPrimaryKeysCondOn(model:&#32;$this,queryBuilder:&#32;$queryBuilder)
+<anchor xml:id="_a00191_source_1l00150"/>00150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00191_source_1l00151"/>00151 
+<anchor xml:id="_a00191_source_1l00152"/>00152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($statement&#32;===&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="_a00191_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_a00191_source_1l00154"/>00154 
+<anchor xml:id="_a00191_source_1l00155"/>00155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;afterDelete();
+<anchor xml:id="_a00191_source_1l00156"/>00156 
+<anchor xml:id="_a00191_source_1l00157"/>00157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_a00191_source_1l00158"/>00158 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00159"/>00159 
+<anchor xml:id="_a00191_source_1l00169"/><link linkend="_a00752_1a1f91325a4bccedc11b6a550ce1b474e1">00169</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a1f91325a4bccedc11b6a550ce1b474e1">setAttribute</link>(<emphasis role="keywordtype">string</emphasis>&#32;$attributeName,mixed&#32;$value):<link linkend="_a00752">MysqlModel</link>{
+<anchor xml:id="_a00191_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$columnConfig&#32;=&#32;$this-&gt;dbColumnsConfig[$attributeName]&#32;??&#32;null;
+<anchor xml:id="_a00191_source_1l00171"/>00171 
+<anchor xml:id="_a00191_source_1l00172"/>00172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($columnConfig&#32;===&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="_a00191_source_1l00173"/>00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00584">ConfigException</link>(message:&#32;<emphasis role="stringliteral">&quot;Attribut&#32;non&#32;trouvé&quot;</emphasis>);
+<anchor xml:id="_a00191_source_1l00174"/>00174 
+<anchor xml:id="_a00191_source_1l00175"/>00175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;vérification&#32;de&#32;la&#32;validité&#32;et&#32;formatage&#32;de&#32;la&#32;donnée</emphasis>
+<anchor xml:id="_a00191_source_1l00176"/>00176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$formatedData&#32;=&#32;$columnConfig
+<anchor xml:id="_a00191_source_1l00177"/>00177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;-&gt;verifyData(baseModel:&#32;$this,attributeName:&#32;$attributeName,data:&#32;$value)
+<anchor xml:id="_a00191_source_1l00178"/>00178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;-&gt;formatData(baseModel:&#32;$this,originalData:&#32;$value);
+<anchor xml:id="_a00191_source_1l00179"/>00179 
+<anchor xml:id="_a00191_source_1l00180"/>00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;attributesOriginalValues[$attributeName]&#32;=&#32;$value;
+<anchor xml:id="_a00191_source_1l00181"/>00181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;$attributeName&#32;=&#32;$formatedData;
+<anchor xml:id="_a00191_source_1l00182"/>00182 
+<anchor xml:id="_a00191_source_1l00183"/>00183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$this;
+<anchor xml:id="_a00191_source_1l00184"/>00184 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00185"/>00185 
+<anchor xml:id="_a00191_source_1l00194"/><link linkend="_a00752_1addc4f33c41db3af579745f40a4c071a0">00194</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1addc4f33c41db3af579745f40a4c071a0">getAttribute</link>(<emphasis role="keywordtype">string</emphasis>&#32;$attributeName,<emphasis role="keywordtype">bool</emphasis>&#32;$reform&#32;=&#32;<emphasis role="keyword">true</emphasis>):mixed{
+<anchor xml:id="_a00191_source_1l00195"/>00195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$columnConfig&#32;=&#32;$this-&gt;dbColumnsConfig[$attributeName]&#32;??&#32;null;
+<anchor xml:id="_a00191_source_1l00196"/>00196 
+<anchor xml:id="_a00191_source_1l00197"/>00197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($columnConfig&#32;===&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="_a00191_source_1l00198"/>00198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00584">ConfigException</link>(message:&#32;<emphasis role="stringliteral">&quot;Attribut&#32;non&#32;trouvé&quot;</emphasis>);
+<anchor xml:id="_a00191_source_1l00199"/>00199 
+<anchor xml:id="_a00191_source_1l00200"/>00200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$data&#32;=&#32;$this-&gt;$attributeName;
+<anchor xml:id="_a00191_source_1l00201"/>00201 
+<anchor xml:id="_a00191_source_1l00202"/>00202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;reformation&#32;de&#32;la&#32;donnée</emphasis>
+<anchor xml:id="_a00191_source_1l00203"/>00203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($reform)
+<anchor xml:id="_a00191_source_1l00204"/>00204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$data&#32;=&#32;$columnConfig-&gt;reformData(baseModel:&#32;$this,formatedData:&#32;$data);
+<anchor xml:id="_a00191_source_1l00205"/>00205 
+<anchor xml:id="_a00191_source_1l00206"/>00206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$data;
+<anchor xml:id="_a00191_source_1l00207"/>00207 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00208"/>00208 
+<anchor xml:id="_a00191_source_1l00215"/><link linkend="_a00752_1afaa5a537be9a57a24a933a503c390e81">00215</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1afaa5a537be9a57a24a933a503c390e81">getAttributOriginal</link>(<emphasis role="keywordtype">string</emphasis>&#32;$attributeName):mixed{
+<anchor xml:id="_a00191_source_1l00216"/>00216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;attributesOriginalValues[$attributeName]&#32;??&#32;null;
+<anchor xml:id="_a00191_source_1l00217"/>00217 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00218"/>00218 
+<anchor xml:id="_a00191_source_1l00222"/><link linkend="_a00752_1a367c73b2954a3aaaa9c017800eaabdc0">00222</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a367c73b2954a3aaaa9c017800eaabdc0">getColumnsConfig</link>():array{
+<anchor xml:id="_a00191_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;dbColumnsConfig;
+<anchor xml:id="_a00191_source_1l00224"/>00224 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00225"/>00225 
+<anchor xml:id="_a00191_source_1l00231"/><link linkend="_a00752_1a0cb11513c4c07d90599e0e6efe6b43cf">00231</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a0cb11513c4c07d90599e0e6efe6b43cf">getColumnConfig</link>(<emphasis role="keywordtype">string</emphasis>&#32;$attributName):<link linkend="_a00632">TableColumn</link>|<link linkend="_a00612">EnumColumn</link>|null{
+<anchor xml:id="_a00191_source_1l00232"/>00232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;dbColumnsConfig[$attributName]&#32;??&#32;null;
+<anchor xml:id="_a00191_source_1l00233"/>00233 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00234"/>00234 
+<anchor xml:id="_a00191_source_1l00238"/><link linkend="_a00752_1a4f90124faedf680bf974eae25be88751">00238</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a4f90124faedf680bf974eae25be88751">getJoinedColumnsConfig</link>():array{
+<anchor xml:id="_a00191_source_1l00239"/>00239 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;joinedColumnsConfig;
+<anchor xml:id="_a00191_source_1l00240"/>00240 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00241"/>00241 
+<anchor xml:id="_a00191_source_1l00245"/><link linkend="_a00752_1a930e2242bdbcebb63085197a37527f4d">00245</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a930e2242bdbcebb63085197a37527f4d">getTableNameManager</link>():&#32;<link linkend="_a00636">TableName</link>{
+<anchor xml:id="_a00191_source_1l00246"/>00246 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;tableName;
+<anchor xml:id="_a00191_source_1l00247"/>00247 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00248"/>00248 
+<anchor xml:id="_a00191_source_1l00254"/><link linkend="_a00752_1a173e232fc80ce6b4e405fc1aaac07435">00254</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a173e232fc80ce6b4e405fc1aaac07435">getAsArray</link>(<emphasis role="keywordtype">bool</emphasis>&#32;$addJoinedColumns&#32;=&#32;<emphasis role="keyword">true</emphasis>):array{
+<anchor xml:id="_a00191_source_1l00255"/>00255 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$result&#32;=&#32;[];
+<anchor xml:id="_a00191_source_1l00256"/>00256 
+<anchor xml:id="_a00191_source_1l00257"/>00257 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;récupération&#32;des&#32;attributs</emphasis>
+<anchor xml:id="_a00191_source_1l00258"/>00258 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($this-&gt;dbColumnsConfig&#32;as&#32;$attributeName&#32;=&gt;&#32;$_)
+<anchor xml:id="_a00191_source_1l00259"/>00259 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$result[$attributeName]&#32;=&#32;$this-&gt;getAttribute(attributeName:&#32;$attributeName);
+<anchor xml:id="_a00191_source_1l00260"/>00260 
+<anchor xml:id="_a00191_source_1l00261"/>00261 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!$addJoinedColumns)
+<anchor xml:id="_a00191_source_1l00262"/>00262 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$result;
+<anchor xml:id="_a00191_source_1l00263"/>00263 
+<anchor xml:id="_a00191_source_1l00264"/>00264 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;récupération&#32;des&#32;colonnes&#32;jointes</emphasis>
+<anchor xml:id="_a00191_source_1l00265"/>00265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($this-&gt;joinedColumnsConfig&#32;as&#32;$attributeName&#32;=&gt;&#32;$_)
+<anchor xml:id="_a00191_source_1l00266"/>00266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$result[$attributeName]&#32;=&#32;array_map(
+<anchor xml:id="_a00191_source_1l00267"/>00267 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;callback:&#32;fn(<link linkend="_a00752">MysqlModel</link>&#32;$joinedModel):array&#32;=&gt;&#32;$joinedModel-&gt;<link linkend="_a00752_1a173e232fc80ce6b4e405fc1aaac07435">getAsArray</link>(),
+<anchor xml:id="_a00191_source_1l00268"/>00268 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;array:&#32;$this-&gt;$attributeName-&gt;toArray()
+<anchor xml:id="_a00191_source_1l00269"/>00269 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00191_source_1l00270"/>00270 
+<anchor xml:id="_a00191_source_1l00271"/>00271 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$result;
+<anchor xml:id="_a00191_source_1l00272"/>00272 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00273"/>00273 
+<anchor xml:id="_a00191_source_1l00277"/><link linkend="_a00752_1a5b96158bb7d825f584218bc778e08646">00277</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a5b96158bb7d825f584218bc778e08646">setAttributesOriginalValues</link>(array&#32;$attributesOriginalValues):&#32;void{
+<anchor xml:id="_a00191_source_1l00278"/>00278 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;attributesOriginalValues&#32;=&#32;$attributesOriginalValues;
+<anchor xml:id="_a00191_source_1l00279"/>00279 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00280"/>00280 
+<anchor xml:id="_a00191_source_1l00281"/>00281 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00191_source_1l00282"/><link linkend="_a00752_1a2af812a4f13e843033353862bbc223b5">00282</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a2af812a4f13e843033353862bbc223b5">afterGeneration</link>(mixed&#32;$datas&#32;=&#32;[]):&#32;<link linkend="_a00780">DatabaseModel</link>{
+<anchor xml:id="_a00191_source_1l00283"/>00283 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;parent::afterGeneration(datas:&#32;$datas);
+<anchor xml:id="_a00191_source_1l00284"/>00284 
+<anchor xml:id="_a00191_source_1l00285"/>00285 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;sauvegarde&#32;des&#32;valeurs&#32;par&#32;défaut&#32;des&#32;attributs</emphasis>
+<anchor xml:id="_a00191_source_1l00286"/>00286 
+<anchor xml:id="_a00191_source_1l00287"/>00287 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($this-&gt;dbColumnsConfig&#32;as&#32;$attributeName&#32;=&gt;&#32;$_)
+<anchor xml:id="_a00191_source_1l00288"/>00288 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;attributesOriginalValues[$attributeName]&#32;=&#32;$this-&gt;$attributeName;
+<anchor xml:id="_a00191_source_1l00289"/>00289 
+<anchor xml:id="_a00191_source_1l00290"/>00290 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$this;
+<anchor xml:id="_a00191_source_1l00291"/>00291 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00292"/>00292 
+<anchor xml:id="_a00191_source_1l00293"/>00293 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00191_source_1l00294"/><link linkend="_a00752_1a0c75289d1fdda4fa217e3ca49cb05090">00294</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a0c75289d1fdda4fa217e3ca49cb05090">beforeCreate</link>(mixed&#32;$datas&#32;=&#32;[]):&#32;<link linkend="_a00780">DatabaseModel</link>{
+<anchor xml:id="_a00191_source_1l00295"/>00295 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;parent::beforeCreate(datas:&#32;$datas);
+<anchor xml:id="_a00191_source_1l00296"/>00296 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00297"/>00297 
+<anchor xml:id="_a00191_source_1l00298"/>00298 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00191_source_1l00299"/><link linkend="_a00752_1a916e923749b5decc20fb6c7427a7f934">00299</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a916e923749b5decc20fb6c7427a7f934">afterCreate</link>(mixed&#32;$datas&#32;=&#32;[]):&#32;<link linkend="_a00780">DatabaseModel</link>{
+<anchor xml:id="_a00191_source_1l00300"/>00300 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;parent::afterCreate(datas:&#32;$datas);
+<anchor xml:id="_a00191_source_1l00301"/>00301 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00302"/>00302 
+<anchor xml:id="_a00191_source_1l00303"/>00303 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00191_source_1l00304"/><link linkend="_a00752_1a4954a6a00ed508bf3c2094a5f7fe3ae4">00304</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a4954a6a00ed508bf3c2094a5f7fe3ae4">afterUpdate</link>(mixed&#32;$datas&#32;=&#32;[]):&#32;<link linkend="_a00780">DatabaseModel</link>{
+<anchor xml:id="_a00191_source_1l00305"/>00305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;parent::afterUpdate(datas:&#32;$datas);
+<anchor xml:id="_a00191_source_1l00306"/>00306 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00307"/>00307 
+<anchor xml:id="_a00191_source_1l00308"/>00308 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00191_source_1l00309"/><link linkend="_a00752_1a5f49ecb0f47e0a736f9e40e77ae08e33">00309</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a5f49ecb0f47e0a736f9e40e77ae08e33">beforeUpdate</link>(mixed&#32;$datas&#32;=&#32;[]):&#32;<link linkend="_a00780">DatabaseModel</link>{
+<anchor xml:id="_a00191_source_1l00310"/>00310 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;parent::beforeUpdate(datas:&#32;$datas);
+<anchor xml:id="_a00191_source_1l00311"/>00311 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00312"/>00312 
+<anchor xml:id="_a00191_source_1l00313"/>00313 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00191_source_1l00314"/><link linkend="_a00752_1a0f4e9dcb01324de7268d8537c499701c">00314</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a0f4e9dcb01324de7268d8537c499701c">afterDelete</link>(mixed&#32;$datas&#32;=&#32;[]):&#32;<link linkend="_a00780">DatabaseModel</link>{
+<anchor xml:id="_a00191_source_1l00315"/>00315 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;parent::afterDelete(datas:&#32;$datas);
+<anchor xml:id="_a00191_source_1l00316"/>00316 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00317"/>00317 
+<anchor xml:id="_a00191_source_1l00318"/>00318 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00191_source_1l00319"/><link linkend="_a00752_1ae76543c6649b38cccc6deee87a2bfa43">00319</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1ae76543c6649b38cccc6deee87a2bfa43">beforeDelete</link>(mixed&#32;$datas&#32;=&#32;[]):&#32;<link linkend="_a00780">DatabaseModel</link>{
+<anchor xml:id="_a00191_source_1l00320"/>00320 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;parent::beforeDelete(datas:&#32;$datas);
+<anchor xml:id="_a00191_source_1l00321"/>00321 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00322"/>00322 
+<anchor xml:id="_a00191_source_1l00329"/>00329 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00191_source_1l00330"/><link linkend="_a00752_1a2540763207492350e5f6cac22f32e7f5">00330</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a2540763207492350e5f6cac22f32e7f5">beforeGeneration</link>(mixed&#32;$datas&#32;=&#32;[]):&#32;<link linkend="_a00752">MysqlModel</link>{
+<anchor xml:id="_a00191_source_1l00331"/>00331 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;parent::beforeGeneration(datas:&#32;$datas);
+<anchor xml:id="_a00191_source_1l00332"/>00332 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00333"/>00333 
+<anchor xml:id="_a00191_source_1l00339"/><link linkend="_a00752_1aa6f1fad776a35f7b12077fc27c53317f">00339</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1aa6f1fad776a35f7b12077fc27c53317f">loadConfiguration</link>():void{
+<anchor xml:id="_a00191_source_1l00340"/>00340 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$reflection&#32;=&#32;new&#32;ReflectionClass(objectOrClass:&#32;$this);
+<anchor xml:id="_a00191_source_1l00341"/>00341 
+<anchor xml:id="_a00191_source_1l00342"/>00342 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;récupération&#32;du&#32;nom&#32;de&#32;la&#32;table</emphasis>
+<anchor xml:id="_a00191_source_1l00343"/>00343 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$found&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_a00191_source_1l00344"/>00344 
+<anchor xml:id="_a00191_source_1l00345"/>00345 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($reflection-&gt;getAttributes()&#32;as&#32;$attribute){
+<anchor xml:id="_a00191_source_1l00346"/>00346 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($attribute-&gt;getName()&#32;===&#32;TableName::class){
+<anchor xml:id="_a00191_source_1l00347"/>00347 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;tableName&#32;=&#32;$attribute-&gt;newInstance();
+<anchor xml:id="_a00191_source_1l00348"/>00348 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$found&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_a00191_source_1l00349"/>00349 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_a00191_source_1l00350"/>00350 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00351"/>00351 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00352"/>00352 
+<anchor xml:id="_a00191_source_1l00353"/>00353 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!$found)
+<anchor xml:id="_a00191_source_1l00354"/>00354 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00584">ConfigException</link>(message:&#32;<emphasis role="stringliteral">&quot;Model&#32;mal&#32;configuré&quot;</emphasis>);
+<anchor xml:id="_a00191_source_1l00355"/>00355 
+<anchor xml:id="_a00191_source_1l00356"/>00356 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;chargement&#32;des&#32;colonnes&#32;lié&#32;à&#32;la&#32;base&#32;de&#32;donnée</emphasis>
+<anchor xml:id="_a00191_source_1l00357"/>00357 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;dbColumnsConfig&#32;=&#32;[];
+<anchor xml:id="_a00191_source_1l00358"/>00358 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;joinedColumnsConfig&#32;=&#32;[];
+<anchor xml:id="_a00191_source_1l00359"/>00359 
+<anchor xml:id="_a00191_source_1l00360"/>00360 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($reflection-&gt;getProperties()&#32;as&#32;$property){
+<anchor xml:id="_a00191_source_1l00361"/>00361 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$propertyName&#32;=&#32;$property-&gt;getName();
+<anchor xml:id="_a00191_source_1l00362"/>00362 
+<anchor xml:id="_a00191_source_1l00363"/>00363 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;recherche&#32;de&#32;l&apos;attribut&#32;descriptif</emphasis>
+<anchor xml:id="_a00191_source_1l00364"/>00364 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($property-&gt;getAttributes()&#32;as&#32;$attribute){
+<anchor xml:id="_a00191_source_1l00365"/>00365 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$instance&#32;=&#32;$attribute-&gt;newInstance();
+<anchor xml:id="_a00191_source_1l00366"/>00366 
+<anchor xml:id="_a00191_source_1l00367"/>00367 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($instance&#32;instanceof&#32;<link linkend="_a00632">TableColumn</link>){
+<anchor xml:id="_a00191_source_1l00368"/>00368 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;dbColumnsConfig[$propertyName]&#32;=&#32;$instance;
+<anchor xml:id="_a00191_source_1l00369"/>00369 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_a00191_source_1l00370"/>00370 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00371"/>00371 
+<anchor xml:id="_a00191_source_1l00372"/>00372 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($instance&#32;instanceOf&#32;JoinedColumn){
+<anchor xml:id="_a00191_source_1l00373"/>00373 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;joinedColumnsConfig[$propertyName]&#32;=&#32;$instance;
+<anchor xml:id="_a00191_source_1l00374"/>00374 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_a00191_source_1l00375"/>00375 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00376"/>00376 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00377"/>00377 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00378"/>00378 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00379"/>00379 
+<anchor xml:id="_a00191_source_1l00384"/><link linkend="_a00752_1a5c8db3de51d8b47efff2aafecbcb793b">00384</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a5c8db3de51d8b47efff2aafecbcb793b">prepareForNewQuery</link>():<link linkend="_a00724">MysqlQueryBuilder</link>{
+<anchor xml:id="_a00191_source_1l00385"/>00385 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;queryBuilder-&gt;reset();
+<anchor xml:id="_a00191_source_1l00386"/>00386 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00387"/>00387 
+<anchor xml:id="_a00191_source_1l00393"/><link linkend="_a00752_1a6384591ddfa09e979deb8a695bca0f67">00393</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a6384591ddfa09e979deb8a695bca0f67">lastInsertId</link>():int|null{
+<anchor xml:id="_a00191_source_1l00394"/>00394 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$provider&#32;=&#32;self::getDatabaseConfig()-&gt;getConfig(name:&#32;DatabaseConfig::PROVIDER-&gt;value);
+<anchor xml:id="_a00191_source_1l00395"/>00395 
+<anchor xml:id="_a00191_source_1l00396"/>00396 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$provider-&gt;getCon()?-&gt;lastInsertId();
+<anchor xml:id="_a00191_source_1l00397"/>00397 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00398"/>00398 
+<anchor xml:id="_a00191_source_1l00408"/><link linkend="_a00752_1a8ca12dad8835c520ac66600d7b5d094f">00408</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a8ca12dad8835c520ac66600d7b5d094f">createFromDatabaseLine</link>(?PDOStatement&#32;$statement,<link linkend="_a00724">MysqlQueryBuilder</link>&#32;$queryBuilder):<link linkend="_a00752">MysqlModel</link>|null{
+<anchor xml:id="_a00191_source_1l00409"/>00409 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if($statement&#32;===&#32;null)
+<anchor xml:id="_a00191_source_1l00410"/>00410 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;throw&#32;new&#32;<link linkend="_a00744">MysqlException</link>(message:&#32;<emphasis role="stringliteral">&quot;Echec&#32;de&#32;construction&#32;de&#32;la&#32;requête&quot;</emphasis>);
+<anchor xml:id="_a00191_source_1l00411"/>00411 
+<anchor xml:id="_a00191_source_1l00412"/>00412 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$lineConfig&#32;=&#32;$statement-&gt;fetch(mode:&#32;PDO::FETCH_ASSOC);
+<anchor xml:id="_a00191_source_1l00413"/>00413 
+<anchor xml:id="_a00191_source_1l00414"/>00414 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($lineConfig&#32;===&#32;<emphasis role="keyword">null</emphasis>&#32;||&#32;$lineConfig&#32;===&#32;<emphasis role="keyword">false</emphasis>)
+<anchor xml:id="_a00191_source_1l00415"/>00415 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="_a00191_source_1l00416"/>00416 
+<anchor xml:id="_a00191_source_1l00417"/>00417 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;self::createModelFromLine(
+<anchor xml:id="_a00191_source_1l00418"/>00418 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;line:&#32;$lineConfig,
+<anchor xml:id="_a00191_source_1l00419"/>00419 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;modelClass:&#32;get_class(<emphasis role="keywordtype">object</emphasis>:&#32;$queryBuilder-&gt;<link linkend="_a00724_1aba3107b9a047d1ca05c264eaec4983d0">getBaseModel</link>())
+<anchor xml:id="_a00191_source_1l00420"/>00420 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00191_source_1l00421"/>00421 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00422"/>00422 
+<anchor xml:id="_a00191_source_1l00432"/><link linkend="_a00752_1aa1cbbdbbcad1d4465de829f58f92995b">00432</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1aa1cbbdbbcad1d4465de829f58f92995b">createFromDatabaseLines</link>(?PDOStatement&#32;$statement,<link linkend="_a00724">MysqlQueryBuilder</link>&#32;$queryBuilder):<link linkend="_a00868">SaboList</link>{
+<anchor xml:id="_a00191_source_1l00433"/>00433 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$models&#32;=&#32;[];
+<anchor xml:id="_a00191_source_1l00434"/>00434 
+<anchor xml:id="_a00191_source_1l00435"/>00435 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>(<emphasis role="keyword">true</emphasis>){
+<anchor xml:id="_a00191_source_1l00436"/>00436 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$model&#32;=&#32;self::createFromDatabaseLine(statement:&#32;$statement,queryBuilder:&#32;$queryBuilder);
+<anchor xml:id="_a00191_source_1l00437"/>00437 
+<anchor xml:id="_a00191_source_1l00438"/>00438 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($model&#32;===&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="_a00191_source_1l00439"/>00439 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_a00191_source_1l00440"/>00440 
+<anchor xml:id="_a00191_source_1l00441"/>00441 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$models[]&#32;=&#32;$model;
+<anchor xml:id="_a00191_source_1l00442"/>00442 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00443"/>00443 
+<anchor xml:id="_a00191_source_1l00444"/>00444 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00868">SaboList</link>(datas:&#32;$models);
+<anchor xml:id="_a00191_source_1l00445"/>00445 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00446"/>00446 
+<anchor xml:id="_a00191_source_1l00453"/>00453 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00191_source_1l00454"/><link linkend="_a00752_1ad29e4ef1858f02bf16baf2705bb5fc93">00454</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1ad29e4ef1858f02bf16baf2705bb5fc93">findOne</link>(<link linkend="_a00772">DatabaseCondition</link>|<link linkend="_a00776">DatabaseCondSeparator</link>&#32;...$findBuilders):&#32;<link linkend="_a00752">MysqlModel</link>|null{
+<anchor xml:id="_a00191_source_1l00455"/>00455 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;try{
+<anchor xml:id="_a00191_source_1l00456"/>00456 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$queryBuilder&#32;=&#32;<link linkend="_a00724">MysqlQueryBuilder</link>::createFrom(modelClass:&#32;get_called_class());
+<anchor xml:id="_a00191_source_1l00457"/>00457 
+<anchor xml:id="_a00191_source_1l00458"/>00458 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$queryBuilder-&gt;<link linkend="_a00724_1aa26fe6f4ec7770e8e77a26a0a54d9daf">select</link>();
+<anchor xml:id="_a00191_source_1l00459"/>00459 
+<anchor xml:id="_a00191_source_1l00460"/>00460 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!empty($findBuilders)&#32;)
+<anchor xml:id="_a00191_source_1l00461"/>00461 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$queryBuilder-&gt;<link linkend="_a00724_1a67ecf76c1603c22a9f286e71d3f2c2d2">where</link>()-&gt;cond(...$findBuilders);
+<anchor xml:id="_a00191_source_1l00462"/>00462 
+<anchor xml:id="_a00191_source_1l00463"/>00463 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$queryBuilder-&gt;<link linkend="_a00724_1a444602b3a500f06d2dd7212fa5bc8321">limit</link>(count:&#32;1);
+<anchor xml:id="_a00191_source_1l00464"/>00464 
+<anchor xml:id="_a00191_source_1l00465"/>00465 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;self::createFromDatabaseLine(statement:&#32;self::execQuery(queryBuilder:&#32;$queryBuilder),queryBuilder:&#32;$queryBuilder);
+<anchor xml:id="_a00191_source_1l00466"/>00466 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00467"/>00467 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>(<link linkend="_a00584">ConfigException</link>&#32;$e){
+<anchor xml:id="_a00191_source_1l00468"/>00468 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;$e;
+<anchor xml:id="_a00191_source_1l00469"/>00469 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00470"/>00470 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>(Throwable){
+<anchor xml:id="_a00191_source_1l00471"/>00471 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="_a00191_source_1l00472"/>00472 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00473"/>00473 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00474"/>00474 
+<anchor xml:id="_a00191_source_1l00483"/>00483 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#[Override]</emphasis>
+<anchor xml:id="_a00191_source_1l00484"/><link linkend="_a00752_1a5c4801a810bd1777c2a40584beefc1f5">00484</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a5c4801a810bd1777c2a40584beefc1f5">findAll</link>(<link linkend="_a00772">DatabaseCondition</link>|<link linkend="_a00776">DatabaseCondSeparator</link>&#32;...$findBuilders):&#32;<link linkend="_a00868">SaboList</link>{
+<anchor xml:id="_a00191_source_1l00485"/>00485 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$queryBuilder&#32;=&#32;<link linkend="_a00724">MysqlQueryBuilder</link>::createFrom(modelClass:&#32;get_called_class());
+<anchor xml:id="_a00191_source_1l00486"/>00486 
+<anchor xml:id="_a00191_source_1l00487"/>00487 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$queryBuilder-&gt;<link linkend="_a00724_1aa26fe6f4ec7770e8e77a26a0a54d9daf">select</link>();
+<anchor xml:id="_a00191_source_1l00488"/>00488 
+<anchor xml:id="_a00191_source_1l00489"/>00489 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!empty($findBuilders)&#32;)
+<anchor xml:id="_a00191_source_1l00490"/>00490 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$queryBuilder-&gt;<link linkend="_a00724_1a67ecf76c1603c22a9f286e71d3f2c2d2">where</link>()-&gt;cond(...$findBuilders);
+<anchor xml:id="_a00191_source_1l00491"/>00491 
+<anchor xml:id="_a00191_source_1l00492"/>00492 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;self::createFromDatabaseLines(statement:&#32;self::execQuery(queryBuilder:&#32;$queryBuilder),queryBuilder:&#32;$queryBuilder);
+<anchor xml:id="_a00191_source_1l00493"/>00493 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00494"/>00494 
+<anchor xml:id="_a00191_source_1l00500"/><link linkend="_a00752_1a57bc6385b68f9e30e0c11119615d5cc2">00500</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a57bc6385b68f9e30e0c11119615d5cc2">newInstanceOfModel</link>(<emphasis role="keywordtype">string</emphasis>&#32;$modelClass):<link linkend="_a00752">MysqlModel</link>{
+<anchor xml:id="_a00191_source_1l00501"/>00501 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;try{
+<anchor xml:id="_a00191_source_1l00502"/>00502 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$reflection&#32;=&#32;new&#32;ReflectionClass(objectOrClass:&#32;$modelClass);
+<anchor xml:id="_a00191_source_1l00503"/>00503 
+<anchor xml:id="_a00191_source_1l00504"/>00504 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$model&#32;=&#32;$reflection-&gt;newInstance();
+<anchor xml:id="_a00191_source_1l00505"/>00505 
+<anchor xml:id="_a00191_source_1l00506"/>00506 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!($model&#32;instanceof&#32;<link linkend="_a00752">MysqlModel</link>))
+<anchor xml:id="_a00191_source_1l00507"/>00507 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00584">ConfigException</link>(message:&#32;<emphasis role="stringliteral">&quot;La&#32;class&#32;fournie&#32;doit&#32;être&#32;une&#32;sous&#32;class&#32;de&#32;&quot;</emphasis>&#32;.&#32;MysqlModel::class);
+<anchor xml:id="_a00191_source_1l00508"/>00508 
+<anchor xml:id="_a00191_source_1l00509"/>00509 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$model;
+<anchor xml:id="_a00191_source_1l00510"/>00510 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00511"/>00511 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>(<link linkend="_a00584">ConfigException</link>&#32;$e){
+<anchor xml:id="_a00191_source_1l00512"/>00512 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;$e;
+<anchor xml:id="_a00191_source_1l00513"/>00513 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00514"/>00514 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">catch</emphasis>(Throwable){
+<anchor xml:id="_a00191_source_1l00515"/>00515 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;ConfigException(message:&#32;<emphasis role="stringliteral">&quot;Une&#32;erreur&#32;s&apos;est&#32;produite&#32;lors&#32;de&#32;la&#32;construction&#32;du&#32;model&quot;</emphasis>);
+<anchor xml:id="_a00191_source_1l00516"/>00516 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00517"/>00517 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00518"/>00518 
+<anchor xml:id="_a00191_source_1l00526"/><link linkend="_a00752_1a17779fbb2c5c4c6a5685a9d3dc678187">00526</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a17779fbb2c5c4c6a5685a9d3dc678187">execQuery</link>(<link linkend="_a00724">MysqlQueryBuilder</link>&#32;$queryBuilder,<emphasis role="keywordtype">bool</emphasis>&#32;$execute&#32;=&#32;<emphasis role="keyword">true</emphasis>):?PDOStatement{
+<anchor xml:id="_a00191_source_1l00527"/>00527 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$provider&#32;=&#32;self::getDatabaseConfig()-&gt;getConfig(name:&#32;DatabaseConfig::PROVIDER-&gt;value);
+<anchor xml:id="_a00191_source_1l00528"/>00528 
+<anchor xml:id="_a00191_source_1l00529"/>00529 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$statement&#32;=&#32;$queryBuilder-&gt;<link linkend="_a00724_1ad4fc9ceb9f4a748179c2302c36b8bfeb">prepareRequest</link>(pdo:&#32;$provider-&gt;getCon());
+<anchor xml:id="_a00191_source_1l00530"/>00530 
+<anchor xml:id="_a00191_source_1l00531"/>00531 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($statement&#32;===&#32;<emphasis role="keyword">null</emphasis>&#32;||&#32;($execute&#32;&amp;&amp;&#32;!$statement-&gt;execute()&#32;)&#32;)
+<anchor xml:id="_a00191_source_1l00532"/>00532 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="_a00191_source_1l00533"/>00533 
+<anchor xml:id="_a00191_source_1l00534"/>00534 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$statement;
+<anchor xml:id="_a00191_source_1l00535"/>00535 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00536"/>00536 
+<anchor xml:id="_a00191_source_1l00544"/><link linkend="_a00752_1a7588e31dc712e47d7eb710bc49e56395">00544</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a7588e31dc712e47d7eb710bc49e56395">loadJoinedColumns</link>(<link linkend="_a00752">MysqlModel</link>&#32;$model,<link linkend="_a00620">JoinedColumn</link>&#32;$joinedColumn):<link linkend="_a00868">SaboList</link>{
+<anchor xml:id="_a00191_source_1l00545"/>00545 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$joinConfig&#32;=&#32;$joinedColumn-&gt;getJoinConfig();
+<anchor xml:id="_a00191_source_1l00546"/>00546 
+<anchor xml:id="_a00191_source_1l00547"/>00547 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;construction&#32;des&#32;conditions&#32;de&#32;match</emphasis>
+<anchor xml:id="_a00191_source_1l00548"/>00548 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$conditions&#32;=&#32;[MysqlCondSeparator::GROUP_START()];
+<anchor xml:id="_a00191_source_1l00549"/>00549 
+<anchor xml:id="_a00191_source_1l00550"/>00550 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($joinConfig&#32;as&#32;$baseModelAttributeName&#32;=&gt;&#32;$joinModelAttributeName){
+<anchor xml:id="_a00191_source_1l00551"/>00551 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$conditions[]&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00736">MysqlCondition</link>(
+<anchor xml:id="_a00191_source_1l00552"/>00552 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;condGetter:&#32;$joinModelAttributeName,
+<anchor xml:id="_a00191_source_1l00553"/>00553 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;comparator:&#32;MysqlComparator::EQUAL(),
+<anchor xml:id="_a00191_source_1l00554"/>00554 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;conditionValue:&#32;$model-&gt;$baseModelAttributeName
+<anchor xml:id="_a00191_source_1l00555"/>00555 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00191_source_1l00556"/>00556 
+<anchor xml:id="_a00191_source_1l00557"/>00557 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$conditions[]&#32;=&#32;MysqlCondSeparator::AND();
+<anchor xml:id="_a00191_source_1l00558"/>00558 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00559"/>00559 
+<anchor xml:id="_a00191_source_1l00560"/>00560 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$size&#32;=&#32;count(value:&#32;$conditions);
+<anchor xml:id="_a00191_source_1l00561"/>00561 
+<anchor xml:id="_a00191_source_1l00562"/>00562 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($size&#32;===&#32;1)
+<anchor xml:id="_a00191_source_1l00563"/>00563 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00744">MysqlException</link>(message:&#32;<emphasis role="stringliteral">&quot;Aucune&#32;condition&#32;de&#32;match&#32;sur&#32;le&#32;liste&#32;jointe&quot;</emphasis>,isDisplayable:&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="_a00191_source_1l00564"/>00564 
+<anchor xml:id="_a00191_source_1l00565"/>00565 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;remplacement&#32;du&#32;dernier&#32;and&#32;par&#32;la&#32;fermeture&#32;de&#32;groupe</emphasis>
+<anchor xml:id="_a00191_source_1l00566"/>00566 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$conditions[$size&#32;-&#32;1]&#32;=&#32;MysqlCondSeparator::GROUP_END();
+<anchor xml:id="_a00191_source_1l00567"/>00567 
+<anchor xml:id="_a00191_source_1l00568"/>00568 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;@call_user_func_array([$joinedColumn-&gt;<link linkend="_a00620_1a076e6f60e412926f7f6d80aa76d5653a">getClassModel</link>(),<emphasis role="stringliteral">&quot;findAll&quot;</emphasis>],$conditions);
+<anchor xml:id="_a00191_source_1l00569"/>00569 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00570"/>00570 
+<anchor xml:id="_a00191_source_1l00580"/><link linkend="_a00752_1a26b62efcd0ee12e79278ebdb1dfc39e0">00580</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1a26b62efcd0ee12e79278ebdb1dfc39e0">createModelFromLine</link>(array&#32;$line,<emphasis role="keywordtype">string</emphasis>&#32;$modelClass):<link linkend="_a00752">MysqlModel</link>{
+<anchor xml:id="_a00191_source_1l00581"/>00581 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$model&#32;=&#32;self::newInstanceOfModel(modelClass:&#32;$modelClass);
+<anchor xml:id="_a00191_source_1l00582"/>00582 
+<anchor xml:id="_a00191_source_1l00583"/>00583 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$columnsConfig&#32;=&#32;$model-&gt;<link linkend="_a00752_1a367c73b2954a3aaaa9c017800eaabdc0">getColumnsConfig</link>();
+<anchor xml:id="_a00191_source_1l00584"/>00584 
+<anchor xml:id="_a00191_source_1l00585"/>00585 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;tableau&#32;indicé&#32;par&#32;les&#32;noms&#32;d&apos;attributs&#32;et&#32;les&#32;valeurs&#32;de&#32;la&#32;ligne</emphasis>
+<anchor xml:id="_a00191_source_1l00586"/>00586 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$linkedValues&#32;=&#32;[];
+<anchor xml:id="_a00191_source_1l00587"/>00587 
+<anchor xml:id="_a00191_source_1l00588"/>00588 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;construction&#32;du&#32;tableau&#32;inversé&#32;des&#32;configurations</emphasis>
+<anchor xml:id="_a00191_source_1l00589"/>00589 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($line&#32;as&#32;$columnRealName&#32;=&gt;&#32;$dbValue){
+<anchor xml:id="_a00191_source_1l00590"/>00590 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($columnsConfig&#32;as&#32;$attributeName&#32;=&gt;&#32;$columnConfig){
+<anchor xml:id="_a00191_source_1l00591"/>00591 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($columnConfig-&gt;getColumnName()&#32;===&#32;$columnRealName){
+<anchor xml:id="_a00191_source_1l00592"/>00592 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$linkedValues[$attributeName]&#32;=&#32;$dbValue;
+<anchor xml:id="_a00191_source_1l00593"/>00593 
+<anchor xml:id="_a00191_source_1l00594"/>00594 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_a00191_source_1l00595"/>00595 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00596"/>00596 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00597"/>00597 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00598"/>00598 
+<anchor xml:id="_a00191_source_1l00599"/>00599 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;exécution&#32;des&#32;actions&#32;pré&#32;génération</emphasis>
+<anchor xml:id="_a00191_source_1l00600"/>00600 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$model-&gt;<link linkend="_a00752_1a2540763207492350e5f6cac22f32e7f5">beforeGeneration</link>(datas:&#32;$linkedValues);
+<anchor xml:id="_a00191_source_1l00601"/>00601 
+<anchor xml:id="_a00191_source_1l00602"/>00602 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;affectation&#32;des&#32;attributs</emphasis>
+<anchor xml:id="_a00191_source_1l00603"/>00603 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($linkedValues&#32;as&#32;$attributeName&#32;=&gt;&#32;$dbValue)
+<anchor xml:id="_a00191_source_1l00604"/>00604 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$model-&gt;$attributeName&#32;=&#32;$columnsConfig[$attributeName]-&gt;convertToValue(data:&#32;$dbValue);
+<anchor xml:id="_a00191_source_1l00605"/>00605 
+<anchor xml:id="_a00191_source_1l00606"/>00606 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;chargement&#32;des&#32;colonnes&#32;jointes</emphasis>
+<anchor xml:id="_a00191_source_1l00607"/>00607 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($model-&gt;joinedColumnsConfig&#32;as&#32;$attributeName&#32;=&gt;&#32;$config){
+<anchor xml:id="_a00191_source_1l00608"/>00608 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$list&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00696">JoinedList</link>(descriptor:&#32;$config,linkedModel:&#32;$model);
+<anchor xml:id="_a00191_source_1l00609"/>00609 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$model-&gt;$attributeName&#32;=&#32;$list;
+<anchor xml:id="_a00191_source_1l00610"/>00610 
+<anchor xml:id="_a00191_source_1l00611"/>00611 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!$config-&gt;getLoadOnGeneration())
+<anchor xml:id="_a00191_source_1l00612"/>00612 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">continue</emphasis>;
+<anchor xml:id="_a00191_source_1l00613"/>00613 
+<anchor xml:id="_a00191_source_1l00614"/>00614 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$list-&gt;loadContent();
+<anchor xml:id="_a00191_source_1l00615"/>00615 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00616"/>00616 
+<anchor xml:id="_a00191_source_1l00617"/>00617 
+<anchor xml:id="_a00191_source_1l00618"/>00618 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;exécution&#32;des&#32;actions&#32;post&#32;générations</emphasis>
+<anchor xml:id="_a00191_source_1l00619"/>00619 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$model-&gt;<link linkend="_a00752_1a2af812a4f13e843033353862bbc223b5">afterGeneration</link>();
+<anchor xml:id="_a00191_source_1l00620"/>00620 
+<anchor xml:id="_a00191_source_1l00621"/>00621 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$model;
+<anchor xml:id="_a00191_source_1l00622"/>00622 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00623"/>00623 
+<anchor xml:id="_a00191_source_1l00632"/><link linkend="_a00752_1add9e7a89473b1ff90163c39f8c4b500b">00632</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1add9e7a89473b1ff90163c39f8c4b500b">buildPrimaryKeysCondOn</link>(<link linkend="_a00752">MysqlModel</link>&#32;$model,<link linkend="_a00724">MysqlQueryBuilder</link>&#32;$queryBuilder,<emphasis role="keywordtype">bool</emphasis>&#32;$addWhere&#32;=&#32;<emphasis role="keyword">true</emphasis>):<link linkend="_a00724">MysqlQueryBuilder</link>{
+<anchor xml:id="_a00191_source_1l00633"/>00633 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if($addWhere)
+<anchor xml:id="_a00191_source_1l00634"/>00634 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$queryBuilder-&gt;where();
+<anchor xml:id="_a00191_source_1l00635"/>00635 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="_a00191_source_1l00636"/>00636 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$queryBuilder-&gt;<link linkend="_a00724_1a1d0c475c6a685aae0941c846e82b266a">cond</link>(MysqlCondSeparator::AND());
+<anchor xml:id="_a00191_source_1l00637"/>00637 
+<anchor xml:id="_a00191_source_1l00638"/>00638 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;ajout&#32;du&#32;groupe&#32;de&#32;conditions</emphasis>
+<anchor xml:id="_a00191_source_1l00639"/>00639 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$columnsConfig&#32;=&#32;$model-&gt;<link linkend="_a00752_1a367c73b2954a3aaaa9c017800eaabdc0">getColumnsConfig</link>();
+<anchor xml:id="_a00191_source_1l00640"/>00640 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$primaryKeysCond&#32;=&#32;[];
+<anchor xml:id="_a00191_source_1l00641"/>00641 
+<anchor xml:id="_a00191_source_1l00642"/>00642 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($columnsConfig&#32;as&#32;$attributeName&#32;=&gt;&#32;$columnConfig){
+<anchor xml:id="_a00191_source_1l00643"/>00643 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($columnConfig-&gt;isPrimaryKey()){
+<anchor xml:id="_a00191_source_1l00644"/>00644 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$primaryKeysCond[]&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00736">MysqlCondition</link>(
+<anchor xml:id="_a00191_source_1l00645"/>00645 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;condGetter:&#32;$attributeName,
+<anchor xml:id="_a00191_source_1l00646"/>00646 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;comparator:&#32;MysqlComparator::EQUAL(),
+<anchor xml:id="_a00191_source_1l00647"/>00647 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;conditionValue:&#32;$columnConfig-&gt;convertFromValue(data:&#32;$model-&gt;$attributeName)
+<anchor xml:id="_a00191_source_1l00648"/>00648 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00191_source_1l00649"/>00649 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$primaryKeysCond[]&#32;=&#32;MysqlCondSeparator::AND();
+<anchor xml:id="_a00191_source_1l00650"/>00650 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00651"/>00651 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00652"/>00652 
+<anchor xml:id="_a00191_source_1l00653"/>00653 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(empty($primaryKeysCond)&#32;)
+<anchor xml:id="_a00191_source_1l00654"/>00654 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00744">MysqlException</link>(message:&#32;<emphasis role="stringliteral">&quot;Aucune&#32;clé&#32;primaire&#32;trouvée&quot;</emphasis>,isDisplayable:&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="_a00191_source_1l00655"/>00655 
+<anchor xml:id="_a00191_source_1l00656"/>00656 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;remplacement&#32;de&#32;la&#32;dernière&#32;condition&#32;AND</emphasis>
+<anchor xml:id="_a00191_source_1l00657"/>00657 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$primaryKeysCond[count(value:&#32;$primaryKeysCond)&#32;-&#32;1]&#32;=&#32;MysqlCondSeparator::GROUP_END();
+<anchor xml:id="_a00191_source_1l00658"/>00658 
+<anchor xml:id="_a00191_source_1l00659"/>00659 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$queryBuilder-&gt;<link linkend="_a00724_1a1d0c475c6a685aae0941c846e82b266a">cond</link>(
+<anchor xml:id="_a00191_source_1l00660"/>00660 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;MysqlCondSeparator::GROUP_START(),
+<anchor xml:id="_a00191_source_1l00661"/>00661 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;...$primaryKeysCond
+<anchor xml:id="_a00191_source_1l00662"/>00662 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+<anchor xml:id="_a00191_source_1l00663"/>00663 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00664"/>00664 
+<anchor xml:id="_a00191_source_1l00669"/><link linkend="_a00752_1ae86e33147aa2013c30f3db81c216b202">00669</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00752_1ae86e33147aa2013c30f3db81c216b202">getDatabaseConfig</link>():<link linkend="_a00580">Config</link>{
+<anchor xml:id="_a00191_source_1l00670"/>00670 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;<link linkend="_a00784">Application</link>::getEnvConfig()-&gt;getConfig(name:&#32;EnvConfig::DATABASE_CONFIG-&gt;value);
+<anchor xml:id="_a00191_source_1l00671"/>00671 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00191_source_1l00672"/>00672 }
+</programlisting></section>

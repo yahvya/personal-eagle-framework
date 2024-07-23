@@ -1,0 +1,50 @@
+\begin{quote}
+Sabo est un framework php visant à faciliter le développement d\textquotesingle{}applications web tout en conservant le plaisir d\textquotesingle{}écrire du PHP. \end{quote}
+{\itshape Le site de documentation du framework est en cours de création}\hypertarget{a01125_autotoc_md1}{}\doxysection{Gestion du projet}\label{a01125_autotoc_md1}
+\hypertarget{a01125_autotoc_md2}{}\doxysubsection{Créer un projet}\label{a01125_autotoc_md2}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ <mondossierprojet>}
+\DoxyCodeLine{cd\ <mondossierprojet>}
+\DoxyCodeLine{git\ clone\ https://github.com/yahvya/sabo-\/final.git\ .}
+\DoxyCodeLine{cd\ sabo-\/core}
+\DoxyCodeLine{composer\ install}
+\DoxyCodeLine{cd\ ..}
+\DoxyCodeLine{composer\ install}
+\DoxyCodeLine{rm\ README.md}
+\DoxyCodeLine{cd\ src/views/mails}
+\DoxyCodeLine{rm\ .gitkeep}
+\DoxyCodeLine{cd\ ../../configs}
+\DoxyCodeLine{mv\ env.example.php\ env.php}
+\DoxyCodeLine{cd\ ../storage/maintenance}
+\DoxyCodeLine{mv\ maintenance.secret.example\ maintenance.secret}
+\DoxyCodeLine{cd\ ../../../}
+\DoxyCodeLine{rm\ -\/r\ -\/fo\ .git}
+\DoxyCodeLine{rm\ -\/r\ .git}
+\DoxyCodeLine{clear}
+\DoxyCodeLine{php\ sabo\ serve}
+
+\end{DoxyCode}
+\hypertarget{a01125_autotoc_md3}{}\doxysubsection{Lancement du site}\label{a01125_autotoc_md3}
+\begin{quote}
+Vous pouvez utiliser un hôte virtuel (ex \+: généré par laragon) ou le serveur de développement intégré en utilisant la commande suivante \end{quote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{php\ sabo\ serve}
+
+\end{DoxyCode}
+\hypertarget{a01125_autotoc_md4}{}\doxysection{Structure}\label{a01125_autotoc_md4}
+\begin{quote}
+Le dossier src contient les éléments servant à la création de l\textquotesingle{}application \end{quote}
+
+\begin{DoxyItemize}
+\item Le dossier {\bfseries{configs}} contient les fichiers de configurations (environnement, framework, configuration blade / twig ainsi que les fonctions globales à l\textquotesingle{}application)
+\item Le dossier {\bfseries{controllers}} vise à accueillir les controllers, par défaut la class abstraite Custom\+Controller y est ajoutée afin de servir de classe mère customisable aux futurs controllers ainsi que le controller d\textquotesingle{}accès à la maintenance par défaut
+\item Le dossier {\bfseries{models}} vise à accueillir les models, par défaut la class abstraite Custom\+Model y est ajoutée afin de servir de classe mère customisable aux futurs models
+\item Le dossier {\bfseries{public}} visant à accueillir toutes les ressources publiques
+\item Le dossier {\bfseries{storage}} représente le dossier de stockage de l\textquotesingle{}application, par défaut contient le fichier hash d\textquotesingle{}accès à la maintenance
+\item Le dossier {\bfseries{routes}} contenant les différentes routes de l\textquotesingle{}application
+\item Le dossier {\bfseries{treatment}} visant à contenir les class de traitement contient par défaut Custom\+Treatment classe parent customisable des class de traitement
+\item Le dossier {\bfseries{views}} racine de recherche des éléments de vue, peut contenir du css et js accessible ~\newline
+ 
+\end{DoxyItemize}

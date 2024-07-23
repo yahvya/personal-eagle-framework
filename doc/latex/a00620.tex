@@ -1,0 +1,141 @@
+\hypertarget{a00620}{}\doxysection{Référence de la classe Joined\+Column}
+\label{a00620}\index{JoinedColumn@{JoinedColumn}}
+
+
+Attribut de liaison de tables.  
+
+
+\doxysubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00620_add3f65a5305917eef1b3266e7e00a4ef}{\+\_\+\+\_\+construct}} (string \$class\+Model, array \$join\+Config, bool \$load\+On\+Generation=true)
+\item 
+\mbox{\hyperlink{a00620_a076e6f60e412926f7f6d80aa76d5653a}{get\+Class\+Model}} ()
+\item 
+\mbox{\hyperlink{a00620_aa9bd214250371f9210f42c6e8df27e95}{get\+Join\+Config}} ()
+\item 
+\mbox{\hyperlink{a00620_a647299dc5dd60dbf15f0be0b837961bd}{get\+Load\+On\+Generation}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Attributs protégés}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{a00620_abf512a4f5bf2b1a3a6994ff542bb9e3d}{\$class\+Model}}
+\item 
+array \mbox{\hyperlink{a00620_a58c31dfa753d0b3cf0fdeddc04167d98}{\$join\+Config}}
+\item 
+bool \mbox{\hyperlink{a00620_aef934585a7fd557c3e6417a41416a4e1}{\$load\+On\+Generation}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Attribut de liaison de tables. 
+
+\begin{DoxyAuthor}{Auteur}
+yahaya bathily \href{https://github.com/yahvya}{\texttt{ https\+://github.\+com/yahvya}} 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \mbox{\hyperlink{a00092_source_l00012}{12}} du fichier \mbox{\hyperlink{a00092_source}{Joined\+Column.\+php}}.
+
+
+
+\doxysubsection{Documentation des constructeurs et destructeur}
+\mbox{\Hypertarget{a00620_add3f65a5305917eef1b3266e7e00a4ef}\label{a00620_add3f65a5305917eef1b3266e7e00a4ef}} 
+\index{JoinedColumn@{JoinedColumn}!\_\_construct@{\_\_construct}}
+\index{\_\_construct@{\_\_construct}!JoinedColumn@{JoinedColumn}}
+\doxysubsubsection{\texorpdfstring{\_\_construct()}{\_\_construct()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+construct (\begin{DoxyParamCaption}\item[{string}]{\$class\+Model,  }\item[{array}]{\$join\+Config,  }\item[{bool}]{\$load\+On\+Generation = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$class\+Model} & Model la class \\
+\hline
+array & {\em \$join\+Config} & Configuration de jointure, indicé par les valeurs de la table actuelle et ayant comme valeur l\textquotesingle{}attribut de la table lié \\
+\hline
+bool & {\em \$load\+On\+Generation} & Si les données doivent être chargées à la génération du model. Si false la méthode \char`\"{}load\+Content\char`\"{} devra être appellé sur la Joined\+List avant utilisation \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \mbox{\hyperlink{a00092_source_l00033}{33}} du fichier \mbox{\hyperlink{a00092_source}{Joined\+Column.\+php}}.
+
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{a00620_a076e6f60e412926f7f6d80aa76d5653a}\label{a00620_a076e6f60e412926f7f6d80aa76d5653a}} 
+\index{JoinedColumn@{JoinedColumn}!getClassModel@{getClassModel}}
+\index{getClassModel@{getClassModel}!JoinedColumn@{JoinedColumn}}
+\doxysubsubsection{\texorpdfstring{getClassModel()}{getClassModel()}}
+{\footnotesize\ttfamily get\+Class\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+string Model la class 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00092_source_l00042}{42}} du fichier \mbox{\hyperlink{a00092_source}{Joined\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00620_aa9bd214250371f9210f42c6e8df27e95}\label{a00620_aa9bd214250371f9210f42c6e8df27e95}} 
+\index{JoinedColumn@{JoinedColumn}!getJoinConfig@{getJoinConfig}}
+\index{getJoinConfig@{getJoinConfig}!JoinedColumn@{JoinedColumn}}
+\doxysubsubsection{\texorpdfstring{getJoinConfig()}{getJoinConfig()}}
+{\footnotesize\ttfamily get\+Join\+Config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+array Configuration de jointure, indicé par les valeurs de la table actuelle et ayant comme valeur l\textquotesingle{}attribut de la table lié 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00092_source_l00049}{49}} du fichier \mbox{\hyperlink{a00092_source}{Joined\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00620_a647299dc5dd60dbf15f0be0b837961bd}\label{a00620_a647299dc5dd60dbf15f0be0b837961bd}} 
+\index{JoinedColumn@{JoinedColumn}!getLoadOnGeneration@{getLoadOnGeneration}}
+\index{getLoadOnGeneration@{getLoadOnGeneration}!JoinedColumn@{JoinedColumn}}
+\doxysubsubsection{\texorpdfstring{getLoadOnGeneration()}{getLoadOnGeneration()}}
+{\footnotesize\ttfamily get\+Load\+On\+Generation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+bool Si les données doivent être chargées à la génération du model 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00092_source_l00056}{56}} du fichier \mbox{\hyperlink{a00092_source}{Joined\+Column.\+php}}.
+
+
+
+\doxysubsection{Documentation des champs}
+\mbox{\Hypertarget{a00620_abf512a4f5bf2b1a3a6994ff542bb9e3d}\label{a00620_abf512a4f5bf2b1a3a6994ff542bb9e3d}} 
+\index{JoinedColumn@{JoinedColumn}!\$classModel@{\$classModel}}
+\index{\$classModel@{\$classModel}!JoinedColumn@{JoinedColumn}}
+\doxysubsubsection{\texorpdfstring{\$classModel}{$classModel}}
+{\footnotesize\ttfamily string \$class\+Model\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00092_source_l00016}{16}} du fichier \mbox{\hyperlink{a00092_source}{Joined\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00620_a58c31dfa753d0b3cf0fdeddc04167d98}\label{a00620_a58c31dfa753d0b3cf0fdeddc04167d98}} 
+\index{JoinedColumn@{JoinedColumn}!\$joinConfig@{\$joinConfig}}
+\index{\$joinConfig@{\$joinConfig}!JoinedColumn@{JoinedColumn}}
+\doxysubsubsection{\texorpdfstring{\$joinConfig}{$joinConfig}}
+{\footnotesize\ttfamily array \$join\+Config\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00092_source_l00021}{21}} du fichier \mbox{\hyperlink{a00092_source}{Joined\+Column.\+php}}.
+
+\mbox{\Hypertarget{a00620_aef934585a7fd557c3e6417a41416a4e1}\label{a00620_aef934585a7fd557c3e6417a41416a4e1}} 
+\index{JoinedColumn@{JoinedColumn}!\$loadOnGeneration@{\$loadOnGeneration}}
+\index{\$loadOnGeneration@{\$loadOnGeneration}!JoinedColumn@{JoinedColumn}}
+\doxysubsubsection{\texorpdfstring{\$loadOnGeneration}{$loadOnGeneration}}
+{\footnotesize\ttfamily bool \$load\+On\+Generation\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Définition à la ligne \mbox{\hyperlink{a00092_source_l00026}{26}} du fichier \mbox{\hyperlink{a00092_source}{Joined\+Column.\+php}}.
+
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00092}{Joined\+Column.\+php}}\end{DoxyCompactItemize}

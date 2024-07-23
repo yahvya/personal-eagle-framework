@@ -5,6 +5,7 @@ var a00792 =
     [ "getFilesValues", "a00792.html#ad4d871cfe8fbb92d209ee8f7d37ef329", null ],
     [ "getGetValues", "a00792.html#a0c3ba069790d5e6409f533ad51c09695", null ],
     [ "getHeader", "a00792.html#af21299b70630699e58d229fcee77bd8a", null ],
+    [ "getMethod", "a00792.html#af3e37e1a6ed9b8c87f86f659873a83b7", null ],
     [ "getPostValues", "a00792.html#a4b229b89d0b6ca4f0d44543b98f13d20", null ],
     [ "getSessionStorage", "a00792.html#a9d19a4bcdfa4320bd84722701142be6c", null ],
     [ "$headers", "a00792.html#a914c4187a92589e98dc298a488c6f4ca", null ],

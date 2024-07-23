@@ -13,89 +13,93 @@ Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbere
 <anchor xml:id="_a00227_source_1l00013"/><link linkend="_a00792">00013</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_a00792">Request</link>{
 <anchor xml:id="_a00227_source_1l00017"/><link linkend="_a00792_1ae92a475429be44cd882f88415b8f56d5">00017</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<link linkend="_a00892">SessionStorage</link>&#32;<link linkend="_a00792_1ae92a475429be44cd882f88415b8f56d5">$sessionStorage</link>;
 <anchor xml:id="_a00227_source_1l00018"/>00018 
-<anchor xml:id="_a00227_source_1l00022"/><link linkend="_a00792_1a914c4187a92589e98dc298a488c6f4ca">00022</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;array&#32;<link linkend="_a00792_1a914c4187a92589e98dc298a488c6f4ca">$headers</link>;
+<anchor xml:id="_a00227_source_1l00022"/><link linkend="_a00792_1a914c4187a92589e98dc298a488c6f4ca">00022</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;array&#32;<link linkend="_a00792_1a914c4187a92589e98dc298a488c6f4ca">$headers</link>;
 <anchor xml:id="_a00227_source_1l00023"/>00023 
-<anchor xml:id="_a00227_source_1l00024"/><link linkend="_a00792_1a095c5d389db211932136b53f25f39685">00024</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00792_1a095c5d389db211932136b53f25f39685">__construct</link>(){
-<anchor xml:id="_a00227_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;sessionStorage&#32;=&#32;<link linkend="_a00892_1a239b1c70258014a86569483c2d009de6">SessionStorage::create</link>();
-<anchor xml:id="_a00227_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_a00792_1a914c4187a92589e98dc298a488c6f4ca">$headers</link>&#32;=&#32;apache_request_headers();
-<anchor xml:id="_a00227_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;headers&#32;=&#32;<link linkend="_a00792_1a914c4187a92589e98dc298a488c6f4ca">$headers</link>&#32;!==&#32;<emphasis role="keyword">false</emphasis>&#32;?&#32;<link linkend="_a00792_1a914c4187a92589e98dc298a488c6f4ca">$headers</link>&#32;:&#32;[];
-<anchor xml:id="_a00227_source_1l00028"/>00028 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00227_source_1l00024"/><link linkend="_a00792_1a095c5d389db211932136b53f25f39685">00024</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00792_1a095c5d389db211932136b53f25f39685">__construct</link>(){
+<anchor xml:id="_a00227_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;sessionStorage&#32;=&#32;<link linkend="_a00892_1a239b1c70258014a86569483c2d009de6">SessionStorage::create</link>();
+<anchor xml:id="_a00227_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_a00792_1a914c4187a92589e98dc298a488c6f4ca">$headers</link>&#32;=&#32;apache_request_headers();
+<anchor xml:id="_a00227_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$this-&gt;headers&#32;=&#32;<link linkend="_a00792_1a914c4187a92589e98dc298a488c6f4ca">$headers</link>&#32;!==&#32;<emphasis role="keyword">false</emphasis>&#32;?&#32;<link linkend="_a00792_1a914c4187a92589e98dc298a488c6f4ca">$headers</link>&#32;:&#32;[];
+<anchor xml:id="_a00227_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 <anchor xml:id="_a00227_source_1l00029"/>00029 
-<anchor xml:id="_a00227_source_1l00033"/><link linkend="_a00792_1a9d19a4bcdfa4320bd84722701142be6c">00033</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00792_1a9d19a4bcdfa4320bd84722701142be6c">getSessionStorage</link>():<link linkend="_a00892">SessionStorage</link>{
-<anchor xml:id="_a00227_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;sessionStorage;
-<anchor xml:id="_a00227_source_1l00035"/>00035 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00227_source_1l00033"/><link linkend="_a00792_1a9d19a4bcdfa4320bd84722701142be6c">00033</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00792_1a9d19a4bcdfa4320bd84722701142be6c">getSessionStorage</link>():<link linkend="_a00892">SessionStorage</link>{
+<anchor xml:id="_a00227_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;sessionStorage;
+<anchor xml:id="_a00227_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 <anchor xml:id="_a00227_source_1l00036"/>00036 
-<anchor xml:id="_a00227_source_1l00044"/><link linkend="_a00792_1a4b229b89d0b6ca4f0d44543b98f13d20">00044</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00792_1a4b229b89d0b6ca4f0d44543b98f13d20">getPostValues</link>(?<emphasis role="keywordtype">string</emphasis>&#32;$errorMessage&#32;=&#32;<emphasis role="keyword">null</emphasis>,<emphasis role="keywordtype">string</emphasis>&#32;...$toGet):?array{
-<anchor xml:id="_a00227_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$values&#32;=&#32;self::getValuesFrom($_POST,...$toGet);
+<anchor xml:id="_a00227_source_1l00044"/><link linkend="_a00792_1a4b229b89d0b6ca4f0d44543b98f13d20">00044</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00792_1a4b229b89d0b6ca4f0d44543b98f13d20">getPostValues</link>(?<emphasis role="keywordtype">string</emphasis>&#32;$errorMessage&#32;=&#32;<emphasis role="keyword">null</emphasis>,<emphasis role="keywordtype">string</emphasis>&#32;...$toGet):?array{
+<anchor xml:id="_a00227_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$values&#32;=&#32;self::getValuesFrom($_POST,...$toGet);
 <anchor xml:id="_a00227_source_1l00046"/>00046 
-<anchor xml:id="_a00227_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($values&#32;===&#32;<emphasis role="keyword">null</emphasis>){
-<anchor xml:id="_a00227_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($errorMessage&#32;!==&#32;<emphasis role="keyword">null</emphasis>)
-<anchor xml:id="_a00227_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00844">TreatmentException</link>(message:&#32;$errorMessage,isDisplayable:&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="_a00227_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($values&#32;===&#32;<emphasis role="keyword">null</emphasis>){
+<anchor xml:id="_a00227_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($errorMessage&#32;!==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="_a00227_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00844">TreatmentException</link>(message:&#32;$errorMessage,isDisplayable:&#32;<emphasis role="keyword">true</emphasis>);
 <anchor xml:id="_a00227_source_1l00050"/>00050 
-<anchor xml:id="_a00227_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
-<anchor xml:id="_a00227_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00227_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="_a00227_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 <anchor xml:id="_a00227_source_1l00053"/>00053 
-<anchor xml:id="_a00227_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$values;
-<anchor xml:id="_a00227_source_1l00055"/>00055 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00227_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$values;
+<anchor xml:id="_a00227_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 <anchor xml:id="_a00227_source_1l00056"/>00056 
-<anchor xml:id="_a00227_source_1l00064"/><link linkend="_a00792_1a0c3ba069790d5e6409f533ad51c09695">00064</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00792_1a0c3ba069790d5e6409f533ad51c09695">getGetValues</link>(?<emphasis role="keywordtype">string</emphasis>&#32;$errorMessage&#32;=&#32;<emphasis role="keyword">null</emphasis>,<emphasis role="keywordtype">string</emphasis>&#32;...$toGet):?array{
-<anchor xml:id="_a00227_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$values&#32;=&#32;self::getValuesFrom($_GET,...$toGet);
+<anchor xml:id="_a00227_source_1l00064"/><link linkend="_a00792_1a0c3ba069790d5e6409f533ad51c09695">00064</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00792_1a0c3ba069790d5e6409f533ad51c09695">getGetValues</link>(?<emphasis role="keywordtype">string</emphasis>&#32;$errorMessage&#32;=&#32;<emphasis role="keyword">null</emphasis>,<emphasis role="keywordtype">string</emphasis>&#32;...$toGet):?array{
+<anchor xml:id="_a00227_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$values&#32;=&#32;self::getValuesFrom($_GET,...$toGet);
 <anchor xml:id="_a00227_source_1l00066"/>00066 
-<anchor xml:id="_a00227_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($values&#32;===&#32;<emphasis role="keyword">null</emphasis>){
-<anchor xml:id="_a00227_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($errorMessage&#32;!==&#32;<emphasis role="keyword">null</emphasis>)
-<anchor xml:id="_a00227_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00844">TreatmentException</link>(message:&#32;$errorMessage,isDisplayable:&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="_a00227_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($values&#32;===&#32;<emphasis role="keyword">null</emphasis>){
+<anchor xml:id="_a00227_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($errorMessage&#32;!==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="_a00227_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00844">TreatmentException</link>(message:&#32;$errorMessage,isDisplayable:&#32;<emphasis role="keyword">true</emphasis>);
 <anchor xml:id="_a00227_source_1l00070"/>00070 
-<anchor xml:id="_a00227_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
-<anchor xml:id="_a00227_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00227_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="_a00227_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 <anchor xml:id="_a00227_source_1l00073"/>00073 
-<anchor xml:id="_a00227_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$values;
-<anchor xml:id="_a00227_source_1l00075"/>00075 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00227_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$values;
+<anchor xml:id="_a00227_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 <anchor xml:id="_a00227_source_1l00076"/>00076 
-<anchor xml:id="_a00227_source_1l00084"/><link linkend="_a00792_1aba481e84cd12098c0b3241f002a414e8">00084</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00792_1aba481e84cd12098c0b3241f002a414e8">getCookieValues</link>(?<emphasis role="keywordtype">string</emphasis>&#32;$errorMessage&#32;=&#32;<emphasis role="keyword">null</emphasis>,<emphasis role="keywordtype">string</emphasis>&#32;...$toGet):?array{
-<anchor xml:id="_a00227_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$values&#32;=&#32;self::getValuesFrom($_COOKIE,...$toGet);
+<anchor xml:id="_a00227_source_1l00084"/><link linkend="_a00792_1aba481e84cd12098c0b3241f002a414e8">00084</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00792_1aba481e84cd12098c0b3241f002a414e8">getCookieValues</link>(?<emphasis role="keywordtype">string</emphasis>&#32;$errorMessage&#32;=&#32;<emphasis role="keyword">null</emphasis>,<emphasis role="keywordtype">string</emphasis>&#32;...$toGet):?array{
+<anchor xml:id="_a00227_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$values&#32;=&#32;self::getValuesFrom($_COOKIE,...$toGet);
 <anchor xml:id="_a00227_source_1l00086"/>00086 
-<anchor xml:id="_a00227_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($values&#32;===&#32;<emphasis role="keyword">null</emphasis>){
-<anchor xml:id="_a00227_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($errorMessage&#32;!==&#32;<emphasis role="keyword">null</emphasis>)
-<anchor xml:id="_a00227_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00844">TreatmentException</link>(message:&#32;$errorMessage,isDisplayable:&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="_a00227_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($values&#32;===&#32;<emphasis role="keyword">null</emphasis>){
+<anchor xml:id="_a00227_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($errorMessage&#32;!==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="_a00227_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00844">TreatmentException</link>(message:&#32;$errorMessage,isDisplayable:&#32;<emphasis role="keyword">true</emphasis>);
 <anchor xml:id="_a00227_source_1l00090"/>00090 
-<anchor xml:id="_a00227_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
-<anchor xml:id="_a00227_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00227_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="_a00227_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 <anchor xml:id="_a00227_source_1l00093"/>00093 
-<anchor xml:id="_a00227_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$values;
-<anchor xml:id="_a00227_source_1l00095"/>00095 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00227_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$values;
+<anchor xml:id="_a00227_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 <anchor xml:id="_a00227_source_1l00096"/>00096 
-<anchor xml:id="_a00227_source_1l00104"/><link linkend="_a00792_1ad4d871cfe8fbb92d209ee8f7d37ef329">00104</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00792_1ad4d871cfe8fbb92d209ee8f7d37ef329">getFilesValues</link>(?<emphasis role="keywordtype">string</emphasis>&#32;$errorMessage&#32;=&#32;<emphasis role="keyword">null</emphasis>,<emphasis role="keywordtype">string</emphasis>&#32;...$toGet):?array{
-<anchor xml:id="_a00227_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$values&#32;=&#32;self::getValuesFrom($_FILES,...$toGet);
+<anchor xml:id="_a00227_source_1l00104"/><link linkend="_a00792_1ad4d871cfe8fbb92d209ee8f7d37ef329">00104</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00792_1ad4d871cfe8fbb92d209ee8f7d37ef329">getFilesValues</link>(?<emphasis role="keywordtype">string</emphasis>&#32;$errorMessage&#32;=&#32;<emphasis role="keyword">null</emphasis>,<emphasis role="keywordtype">string</emphasis>&#32;...$toGet):?array{
+<anchor xml:id="_a00227_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$values&#32;=&#32;self::getValuesFrom($_FILES,...$toGet);
 <anchor xml:id="_a00227_source_1l00106"/>00106 
-<anchor xml:id="_a00227_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($values&#32;===&#32;<emphasis role="keyword">null</emphasis>){
-<anchor xml:id="_a00227_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($errorMessage&#32;!==&#32;<emphasis role="keyword">null</emphasis>)
-<anchor xml:id="_a00227_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00844">TreatmentException</link>(message:&#32;$errorMessage,isDisplayable:&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="_a00227_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($values&#32;===&#32;<emphasis role="keyword">null</emphasis>){
+<anchor xml:id="_a00227_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>($errorMessage&#32;!==&#32;<emphasis role="keyword">null</emphasis>)
+<anchor xml:id="_a00227_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00844">TreatmentException</link>(message:&#32;$errorMessage,isDisplayable:&#32;<emphasis role="keyword">true</emphasis>);
 <anchor xml:id="_a00227_source_1l00110"/>00110 
-<anchor xml:id="_a00227_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
-<anchor xml:id="_a00227_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00227_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="_a00227_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 <anchor xml:id="_a00227_source_1l00113"/>00113 
-<anchor xml:id="_a00227_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;création&#32;des&#32;FormFileManager</emphasis>
-<anchor xml:id="_a00227_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($values&#32;as&#32;$key&#32;=&gt;&#32;$file)
-<anchor xml:id="_a00227_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$values[$key]&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00864">FormFileManager</link>(fileDatas:&#32;$file);
+<anchor xml:id="_a00227_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;création&#32;des&#32;FormFileManager</emphasis>
+<anchor xml:id="_a00227_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($values&#32;as&#32;$key&#32;=&gt;&#32;$file)
+<anchor xml:id="_a00227_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$values[$key]&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_a00864">FormFileManager</link>(fileDatas:&#32;$file);
 <anchor xml:id="_a00227_source_1l00117"/>00117 
-<anchor xml:id="_a00227_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$values;
-<anchor xml:id="_a00227_source_1l00119"/>00119 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00227_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$values;
+<anchor xml:id="_a00227_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 <anchor xml:id="_a00227_source_1l00120"/>00120 
-<anchor xml:id="_a00227_source_1l00126"/><link linkend="_a00792_1af21299b70630699e58d229fcee77bd8a">00126</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00792_1af21299b70630699e58d229fcee77bd8a">getHeader</link>(<emphasis role="keywordtype">string</emphasis>&#32;$header):string|null{
-<anchor xml:id="_a00227_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;headers[$header]&#32;??&#32;null;
-<anchor xml:id="_a00227_source_1l00128"/>00128 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00227_source_1l00126"/><link linkend="_a00792_1af21299b70630699e58d229fcee77bd8a">00126</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00792_1af21299b70630699e58d229fcee77bd8a">getHeader</link>(<emphasis role="keywordtype">string</emphasis>&#32;$header):string|null{
+<anchor xml:id="_a00227_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;$this-&gt;headers[$header]&#32;??&#32;null;
+<anchor xml:id="_a00227_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 <anchor xml:id="_a00227_source_1l00129"/>00129 
-<anchor xml:id="_a00227_source_1l00136"/><link linkend="_a00792_1a232babb4eab89d3ea0416cfb1f8f3505">00136</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00792_1a232babb4eab89d3ea0416cfb1f8f3505">getValuesFrom</link>(array&#32;$container,<emphasis role="keywordtype">string</emphasis>&#32;...$toGet):?array{
-<anchor xml:id="_a00227_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$result&#32;=&#32;[];
-<anchor xml:id="_a00227_source_1l00138"/>00138 
-<anchor xml:id="_a00227_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($toGet&#32;as&#32;$key){
-<anchor xml:id="_a00227_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!array_key_exists(key:&#32;$key,array:&#32;$container)&#32;)
-<anchor xml:id="_a00227_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
-<anchor xml:id="_a00227_source_1l00142"/>00142 
-<anchor xml:id="_a00227_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$result[$key]&#32;=&#32;$container[$key];
-<anchor xml:id="_a00227_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00227_source_1l00133"/><link linkend="_a00792_1af3e37e1a6ed9b8c87f86f659873a83b7">00133</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00792_1af3e37e1a6ed9b8c87f86f659873a83b7">getMethod</link>():string{
+<anchor xml:id="_a00227_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;strtolower(string:&#32;$_SERVER[<emphasis role="stringliteral">&quot;REQUEST_METHOD&quot;</emphasis>]);
+<anchor xml:id="_a00227_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00227_source_1l00136"/>00136 
+<anchor xml:id="_a00227_source_1l00143"/><link linkend="_a00792_1a232babb4eab89d3ea0416cfb1f8f3505">00143</link> &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">function</emphasis>&#32;<link linkend="_a00792_1a232babb4eab89d3ea0416cfb1f8f3505">getValuesFrom</link>(array&#32;$container,<emphasis role="keywordtype">string</emphasis>&#32;...$toGet):?array{
+<anchor xml:id="_a00227_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$result&#32;=&#32;[];
 <anchor xml:id="_a00227_source_1l00145"/>00145 
-<anchor xml:id="_a00227_source_1l00146"/>00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$result;
-<anchor xml:id="_a00227_source_1l00147"/>00147 &#32;&#32;&#32;&#32;}
-<anchor xml:id="_a00227_source_1l00148"/>00148 }
+<anchor xml:id="_a00227_source_1l00146"/>00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">foreach</emphasis>($toGet&#32;as&#32;$key){
+<anchor xml:id="_a00227_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!array_key_exists(key:&#32;$key,array:&#32;$container)&#32;)
+<anchor xml:id="_a00227_source_1l00148"/>00148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">null</emphasis>;
+<anchor xml:id="_a00227_source_1l00149"/>00149 
+<anchor xml:id="_a00227_source_1l00150"/>00150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;$result[$key]&#32;=&#32;$container[$key];
+<anchor xml:id="_a00227_source_1l00151"/>00151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00227_source_1l00152"/>00152 
+<anchor xml:id="_a00227_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;$result;
+<anchor xml:id="_a00227_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_a00227_source_1l00155"/>00155 &#32;&#32;&#32;&#32;}
 </programlisting></section>

@@ -11,8 +11,8 @@
 \DoxyCodeLine{\Hypertarget{a00164_source_l00007}00007\ }
 \DoxyCodeLine{\Hypertarget{a00164_source_l00012}\mbox{\hyperlink{a00716}{00012}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{a00716}{JsonReformer}}\ \textcolor{keyword}{implements}\ \mbox{\hyperlink{a00704}{Formater}}\{}
 \DoxyCodeLine{\Hypertarget{a00164_source_l00013}00013\ \textcolor{preprocessor}{\ \ \ \ \#[Override]}}
-\DoxyCodeLine{\Hypertarget{a00164_source_l00014}\mbox{\hyperlink{a00716_a195b10c024dfd48be18e6adc2b014d42}{00014}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00716_a195b10c024dfd48be18e6adc2b014d42}{format}}(\mbox{\hyperlink{a00752}{MysqlModel}}\ \$baseModel,mixed\ \$data):\ string\{}
-\DoxyCodeLine{\Hypertarget{a00164_source_l00015}00015\ \ \ \ \ \ \ \ \ if(!json\_validate(json:\ \$data)\ ===\ false)}
+\DoxyCodeLine{\Hypertarget{a00164_source_l00014}\mbox{\hyperlink{a00716_a195b10c024dfd48be18e6adc2b014d42}{00014}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{function}\ \mbox{\hyperlink{a00716_a195b10c024dfd48be18e6adc2b014d42}{format}}(\mbox{\hyperlink{a00752}{MysqlModel}}\ \$baseModel,mixed\ \$data):\ array\{}
+\DoxyCodeLine{\Hypertarget{a00164_source_l00015}00015\ \ \ \ \ \ \ \ \ if(!json\_validate(json:\ \$data))}
 \DoxyCodeLine{\Hypertarget{a00164_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ throw\ new\ \mbox{\hyperlink{a00708}{FormaterException}}(failedFormater:\ \$this,\ errorMessage:\ \textcolor{stringliteral}{"{}La\ donnée\ fournie\ n'est\ pas\ une\ chaine\ json"{}},isDisplayable:\ false);}
 \DoxyCodeLine{\Hypertarget{a00164_source_l00017}00017\ }
 \DoxyCodeLine{\Hypertarget{a00164_source_l00018}00018\ \ \ \ \ \ \ \ \ \$json\ =\ @json\_decode(json:\ \$data,associative:\ \textcolor{keyword}{true});}

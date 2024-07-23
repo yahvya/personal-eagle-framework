@@ -136,7 +136,7 @@ $(document).ready(function(){initNavTree('a00224_source.html',''); initResizable
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_class" href="a00816.html">ResourceResponse</a>(ressourceAbsolutePath: APP_CONFIG-&gt;getConfig(name: <span class="stringliteral">&quot;ROOT&quot;</span>) . $this-&gt;link);</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="comment">// recherche de l&#39;action à faire</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        $searchResult = <a class="code hl_function" href="a00836.html#a52aaba9248bf4e6447c45a793c2744b8">RouteManager::findRouteByLink</a>(link: $this-&gt;link);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        $searchResult = <a class="code hl_function" href="a00836.html#a52aaba9248bf4e6447c45a793c2744b8">RouteManager::findRouteByLink</a>(link: $this-&gt;link,method: $request-&gt;getMethod());</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="comment">// affichage de la page non trouvée</span></div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">if</span>($searchResult == <span class="keyword">null</span>)</div>

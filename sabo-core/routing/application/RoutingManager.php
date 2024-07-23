@@ -51,7 +51,7 @@ class RoutingManager{
             return new ResourceResponse(ressourceAbsolutePath: APP_CONFIG->getConfig(name: "ROOT") . $this->link);
 
         // recherche de l'action à faire
-        $searchResult = RouteManager::findRouteByLink(link: $this->link);
+        $searchResult = RouteManager::findRouteByLink(link: $this->link,method: $request->getMethod());
 
         // affichage de la page non trouvée
         if($searchResult == null)

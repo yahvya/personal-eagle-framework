@@ -34,6 +34,8 @@
 
 <para>Fourni un en tête requête. </para>
 </listitem>
+            <listitem><para><link linkend="_a00792_1af3e37e1a6ed9b8c87f86f659873a83b7">getMethod</link> ()</para>
+</listitem>
         </itemizedlist>
 </simplesect>
 <simplesect>
@@ -311,6 +313,19 @@ Paramètres</title>
 <para>
 Définition à la ligne <link linkend="_a00227_source_1l00126">126</link> du fichier <link linkend="_a00227_source">Request.php</link>.</para>
 </section>
+<anchor xml:id="_a00792_1af3e37e1a6ed9b8c87f86f659873a83b7"/><section>
+    <title>getMethod()</title>
+<indexterm><primary>getMethod</primary><secondary>Request</secondary></indexterm>
+<indexterm><primary>Request</primary><secondary>getMethod</secondary></indexterm>
+<para><computeroutput>getMethod ( )</computeroutput></para>
+<para><formalpara><title>Renvoie</title>
+
+<para>string la méthode de requêtr (post,get ...) en lowercase </para>
+</formalpara>
+</para>
+<para>
+Définition à la ligne <link linkend="_a00227_source_1l00133">133</link> du fichier <link linkend="_a00227_source">Request.php</link>.</para>
+</section>
 <anchor xml:id="_a00792_1a4b229b89d0b6ca4f0d44543b98f13d20"/><section>
     <title>getPostValues()</title>
 <indexterm><primary>getPostValues</primary><secondary>Request</secondary></indexterm>
@@ -429,7 +444,7 @@ Paramètres</title>
 </formalpara>
 </para>
 <para>
-Définition à la ligne <link linkend="_a00227_source_1l00136">136</link> du fichier <link linkend="_a00227_source">Request.php</link>.</para>
+Définition à la ligne <link linkend="_a00227_source_1l00143">143</link> du fichier <link linkend="_a00227_source">Request.php</link>.</para>
 </section>
 </section>
 <section>

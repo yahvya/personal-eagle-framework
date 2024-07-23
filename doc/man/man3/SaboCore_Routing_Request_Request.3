@@ -36,6 +36,9 @@ Request \- Gestionnaire des données de la requête\&.
 .RI "\fBgetHeader\fP (string $header)"
 .br
 .RI "Fourni un en tête requête\&. "
+.ti -1c
+.RI "\fBgetMethod\fP ()"
+.br
 .in -1c
 .SS "Fonctions membres protégées statiques"
 
@@ -170,6 +173,17 @@ string|null l'en-tête ou null si non trouvé
 
 .PP
 Définition à la ligne \fB126\fP du fichier \fBRequest\&.php\fP\&.
+.SS "getMethod ()"
+
+.PP
+\fBRenvoie\fP
+.RS 4
+string la méthode de requêtr (post,get \&.\&.\&.) en lowercase 
+.RE
+.PP
+
+.PP
+Définition à la ligne \fB133\fP du fichier \fBRequest\&.php\fP\&.
 .SS "getPostValues (?string $errorMessage = \fCnull\fP, string \&.\&.\&. $toGet)"
 
 .PP
@@ -225,7 +239,7 @@ array|null le tableau des valeurs trouvées ou null si une des clés n'a pas ét
 .PP
 
 .PP
-Définition à la ligne \fB136\fP du fichier \fBRequest\&.php\fP\&.
+Définition à la ligne \fB143\fP du fichier \fBRequest\&.php\fP\&.
 .SH "Documentation des champs"
 .PP 
 .SS "array $headers\fC [protected]\fP"

@@ -44,7 +44,7 @@
 \DoxyCodeLine{\Hypertarget{a00224_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{a00816}{ResourceResponse}}(ressourceAbsolutePath:\ APP\_CONFIG-\/>getConfig(name:\ \textcolor{stringliteral}{"{}ROOT"{}})\ .\ \$this-\/>link);}
 \DoxyCodeLine{\Hypertarget{a00224_source_l00052}00052\ }
 \DoxyCodeLine{\Hypertarget{a00224_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ recherche\ de\ l'action\ à\ faire}}
-\DoxyCodeLine{\Hypertarget{a00224_source_l00054}00054\ \ \ \ \ \ \ \ \ \$searchResult\ =\ \mbox{\hyperlink{a00836_a52aaba9248bf4e6447c45a793c2744b8}{RouteManager::findRouteByLink}}(link:\ \$this-\/>link);}
+\DoxyCodeLine{\Hypertarget{a00224_source_l00054}00054\ \ \ \ \ \ \ \ \ \$searchResult\ =\ \mbox{\hyperlink{a00836_a52aaba9248bf4e6447c45a793c2744b8}{RouteManager::findRouteByLink}}(link:\ \$this-\/>link,method:\ \$request-\/>getMethod());}
 \DoxyCodeLine{\Hypertarget{a00224_source_l00055}00055\ }
 \DoxyCodeLine{\Hypertarget{a00224_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ affichage\ de\ la\ page\ non\ trouvée}}
 \DoxyCodeLine{\Hypertarget{a00224_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\$searchResult\ ==\ \textcolor{keyword}{null})}

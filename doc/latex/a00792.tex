@@ -21,7 +21,9 @@ Gestionnaire des données de la requête.
 \mbox{\hyperlink{a00792_ad4d871cfe8fbb92d209ee8f7d37ef329}{get\+Files\+Values}} (?string \$error\+Message=null, string ... \$to\+Get)
 \begin{DoxyCompactList}\small\item\em Recherche des données files. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{a00792_af21299b70630699e58d229fcee77bd8a}{get\+Header}} (string \$header)
-\begin{DoxyCompactList}\small\item\em Fourni un en tête requête. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Fourni un en tête requête. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{a00792_af3e37e1a6ed9b8c87f86f659873a83b7}{get\+Method}} ()
+\end{DoxyCompactItemize}
 \doxysubsection*{Fonctions membres protégées statiques}
 \begin{DoxyCompactItemize}
 \item 
@@ -171,6 +173,19 @@ string$\vert$null l\textquotesingle{}en-\/tête ou null si non trouvé
 
 Définition à la ligne \mbox{\hyperlink{a00227_source_l00126}{126}} du fichier \mbox{\hyperlink{a00227_source}{Request.\+php}}.
 
+\mbox{\Hypertarget{a00792_af3e37e1a6ed9b8c87f86f659873a83b7}\label{a00792_af3e37e1a6ed9b8c87f86f659873a83b7}} 
+\index{Request@{Request}!getMethod@{getMethod}}
+\index{getMethod@{getMethod}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{getMethod()}{getMethod()}}
+{\footnotesize\ttfamily get\+Method (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Renvoie}
+string la méthode de requêtr (post,get ...) en lowercase 
+\end{DoxyReturn}
+
+
+Définition à la ligne \mbox{\hyperlink{a00227_source_l00133}{133}} du fichier \mbox{\hyperlink{a00227_source}{Request.\+php}}.
+
 \mbox{\Hypertarget{a00792_a4b229b89d0b6ca4f0d44543b98f13d20}\label{a00792_a4b229b89d0b6ca4f0d44543b98f13d20}} 
 \index{Request@{Request}!getPostValues@{getPostValues}}
 \index{getPostValues@{getPostValues}!Request@{Request}}
@@ -235,7 +250,7 @@ array$\vert$null le tableau des valeurs trouvées ou null si une des clés n\tex
 \end{DoxyReturn}
 
 
-Définition à la ligne \mbox{\hyperlink{a00227_source_l00136}{136}} du fichier \mbox{\hyperlink{a00227_source}{Request.\+php}}.
+Définition à la ligne \mbox{\hyperlink{a00227_source_l00143}{143}} du fichier \mbox{\hyperlink{a00227_source}{Request.\+php}}.
 
 
 

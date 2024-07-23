@@ -11,7 +11,7 @@ use SaboCore\Database\Default\System\MysqlModel;
  */
 class JsonReformer implements Formater{
     #[Override]
-    public function format(MysqlModel $baseModel,mixed $data): string{
+    public function format(MysqlModel $baseModel,mixed $data): array{
         if(!json_validate(json: $data))
             throw new FormaterException(failedFormater: $this, errorMessage: "La donnée fournie n'est pas une chaine json",isDisplayable: false);
 

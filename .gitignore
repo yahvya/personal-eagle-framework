@@ -1,4 +1,4 @@
 *.idea
 *.vscode
-sabo-core/vendor
+*vendor
 configs/env.php

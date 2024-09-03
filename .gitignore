@@ -1,9 +1,4 @@
-.idea
-vendor
+*.idea
+*.vscode
 sabo-core/vendor
-src/configs/env.php
-sabo-core/views/blade/compiled/*
-sabo-core/views/twig/*
-!sabo-core/views/blade/compiled/.gitkeep
-!sabo-core/views/twig/.gitkeep
-src/storage/maintenance/maintenance.secret
+configs/env.php

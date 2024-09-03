@@ -6,6 +6,7 @@
 
 ## Créer un projet
 
-*Accédez aux releases du projet afin de télécharger le zip de la version la plus récente*
+*Accédez aux releases du projet afin de télécharger le zip de la version la plus récente* ou utilisez le lien présent dans la documentation.
+
 [Accès aux releases](https://github.com/yahvya/sabo-final/releases)
 

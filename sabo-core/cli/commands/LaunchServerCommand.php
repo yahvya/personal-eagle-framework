@@ -124,7 +124,8 @@ class LaunchServerCommand extends SaboCommand{
             "\t--port : Numéro du port",
             "\t--host : Adresse hôte",
             "\t--sync: Si l'option est présente la commande <browser-sync> sera utilisée (npm est nécessaire pour l'installation de la commande)",
-            "\t\tVous pouvez spécifier comme valeur les types de fichiers à écouter séparés de <". self::FILES_SEPARATOR .">. Types par défaut : (" . implode(separator: ",",array: self::DEFAULT_FILE_TYPES) . ") sinon <default> comme valeur"
+            "\t\tVous pouvez spécifier comme valeur les types de fichiers à écouter séparés de <". self::FILES_SEPARATOR .">. Types par défaut : (" . implode(separator: ",",array: self::DEFAULT_FILE_TYPES) . ") sinon <default> comme valeur",
+            "\t\tphp sabo serve --sync=\"default\""
         ];
     }
 

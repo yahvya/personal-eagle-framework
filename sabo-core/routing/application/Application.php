@@ -32,6 +32,7 @@ abstract class Application{
      */
     public static function launchApplication(Config $applicationConfig,bool $startRouting = true):void{
         self::$applicationConfig = $applicationConfig;
+        ApplicationCycleHooks::call(ApplicationCycle::INIT);
 
         try{
             // chargement des fichiers requis et de la configuration
@@ -45,13 +46,17 @@ abstract class Application{
                 Application::getFrameworkConfig()->getConfig(name: FrameworkConfig::ROUTES_BASEDIR_PATH->value) .
                 "/routes.php"
             );
+            ApplicationCycleHooks::call(ApplicationCycle::CONFIG_LOADED);
 
             try{
                 // initialisation de la base de données si requise
+                ApplicationCycleHooks::call(ApplicationCycle::BEFORE_DATABASE_INIT);
                 self::initDatabase();
+                ApplicationCycleHooks::call(ApplicationCycle::AFTER_DATABASE_INIT);
 
                 // lancement de l'application
                 if($startRouting){
+                    ApplicationCycleHooks::call(ApplicationCycle::START_ROUTING);
                     $routingManager = new RoutingManager();
                     $routingManager
                         ->start()
@@ -59,6 +64,8 @@ abstract class Application{
                 }
             }
             catch(Throwable $e){
+                ApplicationCycleHooks::call(ApplicationCycle::ERROR_IN_CYCLE);
+
                 // vérification si mode debug
                 if(
                     self::$applicationConfig
@@ -71,6 +78,7 @@ abstract class Application{
             }
         }
         catch(Throwable) {
+            ApplicationCycleHooks::call(ApplicationCycle::ERROR_IN_CYCLE);
             self::showInternalErrorPage();
         }
     }
@@ -116,13 +124,16 @@ abstract class Application{
     }
 
     /**
+     * @param string $appRoot chemin racine du projet
      * @return Config la configuration par défaut de l'application
      */
-    public static function getApplicationDefaultConfig():Config{
-        $appRoot = __DIR__ . "/../../..";
-
+    public static function getApplicationDefaultConfig(string $appRoot):Config{
         return Config::create()
             // configurations des chemins
+            ->setConfig(
+                name: ApplicationPathConfig::HOOKS_CONFIG_FILEPATH->value,
+                value: "$appRoot/src/configs/app-hooks.php"
+            )
             ->setConfig(
                 name: ApplicationPathConfig::ENV_CONFIG_FILEPATH->value,
                 value: "$appRoot/src/configs/env.php"

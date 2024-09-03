@@ -42,11 +42,13 @@ class RoutingManager{
         $request = new Request();
 
         // vérification de maintenance
+        ApplicationCycleHooks::call(ApplicationCycle::CHECK_MAINTENANCE,$this);
         $maintenanceManager = $this->checkMaintenance(request: $request);
 
         if($maintenanceManager !== null) return $maintenanceManager;
 
         // vérification d'accès à une ressource
+        ApplicationCycleHooks::call(ApplicationCycle::CHECK_RESOURCE_REQUIRED,$this);
         if($this->isAccessibleRessource() )
             return new ResourceResponse(ressourceAbsolutePath: APP_CONFIG->getConfig(name: "ROOT") . $this->link);
 
@@ -56,6 +58,8 @@ class RoutingManager{
         // affichage de la page non trouvée
         if($searchResult == null)
             return self::notFoundPage();
+
+        ApplicationCycleHooks::call(ApplicationCycle::ROUTE_FOUNDED,$this,$searchResult);
 
         // vérification des conditions d'accès
         ["route" => $route,"match" => $match] = $searchResult;
@@ -67,8 +71,10 @@ class RoutingManager{
         foreach($route->getAccessVerifiers() as $verifier) {
             $verifyResult = $verifier->execVerification(verifierArgs: $args,onSuccessArgs: $args,onFailureArgs: $args);
 
-            if(!empty($verifyResult["failure"]) )
+            if(!empty($verifyResult["failure"]) ){
+                ApplicationCycleHooks::call(ApplicationCycle::ROUTE_VERIFIER_FAILED,$this,$verifier);
                 return $verifyResult["failure"];
+            }
         }
 
         // lancement du programme
@@ -139,6 +145,7 @@ class RoutingManager{
 
         // gestion des données flash
         $request->getSessionStorage()->manageFlashDatas();
+        ApplicationCycleHooks::call(ApplicationCycle::RENDER_RESPONSE,$this,$callable,$args);
 
         return call_user_func_array(callback: $callable,args: $args);
     }

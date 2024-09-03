@@ -21,4 +21,7 @@ define(
 );
 
 // lancement de l'application
-Application::launchApplication(applicationConfig: Application::getApplicationDefaultConfig(),startRouting: false);
+Application::launchApplication(
+    applicationConfig: Application::getApplicationDefaultConfig(appRoot: $appRoot),
+    startRouting: false
+);

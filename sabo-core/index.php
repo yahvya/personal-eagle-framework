@@ -11,6 +11,7 @@ $appRoot = __DIR__ . "/..";
 require_once("$appRoot/sabo-core/vendor/autoload.php");
 require_once("$appRoot/vendor/autoload.php");
 
+use SaboCore\Config\ApplicationPathConfig;
 use SaboCore\Config\Config;
 use SaboCore\Routing\Application\Application;
 
@@ -20,5 +21,9 @@ define(
     value: Config::create()->setConfig(name: "ROOT", value: $appRoot)
 );
 
-// lancement de l'application
-Application::launchApplication(applicationConfig: Application::getApplicationDefaultConfig() );
+// chargement des hooks et lancement de l'application
+$applicationDefaultConfig = Application::getApplicationDefaultConfig(appRoot: $appRoot);
+
+require_once($applicationDefaultConfig->getConfig(name: ApplicationPathConfig::HOOKS_CONFIG_FILEPATH->value));
+
+Application::launchApplication(applicationConfig: $applicationDefaultConfig);

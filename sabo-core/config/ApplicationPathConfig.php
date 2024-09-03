@@ -36,4 +36,10 @@ enum ApplicationPathConfig:string{
      * @type string
      */
     case TWIG_FUNCTIONS_CONFIG_FILEPATH = "TWIG_FUNCTIONS_CONFIG_FILEPATH";
+
+    /**
+     * @brief Chemin du fichier de configuration des hooks
+     * @type string
+     */
+    case HOOKS_CONFIG_FILEPATH = "HOOKS_CONFIG_FILEPATH";
 }

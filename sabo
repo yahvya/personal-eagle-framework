@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @brief Cron task initializer, include this script
+ * @brief sabo framework cli
  */
 
 # --------------------------------------------------------------------
@@ -15,7 +15,7 @@
 
 use SaboCore\Application\Application\Application;
 
-const APP_ROOT = __DIR__ . "/..";
+const APP_ROOT = __DIR__;
 
 # --------------------------------------------------------------------
 # load autoloader
@@ -25,7 +25,11 @@ require_once APP_ROOT . "/sabo-core/vendor/autoload.php";
 require_once APP_ROOT . "/vendor/autoload.php";
 
 # --------------------------------------------------------------------
-# launch cron requirements loading
+# launch app
 # --------------------------------------------------------------------
 
 (new Application)->launch();
+
+# --------------------------------------------------------------------
+# register commands
+# --------------------------------------------------------------------

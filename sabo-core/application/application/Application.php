@@ -15,10 +15,10 @@ class Application{
     }
 
     /**
-     * @brief load requirements for cron tasks
+     * @brief load requirements by excluding routing step
      * @return $this
      */
-    public function launchCron():self{
+    public function launch():self{
         return $this;
     }
 }

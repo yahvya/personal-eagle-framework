@@ -1,8 +1,7 @@
 <?php
 
 /**
- * @brief Sabo framework entrypoint
- * @author yahaya https://github.com/yahvya
+ * @brief Cron task initializer, include this script
  */
 
 # --------------------------------------------------------------------
@@ -26,7 +25,7 @@ require_once APP_ROOT . "/sabo-core/vendor/autoload.php";
 require_once APP_ROOT . "/vendor/autoload.php";
 
 # --------------------------------------------------------------------
-# launch app
+# launch cron requirements loading
 # --------------------------------------------------------------------
 
-(new Application)->launchWeb();
+(new Application)->launchCron();

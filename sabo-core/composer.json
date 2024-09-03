@@ -1,7 +1,14 @@
 {
     "autoload": {
+        "psr-4": {
+            "SaboCore\\Application\\Application\\" : "./application/application",
+            "SaboCore\\Application\\ApplicationLaunchProcedure\\" : "./application/launch-procedure"
+        },
         "classmap": [
             "libs"
         ]
+    },
+    "require": {
+        "symfony/var-dumper": "^7.1"
     }
 }

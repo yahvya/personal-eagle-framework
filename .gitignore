@@ -1,4 +1,4 @@
 *.idea
 *.vscode
 *vendor
-configs/env.php
+*env.php

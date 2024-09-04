@@ -2,23 +2,73 @@
 
 namespace SaboCore\Application\Application;
 
+use Exception;
+use PhpAddons\ProcedureManager\Procedure;
+use SaboCore\Application\ApplicationLaunchProcedure\ApplicationLaunchProcedure;
+use SaboCore\Application\ApplicationLaunchProcedure\LoadInitFilesStep;
+use SaboCore\Configuration\ApplicationConfiguration;
+use Throwable;
+
 /**
  * @brief application cycle manager
  */
 class Application{
     /**
-     * @brief load requirements for web app
+     * @brief load requirements for web app and launch app
      * @return $this
+     * @throws Throwable on the debug mode in case of error
      */
     public function launchWeb():self{
-        return $this;
+        $launchProcedure = new ApplicationLaunchProcedure(steps:  [
+            new LoadInitFilesStep
+        ]);
+
+        return $this->launchFromProcedure(launchProcedure: $launchProcedure);
     }
 
     /**
-     * @brief load requirements by excluding routing step
+     * @brief load requirements by excluding routing step and launch app
      * @return $this
+     * @throws Throwable on the debug mode in case of error
      */
     public function launch():self{
+        $launchProcedure = new ApplicationLaunchProcedure(steps:  []);
+
+        return $this->launchFromProcedure(launchProcedure: $launchProcedure);
+    }
+
+    /**
+     * @brief launch app from the given procedure
+     * @param Procedure $launchProcedure launch procedure
+     * @return $this
+     * @throws Throwable on the debug mode in case of error
+     */
+    public function launchFromProcedure(Procedure $launchProcedure):self{
+        try{
+            while(!$launchProcedure->isFinished())
+                $launchProcedure->next();
+        }
+        catch(Exception $e){
+            ApplicationCycleHooks::call(ApplicationCycle::ERROR_IN_CYCLE,$e);
+
+            # raise exception on the debug mode
+            if(function_exists(function: "appEnv") && appEnv(key: ApplicationConfiguration::APPLICATION_DEV_MODE))
+                throw $e;
+        }
+        catch(Throwable $e){
+            $exception = new Exception(
+                message: $e->getMessage(),
+                code: $e->getCode(),
+                previous: $e->getPrevious()
+            );
+
+            ApplicationCycleHooks::call(ApplicationCycle::ERROR_IN_CYCLE,$exception);
+
+            # raise exception on the debug mode
+            if(function_exists(function: "appEnv") && appEnv(key: ApplicationConfiguration::APPLICATION_DEV_MODE))
+                throw $e;
+        }
+
         return $this;
     }
 }

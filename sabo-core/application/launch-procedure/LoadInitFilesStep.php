@@ -63,6 +63,7 @@ class LoadInitFilesStep implements ProcedureStep {
             EnvConfig::MAINTENANCE_CONFIGURATION . "." . MaintenanceConfiguration::ACCESS_CODE,
             EnvConfig::MAINTENANCE_CONFIGURATION . "." . MaintenanceConfiguration::MAX_TRY,
             EnvConfig::MAINTENANCE_CONFIGURATION . "." . MaintenanceConfiguration::SECRET_ACCESS_LINK,
+            EnvConfig::MAINTENANCE_CONFIGURATION . "." . MaintenanceConfiguration::GET_VARIABLE_NAME,
         ];
 
         $verifier = new ArrayVerifier(toVerify: $envConfig);

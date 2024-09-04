@@ -13,10 +13,16 @@ readonly abstract class MaintenanceConfiguration{
     public const string IS_IN_MAINTENANCE = "IS_IN_MAINTENANCE";
 
     /**
-     * @const secret access link , this link have to be entered in the navigator to have the access to the application during maintenance. Add a GET parameter named "code" to specify the access code. The code hash's will be stored in the storage maintenance directory
+     * @const secret access link , this link have to be entered in the navigator to have the access to the application during maintenance. Add a GET parameter (which name have to be specified), to specify the access code. The code hash's will be stored in the storage maintenance directory
      * @required
      */
     public const string SECRET_ACCESS_LINK = "SECRET_ACCESS_LINK";
+
+    /**
+     * @const name of the get variable which will contain the access code
+     * @required
+     */
+    public const string GET_VARIABLE_NAME = "GET_VARIABLE_NAME";
 
     /**
      * @brief access code hash

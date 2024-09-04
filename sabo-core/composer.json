@@ -6,7 +6,9 @@
             "SaboCore\\PathConfig\\" : "./path-config",
             "SaboCore\\Configuration\\" : "./configuration",
             "SaboCore\\Database\\Providers\\Connection\\" : "./database/providers/connection",
-            "SaboCore\\Utils\\Verification\\" : "./utils/verification"
+            "SaboCore\\Utils\\Verification\\" : "./utils/verification",
+            "SaboCore\\Routing\\Response\\" : "./routing/response",
+            "SaboCore\\Routing\\Request\\" : "./routing/request"
         },
         "classmap": [
             "libs"

@@ -1,15 +1,22 @@
 <?php
 
 use SaboCore\Application\Application\ApplicationCycleHooks;
+use SaboCore\Routing\Request\Request;
 
 # --------------------------------------------------------------------
 # hooks configuration
 # --------------------------------------------------------------------
 
-ApplicationCycleHooks::onInit(function(){
-    # hooks are now loaded #
+ApplicationCycleHooks::onMaintenanceBlock(function():void{
+    # render maintenance page
 });
 
-ApplicationCycleHooks::onErrorInCycle(function(Exception $error){
-    # do something with the error #
+ApplicationCycleHooks::onErrorInCycle(function(Exception $error):void{
+    # render error page
+
+    #dd($error);
+});
+
+ApplicationCycleHooks::onRouteNotFounded(function():void{
+    # render page not found page
 });

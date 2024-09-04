@@ -44,6 +44,11 @@ enum ApplicationCycle:int{
     case CHECK_MAINTENANCE = 6;
 
     /**
+     * @brief on maintenance access blocked
+     */
+    case MAINTENANCE_BLOCK = 7;
+
+    /**
      * @brief route founded, with the search results
      * @param array $searchResults format ["route" => Route,"match" => MatchResult]
      */
@@ -55,7 +60,12 @@ enum ApplicationCycle:int{
     case ROUTE_VERIFIER_FAILED = 9;
 
     /**
+     * @brief Route not found
+     */
+    case ROUTE_NOT_FOUND = 10;
+
+    /**
      * @brief response rendering (Callable, mixed $args), the controller or the given function as callabe and an array of the provided args
      */
-    case RENDER_RESPONSE = 10;
+    case RENDER_RESPONSE = 11;
 }

@@ -3,6 +3,7 @@
 namespace SaboCore\Application\Application;
 
 use SaboCore\Database\Providers\Connection\ConnectionProvider;
+use SaboCore\Routing\Request\Request;
 
 /**
  * @brief application state
@@ -14,4 +15,9 @@ class ApplicationState{
      * @var ConnectionProvider|null database connection provider
      */
     public static ?ConnectionProvider $databaseConnectionProvider = null;
+
+    /**
+     * @var Request|null request manager
+     */
+    public static ?Request $request = null;
 }

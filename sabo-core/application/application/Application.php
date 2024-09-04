@@ -7,6 +7,7 @@ use PhpAddons\ProcedureManager\Procedure;
 use SaboCore\Application\ApplicationLaunchProcedure\ApplicationLaunchProcedure;
 use SaboCore\Application\ApplicationLaunchProcedure\DatabaseManagementStep;
 use SaboCore\Application\ApplicationLaunchProcedure\LoadInitFilesStep;
+use SaboCore\Application\ApplicationLaunchProcedure\RoutingStep;
 use SaboCore\Configuration\ApplicationConfiguration;
 use Throwable;
 
@@ -22,7 +23,8 @@ class Application{
     public function launchWeb():self{
         $launchProcedure = new ApplicationLaunchProcedure(steps: [
             new LoadInitFilesStep,
-            new DatabaseManagementStep
+            new DatabaseManagementStep,
+            new RoutingStep
         ]);
 
         return $this->launchFromProcedure(launchProcedure: $launchProcedure);
@@ -55,6 +57,7 @@ class Application{
                     throw new Exception(message: "Fail to launch app from procedure on step : {$launchProcedure->getCurrentStepNumber()} - step class name : " . get_class(object: $launchProcedure->getCurrentStep()));
                 }
             }
+            die();
         }
         catch(Exception $e){
             ApplicationCycleHooks::call(ApplicationCycle::ERROR_IN_CYCLE,$e);

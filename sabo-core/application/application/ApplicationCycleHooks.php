@@ -7,16 +7,18 @@ use Closure;
 /**
  * @brief application cycle manager
  * @attention based on the linked step in the life cycle, certain functions / functionalities could not be available
- * @method static void onErrorInCycle(Closure $action) action at step ERROR_IN_CYCLE
- * @method static void onInit(Closure $action) action at step INIT
- * @method static void onConfigLoaded(Closure $action) action at step CONFIG_LOADED
- * @method static void beforeDatabaseInit(Closure $action) action at step BEFORE_DATABASE_INIT
- * @method static void afterDatabaseInit(Closure $action) action at step AFTER_DATABASE_INIT
- * @method static void onStartRouting(Closure $action) action at step START_ROUTING
- * @method static void onCheckMaintenance(Closure $action) action at step CHECK_MAINTENANCE
- * @method static void onRouteFounded(Closure $action) action at step ROUTE_FOUNDED
- * @method static void onRouteVerifierFail(Closure $action) action at step ROUTE_VERIFIER_FAILED
- * @method static void onRenderResponse(Closure $action) action at step RENDER_RESPONSE
+ * @method static void onErrorInCycle(Closure|Callable $action) action at step ERROR_IN_CYCLE
+ * @method static void onInit(Closure|Callable $action) action at step INIT
+ * @method static void onConfigLoaded(Closure|Callable $action) action at step CONFIG_LOADED
+ * @method static void beforeDatabaseInit(Closure|Callable $action) action at step BEFORE_DATABASE_INIT
+ * @method static void afterDatabaseInit(Closure|Callable $action) action at step AFTER_DATABASE_INIT
+ * @method static void onStartRouting(Closure|Callable $action) action at step START_ROUTING
+ * @method static void onCheckMaintenance(Closure|Callable $action) action at step CHECK_MAINTENANCE
+ * @method static void onMaintenanceBlock(Closure|Callable $action) action at step MAINTENANCE_BLOCK
+ * @method static void onRouteFounded(Closure|Callable $action) action at step ROUTE_FOUNDED
+ * @method static void onRouteVerifierFail(Closure|Callable $action) action at step ROUTE_VERIFIER_FAILED
+ * @method static void onRouteNotFounded(Closure|Callable $action) action at step ROUTE_NOT_FOUND
+ * @method static void onRenderResponse(Closure|Callable $action) action at step RENDER_RESPONSE
  */
 abstract class ApplicationCycleHooks{
     /**
@@ -35,8 +37,10 @@ abstract class ApplicationCycleHooks{
         "afterDatabaseInit" => ApplicationCycle::AFTER_DATABASE_INIT,
         "onStartRouting" => ApplicationCycle::START_ROUTING,
         "onCheckMaintenance" => ApplicationCycle::CHECK_MAINTENANCE,
+        "onMaintenanceBlock" => ApplicationCycle::MAINTENANCE_BLOCK,
         "onRouteFounded" => ApplicationCycle::ROUTE_FOUNDED,
         "onRouteVerifierFail" => ApplicationCycle::ROUTE_VERIFIER_FAILED,
+        "onRouteNotFounded" => ApplicationCycle::ROUTE_NOT_FOUND,
         "onRenderResponse" => ApplicationCycle::RENDER_RESPONSE,
     ];
 

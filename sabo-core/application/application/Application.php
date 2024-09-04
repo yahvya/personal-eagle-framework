@@ -3,7 +3,7 @@
 namespace SaboCore\Application\Application;
 
 /**
- * @brief Application cycle manager
+ * @brief application cycle manager
  */
 class Application{
     /**

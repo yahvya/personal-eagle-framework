@@ -2,7 +2,8 @@
     "autoload": {
         "psr-4": {
             "SaboCore\\Application\\Application\\" : "./application/application",
-            "SaboCore\\Application\\ApplicationLaunchProcedure\\" : "./application/launch-procedure"
+            "SaboCore\\Application\\ApplicationLaunchProcedure\\" : "./application/launch-procedure",
+            "SaboCore\\PathConfig\\" : "./path-config"
         },
         "classmap": [
             "libs"

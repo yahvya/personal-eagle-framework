@@ -20,11 +20,13 @@ readonly abstract class MaintenanceConfiguration{
 
     /**
      * @brief access code hash
+     * @required
      */
     public const string ACCESS_CODE = "ACCESS_CODE";
 
     /**
      * @brief count of try before blocking access
+     * @required 
      */
     public const string MAX_TRY = "MAX_TRY";
 }

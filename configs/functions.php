@@ -13,7 +13,7 @@ use SaboCore\Configuration\EnvConfig;
  * @attention on production key not found warning is disabled
  */
 function dbEnv(string $key):mixed{
-    if($_ENV[EnvConfig::APPLICATION_CONFIGURATION][ApplicationConfiguration::APPLICATION_DEV_MODE])
+    if(@$_ENV[EnvConfig::APPLICATION_CONFIGURATION][ApplicationConfiguration::APPLICATION_DEV_MODE])
         return $_ENV[EnvConfig::DATABASE_CONFIGURATION][$key];
     else
         return @$_ENV[EnvConfig::DATABASE_CONFIGURATION][$key];
@@ -25,7 +25,7 @@ function dbEnv(string $key):mixed{
  * @attention on production key not found warning is disabled
  */
 function maintenanceEnv(string $key):mixed{
-    if($_ENV[EnvConfig::APPLICATION_CONFIGURATION][ApplicationConfiguration::APPLICATION_DEV_MODE])
+    if(@$_ENV[EnvConfig::APPLICATION_CONFIGURATION][ApplicationConfiguration::APPLICATION_DEV_MODE])
         return $_ENV[EnvConfig::MAINTENANCE_CONFIGURATION][$key];
     else
         return @$_ENV[EnvConfig::MAINTENANCE_CONFIGURATION][$key];
@@ -37,7 +37,7 @@ function maintenanceEnv(string $key):mixed{
  * @attention on production key not found warning is disabled
  */
 function mailerEnv(string $key):mixed{
-    if($_ENV[EnvConfig::APPLICATION_CONFIGURATION][ApplicationConfiguration::APPLICATION_DEV_MODE])
+    if(@$_ENV[EnvConfig::APPLICATION_CONFIGURATION][ApplicationConfiguration::APPLICATION_DEV_MODE])
         return $_ENV[EnvConfig::MAILER_CONFIGURATION][$key];
     else
         return @$_ENV[EnvConfig::MAILER_CONFIGURATION][$key];
@@ -49,7 +49,7 @@ function mailerEnv(string $key):mixed{
  * @attention on production key not found warning is disabled
  */
 function appEnv(string $key):mixed{
-    if($_ENV[EnvConfig::APPLICATION_CONFIGURATION][ApplicationConfiguration::APPLICATION_DEV_MODE])
+    if(@$_ENV[EnvConfig::APPLICATION_CONFIGURATION][ApplicationConfiguration::APPLICATION_DEV_MODE])
         return $_ENV[EnvConfig::APPLICATION_CONFIGURATION][$key];
     else
         return @$_ENV[EnvConfig::APPLICATION_CONFIGURATION][$key];
@@ -61,7 +61,7 @@ function appEnv(string $key):mixed{
  * @attention on production key not found warning is disabled
  */
 function customEnv(string $key):mixed{
-    if($_ENV[EnvConfig::APPLICATION_CONFIGURATION][ApplicationConfiguration::APPLICATION_DEV_MODE])
+    if(@$_ENV[EnvConfig::APPLICATION_CONFIGURATION][ApplicationConfiguration::APPLICATION_DEV_MODE])
         return $_ENV[EnvConfig::CUSTOM_CONFIGURATION][$key];
     else
         return @$_ENV[EnvConfig::CUSTOM_CONFIGURATION][$key];

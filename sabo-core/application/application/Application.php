@@ -32,7 +32,9 @@ class Application{
      * @throws Throwable on the debug mode in case of error
      */
     public function launch():self{
-        $launchProcedure = new ApplicationLaunchProcedure(steps:  []);
+        $launchProcedure = new ApplicationLaunchProcedure(steps:  [
+            new LoadInitFilesStep
+        ]);
 
         return $this->launchFromProcedure(launchProcedure: $launchProcedure);
     }
@@ -45,8 +47,11 @@ class Application{
      */
     public function launchFromProcedure(Procedure $launchProcedure):self{
         try{
-            while(!$launchProcedure->isFinished())
-                $launchProcedure->next();
+            while(!$launchProcedure->isFinished()){
+                if(!$launchProcedure->next()){
+                    throw new Exception(message: "Fail to launch app from procedure on step : {$launchProcedure->getCurrentStepNumber()} - step class name : " . get_class(object: $launchProcedure->getCurrentStep()));
+                }
+            }
         }
         catch(Exception $e){
             ApplicationCycleHooks::call(ApplicationCycle::ERROR_IN_CYCLE,$e);

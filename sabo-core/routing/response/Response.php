@@ -31,7 +31,7 @@ class Response{
      * @param string $value associated value
      * @return $this
      */
-    public function setHeader(string $name,string $value):self{
+    public function setHeader(string $name,string $value):static{
         $this->headers[$name] = $value;
 
         return $this;
@@ -42,7 +42,7 @@ class Response{
      * @param mixed $content response content
      * @return $this
      */
-    public function setContent(mixed $content):self{
+    public function setContent(mixed $content):static{
         $this->content = $content;
 
         return $this;
@@ -53,7 +53,7 @@ class Response{
      * @param ResponseCode $code response code
      * @return $this
      */
-    public function setResponseCode(ResponseCode $code):self{
+    public function setResponseCode(ResponseCode $code):static{
         $this->responseCode = $code;
 
         return $this;

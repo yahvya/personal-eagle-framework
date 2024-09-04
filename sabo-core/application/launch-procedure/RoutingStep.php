@@ -32,7 +32,7 @@ class RoutingStep implements ProcedureStep{
      * @brief check maintenance state
      * @return $this
      */
-    protected function checkMaintenance():self{
+    protected function checkMaintenance():static{
         ApplicationCycleHooks::call(cycleStep: ApplicationCycle::CHECK_MAINTENANCE);
 
         # check maintenance state
@@ -57,7 +57,7 @@ class RoutingStep implements ProcedureStep{
      * @brief search the matched route
      * @return $this
      */
-    protected function searchRoute():self{
+    protected function searchRoute():static{
 
         return $this;
     }

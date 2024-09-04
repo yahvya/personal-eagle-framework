@@ -20,7 +20,7 @@ class Application{
      * @return $this
      * @throws Throwable on the debug mode in case of error
      */
-    public function launchWeb():self{
+    public function launchWeb():static{
         $launchProcedure = new ApplicationLaunchProcedure(steps: [
             new LoadInitFilesStep,
             new DatabaseManagementStep,
@@ -35,7 +35,7 @@ class Application{
      * @return $this
      * @throws Throwable on the debug mode in case of error
      */
-    public function launch():self{
+    public function launch():static{
         $launchProcedure = new ApplicationLaunchProcedure(steps: [
             new LoadInitFilesStep,
             new DatabaseManagementStep
@@ -50,7 +50,7 @@ class Application{
      * @return $this
      * @throws Throwable on the debug mode in case of error
      */
-    public function launchFromProcedure(Procedure $launchProcedure):self{
+    public function launchFromProcedure(Procedure $launchProcedure):static{
         try{
             while(!$launchProcedure->isFinished()){
                 if(!$launchProcedure->next()){

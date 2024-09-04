@@ -7,6 +7,7 @@
             "SaboCore\\Configuration\\" : "./configuration",
             "SaboCore\\Database\\Providers\\Connection\\" : "./database/providers/connection",
             "SaboCore\\Utils\\Verification\\" : "./utils/verification",
+            "SaboCore\\Utils\\CustomTypes\\" : "./utils/custom-types",
             "SaboCore\\Routing\\Response\\" : "./routing/response",
             "SaboCore\\Routing\\Request\\" : "./routing/request"
         },

@@ -5,6 +5,7 @@ namespace SaboCore\Application\Application;
 use Exception;
 use PhpAddons\ProcedureManager\Procedure;
 use SaboCore\Application\ApplicationLaunchProcedure\ApplicationLaunchProcedure;
+use SaboCore\Application\ApplicationLaunchProcedure\DatabaseManagementStep;
 use SaboCore\Application\ApplicationLaunchProcedure\LoadInitFilesStep;
 use SaboCore\Configuration\ApplicationConfiguration;
 use Throwable;
@@ -19,8 +20,9 @@ class Application{
      * @throws Throwable on the debug mode in case of error
      */
     public function launchWeb():self{
-        $launchProcedure = new ApplicationLaunchProcedure(steps:  [
-            new LoadInitFilesStep
+        $launchProcedure = new ApplicationLaunchProcedure(steps: [
+            new LoadInitFilesStep,
+            new DatabaseManagementStep
         ]);
 
         return $this->launchFromProcedure(launchProcedure: $launchProcedure);
@@ -32,8 +34,9 @@ class Application{
      * @throws Throwable on the debug mode in case of error
      */
     public function launch():self{
-        $launchProcedure = new ApplicationLaunchProcedure(steps:  [
-            new LoadInitFilesStep
+        $launchProcedure = new ApplicationLaunchProcedure(steps: [
+            new LoadInitFilesStep,
+            new DatabaseManagementStep
         ]);
 
         return $this->launchFromProcedure(launchProcedure: $launchProcedure);

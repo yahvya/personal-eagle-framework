@@ -56,6 +56,7 @@ enum ApplicationCycle:int{
 
     /**
      * @brief route access condition fail
+     * @param Callable $conditionCallable failed callable
      */
     case ROUTE_VERIFIER_FAILED = 9;
 

@@ -7,18 +7,18 @@ use Closure;
 /**
  * @brief application cycle manager
  * @attention based on the linked step in the life cycle, certain functions / functionalities could not be available
- * @method static void onErrorInCycle(Closure|Callable $action) action at step ERROR_IN_CYCLE
- * @method static void onInit(Closure|Callable $action) action at step INIT
- * @method static void onConfigLoaded(Closure|Callable $action) action at step CONFIG_LOADED
- * @method static void beforeDatabaseInit(Closure|Callable $action) action at step BEFORE_DATABASE_INIT
- * @method static void afterDatabaseInit(Closure|Callable $action) action at step AFTER_DATABASE_INIT
- * @method static void onStartRouting(Closure|Callable $action) action at step START_ROUTING
- * @method static void onCheckMaintenance(Closure|Callable $action) action at step CHECK_MAINTENANCE
- * @method static void onMaintenanceBlock(Closure|Callable $action) action at step MAINTENANCE_BLOCK
- * @method static void onRouteFounded(Closure|Callable $action) action at step ROUTE_FOUNDED
- * @method static void onRouteVerifierFail(Closure|Callable $action) action at step ROUTE_VERIFIER_FAILED
- * @method static void onRouteNotFounded(Closure|Callable $action) action at step ROUTE_NOT_FOUND
- * @method static void onRenderResponse(Closure|Callable $action) action at step RENDER_RESPONSE
+ * @method static void onErrorInCycle(Callable $action) action at step ERROR_IN_CYCLE
+ * @method static void onInit(Callable $action) action at step INIT
+ * @method static void onConfigLoaded(Callable $action) action at step CONFIG_LOADED
+ * @method static void beforeDatabaseInit(Callable $action) action at step BEFORE_DATABASE_INIT
+ * @method static void afterDatabaseInit(Callable $action) action at step AFTER_DATABASE_INIT
+ * @method static void onStartRouting(Callable $action) action at step START_ROUTING
+ * @method static void onCheckMaintenance(Callable $action) action at step CHECK_MAINTENANCE
+ * @method static void onMaintenanceBlock(Callable $action) action at step MAINTENANCE_BLOCK
+ * @method static void onRouteFounded(Callable $action) action at step ROUTE_FOUNDED
+ * @method static void onRouteVerifierFail(Callable $action) action at step ROUTE_VERIFIER_FAILED
+ * @method static void onRouteNotFounded(Callable $action) action at step ROUTE_NOT_FOUND
+ * @method static void onRenderResponse(Callable $action) action at step RENDER_RESPONSE
  */
 abstract class ApplicationCycleHooks{
     /**
@@ -46,15 +46,15 @@ abstract class ApplicationCycleHooks{
 
     public static function __callStatic($name, $arguments):void{
         if(
-            !array_key_exists(key: $name,array: self::$authorizedMethods) ||
+            !array_key_exists(key: $name,array: static::$authorizedMethods) ||
             empty($arguments) ||
             !(($arguments = array_values(array: $arguments))[0] instanceof Closure)
         )
             return;
 
-        $cycleStep = self::$authorizedMethods[$name];
+        $cycleStep = static::$authorizedMethods[$name];
 
-        self::$hooksManagers[$cycleStep->value] = $arguments[0];
+        static::$hooksManagers[$cycleStep->value] = $arguments[0];
     }
 
     /**
@@ -64,8 +64,8 @@ abstract class ApplicationCycleHooks{
      * @return mixed le retour de la fonction ou true par défaut
      */
     public static function call(ApplicationCycle $cycleStep,mixed ...$args):mixed{
-        return array_key_exists(key: $cycleStep->value,array: self::$hooksManagers) ?
-            call_user_func_array(callback: self::$hooksManagers[$cycleStep->value],args: $args) :
+        return array_key_exists(key: $cycleStep->value,array: static::$hooksManagers) ?
+            call_user_func_array(callback: static::$hooksManagers[$cycleStep->value],args: $args) :
             true;
     }
 }

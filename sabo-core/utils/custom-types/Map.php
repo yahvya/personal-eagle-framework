@@ -66,4 +66,11 @@ class Map{
 
         return $keys;
     }
+
+    /**
+     * @return array array version of the map
+     */
+    public function toArray():array{
+        return $this->map;
+    }
 }

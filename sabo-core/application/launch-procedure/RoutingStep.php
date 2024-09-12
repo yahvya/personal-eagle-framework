@@ -10,6 +10,7 @@ use SaboCore\Application\Application\ApplicationState;
 use SaboCore\Configuration\MaintenanceConfiguration;
 use SaboCore\Routing\Request\FrameworkStorageMapping;
 use SaboCore\Routing\Request\Request;
+use SaboCore\Routing\Routes\Route;
 
 /**
  * @brief routing step
@@ -92,7 +93,49 @@ class RoutingStep implements ProcedureStep{
      * @return $this
      */
     protected function searchRoute():static{
+        $request = ApplicationState::$request;
+        $requestMethod = $request->requestMethod;
+        $genericParamsMatchRegex = Route::getGenericParamsMatchRegex();
 
+        foreach(Route::$routes[$requestMethod] as $route){
+            # check if it's the searched route
+            $matches = $request
+                ->uriMatcher
+                ->matchPattern(
+                    pattern: $route->link,
+                    genericParamsMatcherRegex: empty($route->genericParamsCustomRegex->toArray()) ? null : $genericParamsMatchRegex,
+                    genericParamsCustomRegex: $route->genericParamsCustomRegex
+                );
+
+            if($matches === null)
+                continue;
+
+            ApplicationCycleHooks::call(ApplicationCycle::ROUTE_FOUNDED,[
+                "route" => $route,
+                "match" => $matches
+            ]);
+
+            # check access verifiers
+            $break = false;
+
+            foreach($route->accessConditions as $conditionCallable){
+                if(!call_user_func(callback: $conditionCallable)){
+                    ApplicationCycleHooks::call(ApplicationCycle::ROUTE_VERIFIER_FAILED,$conditionCallable);
+                    $break = true;
+                    break;
+                }
+            }
+
+            if($break)
+                break;
+
+            # call the executor
+            dd("here");
+
+            return $this;
+        }
+
+        ApplicationCycleHooks::call(cycleStep: ApplicationCycle::ROUTE_NOT_FOUND);
         return $this;
     }
 }

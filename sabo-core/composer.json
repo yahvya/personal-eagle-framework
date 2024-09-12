@@ -9,7 +9,8 @@
             "SaboCore\\Utils\\Verification\\" : "./utils/verification",
             "SaboCore\\Utils\\CustomTypes\\" : "./utils/custom-types",
             "SaboCore\\Routing\\Response\\" : "./routing/response",
-            "SaboCore\\Routing\\Request\\" : "./routing/request"
+            "SaboCore\\Routing\\Request\\" : "./routing/request",
+            "SaboCore\\Routing\\Routes\\" : "./routing/routes"
         },
         "classmap": [
             "libs"

@@ -34,6 +34,10 @@ class LoadInitFilesStep implements ProcedureStep {
         if(!$this->loadEnvFrom(envConfig: $envConfig))
             return false;
 
+        # loading routes
+        if(!$this->loadRoutes())
+            return false;
+
         # loading success
         ApplicationCycleHooks::call(cycleStep: ApplicationCycle::CONFIG_LOADED);
         return true;
@@ -80,6 +84,25 @@ class LoadInitFilesStep implements ProcedureStep {
 
         # affecting keys
         $_ENV = $envConfig;
+
+        return true;
+    }
+
+    /**
+     * @brief load app routes
+     * @return bool if load succeed
+     */
+    protected function loadRoutes():bool{
+        $routesDir = APP_ROOT . AppPathMap::ROUTES_DIRECTORY->value;
+        $routesDirFiles = @scandir(directory: $routesDir);
+
+        if($routesDirFiles === false)
+            return false;
+
+        $routesDirFiles = array_diff($routesDirFiles,[".",".."]);
+
+        foreach($routesDirFiles as $filename)
+            require_once("$routesDir/$filename");
 
         return true;
     }

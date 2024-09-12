@@ -1,7 +1,6 @@
 <?php
 
 use SaboCore\Application\Application\ApplicationCycleHooks;
-use SaboCore\Routing\Request\Request;
 
 # --------------------------------------------------------------------
 # hooks configuration
@@ -9,14 +8,18 @@ use SaboCore\Routing\Request\Request;
 
 ApplicationCycleHooks::onMaintenanceBlock(function():void{
     # render maintenance page
+
+    echo "maintenance bloqué";
 });
 
 ApplicationCycleHooks::onErrorInCycle(function(Exception $error):void{
     # render error page
 
-    #dd($error);
+    dd($error);
 });
 
 ApplicationCycleHooks::onRouteNotFounded(function():void{
     # render page not found page
+
+    echo "page non trouvée";
 });

@@ -6,6 +6,7 @@ use PhpAddons\ProcedureManager\Procedure;
 use PhpAddons\ProcedureManager\ProcedureStep;
 use SaboCore\Application\Application\ApplicationCycle;
 use SaboCore\Application\Application\ApplicationCycleHooks;
+use SaboCore\Application\Application\ApplicationState;
 use SaboCore\Configuration\ApplicationConfiguration;
 use SaboCore\Configuration\DatabaseConfiguration;
 use SaboCore\Configuration\EnvConfig;
@@ -21,9 +22,14 @@ use SaboCore\Utils\Verification\ArrayVerifier;
  */
 class LoadInitFilesStep implements ProcedureStep {
     public function canAccessNext(Procedure $procedure, ...$args): bool{
+        ApplicationState::init();
+
         # loading hooks
         require_once(APP_ROOT . AppPathMap::CONFIGURATIONS_DIRECTORY->value . "/hooks.php");
         ApplicationCycleHooks::call(cycleStep: ApplicationCycle::INIT);
+
+        # load dependency injection configs
+        require_once(APP_ROOT . AppPathMap::CONFIGURATIONS_DIRECTORY->value . "/dependency-injector.php");
 
         # loading global functions
         require_once(APP_ROOT . AppPathMap::CONFIGURATIONS_DIRECTORY->value . "/functions.php");

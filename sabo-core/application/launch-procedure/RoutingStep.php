@@ -2,6 +2,8 @@
 
 namespace SaboCore\Application\ApplicationLaunchProcedure;
 
+use Closure;
+use Exception;
 use PhpAddons\ProcedureManager\Procedure;
 use PhpAddons\ProcedureManager\ProcedureStep;
 use SaboCore\Application\Application\ApplicationCycle;
@@ -11,6 +13,7 @@ use SaboCore\Configuration\MaintenanceConfiguration;
 use SaboCore\Routing\Request\FrameworkStorageMapping;
 use SaboCore\Routing\Request\Request;
 use SaboCore\Routing\Routes\Route;
+use SaboCore\Utils\Injection\injector\DependencyInjector;
 
 /**
  * @brief routing step
@@ -20,44 +23,68 @@ class RoutingStep implements ProcedureStep{
         ApplicationState::$request = new Request();
     }
 
-    public function canAccessNext(Procedure $procedure, ...$args): bool{
+    /**
+     * @param Procedure $procedure parent procedure
+     * @param mixed ...$args arguments
+     * @return bool can access next
+     * @throws Exception on error
+     */
+    public function canAccessNext(Procedure $procedure, mixed ...$args): bool{
         ApplicationCycleHooks::call(cycleStep: ApplicationCycle::START_ROUTING);
 
-        $this
-            ->checkMaintenance()
-            ->searchRoute();
+        if(!$this->checkMaintenance())
+            return true;
+
+        $this->searchRoute();
 
         return true;
     }
 
     /**
      * @brief check maintenance state
-     * @return $this
+     * @return bool can access
      */
-    protected function checkMaintenance():static{
+    protected function checkMaintenance():bool{
         ApplicationCycleHooks::call(cycleStep: ApplicationCycle::CHECK_MAINTENANCE);
 
         # check maintenance state
 
-        if(!maintenanceEnv(key: MaintenanceConfiguration::IS_IN_MAINTENANCE))
-            return $this;
-
         $request = ApplicationState::$request;
 
-        # check if the access is already acquired
-
-        if(
+        if(!maintenanceEnv(key: MaintenanceConfiguration::IS_IN_MAINTENANCE)){
             $request
                 ->sessionManager
-                ->getFrameworkValue(storeKey: FrameworkStorageMapping::MAINTENANCE_CONFIG) !== null
-        )
-            return $this;
+                ->deleteInFramework(storeKey: FrameworkStorageMapping::MAINTENANCE_CONFIG);
+            return true;
+        }
+
+        $sessionMaintenance = $request
+            ->sessionManager
+            ->getFrameworkValue(storeKey: FrameworkStorageMapping::MAINTENANCE_CONFIG);
+
+        # check if the access is already acquired
+        if($sessionMaintenance !== null && array_key_exists(key: "unlockedAccessAt",array: $sessionMaintenance))
+            return true;
+
+        # check the count of try
+
+        if($sessionMaintenance === null)
+            $sessionMaintenance = ["countOfTry" => 0];
+
+        if($sessionMaintenance["countOfTry"] + 1 > maintenanceEnv(key: MaintenanceConfiguration::MAX_TRY)){
+            ApplicationCycleHooks::call(cycleStep: ApplicationCycle::MAINTENANCE_BLOCK);
+            return false;
+        }
+
+        $request
+            ->sessionManager
+            ->storeFramework(storeKey: FrameworkStorageMapping::MAINTENANCE_CONFIG,toStore: ["countOfTry" => $sessionMaintenance["countOfTry"] + 1]);
 
         # try to acquire access (check method, check link , check code presence, compare code, unlock access)
 
         if($request->requestMethod !== "get"){
             ApplicationCycleHooks::call(cycleStep: ApplicationCycle::MAINTENANCE_BLOCK);
-            return $this;
+            return false;
         }
 
         if(
@@ -66,7 +93,7 @@ class RoutingStep implements ProcedureStep{
                 ->matchPattern(pattern: maintenanceEnv(key: MaintenanceConfiguration::SECRET_ACCESS_LINK)) === null
         ){
             ApplicationCycleHooks::call(cycleStep: ApplicationCycle::MAINTENANCE_BLOCK);
-            return $this;
+            return false;
         }
 
         $validationCode = $request
@@ -78,19 +105,23 @@ class RoutingStep implements ProcedureStep{
             !password_verify(password: $validationCode,hash: maintenanceEnv(key: MaintenanceConfiguration::ACCESS_CODE))
         ){
             ApplicationCycleHooks::call(cycleStep: ApplicationCycle::MAINTENANCE_BLOCK);
-            return $this;
+            return false;
         }
 
         $request
             ->sessionManager
-            ->storeFramework(storeKey: FrameworkStorageMapping::MAINTENANCE_CONFIG,toStore: ["unlockedAccessAt" => time()]);
+            ->storeFramework(storeKey: FrameworkStorageMapping::MAINTENANCE_CONFIG,toStore: [
+                "unlockedAccessAt" => time(),
+                "countOfTry" => $sessionMaintenance["countOfTry"] + 1
+            ]);
 
-        return $this;
+        return true;
     }
 
     /**
      * @brief search the matched route
      * @return $this
+     * @throws Exception on error
      */
     protected function searchRoute():static{
         $request = ApplicationState::$request;
@@ -103,7 +134,7 @@ class RoutingStep implements ProcedureStep{
                 ->uriMatcher
                 ->matchPattern(
                     pattern: $route->link,
-                    genericParamsMatcherRegex: empty($route->genericParamsCustomRegex->toArray()) ? null : $genericParamsMatchRegex,
+                    genericParamsMatcherRegex: $genericParamsMatchRegex,
                     genericParamsCustomRegex: $route->genericParamsCustomRegex
                 );
 
@@ -130,7 +161,13 @@ class RoutingStep implements ProcedureStep{
                 break;
 
             # call the executor
-            dd("here");
+            $arguments = DependencyInjector::buildCallableArgs(callable: $route->executor,baseElements: $matches);
+
+            $callable = $route->executor instanceof Closure ?
+                $route->executor :
+                [ApplicationState::$injector->createFromClass(class: $route->executor[0]),$route->executor[1]];
+
+            call_user_func_array(callback: $callable,args: $arguments)->render();
 
             return $this;
         }

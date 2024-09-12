@@ -11,4 +11,4 @@ use SaboCore\Routing\Routes\Route;
 # define generic params matcher
 # --------------------------------------------------------------------
 
-Route::setGenericParamsMatchRegex(regex: "\:([a-Z_A-Z]+)");
+Route::setGenericParamsMatchRegex(regex: "\:([a-zA-Z_]+)");

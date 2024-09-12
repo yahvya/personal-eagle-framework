@@ -8,6 +8,7 @@
             "SaboCore\\Database\\Providers\\Connection\\" : "./database/providers/connection",
             "SaboCore\\Utils\\Verification\\" : "./utils/verification",
             "SaboCore\\Utils\\CustomTypes\\" : "./utils/custom-types",
+            "SaboCore\\Utils\\Injection\\Injector\\" : "./utils/injection/injector",
             "SaboCore\\Routing\\Response\\" : "./routing/response",
             "SaboCore\\Routing\\Request\\" : "./routing/request",
             "SaboCore\\Routing\\Routes\\" : "./routing/routes"

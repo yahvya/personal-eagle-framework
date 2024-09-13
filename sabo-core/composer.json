@@ -5,6 +5,7 @@
             "SaboCore\\Application\\ApplicationLaunchProcedure\\" : "./application/launch-procedure",
             "SaboCore\\PathConfig\\" : "./path-config",
             "SaboCore\\Configuration\\" : "./configuration",
+            "SaboCore\\Controller\\" : "./controller",
             "SaboCore\\Database\\Providers\\Connection\\" : "./database/providers/connection",
             "SaboCore\\Utils\\Verification\\" : "./utils/verification",
             "SaboCore\\Utils\\CustomTypes\\" : "./utils/custom-types",

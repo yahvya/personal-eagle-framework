@@ -2,7 +2,9 @@
 
 
 use SaboCore\Application\Application\ApplicationState;
+use SaboCore\Controller\SaboController;
 use SaboCore\Routing\Request\Request;
+use SaboCore\Utils\Injection\Injector\DependencyInjector;
 
 # --------------------------------------------------------------------
 # add your custom factories
@@ -10,6 +12,16 @@ use SaboCore\Routing\Request\Request;
 
 ApplicationState::$injector
     ->factories
-    ->set(key: Request::class,value: fn():Request => ApplicationState::$request)
 
+    ;
+
+# --------------------------------------------------------------------
+# framework default factories
+# --------------------------------------------------------------------
+
+ApplicationState::$injector
+    ->addClassSubTypesFactories(class: SaboController::class)
+    ->factories
+        ->set(key: Request::class,value: fn():Request => ApplicationState::$request)
+        ->set(key: DependencyInjector::class,value: fn():DependencyInjector => ApplicationState::$injector)
     ;

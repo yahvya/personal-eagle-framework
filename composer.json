@@ -1,1 +1,7 @@
-{}
+{
+    "autoload": {
+        "classmap": [
+            "src/controllers"
+        ]
+    }
+}

@@ -72,6 +72,9 @@ readonly class Request{
         $this->phpInput = $phpInput === false ? null : $phpInput;
     }
 
+    /**
+     * @return string the formated request uri
+     */
     protected function loadRequestUri():string{
         $uri = @parse_url(url: $_SERVER["REQUEST_URI"])["path"] ?? "/";
 

@@ -22,7 +22,7 @@ use Closure;
  */
 abstract class ApplicationCycleHooks{
     /**
-     * @var Array<ApplicationCycle,Closure>
+     * @var array{ApplicationCycle: Closure}
      */
     public static array $hooksManagers = [];
 

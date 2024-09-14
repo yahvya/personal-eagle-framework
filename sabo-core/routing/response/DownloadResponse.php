@@ -11,9 +11,9 @@ use Throwable;
  */
 class DownloadResponse extends Response{
     /**
-     * @param string $ressourceAbsolutePath chemin absolu du fichier à fournir
-     * @param string|null $chosenName nom à donner au fichier à télécharger, si null nom par défaut utilisé
-     * @attention le fichier fourni doit exister
+     * @param string $ressourceAbsolutePath file absolute path
+     * @param string|null $chosenName downloadable ressource name , if null the default one will be used
+     * @attention the given file must exist
      */
     public function __construct(string $ressourceAbsolutePath,?string $chosenName = null){
         $this->content = $ressourceAbsolutePath;

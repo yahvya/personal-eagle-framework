@@ -5,6 +5,7 @@ namespace SaboCore\Utils\Injection\Injector;
 use Closure;
 use Exception;
 use ReflectionClass;
+use ReflectionException;
 use ReflectionFunction;
 use ReflectionMethod;
 use ReflectionParameter;
@@ -29,19 +30,51 @@ readonly class DependencyInjector{
      */
     public function createFromClass(string $class,array $baseElements = []):mixed{
         if(!$this->factories->haveKey(key: $class)){
-            if(!is_object(value: $class))
+            try{
+                # build the class constructor arguments
+                $reflection = new ReflectionClass(objectOrClass: $class);
+
+                return $reflection->newInstance(...self::buildCallableArgs(callable: [$class,"__construct"]));
+            }
+            catch(ReflectionException){
                 return null;
-
-            # check if class have an empty params constructor
-            $reflection = new ReflectionClass(objectOrClass: $class);
-
-            if(count(value: $reflection->getConstructor()->getParameters()) === 0)
-                return $reflection->newInstance();
-
-            return null;
+            }
         }
 
         return call_user_func_array(callback: $this->factories->get(key: $class),args: [$baseElements]);
+    }
+
+    /**
+     * @brief search all subclass of the given class and add a default factory (base on the createFromClass method)
+     * @param string $class parent class
+     * @return $this
+     * @attention this method only work with declared classes in the project loaded from class map or declared classes
+     * @attention the generated factories could throw exceptions on error
+     */
+    public function addClassSubTypesFactories(string $class):static{
+        $classmap = require_once(APP_ROOT . "/vendor/composer/autoload_classmap.php");
+        $declaredClasses = array_merge(get_declared_classes(),array_keys(array: $classmap));
+
+        foreach($declaredClasses as $declaredClass){
+            if(!is_subclass_of(object_or_class: $declaredClass, class: $class))
+                continue;
+
+            $this
+                ->factories
+                ->set(key: $declaredClass,value: function()use($declaredClass){
+                    try{
+                        # build the class constructor arguments
+                        $reflection = new ReflectionClass(objectOrClass: $declaredClass);
+
+                        return $reflection->newInstance(...self::buildCallableArgs(callable: [$declaredClass,"__construct"]));
+                    }
+                    catch(ReflectionException){
+                        throw new Exception(message: "Fail to generate an instance of <$declaredClass> from a generated factory");
+                    }
+                });
+        }
+
+        return $this;
     }
 
     /**

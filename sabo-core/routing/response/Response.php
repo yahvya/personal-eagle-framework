@@ -17,7 +17,7 @@ class Response{
     protected mixed $content = null;
 
     /**
-     * @var array<string,string> headers
+     * @var array{string:string} headers
      */
     protected array $headers = [
         "X-Content-Type-Options" => "nosniff",
@@ -60,7 +60,7 @@ class Response{
     }
 
     /**
-     * @return array<string,string> headers
+     * @return array{string:string} headers
      */
     public function getHeaders():array{
         return $this->headers;

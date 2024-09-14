@@ -30,7 +30,7 @@ class Route{
     protected static string $genericParamsFormatMatcher = "\:([a-Z_A-Z]+)";
 
     /**
-     * @var Array<string,Route> routes list indexed by the http method
+     * @var array{string:Route} routes list indexed by the http method
      */
     public static array $routes = [];
 
@@ -113,7 +113,7 @@ class Route{
     /**
      * @brief register a new route after applying some verifications
      * @param string $link route link (can contain generic params)
-     * @param Callable $executor callable (controller:method) or a closure which return a RouteResponse
+     * @param Closure|array $executor callable (controller:method) or a closure which return a RouteResponse
      * @param string $routeName route name , two route can't have the same name if they are in the same requestMethod
      * @return Route the created route
      * @throws Exception on route exists
@@ -121,7 +121,7 @@ class Route{
     protected static function registerRoute(
         string $requestMethod,
         string $link,
-        Callable $executor,
+        Closure|array $executor,
         string $routeName,
     ):Route{
         if(array_key_exists(key: $routeName,array: static::$routes[$requestMethod] ?? []))

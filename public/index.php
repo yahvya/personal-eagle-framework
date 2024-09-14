@@ -29,4 +29,5 @@ require_once APP_ROOT . "/vendor/autoload.php";
 # launch app
 # --------------------------------------------------------------------
 
+/** @noinspection PhpUnhandledExceptionInspection */
 (new Application)->launchWeb();

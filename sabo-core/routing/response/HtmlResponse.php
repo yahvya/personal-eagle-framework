@@ -9,7 +9,7 @@ use Override;
  */
 class HtmlResponse extends Response{
     /**
-     * @param string $content html response
+     * @param string $content html content
      */
     public function __construct(string $content){
         $this->content = $content;

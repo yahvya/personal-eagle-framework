@@ -1,0 +1,13 @@
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT class (#PCDATA)>
+<!ELEMENT names (name+)>
+<!ELEMENT is-required (#PCDATA)>
+<!ELEMENT default (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT requirement (type,name,description)>
+<!ELEMENT requirements (requirement*)>
+<!ELEMENT option (names,is-required,description,default?,requirements?)>
+<!ELEMENT options (option*)>
+<!ELEMENT command (name,description,class,options)>
+<!ELEMENT commands (command*)>

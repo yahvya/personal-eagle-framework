@@ -12,7 +12,12 @@
             "SaboCore\\Utils\\Injection\\Injector\\" : "./utils/injection/injector",
             "SaboCore\\Routing\\Response\\" : "./routing/response",
             "SaboCore\\Routing\\Request\\" : "./routing/request",
-            "SaboCore\\Routing\\Routes\\" : "./routing/routes"
+            "SaboCore\\Routing\\Routes\\" : "./routing/routes",
+            "SaboCore\\SaboCli\\Commands\\Commands\\" : "./sabo-cli/commands/commands",
+            "SaboCore\\SaboCli\\Commands\\Help\\" : "./sabo-cli/commands/help",
+            "SaboCore\\SaboCli\\Commands\\FileMakers\\" : "./sabo-cli/commands/file-makers",
+            "SaboCore\\SaboCli\\Commands\\DevEnvironment\\" : "./sabo-cli/commands/dev-environment",
+            "SaboCore\\SaboCli\\Commands\\DatabaseScripts\\" : "./sabo-cli/commands/database-scripts"
         },
         "classmap": [
             "libs"

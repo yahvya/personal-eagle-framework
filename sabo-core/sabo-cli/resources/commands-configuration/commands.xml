@@ -4,7 +4,7 @@
     <command>
         <name>help</name>
         <description>Affiche l'aide des commandes</description>
-        <class>SaboCore\SaboCli\Commands\Commands\Help</class>
+        <class>SaboCore\SaboCli\Commands\Help\Help</class>
         <options>
             <option>
                 <names>
@@ -20,7 +20,7 @@
     <command>
         <name>make:controller</name>
         <description>Crée un nouveau controller</description>
-        <class>SaboCore\SaboCli\Commands\Commands\ControllerMaker</class>
+        <class>SaboCore\SaboCli\Commands\FileMakers\ControllerMaker</class>
         <options>
             <option>
                 <names>
@@ -47,7 +47,7 @@
     <command>
         <name>make:model</name>
         <description>Crée un nouveau model</description>
-        <class>SaboCore\SaboCli\Commands\Commands\ModelMaker</class>
+        <class>SaboCore\SaboCli\Commands\FileMakers\ModelMaker</class>
         <options>
             <option>
                 <names>
@@ -74,7 +74,7 @@
     <command>
         <name>make:procedure</name>
         <description>Crée une nouvelle procédure</description>
-        <class>SaboCore\SaboCli\Commands\Commands\ProcedureMaker</class>
+        <class>SaboCore\SaboCli\Commands\FileMakers\ProcedureMaker</class>
         <options>
             <option>
                 <names>
@@ -101,7 +101,7 @@
     <command>
         <name>start-dev</name>
         <description>Lance l'environnement de développement (requis avant de modifier le projet)</description>
-        <class>SaboCore\SaboCli\Commands\Commands\DevEnvironnement</class>
+        <class>SaboCore\SaboCli\Commands\DevEnvironment\DevEnvironment</class>
         <options>
             <option>
                 <names>
@@ -116,6 +116,7 @@
                         <type>command</type>
                         <name>npm</name>
                         <description>Utilisé pour installer la commande "browser-sync" sur le système si non disponible</description>
+                        <command_install>npm install -g browser-sync</command_install>
                     </requirement>
                 </requirements>
             </option>
@@ -135,7 +136,7 @@
     <command>
         <name>build</name>
         <description>Construis le projet pour la production. Pensez à vérifier le contenu généré</description>
-        <class>SaboCore\SaboCli\Commands\Commands\ProjectBuilder</class>
+        <class>SaboCore\SaboCli\Commands\ProjectBuilder\ProjectBuilder</class>
         <options>
         </options>
     </command>
@@ -143,7 +144,7 @@
     <command>
         <name>generate:database</name>
         <description>Génère le script de création de la base de données à partir des models. Attention fait pour fonctionner avec le système par défaut Mysql ou Héritage équivalent</description>
-        <class>SaboCore\SaboCli\Commands\Commands\DatabaseScriptCreator</class>
+        <class>SaboCore\SaboCli\Commands\DatabaseScripts\DatabaseCreationScriptCreator</class>
         <options>
             <option>
                 <names>

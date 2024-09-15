@@ -57,7 +57,6 @@ class Application{
                     throw new Exception(message: "Fail to launch app from procedure on step : {$launchProcedure->getCurrentStepNumber()} - step class name : " . get_class(object: $launchProcedure->getCurrentStep()));
                 }
             }
-            die();
         }
         catch(Exception $e){
             ApplicationCycleHooks::call(ApplicationCycle::ERROR_IN_CYCLE,$e);

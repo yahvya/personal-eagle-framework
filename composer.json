@@ -1,7 +1,17 @@
 {
+    "_comment": [
+        "The classmap \"src\" is used to allow the dependency injection from a parent child class by detecting all project files. The project composer dumpautoload have to be called on each class creation or deletion. (The start-dev command make that alone)"
+    ],
     "autoload": {
         "classmap": [
             "src"
-        ]
+        ],
+        "psr-4": {
+            "Controllers\\" : "src/controllers",
+            "Models\\" : "src/models"
+        }
+    },
+    "require": {
+        "ext-simplexml": "*"
     }
 }

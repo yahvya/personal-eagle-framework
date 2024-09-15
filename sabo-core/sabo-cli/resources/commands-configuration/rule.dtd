@@ -5,7 +5,8 @@
 <!ELEMENT is-required (#PCDATA)>
 <!ELEMENT default (#PCDATA)>
 <!ELEMENT type (#PCDATA)>
-<!ELEMENT requirement (type,name,description)>
+<!ELEMENT command_install (#PCDATA)>
+<!ELEMENT requirement (type,name,description,command_install?)>
 <!ELEMENT requirements (requirement*)>
 <!ELEMENT option (names,is-required,description,default?,requirements?)>
 <!ELEMENT options (option*)>

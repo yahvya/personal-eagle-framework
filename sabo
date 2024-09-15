@@ -14,8 +14,10 @@
  */
 
 use SaboCore\Application\Application\Application;
+use SaboCore\SaboCli\Commands\Commands\SaboCliCommand;
 
 const APP_ROOT = __DIR__;
+const RESOURCES_PATH = APP_ROOT . "/sabo-core/sabo-cli/resources";
 
 # --------------------------------------------------------------------
 # load autoloader
@@ -31,5 +33,10 @@ require_once APP_ROOT . "/vendor/autoload.php";
 (new Application)->launch();
 
 # --------------------------------------------------------------------
-# register commands
+# launch command management
 # --------------------------------------------------------------------
+
+if(!SaboCliCommand::loadCommandsDescriptions(descriptionFileAbsolutePath: RESOURCES_PATH . "/commands-configuration/commands.xml")){
+    echo "fail to load commands xml description";
+    exit(1);
+}

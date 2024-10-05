@@ -17,7 +17,8 @@
             "SaboCore\\SaboCli\\Commands\\Help\\" : "./sabo-cli/commands/help",
             "SaboCore\\SaboCli\\Commands\\FileMakers\\" : "./sabo-cli/commands/file-makers",
             "SaboCore\\SaboCli\\Commands\\DevEnvironment\\" : "./sabo-cli/commands/dev-environment",
-            "SaboCore\\SaboCli\\Commands\\DatabaseScripts\\" : "./sabo-cli/commands/database-scripts"
+            "SaboCore\\SaboCli\\Commands\\DatabaseScripts\\" : "./sabo-cli/commands/database-scripts",
+            "SaboCore\\SaboCli\\ArgsParser\\" : "./sabo-cli/args-parser"
         },
         "classmap": [
             "libs"

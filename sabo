@@ -40,3 +40,5 @@ if(!SaboCliCommand::loadCommandsDescriptions(descriptionFileAbsolutePath: RESOUR
     echo "fail to load commands xml description";
     exit(1);
 }
+
+exit(SaboCliCommand::treat(args: $argv) ? 0 : 1);

@@ -2,6 +2,7 @@
 
 namespace SaboCore\SaboCli\Commands\Commands;
 
+use SaboCore\SaboCli\ArgsParser\Parser;
 use SimpleXMLElement;
 use Throwable;
 
@@ -37,6 +38,17 @@ abstract class SaboCliCommand{
     }
 
     /**
+     * @brief treat the arguments to launch commands
+     * @param string[] $args arguments
+     * @return bool treatment success
+     */
+    public static function treat(array $args):bool{
+        $parser = new Parser(args: $args);
+
+        return true;
+    }
+
+    /**
      * @brief convert the xml format to a formated array
      * @param SimpleXMLElement $xmlCommand command
      * @return array formated array
@@ -64,17 +76,19 @@ abstract class SaboCliCommand{
             foreach($option->names->name as $name)
                 $optionDatas["names"][] = $name->__toString();
 
-            foreach($option->requirements->requirement as $requirement){
-                $requirementDatas = [
-                    "type" => $requirement->type->__toString(),
-                    "name" => $requirement->name->__toString(),
-                    "description" => $requirement->description->__toString()
-                ];
+            if(!empty($option->requirements->requirement)){
+                foreach($option->requirements->requirement as $requirement){
+                    $requirementDatas = [
+                        "type" => $requirement->type->__toString(),
+                        "name" => $requirement->name->__toString(),
+                        "description" => $requirement->description->__toString()
+                    ];
 
-                if($requirementDatas["type"] === RequirementTypes::COMMAND->value)
-                    $requirementDatas["commandInstall"] = $requirement->command_install->__toString();
+                    if($requirementDatas["type"] === RequirementTypes::COMMAND->value)
+                        $requirementDatas["commandInstall"] = $requirement->command_install->__toString();
 
-                $command["requirements"][] = $requirementDatas;
+                    $command["requirements"][] = $requirementDatas;
+                }
             }
 
             $command["options"][] = $optionDatas;

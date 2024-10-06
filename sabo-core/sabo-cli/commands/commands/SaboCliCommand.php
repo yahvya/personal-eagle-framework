@@ -15,6 +15,15 @@ abstract class SaboCliCommand{
      */
     protected static array $commands = [];
 
+    public function __construct(){}
+
+    /**
+     * @brief execute the command
+     * @param Parser $parser parser
+     * @return bool execution success
+     */
+    public abstract function executeCommand(Parser $parser):bool;
+
     /**
      * @brief load the commands descriptions and store them
      * @param string $descriptionFileAbsolutePath command description xml file absolute path
@@ -50,7 +59,7 @@ abstract class SaboCliCommand{
 
         if(!$parser->thereIsCommand()){
             echo "> Please provide a command to execute";
-            self::printCommandsList();
+            self::printCommandsList(commands: self::$commands);
             return false;
         }
 
@@ -58,19 +67,25 @@ abstract class SaboCliCommand{
 
         if(!array_key_exists(key: $commandName,array: self::$commands)){
             echo "> Command not found";
-            self::printCommandsList();
+            self::printCommandsList(commands: self::$commands);
             return false;
         }
+
+        $executorClass = self::$commands[$commandName]["class"];
+        $executor = new $executorClass();
+
+        $executor->executeCommand(parser: $parser);
 
         return true;
     }
 
     /**
      * @brief print command list
+     * @param array $commands commands
      * @return void
      */
-    public static function printCommandsList():void{
-        foreach(self::$commands as $commandName => $commandConfig) {
+    public static function printCommandsList(array $commands):void{
+        foreach($commands as $commandName => $commandConfig) {
 echo "
 
 -------------------------------------------------------------------------

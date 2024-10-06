@@ -37,7 +37,7 @@ require_once APP_ROOT . "/vendor/autoload.php";
 # --------------------------------------------------------------------
 
 if(!SaboCliCommand::loadCommandsDescriptions(descriptionFileAbsolutePath: RESOURCES_PATH . "/commands-configuration/commands.xml")){
-    echo "fail to load commands xml description";
+    echo "> fail to load commands xml description";
     exit(1);
 }
 

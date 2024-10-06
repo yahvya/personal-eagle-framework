@@ -6,6 +6,9 @@ use SaboCore\SaboCli\ArgsParser\Parser;
 use SimpleXMLElement;
 use Throwable;
 
+/**
+ * @brief cli manager
+ */
 abstract class SaboCliCommand{
     /**
      * @var array{string:array} commands configuration
@@ -45,7 +48,67 @@ abstract class SaboCliCommand{
     public static function treat(array $args):bool{
         $parser = new Parser(args: $args);
 
+        if(!$parser->thereIsCommand()){
+            echo "> Please provide a command to execute";
+            self::printCommandsList();
+            return false;
+        }
+
+        $commandName = $parser->getCommandName();
+
+        if(!array_key_exists(key: $commandName,array: self::$commands)){
+            echo "> Command not found";
+            self::printCommandsList();
+            return false;
+        }
+
         return true;
+    }
+
+    /**
+     * @brief print command list
+     * @return void
+     */
+    public static function printCommandsList():void{
+        foreach(self::$commands as $commandName => $commandConfig) {
+echo "
+
+-------------------------------------------------------------------------
+[$commandName]
+
+> {$commandConfig["description"]}";
+
+            if(!empty($commandConfig["options"])){
+echo "
+
+Options :";
+
+                foreach($commandConfig["options"] as $optionConfig){
+                    $names = implode(separator: ",",array: $optionConfig["names"]);
+                    $isRequired = $optionConfig["isRequired"] ? "Oui" : "Non";
+echo "
+
+  $names
+      > {$optionConfig["description"]}
+      Requis : $isRequired
+      Par défaut : {$optionConfig["default"]}";
+
+                    if(!empty($optionConfig["requirements"])){
+echo "
+
+      Requis:";
+                        foreach($optionConfig["requirements"] as $requirementConfig){
+echo "
+          {$requirementConfig["name"]} ({$requirementConfig["type"]})
+            > {$requirementConfig["description"]}";
+                        }
+                    }
+                }
+            }
+
+echo "
+-------------------------------------------------------------------------";
+        }
     }
 
     /**
@@ -87,7 +150,7 @@ abstract class SaboCliCommand{
                     if($requirementDatas["type"] === RequirementTypes::COMMAND->value)
                         $requirementDatas["commandInstall"] = $requirement->command_install->__toString();
 
-                    $command["requirements"][] = $requirementDatas;
+                    $optionDatas["requirements"][] = $requirementDatas;
                 }
             }
 

@@ -1,0 +1,10 @@
+<?php
+
+namespace Controllers;
+
+/**
+ * @brief {controllerDescription}{author}
+ */
+class {controllerName} extends CustomController{
+
+}

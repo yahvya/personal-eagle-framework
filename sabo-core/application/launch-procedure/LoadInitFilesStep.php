@@ -2,6 +2,7 @@
 
 namespace SaboCore\Application\ApplicationLaunchProcedure;
 
+use Override;
 use PhpAddons\ProcedureManager\Procedure;
 use PhpAddons\ProcedureManager\ProcedureStep;
 use SaboCore\Application\Application\ApplicationCycle;
@@ -21,6 +22,7 @@ use SaboCore\Utils\Verification\ArrayVerifier;
  * @file configs/env.php
  */
 class LoadInitFilesStep implements ProcedureStep {
+    #[Override]
     public function canAccessNext(Procedure $procedure, ...$args): bool{
         ApplicationState::init();
 

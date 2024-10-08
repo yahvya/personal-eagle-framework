@@ -2,6 +2,7 @@
 
 namespace SaboCore\Application\ApplicationLaunchProcedure;
 
+use Override;
 use PhpAddons\ProcedureManager\Procedure;
 use PhpAddons\ProcedureManager\ProcedureStep;
 use SaboCore\Application\Application\ApplicationCycle;
@@ -13,6 +14,7 @@ use SaboCore\Configuration\DatabaseConfiguration;
  * @brief manage database requirements
  */
 class DatabaseManagementStep implements ProcedureStep{
+    #[Override]
     public function canAccessNext(Procedure $procedure, ...$args): bool{
         ApplicationCycleHooks::call(cycleStep: ApplicationCycle::BEFORE_DATABASE_INIT);
 

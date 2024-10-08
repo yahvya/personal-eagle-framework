@@ -2,6 +2,7 @@
 
 namespace SaboCore\Application\ApplicationLaunchProcedure;
 
+use Override;
 use PhpAddons\ProcedureManager\Procedure;
 use PhpAddons\ProcedureManager\ProcedureStep;
 
@@ -16,6 +17,7 @@ class ApplicationLaunchProcedure extends Procedure {
         parent::__construct();
     }
 
+    #[Override]
     public function getSteps(): array{
         return $this->steps;
     }

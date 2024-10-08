@@ -2,6 +2,7 @@
 
 namespace SaboCore\SaboCli\Commands\Help;
 
+use Override;
 use SaboCore\SaboCli\ArgsParser\Parser;
 use SaboCore\SaboCli\Commands\Commands\SaboCliCommand;
 
@@ -9,6 +10,7 @@ use SaboCore\SaboCli\Commands\Commands\SaboCliCommand;
  * @brief help command - allow to print commands list and help
  */
 class Help extends SaboCliCommand{
+    #[Override]
     public function executeCommand(Parser $parser): bool{
         $commands = self::$commands;
 

@@ -4,6 +4,7 @@ namespace SaboCore\Application\ApplicationLaunchProcedure;
 
 use Closure;
 use Exception;
+use Override;
 use PhpAddons\ProcedureManager\Procedure;
 use PhpAddons\ProcedureManager\ProcedureStep;
 use SaboCore\Application\Application\ApplicationCycle;
@@ -29,6 +30,7 @@ class RoutingStep implements ProcedureStep{
      * @return bool can access next
      * @throws Exception on error
      */
+    #[Override]
     public function canAccessNext(Procedure $procedure, mixed ...$args): bool{
         ApplicationCycleHooks::call(cycleStep: ApplicationCycle::START_ROUTING);
 

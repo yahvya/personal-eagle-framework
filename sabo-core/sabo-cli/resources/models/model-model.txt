@@ -1,0 +1,10 @@
+<?php
+
+namespace Models;
+
+/**
+ * @brief {modelDescription}{author}
+ */
+class {modelName} extends CustomModel{
+
+}

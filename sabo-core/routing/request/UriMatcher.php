@@ -32,7 +32,7 @@ class UriMatcher{
         # format the pattern
         $pattern = $this->formatPattern(pattern: $pattern);
 
-        # if there is nothing to match, check with a simple comparaison
+        # if there is nothing to match, check with a simple comparison
         if($genericParamsMatcherRegex === null && $pattern === $this->baseUri)
             return [];
 

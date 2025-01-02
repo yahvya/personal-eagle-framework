@@ -140,7 +140,7 @@ echo "
         ];
 
         foreach($xmlCommand->options->option as $option){
-            $optionDatas = [
+            $optionData = [
                 "names" => [],
                 "requirements" => [],
                 "isRequired" => $option->is_required->__toString() === "true",
@@ -148,11 +148,11 @@ echo "
                 "default" => $option->default->__toString()
             ];
 
-            if(empty($optionDatas["default"]))
-                $optionDatas["default"] = null;
+            if(empty($optionData["default"]))
+                $optionData["default"] = null;
 
             foreach($option->names->name as $name)
-                $optionDatas["names"][] = $name->__toString();
+                $optionData["names"][] = $name->__toString();
 
             if(!empty($option->requirements->requirement)){
                 foreach($option->requirements->requirement as $requirement){
@@ -165,11 +165,11 @@ echo "
                     if($requirementDatas["type"] === RequirementTypes::COMMAND->value)
                         $requirementDatas["commandInstall"] = $requirement->command_install->__toString();
 
-                    $optionDatas["requirements"][] = $requirementDatas;
+                    $optionData["requirements"][] = $requirementDatas;
                 }
             }
 
-            $command["options"][] = $optionDatas;
+            $command["options"][] = $optionData;
         }
 
         return $command;

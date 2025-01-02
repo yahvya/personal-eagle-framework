@@ -14,8 +14,8 @@ readonly class SessionManager{
     protected Map $session;
 
     /**
-     * @var Map user session datas
-     * @attention this map set function can't persist datas in session
+     * @var Map user session data's
+     * @attention this map set function can't persist data's in session
      */
     public Map $userSession;
 
@@ -45,7 +45,7 @@ readonly class SessionManager{
      * @return $this
      */
     public function storeFlash(string $storeKey,mixed $toStore,int $countOfRedirectBefore = 1,int $timeBeforeDelete = 1800):static{
-        $_SESSION[SessionStorageMapping::FLASH_DATAS->value][$storeKey] = [
+        $_SESSION[SessionStorageMapping::FLASH_DATA->value][$storeKey] = [
             "value" => $toStore,
             "config" => [
                 "countOfRedirectBefore" => $countOfRedirectBefore,
@@ -90,8 +90,8 @@ readonly class SessionManager{
      * @return mixed the stored data or null on not found
      */
     public function getFlashValue(string $storeKey):mixed{
-        return isset($_SESSION[SessionStorageMapping::FLASH_DATAS->value][$storeKey]) ?
-            $_SESSION[SessionStorageMapping::FLASH_DATAS->value][$storeKey]["value"] :
+        return isset($_SESSION[SessionStorageMapping::FLASH_DATA->value][$storeKey]) ?
+            $_SESSION[SessionStorageMapping::FLASH_DATA->value][$storeKey]["value"] :
             null;
     }
 
@@ -123,32 +123,32 @@ readonly class SessionManager{
      * @return $this
      */
     public function deleteInFlash(string $storeKey):static{
-        unset($_SESSION[SessionStorageMapping::FLASH_DATAS->value][$storeKey]);
+        unset($_SESSION[SessionStorageMapping::FLASH_DATA->value][$storeKey]);
 
         return $this;
     }
 
     /**
-     * @brief manage the lifecycle of flash datas
+     * @brief manage the lifecycle of flash data's
      * @return $this
      */
-    public function manageFlashDatas():static{
-        if(!isset($_SESSION[SessionStorageMapping::FLASH_DATAS->value]) )
-            $_SESSION[SessionStorageMapping::FLASH_DATAS->value] = [];
+    public function manageFlashData():static{
+        if(!isset($_SESSION[SessionStorageMapping::FLASH_DATA->value]) )
+            $_SESSION[SessionStorageMapping::FLASH_DATA->value] = [];
 
-        foreach($_SESSION[SessionStorageMapping::FLASH_DATAS->value] as $key => $flashConfig){
+        foreach($_SESSION[SessionStorageMapping::FLASH_DATA->value] as $key => $flashConfig){
             # check the duration and expiration
             if(
                 $flashConfig["config"]["countOfRedirectBefore"] === 0 ||
                 time() - $flashConfig["config"]["storeTime"] >= $flashConfig["config"]["timeBeforeDelete"]
             ){
-                unset($_SESSION[SessionStorageMapping::FLASH_DATAS->value][$key]);
+                unset($_SESSION[SessionStorageMapping::FLASH_DATA->value][$key]);
                 continue;
             }
 
             $flashConfig["config"]["countOfRedirectBefore"]--;
 
-            $_SESSION[SessionStorageMapping::FLASH_DATAS->value][$key] = $flashConfig;
+            $_SESSION[SessionStorageMapping::FLASH_DATA->value][$key] = $flashConfig;
         }
 
         return $this;

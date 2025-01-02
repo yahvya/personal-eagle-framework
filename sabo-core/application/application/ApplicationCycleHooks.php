@@ -27,7 +27,7 @@ abstract class ApplicationCycleHooks{
     public static array $hooksManagers = [];
 
     /**
-     * @var array indicé par le nom de la méthode et l'évènement lié
+     * @var array mapped by the name of the méthod and the linked event
      */
     protected static array $authorizedMethods = [
         "onErrorInCycle" => ApplicationCycle::ERROR_IN_CYCLE,
@@ -58,10 +58,10 @@ abstract class ApplicationCycleHooks{
     }
 
     /**
-     * @brief Lance la fonction d'exécution liée à l'étape fournie si définie
-     * @param ApplicationCycle $cycleStep étape
-     * @param mixed ...$args paramètres de la fonction liée
-     * @return mixed le retour de la fonction ou true par défaut
+     * @brief launch the linked execution function to the defined step
+     * @param ApplicationCycle $cycleStep step
+     * @param mixed ...$args linked function params
+     * @return mixed the function return
      */
     public static function call(ApplicationCycle $cycleStep,mixed ...$args):mixed{
         return array_key_exists(key: $cycleStep->value,array: static::$hooksManagers) ?

@@ -22,14 +22,14 @@ abstract class SaboController{
     }
 
     /**
-     * @brief build a response to download a ressource
-     * @param string $ressourceAbsolutePath file absolute path
-     * @param string|null $chosenName downloadable ressource name , if null the default one will be used
+     * @brief build a response to download a resource
+     * @param string $resourceAbsolutePath file absolute path
+     * @param string|null $chosenName downloadable resource name , if null the default one will be used
      * @attention the given file must exist
      * @return DownloadResponse the created response
      */
-    public function buildDownloadResponse(string $ressourceAbsolutePath,?string $chosenName = null):DownloadResponse{
-        return new DownloadResponse(ressourceAbsolutePath:  $ressourceAbsolutePath,chosenName: $chosenName);
+    public function buildDownloadResponse(string $resourceAbsolutePath, ?string $chosenName = null):DownloadResponse{
+        return new DownloadResponse(resourceAbsolutePath:  $resourceAbsolutePath,chosenName: $chosenName);
     }
 
 

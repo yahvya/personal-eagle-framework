@@ -17,7 +17,7 @@ enum SessionStorageMapping:string{
     case USER_STORAGE = "USER_STORAGE";
 
     /**
-     * @brief storage reserved for flash datas
+     * @brief storage reserved for flash data's
      */
-    case FLASH_DATAS = "FLASH_DATAS";
+    case FLASH_DATA = "FLASH_DATA";
 }

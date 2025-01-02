@@ -12,7 +12,7 @@ class Response{
     protected ResponseCode $responseCode = ResponseCode::OK;
 
     /**
-     * @var mixed|null contenu de la réponse
+     * @var mixed|null response content
      */
     protected mixed $content = null;
 

@@ -80,7 +80,7 @@ readonly class DependencyInjector{
     /**
      * @brief build an ordered array representing the callable args
      * @param Closure|array $callable callable
-     * @param array $baseElements default values for potentiel parameters
+     * @param array $baseElements default values for potential parameters
      * @return array callable args
      * @throws Exception on error
      */

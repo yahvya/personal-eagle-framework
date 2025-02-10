@@ -1,5 +1,11 @@
-*.idea
+# Sensible files
+
+*.env
+*.env.php
+*vendor/
+configs/*.secret
+
+# IDE & Editors
+
 *.vscode
-*vendor
-*env.php
-storage/maintenance.secret
+*.idea

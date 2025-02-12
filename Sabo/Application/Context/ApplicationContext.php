@@ -2,10 +2,12 @@
 
 namespace Sabo\Application\Context;
 
+use Sabo\Utils\StepsManager\StepExecutionContext;
+
 /**
  * Application context
  */
-class ApplicationContext
+class ApplicationContext implements StepExecutionContext
 {
     /**
      * @var ApplicationContext|null Application current context

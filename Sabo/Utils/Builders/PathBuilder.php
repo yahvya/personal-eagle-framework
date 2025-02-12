@@ -33,6 +33,6 @@ abstract class PathBuilder
             array: $parts
         );
 
-        return implode(separator: "/",array: $partsWithoutSlash) . $finalPart;
+        return implode(separator: "/",array: $partsWithoutSlash) . "/$finalPart";
     }
 }

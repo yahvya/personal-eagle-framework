@@ -2,12 +2,15 @@
 
 use Sabo\Application\Context\ApplicationContext;
 use Sabo\Application\Context\PathConfigurationDto;
+use Sabo\Application\Context\SaboHooksDto;
 use Sabo\Application\Launcher\Launcher\ApplicationLauncher;
 use Sabo\Application\Launcher\Steps\EnvironmentConfigurationLoadingStep;
 use Sabo\Application\Launcher\Steps\GlobalFunctionsLoadingStep;
 use Sabo\Application\Launcher\Steps\RoutingStep;
 use Sabo\Application\Launcher\Steps\SaboHookConfigurationLoadingStep;
 use Sabo\Application\Launcher\Steps\UserDependenciesInjectorConfigurationStep;
+
+# APPLICATION ENTRY POINT
 
 $rootDirectoryPath = __DIR__ . "/../..";
 
@@ -18,8 +21,10 @@ require_once "$rootDirectoryPath/vendor/autoload.php";
 ApplicationContext::$current = new ApplicationContext(
     applicationPathConfiguration: new PathConfigurationDto(
         rootDirectoryPath: $rootDirectoryPath,
-        configurationsDirectoryPath: "configs"
-    )
+        configurationsDirectoryPath: "Src/configs"
+    ),
+    hooks: new SaboHooksDto(),
+    isInDevMode: true
 );
 
 $applicationLauncher = new ApplicationLauncher(

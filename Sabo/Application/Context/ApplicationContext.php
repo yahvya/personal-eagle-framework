@@ -18,6 +18,8 @@ class ApplicationContext implements StepExecutionContext
      * @param PathConfigurationDto $applicationPathConfiguration Application path configuration
      */
     public function __construct(
-        public PathConfigurationDto $applicationPathConfiguration
+        public PathConfigurationDto $applicationPathConfiguration,
+        public SaboHooksDto $hooks,
+        public bool $isInDevMode
     ){}
 }

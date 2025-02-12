@@ -5,7 +5,7 @@ namespace Sabo\Utils\StepsManager;
 /**
  * Empty step execution context
  */
-class EmptyStepExecutionContext
+class EmptyStepExecutionContext implements StepExecutionContext
 {
 
 }

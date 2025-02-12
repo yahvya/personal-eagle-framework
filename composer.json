@@ -6,5 +6,8 @@
             "Src\\" : "./Src/",
             "Sabo\\" : "./Sabo/"
         }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^7.2"
     }
 }

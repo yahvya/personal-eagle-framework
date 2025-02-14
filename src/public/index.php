@@ -1,8 +1,8 @@
 <?php
 
-use Sabo\Application\Context\ApplicationContext;
-use Sabo\Application\Context\PathConfigurationDto;
-use Sabo\Application\Context\SaboHooksDto;
+use Sabo\Application\Context\Application\ApplicationContext;
+use Sabo\Application\Context\DataContracts\PathConfigurationDto;
+use Sabo\Application\Context\Hooks\SaboHooksDto;
 use Sabo\Application\Launcher\Launcher\ApplicationLauncher;
 use Sabo\Application\Launcher\Steps\EnvironmentConfigurationLoadingStep;
 use Sabo\Application\Launcher\Steps\GlobalFunctionsLoadingStep;

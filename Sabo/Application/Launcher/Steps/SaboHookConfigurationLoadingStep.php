@@ -2,7 +2,7 @@
 
 namespace Sabo\Application\Launcher\Steps;
 
-use Sabo\Application\Context\ApplicationContext;
+use Sabo\Application\Context\Application\ApplicationContext;
 use Sabo\Utils\Builders\PathBuilder;
 use Sabo\Utils\StepsManager\Step;
 use Sabo\Utils\StepsManager\StepExecutionContext;

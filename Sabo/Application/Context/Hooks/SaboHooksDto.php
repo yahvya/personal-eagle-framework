@@ -1,6 +1,6 @@
 <?php
 
-namespace Sabo\Application\Context;
+namespace Sabo\Application\Context\Hooks;
 
 use Closure;
 
@@ -35,6 +35,6 @@ class SaboHooksDto
         public ?Closure $onRouteFound = null,
         public ?Closure $onRouteNotFound = null,
         public ?Closure $onRouteAccessCondFail = null,
-        public ?Closure $beforeResponseRender = null,
+        public ?Closure $beforeResponseRender = null
     ){}
 }

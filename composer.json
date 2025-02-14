@@ -7,6 +7,9 @@
             "Sabo\\" : "./Sabo/"
         }
     },
+    "require": {
+        "php": ">=8.2"
+    },
     "require-dev": {
         "symfony/var-dumper": "^7.2"
     }

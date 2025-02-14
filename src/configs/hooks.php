@@ -1,15 +1,11 @@
 <?php
 
-use Sabo\Application\Context\ApplicationContext;
+use Sabo\Application\Context\Application\ApplicationContext;
+use Sabo\Application\Context\Hooks\SaboDefaultHooksHandlers;
 
 # HOOKS CONFIGURATION FILE
 
 # manage error in sabo cycle
-ApplicationContext::$current->hooks->errorInCycle = function(Exception $exception):void{
-    if(ApplicationContext::$current->isInDevMode)
-        dd($exception);
-
-    die("An error occurred on the server");
-};
+ApplicationContext::$current->hooks->errorInCycle = SaboDefaultHooksHandlers::errorInCycleHandler(...);
 
 return true;

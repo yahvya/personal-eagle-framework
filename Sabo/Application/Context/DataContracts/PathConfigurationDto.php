@@ -1,6 +1,6 @@
 <?php
 
-namespace Sabo\Application\Context;
+namespace Sabo\Application\Context\DataContracts;
 
 /**
  * Application path configuration data contract

@@ -1,7 +1,9 @@
 <?php
 
-namespace Sabo\Application\Context;
+namespace Sabo\Application\Context\Application;
 
+use Sabo\Application\Context\DataContracts\PathConfigurationDto;
+use Sabo\Application\Context\Hooks\SaboHooksDto;
 use Sabo\Utils\DependencyInjector\DependencyInjectorManager;
 use Sabo\Utils\StepsManager\StepExecutionContext;
 

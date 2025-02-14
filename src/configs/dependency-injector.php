@@ -1,0 +1,5 @@
+<?php
+
+# DEPENDENCIES INJECTOR CONFIGURATION FILE
+
+return true;

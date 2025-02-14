@@ -22,7 +22,7 @@ class SaboHookConfigurationLoadingStep extends Step
 
         if($result === true)
         {
-            ApplicationContext::$current->hooks->onHooksLoaded?->__invoke();
+            ApplicationContext::$current?->hooks->onHooksLoaded?->__invoke();
             return true;
         }
 

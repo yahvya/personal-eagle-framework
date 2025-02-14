@@ -24,7 +24,8 @@ ApplicationContext::$current = new ApplicationContext(
         configurationsDirectoryPath: "Src/configs"
     ),
     hooks: new SaboHooksDto(),
-    isInDevMode: true
+    isInDevMode: true,
+    dependencyInjectorManager: ApplicationContext::buildApplicationDefaultDependencyInjector()
 );
 
 $applicationLauncher = new ApplicationLauncher(

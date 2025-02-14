@@ -36,7 +36,5 @@ class SaboHooksDto
         public ?Closure $onRouteNotFound = null,
         public ?Closure $onRouteAccessCondFail = null,
         public ?Closure $beforeResponseRender = null,
-    )
-    {
-    }
+    ){}
 }

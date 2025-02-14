@@ -35,7 +35,10 @@ class ApplicationContext implements StepExecutionContext
      */
     public static function buildApplicationDefaultDependencyInjector():DependencyInjectorManager
     {
-        return new DependencyInjectorManager()
-            ->addDependencyFactory(classname: static::class,factory: fn():?ApplicationContext => static::$current);
+        $dependencyInjectorManager = new DependencyInjectorManager();
+
+        return $dependencyInjectorManager
+            ->addDependencyFactory(classname: static::class,factory: fn():?ApplicationContext => static::$current)
+            ->addDependencyFactory(classname: DependencyInjectorManager::class,factory: fn():DependencyInjectorManager => $dependencyInjectorManager);
     }
 }

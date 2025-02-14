@@ -3,6 +3,9 @@
 namespace Sabo\Utils\DependencyInjector;
 
 use Closure;
+use ReflectionFunction;
+use Throwable;
+use TypeError;
 
 /**
  * Dependency injector manager
@@ -49,7 +52,7 @@ class DependencyInjectorManager
      * @param mixed|null $factoryContext Context to provide to the factory method
      * @attention The factory closure must not throw an exception. It won't be 'catch' by this method
      * @attention Providing the same class two times will override the first call
-     * @return mixed Null on failure or the built instance
+     * @return object Null on failure or the built instance
      */
     public function getDependencyInstance(string $class,bool $uniqueInstance = true,mixed $factoryContext = null):mixed
     {
@@ -72,5 +75,56 @@ class DependencyInjectorManager
         $this->alreadyBuiltDependencies[$class] = $factoryResult;
 
         return $factoryResult;
+    }
+
+    /**
+     * Build the callable params based on the registered factories
+     * @param Closure|array $callable Callable
+     * @param array{string:mixed} $factoriesContext Factories context indexed by the ::class
+     * @param bool $uniqueInstance Use unique instance of elements
+     * @return array{string:array}|null ["params" => ,"missing" => ] or null on failure
+     */
+    public function buildCallableParams(Closure|array $callable,array $factoriesContext = [], bool $uniqueInstance = true):?array
+    {
+        # transform array callable to closure
+        if(gettype($factoriesContext) === "array")
+            $callable = $callable(...);
+
+        try
+        {
+            $reflectionFunction = new ReflectionFunction(function: $callable);
+            $foundedParams = [];
+            $missingParams = [];
+
+            foreach($reflectionFunction->getParameters() as $parameter)
+            {
+                # retrieve parameter name and try to load an instance
+                $parameterClassname = $parameter->getType()->getName();
+                $parameterName = $parameter->getName();
+                $parameterInstance = $this->getDependencyInstance(
+                    class: $parameterClassname,
+                    uniqueInstance: $uniqueInstance,
+                    factoryContext: $factoriesContext[$parameterClassname] ?? null
+                );
+
+                # parameter type factory not found
+                if($parameterInstance === null)
+                {
+                    $missingParams[] = $parameterName;
+                    continue;
+                }
+
+                $foundedParams[$parameterName] = $parameterInstance;
+            }
+
+            return [
+                "params" => $foundedParams,
+                "missing" => $missingParams
+            ];
+        }
+        catch(Throwable|TypeError)
+        {
+            return null;
+        }
     }
 }

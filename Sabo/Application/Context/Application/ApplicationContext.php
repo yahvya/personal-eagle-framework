@@ -28,6 +28,11 @@ class ApplicationContext implements StepExecutionContext
     public SaboHooksDto $hooks;
 
     /**
+     * @var EnvironmentContext Environment context
+     */
+    public EnvironmentContext $environmentContext;
+
+    /**
      * @param PathConfigurationDto $applicationPathConfiguration Application path configuration
      * @param bool $isInDevMode Application development state
      * @param bool $update If update the currant context of the application
@@ -40,6 +45,7 @@ class ApplicationContext implements StepExecutionContext
     {
         $this->dependencyInjector = $this->buildApplicationDefaultDependencyInjector();
         $this->hooks = new SaboHooksDto();
+        $this->environmentContext = new EnvironmentContext();
 
         if($update)
             static::$current = $this;
@@ -56,6 +62,7 @@ class ApplicationContext implements StepExecutionContext
             ->addDependencyFactory(classname: static::class,factory: fn():?ApplicationContext => $this)
             ->addDependencyFactory(classname: DependencyInjectorManager::class,factory: fn():DependencyInjectorManager => $dependencyInjectorManager)
             ->addDependencyFactory(classname: PathConfigurationDto::class,factory: fn():PathConfigurationDto => $this->applicationPathConfiguration)
-            ->addDependencyFactory(classname: SaboHooksDto::class,factory: fn():SaboHooksDto => $this->hooks);
+            ->addDependencyFactory(classname: SaboHooksDto::class,factory: fn():SaboHooksDto => $this->hooks)
+            ->addDependencyFactory(classname: EnvironmentContext::class,factory: fn():EnvironmentContext => $this->environmentContext);
     }
 }

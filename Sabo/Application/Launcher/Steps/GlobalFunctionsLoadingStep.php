@@ -12,15 +12,21 @@ use Sabo\Utils\StepsManager\StepExecutionContext;
  */
 class GlobalFunctionsLoadingStep extends Step
 {
-    public function execute(StepExecutionContext &$executionContext): bool
+    public function execute(ApplicationContext|StepExecutionContext &$executionContext): bool
     {
         $result = @require(PathBuilder::buildPath(
-            ApplicationContext::$current?->applicationPathConfiguration->rootDirectoryPath,
-            ApplicationContext::$current?->applicationPathConfiguration->configurationsDirectoryPath,
+            $executionContext->applicationPathConfiguration->rootDirectoryPath,
+            $executionContext->applicationPathConfiguration->configurationsDirectoryPath,
             "functions.php"
         ));
 
-        return $result === true;
+        if($result === true)
+        {
+            $executionContext->hooks->onGlobalFunctionsLoaded?->__invoke();
+            return true;
+        }
+
+        return false;
     }
 
     public function canGoToNextStep(): bool

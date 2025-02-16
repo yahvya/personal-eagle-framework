@@ -2,6 +2,7 @@
 
 namespace Sabo\Application\Launcher\Steps;
 
+use Sabo\Application\Context\Application\ApplicationContext;
 use Sabo\Utils\StepsManager\Step;
 use Sabo\Utils\StepsManager\StepExecutionContext;
 
@@ -10,7 +11,7 @@ use Sabo\Utils\StepsManager\StepExecutionContext;
  */
 class EnvironmentConfigurationLoadingStep extends Step
 {
-    public function execute(StepExecutionContext &$executionContext): bool
+    public function execute(ApplicationContext|StepExecutionContext &$executionContext): bool
     {
         return true;
     }

@@ -12,17 +12,19 @@ use Sabo\Utils\StepsManager\StepExecutionContext;
  */
 class SaboHookConfigurationLoadingStep extends Step
 {
-    public function execute(StepExecutionContext &$executionContext): bool
+    public function execute(ApplicationContext|StepExecutionContext &$executionContext): bool
     {
         $result = @require(PathBuilder::buildPath(
-            ApplicationContext::$current->applicationPathConfiguration->rootDirectoryPath,
-            ApplicationContext::$current->applicationPathConfiguration->configurationsDirectoryPath,
+            $executionContext->applicationPathConfiguration->rootDirectoryPath,
+            $executionContext->applicationPathConfiguration->configurationsDirectoryPath,
             "hooks.php"
         ));
 
         if($result === true)
         {
-            ApplicationContext::$current?->hooks->onHooksLoaded?->__invoke();
+            configureHooks(hooks: $executionContext->hooks);
+            $executionContext->hooks->onHooksLoaded?->__invoke();
+
             return true;
         }
 

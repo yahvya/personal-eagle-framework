@@ -12,17 +12,18 @@ use Sabo\Utils\StepsManager\StepExecutionContext;
  */
 class UserDependenciesInjectorConfigurationStep extends Step
 {
-    public function execute(StepExecutionContext &$executionContext): bool
+    public function execute(ApplicationContext|StepExecutionContext &$executionContext): bool
     {
         $result = @require(PathBuilder::buildPath(
-            ApplicationContext::$current->applicationPathConfiguration->rootDirectoryPath,
-            ApplicationContext::$current->applicationPathConfiguration->configurationsDirectoryPath,
+            $executionContext->applicationPathConfiguration->rootDirectoryPath,
+            $executionContext->applicationPathConfiguration->configurationsDirectoryPath,
             "dependency-injector.php",
         ));
 
         if($result === true)
         {
-            ApplicationContext::$current?->hooks?->onDependencyInjectorLoaded?->__invoke();
+            configureDependencyInjector(dependencyInjector: $executionContext->dependencyInjector);
+            $executionContext->hooks->onDependencyInjectorLoaded?->__invoke();
             return true;
         }
 

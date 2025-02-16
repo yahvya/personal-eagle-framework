@@ -13,32 +13,49 @@ use Sabo\Utils\StepsManager\StepExecutionContext;
 class ApplicationContext implements StepExecutionContext
 {
     /**
-     * @var ApplicationContext|null Application current context
+     * @var ApplicationContext Application current context
      */
-    public static ?ApplicationContext $current = null;
+    public static ApplicationContext $current;
+
+    /**
+     * @var DependencyInjectorManager Linked dependency injector
+     */
+    public DependencyInjectorManager $dependencyInjector;
+
+    /**
+     * @var SaboHooksDto Hooks configuration
+     */
+    public SaboHooksDto $hooks;
 
     /**
      * @param PathConfigurationDto $applicationPathConfiguration Application path configuration
-     * @param SaboHooksDto $hooks Hooks configuration
      * @param bool $isInDevMode Application development state
-     * @param DependencyInjectorManager $dependencyInjectorManager Dependency injector manager
+     * @param bool $update If update the currant context of the application
      */
     public function __construct(
         public PathConfigurationDto $applicationPathConfiguration,
-        public SaboHooksDto $hooks,
         public bool $isInDevMode,
-        public DependencyInjectorManager $dependencyInjectorManager
-    ){}
+        bool $update = true
+    )
+    {
+        $this->dependencyInjector = $this->buildApplicationDefaultDependencyInjector();
+        $this->hooks = new SaboHooksDto();
+
+        if($update)
+            static::$current = $this;
+    }
 
     /**
      * @return DependencyInjectorManager Application dependency injector with default factories
      */
-    public static function buildApplicationDefaultDependencyInjector():DependencyInjectorManager
+    public function buildApplicationDefaultDependencyInjector():DependencyInjectorManager
     {
         $dependencyInjectorManager = new DependencyInjectorManager();
 
         return $dependencyInjectorManager
-            ->addDependencyFactory(classname: static::class,factory: fn():?ApplicationContext => static::$current)
-            ->addDependencyFactory(classname: DependencyInjectorManager::class,factory: fn():DependencyInjectorManager => $dependencyInjectorManager);
+            ->addDependencyFactory(classname: static::class,factory: fn():?ApplicationContext => $this)
+            ->addDependencyFactory(classname: DependencyInjectorManager::class,factory: fn():DependencyInjectorManager => $dependencyInjectorManager)
+            ->addDependencyFactory(classname: PathConfigurationDto::class,factory: fn():PathConfigurationDto => $this->applicationPathConfiguration)
+            ->addDependencyFactory(classname: SaboHooksDto::class,factory: fn():SaboHooksDto => $this->hooks);
     }
 }

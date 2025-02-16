@@ -18,14 +18,12 @@ $rootDirectoryPath = __DIR__ . "/../..";
 require_once "$rootDirectoryPath/vendor/autoload.php";
 
 # define application default context
-ApplicationContext::$current = new ApplicationContext(
+$applicationContext = new ApplicationContext(
     applicationPathConfiguration: new PathConfigurationDto(
         rootDirectoryPath: $rootDirectoryPath,
         configurationsDirectoryPath: "Src/configs"
     ),
-    hooks: new SaboHooksDto(),
-    isInDevMode: true,
-    dependencyInjectorManager: ApplicationContext::buildApplicationDefaultDependencyInjector()
+    isInDevMode: true
 );
 
 $applicationLauncher = new ApplicationLauncher(
@@ -36,5 +34,5 @@ $applicationLauncher = new ApplicationLauncher(
     new RoutingStep()
 );
 
-if(!$applicationLauncher->executeAll())
+if(!$applicationLauncher->executeAll(executionContext: $applicationContext))
     die("An error occurred on the server");

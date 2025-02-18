@@ -1,8 +1,8 @@
 <?php
 
-# ENVIRONMENT CONFIG
-
 use Sabo\Application\Context\Application\EnvironmentContext;
+
+# ENVIRONMENT CONFIG
 
 /**
  * Configure the environment variables

@@ -16,7 +16,8 @@ abstract class SaboDefaultHooksHandlers
      * @attention If you want to replace the default handler please implement your own
      * @return never
      */
-    public static function errorInCycleHandler(Exception $exception):never{
+    public static function errorInCycleHandler(Exception $exception):never
+    {
         if(ApplicationContext::$current->isInDevMode)
             dd($exception);
 

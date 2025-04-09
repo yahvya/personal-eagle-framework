@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE buildprofiles SYSTEM "https://resources.jetbrains.com/writerside/1.0/build-profiles.dtd">
+<buildprofiles xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/build-profiles.xsd"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <build-profile instance="sabo_framework">
+        <variables>
+            <noindex-content>true</noindex-content>
+            <header-logo>sabo-icon.ico</header-logo>
+            <custom-favicons>sabo-icon.ico</custom-favicons>
+            <resizable-sidebar>true</resizable-sidebar>
+            <showDownloadButton>true</showDownloadButton>
+            <download-title>Nouveau projet</download-title>
+            <download-page>https://github.com/user-attachments/files/16566719/realease_09_08_24.zip</download-page>
+        </variables>
+        <footer>
+            <link href="https://github.com/yahvya/sabo-final">Github</link>
+            <link href="https://yahaya-bathily.fr">Site web créateur</link>
+        </footer>
+    </build-profile>
+
+</buildprofiles>

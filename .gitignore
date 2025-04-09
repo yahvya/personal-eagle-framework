@@ -1,11 +1,17 @@
-# Sensible files
-
-*.env
-*.env.php
-*vendor/
-configs/*.secret
-
-# IDE & Editors
+# editors
 
 *.vscode
 *.idea
+
+# sensible file
+
+*.env
+*.env.*
+*.secret
+
+# un useful files
+
+**/coverage
+**/vendor
+
+# programming langage file

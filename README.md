@@ -2,11 +2,11 @@
 
 > PHP small web development framework.
 
-## Important informations
+## Important information
 
 **Licence** : License MIT
 > You are free to use the framework in commercial and non-commercial projects.
-> However, creating and selling a modified version of the framework itself or it's documentation - as a competing product - is not permitted.
+> However, creating and selling a modified version of the framework itself or his documentation - as a competing product - is not permitted.
 **Creation date** : 16.03.2023
 
 ## Team
@@ -69,4 +69,4 @@ Each commit line is prefixed by :
 
 ## Util links 
 
-- [https://github.com/users/yahvya/projects/11](GitHub Project)
+- [GitHub Project](https://github.com/users/yahvya/projects/11)

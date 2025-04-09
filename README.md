@@ -25,8 +25,6 @@
 ### Folder structure
 
 - dev (application code)
-- autotests (automatic tests)
-- design (design elements)
 - documentation (documentation elements)
 - versions (application versions)
 - devtools (custom development tools)
@@ -34,7 +32,7 @@
 
 ### GitHub Flow
 
-- main : the main branch merge elements from (dev, autotests, design, documentation)
+- main : the main branch merge elements from (dev, documentation)
 - (dev, documentation) : these branches merge elements from feature branches
 - features/<branch_name>/<feature_name> : features branches are created from the <branch_name> branch
 

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="sabo_framework"
+                 name="Sabo Framework"
+                 start-page="starter-topic.md">
+
+    <toc-element topic="starter-topic.md">
+        <toc-element topic="directories_structure.md">
+        </toc-element>
+        <toc-element topic="configuration_elements.md"/>
+        <toc-element topic="routing.md">
+            <toc-element topic="default_pages.md"/>
+            <toc-element topic="maintenance_managment.md"/>
+        </toc-element>
+        <toc-element topic="controllers.md"/>
+        <toc-element topic="treatments_classes.md"/>
+        <toc-element topic="database_description.md">
+            <toc-element topic="customized_request.md"/>
+            <toc-element topic="create_new_system.md"/>
+        </toc-element>
+        <toc-element topic="crons_scripts.md"/>
+        <toc-element topic="application_class.md"/>
+        <toc-element topic="request_response_classes.md"/>
+        <toc-element topic="private_storage.md"/>
+        <toc-element topic="mailing.md"/>
+        <toc-element topic="route_access.md"/>
+        <toc-element topic="utilitaries.md">
+            <toc-element topic="apis_util.md"/>
+            <toc-element topic="csrf.md"/>
+            <toc-element topic="file_manager_utils.md"/>
+            <toc-element topic="list_util.md"/>
+            <toc-element topic="session_storage_util.md"/>
+            <toc-element topic="sse_util.md"/>
+            <toc-element topic="string_util.md"/>
+            <toc-element topic="verifier_util.md"/>
+        </toc-element>
+        <toc-element topic="cli_commands.md"/>
+    </toc-element>
+</instance-profile>

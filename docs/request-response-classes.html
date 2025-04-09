@@ -1,0 +1,123 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-04-09T09:31:05.1893688"><title>Les class Request et Response | Sabo Framework</title><script type="application/json" id="virtual-toc-data">[{"id":"l-objet-request","level":0,"title":"L\u0027objet Request","anchor":"#l-objet-request"},{"id":"l-objet-response","level":0,"title":"L\u0027objet Response","anchor":"#l-objet-response"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><link rel="icon" type="image/x-icon" sizes="16x16" href="images/sabo-icon.ico"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Les class Request et Response | Sabo Framework"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Sabo Framework Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/request-response-classes.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Les class Request et Response | Sabo Framework"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/request-response-classes.html#webpage",
+    "url": "writerside-documentation/request-response-classes.html",
+    "name": "Les class Request et Response | Sabo Framework",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Sabo Framework Help"
+}</script><!-- End Schema.org --></head><body data-id="request_response_classes" data-main-title="Les class Request et Response" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="starter-topic.md|Framework Sabo"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Sabo Framework  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="request_response_classes" id="request_response_classes.md">Les class Request et Response</h1><aside class="prompt" data-type="tip" data-title="" id="-l40vdx_3"><p id="-l40vdx_6">Les objets <code class="code" id="-l40vdx_7">Request</code> et <code class="code" id="-l40vdx_8">Response</code> sont respectivement un objet permettant de r&eacute;cup&eacute;rer des informations sur la requ&ecirc;te et d'interagir avec la session ainsi qu'un objet permettant de rendre une r&eacute;ponse <code class="code" id="-l40vdx_9">HTTP</code>.</p></aside><section class="chapter"><h2 id="l-objet-request" data-toc="l-objet-request">L'objet Request</h2><p id="-l40vdx_10">Il existe deux mani&egrave;res de r&eacute;cup&eacute;rer une instance de cet objet.</p><p id="-l40vdx_11">La premi&egrave;re est de l'injecter via les param&egrave;tres de la m&eacute;thode d'un <code class="code" id="-l40vdx_17">callable</code> gestionnaire de requ&ecirc;te (ex: la m&eacute;thode d'un controller) en ajoutant le type Request sur le param&egrave;tre.</p><p id="-l40vdx_12">La deuxi&egrave;me est simplement de cr&eacute;er une nouvelle instance la class, <span class="emphasis" id="-l40vdx_18"><span class="control" id="-l40vdx_19">toutefois mieux vaux utiliser la premi&egrave;re m&eacute;thode pour &eacute;viter des duplicatas d'instance.</span></span></p><div class="code-block" data-lang="php">
+function showHomePage(Request $myRequest):BladeResponse{
+    return ...;
+}
+</div><div class="code-block" data-lang="php">
+class MyController extends CustomController{
+    public function showHomePage(Request $myRequest):BladeResponse{
+        return ...;
+    }
+}
+</div><p id="-l40vdx_15">Elle propose quelques m&eacute;thodes utilitaires telles que :</p><ul class="list _bullet" id="-l40vdx_16"><li class="list__item" id="-l40vdx_20"><p id="-l40vdx_27"><code class="code" id="-l40vdx_28">getSessionStorage</code> fourni l'instance interne de <code class="code" id="-l40vdx_29">SessionStorage</code> l'utilitaire d'interaction avec la session</p></li><li class="list__item" id="-l40vdx_21"><p id="-l40vdx_30"><code class="code" id="-l40vdx_32">getPostValues</code> fourni un tableau des valeurs <code class="code" id="-l40vdx_33">POST</code> demand&eacute;es. Dans le cas o&ugrave; une des cl&eacute;s requises n'est pas trouv&eacute;e</p><ul class="list _bullet" id="-l40vdx_31"><li class="list__item" id="-l40vdx_34"><p id="-l40vdx_36">si le message d'erreur n'est pas <code class="code" id="-l40vdx_37">NULL</code> alors une <code class="code" id="-l40vdx_38">TreatmentException</code> est lev&eacute;e</p></li><li class="list__item" id="-l40vdx_35"><p id="-l40vdx_39">sinon null est retourn&eacute;e</p></li></ul></li><li class="list__item" id="-l40vdx_22"><p id="-l40vdx_40"><code class="code" id="-l40vdx_41">getGetValues</code> m&ecirc;me principe que <code class="code" id="-l40vdx_42">getPostValues</code> sur les valeurs <code class="code" id="-l40vdx_43">GET</code></p></li><li class="list__item" id="-l40vdx_23"><p id="-l40vdx_44"><code class="code" id="-l40vdx_45">getCookieValues</code> m&ecirc;me principe que <code class="code" id="-l40vdx_46">getPostValues</code> sur les valeurs <code class="code" id="-l40vdx_47">COOKIES</code></p></li><li class="list__item" id="-l40vdx_24"><p id="-l40vdx_48"><code class="code" id="-l40vdx_49">getFilesValues</code> m&ecirc;me principe que <code class="code" id="-l40vdx_50">getPostValues</code> sur les valeurs <code class="code" id="-l40vdx_51">FILES</code></p></li><li class="list__item" id="-l40vdx_25"><p id="-l40vdx_52"><code class="code" id="-l40vdx_53">getMethod</code> fourni la m&eacute;thode de requ&ecirc;te utilis&eacute;e format&eacute;e en minuscule (GET, POST, PUT ...)</p></li><li class="list__item" id="-l40vdx_26"><p id="-l40vdx_54"><code class="code" id="-l40vdx_55">getValuesFrom</code> utilitaire de r&eacute;cup&eacute;ration de donn&eacute;e &agrave; partir d'un conteneur sous forme de tableau</p></li></ul></section><section class="chapter"><h2 id="l-objet-response" data-toc="l-objet-response">L'objet Response</h2><aside class="prompt" data-type="tip" data-title="" id="-l40vdx_56"><p id="-l40vdx_59">L'objet <code class="code" id="-l40vdx_60">Response</code> est une class abstraite impl&eacute;mentant par d&eacute;faut la logique de rendu d'une r&eacute;ponse <code class="code" id="-l40vdx_61">HTTP</code> le framework impl&eacute;mente certains mod&egrave;les de r&eacute;ponse par d&eacute;faut</p></aside><ul class="list _bullet" id="-l40vdx_57"><li class="list__item" id="-l40vdx_62"><p id="-l40vdx_69"><code class="code" id="-l40vdx_70">BladeResponse</code> pour rendre un visuel &agrave; partir d'un template blade</p></li><li class="list__item" id="-l40vdx_63"><p id="-l40vdx_71"><code class="code" id="-l40vdx_72">TwigResponse</code> pour rendre un visuel &agrave; partir d'un template twig</p></li><li class="list__item" id="-l40vdx_64"><p id="-l40vdx_73"><code class="code" id="-l40vdx_74">HtmlResponse</code> pour rendre un visuel &agrave; partir d'un contenu html (utilis&eacute; par blade et twig)</p></li><li class="list__item" id="-l40vdx_65"><p id="-l40vdx_75"><code class="code" id="-l40vdx_76">DownloadResponse</code> pour rendre une ressource &agrave; t&eacute;l&eacute;charger</p></li><li class="list__item" id="-l40vdx_66"><p id="-l40vdx_77"><code class="code" id="-l40vdx_78">JsonResponse</code> pour rendre du contenu <code class="code" id="-l40vdx_79">JSON</code></p></li><li class="list__item" id="-l40vdx_67"><p id="-l40vdx_80"><code class="code" id="-l40vdx_81">RedirectResponse</code> pour rediriger sur un lien fourni</p></li><li class="list__item" id="-l40vdx_68"><p id="-l40vdx_82"><code class="code" id="-l40vdx_83">ResourceResponse</code> pour rendre une ressource <span class="emphasis" id="-l40vdx_84">utilis&eacute; par le framework pour rendre les ressources</span></p></li></ul><section class="chapter"><h3 id="proc-dure-de-rendu-d-une-r-ponse" data-toc="proc-dure-de-rendu-d-une-r-ponse">Proc&eacute;dure de rendu d'une r&eacute;ponse</h3><div class="tabs" id="-l40vdx_85" data-anchors="[-l40vdx_91,-l40vdx_92]"><div class="tabs__content" data-gtm="tab" id="-l40vdx_91" data-title="Proc&eacute;dure"><section class="procedure-steps" id="-l40vdx_93"><ol class="list _decimal"><li class="list__item" id="-l40vdx_94"><p>Envoi du code retour</p></li><li class="list__item" id="-l40vdx_95"><p>Envoi des en-t&ecirc;tes de r&eacute;ponse</p></li><li class="list__item" id="-l40vdx_96"><p>Rendu du contenu</p></li></ol></section></div><div class="tabs__content" data-gtm="tab" id="-l40vdx_92" data-title="Sch&eacute;ma"><?xml version="1.0" encoding="utf-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" d2Version="v0.6.8" preserveAspectRatio="xMinYMin meet" viewBox="0 0 457 600"><svg id="d2-svg" class="d2-1890320004" width="457" height="600" viewBox="-101 -101 457 600"><rect x="-101.000000" y="-101.000000" width="457.000000" height="600.000000" rx="0.000000" fill="#FFFFFF" class=" fill-N7" stroke-width="0" /><style type="text/css"><![CDATA[
+.d2-1890320004 .text-bold {
+	font-family: "d2-1890320004-font-bold";
+}
+@font-face {
+	font-family: d2-1890320004-font-bold;
+	src: url("data:application/font-woff;base64,d09GRgABAAAAAAp0AAoAAAAAEEwAAguFAAAAAAAAAAAAAAAAAAAAAAAAAABPUy8yAAAA9AAAAGAAAABgXxHXrmNtYXAAAAFUAAAAegAAAJIB5QNYZ2x5ZgAAAdAAAARTAAAFWC28EN5oZWFkAAAGJAAAADYAAAA2G38e1GhoZWEAAAZcAAAAJAAAACQKfwXWaG10eAAABoAAAABcAAAAXCVLAlFsb2NhAAAG3AAAADAAAAAwEQoSnm1heHAAAAcMAAAAIAAAACAALwD3bmFtZQAABywAAAMoAAAIKgjwVkFwb3N0AAAKVAAAAB0AAAAg/9EAMgADAioCvAAFAAACigJYAAAASwKKAlgAAAFeADIBKQAAAgsHAwMEAwICBGAAAvcAAAADAAAAAAAAAABBREJPACAAIP//Au7/BgAAA9gBESAAAZ8AAAAAAfAClAAAACAAA3icZMy9DQFxHIDh5+/O9+GIAXQqY1jACqK4RkRhBDtQSIxgAMMoFCzxk1yhubd8iwdJJqGQO2OulMktrKxt7FQOTr4R/O9WZe/oExGveMczHnGPW1zjEsvaa5bMtGq7raOrp29gqDAyNlGa8gMAAP//AQAA//+ONhsuAAB4nGRUX2wTdRz//n5t70Ip2673r+36/+jdutGD9np3tFs5ylrWmVYYCwN1o4gxTjdZAkMmQnyAmKgjxmwhhAdNjER98MGQiJIQE1/Mgm8z+iTqG2EPNmYhJpSr+d0WpvGhL9/+8vl+/n0PPHAYAJ/Cy+CCbdANfuABNCbBpDRFkWhTM01JdJkKYujD2G/f/FRJu9Npd3/8euxCs4kaJ/Dyk9kXGqdOPWoODtoffXvHvorO3gFA0ABAf+JF2O7g8Qle4yU+wTfQdfvx/fuoGy9evPzWtYsAgMlbPI4XoQtE8lrLCQLPUTQrKRLPaDlDz8uS1FirnqlY+vLNS2P1YqlUrOPF1PFna1Oi/XhtDZ3M7tkjk707O+voLmpDCMCTlGU9bxhaThBpWUpSPCdoOcMUKQoFq3Pl2hsVdSRcleK6Ze0JqGwxNeErnTsyPl+Kis1Ivby/wXefjPeCw1HprKM2vgssxAHE5FNgRdcYSZEoyswZpi5vrvlrcm6wmU/vDVJLC1536CAOKH52gJOM3b733xw7ty8cqH/xZDgbkha44D1/1/DIaBWww/0P1IYAxP7D3nEjIQhajnB3aXmyBcVGzhwYnh0cmdrtxvYv3oNZ3cjKJ27cUnYlDd+++SNj85Y1U2FT2wwt8VwoioppfTcAdDpgAsCveBXLwAIADRy8B8S7MhGK2sA5KYias5xnJMZZSDPlBa873siNjS5F4uG+AGpZ0czMlP0jShh9QdH+CjY0YBq1oRt6/6eBUjaydCxCgjVXqcxZ1ulK5bSVUdWMmsls+l+aHz9yrnS+sb9cJzEQ3HKnhgXUBhaiAOIWO46ipKSsiDxLsKUkzQsC4RkZVZ6fHmoa8aGQ55BsTAz0c33f4M+zIends0cXrN7goQ/RzoP1dzL3/F2b2tEHqA3+f2sXaXlLeW9d5sPewI5gT7jEodaxXNbjedvtTufs3wEB31lHH6M2KE47FJOkRcTKior1/BYYzwliFPMctZp9RT6QtGKJaEQNRQf7Xj1aOBY7EMqHCgU5XkpP++TYZLBXZBmB9fp2FtLVCSVwnBOUQLBru1RQh6fAyYzprKPTeJ5cjicp67qkm6bmHNtW2WHyUKXOXDh/Xor4gl6RNX2vTay8Tl25cvaH/hTlnqF8G1hDnXX0N2qR/EnDGY3ZwGA2K/7z2OhSNB6WhaWF7a7YM76ZKZS3f9PToQiq2T3V1C5A4ANAHdSCHQCaSxMFgVhpmprr1mfL+72s172N9ZavfoJaD1MNRWmkHto9Tied7ruKWAbK6SSPfFtz/ODpXCBzQDAAKyiBsuACMHWNH3i0Mj29mSP8hFpkrjEaU15CLbsHUOdLXIBxvEq+R4xzvRvlSalqKqWquNAvSf3kR+h/j4fgO1eRYLCKKXprN17CQ7WvXyT/jeIs3MYPgAZwmZpIKxJ9e/ba7N5L7kv45cuX85OTAPAPAAAA//8BAAD//woKIQ0AAAEAAAACC4W9q2MzXw889QABA+gAAAAA2F2ghAAAAADdZi82/jf+xAhtA/EAAQADAAIAAAAAAAAAAQAAA9j+7wAACJj+N/43CG0AAQAAAAAAAAAAAAAAAAAAABcCsgBQAMgAAAIkAE0CZQBNAdMAJAI9ACcCBgAkARQANwI8AEECKwAkAj0AQQGOAEEBuwAVAX8AEQI4ADwCCwAMAgYAJAIGACQBTAArARQAQQAA/60AAP/CAAD/SQAAACwALABCAGgAlADGAPoBBgEoAVQBhAGkAeACBgIoAkQCUAJcAmgCdAKKApgCrAABAAAAFwCQAAwAYwAHAAEAAAAAAAAAAAAAAAAABAADeJyclM9uG1UUxn9ObNMKwQJFVbqJ7oJFkejYVEnVNiuH1IpFFAePC0JCSBPP+I8ynhl5Jg7hCVjzFrxFVzwEz4FYo/l87NgF0SaKknx37vnznXO+c4Ed/mabSvUh8Ec9MVxhr35ueIsH9RPD27TrW4arPKn9abhGWJsbrvN5rWf4I95WfzP8gP3qT4YfslttG/6YZ9Udw59sO/4y/Cn7vF3gCrzgV8MVdskMb7HDj4a3eYTFrFR5RNNwjc/YM1xnD+gzoSBmQsIIx5AJI66YEZHjEzFjwpCIEEeHFjGFviYEQo7Rf34N8CmYESjimAJHjE9MQM7YIv4ir5RzZRzqNLO7FgVjAi7kcUlAgiNlREpCxKXiFBRkvKJBg5yB+GYU5HjkTIjxSJkxokGXNqf0GTMhx9FWpJKZT8qQgmsC5XdmUXZmQERCbqyuSAjF04lfJO8Opzi6ZLJdj3y6EeFLHN/Ju+SWyvYrPP26NWabeZdsAubqZ6yuxLq51gTHui3ztvhWuOAV7l792WTy/h6F+l8o8gVXmn+oSSVikuDcLi18Kch3j3Ec6dzBV0e+p0OfE7q8oa9zix49WpzRp8Nr+Xbp4fiaLmccy6MjvLhrSzFn/IDjGzqyKWNH1p/FxCJ+JjN15+I4Ux1TMvW8ZO6p1kgV3n3C5Q6lG+rI5TPQHpWWTvNLtGcBI1NFJoZT9XKpjdz6F5oipqqlnO3tfbkNc9u95RbfkGqHS7UuOJWTWzB631S9dzRzrR+PgJCUC1kMSJnSoOBGvM8JuCLGcazunWhLClornzLPjVQSMRWDDonizMj0NzDd+MZ9sKF7Z29JKP+S6eWqqvtkcerV7YzeqHvLO9+6HK1NoGFTTdfUNBDXxLQfaafW+fvyzfW6pTzliJSY8F8vwDM8muxzwCFjZRjoZm6vQ1MvRJOXHKr6SyJZDaXnyCIc4PGcAw54yfN3+rhk4oyLW3FZz93imCO6HH5QFQv7Lke8Xn37/6y/i2lTtTierk4v7j3FJ3dQ6xfas9v3sqeJlZOYW7TbrTgjYFpycbvrNbnHeP8AAAD//wEAAP//9LdPUXicYmBmAIP/5xiMGLAAAAAAAP//AQAA//8vAQIDAAAA");
+}]]></style><style type="text/css"><![CDATA[.shape {
+  shape-rendering: geometricPrecision;
+  stroke-linejoin: round;
+}
+.connection {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.blend {
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+		.d2-1890320004 .fill-N1{fill:#0A0F25;}
+		.d2-1890320004 .fill-N2{fill:#676C7E;}
+		.d2-1890320004 .fill-N3{fill:#9499AB;}
+		.d2-1890320004 .fill-N4{fill:#CFD2DD;}
+		.d2-1890320004 .fill-N5{fill:#DEE1EB;}
+		.d2-1890320004 .fill-N6{fill:#EEF1F8;}
+		.d2-1890320004 .fill-N7{fill:#FFFFFF;}
+		.d2-1890320004 .fill-B1{fill:#0D32B2;}
+		.d2-1890320004 .fill-B2{fill:#0D32B2;}
+		.d2-1890320004 .fill-B3{fill:#E3E9FD;}
+		.d2-1890320004 .fill-B4{fill:#E3E9FD;}
+		.d2-1890320004 .fill-B5{fill:#EDF0FD;}
+		.d2-1890320004 .fill-B6{fill:#F7F8FE;}
+		.d2-1890320004 .fill-AA2{fill:#4A6FF3;}
+		.d2-1890320004 .fill-AA4{fill:#EDF0FD;}
+		.d2-1890320004 .fill-AA5{fill:#F7F8FE;}
+		.d2-1890320004 .fill-AB4{fill:#EDF0FD;}
+		.d2-1890320004 .fill-AB5{fill:#F7F8FE;}
+		.d2-1890320004 .stroke-N1{stroke:#0A0F25;}
+		.d2-1890320004 .stroke-N2{stroke:#676C7E;}
+		.d2-1890320004 .stroke-N3{stroke:#9499AB;}
+		.d2-1890320004 .stroke-N4{stroke:#CFD2DD;}
+		.d2-1890320004 .stroke-N5{stroke:#DEE1EB;}
+		.d2-1890320004 .stroke-N6{stroke:#EEF1F8;}
+		.d2-1890320004 .stroke-N7{stroke:#FFFFFF;}
+		.d2-1890320004 .stroke-B1{stroke:#0D32B2;}
+		.d2-1890320004 .stroke-B2{stroke:#0D32B2;}
+		.d2-1890320004 .stroke-B3{stroke:#E3E9FD;}
+		.d2-1890320004 .stroke-B4{stroke:#E3E9FD;}
+		.d2-1890320004 .stroke-B5{stroke:#EDF0FD;}
+		.d2-1890320004 .stroke-B6{stroke:#F7F8FE;}
+		.d2-1890320004 .stroke-AA2{stroke:#4A6FF3;}
+		.d2-1890320004 .stroke-AA4{stroke:#EDF0FD;}
+		.d2-1890320004 .stroke-AA5{stroke:#F7F8FE;}
+		.d2-1890320004 .stroke-AB4{stroke:#EDF0FD;}
+		.d2-1890320004 .stroke-AB5{stroke:#F7F8FE;}
+		.d2-1890320004 .background-color-N1{background-color:#0A0F25;}
+		.d2-1890320004 .background-color-N2{background-color:#676C7E;}
+		.d2-1890320004 .background-color-N3{background-color:#9499AB;}
+		.d2-1890320004 .background-color-N4{background-color:#CFD2DD;}
+		.d2-1890320004 .background-color-N5{background-color:#DEE1EB;}
+		.d2-1890320004 .background-color-N6{background-color:#EEF1F8;}
+		.d2-1890320004 .background-color-N7{background-color:#FFFFFF;}
+		.d2-1890320004 .background-color-B1{background-color:#0D32B2;}
+		.d2-1890320004 .background-color-B2{background-color:#0D32B2;}
+		.d2-1890320004 .background-color-B3{background-color:#E3E9FD;}
+		.d2-1890320004 .background-color-B4{background-color:#E3E9FD;}
+		.d2-1890320004 .background-color-B5{background-color:#EDF0FD;}
+		.d2-1890320004 .background-color-B6{background-color:#F7F8FE;}
+		.d2-1890320004 .background-color-AA2{background-color:#4A6FF3;}
+		.d2-1890320004 .background-color-AA4{background-color:#EDF0FD;}
+		.d2-1890320004 .background-color-AA5{background-color:#F7F8FE;}
+		.d2-1890320004 .background-color-AB4{background-color:#EDF0FD;}
+		.d2-1890320004 .background-color-AB5{background-color:#F7F8FE;}
+		.d2-1890320004 .color-N1{color:#0A0F25;}
+		.d2-1890320004 .color-N2{color:#676C7E;}
+		.d2-1890320004 .color-N3{color:#9499AB;}
+		.d2-1890320004 .color-N4{color:#CFD2DD;}
+		.d2-1890320004 .color-N5{color:#DEE1EB;}
+		.d2-1890320004 .color-N6{color:#EEF1F8;}
+		.d2-1890320004 .color-N7{color:#FFFFFF;}
+		.d2-1890320004 .color-B1{color:#0D32B2;}
+		.d2-1890320004 .color-B2{color:#0D32B2;}
+		.d2-1890320004 .color-B3{color:#E3E9FD;}
+		.d2-1890320004 .color-B4{color:#E3E9FD;}
+		.d2-1890320004 .color-B5{color:#EDF0FD;}
+		.d2-1890320004 .color-B6{color:#F7F8FE;}
+		.d2-1890320004 .color-AA2{color:#4A6FF3;}
+		.d2-1890320004 .color-AA4{color:#EDF0FD;}
+		.d2-1890320004 .color-AA5{color:#F7F8FE;}
+		.d2-1890320004 .color-AB4{color:#EDF0FD;}
+		.d2-1890320004 .color-AB5{color:#F7F8FE;}.appendix text.text{fill:#0A0F25}.md{--color-fg-default:#0A0F25;--color-fg-muted:#676C7E;--color-fg-subtle:#9499AB;--color-canvas-default:#FFFFFF;--color-canvas-subtle:#EEF1F8;--color-border-default:#0D32B2;--color-border-muted:#0D32B2;--color-neutral-muted:#EEF1F8;--color-accent-fg:#0D32B2;--color-accent-emphasis:#0D32B2;--color-attention-subtle:#676C7E;--color-danger-fg:red;}.sketch-overlay-B1{fill:url(#streaks-darker);mix-blend-mode:lighten}.sketch-overlay-B2{fill:url(#streaks-darker);mix-blend-mode:lighten}.sketch-overlay-B3{fill:url(#streaks-bright);mix-blend-mode:darken}.sketch-overlay-B4{fill:url(#streaks-bright);mix-blend-mode:darken}.sketch-overlay-B5{fill:url(#streaks-bright);mix-blend-mode:darken}.sketch-overlay-B6{fill:url(#streaks-bright);mix-blend-mode:darken}.sketch-overlay-AA2{fill:url(#streaks-dark);mix-blend-mode:overlay}.sketch-overlay-AA4{fill:url(#streaks-bright);mix-blend-mode:darken}.sketch-overlay-AA5{fill:url(#streaks-bright);mix-blend-mode:darken}.sketch-overlay-AB4{fill:url(#streaks-bright);mix-blend-mode:darken}.sketch-overlay-AB5{fill:url(#streaks-bright);mix-blend-mode:darken}.sketch-overlay-N1{fill:url(#streaks-darker);mix-blend-mode:lighten}.sketch-overlay-N2{fill:url(#streaks-dark);mix-blend-mode:overlay}.sketch-overlay-N3{fill:url(#streaks-normal);mix-blend-mode:color-burn}.sketch-overlay-N4{fill:url(#streaks-normal);mix-blend-mode:color-burn}.sketch-overlay-N5{fill:url(#streaks-bright);mix-blend-mode:darken}.sketch-overlay-N6{fill:url(#streaks-bright);mix-blend-mode:darken}.sketch-overlay-N7{fill:url(#streaks-bright);mix-blend-mode:darken}.light-code{display: block}.dark-code{display: none}]]></style><g id="Envoi du code retour"><g class="shape" ><rect x="32.000000" y="0.000000" width="192.000000" height="66.000000" stroke="#0D32B2" fill="#F7F8FE" class=" stroke-B1 fill-B6" style="stroke-width:2;" /></g><text x="128.000000" y="38.500000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">Envoi du code retour</text></g><g id="Envoi des en-têtes de réponse"><g class="shape" ><rect x="0.000000" y="166.000000" width="255.000000" height="66.000000" stroke="#0D32B2" fill="#F7F8FE" class=" stroke-B1 fill-B6" style="stroke-width:2;" /></g><text x="127.500000" y="204.500000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">Envoi des en-têtes de réponse</text></g><g id="Rendu du contenu"><g class="shape" ><rect x="41.000000" y="332.000000" width="173.000000" height="66.000000" stroke="#0D32B2" fill="#F7F8FE" class=" stroke-B1 fill-B6" style="stroke-width:2;" /></g><text x="127.500000" y="370.500000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">Rendu du contenu</text></g><g id="(Envoi du code retour -&gt; Envoi des en-têtes de réponse)[0]"><marker id="mk-3488378134" markerWidth="10.000000" markerHeight="12.000000" refX="7.000000" refY="6.000000" viewBox="0.000000 0.000000 10.000000 12.000000" orient="auto" markerUnits="userSpaceOnUse"> <polygon points="0.000000,0.000000 10.000000,6.000000 0.000000,12.000000" fill="#0D32B2" class="connection fill-B1" stroke-width="2" /> </marker><path d="M 127.500000 68.000000 C 127.500000 106.000000 127.500000 126.000000 127.500000 162.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-3488378134)" mask="url(#d2-1890320004)" /></g><g id="(Envoi des en-têtes de réponse -&gt; Rendu du contenu)[0]"><path d="M 127.500000 234.000000 C 127.500000 272.000000 127.500000 292.000000 127.500000 328.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-3488378134)" mask="url(#d2-1890320004)" /></g><mask id="d2-1890320004" maskUnits="userSpaceOnUse" x="-101" y="-101" width="457" height="600">
+<rect x="-101" y="-101" width="457" height="600" fill="white"></rect>
+<rect x="54.500000" y="22.500000" width="147" height="21" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="22.500000" y="188.500000" width="210" height="21" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="63.500000" y="354.500000" width="128" height="21" fill="rgba(0,0,0,0.75)"></rect>
+</mask></svg></svg>
+</div></div><p id="-l40vdx_86">Liste des en-t&ecirc;tes par d&eacute;faut d&eacute;fini par le framework :</p><ul class="list _bullet" id="-l40vdx_87"><li class="list__item" id="-l40vdx_98"><p id="-l40vdx_101"><code class="code" id="-l40vdx_102">X-Content-Type-Options</code> &agrave; <code class="code" id="-l40vdx_103">nosniff</code></p></li><li class="list__item" id="-l40vdx_99"><p id="-l40vdx_104"><code class="code" id="-l40vdx_105">Cache-Control</code> &agrave; <code class="code" id="-l40vdx_106">no-cache, no-store, must-revalidate</code></p></li><li class="list__item" id="-l40vdx_100"><p id="-l40vdx_107"><code class="code" id="-l40vdx_108">Strict-Transport-Security</code> &agrave; <code class="code" id="-l40vdx_109">max-age=31536000; includeSubDomains</code></p></li></ul><aside class="prompt" data-type="tip" data-title="" id="-l40vdx_88"><p id="-l40vdx_110">Des fonctions permettent toutefois de mettre &agrave; jour le code de retour ainsi que de modifier les en-t&ecirc;tes</p></aside><ul class="list _bullet" id="-l40vdx_89"><li class="list__item" id="-l40vdx_111"><p id="-l40vdx_114"><code class="code" id="-l40vdx_115">setHeader</code> permet de mettre &agrave; jour un en-t&ecirc;te pr&eacute;cis</p></li><li class="list__item" id="-l40vdx_112"><p id="-l40vdx_116"><code class="code" id="-l40vdx_117">setContent</code> permet de mettre &agrave; jour le contenu textuel &agrave; rendre</p></li><li class="list__item" id="-l40vdx_113"><p id="-l40vdx_118"><code class="code" id="-l40vdx_120">setResponseCode</code> permet de mettre &agrave; jour le code de retour <code class="code" id="-l40vdx_121">HTTP</code></p><p id="-l40vdx_119">Cette fonction utilise l'&eacute;num&eacute;ration <code class="code" id="-l40vdx_122">SaboCore\Routing\Response\ResponseCode</code></p></li></ul><aside class="prompt" data-type="warning" data-title="" id="-l40vdx_90"><p>Il n'est pas recommand&eacute; de mettre &agrave; jour manuellement le rendu textuel</p></aside></section></section><div class="last-modified">09 avril 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="application-class.html" class="navigation-links__prev">La class Application</a><a href="private-storage.html" class="navigation-links__next">Stockage prot&eacute;g&eacute;</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

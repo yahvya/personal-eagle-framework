@@ -1,0 +1,955 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-04-09T09:31:05.5159818"><title>Routing | Sabo Framework</title><script type="application/json" id="virtual-toc-data">[{"id":"etapes-de-routing","level":0,"title":"Etapes de routing","anchor":"#etapes-de-routing"},{"id":"enregistrement-des-routes","level":0,"title":"Enregistrement des routes","anchor":"#enregistrement-des-routes"},{"id":"enregistrement-d-une-route","level":0,"title":"Enregistrement d\u0027une route","anchor":"#enregistrement-d-une-route"},{"id":"enregistrement-d-un-groupe-de-routes","level":0,"title":"Enregistrement d\u0027un groupe de routes","anchor":"#enregistrement-d-un-groupe-de-routes"},{"id":"param-tres-de-cr-ation-de-route","level":0,"title":"Paramètres de création de route","anchor":"#param-tres-de-cr-ation-de-route"},{"id":"sous-fichiers-de-route","level":0,"title":"Sous fichiers de route","anchor":"#sous-fichiers-de-route"},{"id":"mode-de-d-veloppement","level":0,"title":"Mode de développement","anchor":"#mode-de-d-veloppement"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><link rel="icon" type="image/x-icon" sizes="16x16" href="images/sabo-icon.ico"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Routing | Sabo Framework"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Sabo Framework Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/routing.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Routing | Sabo Framework"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/routing.html#webpage",
+    "url": "writerside-documentation/routing.html",
+    "name": "Routing | Sabo Framework",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Sabo Framework Help"
+}</script><!-- End Schema.org --></head><body data-id="routing" data-main-title="Routing" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="starter-topic.md|Framework Sabo"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Sabo Framework  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="routing" id="routing.md">Routing</h1><section class="chapter"><h2 id="etapes-de-routing" data-toc="etapes-de-routing">Etapes de routing</h2><div class="tabs" id="z67j2hd_10" data-anchors="[z67j2hd_11,z67j2hd_12]"><div class="tabs__content" data-gtm="tab" id="z67j2hd_11" data-title="Format proc&eacute;dure"><section class="procedure-steps"><h3 id="z67j2hd_13" data-toc="z67j2hd_13">Première étape</h3><ol class="list _decimal"><li class="list__item" id="z67j2hd_15"><p>Acc&egrave;s &agrave; un lien de l'application par l'utilisateur</p></li><li class="list__item" id="z67j2hd_16"><p>redirection via <code class="code" id="z67j2hd_21">.htaccess</code> sur le point d'entr&eacute;e <code class="code" id="z67j2hd_22">sabo-core/index.php</code></p></li><li class="list__item" id="z67j2hd_17"><p>Lancement de l'application via <code class="code" id="z67j2hd_23">Application::launch</code></p></li><li class="list__item" id="z67j2hd_18"><p id="z67j2hd_24">Insertion et v&eacute;rification des configurations dans l'ordre</p><ul class="list _bullet" id="z67j2hd_25"><li class="list__item" id="z67j2hd_26"><p>fonctions globales</p></li><li class="list__item" id="z67j2hd_27"><p>blade + twig</p></li><li class="list__item" id="z67j2hd_28"><p>environnement</p></li><li class="list__item" id="z67j2hd_29"><p>framework</p></li></ul></li><li class="list__item" id="z67j2hd_19"><p>Initialisation de la base de donn&eacute;es si requis</p></li><li class="list__item" id="z67j2hd_20"><p>Lancement du router</p></li></ol></section><section class="procedure-steps"><h3 id="z67j2hd_14" data-toc="z67j2hd_14">Routing</h3><section class="procedure-steps"><h3 id="z67j2hd_30" data-toc="z67j2hd_30">Gestion de la maintenance</h3><ol class="list _decimal"><li class="list__item" id="z67j2hd_35"><p>V&eacute;rification dans l'environnement</p></li><li class="list__item" id="z67j2hd_36"><p>Si acc&egrave;s d&eacute;j&agrave; autoris&eacute; le routing continue</p></li><li class="list__item" id="z67j2hd_37"><p>Sinon affichage de la page de maintenance ou lien sp&eacute;cial d'acc&egrave;s</p></li></ol></section><aside class="prompt" data-type="warning" data-title="" id="z67j2hd_31"><p>Si la maintenance laisse le routing se poursuivre uniquement</p></aside><ul class="list _bullet"><li class="list__item" id="z67j2hd_32"><p>Si le lien est li&eacute; &agrave; une ressource accessible alors, rendu de la ressource</p></li></ul><aside class="prompt" data-type="note" data-title="" id="z67j2hd_33"><p>Noter qu'en &eacute;tat de maintenance m&ecirc;me l'acc&egrave;s aux ressources est bloqu&eacute; si l'acc&egrave;s n'est pas acquis</p></aside><section class="procedure-steps"><h3 id="z67j2hd_34" data-toc="z67j2hd_34">Rendu du site</h3><ol class="list _decimal"><li class="list__item" id="z67j2hd_38"><p>R&eacute;cup&eacute;ration de la route &agrave; afficher</p></li><li class="list__item" id="z67j2hd_39"><p>V&eacute;rification des conditions d'acc&egrave;s</p></li><li class="list__item" id="z67j2hd_40"><p>Gestion des donn&eacute;es flash</p></li><li class="list__item" id="z67j2hd_41"><p>Appel du controller et de la m&eacute;thode de gestion</p></li></ol></section></section></div><div class="tabs__content" data-gtm="tab" id="z67j2hd_12" data-title="Format sch&eacute;ma"><?xml version="1.0" encoding="utf-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" d2Version="v0.6.8" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1173 2812"><svg id="d2-svg" class="d2-2107826116" width="1173" height="2812" viewBox="-76 -112 1173 2812"><rect x="-76.000000" y="-112.000000" width="1173.000000" height="2812.000000" rx="0.000000" fill="#FFFFFF" class=" fill-N7" stroke-width="0" /><style type="text/css"><![CDATA[
+.d2-2107826116 .text {
+	font-family: "d2-2107826116-font-regular";
+}
+@font-face {
+	font-family: d2-2107826116-font-regular;
+	src: url("data:application/font-woff;base64,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");
+}
+.d2-2107826116 .text-bold {
+	font-family: "d2-2107826116-font-bold";
+}
+@font-face {
+	font-family: d2-2107826116-font-bold;
+	src: url("data:application/font-woff;base64,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");
+}
+.d2-2107826116 .text-italic {
+	font-family: "d2-2107826116-font-italic";
+}
+@font-face {
+	font-family: d2-2107826116-font-italic;
+	src: url("data:application/font-woff;base64,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");
+}]]></style><style type="text/css"><![CDATA[.shape {
+  shape-rendering: geometricPrecision;
+  stroke-linejoin: round;
+}
+.connection {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.blend {
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+		.d2-2107826116 .fill-N1{fill:#0A0F25;}
+		.d2-2107826116 .fill-N2{fill:#676C7E;}
+		.d2-2107826116 .fill-N3{fill:#9499AB;}
+		.d2-2107826116 .fill-N4{fill:#CFD2DD;}
+		.d2-2107826116 .fill-N5{fill:#DEE1EB;}
+		.d2-2107826116 .fill-N6{fill:#EEF1F8;}
+		.d2-2107826116 .fill-N7{fill:#FFFFFF;}
+		.d2-2107826116 .fill-B1{fill:#0D32B2;}
+		.d2-2107826116 .fill-B2{fill:#0D32B2;}
+		.d2-2107826116 .fill-B3{fill:#E3E9FD;}
+		.d2-2107826116 .fill-B4{fill:#E3E9FD;}
+		.d2-2107826116 .fill-B5{fill:#EDF0FD;}
+		.d2-2107826116 .fill-B6{fill:#F7F8FE;}
+		.d2-2107826116 .fill-AA2{fill:#4A6FF3;}
+		.d2-2107826116 .fill-AA4{fill:#EDF0FD;}
+		.d2-2107826116 .fill-AA5{fill:#F7F8FE;}
+		.d2-2107826116 .fill-AB4{fill:#EDF0FD;}
+		.d2-2107826116 .fill-AB5{fill:#F7F8FE;}
+		.d2-2107826116 .stroke-N1{stroke:#0A0F25;}
+		.d2-2107826116 .stroke-N2{stroke:#676C7E;}
+		.d2-2107826116 .stroke-N3{stroke:#9499AB;}
+		.d2-2107826116 .stroke-N4{stroke:#CFD2DD;}
+		.d2-2107826116 .stroke-N5{stroke:#DEE1EB;}
+		.d2-2107826116 .stroke-N6{stroke:#EEF1F8;}
+		.d2-2107826116 .stroke-N7{stroke:#FFFFFF;}
+		.d2-2107826116 .stroke-B1{stroke:#0D32B2;}
+		.d2-2107826116 .stroke-B2{stroke:#0D32B2;}
+		.d2-2107826116 .stroke-B3{stroke:#E3E9FD;}
+		.d2-2107826116 .stroke-B4{stroke:#E3E9FD;}
+		.d2-2107826116 .stroke-B5{stroke:#EDF0FD;}
+		.d2-2107826116 .stroke-B6{stroke:#F7F8FE;}
+		.d2-2107826116 .stroke-AA2{stroke:#4A6FF3;}
+		.d2-2107826116 .stroke-AA4{stroke:#EDF0FD;}
+		.d2-2107826116 .stroke-AA5{stroke:#F7F8FE;}
+		.d2-2107826116 .stroke-AB4{stroke:#EDF0FD;}
+		.d2-2107826116 .stroke-AB5{stroke:#F7F8FE;}
+		.d2-2107826116 .background-color-N1{background-color:#0A0F25;}
+		.d2-2107826116 .background-color-N2{background-color:#676C7E;}
+		.d2-2107826116 .background-color-N3{background-color:#9499AB;}
+		.d2-2107826116 .background-color-N4{background-color:#CFD2DD;}
+		.d2-2107826116 .background-color-N5{background-color:#DEE1EB;}
+		.d2-2107826116 .background-color-N6{background-color:#EEF1F8;}
+		.d2-2107826116 .background-color-N7{background-color:#FFFFFF;}
+		.d2-2107826116 .background-color-B1{background-color:#0D32B2;}
+		.d2-2107826116 .background-color-B2{background-color:#0D32B2;}
+		.d2-2107826116 .background-color-B3{background-color:#E3E9FD;}
+		.d2-2107826116 .background-color-B4{background-color:#E3E9FD;}
+		.d2-2107826116 .background-color-B5{background-color:#EDF0FD;}
+		.d2-2107826116 .background-color-B6{background-color:#F7F8FE;}
+		.d2-2107826116 .background-color-AA2{background-color:#4A6FF3;}
+		.d2-2107826116 .background-color-AA4{background-color:#EDF0FD;}
+		.d2-2107826116 .background-color-AA5{background-color:#F7F8FE;}
+		.d2-2107826116 .background-color-AB4{background-color:#EDF0FD;}
+		.d2-2107826116 .background-color-AB5{background-color:#F7F8FE;}
+		.d2-2107826116 .color-N1{color:#0A0F25;}
+		.d2-2107826116 .color-N2{color:#676C7E;}
+		.d2-2107826116 .color-N3{color:#9499AB;}
+		.d2-2107826116 .color-N4{color:#CFD2DD;}
+		.d2-2107826116 .color-N5{color:#DEE1EB;}
+		.d2-2107826116 .color-N6{color:#EEF1F8;}
+		.d2-2107826116 .color-N7{color:#FFFFFF;}
+		.d2-2107826116 .color-B1{color:#0D32B2;}
+		.d2-2107826116 .color-B2{color:#0D32B2;}
+		.d2-2107826116 .color-B3{color:#E3E9FD;}
+		.d2-2107826116 .color-B4{color:#E3E9FD;}
+		.d2-2107826116 .color-B5{color:#EDF0FD;}
+		.d2-2107826116 .color-B6{color:#F7F8FE;}
+		.d2-2107826116 .color-AA2{color:#4A6FF3;}
+		.d2-2107826116 .color-AA4{color:#EDF0FD;}
+		.d2-2107826116 .color-AA5{color:#F7F8FE;}
+		.d2-2107826116 .color-AB4{color:#EDF0FD;}
+		.d2-2107826116 .color-AB5{color:#F7F8FE;}.appendix text.text{fill:#0A0F25}.md{--color-fg-default:#0A0F25;--color-fg-muted:#676C7E;--color-fg-subtle:#9499AB;--color-canvas-default:#FFFFFF;--color-canvas-subtle:#EEF1F8;--color-border-default:#0D32B2;--color-border-muted:#0D32B2;--color-neutral-muted:#EEF1F8;--color-accent-fg:#0D32B2;--color-accent-emphasis:#0D32B2;--color-attention-subtle:#676C7E;--color-danger-fg:red;}.sketch-overlay-B1{fill:url(#streaks-darker);mix-blend-mode:lighten}.sketch-overlay-B2{fill:url(#streaks-darker);mix-blend-mode:lighten}.sketch-overlay-B3{fill:url(#streaks-bright);mix-blend-mode:darken}.sketch-overlay-B4{fill:url(#streaks-bright);mix-blend-mode:darken}.sketch-overlay-B5{fill:url(#streaks-bright);mix-blend-mode:darken}.sketch-overlay-B6{fill:url(#streaks-bright);mix-blend-mode:darken}.sketch-overlay-AA2{fill:url(#streaks-dark);mix-blend-mode:overlay}.sketch-overlay-AA4{fill:url(#streaks-bright);mix-blend-mode:darken}.sketch-overlay-AA5{fill:url(#streaks-bright);mix-blend-mode:darken}.sketch-overlay-AB4{fill:url(#streaks-bright);mix-blend-mode:darken}.sketch-overlay-AB5{fill:url(#streaks-bright);mix-blend-mode:darken}.sketch-overlay-N1{fill:url(#streaks-darker);mix-blend-mode:lighten}.sketch-overlay-N2{fill:url(#streaks-dark);mix-blend-mode:overlay}.sketch-overlay-N3{fill:url(#streaks-normal);mix-blend-mode:color-burn}.sketch-overlay-N4{fill:url(#streaks-normal);mix-blend-mode:color-burn}.sketch-overlay-N5{fill:url(#streaks-bright);mix-blend-mode:darken}.sketch-overlay-N6{fill:url(#streaks-bright);mix-blend-mode:darken}.sketch-overlay-N7{fill:url(#streaks-bright);mix-blend-mode:darken}.light-code{display: block}.dark-code{display: none}]]></style><style type="text/css">.d2-2107826116 .md em,
+.d2-2107826116 .md dfn {
+  font-family: "d2-2107826116-font-italic";
+}
+
+.d2-2107826116 .md b,
+.d2-2107826116 .md strong {
+  font-family: "d2-2107826116-font-bold";
+}
+
+.d2-2107826116 .md code,
+.d2-2107826116 .md kbd,
+.d2-2107826116 .md pre,
+.d2-2107826116 .md samp {
+  font-family: "d2-2107826116-font-mono";
+  font-size: 1em;
+}
+
+.d2-2107826116 .md {
+  tab-size: 4;
+}
+
+/* variables are provided in d2renderers/d2svg/d2svg.go */
+
+.d2-2107826116 .md {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  color: var(--color-fg-default);
+  background-color: transparent; /* we don't want to define the background color */
+  font-family: "d2-2107826116-font-regular";
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.d2-2107826116 .md details,
+.d2-2107826116 .md figcaption,
+.d2-2107826116 .md figure {
+  display: block;
+}
+
+.d2-2107826116 .md summary {
+  display: list-item;
+}
+
+.d2-2107826116 .md [hidden] {
+  display: none !important;
+}
+
+.d2-2107826116 .md a {
+  background-color: transparent;
+  color: var(--color-accent-fg);
+  text-decoration: none;
+}
+
+.d2-2107826116 .md a:active,
+.d2-2107826116 .md a:hover {
+  outline-width: 0;
+}
+
+.d2-2107826116 .md abbr[title] {
+  border-bottom: none;
+  text-decoration: underline dotted;
+}
+
+.d2-2107826116 .md dfn {
+  font-style: italic;
+}
+
+.d2-2107826116 .md h1 {
+  margin: 0.67em 0;
+  padding-bottom: 0.3em;
+  font-size: 2em;
+  border-bottom: 1px solid var(--color-border-muted);
+}
+
+.d2-2107826116 .md mark {
+  background-color: var(--color-attention-subtle);
+  color: var(--color-text-primary);
+}
+
+.d2-2107826116 .md small {
+  font-size: 90%;
+}
+
+.d2-2107826116 .md sub,
+.d2-2107826116 .md sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+.d2-2107826116 .md sub {
+  bottom: -0.25em;
+}
+
+.d2-2107826116 .md sup {
+  top: -0.5em;
+}
+
+.d2-2107826116 .md img {
+  border-style: none;
+  max-width: 100%;
+  box-sizing: content-box;
+  background-color: var(--color-canvas-default);
+}
+
+.d2-2107826116 .md figure {
+  margin: 1em 40px;
+}
+
+.d2-2107826116 .md hr {
+  box-sizing: content-box;
+  overflow: hidden;
+  background: transparent;
+  border-bottom: 1px solid var(--color-border-muted);
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: var(--color-border-default);
+  border: 0;
+}
+
+.d2-2107826116 .md input {
+  font: inherit;
+  margin: 0;
+  overflow: visible;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.d2-2107826116 .md [type="button"],
+.d2-2107826116 .md [type="reset"],
+.d2-2107826116 .md [type="submit"] {
+  -webkit-appearance: button;
+}
+
+.d2-2107826116 .md [type="button"]::-moz-focus-inner,
+.d2-2107826116 .md [type="reset"]::-moz-focus-inner,
+.d2-2107826116 .md [type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+.d2-2107826116 .md [type="button"]:-moz-focusring,
+.d2-2107826116 .md [type="reset"]:-moz-focusring,
+.d2-2107826116 .md [type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+.d2-2107826116 .md [type="checkbox"],
+.d2-2107826116 .md [type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.d2-2107826116 .md [type="number"]::-webkit-inner-spin-button,
+.d2-2107826116 .md [type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+.d2-2107826116 .md [type="search"] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+.d2-2107826116 .md [type="search"]::-webkit-search-cancel-button,
+.d2-2107826116 .md [type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+.d2-2107826116 .md ::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 0.54;
+}
+
+.d2-2107826116 .md ::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+.d2-2107826116 .md a:hover {
+  text-decoration: underline;
+}
+
+.d2-2107826116 .md hr::before {
+  display: table;
+  content: "";
+}
+
+.d2-2107826116 .md hr::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.d2-2107826116 .md table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.d2-2107826116 .md td,
+.d2-2107826116 .md th {
+  padding: 0;
+}
+
+.d2-2107826116 .md details summary {
+  cursor: pointer;
+}
+
+.d2-2107826116 .md details:not([open]) > *:not(summary) {
+  display: none !important;
+}
+
+.d2-2107826116 .md kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  color: var(--color-fg-default);
+  vertical-align: middle;
+  background-color: var(--color-canvas-subtle);
+  border: solid 1px var(--color-neutral-muted);
+  border-bottom-color: var(--color-neutral-muted);
+  border-radius: 6px;
+  box-shadow: inset 0 -1px 0 var(--color-neutral-muted);
+}
+
+.d2-2107826116 .md h1,
+.d2-2107826116 .md h2,
+.d2-2107826116 .md h3,
+.d2-2107826116 .md h4,
+.d2-2107826116 .md h5,
+.d2-2107826116 .md h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+  font-family: "d2-2107826116-font-semibold";
+}
+
+.d2-2107826116 .md h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.5em;
+  border-bottom: 1px solid var(--color-border-muted);
+}
+
+.d2-2107826116 .md h3 {
+  font-size: 1.25em;
+}
+
+.d2-2107826116 .md h4 {
+  font-size: 1em;
+}
+
+.d2-2107826116 .md h5 {
+  font-size: 0.875em;
+}
+
+.d2-2107826116 .md h6 {
+  font-size: 0.85em;
+  color: var(--color-fg-muted);
+}
+
+.d2-2107826116 .md p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.d2-2107826116 .md blockquote {
+  margin: 0;
+  padding: 0 1em;
+  color: var(--color-fg-muted);
+  border-left: 0.25em solid var(--color-border-default);
+}
+
+.d2-2107826116 .md ul,
+.d2-2107826116 .md ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 2em;
+}
+
+.d2-2107826116 .md ol ol,
+.d2-2107826116 .md ul ol {
+  list-style-type: lower-roman;
+}
+
+.d2-2107826116 .md ul ul ol,
+.d2-2107826116 .md ul ol ol,
+.d2-2107826116 .md ol ul ol,
+.d2-2107826116 .md ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.d2-2107826116 .md dd {
+  margin-left: 0;
+}
+
+.d2-2107826116 .md pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  word-wrap: normal;
+}
+
+.d2-2107826116 .md ::placeholder {
+  color: var(--color-fg-subtle);
+  opacity: 1;
+}
+
+.d2-2107826116 .md input::-webkit-outer-spin-button,
+.d2-2107826116 .md input::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.d2-2107826116 .md::before {
+  display: table;
+  content: "";
+}
+
+.d2-2107826116 .md::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.d2-2107826116 .md > *:first-child {
+  margin-top: 0 !important;
+}
+
+.d2-2107826116 .md > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+.d2-2107826116 .md a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.d2-2107826116 .md .absent {
+  color: var(--color-danger-fg);
+}
+
+.d2-2107826116 .md .anchor {
+  float: left;
+  padding-right: 4px;
+  margin-left: -20px;
+  line-height: 1;
+}
+
+.d2-2107826116 .md .anchor:focus {
+  outline: none;
+}
+
+.d2-2107826116 .md p,
+.d2-2107826116 .md blockquote,
+.d2-2107826116 .md ul,
+.d2-2107826116 .md ol,
+.d2-2107826116 .md dl,
+.d2-2107826116 .md table,
+.d2-2107826116 .md pre,
+.d2-2107826116 .md details {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.d2-2107826116 .md blockquote > :first-child {
+  margin-top: 0;
+}
+
+.d2-2107826116 .md blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.d2-2107826116 .md sup > a::before {
+  content: "[";
+}
+
+.d2-2107826116 .md sup > a::after {
+  content: "]";
+}
+
+.d2-2107826116 .md h1:hover .anchor,
+.d2-2107826116 .md h2:hover .anchor,
+.d2-2107826116 .md h3:hover .anchor,
+.d2-2107826116 .md h4:hover .anchor,
+.d2-2107826116 .md h5:hover .anchor,
+.d2-2107826116 .md h6:hover .anchor {
+  text-decoration: none;
+}
+
+.d2-2107826116 .md h1 tt,
+.d2-2107826116 .md h1 code,
+.d2-2107826116 .md h2 tt,
+.d2-2107826116 .md h2 code,
+.d2-2107826116 .md h3 tt,
+.d2-2107826116 .md h3 code,
+.d2-2107826116 .md h4 tt,
+.d2-2107826116 .md h4 code,
+.d2-2107826116 .md h5 tt,
+.d2-2107826116 .md h5 code,
+.d2-2107826116 .md h6 tt,
+.d2-2107826116 .md h6 code {
+  padding: 0 0.2em;
+  font-size: inherit;
+}
+
+.d2-2107826116 .md ul.no-list,
+.d2-2107826116 .md ol.no-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+.d2-2107826116 .md ol[type="1"] {
+  list-style-type: decimal;
+}
+
+.d2-2107826116 .md ol[type="a"] {
+  list-style-type: lower-alpha;
+}
+
+.d2-2107826116 .md ol[type="i"] {
+  list-style-type: lower-roman;
+}
+
+.d2-2107826116 .md div > ol:not([type]) {
+  list-style-type: decimal;
+}
+
+.d2-2107826116 .md ul ul,
+.d2-2107826116 .md ul ol,
+.d2-2107826116 .md ol ol,
+.d2-2107826116 .md ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.d2-2107826116 .md li > p {
+  margin-top: 16px;
+}
+
+.d2-2107826116 .md li + li {
+  margin-top: 0.25em;
+}
+
+.d2-2107826116 .md dl {
+  padding: 0;
+}
+
+.d2-2107826116 .md dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-family: "d2-2107826116-font-semibold";
+}
+
+.d2-2107826116 .md dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.d2-2107826116 .md table th {
+  font-family: "d2-2107826116-font-semibold";
+}
+
+.d2-2107826116 .md table th,
+.d2-2107826116 .md table td {
+  padding: 6px 13px;
+  border: 1px solid var(--color-border-default);
+}
+
+.d2-2107826116 .md table tr {
+  background-color: var(--color-canvas-default);
+  border-top: 1px solid var(--color-border-muted);
+}
+
+.d2-2107826116 .md table tr:nth-child(2n) {
+  background-color: var(--color-canvas-subtle);
+}
+
+.d2-2107826116 .md table img {
+  background-color: transparent;
+}
+
+.d2-2107826116 .md img[align="right"] {
+  padding-left: 20px;
+}
+
+.d2-2107826116 .md img[align="left"] {
+  padding-right: 20px;
+}
+
+.d2-2107826116 .md span.frame {
+  display: block;
+  overflow: hidden;
+}
+
+.d2-2107826116 .md span.frame > span {
+  display: block;
+  float: left;
+  width: auto;
+  padding: 7px;
+  margin: 13px 0 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border-default);
+}
+
+.d2-2107826116 .md span.frame span img {
+  display: block;
+  float: left;
+}
+
+.d2-2107826116 .md span.frame span span {
+  display: block;
+  padding: 5px 0 0;
+  clear: both;
+  color: var(--color-fg-default);
+}
+
+.d2-2107826116 .md span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+.d2-2107826116 .md span.align-center > span {
+  display: block;
+  margin: 13px auto 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.d2-2107826116 .md span.align-center span img {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.d2-2107826116 .md span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+.d2-2107826116 .md span.align-right > span {
+  display: block;
+  margin: 13px 0 0;
+  overflow: hidden;
+  text-align: right;
+}
+
+.d2-2107826116 .md span.align-right span img {
+  margin: 0;
+  text-align: right;
+}
+
+.d2-2107826116 .md span.float-left {
+  display: block;
+  float: left;
+  margin-right: 13px;
+  overflow: hidden;
+}
+
+.d2-2107826116 .md span.float-left span {
+  margin: 13px 0 0;
+}
+
+.d2-2107826116 .md span.float-right {
+  display: block;
+  float: right;
+  margin-left: 13px;
+  overflow: hidden;
+}
+
+.d2-2107826116 .md span.float-right > span {
+  display: block;
+  margin: 13px auto 0;
+  overflow: hidden;
+  text-align: right;
+}
+
+.d2-2107826116 .md code,
+.d2-2107826116 .md tt {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: var(--color-neutral-muted);
+  border-radius: 6px;
+}
+
+.d2-2107826116 .md code br,
+.d2-2107826116 .md tt br {
+  display: none;
+}
+
+.d2-2107826116 .md del code {
+  text-decoration: inherit;
+}
+
+.d2-2107826116 .md pre code {
+  font-size: 100%;
+}
+
+.d2-2107826116 .md pre > code {
+  padding: 0;
+  margin: 0;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.d2-2107826116 .md .highlight {
+  margin-bottom: 16px;
+}
+
+.d2-2107826116 .md .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.d2-2107826116 .md .highlight pre,
+.d2-2107826116 .md pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: var(--color-canvas-subtle);
+  border-radius: 6px;
+}
+
+.d2-2107826116 .md pre code,
+.d2-2107826116 .md pre tt {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.d2-2107826116 .md .csv-data td,
+.d2-2107826116 .md .csv-data th {
+  padding: 5px;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.d2-2107826116 .md .csv-data .blob-num {
+  padding: 10px 8px 9px;
+  text-align: right;
+  background: var(--color-canvas-default);
+  border: 0;
+}
+
+.d2-2107826116 .md .csv-data tr {
+  border-top: 0;
+}
+
+.d2-2107826116 .md .csv-data th {
+  font-family: "d2-2107826116-font-semibold";
+  background: var(--color-canvas-subtle);
+  border-top: 0;
+}
+
+.d2-2107826116 .md .footnotes {
+  font-size: 12px;
+  color: var(--color-fg-muted);
+  border-top: 1px solid var(--color-border-default);
+}
+
+.d2-2107826116 .md .footnotes ol {
+  padding-left: 16px;
+}
+
+.d2-2107826116 .md .footnotes li {
+  position: relative;
+}
+
+.d2-2107826116 .md .footnotes li:target::before {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -24px;
+  pointer-events: none;
+  content: "";
+  border: 2px solid var(--color-accent-emphasis);
+  border-radius: 6px;
+}
+
+.d2-2107826116 .md .footnotes li:target {
+  color: var(--color-fg-default);
+}
+
+.d2-2107826116 .md .task-list-item {
+  list-style-type: none;
+}
+
+.d2-2107826116 .md .task-list-item label {
+  font-weight: 400;
+}
+
+.d2-2107826116 .md .task-list-item.enabled label {
+  cursor: pointer;
+}
+
+.d2-2107826116 .md .task-list-item + .task-list-item {
+  margin-top: 3px;
+}
+
+.d2-2107826116 .md .task-list-item .handle {
+  display: none;
+}
+
+.d2-2107826116 .md .task-list-item-checkbox {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
+}
+
+.d2-2107826116 .md .contains-task-list:dir(rtl) .task-list-item-checkbox {
+  margin: 0 -1.6em 0.25em 0.2em;
+}
+</style><g id="step_one"><g class="shape" ><rect x="111.000000" y="29.000000" width="522.000000" height="1065.000000" stroke="#0D32B2" fill="#E3E9FD" class=" stroke-B1 fill-B4" style="stroke-width:2;" /></g><text x="372.000000" y="16.000000" fill="#0A0F25" class="text fill-N1" style="text-anchor:middle;font-size:28px">Première étape</text></g><g id="step_two"><g class="shape" ><rect x="25.000000" y="1243.000000" width="971.000000" height="1356.000000" stroke="#0D32B2" fill="#E3E9FD" class=" stroke-B1 fill-B4" style="stroke-width:2;" /></g><text x="510.500000" y="1230.000000" fill="#0A0F25" class="text fill-N1" style="text-anchor:middle;font-size:28px">Routing</text></g><g id="step_one.user_action"><g class="shape" ><rect x="240.000000" y="70.000000" width="265.000000" height="81.000000" stroke="#0D32B2" fill="#EDF0FD" class=" stroke-B1 fill-B5" style="stroke-width:2;" /></g><text x="372.500000" y="58.000000" fill="#0A0F25" class="text fill-N1" style="text-anchor:middle;font-size:24px">Utilisateur</text></g><g id="step_one.ht_access_action"><g class="shape" ><rect x="232.000000" y="291.000000" width="281.000000" height="97.000000" stroke="#0D32B2" fill="#EDF0FD" class=" stroke-B1 fill-B5" style="stroke-width:2;" /></g><text x="372.500000" y="279.000000" fill="#0A0F25" class="text fill-N1" style="text-anchor:middle;font-size:24px">.htaccess</text></g><g id="step_one.launch_app"><g class="shape" ><rect x="252.000000" y="528.000000" width="241.000000" height="97.000000" stroke="#0D32B2" fill="#EDF0FD" class=" stroke-B1 fill-B5" style="stroke-width:2;" /></g><text x="372.500000" y="516.000000" fill="#0A0F25" class="text fill-N1" style="text-anchor:middle;font-size:24px">class &#39;Application&#39;</text></g><g id="step_one.insert_and_verify_routing_configs"><g class="shape" ><rect x="141.000000" y="765.000000" width="462.000000" height="97.000000" stroke="#0D32B2" fill="#EDF0FD" class=" stroke-B1 fill-B5" style="stroke-width:2;" /></g><text x="372.000000" y="753.000000" fill="#0A0F25" class="text fill-N1" style="text-anchor:middle;font-size:24px">Insertion et vérification des configurations</text></g><g id="step_one.init_elements"><g class="shape" ><rect x="195.000000" y="982.000000" width="354.000000" height="82.000000" stroke="#0D32B2" fill="#EDF0FD" class=" stroke-B1 fill-B5" style="stroke-width:2;" /></g><text x="372.000000" y="1020.500000" fill="#0A0F25" class="text fill-N1" style="text-anchor:middle;font-size:16px"><tspan x="372.000000" dy="0.000000">Initialisation de la base de données si requis</tspan><tspan x="372.000000" dy="18.500000">Lancement du router</tspan></text></g><g id="step_two.check_maintenance"><g class="shape" ><rect x="55.000000" y="1284.000000" width="772.000000" height="500.000000" stroke="#0D32B2" fill="#EDF0FD" class=" stroke-B1 fill-B5" style="stroke-width:2;" /></g><text x="441.000000" y="1272.000000" fill="#0A0F25" class="text fill-N1" style="text-anchor:middle;font-size:24px">Gestion de la maintenance</text></g><g id="step_two.render_resource"><g class="shape" ><rect x="271.000000" y="1975.000000" width="183.000000" height="66.000000" stroke="#0D32B2" fill="#EDF0FD" class=" stroke-B1 fill-B5" style="stroke-width:2;" /></g><text x="362.500000" y="2013.500000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">Rendu de ressource</text></g><g id="step_two.routing_next"><g class="shape" ><rect x="526.000000" y="1945.000000" width="440.000000" height="624.000000" stroke="#0D32B2" fill="#EDF0FD" class=" stroke-B1 fill-B5" style="stroke-width:2;" /></g><text x="746.000000" y="1933.000000" fill="#0A0F25" class="text fill-N1" style="text-anchor:middle;font-size:24px">Rendu du site</text></g><g id="step_one.user_action.&#34;Accès à un lien de l&#39;application&#34;"><g class="shape" ></g><text x="372.500000" y="116.000000" fill="#0A0F25" class="text fill-N1" style="text-anchor:middle;font-size:16px">Accès à un lien de l&#39;application</text></g><g id="step_one.ht_access_action.&#34;Redirection vers le point d&#39;entrée\n&#39;sabo_core/index.php&#39;&#34;"><g class="shape" ></g><text x="372.500000" y="337.000000" fill="#0A0F25" class="text fill-N1" style="text-anchor:middle;font-size:16px"><tspan x="372.500000" dy="0.000000">Redirection vers le point d&#39;entrée</tspan><tspan x="372.500000" dy="18.500000">&#39;sabo_core/index.php&#39;</tspan></text></g><g id="step_one.launch_app.&#34;Lancement de l&#39;application\nméthode launch&#34;"><g class="shape" ></g><text x="372.500000" y="574.000000" fill="#0A0F25" class="text fill-N1" style="text-anchor:middle;font-size:16px"><tspan x="372.500000" dy="0.000000">Lancement de l&#39;application</tspan><tspan x="372.500000" dy="18.500000">méthode launch</tspan></text></g><g id="step_one.insert_and_verify_routing_configs.&#34;Dans l&#39;ordre\nfonctions globales, blade + twig, environnement, framework&#34;"><g class="shape" ></g><text x="372.000000" y="811.000000" fill="#0A0F25" class="text fill-N1" style="text-anchor:middle;font-size:16px"><tspan x="372.000000" dy="0.000000">Dans l&#39;ordre</tspan><tspan x="372.000000" dy="18.500000">fonctions globales, blade + twig, environnement, framework</tspan></text></g><g id="step_two.check_maintenance.action"><g class="shape" ><rect x="228.000000" y="1314.000000" width="288.000000" height="66.000000" stroke="#0D32B2" fill="#F7F8FE" class=" stroke-B1 fill-B6" style="stroke-width:2;" /></g><text x="372.000000" y="1352.500000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">Vérification dans l&#39;environnement</text></g><g id="step_two.check_maintenance.manage_maintenance"><g class="shape" ><rect x="249.000000" y="1501.000000" width="246.000000" height="66.000000" stroke="#0D32B2" fill="#F7F8FE" class=" stroke-B1 fill-B6" style="stroke-width:2;" /></g><text x="372.000000" y="1539.500000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">Vérification d&#39;accès autorisé</text></g><g id="step_two.check_maintenance.continue_routing"><g class="shape" ><rect x="85.000000" y="1688.000000" width="189.000000" height="66.000000" stroke="#0D32B2" fill="#F7F8FE" class=" stroke-B1 fill-B6" style="stroke-width:2;" /></g><text x="179.500000" y="1726.500000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">Continuer le routing</text></g><g id="step_two.check_maintenance.show_maintenance_page"><g class="shape" ><rect x="334.000000" y="1688.000000" width="463.000000" height="66.000000" stroke="#0D32B2" fill="#F7F8FE" class=" stroke-B1 fill-B6" style="stroke-width:2;" /></g><text x="565.500000" y="1726.500000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">Affichage de la page de maintenance ou lien spécial d&#39;accès</text></g><g id="step_two.routing_next.Récupération de la route à afficher"><g class="shape" ><rect x="602.000000" y="1975.000000" width="289.000000" height="66.000000" stroke="#0D32B2" fill="#F7F8FE" class=" stroke-B1 fill-B6" style="stroke-width:2;" /></g><text x="746.500000" y="2013.500000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">Récupération de la route à afficher</text></g><g id="step_two.routing_next.&#34;Vérification des conditions d&#39;accès&#34;"><g class="shape" ><rect x="601.000000" y="2141.000000" width="290.000000" height="66.000000" stroke="#0D32B2" fill="#F7F8FE" class=" stroke-B1 fill-B6" style="stroke-width:2;" /></g><text x="746.000000" y="2179.500000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">Vérification des conditions d&#39;accès</text></g><g id="step_two.routing_next.Gestion des données flash"><g class="shape" ><rect x="632.000000" y="2307.000000" width="228.000000" height="66.000000" stroke="#0D32B2" fill="#F7F8FE" class=" stroke-B1 fill-B6" style="stroke-width:2;" /></g><text x="746.000000" y="2345.500000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">Gestion des données flash</text></g><g id="step_two.routing_next.Appel du controller et de la méthode de gestion"><g class="shape" ><rect x="556.000000" y="2473.000000" width="380.000000" height="66.000000" stroke="#0D32B2" fill="#F7F8FE" class=" stroke-B1 fill-B6" style="stroke-width:2;" /></g><text x="746.000000" y="2511.500000" fill="#0A0F25" class="text-bold fill-N1" style="text-anchor:middle;font-size:16px">Appel du controller et de la méthode de gestion</text></g><g id="step_one.(user_action -&gt; ht_access_action)[0]"><marker id="mk-3488378134" markerWidth="10.000000" markerHeight="12.000000" refX="7.000000" refY="6.000000" viewBox="0.000000 0.000000 10.000000 12.000000" orient="auto" markerUnits="userSpaceOnUse"> <polygon points="0.000000,0.000000 10.000000,6.000000 0.000000,12.000000" fill="#0D32B2" class="connection fill-B1" stroke-width="2" /> </marker><path d="M 372.250000 153.000000 C 372.250000 207.000000 372.250000 227.800003 372.250000 251.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-3488378134)" mask="url(#d2-2107826116)" /></g><g id="step_one.(ht_access_action -&gt; launch_app)[0]"><path d="M 372.250000 390.000000 C 372.250000 444.000000 372.250000 464.799988 372.250000 488.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-3488378134)" mask="url(#d2-2107826116)" /></g><g id="step_one.(launch_app -&gt; insert_and_verify_routing_configs)[0]"><path d="M 372.250000 627.000000 C 372.250000 681.000000 372.250000 701.799988 372.250000 725.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-3488378134)" mask="url(#d2-2107826116)" /></g><g id="step_one.(insert_and_verify_routing_configs -&gt; init_elements)[0]"><path d="M 372.250000 864.000000 C 372.250000 918.000000 372.250000 942.000000 372.250000 978.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-3488378134)" mask="url(#d2-2107826116)" /></g><g id="step_two.check_maintenance.(manage_maintenance -&gt; continue_routing)[0]"><path d="M 302.452602 1567.377131 C 204.250000 1615.300049 179.250000 1639.699951 179.250000 1684.500000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-3488378134)" mask="url(#d2-2107826116)" /><text x="216.500000" y="1615.000000" fill="#676C7E" class="text-italic fill-N2" style="text-anchor:middle;font-size:16px">Accès déjà autorisé ?</text></g><g id="step_two.check_maintenance.(manage_maintenance -&gt; show_maintenance_page)[0]"><path d="M 442.047398 1567.377131 C 540.250000 1615.300049 565.250000 1639.699951 565.250000 1684.500000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-3488378134)" mask="url(#d2-2107826116)" /><text x="527.500000" y="1615.000000" fill="#676C7E" class="text-italic fill-N2" style="text-anchor:middle;font-size:16px">Non</text></g><g id="step_two.check_maintenance.(action -&gt; manage_maintenance)[0]"><path d="M 372.250000 1381.500000 C 372.250000 1428.300049 372.250000 1452.699951 372.250000 1497.500000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-3488378134)" mask="url(#d2-2107826116)" /><text x="372.500000" y="1446.000000" fill="#676C7E" class="text-italic fill-N2" style="text-anchor:middle;font-size:16px">Oui</text></g><g id="step_two.(check_maintenance -&gt; render_resource)[0]"><path d="M 362.500000 1785.500000 C 362.500000 1848.300049 362.500000 1935.000000 362.500000 1971.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-3488378134)" mask="url(#d2-2107826116)" /><text x="363.000000" y="1885.000000" fill="#676C7E" class="text-italic fill-N2" style="text-anchor:middle;font-size:16px">Vérification de ressource accessible</text></g><g id="step_two.(check_maintenance -&gt; routing_next)[0]"><path d="M 746.000000 1785.500000 C 746.000000 1848.300049 746.000000 1873.500000 746.000000 1905.500000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-3488378134)" mask="url(#d2-2107826116)" /><text x="746.500000" y="1852.000000" fill="#676C7E" class="text-italic fill-N2" style="text-anchor:middle;font-size:16px">Non</text></g><g id="step_two.routing_next.(Récupération de la route à afficher -&gt; &#34;Vérification des conditions d&#39;accès&#34;)[0]"><path d="M 746.000000 2043.000000 C 746.000000 2081.000000 746.000000 2101.000000 746.000000 2137.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-3488378134)" mask="url(#d2-2107826116)" /></g><g id="step_two.routing_next.(&#34;Vérification des conditions d&#39;accès&#34; -&gt; Gestion des données flash)[0]"><path d="M 746.000000 2209.000000 C 746.000000 2247.000000 746.000000 2267.000000 746.000000 2303.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-3488378134)" mask="url(#d2-2107826116)" /></g><g id="step_two.routing_next.(Gestion des données flash -&gt; Appel du controller et de la méthode de gestion)[0]"><path d="M 746.000000 2375.000000 C 746.000000 2413.000000 746.000000 2433.000000 746.000000 2469.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-3488378134)" mask="url(#d2-2107826116)" /></g><g id="(step_one -&gt; step_two)[0]"><path d="M 372.250000 1096.000000 C 372.250000 1150.000000 372.250000 1179.800049 372.250000 1239.000000" stroke="#0D32B2" fill="none" class="connection stroke-B1" style="stroke-width:2;" marker-end="url(#mk-3488378134)" mask="url(#d2-2107826116)" /></g><mask id="d2-2107826116" maskUnits="userSpaceOnUse" x="-76" y="-112" width="1173" height="2812">
+<rect x="-76" y="-112" width="1173" height="2812" fill="white"></rect>
+<rect x="283.500000" y="-12.000000" width="177" height="36" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="465.000000" y="1202.000000" width="91" height="36" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="320.500000" y="34.000000" width="104" height="31" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="326.000000" y="255.000000" width="93" height="31" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="283.000000" y="492.000000" width="179" height="31" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="161.000000" y="729.000000" width="422" height="31" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="217.500000" y="1004.500000" width="309" height="37" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="308.000000" y="1248.000000" width="266" height="31" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="293.500000" y="1997.500000" width="138" height="21" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="678.500000" y="1909.000000" width="135" height="31" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="270.000000" y="100.000000" width="205" height="21" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="262.000000" y="321.000000" width="221" height="37" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="282.000000" y="558.000000" width="181" height="37" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="171.000000" y="795.000000" width="402" height="37" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="250.500000" y="1336.500000" width="243" height="21" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="271.500000" y="1523.500000" width="201" height="21" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="107.500000" y="1710.500000" width="144" height="21" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="356.500000" y="1710.500000" width="418" height="21" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="624.500000" y="1997.500000" width="244" height="21" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="623.500000" y="2163.500000" width="245" height="21" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="654.500000" y="2329.500000" width="183" height="21" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="578.500000" y="2495.500000" width="335" height="21" fill="rgba(0,0,0,0.75)"></rect>
+<rect x="148.000000" y="1599.000000" width="137" height="21" fill="black"></rect>
+<rect x="514.000000" y="1599.000000" width="27" height="21" fill="black"></rect>
+<rect x="361.000000" y="1430.000000" width="23" height="21" fill="black"></rect>
+<rect x="248.000000" y="1869.000000" width="230" height="21" fill="black"></rect>
+<rect x="733.000000" y="1836.000000" width="27" height="21" fill="black"></rect>
+</mask></svg></svg>
+</div></div></section><section class="chapter"><h2 id="enregistrement-des-routes" data-toc="enregistrement-des-routes">Enregistrement des routes</h2><aside class="prompt" data-type="tip" data-title="" id="z67j2hd_43"><p id="z67j2hd_48">L'enregistrement des routes passe par le dossier <span class="control" id="z67j2hd_49">src/routes</span>.</p></aside><ul class="list _bullet" id="z67j2hd_44"><li class="list__item" id="z67j2hd_50"><p id="z67j2hd_53"><code class="code" id="z67j2hd_55">routes.php</code> fichier utilis&eacute; par le framework permettant d'inclure les documents d'enregistrement d'api et web</p><aside class="prompt" data-type="warning" data-title="" id="z67j2hd_54"><p>Il n'est pas recommand&eacute; de le modifier bien qu'il puisse servir &agrave; l'enregistrement des routes</p></aside></li><li class="list__item" id="z67j2hd_51"><p id="z67j2hd_56"><code class="code" id="z67j2hd_57">web.php</code> sert &agrave; l'enregistrement des routes web</p></li><li class="list__item" id="z67j2hd_52"><p id="z67j2hd_58"><code class="code" id="z67j2hd_59">api.php</code> sert &agrave; l'enregistrement des routes d'api</p></li></ul><aside class="prompt" data-type="note" data-title="" id="z67j2hd_45"><p>La s&eacute;paration des deux fichiers n'est que s&eacute;mantique. Il est recommand&eacute; pour les routes d'api de d&eacute;buter par la cr&eacute;ation d'un groupe <code class="code" id="z67j2hd_60">/api</code></p></aside><div class="code-block" data-lang="php">
+&lt;?php
+# routes d'api
+use SaboCore\Routing\Routes\RouteManager;
+RouteManager::registerGroup(
+    linksPrefix: &quot;/api/:apiVersion&quot;,
+    routes: [],
+    genericParamsConfig: [&quot;apiVersion&quot; =&gt; &quot;[0-9_]+&quot;],
+    groupAccessVerifiers: []
+);
+# ou
+RouteManager::registerGroup(
+    linksPrefix: &quot;/api&quot;,
+    routes: [],
+    groupAccessVerifiers: []
+);
+</div><aside class="prompt" data-type="warning" data-title="" id="z67j2hd_47"><p>Il faut diff&eacute;rencier les class <code class="code" id="z67j2hd_61">RouteManager</code> et <code class="code" id="z67j2hd_62">Route</code>. La class <code class="code" id="z67j2hd_63">Route</code> permet de cr&eacute;er une route, la class <code class="code" id="z67j2hd_64">RouteManager</code> quant &agrave; elle sert &agrave; la gestion des routes par le framework, mais &eacute;galement &agrave; les enregistrer.</p></aside></section><section class="chapter"><h2 id="enregistrement-d-une-route" data-toc="enregistrement-d-une-route">Enregistrement d'une route</h2><div class="code-block" data-lang="php">
+&lt;?php
+// routes web
+use SaboCore\Routing\Response\BladeResponse;
+use SaboCore\Routing\Routes\Route;
+use SaboCore\Routing\Routes\RouteManager;
+RouteManager::registerRoute(
+    Route::get(
+        link: &quot;/&quot;,
+        toExecute: fn():BladeResponse =&gt; new BladeResponse(&quot;sabo&quot;,[&quot;websiteLink&quot; =&gt; &quot;https://yahvya.github.io/sabo-final-doc/&quot;]),
+        routeName: &quot;sabo&quot;
+    )
+);
+</div><aside class="prompt" data-type="note" data-title="" id="z67j2hd_66"><p>Les m&eacute;thodes statiques de la class <code class="code" id="z67j2hd_67">Route</code> repr&eacute;sentent les diff&eacute;rentes m&eacute;thodes de requ&ecirc;te couramment utilis&eacute;es. [get, post, put, delete, patch, options, head, trace]</p></aside></section><section class="chapter"><h2 id="enregistrement-d-un-groupe-de-routes" data-toc="enregistrement-d-un-groupe-de-routes">Enregistrement d'un groupe de routes</h2><div class="code-block" data-lang="php">
+&lt;?php
+# routes d'api
+use SaboCore\Routing\Routes\RouteManager;
+use SaboCore\Routing\Response\BladeResponse;
+use SaboCore\Routing\Routes\Route;
+RouteManager::registerGroup(
+    linksPrefix: &quot;/api&quot;,
+    routes: [
+        Route::get(
+            link: &quot;/&quot;,
+            toExecute: fn():BladeResponse =&gt; new BladeResponse(&quot;sabo&quot;,[&quot;websiteLink&quot; =&gt; &quot;https://yahvya.github.io/sabo-final-doc/&quot;]),
+            routeName: &quot;sabo&quot;
+        ),
+        Route::get(
+            link: &quot;/test&quot;,
+            toExecute: fn():BladeResponse =&gt; new BladeResponse(&quot;sabo&quot;,[&quot;websiteLink&quot; =&gt; &quot;https://yahvya.github.io/sabo-final-doc/&quot;]),
+            routeName: &quot;sabo&quot;
+        )
+    ],
+    groupAccessVerifiers: []
+);
+</div><p id="z67j2hd_69">Ce code donnera les routes, accessible en get :</p><ul class="list _bullet" id="z67j2hd_70"><li class="list__item" id="z67j2hd_71"><p id="z67j2hd_73">/api</p></li><li class="list__item" id="z67j2hd_72"><p id="z67j2hd_74">/api/test</p></li></ul></section><section class="chapter"><h2 id="param-tres-de-cr-ation-de-route" data-toc="param-tres-de-cr-ation-de-route">Param&egrave;tres de cr&eacute;ation de route</h2><div class="code-block" data-lang="php">Route::method(string $link, Closure|array $toExecute, string $routeName, array $genericParamsRegex = [], array $accessVerifiers = [])</div><ul class="list _bullet" id="z67j2hd_76"><li class="list__item" id="z67j2hd_79"><p id="z67j2hd_84"><code class="code" id="z67j2hd_85">$link</code> lien associ&eacute;. Ce lien peut contenir des param&egrave;tres g&eacute;n&eacute;riques au format d&eacute;fini par framework.php. <a href="configuration-elements.html#framework-php" id="z67j2hd_86" data-tooltip="Définition du timezone par défaut">Voir la d&eacute;finition de format</a></p></li><li class="list__item" id="z67j2hd_80"><p id="z67j2hd_87"><code class="code" id="z67j2hd_92">$toExecute</code> Callable &agrave; appeler pour traiter la requ&ecirc;te</p><aside class="prompt" data-type="note" data-title="" id="z67j2hd_88"><p>Le callable doit renvoyer une <code class="code" id="z67j2hd_93">Response</code> et peut se faire injecter un type <code class="code" id="z67j2hd_94">Request</code> ainsi que les param&egrave;tres g&eacute;n&eacute;riques via leur nom</p></aside><div class="code-block" data-lang="php">
+  &lt;?php
+  # pour la route /test/:username/test2
+  function treatmentFunction(Request $requestManager,string $username):JsonResponse{
+    return [&quot;username&quot; =&gt; $username];
+  }
+</div><p id="z67j2hd_90">ou</p><p id="z67j2hd_91"><code class="code" id="z67j2hd_95">[Controller::class,&quot;methodName&quot;]</code></p></li><li class="list__item" id="z67j2hd_81"><p id="z67j2hd_96"><code class="code" id="z67j2hd_97">$routeName</code> nom unique de la route <span class="emphasis" id="z67j2hd_98">(format libre)</span></p></li><li class="list__item" id="z67j2hd_82"><p id="z67j2hd_99"><code class="code" id="z67j2hd_101">$genericParamsRegex</code> configuration des regex associ&eacute;s aux param&egrave;tres g&eacute;n&eacute;riques</p><div class="code-block" data-lang="php">
+  &lt;?php
+  # pour la route /test/:articleName/:id
+  [&quot;articleName&quot; =&gt; &quot;[a-z\-0-9]+&quot;,&quot;id&quot; =&gt; &quot;[0-9]+&quot;]
+</div></li><li class="list__item" id="z67j2hd_83"><p id="z67j2hd_102"><code class="code" id="z67j2hd_105">$accessVerifiers</code> Conditions de v&eacute;rification d'acc&egrave;s &agrave; la route</p><div class="code-block" data-lang="none">
+&lt;?php
+[new Verifier(verifier: [CustomApiController::class,&quot;checkApiAccess&quot;],onFailure: [CustomApiController::class,&quot;refuseApiAccess&quot;])]
+# ou 
+[new Verifier(verifier: fn(Request $requestManager):bool =&gt; false,onFailure: fn():RedirectResponse =&gt; ...]
+</div><aside class="prompt" data-type="note" data-title="" id="z67j2hd_104"><p>La classe de v&eacute;rification permet de d&eacute;finir toute une &eacute;tape de v&eacute;rification. La fonction de condition de v&eacute;rification retournant un bool&eacute;en, si false la fonction de gestion d'&eacute;chec qui dans le cas des routes renvoi une <code class="code" id="z67j2hd_106">Response</code></p></aside></li></ul><aside class="prompt" data-type="note" data-title="" id="z67j2hd_77"><p>Les m&ecirc;mes &eacute;l&eacute;ments sont pos&eacute;s sur la cr&eacute;ation de groupe de route, les conditions sont appliqu&eacute;es &agrave; toutes les sous routes.</p></aside><aside class="prompt" data-type="warning" data-title="" id="z67j2hd_78"><p>Sur un groupe de routes les r&egrave;gles de param&egrave;tres g&eacute;n&eacute;riques sont encapsul&eacute;s sur le prefix des liens</p></aside></section><section class="chapter"><h2 id="sous-fichiers-de-route" data-toc="sous-fichiers-de-route">Sous fichiers de route</h2><aside class="prompt" data-type="tip" data-title="" id="z67j2hd_107"><p id="z67j2hd_112">Pour apporter une meilleure organisation, des sous fichiers routes peuvent &ecirc;tre cr&eacute;&eacute;s via l'utilisation de <code class="code" id="z67j2hd_113">RouteManager::fromFile</code></p></aside><p id="z67j2hd_108">Cette fonction prend en param&egrave;tre le chemin du fichier sans son extension qui doit &ecirc;tre <span class="emphasis" id="z67j2hd_114"><span class="control" id="z67j2hd_116">.php</span></span> avec comme racine le dossier <code class="code" id="z67j2hd_115">routes</code>.</p><ul class="list _bullet" id="z67j2hd_109"><li class="list__item" id="z67j2hd_117"><p id="z67j2hd_118">routes</p><ul class="list _bullet" id="z67j2hd_119"><li class="list__item" id="z67j2hd_120"><p id="z67j2hd_124">web.php</p></li><li class="list__item" id="z67j2hd_121"><p id="z67j2hd_125">routes.php</p></li><li class="list__item" id="z67j2hd_122"><p id="z67j2hd_126">api.php</p></li><li class="list__item" id="z67j2hd_123"><p id="z67j2hd_127">custom-routes</p><ul class="list _bullet" id="z67j2hd_128"><li class="list__item" id="z67j2hd_129"><p id="z67j2hd_130">authentication.php</p></li></ul></li></ul></li></ul><p id="z67j2hd_110">Pour charger le fichier <code class="code" id="z67j2hd_131">authentication.php</code>, vous pouvez utiliser la fonction sp&eacute;cifi&eacute;e ci-dessus dans le fichier <code class="code" id="z67j2hd_132">web.php</code>.</p><div class="code-block" data-lang="none">
+RouteManager::fromFile(filename: &quot;custom-routes/authentication&quot;);
+</div></section><section class="chapter"><h2 id="mode-de-d-veloppement" data-toc="mode-de-d-veloppement">Mode de d&eacute;veloppement</h2><aside class="prompt" data-type="tip" data-title="" id="z67j2hd_133"><p id="z67j2hd_135">Lors de la phase de routing le mode de d&eacute;veloppement d&eacute;fini si oui ou non la r&eacute;cup&eacute;ration d'exception non g&eacute;r&eacute;e est captur&eacute;e ou non. Si dev mode &agrave; <code class="code" id="z67j2hd_136">true</code> alors les erreurs ne sont pas captur&eacute;es sinon elles le sont et la page d'erreur interne est affich&eacute;e.</p></aside><p id="z67j2hd_134"><a href="configuration-elements.html#env-php" id="z67j2hd_137" data-tooltip="[env.php] Configuration d'environnement">Mise &agrave; jour du mode dans l'environnement</a></p></section><div class="last-modified">09 avril 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="configuration-elements.html" class="navigation-links__prev">Les &eacute;l&eacute;ments de configuration</a><a href="default-pages.html" class="navigation-links__next">Pages par d&eacute;faut</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

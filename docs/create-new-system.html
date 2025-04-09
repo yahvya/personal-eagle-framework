@@ -1,0 +1,46 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-resizable-sidebar="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-04-09T09:31:05.4984341"><title>Cr&eacute;er un nouveau syst&egrave;me | Sabo Framework</title><script type="application/json" id="virtual-toc-data">[{"id":"exemple-d-impl-mentation","level":0,"title":"Exemple d\u0027implémentation","anchor":"#exemple-d-impl-mentation"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><link rel="icon" type="image/x-icon" sizes="16x16" href="images/sabo-icon.ico"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Cr&eacute;er un nouveau syst&egrave;me | Sabo Framework"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Sabo Framework Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/create-new-system.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Cr&eacute;er un nouveau syst&egrave;me | Sabo Framework"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/create-new-system.html#webpage",
+    "url": "writerside-documentation/create-new-system.html",
+    "name": "Cr&eacute;er un nouveau syst&egrave;me | Sabo Framework",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Sabo Framework Help"
+}</script><!-- End Schema.org --></head><body data-id="create_new_system" data-main-title="Créer un nouveau système" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="starter-topic.md|Framework Sabo///database_description.md|Base de données"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Sabo Framework  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="create_new_system" id="create_new_system.md">Créer un nouveau système</h1><aside class="prompt" data-type="tip" data-title="" id="-ja2xi2_3"><p id="-ja2xi2_6">Le framework arrive par d&eacute;faut avec un syst&egrave;me permettant de g&eacute;rer le syst&egrave;me MYSQL. Toutefois, il est possible d'int&eacute;grer un nouveau syst&egrave;me en l'impl&eacute;ment ou en int&eacute;grant un paquet externe.</p></aside><section class="procedure-steps"><h3 id="-ja2xi2_4" data-toc="-ja2xi2_4">Etapes de création d'un système</h3><ol class="list _decimal"><li class="list__item" id="-ja2xi2_7"><p>Cr&eacute;er une class qui extends <code class="code" id="-ja2xi2_10">SaboCore\Database\Providers\DatabaseProvider</code>. Cette class permettra a minima d'initialiser le syst&egrave;me dans le cycle de vie du framework via la m&eacute;thode abstraite <code class="code" id="-ja2xi2_11">initDatabase</code>. Cette m&eacute;thode re&ccedil;oit en param&egrave;tre une configuration provenant de l'environnement qui sera trait&eacute; plus bas. </p><aside class="prompt" data-type="note" data-title="" id="-ja2xi2_12"><p>Il est recommand&eacute; d'impl&eacute;menter cette class en utilisant le pattern <a href="https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)" id="-ja2xi2_13" data-external="true" rel="noopener noreferrer" target="_blank">singleton</a>.</p></aside></li><li class="list__item" id="-ja2xi2_8"><p>Enregistrer le syst&egrave;me dans l'environnement ainsi que son mode de configuration. Pour ce faire: </p><ul class="list _bullet" id="-ja2xi2_14"><li class="list__item" id="-ja2xi2_15"><p>Fournir une instance du provider sur la cl&eacute; <code class="code" id="-ja2xi2_17">DatabaseConfig::PROVIDER-&gt;value</code></p></li><li class="list__item" id="-ja2xi2_16"><p>Remplir la configuration attendue par le syst&egrave;me dans la m&eacute;thode <code class="code" id="-ja2xi2_18">initDatabase</code> via la cl&eacute; <code class="code" id="-ja2xi2_19">DatabaseConfig::PROVIDER_CONFIG-&gt;value</code></p></li></ul></li><li class="list__item" id="-ja2xi2_9"><p>La suite de l'impl&eacute;mentation est libre en fonction du fonctionnement, toutefois des class et interfaces de structure sont pr&eacute;vus dans le namespace <code class="code" id="-ja2xi2_20">SaboCore\Database\System</code> dans le chemin de m&ecirc;me nom. </p><ul class="list _bullet" id="-ja2xi2_21"><li class="list__item" id="-ja2xi2_22"><p><code class="code" id="-ja2xi2_26">DatabaseModel</code> permettant de d&eacute;finir la structure d'un model ainsi que des m&eacute;thodes natives attendues</p></li><li class="list__item" id="-ja2xi2_23"><p><code class="code" id="-ja2xi2_27">DatabaseCondition|DatabaseCondSeparator|DatabaseComparator</code> permettant l'&eacute;criture de conditions de recherche via m&eacute;thodes.</p></li><li class="list__item" id="-ja2xi2_24"><p><code class="code" id="-ja2xi2_28">DatabaseActions</code> &eacute;num&eacute;ration des diff&eacute;rents &eacute;v&egrave;nements possibles.</p></li><li class="list__item" id="-ja2xi2_25"><p><code class="code" id="-ja2xi2_29">DatabaseActionException</code> exception li&eacute;e &agrave; un &eacute;v&egrave;nement.</p></li></ul></li></ol></section><section class="chapter"><h2 id="exemple-d-impl-mentation" data-toc="exemple-d-impl-mentation">Exemple d'impl&eacute;mentation</h2><p id="-ja2xi2_30">Cet exemple va se baser sur un syst&egrave;me fonctionnant &agrave; base d'un seul document <code class="code" id="-ja2xi2_34">JSON</code> sans toutefois aller jusqu'&agrave; l'impl&eacute;mentation des conditions dynamiques ...</p><aside class="prompt" data-type="warning" data-title="" id="-ja2xi2_31"><p>L'exemple est &agrave; but repr&eacute;sentatif</p></aside><section class="chapter"><h3 id="impl-mentation-du-provider" data-toc="impl-mentation-du-provider">Impl&eacute;mentation du provider</h3><div class="code-block" data-lang="php">
+class JsonSystemProvider extends DatabaseProvider{
+    protected static array|null $jsonDocument = null;
+    protected static string|null $documentPathFromStorage = null; 
+    #[Override]
+    public function initDatabase(Config $providerConfig):void{
+        $providerConfig-&gt;checkConfigs(&quot;documentPathFromStorage&quot;);
+        self::$documentPathFromStorage = $providerConfig-&gt;getConfig(name: &quot;documentPathFromStorage&quot;);
+        $fileContent = @file_get_contents(filename: AppStorage::buildStorageCompletePath(pathFromStorage: self::$documentPathFromStorage) );
+        if($fileContent == null)
+            return;
+        self::$jsonDocument = json_decode(json: $fileContent,associative: true);
+    }
+    #[Override]
+    public function getCon():array|null{
+        return self::$jsonDocument;
+    }
+}
+</div></section><section class="chapter"><h3 id="enregistrement-dans-l-environnement" data-toc="enregistrement-dans-l-environnement">Enregistrement dans l'environnement</h3><div class="code-block" data-lang="php">
+-&gt;setConfig(
+    name: EnvConfig::DATABASE_CONFIG-&gt;value,
+    value: Config::create()
+        -&gt;setConfig(name: DatabaseConfig::INIT_APP_WITH_CONNECTION-&gt;value,value: true)
+        -&gt;setConfig(name: DatabaseConfig::PROVIDER-&gt;value,value: new JsonSystemProvider() )
+        -&gt;setConfig(
+            name: DatabaseConfig::PROVIDER_CONFIG-&gt;value,
+            value: Config::create()
+                -&gt;setConfig(name: &quot;documentPathFromStorage&quot;,value: &quot;/database/json-doc.json&quot;)
+        )
+)
+</div><aside class="prompt" data-type="tip" data-title="" id="-ja2xi2_37"><p id="-ja2xi2_38">On pourrait dans ce cas imaginer des syst&egrave;mes de mod&egrave;les repr&eacute;sentant un format d'une partie du document ...</p></aside></section></section><div class="last-modified">09 avril 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="customized-request.html" class="navigation-links__prev">Construction de requ&ecirc;tes customis&eacute;es</a><a href="crons-scripts.html" class="navigation-links__next">Scripts crons</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

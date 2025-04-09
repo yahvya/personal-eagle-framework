@@ -4,10 +4,10 @@
 
 ## Important information
 
-**Licence** : License MIT
+- **Licence** : License MIT
 > You are free to use the framework in commercial and non-commercial projects.
 > However, creating and selling a modified version of the framework itself or his documentation - as a competing product - is not permitted.
-**Creation date** : 16.03.2023
+- **Creation date** : 16.03.2023
 
 ## Team
 

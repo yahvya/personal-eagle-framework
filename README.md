@@ -35,7 +35,7 @@
 ### GitHub Flow
 
 - main : the main branch merge elements from (dev, autotests, design, documentation)
-- (dev, autotests, design, documentation) : these branches merge elements from feature branches
+- (dev, documentation) : these branches merge elements from feature branches
 - features/<branch_name>/<feature_name> : features branches are created from the <branch_name> branch
 
 ### Commit norm

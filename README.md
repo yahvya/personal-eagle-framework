@@ -19,8 +19,6 @@
 
 - master (complete versions) - PROTECTED BY PULL REQUEST
 - dev (developed features) - PROTECTED BY PULL REQUEST
-- autotests (developed automatic tests) - PROTECTED BY PULL REQUEST
-- design (available design elements) - PROTECTED BY PULL REQUEST
 - documentation (developed documentation) - PROTECTED BY PULL REQUEST
 - features/<branch_name>/<feature_name>
 

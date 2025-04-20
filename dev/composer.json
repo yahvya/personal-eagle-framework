@@ -1,0 +1,7 @@
+{
+    "autoload": {
+        "pst-4": {
+            "SaboCore\\" : "./SaboCore"
+        }
+    }
+}

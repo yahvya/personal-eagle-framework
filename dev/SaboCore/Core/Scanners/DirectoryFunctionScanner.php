@@ -22,7 +22,7 @@ class DirectoryFunctionScanner implements Scanner
             return [];
 
         // format path
-        if(str_ends_with(haystack: $toScan,needle: '/') && !str_ends_with(haystack: $toScan,needle: '\\'))
+        if(!str_ends_with(haystack: $toScan,needle: '/') && !str_ends_with(haystack: $toScan,needle: '\\'))
             $toScan = "$toScan/";
 
         return $this->recursiveScan(directoryPath: $toScan);

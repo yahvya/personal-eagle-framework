@@ -12,3 +12,6 @@ require_once APPLICATION_ROOT . "/vendor/autoload.php";
 use SaboCore\Core\Global\Application;
 
 new Application()->init();
+
+request();
+request();

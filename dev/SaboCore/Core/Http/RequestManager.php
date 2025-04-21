@@ -2,15 +2,17 @@
 
 namespace SaboCore\Core\Http;
 
+use SaboCore\Core\Mappers\Implementation\ArrayDtoMapper;
+
 /**
  * Application request manager
  */
-class RequestManager
+readonly class RequestManager
 {
     /**
      * @var string Request URL
      */
-    public readonly string $url;
+    public string $url;
 
     public function __construct()
     {
@@ -20,7 +22,8 @@ class RequestManager
     /**
      * @return array GET params
      */
-    public function params():array{
+    public function params():array
+    {
         return $_GET;
     }
 
@@ -28,7 +31,45 @@ class RequestManager
      * @param string $getName GET param name
      * @return mixed GET param with the provided name or NULL when not found
      */
-    public function param(string $getName):mixed{
+    public function param(string $getName):mixed
+    {
         return $_GET[$getName] ?? null;
+    }
+
+    /**
+     * Map params in the provided dto class
+     * @param string $dto Dto class
+     * @return object|null Dto instance or null on failure
+     */
+    public function mapParamsIn(string $dto):object|null
+    {
+        return new ArrayDtoMapper()->map(data: $_GET,in: $dto);
+    }
+
+    /**
+     * @return array POST params
+     */
+    public function postValues():array
+    {
+        return $_POST;
+    }
+
+    /**
+     * @param string $postName PARAM param name
+     * @return mixed POST param with the provided name or NULL when not found
+     */
+    public function postValue(string $postName):mixed
+    {
+        return $_POST[$postName] ?? null;
+    }
+
+    /**
+     * Map post values in the provided dto class
+     * @param string $dto Dto class
+     * @return object|null Dto instance or null on failure
+     */
+    public function mapPostValuesIn(string $dto):object|null
+    {
+        return new ArrayDtoMapper()->map(data: $_POST,in: $dto);
     }
 }

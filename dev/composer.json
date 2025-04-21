@@ -1,7 +1,11 @@
 {
     "autoload": {
         "psr-4": {
-            "SaboCore\\" : "./SaboCore"
+            "SaboCore\\" : "./SaboCore",
+            "Tests\\" : "./Tests"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.1"
     }
 }

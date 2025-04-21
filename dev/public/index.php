@@ -3,8 +3,12 @@
 // SABO FRAMEWORK ENTRYPOINT
 
 /**
- * Application root pat
+ * Application root path
  */
-const APPLICATION_ROOT = __DIR__ . "/../";
+const APPLICATION_ROOT = __DIR__ . "/..";
 
-require(APPLICATION_ROOT . "vendor/autoload.php");
+require_once APPLICATION_ROOT . "/vendor/autoload.php";
+
+use SaboCore\Core\Global\Application;
+
+new Application()->init();

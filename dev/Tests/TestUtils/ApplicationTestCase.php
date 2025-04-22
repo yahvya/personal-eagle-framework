@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\SaboCore\Utils;
+namespace Tests\TestUtils;
 
 use PHPUnit\Framework\TestCase;
 
@@ -11,6 +11,8 @@ abstract class ApplicationTestCase extends TestCase
 {
     public static function setUpBeforeClass(): void
     {
-        require_once __DIR__ . "/../../../public/index.php";
+        require_once __DIR__ . "/../../public/index.php";
+
+        $_SERVER["REQUEST_URI"] = "/test/link";
     }
 }

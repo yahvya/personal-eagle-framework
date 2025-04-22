@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\SaboCore\Utils;
+namespace Tests\SaboCore\TestUtils;
 
 use SaboCore\Core\Mappers\Annotations\DtoMap;
 
 /**
  * Test get mapping dto
  */
-readonly class RequestManagerUtilDto
+readonly class MapTestDto
 {
     public string $name;
 

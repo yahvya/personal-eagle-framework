@@ -16,22 +16,27 @@ class RoutingFunctionsExposeTest extends ApplicationTest
      */
     public static function getRoutingFunctionsList():array{
         return [
-            ["request"]
+            ["request"],
+            ["routeManager"],
+            ["route",false]
         ];
     }
 
     #[TestDox(text: "Test routing function exist and singleton validity of(\$functionName")]
     #[DataProvider(methodName: "getRoutingFunctionsList")]
-    public function testFunctionExists(string $functionName):void{
+    public function testFunctionExists(string $functionName,bool $checkSingleton = true):void{
         $this->assertTrue(
             condition: function_exists(function: $functionName),
             message: "routing $functionName does not exist"
         );
 
-        $this->assertSame(
-            expected: call_user_func(callback: $functionName),
-            actual: call_user_func(callback: $functionName),
-            message: "The returned manager instance is not the same"
-        );
+        if($checkSingleton)
+        {
+            $this->assertSame(
+                expected: call_user_func(callback: $functionName),
+                actual: call_user_func(callback: $functionName),
+                message: "The returned manager instance is not the same"
+            );
+        }
     }
 }

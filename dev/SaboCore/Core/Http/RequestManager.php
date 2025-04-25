@@ -51,12 +51,39 @@ readonly class RequestManager
     }
 
     /**
-     * @param string $postName PARAM param name
+     * @param string $postName Post param name
      * @return mixed POST param with the provided name or NULL when not found
      */
     public function postValue(string $postName): mixed
     {
         return $_POST[$postName] ?? null;
+    }
+
+    /**
+     * @return array COOKIES params
+     */
+    public function cookiesValues(): array
+    {
+        return $_COOKIE;
+    }
+
+    /**
+     * @param string $cookieName Cookie param name
+     * @return mixed Cookie param with the provided name or NULL when not found
+     */
+    public function cookieValue(string $cookieName): mixed
+    {
+        return $_COOKIE[$cookieName] ?? null;
+    }
+
+    /**
+     * Map COOKIES params in the provided dto class
+     * @param string $dto Dto class
+     * @return object|null Dto instance or null on failure
+     */
+    public function mapCookiesIn(string $dto):object|null
+    {
+        return new ArrayDtoMapper()->map(data: $_COOKIE,in: $dto);
     }
 
     /**
@@ -132,4 +159,49 @@ readonly class RequestManager
         $data = $this->data();
         return is_array(value: $data) ? new ArrayDtoMapper()->map(data: $data, in: $dto) : null;
     }
+
+    /**
+     * @return array Request headers
+     */
+    public function headers(): array
+    {
+        if (function_exists(function: 'getallheaders'))
+            return getallheaders();
+
+        $headers = [];
+
+        foreach ($_SERVER as $key => $value)
+        {
+            if (str_starts_with(haystack: $key, needle: 'HTTP_'))
+            {
+                $header = str_replace(search: '_',replace: '-',subject: strtolower(string: substr(string: $key,offset: 5)));
+                $headers[ucwords(string: $header, separators: '-')] = $value;
+            }
+        }
+
+        return $headers;
+    }
+
+    /**
+     * @param string $headerName Header name
+     * @return string|null Header value with the provided name or NULL when not found
+     */
+    public function headerValue(string $headerName): string|null
+    {
+        return array_find(
+            array: $this->headers(),
+            callback: fn($key) => strcasecmp(string1: $key,string2: $headerName) === 0
+        );
+    }
+
+    /**
+     * Map HEADERS in the provided dto class
+     * @param string $dto Dto class
+     * @return object|null Dto instance or null on failure
+     */
+    public function mapHeadersIn(string $dto): object|null
+    {
+        return new ArrayDtoMapper()->map(data: $this->headers(), in: $dto);
+    }
+
 }

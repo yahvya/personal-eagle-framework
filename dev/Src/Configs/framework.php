@@ -3,4 +3,5 @@
 // FRAMEWORK CONFIGURATION FILE
 
 framework()
-    ->setGenericParamsRegex(genericParamsRegex: "");
+    ->setGenericParamsRegex(genericParamsRegex: "")
+    ->setDefaultGenericParamRegex(defaultGenericParamRegex: "");

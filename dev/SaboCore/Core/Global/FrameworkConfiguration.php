@@ -12,6 +12,29 @@ class FrameworkConfiguration
      */
     protected string $genericParamsRegex;
 
+    /**
+     * @var string The default regex to match a generic parameter in the request url
+     */
+    protected string $defaultGenericParamRegex;
+
+    /**
+     * @return string The default regex to match a generic parameter in the request url
+     */
+    public function getDefaultGenericParamRegex(): string
+    {
+        return $this->defaultGenericParamRegex;
+    }
+
+    /**
+     * Modify the default regex to match a generic parameter in the request url
+     * @param string $defaultGenericParamRegex Regex
+     * @return $this
+     */
+    public function setDefaultGenericParamRegex(string $defaultGenericParamRegex): static
+    {
+        $this->defaultGenericParamRegex = $defaultGenericParamRegex;
+        return $this;
+    }
 
     /**
      * @return string Generic parameters regex

@@ -1,9 +1,10 @@
 <?php
 
-namespace Tests\SaboCore;
+namespace Tests\SaboCore\Expose;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\TestDox;
+use SaboCore\Core\Mappers\Implementation\ArrayDtoMapper;
 use Tests\SaboCore\Core\Global\ApplicationTest;
 
 /**
@@ -20,21 +21,18 @@ class UtilsFunctionsExposeTest extends ApplicationTest
         ];
     }
 
-    #[TestDox(text: "Test utils function exist (\$functionName")]
+    #[TestDox(text: "Test utils function exist and singleton validity of (\$functionName")]
     #[DataProvider(methodName: "getUtilsFunctionsList")]
     public function testFunctionExists(string $functionName):void{
         $this->assertTrue(
             condition: function_exists(function: $functionName),
             message: "utils $functionName does not exist"
         );
-    }
 
-    #[TestDox(text: "Test array dto mapper function")]
-    public function testUtilsArrayDtoMapperFunction():void{
-        $this->assertEquals(
-            expected: arrayDtoMapper(),
-            actual: arrayDtoMapper(),
-            message: "The returned array dto manager instance is not the same"
+        $this->assertSame(
+            expected: call_user_func(callback: $functionName),
+            actual: call_user_func(callback: $functionName),
+            message: "The returned manager instance is not the same"
         );
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\SaboCore;
+namespace Tests\SaboCore\Expose;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\TestDox;
@@ -20,21 +20,18 @@ class RoutingFunctionsExposeTest extends ApplicationTest
         ];
     }
 
-    #[TestDox(text: "Test routing function exist (\$functionName")]
+    #[TestDox(text: "Test routing function exist and singleton validity of(\$functionName")]
     #[DataProvider(methodName: "getRoutingFunctionsList")]
     public function testFunctionExists(string $functionName):void{
         $this->assertTrue(
             condition: function_exists(function: $functionName),
             message: "routing $functionName does not exist"
         );
-    }
 
-    #[TestDox(text: "Test routing function")]
-    public function testRoutingRequestFunction():void{
-        $this->assertEquals(
-            expected: request(),
-            actual: request(),
-            message: "The returned request manager instance is not the same"
+        $this->assertSame(
+            expected: call_user_func(callback: $functionName),
+            actual: call_user_func(callback: $functionName),
+            message: "The returned manager instance is not the same"
         );
     }
 }

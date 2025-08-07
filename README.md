@@ -1,68 +1,16 @@
-# Sabo
+# Sabo Framework
 
-> PHP small web development framework.
+**❗ Remember to change this description file.**
 
-## Important information
+> Sabo framework is a light PHP MVC-based framework, which allows you to develop a small, large website based on a predefined structure and components. The philosophy is, 'The framework is a tool, not a do everything for me.'
 
-- **Licence** : License MIT
-> You are free to use the framework in commercial and non-commercial projects.
-> However, creating and selling a modified version of the framework itself or his documentation - as a competing product - is not permitted.
-- **Creation date** : 16.03.2023
+---
 
-## Team
+## Framework details
 
-- Bathily Yahaya : Developer
-
-## GitHub Structure
-
-### Branch
-
-- master (complete versions) - PROTECTED BY PULL REQUEST
-- dev (developed features) - PROTECTED BY PULL REQUEST
-- documentation (developed documentation) - PROTECTED BY PULL REQUEST
-- features/<branch_name>/<feature_name>
-
-### Folder structure
-
-- dev (application code)
-- documentation (documentation elements)
-- versions (application versions)
-- devtools (custom development tools)
-- .github/workflows (github action configs)
-
-### GitHub Flow
-
-- main : the main branch merge elements from (dev, documentation)
-- (dev, documentation) : these branches merge elements from feature branches
-- features/<branch_name>/<feature_name> : features branches are created from the <branch_name> branch
-
-### Commit norm
-
-Each commit line is prefixed by :
-
-- ADD : for new code
-- FIX : for changes due to a problem
-- MODIFY : for changes
-- DELETE : for deletion
-
-## Prerequisites
-
-- Git
-- Make
-- Php
-
-## Technologies
-
-- GitHub : Code version manager
-- Make : Quick commands for utilities
-- PHP
-
-## Quick launch process
-
-### For the project
-
-- Launch the makefile command "project-print-init"
-
-## Util links 
-
-- [GitHub Project](https://github.com/users/yahvya/projects/11)
+- **Author and maintainer**: Yahaya Bathily - [GitHub](https://github.com/yahvya)
+- **License**: MIT
+- **License guard**: You are free to use the framework in commercial and non-commercial projects. However, creating and selling a modified version of the framework itself or his documentation - as a competing product - is not permitted.
+- **Created at**: 16/03/2023
+- **Documentation website link**: [https://yahvya.github.io/personal-sabo-final/starter-topic.html](https://yahvya.github.io/personal-sabo-final/starter-topic.html)
+- **Tools**: Git - PHP - Composer - Writerside (for the documentation)

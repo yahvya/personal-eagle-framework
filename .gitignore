@@ -1,17 +1,7 @@
-# editors
+# editor files
 
-*.vscode
 *.idea
+*.vscode
 
-# sensible file
-
+# sensible files
 *.env
-*.env.*
-*.secret
-
-# un useful files
-
-**/coverage
-**/vendor
-
-# programming langage file

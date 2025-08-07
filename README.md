@@ -12,5 +12,5 @@
 - **License**: MIT
 - **License guard**: You are free to use the framework in commercial and non-commercial projects. However, creating and selling a modified version of the framework itself or his documentation - as a competing product - is not permitted.
 - **Created at**: 16/03/2023
-- **Documentation website link**: [https://yahvya.github.io/personal-sabo-final/starter-topic.html](https://yahvya.github.io/personal-sabo-final/starter-topic.html)
+- **Documentation website link**: [https://yahvya.github.io/personal-sabo-framework-doc/starter-topic.html](https://yahvya.github.io/personal-sabo-framework-doc/starter-topic.html)
 - **Tools**: Git - PHP - Composer - Writerside (for the documentation)

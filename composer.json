@@ -3,6 +3,7 @@
     "description": "Sabo framework is a light PHP MVC-based framework",
     "type": "project",
     "license": "MIT",
+    "homepage": "https://yahvya.github.io/personal-sabo-framework-doc/starter-topic.html",
     "autoload": {
         "psr-4": {
             "Yahvya\\SaboFramework\\": "SaboCore/"
@@ -11,7 +12,9 @@
     "authors": [
         {
             "name": "Yahaya Bathily",
-            "email": "yahayad.dev@gmail.com"
+            "email": "yahayad.dev@gmail.com",
+            "homepage": "https://yahaya-dev.vercel.app",
+            "role": "Creator and maintainer"
         }
     ],
     "require": {}

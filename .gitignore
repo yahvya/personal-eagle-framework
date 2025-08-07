@@ -5,3 +5,4 @@
 
 # sensible files
 *.env
+/vendor/

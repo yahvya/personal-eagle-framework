@@ -1,0 +1,70 @@
+<?php
+
+/**
+ * @brief Eagle Framework CLI tool
+ */
+
+$appRoot = __DIR__;
+
+require_once("$appRoot/vendor/autoload.php");
+
+use Yahvya\EagleFramework\Cli\Commands\ControllerMakerCommand;
+use Yahvya\EagleFramework\Cli\Commands\ModelMakerCommand;
+use Yahvya\EagleFramework\Config\Config;
+use Yahvya\EagleFramework\Routing\Application\Application;
+use BeBat\ConsoleColor\Style\BackgroundColor;
+use BeBat\ConsoleColor\Style\Color;
+use BeBat\ConsoleColor\Style\Composite;
+use BeBat\ConsoleColor\Style\Text;
+use Yahvya\EagleFramework\Cli\Cli\EagleFrameworkCLI;
+use Yahvya\EagleFramework\Cli\Commands\HelpCommand;
+use Yahvya\EagleFramework\Cli\Commands\LaunchServerCommand;
+use Yahvya\EagleFramework\Cli\Theme\Theme;
+
+define(
+    constant_name: "APP_CONFIG",
+    value: Config::create()->setConfig(name: "ROOT", value: $appRoot)
+);
+
+Application::launchApplication(applicationConfig: Application::getApplicationDefaultConfig(), startRouting: false);
+
+$themeConfig = Config::create()
+    ->setConfig(
+        name: Theme::BASIC_TEXT_STYLE->value,
+        value: new Composite(Color::BrightWhite)
+    )
+    ->setConfig(
+        name: Theme::SPECIAL_TEXT_STYLE->value,
+        value: new Composite(Color::Blue, Text::Bold)
+    )
+    ->setConfig(
+        name: Theme::NOT_IMPORTANT_STYLE->value,
+        value: new Composite(Color::White)
+    )
+    ->setConfig(
+        name: Theme::TITLE_STYLE->value,
+        value: new Composite(Color::BrightBlue, Text::Bold)
+    )
+    ->setConfig(
+        name: Theme::HOVER_STYLE->value,
+        value: new Composite(BackgroundColor::Green, Color::White)
+    )
+    ->setConfig(
+        name: Theme::BASIC_ERROR_STYLE->value,
+        value: new Composite(Color::Red, Text::Bold)
+    )
+    ->setConfig(
+        name: Theme::IMPORTANT_ERROR_STYLE->value,
+        value: new Composite(Color::White, Text::Bold, BackgroundColor::Red)
+    );
+
+$cli = new EagleFrameworkCLI($argv, $themeConfig);
+
+$cli
+// defaults commands
+    ->registerCommand(executor: new HelpCommand(commandName: "help"))
+    ->registerCommand(executor: new LaunchServerCommand(commandName: "serve"))
+    ->registerCommand(executor: new ControllerMakerCommand(commandName: "make:controller"))
+    ->registerCommand(executor: new ModelMakerCommand(commandName: "make:model"))
+// register your own commands (be aware of the command name duplication)
+    ->start();

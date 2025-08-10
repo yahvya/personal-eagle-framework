@@ -1,0 +1,14 @@
+<?php
+
+{model-import-config}
+
+use Yahvya\EagleFramework\Database\Default\Attributes\TableName;
+
+/**
+ * @brief {model-description}
+*/
+#[TableName(tableName: "{represented-table}")]
+class {model-name} extends {parent-class}
+{
+
+}

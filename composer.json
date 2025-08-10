@@ -1,12 +1,13 @@
 {
-    "name": "yahvya/sabo-framework",
-    "description": "Sabo framework is a light PHP MVC-based framework",
+  "name": "yahvya/eagle-framework",
+  "description": "Eagle framework is a light PHP MVC-based framework",
     "type": "project",
     "license": "MIT",
-    "homepage": "https://yahvya.github.io/personal-sabo-framework-doc/starter-topic.html",
+  "homepage": "https://yahvya.github.io/personal-eagle-framework-doc/starter-topic.html",
     "autoload": {
         "psr-4": {
-            "Yahvya\\SaboFramework\\": "SaboCore/"
+          "Yahvya\\EagleFramework\\": "EagleCore/",
+          "Application": "Src/"
         }
     },
     "authors": [
@@ -17,5 +18,14 @@
             "role": "Creator and maintainer"
         }
     ],
-    "require": {}
+  "require": {
+    "bebat/console-color": "^1.0",
+    "symfony/var-dumper": "^7.0",
+    "ext-pdo": "*",
+    "symfony/mime": "^7.0",
+    "illuminate/view": "^10.47",
+    "ext-curl": "*",
+    "twig/twig": "^3.8",
+    "phpmailer/phpmailer": "^6.9"
+  }
 }

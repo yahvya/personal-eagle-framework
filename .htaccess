@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/EagleCore/index.php
+RewriteRule .* ./EagleCore/index.php

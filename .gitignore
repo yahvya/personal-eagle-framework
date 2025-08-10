@@ -5,4 +5,5 @@
 
 # sensible files
 *.env
-/vendor/
+*.env.php
+*vendor/

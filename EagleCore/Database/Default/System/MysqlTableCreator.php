@@ -6,17 +6,16 @@ use ReflectionClass;
 use ReflectionException;
 
 /**
- * @brief Fournisseur de création de table sql à partir d'un model
- * @author yahaya bathily https://github.com/yahvya
+ * @brief Mysql table SQL generator
  */
 abstract class MysqlTableCreator
 {
     /**
-     * @brief Fourni le sql de création de table à partir d'un model
-     * @param MysqlModel $model Le model
-     * @return string la chaine sql de création
-     * @throws MysqlException en cas d'erreur
-     * @throws ReflectionException en cas d'erreur de réflexion
+     * @brief Provide the table creation SQL string based on a model
+     * @param MysqlModel $model Model instance
+     * @return string Creation SQL string of the associated table
+     * @throws MysqlException On error
+     * @throws ReflectionException On reflection error
      */
     public static function getTableCreationFrom(MysqlModel $model): string
     {
@@ -34,7 +33,7 @@ abstract class MysqlTableCreator
 
             if ($column->isForeignKey())
             {
-                // création du modèle référencé pour récupérer le nom de la table ainsi que la colonne référencée
+                // Build an instance of the referenced model instance
                 $reflection = new ReflectionClass(objectOrClass: $column->getReferencedModel());
 
                 $referencedModel = $reflection->newInstance();
@@ -48,11 +47,9 @@ abstract class MysqlTableCreator
             }
         }
 
-        // ajout des clés primaires
         if (!empty($primaryKeys))
             $creationScript .= "\tPRIMARY KEY (" . implode(separator: ",", array: $primaryKeys) . "),\n";
 
-        // ajout des clés étrangères
         foreach ($foreignKeys as $foreignKey)
         {
             $creationScript .= "\tFOREIGN KEY({$foreignKey["columnName"]}) REFERENCES {$foreignKey["referencedTable"]}({$foreignKey["referencedColumnName"]}),\n";

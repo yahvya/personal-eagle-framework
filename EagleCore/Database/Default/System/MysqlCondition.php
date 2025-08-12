@@ -2,42 +2,21 @@
 
 namespace Yahvya\EagleFramework\Database\Default\System;
 
-use Override;
-use Yahvya\EagleFramework\Database\System\DatabaseComparator;
-use Yahvya\EagleFramework\Database\System\DatabaseCondition;
+use Yahvya\EagleFramework\Database\System\QueryCondition;
 
 /**
- * @brief Condition mysql
- * @author yahaya bathily https://github.com/yahvya
+ * @brief Mysql condition
  */
-class MysqlCondition extends DatabaseCondition
+class MysqlCondition extends QueryCondition
 {
     /**
-     * @param string|MysqlFunction $condGetter Nom de l'attribut ou Fonction mysql
-     * @param MysqlComparator $comparator Comparateur
-     * @param mixed $conditionValue Valeur à vérifier
-     * @attention En cas de getter sous forme de condition, veuillez ne pas fournir d'alias
+     * @param string|MysqlFunction $condGetter Attribute name or mysql function
+     * @param MysqlComparator $comparator Comparator
+     * @param mixed $conditionValue Value to check
+     * @attention In the case of a getter as a condition don't provide an alias
      */
     public function __construct(mixed $condGetter, MysqlComparator $comparator, mixed $conditionValue)
     {
         parent::__construct($condGetter, $comparator, $conditionValue);
-    }
-
-    /**
-     * @return MysqlFunction|string le nom de l'attribut ou la fonction
-     */
-    #[Override]
-    public function getCondGetter(): mixed
-    {
-        return $this->condGetter;
-    }
-
-    /**
-     * @return MysqlComparator comparateur
-     */
-    #[Override]
-    public function getComparator(): DatabaseComparator
-    {
-        return parent::getComparator();
     }
 }

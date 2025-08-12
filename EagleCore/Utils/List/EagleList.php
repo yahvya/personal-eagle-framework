@@ -12,7 +12,7 @@ use TypeError;
  * @brief Uniform content list
  * @template ContainedType Content type description
  */
-class SaboList implements Countable, Iterator, Arrayable
+class EagleList implements Countable, Iterator, Arrayable
 {
     /**
      * @var ContainedType[] Data
@@ -111,7 +111,7 @@ class SaboList implements Countable, Iterator, Arrayable
      * @attention Handler return prototype: [ContainedType...] Corresponding data
      * @return $this
      */
-    public function setFinder(Closure $finder): SaboList
+    public function setFinder(Closure $finder): EagleList
     {
         $this->finder = $finder;
 
@@ -143,11 +143,11 @@ class SaboList implements Countable, Iterator, Arrayable
     /**
      * @brief Find the corresponding data and build a new instance from them
      * @param mixed ...$toFinds Data to find (used for the comparison)
-     * @return SaboList<ContainedType> Result list based on the founded items
+     * @return EagleList<ContainedType> Result list based on the founded items
      * @attention The search handler should be adapted to the provided data
      * @throws TypeError On error
      */
-    public function find(mixed ...$toFinds): SaboList
+    public function find(mixed ...$toFinds): EagleList
     {
         $resultList = [];
 
@@ -159,7 +159,7 @@ class SaboList implements Countable, Iterator, Arrayable
                 $resultList = array_merge($resultList, $foundedElements);
         }
 
-        return new SaboList($resultList);
+        return new EagleList($resultList);
     }
 
     /**

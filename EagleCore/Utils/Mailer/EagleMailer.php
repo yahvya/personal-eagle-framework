@@ -12,7 +12,7 @@ use Throwable;
 /**
  * @brief Simplified mail sending helper
  */
-class SaboMailer extends PHPMailer
+class EagleMailer extends PHPMailer
 {
     /**
      * @brief Sends an email to the recipients
@@ -55,11 +55,13 @@ class SaboMailer extends PHPMailer
             try
             {
                 return $this->send();
-            } catch (Exception $e)
+            }
+            catch (Exception $e)
             {
                 if ($isDebugMode) throw $e;
             }
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
         }
 
@@ -103,11 +105,13 @@ class SaboMailer extends PHPMailer
             try
             {
                 return $this->send();
-            } catch (Exception $e)
+            }
+            catch (Exception $e)
             {
                 if ($isDebugMode) throw $e;
             }
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
         }
 
@@ -119,7 +123,7 @@ class SaboMailer extends PHPMailer
      * @return $this
      * @throws Throwable in case of error
      */
-    public function reset(): SaboMailer
+    public function reset(): EagleMailer
     {
         $config = Application::getEnvConfig()->getConfig(name: EnvConfig::MAILER_CONFIG->value);
 

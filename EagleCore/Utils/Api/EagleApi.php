@@ -8,22 +8,22 @@ use ReflectionClass;
 /**
  * @brief API curl request utility
  */
-abstract class SaboApi
+abstract class EagleApi
 {
     /**
      * @var string API URL prefix
      */
-    protected string $apiUrlPrefix;
+    protected(set) string $apiUrlPrefix;
 
     /**
      * @var array Stored request results
      */
-    protected array $storedRequestResult;
+    protected(set) array $storedRequestResult;
 
     /**
      * @var string|null Value of the last executed request, null if no result
      */
-    private ?string $lastRequestResult;
+    protected(set) ?string $lastRequestResult;
 
     /**
      * @param string $apiUrlPrefix URL prefix for API calls
@@ -50,12 +50,12 @@ abstract class SaboApi
      * @param string $requestUrl Request URL (based on apiUrl function)
      * @param array $headers Request headers
      * @param mixed $data Request data
-     * @param SaboApiRequest $dataConversionType Data conversion type, default json_encode [JSON_BODY|HTTP_BUILD_QUERY|NO_DATA]; NO_DATA if no data should be sent
+     * @param EagleApiRequest $dataConversionType Data conversion type, default json_encode [JSON_BODY|HTTP_BUILD_QUERY|NO_DATA]; NO_DATA if no data should be sent
      * @param array $overrideCurlOptions Array overriding default curl options, indexed by curl constants
      * @param string|null $storeIn If not null, stores the request result in "storedRequestResult" with the given key
      * @return bool True if the request succeeded
      */
-    protected function request(string $requestUrl, array $headers, mixed $data, SaboApiRequest $dataConversionType, array $overrideCurlOptions = [], ?string $storeIn = null): bool
+    protected function request(string $requestUrl, array $headers, mixed $data, EagleApiRequest $dataConversionType, array $overrideCurlOptions = [], ?string $storeIn = null): bool
     {
         $curl = curl_init();
 
@@ -73,8 +73,8 @@ abstract class SaboApi
         $options[CURLOPT_HTTPHEADER] = $headers;
         $options[CURLOPT_URL] = $requestUrl;
 
-        if (SaboApiRequest::NO_DATA != $dataConversionType)
-            $options[CURLOPT_POSTFIELDS] = $dataConversionType == SaboApiRequest::HTTP_BUILD_QUERY ? http_build_query(data: $data) : @json_encode(value: $data);
+        if (EagleApiRequest::NO_DATA != $dataConversionType)
+            $options[CURLOPT_POSTFIELDS] = $dataConversionType == EagleApiRequest::HTTP_BUILD_QUERY ? http_build_query(data: $data) : @json_encode(value: $data);
 
         if (!curl_setopt_array(handle: $curl, options: $options)) return false;
 
@@ -95,21 +95,21 @@ abstract class SaboApi
     }
 
     /**
-     * @param SaboApiRequest $as Defines how the data should be returned [RESULT_AS_JSON_ARRAY|RESULT_AS_STRING]
+     * @param EagleApiRequest $as Defines how the data should be returned [RESULT_AS_JSON_ARRAY|RESULT_AS_STRING]
      * @return string|array|null The data from the last request, or null
      */
-    protected function getLastRequestResult(SaboApiRequest $as): string|array|null
+    protected function getLastRequestResult(EagleApiRequest $as): string|array|null
     {
         if ($this->lastRequestResult == null) return null;
 
         switch ($as)
         {
-            case SaboApiRequest::RESULT_AS_JSON_ARRAY :
+            case EagleApiRequest::RESULT_AS_JSON_ARRAY :
                 $jsonData = @json_decode(json: $this->lastRequestResult, associative: true);
 
                 return gettype(value: $jsonData) != "array" ? null : $jsonData;
 
-            case SaboApiRequest::RESULT_AS_STRING:
+            case EagleApiRequest::RESULT_AS_STRING:
                 return $this->lastRequestResult;
 
             default:
@@ -145,7 +145,7 @@ abstract class SaboApi
     /**
      * @brief Creates an object from the API configuration
      * @attention Should be called with the child class
-     * @param array $config Array indexed by SaboApiConfig->value
+     * @param array $config Array indexed by EagleApiConfig->value
      * @return mixed The created object or null
      */
     public static function createFromConfig(array $config): mixed
@@ -155,9 +155,10 @@ abstract class SaboApi
             $reflection = new ReflectionClass(objectOrClass: get_called_class());
 
             return $reflection->newInstance(
-                $config[SaboApiConfig::URL->value]
+                $config[EagleApiConfig::URL->value]
             );
-        } catch (Exception)
+        }
+        catch (Exception)
         {
             return null;
         }

@@ -8,54 +8,31 @@ use Override;
 use Yahvya\EagleFramework\Database\Default\System\MysqlModel;
 
 /**
- * @brief Représente une condition pouvant être appellé
- * @author yahaya bathily https://github.com/yahvya
+ * @brief Callable condition
  */
 #[Attribute]
 class CallableCond implements Cond
 {
     /**
-     * @brief Le callable booléen à vérifier
+     * @param array|Closure $toVerify The callable to check
+     * @param string $errorMessage Error message
+     * @param bool $isDisplayable If the error can be displayed to the user
      */
-    private array|Closure $toVerify;
-
-    /**
-     * @brief Le message d'erreur
-     */
-    private string $errorMessage;
-
-    /**
-     * @brief Si l'erreur peut être affichée
-     */
-    private bool $isDisplayable;
-
-    /**
-     * @param callable $toVerify le callable à vérifier, doit renvoyer un booléen
-     * @param string $errorMessage le message d'erreur
-     * @param bool $isDisplayable défini si l'erreur peut être affichée
-     */
-    public function __construct(callable $toVerify, string $errorMessage, bool $isDisplayable)
+    public function __construct(
+        protected(set) array|Closure $toVerify,
+        protected(set) string $errorMessage {
+            get => $this->errorMessage;
+        },
+        protected(set) bool $isDisplayable {
+            get => $this->isDisplayable;
+        }
+    )
     {
-        $this->toVerify = $toVerify;
-        $this->errorMessage = $errorMessage;
-        $this->isDisplayable = $isDisplayable;
     }
 
     #[Override]
     public function verifyData(MysqlModel $baseModel, string $attributeName, mixed $data): bool
     {
         return call_user_func(callback: $this->toVerify, args: $data);
-    }
-
-    #[Override]
-    public function getIsDisplayable(): bool
-    {
-        return $this->isDisplayable;
-    }
-
-    #[Override]
-    public function getErrorMessage(): string
-    {
-        return $this->errorMessage;
     }
 }

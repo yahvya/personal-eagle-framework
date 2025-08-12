@@ -29,7 +29,8 @@ class BladeResponse extends HtmlResponse
             $factory = self::newFactory(viewsPath: [APP_CONFIG->getConfig(name: "ROOT") . "/Src/views/"]);
 
             parent::__construct(content: $factory->make(view: $pathFromViews, data: $datas)->render());
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
             parent::__construct(content: "Please reload the page");
         }
@@ -43,7 +44,7 @@ class BladeResponse extends HtmlResponse
     {
         try
         {
-            $pathToCompiledTemplates = APP_CONFIG->getConfig(name: "ROOT") . "/SaboCore/views/blade/compiled";
+            $pathToCompiledTemplates = APP_CONFIG->getConfig(name: "ROOT") . "/EagleCore/views/blade/compiled";
             $filesystem = new Filesystem;
             $eventDispatcher = new Dispatcher(container: new Container);
             $viewResolver = new EngineResolver;
@@ -65,7 +66,8 @@ class BladeResponse extends HtmlResponse
             $viewFinder = new FileViewFinder(files: $filesystem, paths: $viewsPath);
 
             return new Factory(engines: $viewResolver, finder: $viewFinder, events: $eventDispatcher);
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
             return null;
         }

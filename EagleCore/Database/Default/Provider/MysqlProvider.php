@@ -10,20 +10,18 @@ use Yahvya\EagleFramework\Database\Providers\DatabaseProvider;
 use Throwable;
 
 /**
- * @brief Fournisseur mysql
- * @author yahaya bathily https://github.com/yahvya/
+ * @brief MYSQL connection provider
  */
 class MysqlProvider extends DatabaseProvider
 {
     /**
-     * @var PDO|null instance partagée de connexion à la base de données
+     * @var PDO|null Database shared connection instance
      */
     protected static ?PDO $con;
 
     #[Override]
     public function initDatabase(Config $providerConfig): void
     {
-        // vérification de la configuration mysql
         $providerConfig->checkConfigs("host", "user", "password", "dbname");
 
         try
@@ -38,14 +36,15 @@ class MysqlProvider extends DatabaseProvider
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
                 ]
             );
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
-            throw new ConfigException(message: "Echec de connexion à la base de donnée");
+            throw new ConfigException(message: "Fail to connect to the database");
         }
     }
 
     /**
-     * @return PDO|null la connexion crée à l'initialisation ou null
+     * @return PDO|null The created PDO connection during the initialization phase or null
      */
     #[Override]
     public function getCon(): ?PDO

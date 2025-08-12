@@ -45,7 +45,7 @@ class Verifier
 
         if ($verificationResult && $this->onSuccess !== null)
             return ["success" => call_user_func_array(callback: $this->onSuccess, args: $onSuccessArgs)];
-        elseif (!$verificationResult && $this->onFailure !== null)
+        else if (!$verificationResult && $this->onFailure !== null)
             return ["failure" => call_user_func_array(callback: $this->onFailure, args: $onFailureArgs)];
 
         return ["verifier" => $verificationResult];

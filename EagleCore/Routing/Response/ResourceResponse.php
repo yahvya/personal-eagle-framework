@@ -24,7 +24,8 @@ class ResourceResponse extends Response
             $fileExtension = @pathinfo(path: $ressourceAbsolutePath, flags: PATHINFO_EXTENSION);
 
             $this->setHeader(name: "Content-Type", value: (new MimeTypes)->getMimeTypes($fileExtension)[0]);
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
         }
     }
@@ -35,7 +36,8 @@ class ResourceResponse extends Response
         try
         {
             @readfile(filename: $this->content);
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
             die("Resource not found");
         }

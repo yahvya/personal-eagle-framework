@@ -80,7 +80,8 @@ abstract class RouteManager
             {
                 if ($isDebugMode)
                     debugDie("The route name $routeName is already used");
-            } else
+            }
+            else
             {
                 $method = $route->requestMethod;
 
@@ -92,7 +93,8 @@ abstract class RouteManager
 
                 self::$routes[$method][] = $route;
             }
-        } catch (ConfigException)
+        }
+        catch (ConfigException)
         {
         }
     }
@@ -110,7 +112,8 @@ abstract class RouteManager
             $path = APP_CONFIG->getConfig(name: "ROOT") . Application::getFrameworkConfig()->getConfig(name: FrameworkConfig::ROUTES_BASEDIR_PATH->value) . "/$filename.php";
 
             if (@file_exists(filename: $path)) require_once($path);
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
         }
     }

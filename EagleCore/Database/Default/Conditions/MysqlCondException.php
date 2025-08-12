@@ -5,49 +5,29 @@ namespace Yahvya\EagleFramework\Database\Default\Conditions;
 use Exception;
 
 /**
- * @brief Exception de non-validité de condition
- * @author yahaya bathily https://github.com/yahvya
+ * @brief Invalid condition exception
  */
 class MysqlCondException extends Exception
 {
     /**
-     * @var Cond Condition invalide
+     * @param Cond $failedCond Failed condition
      */
-    protected Cond $failedCond;
-
-    /**
-     * @param Cond $failedCond Condition invalide
-     */
-    public function __construct(Cond $failedCond)
+    public function __construct(protected(set) Cond $failedCond)
     {
-        parent::__construct($failedCond->getErrorMessage());
-
-        $this->failedCond = $failedCond;
+        parent::__construct($failedCond->errorMessage);
     }
 
     /**
-     * @brief Fourni le message d'erreur formaté en fonction de l'état isDisplayable
-     * @param string $defaultMessage message par défaut en cas de message non affichable
-     * @return string Le message d'erreur affichable
+     * @brief Provided the formated error message based on the displayable state of the error
+     * @param string $defaultMessage Default error message
+     * @return string Formated error message
      */
-    public function getErrorMessage(string $defaultMessage = "Une erreur technique c'est produite"): string
+    public function getErrorMessage(string $defaultMessage = "A technical error has occurred"): string
     {
-        return $this->failedCond->getIsDisplayable() ? $this->failedCond->getErrorMessage() : $defaultMessage;
+        return $this->failedCond ? $this->failedCond->errorMessage : $defaultMessage;
     }
 
-    /**
-     * @return Cond L'action échouée
-     */
-    public function getFailedCond(): Cond
-    {
-        return $this->failedCond;
-    }
-
-    /**
-     * @return bool Si le message peut être affiché à l'utilisateur
-     */
-    public function getIsDisplayable(): bool
-    {
-        return $this->failedCond->getIsDisplayable();
+    public bool $isDisplayable {
+        get => $this->failedCond->isDisplayable;
     }
 }

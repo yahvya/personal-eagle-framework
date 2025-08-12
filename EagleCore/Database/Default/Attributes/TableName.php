@@ -9,24 +9,10 @@ use Override;
 class TableName extends SqlAttribute
 {
     /**
-     * @var string Nom de la table
+     * @param string $tableName Table name
      */
-    protected string $tableName;
-
-    /**
-     * @param string $tableName Nom de la table
-     */
-    public function __construct(string $tableName)
+    public function __construct(protected(set) string $tableName)
     {
-        $this->tableName = $tableName;
-    }
-
-    /**
-     * @return string Le nom de la table
-     */
-    public function getTableName(): string
-    {
-        return $this->tableName;
     }
 
     #[Override]

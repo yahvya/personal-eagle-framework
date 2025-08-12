@@ -3,68 +3,67 @@
 namespace Yahvya\EagleFramework\Database\System;
 
 /**
- * @brief Actions de la base de données
- * @author yahaya bathily https://github.com/yahvya
+ * @brief Database actions
  */
 enum DatabaseActions: int
 {
     /**
-     * @brief Création du model en base de données
+     * @brief Row insertion action
      */
     case MODEL_CREATE = 1;
 
     /**
-     * @brief Actions avant création du model en base de données
+     * @brief Action before row insertion
      */
     case BEFORE_MODEL_CREATE = 2;
 
     /**
-     * @brief Actions après création du model en base de données
+     * @brief Action after row insertion
      */
     case AFTER_MODEL_CREATE = 3;
 
     /**
-     * @brief Mise à jour du model en base de données
+     * @brief Row update action
      */
     case MODEL_UPDATE = 4;
 
     /**
-     * @brief Actions avant mise à jour du model en base de données
+     * @brief Action before row update
      */
     case BEFORE_MODEL_UPDATE = 5;
 
     /**
-     * @brief Actions après mise à jour du model en base de données
+     * @brief Action after row update
      */
     case AFTER_MODEL_UPDATE = 6;
 
     /**
-     * @brief Suppression du model en base de données
+     * @brief Row deletion action
      */
     case MODEL_DELETE = 7;
 
     /**
-     * @brief Actions avant suppression du model en base de données
+     * @brief Action before row deletion
      */
     case BEFORE_MODEL_DELETE = 8;
 
     /**
-     * @brief Actions après suppression du model en base de données
+     * @brief Action after row deletion
      */
     case AFTER_MODEL_DELETE = 9;
 
     /**
-     * @brief Durant la génération du model
+     * @brief Action during the build cycle of the model php instance
      */
     case ON_GENERATION = 10;
 
     /**
-     * @brief Après génération du model lors du find
+     * @brief Action after the build of the model php instance
      */
     case AFTER_GENERATION = 11;
 
     /**
-     * @brief Avant génération du model lors du find
+     * @brief Action before the build of the model php instance
      */
     case BEFORE_GENERATION = 12;
 }

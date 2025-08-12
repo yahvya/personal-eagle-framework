@@ -6,30 +6,29 @@ use Attribute;
 use Override;
 use PDO;
 use Yahvya\EagleFramework\Database\Default\Conditions\Cond;
-use Yahvya\EagleFramework\Database\Default\Formatters\Formater;
+use Yahvya\EagleFramework\Database\Default\Formater\Formater;
 
 /**
- * @brief Champs de type text
- * @author yahaya bathily https://github.com/yahvya
+ * @brief Text column type
  */
 #[Attribute]
 class TextColumn extends TableColumn
 {
     /**
-     * @param string $columnName Nom de la colonne en base de donnée
-     * @param bool $isNullable si le champ est nullable (mis à false par défaut si clé primaire)
-     * @param bool $isPrimaryKey si le champ est une clé primaire
-     * @param bool $isUnique si le champ est unique
-     * @param string $defaultValue Valeur par défaut de l'attribut (sous la forme sql)
-     * @param bool $isForeignKey si le champ est une clé étrangère
-     * @param string|null $referencedModel Class du modèle référencé par la clé
-     * @param string|null $referencedAttributeName Nom de l'attribut référencé
-     * @param Cond[] $setConditions Conditions à vérifier sur la donnée originale avant de l'accepter dans l'attribut
-     * @param Formater[] $dataFormatters Formateur de donnée pour transformer la donnée originale
-     * @param Formater[] $datasReformers Formateur de donnée pour reformer la donnée
-     * @attention Les conditions sont appelées avant formatage sur la donnée originale
-     * @attention Chaque formateur recevra le résultat du précédent
-     * @attention L'attribut par défaut doit contenir la chaine exacte qui sera saisie dans la création sql ex : "'default'" "10" ...
+     * @param string $columnName Name of the database column
+     * @param bool $isNullable If the field is nullable (set to false by default if primary key)
+     * @param bool $isPrimaryKey If the field is a primary key
+     * @param bool $isUnique If the field is unique
+     * @param string $defaultValue Default value of the attribute (in SQL form)
+     * @param bool $isForeignKey If the field is a foreign key
+     * @param string|null $referencedModel Class of the model referenced by the key
+     * @param string|null $referencedAttributeName Name of the referenced attribute
+     * @param Cond[] $setConditions Conditions to be checked on the original data before accepting it in the attribute
+     * @param Formater[] $dataFormatters Data formatter to transform the original data
+     * @param Formater[] $datasReformers Data formatter to reformat the data
+     * @attention Conditions are called before formatting on the original data
+     * @attention Each formatter will receive the result of the previous one
+     * @attention The default attribute must contain the exact string that will be inserted in the SQL creation, e.g.: "'default'" "10" ...
      */
     public function __construct(string $columnName, bool $isNullable = false, bool $isPrimaryKey = false, bool $isUnique = false, string $defaultValue = self::NO_DEFAULT_VALUE, bool $isForeignKey = false, ?string $referencedModel = null, ?string $referencedAttributeName = null, array $setConditions = [], array $dataFormatters = [], array $datasReformers = [])
     {
@@ -54,8 +53,8 @@ class TextColumn extends TableColumn
         return
             "$this->columnName TEXT"
             . ($this->isNullable ? "" : " NOT NULL")
-            . ($this->isUnique() ? " UNIQUE" : "")
-            . ($this->haveDefaultValue() ? " DEFAULT {$this->getDefaultValueStr()}" : "");
+            . ($this->isUnique ? " UNIQUE" : "")
+            . ($this->haveDefaultValue() ? " DEFAULT $this->defaultValue" : "");
     }
 
     #[Override]

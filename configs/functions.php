@@ -61,7 +61,8 @@ function route(string $requestMethod, string $routeName, array $replaces = []): 
         }
 
         return $link;
-    } catch (Throwable)
+    }
+    catch (Throwable)
     {
         return null;
     }

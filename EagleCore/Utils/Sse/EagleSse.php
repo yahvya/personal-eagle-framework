@@ -8,7 +8,7 @@ use Yahvya\EagleFramework\Utils\Verification\Verifier;
 /**
  * @brief Sse event utility
  */
-class SaboSse
+class EagleSse
 {
     /**
      * @param ResourceManager|null $resourceManager Sse resource manager
@@ -29,7 +29,7 @@ class SaboSse
      * @return $this After the loop ends
      * @notice Redefine the setup method to apply some configurations before the loop start
      */
-    public function launch(callable $executor, ?Verifier $stopVerifier = null, string $stopEventName = "close"): SaboSse
+    public function launch(callable $executor, ?Verifier $stopVerifier = null, string $stopEventName = "close"): EagleSse
     {
         $this->setup();
 
@@ -59,7 +59,7 @@ class SaboSse
      * @param Callable|null $onError Error handler when the event sending fails, receive $this as the only argument
      * @return $this
      */
-    public function sendEvent(string $eventName, array $eventDatas, ?callable $onError = null): SaboSse
+    public function sendEvent(string $eventName, array $eventDatas, ?callable $onError = null): EagleSse
     {
         try
         {
@@ -78,7 +78,8 @@ class SaboSse
             echo PHP_EOL . PHP_EOL;
             ob_flush();
             flush();
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
             if ($onError !== null)
                 call_user_func_array(callback: $onError, args: [$this]);
@@ -92,7 +93,7 @@ class SaboSse
      * @return $this
      * @attention If you redefine this method, call the parent::setup() method at the top of your method
      */
-    protected function setup(): SaboSse
+    protected function setup(): EagleSse
     {
         session_write_close();
         ignore_user_abort(enable: true);

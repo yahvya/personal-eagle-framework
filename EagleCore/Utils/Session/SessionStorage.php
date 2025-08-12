@@ -139,7 +139,7 @@ class SessionStorage
         self::$FLASH_DATA_MANAGE_CALL_COUNT++;
 
         if (self::$FLASH_DATA_MANAGE_CALL_COUNT > 1)
-            throw new \Exception(message: "The flash data manage method have been called more than one time");
+            throw new Exception(message: "The flash data manage method have been called more than one time");
 
         if (!isset($_SESSION[SessionStorageKeymap::FOR_FLASH->value])) $_SESSION[SessionStorageKeymap::FOR_FLASH->value] = [];
 

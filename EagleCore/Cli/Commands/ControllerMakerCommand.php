@@ -76,7 +76,8 @@ class ControllerMakerCommand extends EagleFrameworkCLITemplateUserCommand
                 toPrint: "Controller <$controllerName> created in <$destination>",
                 compositeStyle: $themeConfig->getConfig(name: Theme::SPECIAL_TEXT_STYLE->value)
             );
-        } else
+        }
+        else
         {
             Printer::printStyle(
                 toPrint: "Fail to generate the controller, please retry",
@@ -90,7 +91,7 @@ class ControllerMakerCommand extends EagleFrameworkCLITemplateUserCommand
     {
         return [
             "Generate a controller class",
-            "> php sabo $this->commandName --name={controller name}",
+            "> php eagle $this->commandName --name={controller name}",
             "Required options :",
             "\t--name : Controller name",
             "Optional options :",

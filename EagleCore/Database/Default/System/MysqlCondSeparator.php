@@ -2,16 +2,15 @@
 
 namespace Yahvya\EagleFramework\Database\Default\System;
 
-use Yahvya\EagleFramework\Database\System\DatabaseCondSeparator;
+use Yahvya\EagleFramework\Database\System\QueryCondSeparator;
 
 /**
- * @brief Séparateurs mysql
- * @author yahaya bathily https://github.com/yahvya
+ * @brief Mysql separators
  */
-class MysqlCondSeparator extends DatabaseCondSeparator
+class MysqlCondSeparator extends QueryCondSeparator
 {
     /**
-     * @return MysqlCondSeparator Séparateur AND
+     * @return MysqlCondSeparator AND separator
      */
     public static function AND(): MysqlCondSeparator
     {
@@ -19,7 +18,7 @@ class MysqlCondSeparator extends DatabaseCondSeparator
     }
 
     /**
-     * @return MysqlCondSeparator Séparateur OR
+     * @return MysqlCondSeparator OR separator
      */
     public static function OR(): MysqlCondSeparator
     {
@@ -27,7 +26,7 @@ class MysqlCondSeparator extends DatabaseCondSeparator
     }
 
     /**
-     * @return MysqlCondSeparator Séparateur NOT
+     * @return MysqlCondSeparator NOT separator
      */
     public static function NOT(): MysqlCondSeparator
     {
@@ -35,7 +34,7 @@ class MysqlCondSeparator extends DatabaseCondSeparator
     }
 
     /**
-     * @return MysqlCondSeparator Séparateur IS NULL
+     * @return MysqlCondSeparator IS NULL separator
      */
     public static function IS_NULL(): MysqlCondSeparator
     {
@@ -43,7 +42,7 @@ class MysqlCondSeparator extends DatabaseCondSeparator
     }
 
     /**
-     * @return MysqlCondSeparator Séparateur IS NOT NULL
+     * @return MysqlCondSeparator IS NOT NULL separator
      */
     public static function IS_NOT_NULL(): MysqlCondSeparator
     {
@@ -51,7 +50,7 @@ class MysqlCondSeparator extends DatabaseCondSeparator
     }
 
     /**
-     * @return MysqlCondSeparator Démarre un groupe de condition
+     * @return MysqlCondSeparator Start a condition froup
      */
     public static function GROUP_START(): MysqlCondSeparator
     {
@@ -59,7 +58,7 @@ class MysqlCondSeparator extends DatabaseCondSeparator
     }
 
     /**
-     * @return MysqlCondSeparator Ferme un groupe de condition
+     * @return MysqlCondSeparator Ends a condition froup
      */
     public static function GROUP_END(): MysqlCondSeparator
     {

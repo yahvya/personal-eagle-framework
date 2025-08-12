@@ -5,63 +5,31 @@ namespace Yahvya\EagleFramework\Database\System;
 use Exception;
 
 /**
- * @brief Exception d'action sur un processus de la base de données
- * @author yahaya bathily https://github.com/yahvya
+ * @brief Database action exception
  */
 class DatabaseActionException extends Exception
 {
     /**
-     * @var string Message d'erreur
+     * @param string $errorMessage Error message
+     * @param DatabaseActions $failedAction Failed action enum
+     * @param bool $isDisplayable If the error message can be displayed to the user
      */
-    protected string $errorMessage;
-
-    /**
-     * @var DatabaseActions Action échouée
-     */
-    protected DatabaseActions $failedAction;
-
-    /**
-     * @var bool Si le message d'erreur peut être affiché
-     */
-    protected bool $isDisplayable;
-
-    /**
-     * @param string $errorMessage Message d'erreur
-     * @param DatabaseActions $failedAction Action échouée
-     * @param bool $isDisplayable Si le message d'erreur peut être affiché
-     */
-    public function __construct(string $errorMessage, DatabaseActions $failedAction, bool $isDisplayable = true)
+    public function __construct(
+        protected(set) string $errorMessage,
+        protected(set) DatabaseActions $failedAction,
+        protected(set) bool $isDisplayable = true
+    )
     {
         parent::__construct($errorMessage);
-
-        $this->errorMessage = $errorMessage;
-        $this->failedAction = $failedAction;
-        $this->isDisplayable = $isDisplayable;
     }
 
     /**
-     * @brief Fourni le message d'erreur formaté en fonction de l'état isDisplayable
-     * @param string $defaultMessage message par défaut en cas de message non affichable
-     * @return string Le message d'erreur affichable
+     * @brief Provide the formated error message based on the 'isDisplayable' state
+     * @param string $defaultMessage Default message in case of a non-displayable message
+     * @return string Formated error message
      */
-    public function getErrorMessage(string $defaultMessage = "Une erreur technique c'est produite"): string
+    public function getErrorMessage(string $defaultMessage = "An error occurred"): string
     {
         return $this->isDisplayable ? $this->errorMessage : $defaultMessage;
-    }
-
-    /**
-     * @return DatabaseActions L'action échouée
-     */
-    public function getFailedAction(): DatabaseActions
-    {
-        return $this->failedAction;
-    }
-
-    /**
-     * @return bool Si le message peut être affiché à l'utilisateur
-     */
-    public function getIsDisplayable(): bool
-    {
-        return $this->isDisplayable;
     }
 }

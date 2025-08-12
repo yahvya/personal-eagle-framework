@@ -25,7 +25,8 @@ class TwigResponse extends HtmlResponse
             $environment = self::newEnvironment(viewsPath: [APP_CONFIG->getConfig(name: "ROOT") . "/Src/views/"]);
 
             parent::__construct(content: $environment->render(name: $pathFromViews, context: $datas));
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
             parent::__construct(content: "Veuillez rechargez la page");
         }
@@ -44,7 +45,7 @@ class TwigResponse extends HtmlResponse
             $environment = new Environment(
                 loader: $loader,
                 options: [
-                    "cache" => APP_CONFIG->getConfig(name: "ROOT") . "/SaboCore/views/twig",
+                    "cache" => APP_CONFIG->getConfig(name: "ROOT") . "/EagleCore/views/twig",
                     "debug" => Application::getEnvConfig()->getConfig(name: EnvConfig::DEV_MODE_CONFIG->value),
 
                 ]);
@@ -55,7 +56,8 @@ class TwigResponse extends HtmlResponse
                 $environment->addExtension(extension: new ReflectionClass(objectOrClass: $extension)->newInstance());
 
             return $environment;
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
             return null;
         }

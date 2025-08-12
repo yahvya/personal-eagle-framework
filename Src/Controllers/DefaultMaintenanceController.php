@@ -43,7 +43,8 @@ class DefaultMaintenanceController extends MaintenanceController
             $fileManager = new FileManager(fileAbsolutePath: AppStorage::buildStorageCompletePath(pathFromStorage: "/maintenance/maintenance.secret"));
 
             return @password_verify(password: $password, hash: $fileManager->getFromStorage()->getContent());
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
             return false;
         }

@@ -4,37 +4,30 @@ namespace Yahvya\EagleFramework\Database\Default\System;
 
 use Closure;
 use Yahvya\EagleFramework\Database\Default\QueryBuilder\MysqlQueryBuilder;
-use Yahvya\EagleFramework\Database\System\DatabaseComparator;
+use Yahvya\EagleFramework\Database\System\QueryComparator;
 
 /**
  * @brief Comparateurs mysql
- * @attention Pour comparer au résultat d'une requête, utilisez REQUEST_COMPARATOR
- * @markers singleMarker,bindMarkers
- * @author yahaya bathily https://github.com/yahvya
+ * @attention To compare with a request's result, use the REQUEST_COMPARATOR
+ * @notice Markers : singleMarker,bindMarkers
  */
-class MysqlComparator extends DatabaseComparator
+class MysqlComparator extends QueryComparator
 {
-    /**
-     * @var Closure fonction de récupération des données de bind
-     */
-    protected Closure $toBindGetter;
 
     /**
-     * @param string $comparator Comparateur
-     * @param Closure $toBindGetter Fonction de récupération des données de bind du comparateur
-     * @attention Fonction doit retourner MysqlBindDatas
+     * @param string $comparator Comparator
+     * @param Closure $toBindGetter Closure to get the data to bind of the comparator
+     * @attention The closure must return a MysqlBindDatas
      */
-    public function __construct(string $comparator, Closure $toBindGetter)
+    public function __construct(string $comparator, protected(set) Closure $toBindGetter)
     {
         parent::__construct($comparator);
-
-        $this->toBindGetter = $toBindGetter;
     }
 
     /**
-     * @brief Fourni les données de bind PDO à partir des données fournies
-     * @param mixed $value Données
-     * @return MysqlBindDatas Données de bind au format
+     * @brief Provide pdo bind format data based on the provided values
+     * @param mixed $value Value to associate
+     * @return MysqlBindDatas Formated bind data
      */
     public function getBindDatas(mixed $value): MysqlBindDatas
     {
@@ -42,19 +35,19 @@ class MysqlComparator extends DatabaseComparator
     }
 
     /**
-     * @brief Crée un comparateur sur une requête
-     * @param string $comparator Chaine comparatrice contenant le marqueur {request} pour y placer la requête
-     * @param MysqlQueryBuilder $queryBuilder Requête à gérer
-     * @attention la fonction bindGetter généré prend en paramètre le queryBuilder (sur une "MysqlCondition" fournissez le queryBuilder)
-     * @attention Une fois appellé le contenu de la requête n'est pas modifiable
-     * @return MysqlComparator comparateur
+     * @brief Create a comparator on a resuest
+     * @param string $comparator Comparison string containing a marker '{request}' to place the request in
+     * @param MysqlQueryBuilder $queryBuilder Query Builder to treat
+     * @attention The generated 'bindGetter' take as argument the query builder instance (on a "MysqlCondition" provide the queryBuilder)
+     * @attention Once being called, the request content can't be modified
+     * @return MysqlComparator Comparator
      */
     public static function REQUEST_COMPARATOR(string $comparator, MysqlQueryBuilder $queryBuilder): MysqlComparator
     {
         return new MysqlComparator(
             comparator: str_replace(search: "{request}", replace: $queryBuilder->getSql(), subject: $comparator),
             toBindGetter: function (MysqlQueryBuilder $queryBuilder): MysqlBindDatas {
-                // fusion des valeurs à bind du builder dans un seul builder
+                // merge of the values to bind of the builder inside one builder
 
                 $bindValues = [];
                 $countOfMarkers = 0;
@@ -74,8 +67,8 @@ class MysqlComparator extends DatabaseComparator
     }
 
     /**
-     * @return MysqlComparator Comparateur égal
-     * @attention Donnée simple
+     * @return MysqlComparator Equal comparator
+     * @attention Simple data
      */
     public static function EQUAL(): MysqlComparator
     {
@@ -91,8 +84,8 @@ class MysqlComparator extends DatabaseComparator
     }
 
     /**
-     * @return MysqlComparator Comparateur in
-     * @attention Tableau contenant les valeurs à vérifier
+     * @return MysqlComparator "in" comparator
+     * @attention Array containing values to verify
      */
     public static function IN(): MysqlComparator
     {
@@ -111,8 +104,8 @@ class MysqlComparator extends DatabaseComparator
     }
 
     /**
-     * @return MysqlComparator Comparateur >
-     * @attention Donnée simple
+     * @return MysqlComparator ">, superior" comparator
+     * @attention Simple data
      */
     public static function SUPERIOR(): MysqlComparator
     {
@@ -128,8 +121,8 @@ class MysqlComparator extends DatabaseComparator
     }
 
     /**
-     * @return MysqlComparator Comparateur <
-     * @attention Donnée simple
+     * @return MysqlComparator "<, Inferior" comparator
+     * @attention Simple data
      */
     public static function INFERIOR(): MysqlComparator
     {
@@ -145,8 +138,8 @@ class MysqlComparator extends DatabaseComparator
     }
 
     /**
-     * @return MysqlComparator Comparateur >=
-     * @attention Donnée simple
+     * @return MysqlComparator ">=, superior or equal" comparator
+     * @attention Simple data
      */
     public static function SUPERIOR_OR_EQUAL(): MysqlComparator
     {
@@ -162,8 +155,8 @@ class MysqlComparator extends DatabaseComparator
     }
 
     /**
-     * @return MysqlComparator Comparateur <=
-     * @attention Donnée simple
+     * @return MysqlComparator "<=, inferior or equal" comparator
+     * @attention Simple data
      */
     public static function INFERIOR_OR_EQUAL(): MysqlComparator
     {
@@ -179,8 +172,8 @@ class MysqlComparator extends DatabaseComparator
     }
 
     /**
-     * @return MysqlComparator Comparateur !=
-     * @attention Donnée simple
+     * @return MysqlComparator '!= , not equal' Comparator
+     * @attention Simple data
      */
     public static function NOT_EQUAL(): MysqlComparator
     {
@@ -196,8 +189,8 @@ class MysqlComparator extends DatabaseComparator
     }
 
     /**
-     * @return MysqlComparator Comparateur BETWEEN
-     * @attention Tableau contenant les deux valeurs min max
+     * @return MysqlComparator 'BETWEEN' comparator
+     * @attention Array containing mix and max value [min,max]
      */
     public static function BETWEEN(): MysqlComparator
     {
@@ -213,8 +206,8 @@ class MysqlComparator extends DatabaseComparator
     }
 
     /**
-     * @return MysqlComparator Comparateur LIKE
-     * @attention Donnée simple regex like mysql
+     * @return MysqlComparator LIKE
+     * @attention Simple data (string)
      */
     public static function LIKE(): MysqlComparator
     {
@@ -230,8 +223,8 @@ class MysqlComparator extends DatabaseComparator
     }
 
     /**
-     * @return MysqlComparator Comparateur LIKE
-     * @attention Donnée simple regex
+     * @return MysqlComparator 'REGEXP' comparator
+     * @attention Simple data (regex)
      */
     public static function REGEXP(): MysqlComparator
     {
@@ -247,8 +240,8 @@ class MysqlComparator extends DatabaseComparator
     }
 
     /**
-     * @return MysqlComparator Comparateur comparaison null sécurisé
-     * @attention Donnée simple
+     * @return MysqlComparator NULL secure comparison comparator
+     * @attention Data simple
      */
     public static function SECURE_COMPARE(): MysqlComparator
     {
@@ -264,8 +257,8 @@ class MysqlComparator extends DatabaseComparator
     }
 
     /**
-     * @return MysqlComparator Comparateur par son
-     * @attention Donnée simple
+     * @return MysqlComparator 'Sounds like' comparator
+     * @attention Simple data
      */
     public static function SOUNDS_LIKE(): MysqlComparator
     {

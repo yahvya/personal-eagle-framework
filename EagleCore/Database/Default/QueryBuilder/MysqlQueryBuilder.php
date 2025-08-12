@@ -8,75 +8,67 @@ use Yahvya\EagleFramework\Config\ConfigException;
 use Yahvya\EagleFramework\Database\Default\Attributes\TableColumn;
 use Yahvya\EagleFramework\Database\Default\System\MysqlCondition;
 use Yahvya\EagleFramework\Database\Default\System\MysqlCondSeparator;
-use Yahvya\EagleFramework\Database\Default\System\MysqlException;
 use Yahvya\EagleFramework\Database\Default\System\MysqlFunction;
 use Yahvya\EagleFramework\Database\Default\System\MysqlModel;
 use Yahvya\EagleFramework\Database\Default\System\MysqlBindDatas;
 use Throwable;
 
 /**
- * @brief Constructeur de requête
- * @author yahaya bathily https://github.com/yahvya
+ * @brief Mysql query builder
  */
 class MysqlQueryBuilder
 {
     /**
-     * @var string Chaine sql de la requête
+     * @var string Query SQL string
      */
-    protected string $sqlString;
+    protected(set) string $sqlString;
 
     /**
-     * @var MysqlBindDatas[] Valeur à bind
+     * @var MysqlBindDatas[] Value to bind
      */
-    protected array $toBind;
+    protected(set) array $toBind;
 
     /**
-     * @var MysqlModel Model de base
-     */
-    protected MysqlModel $baseModel;
-
-    /**
-     * @var string Alias de la table
+     * @var string Table alias in the query
      */
     protected string $tableAlias;
 
     /**
-     * @param MysqlModel $model instance du model
+     * @param $baseModel $model Model which the query builder should be based on
      */
-    public function __construct(MysqlModel $model)
+    public function __construct(protected(set) MysqlModel $baseModel)
     {
-        $this->baseModel = $model;
         $this->reset();
     }
 
     /**
-     * @brief Crée un query builder à partir du model fourni
-     * @param string $modelClass model de la class
-     * @return MysqlQueryBuilder l'instance crée
-     * @throws ConfigException en cas d'erreur de configuration
+     * @briefCreate a query builder from the provided model class
+     * @param string $modelClass Model class
+     * @return MysqlQueryBuilder Generated query builder
+     * @throws ConfigException On error
      */
     public static function createFrom(string $modelClass): MysqlQueryBuilder
     {
-        return new MysqlQueryBuilder(model: MysqlModel::newInstanceOfModel(modelClass: $modelClass));
+        return new MysqlQueryBuilder(baseModel: MysqlModel::newInstanceOfModel(modelClass: $modelClass));
     }
 
     /**
-     * @brief Remet à 0 le contenu du QueryBuilder
+     * @brief Reset to 0 the query builder content
      * @return $this
      */
     public function reset(): MysqlQueryBuilder
     {
         $this->sqlString = "";
         $this->toBind = [];
-        $this->tableAlias = $this->baseModel->getTableNameManager()->getTableName() . time();
+        $this->tableAlias = $this->baseModel->tableNameProvider->getTableName() . time();
 
         return $this;
     }
 
     /**
-     * @brief Prépare la requête
-     * @param PDO $pdo instance pdo
-     * @return PDOStatement|null Résultat de la préparation
+     * @brief Prepare the build request
+     * @param PDO $pdo PDO instance
+     * @return PDOStatement|null PDO statement
      */
     public function prepareRequest(PDO $pdo): ?PDOStatement
     {
@@ -87,13 +79,13 @@ class MysqlQueryBuilder
             if ($statement === false)
                 return null;
 
-            // ajout des valeurs à bind
-            $toBind = $this->getBindValues();
+            // add the values to bind
+            $toBind = $this->toBind;
             $bindCounter = 0;
 
             foreach ($toBind as $bindManager)
             {
-                foreach ($bindManager->getToBindDatas() as $bindConfig)
+                foreach ($bindManager->dataToBind as $bindConfig)
                 {
                     $bindCounter++;
                     $statement->bindValue($bindCounter, ...$bindConfig);
@@ -101,15 +93,16 @@ class MysqlQueryBuilder
             }
 
             return $statement;
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
             return null;
         }
     }
 
     /**
-     * @brief Met à jour l'alias de la table
-     * @param string $alias nouvel alias
+     * @brief Update the table-defined alias
+     * @param string $alias New alias
      * @return $this
      */
     public function as(string $alias): MysqlQueryBuilder
@@ -120,8 +113,8 @@ class MysqlQueryBuilder
     }
 
     /**
-     * @return string La chaine sql sans modification
-     * @attention La chaine fournie peut ne pas être utilisable
+     * @return string The SQL string without any changes
+     * @attention The provided string by this method could probably not be used as such
      */
     public function getRealSql(): string
     {
@@ -129,7 +122,7 @@ class MysqlQueryBuilder
     }
 
     /**
-     * @return string La chaine sql formaté pour une requête
+     * @return string The formated SQL string ready for a request
      */
     public function getSql(): string
     {
@@ -141,44 +134,28 @@ class MysqlQueryBuilder
     }
 
     /**
-     * @return MysqlModel instance du model de base
-     */
-    public function getBaseModel(): MysqlModel
-    {
-        return $this->baseModel;
-    }
-
-    /**
-     * @return MysqlBindDatas[] les valeurs à bind
-     */
-    public function getBindValues(): array
-    {
-        return $this->toBind;
-    }
-
-    /**
-     * @brief Join la requête fournie dans la requête actuelle
-     * @param MysqlQueryBuilder $toJoin Builder à joindre
-     * @param string|null $sqlBefore Chaine sql à placer à avant ou null
-     * @param string|null $sqlAfter Chaine sql à placer après ou null
+     * @brief Join the provided request with the actuel one
+     * @param MysqlQueryBuilder $toJoin Query builder to join
+     * @param string|null $sqlBefore SQL string to place before or null
+     * @param string|null $sqlAfter SQL string to place after or null
      * @return $this
      */
     public function joinBuilder(MysqlQueryBuilder $toJoin, ?string $sqlBefore = null, ?string $sqlAfter = null): MysqlQueryBuilder
     {
         $this->sqlString .= ($sqlBefore ?? "") . $toJoin->getSql() . ($sqlAfter ?? "");
-        $this->toBind = array_merge($this->toBind, $toJoin->getBindValues());
+        $this->toBind = array_merge($this->toBind, $toJoin->toBind);
 
         return $this;
     }
 
     /**
-     * @brief Récupère les valeurs à bind en fonction de la valeur et fourni la chaine sql résultante
-     * @attention Ne modifie pas la chaine sql
-     * @param TableColumn $columnConfig Configuration de la colonne traitée
-     * @param mixed|MysqlFunction|MysqlQueryBuilder $data le type de donnée à traiter
-     * @param string|null $sqlBefore Chaine sql à placer avant en cas de Builder
-     * @param string|null $sqlAfter Chaine sql à placer après en cas de Builder
-     * @return array les données au format ["sql" => ...,"toBind" => [MysqlBindDatas, ...]
+     * @brief Get the values to bind based on the provided data and provide the resulting SQL string
+     * @param TableColumn $columnConfig Column configuration
+     * @param mixed|MysqlFunction|MysqlQueryBuilder $data To treat
+     * @param string|null $sqlBefore SQL string to place before or null
+     * @param string|null $sqlAfter SQL string to place after or null
+     * @return array{string:mixed} Data with the next format: ["sql" => ...,"toBind" => [MysqlBindDatas, ...]
+     * @attention Do not change the SQL string
      */
     protected function manageValueDatas(TableColumn $columnConfig, mixed $data, ?string $sqlBefore = null, ?string $sqlAfter = null): array
     {
@@ -186,23 +163,23 @@ class MysqlQueryBuilder
         {
             return [
                 "sql" => ($sqlBefore ?? "") . $data->getSql() . ($sqlAfter ?? ""),
-                "toBind" => $data->getBindValues()
+                "toBind" => $data->toBind
             ];
-        } else if ($data instanceof MysqlFunction)
+        }
+        else if ($data instanceof MysqlFunction)
         {
-            // traitement de la "fonction"
-            $alias = $data->getAlias();
-            $function = $data->getFunction();
+            $alias = $data->alias;
+            $function = $data->function;
 
-            if ($data->haveToReplaceAttributesName())
+            if ($data->replaceAttributesName)
                 $function = $this->replaceAttributesNameIn(string: $function);
 
             return [
-                // traitement de l'alias
                 "sql" => $function . ($alias ? " AS $alias" : ""),
                 "toBind" => []
             ];
-        } else
+        }
+        else
         {
             $toBind = new MysqlBindDatas(
                 countOfMarkers: 1,
@@ -217,16 +194,15 @@ class MysqlQueryBuilder
     }
 
     /**
-     * @brief Remplace le nom des attributs par le nom de colonne associé
-     * @param string $string chaine à traiter
-     * @return string résultat
-     * @attention Le nom d'un attribut doit être placé entre {}
+     * @brief Replace attributes names by the associated column
+     * @param string $string String to treat
+     * @return string Result
+     * @attention An attribute name should be place into braces {}
      */
     protected function replaceAttributesNameIn(string $string): string
     {
-        $tableColumnsConfig = $this->baseModel->getColumnsConfig();
+        $tableColumnsConfig = $this->baseModel->dbColumnsConfig;
 
-        // remplacement des valeurs
         foreach ($tableColumnsConfig as $attributeNameToReplace => $attributeConfig)
             $string = @str_replace(search: "{{$attributeNameToReplace}}", replace: $attributeConfig->getColumnName(), subject: $string);
 
@@ -234,37 +210,36 @@ class MysqlQueryBuilder
     }
 
     /**
-     * @brief Parse les données de la condition
-     * @param MysqlCondition $condition condition
-     * @return array les données de la condition ["sql" => ...,"toBind" => MysqlBindDatas]
+     * @brief Parse the condition data
+     * @param MysqlCondition $condition Condition
+     * @return array Condition data ["sql" => ...,"toBind" => MysqlBindDatas]
      */
     protected function parseCondition(MysqlCondition $condition): array
     {
-        $comparator = $condition->getComparator();
-        $condGetter = $condition->getCondGetter();
+        $comparator = $condition->comparator;
+        $condGetter = $condition->condGetter;
 
         if ($condGetter instanceof MysqlFunction)
         {
-            // traitement de la fonction
-            $function = $condGetter->getFunction();
+            $function = $condGetter->function;
 
-            if ($condGetter->haveToReplaceAttributesName())
+            if ($condGetter->replaceAttributesName)
                 $function = $this->replaceAttributesNameIn(string: $function);
 
             $sql = "$function ";
-        } else
+        }
+        else
         {
-            // récupération du nom de l'attribut
             $sql = "{$this->baseModel->getColumnConfig(attributName: $condGetter)->getColumnName()} ";
         }
 
-        // traitement de replacement des marqueurs de comparaison
-        $toBind = $comparator->getBindDatas(value: $condition->getConditionValue());
+        // treatment of the markers replacement
+        $toBind = $comparator->getBindDatas(value: $condition->conditionValue);
 
         $comparatorStr = str_replace(
             search: ["{singleMarker}", "{bindMarkers}"],
             replace: ["?", $toBind->getMarkersStr()],
-            subject: $comparator->getComparator()
+            subject: $comparator->comparator
         );
 
         return [
@@ -274,9 +249,9 @@ class MysqlQueryBuilder
     }
 
     /**
-     * @brief Parse une séquence de conditions et de séparateurs
-     * @param (MysqlCondition|MysqlCondSeparator)[] $sequence séquence
-     * @return array les données de la séquence ["sql" => ...,"toBind" => [MysqlBindDatas, ...]]
+     * @briefParse a sequence of conditions and separators
+     * @param (MysqlCondition|MysqlCondSeparator)[] $sequence Sequence
+     * @return array Sequence data ["sql" => ...,"toBind" => [MysqlBindDatas, ...]]
      */
     protected function parseConditionSequence(array $sequence): array
     {
@@ -287,12 +262,10 @@ class MysqlQueryBuilder
         {
             if ($conditionConfig instanceof MysqlCondSeparator)
             {
-                // traitement du séparateur
-                $sql .= "{$conditionConfig->getSeparator()} ";
+                $sql .= "$conditionConfig->separator ";
                 continue;
             }
 
-            // traitement de la condition
             ["sql" => $parsedSql, "toBind" => $toBind] = $this->parseCondition($conditionConfig);
 
             $sql .= "$parsedSql ";
@@ -305,15 +278,13 @@ class MysqlQueryBuilder
         ];
     }
 
-    /**
-     * @brief Fonctions de requêtes
-     */
+    // REQUEST METHODS
 
     /**
-     * @brief Démarre une requête statique
-     * @param string $sqlString requête sql
-     * @param MysqlBindDatas[] $toBind Valeur à bind
-     * @param bool $justConcat Si true concatène sinon remplace
+     * @brief Start a static request
+     * @param string $sqlString SQL query string
+     * @param MysqlBindDatas[] $toBind values to bind
+     * @param bool $justConcat If true, concat. If false, replace
      * @return $this
      */
     public function staticRequest(string $sqlString, array $toBind = [], bool $justConcat = false): MysqlQueryBuilder
@@ -322,7 +293,8 @@ class MysqlQueryBuilder
         {
             $this->sqlString .= $sqlString;
             $this->toBind = array_merge($this->toBind, $toBind);
-        } else
+        }
+        else
         {
             $this->sqlString = $sqlString;
             $this->toBind = $toBind;
@@ -332,20 +304,19 @@ class MysqlQueryBuilder
     }
 
     /**
-     * @brief Ajoute la chaine SELECT [] FROM table
+     * @brief Add SELECT [] FROM table string
      * @param string|MysqlFunction ...$toSelect
      * @return $this
-     * @attention en fonction des champs sélectionnés le / les models générés seront partiellement construit s'il manque des champs.
+     * @attention Depending on the selected fields, the generated models would be partially built
      */
     public function select(string|MysqlFunction ...$toSelect): MysqlQueryBuilder
     {
         $this->sqlString .= "SELECT ";
 
-        $tableColumnsConfig = $this->baseModel->getColumnsConfig();
+        $tableColumnsConfig = $this->baseModel->dbColumnsConfig;
 
         $columnsToSelect = [];
 
-        // remplacement des données à sélectionner
         foreach ($toSelect as $value)
         {
             if (gettype($value) === "string")
@@ -354,37 +325,34 @@ class MysqlQueryBuilder
                 continue;
             }
 
-            // traitement de la "fonction"
-            $alias = $value->getAlias();
-            $function = $value->getFunction();
+            $alias = $value->alias;
+            $function = $value->function;
 
-            if ($value->haveToReplaceAttributesName())
+            if ($value->replaceAttributesName)
                 $function = $this->replaceAttributesNameIn(string: $function);
 
-            // traitement de l'alias et ajout dans la liste des colonnes sélectionnées
             $columnsToSelect[] = $function . ($alias ? " AS $alias" : "");
         }
 
-        $this->sqlString .= (empty($columnsToSelect) ? "*" : implode(separator: ",", array: $columnsToSelect)) . " FROM {$this->baseModel->getTableNameManager()->getTableName()} AS {aliasTable} ";
+        $this->sqlString .= (empty($columnsToSelect) ? "*" : implode(separator: ",", array: $columnsToSelect)) . " FROM {$this->baseModel->tableNameProvider->getTableName()} AS {aliasTable} ";
 
         return $this;
     }
 
     /**
-     * @brief Ajoute la chaine INSERT INTO
-     * @param MysqlFunction[]|MysqlQueryBuilder|mixed $insertConfig Tableau indicé par le nom des attributs à changer et avec valeur associé valeur|MysqlFunction|MysqlQueryBuilder
+     * @brief ADD the INSERT INTO string
+     * @param array{string:MysqlFunction|MysqlQueryBuilder|mixed} $insertConfig Array indexed by the attribute name associated with the value
      * @return $this
-     * @attention en cas de fonction ne pas y placer d'alias
+     * @attention In case of a function, don't place an alias
      */
     public function insert(array $insertConfig): MysqlQueryBuilder
     {
-        $this->sqlString .= "INSERT INTO {$this->baseModel->getTableNameManager()->getTableName()} ";
+        $this->sqlString .= "INSERT INTO {$this->baseModel->tableNameProvider->getTableName()} ";
 
         $columnsToInsert = [];
         $sql = [];
-        $columnsConfig = $this->baseModel->getColumnsConfig();
+        $columnsConfig = $this->baseModel->dbColumnsConfig;
 
-        // ajout des attributs à insérer
         foreach ($insertConfig as $attributeName => $value)
         {
             ["sql" => $setSql, "toBind" => $valuesToBind] = $this->manageValueDatas(
@@ -406,18 +374,17 @@ class MysqlQueryBuilder
     }
 
     /**
-     * @brief Ajoute la chaine UPDATE table SET []
-     * @param MysqlFunction[]|MysqlQueryBuilder|mixed $updateConfig Tableau indicé par le nom des attributs à changer et avec valeur associé valeur|MysqlFunction|MysqlQueryBuilder
+     * @brief ADD the UPDATE table SET [] string
+     * @param array{string:MysqlFunction|MysqlQueryBuilder|mixed} $updateConfig Array indexed by the attribute name associated with the value
      * @return $this
      * @attention en cas de fonction ne pas y placer d'alias
      */
     public function update(array $updateConfig): MysqlQueryBuilder
     {
-        $this->sqlString .= "UPDATE {$this->baseModel->getTableNameManager()->getTableName()} AS {aliasTable} SET ";
+        $this->sqlString .= "UPDATE {$this->baseModel->tableNameProvider->getTableName()} AS {aliasTable} SET ";
 
-        $columnsConfig = $this->baseModel->getColumnsConfig();
+        $columnsConfig = $this->baseModel->dbColumnsConfig;
 
-        // construction du sql set
         $sql = [];
 
         // ajout des attributs à modifier
@@ -441,18 +408,18 @@ class MysqlQueryBuilder
     }
 
     /**
-     * @brief Ajoute la chaine DELETE FROM table
+     * @brief ADD the DELETE FROM table string
      * @return $this
      */
     public function delete(): MysqlQueryBuilder
     {
-        $this->sqlString .= "DELETE FROM {$this->baseModel->getTableNameManager()->getTableName()} AS {aliasTable} ";
+        $this->sqlString .= "DELETE FROM {$this->baseModel->tableNameProvider->getTableName()} AS {aliasTable} ";
 
         return $this;
     }
 
     /**
-     * @brief Ajoute la chaine WHERE
+     * @brief ADD the WHERE string
      * @return $this
      */
     public function where(): MysqlQueryBuilder
@@ -463,8 +430,8 @@ class MysqlQueryBuilder
     }
 
     /**
-     * @brief Ajoute les conditions where
-     * @param MysqlCondition|MysqlCondSeparator ...$conditions conditions de vérification
+     * @brief Add request conditions
+     * @param MysqlCondition|MysqlCondSeparator ...$conditions Conditions
      * @return $this
      */
     public function cond(MysqlCondition|MysqlCondSeparator ...$conditions): MysqlQueryBuilder
@@ -478,8 +445,8 @@ class MysqlQueryBuilder
     }
 
     /**
-     * @brief Ajoute la chaine HAVING ...
-     * @param MysqlCondition|MysqlCondSeparator ...$conditions conditions de vérification
+     * @brief ADD the HAVING string
+     * @param MysqlCondition|MysqlCondSeparator ...$conditions Conditions
      * @return $this
      */
     public function having(MysqlCondition|MysqlCondSeparator ...$conditions): MysqlQueryBuilder
@@ -493,8 +460,8 @@ class MysqlQueryBuilder
     }
 
     /**
-     * @brief Ajoute la chaine ORDER BY ... ($builder->orderBy(["price","ASC"],["id","DESC"] ) )
-     * @param array ...$configs Tableaux de deux éléments contenant en premier le nom de l'attribut suivi de "ASC" ou "DESC"
+     * @brief ADD the ORDER BY string. Call ex: $builder->orderBy(["price","ASC"],["id","DESC"] )
+     * @param array ...$configs Arrays of two elements containing in the first position, the attribute name followed by ASC or DESC as the second argument
      * @return $this
      */
     public function orderBy(array ...$configs): MysqlQueryBuilder
@@ -533,8 +500,8 @@ class MysqlQueryBuilder
     }
 
     /**
-     * @brief Ajoute la clause limit
-     * @param int $count Nombre d'éléments
+     * @brief ADD the LIMIT clause
+     * @param int $count Count of elements
      * @param int|null $offset Offset
      * @return $this
      */
@@ -547,7 +514,8 @@ class MysqlQueryBuilder
                 countOfMarkers: 1,
                 toBindDatas: [[$count, PDO::PARAM_INT]]
             );
-        } else
+        }
+        else
         {
             $this->sqlString .= "LIMIT ? OFFSET ? ";
             $this->toBind[] = new MysqlBindDatas(

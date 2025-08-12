@@ -5,26 +5,24 @@ namespace Yahvya\EagleFramework\Database\Default\Conditions;
 use Yahvya\EagleFramework\Database\Default\System\MysqlModel;
 
 /**
- * @brief Représente une condition de validation
+ * @brief Represent a validation condition / assertion
  */
 interface Cond
 {
     /**
-     * @brief Vérifie si la donnée est valide
-     * @param MysqlModel $baseModel Model de base
-     * @param string $attributeName Nom de l'attribut
-     * @param mixed $data donnée à vérifier
-     * @return bool si la donnée est valide
+     * @brief Check if the data is valid
+     * @param MysqlModel $baseModel Model instance
+     * @param string $attributeName Attribute name
+     * @param mixed $data Data to check
+     * @return bool If the data is valid
      */
     public function verifyData(MysqlModel $baseModel, string $attributeName, mixed $data): bool;
 
-    /**
-     * @return string Le message d'erreur
-     */
-    public function getErrorMessage(): string;
+    protected(set) string $errorMessage {
+        get;
+    }
 
-    /**
-     * @return bool Si le message d'erreur peut être affiché
-     */
-    public function getIsDisplayable(): bool;
+    protected(set) bool $isDisplayable {
+        get;
+    }
 }

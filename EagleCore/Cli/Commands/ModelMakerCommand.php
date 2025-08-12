@@ -74,7 +74,8 @@ class ModelMakerCommand extends EagleFrameworkCLITemplateUserCommand
                 toPrint: "Model <$modelName> crée dans <$destination>",
                 compositeStyle: $themeConfig->getConfig(name: Theme::SPECIAL_TEXT_STYLE->value)
             );
-        } else
+        }
+        else
         {
             Printer::printStyle(
                 toPrint: "Fail to generate the model, please retry",
@@ -88,7 +89,7 @@ class ModelMakerCommand extends EagleFrameworkCLITemplateUserCommand
     {
         return [
             "Generate a model class",
-            "> php sabo $this->commandName --name={model name}",
+            "> php eagle $this->commandName --name={model name}",
             "Required options :",
             "\t--name : Model name",
             "\t--description : Model description",

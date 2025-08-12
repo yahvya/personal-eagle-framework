@@ -5,19 +5,18 @@ namespace Yahvya\EagleFramework\Database\Default\Attributes;
 use Attribute;
 use Override;
 use PDO;
-use Yahvya\EagleFramework\Utils\List\SaboList;
+use Yahvya\EagleFramework\Utils\List\EagleList;
 
 /**
- * @brief Champs de type énumération
- * @author yahaya bathily https://github.com/yahvya
+ * @brief Enumeration column type
  */
 #[Attribute]
 class EnumColumn extends TableColumn
 {
     /**
-     * @var SaboList<string> Valeur possible de l'énumération
+     * @var EagleList<string> Enum possible values
      */
-    protected SaboList $possibleValues;
+    protected(set) EagleList $possibleValues;
 
     public function __construct(string $columnName, array $possibleValues, bool $isNullable = false, bool $isPrimaryKey = false, bool $isUnique = false, string $defaultValue = self::NO_DEFAULT_VALUE, bool $isForeignKey = false, ?string $referencedModel = null, ?string $referencedAttributeName = null, array $setConditions = [], array $dataFormatters = [], array $datasReformers = [])
     {
@@ -35,7 +34,7 @@ class EnumColumn extends TableColumn
             datasReformers: $datasReformers
         );
 
-        $this->possibleValues = new SaboList(datas: $possibleValues);
+        $this->possibleValues = new EagleList(datas: $possibleValues);
     }
 
     #[Override]
@@ -54,14 +53,6 @@ class EnumColumn extends TableColumn
             . ($this->isNullable ? "" : " NOT NULL")
             . ($this->isUnique() ? " UNIQUE" : "")
             . ($this->haveDefaultValue() ? " DEFAULT {$this->getDefaultValueStr()}" : "");
-    }
-
-    /**
-     * @return SaboList<String> la liste des valeurs possibles de l'énumération
-     */
-    public function getPossibleValues(): SaboList
-    {
-        return $this->possibleValues;
     }
 
     #[Override]

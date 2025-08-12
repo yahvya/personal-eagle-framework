@@ -1,13 +1,12 @@
 <?php
 
-namespace Yahvya\EagleFramework\Database\Default\Formatters;
+namespace Yahvya\EagleFramework\Database\Default\Formater;
 
 use Override;
 use Yahvya\EagleFramework\Database\Default\System\MysqlModel;
 
 /**
- * @brief Formateur de donnée json en chaine json
- * @author yahaya bathily https://github.com/yahvya
+ * @brief JSON encode to store formater
  */
 class JsonFormatter implements Formater
 {
@@ -17,7 +16,7 @@ class JsonFormatter implements Formater
         $json = @json_encode(value: $data);
 
         if ($json === false)
-            throw new FormaterException(failedFormater: $this, errorMessage: "Echec de conversion json", isDisplayable: false);
+            throw new FormaterException(failedFormater: $this, errorMessage: "Fail to encode the json data", isDisplayable: false);
 
         return $json;
     }

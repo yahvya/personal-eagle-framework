@@ -7,8 +7,7 @@ use Override;
 use PDO;
 
 /**
- * @brief Champs de type json
- * @author yahaya bathily https://github.com/yahvya
+ * @brief JSON type field
  */
 #[Attribute]
 class JsonColumn extends TableColumn

@@ -2,13 +2,14 @@
 
 namespace Yahvya\EagleFramework\Database\Default\Conditions;
 
+use Attribute;
 use Override;
 use Yahvya\EagleFramework\Database\Default\System\MysqlModel;
 
 /**
- * @brief Condition de vérification de validité json
- * @author yahaya bathily https://github.com/yahvya
+ * @brief JSON validity check
  */
+#[Attribute]
 class JsonValidityCond implements Cond
 {
     #[Override]
@@ -17,15 +18,11 @@ class JsonValidityCond implements Cond
         return is_array(value: $data);
     }
 
-    #[Override]
-    public function getErrorMessage(): string
-    {
-        return "Json invalide";
+    public bool $isDisplayable {
+        get => false;
     }
 
-    #[Override]
-    public function getIsDisplayable(): bool
-    {
-        return false;
+    public string $errorMessage {
+        get => "Invalid json";
     }
 }

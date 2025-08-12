@@ -34,7 +34,8 @@ abstract class EagleFrameworkCLITemplateUserCommand extends EagleFrameworkCLICom
                 $templateContent = str_replace(search: '{' . $key . '}', replace: $replace, subject: $templateContent);
 
             return @file_put_contents(filename: $dstPath, data: $templateContent) !== false;
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
             return false;
         }

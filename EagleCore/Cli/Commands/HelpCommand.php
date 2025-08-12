@@ -21,7 +21,7 @@ class HelpCommand extends EagleFrameworkCLICommand
         $commands = $cli->commands;
 
         Printer::printStyle(
-            toPrint: "> SABO CLI",
+            toPrint: "> EAGLE CLI",
             compositeStyle: $themeConfig->getConfig(Theme::TITLE_STYLE->value),
             countOfLineBreak: 2
         );
@@ -72,7 +72,7 @@ class HelpCommand extends EagleFrameworkCLICommand
     {
         return [
             "Show the list of the commands and their associated help lines",
-            "> php sabo $this->commandName",
+            "> php eagle $this->commandName",
             "Optional options :",
             "\t--command : The command name you want to display the help lines of - by default all commands are displayed",
         ];

@@ -10,7 +10,7 @@ RouteManager::registerRoute(
     link: "/",
     toExecute: fn(): BladeResponse => new BladeResponse(
         pathFromViews: "eagle",
-        datas: ["websiteLink" => "https://yahvya.github.io/personal-sabo-framework-doc/starter-topic.html"]
+        datas: ["websiteLink" => "https://yahvya.github.io/personal-eagle-framework-doc/starter-topic.html"]
     ),
     routeName: "eagle"
 );

@@ -56,7 +56,8 @@ abstract class Application
                         ->start()
                         ->renderResponse();
                 }
-            } catch (Throwable $e)
+            }
+            catch (Throwable $e)
             {
                 if (
                     self::$applicationConfig
@@ -67,7 +68,8 @@ abstract class Application
                 else
                     throw $e;
             }
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
             self::showInternalErrorPage();
         }
@@ -223,7 +225,8 @@ abstract class Application
             $response
                 ->setResponseCode(code: ResponseCode::INTERNAL_SERVER_ERROR)
                 ->renderResponse();
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
         }
     }

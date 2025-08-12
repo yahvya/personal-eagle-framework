@@ -82,7 +82,8 @@ class EagleFrameworkCLI
             }
 
             $this->commands[$commandName]->execCommand(cli: $this);
-        } catch (Throwable $e)
+        }
+        catch (Throwable $e)
         {
             Printer::print(
                 toPrint: "The command execution failed due to {$e->getMessage()}",

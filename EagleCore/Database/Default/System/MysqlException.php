@@ -5,19 +5,18 @@ namespace Yahvya\EagleFramework\Database\Default\System;
 use Exception;
 
 /**
- * @brief Exception mysql
- * @author yahaya bathily https://github.com/yahvya
+ * @brief Mysql exception
  */
 class MysqlException extends Exception
 {
     /**
-     * @var bool Si le message peut être affiché
+     * @var bool Indicates if the message can be displayed
      */
-    protected bool $isDisplayable;
+    protected(set) bool $isDisplayable;
 
     /**
-     * @param string $message message d'erreur
-     * @param bool $isDisplayable si le message peut être affiché
+     * @param string $message Error message
+     * @param bool $isDisplayable Indicates if the message can be displayed
      */
     public function __construct(string $message, bool $isDisplayable = false)
     {
@@ -27,18 +26,10 @@ class MysqlException extends Exception
     }
 
     /**
-     * @return bool Si le message peut être affiché
+     * @param string $defaultMessage Default message
+     * @return string The error message if it can be displayed, otherwise the default message
      */
-    public function getIsDisplayable(): bool
-    {
-        return $this->isDisplayable;
-    }
-
-    /**
-     * @param string $defaultMessage message par défaut
-     * @return string le message d'erreur s'il peut être affiché sinon le message par défaut
-     */
-    public function getErrorMessage(string $defaultMessage = "Une erreur technique s'est produite"): string
+    public function getErrorMessage(string $defaultMessage = "A technical error has occurred"): string
     {
         return $this->isDisplayable ? $this->message : $defaultMessage;
     }

@@ -8,10 +8,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="shortcut icon" href="//public/icons/favicon.ico">
-    <title>Sabo</title>
+    <title>Eagle framework</title>
 </head>
 <body class="bg-dark text-light">
-<p class="text-center fs-1 mt-5">Develop your website with sabo framework</p>
+<p class="text-center fs-1 mt-5">Develop your website with eagle framework</p>
 <img src="//public/icons/favicon.ico" class="m-auto d-block rounded-circle" style="width: 100px" alt="#">
 <p class="text-center mt-5"><a href="{{ $websiteLink }}" class="btn btn-primary" target="_blank">Access the
         documentation</a></p>

@@ -21,7 +21,7 @@ function bladeJsRoutes(array $routes, ?string $funcNameReplace = null, ?string $
 
     foreach ($routes as $routeData)
     {
-        list($method, $name,) = $routeData;
+        [$method, $name,] = $routeData;
 
         $route = RouteManager::findRouteByName(routeName: $name, method: $method);
 

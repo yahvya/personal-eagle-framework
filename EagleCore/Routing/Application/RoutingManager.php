@@ -109,12 +109,14 @@ class RoutingManager
         {
             $callable = $toExecute;
             $reflectionMethod = new ReflectionFunction(function: $toExecute);
-        } elseif (is_subclass_of(object_or_class: $toExecute[0], class: Controller::class))
+        }
+        else if (is_subclass_of(object_or_class: $toExecute[0], class: Controller::class))
         {
             $instance = new ReflectionClass(objectOrClass: $toExecute[0])->newInstance();
             $callable = [$instance, $toExecute[1]];
             $reflectionMethod = new ReflectionMethod(objectOrMethod: $instance, method: $toExecute[1]);
-        } else throw new ConfigException(message: "Unknown callable");
+        }
+        else throw new ConfigException(message: "Unknown callable");
 
         $args = [];
 
@@ -170,8 +172,10 @@ class RoutingManager
             {
                 $this->authorizeAccessOnMaintenance(request: $request);
                 return new RedirectResponse(link: "/");
-            } else return new RedirectResponse(link: $maintenanceSecretLink);
-        } else return $maintenanceManager->showMaintenancePage(secretLink: $maintenanceSecretLink);
+            }
+            else return new RedirectResponse(link: $maintenanceSecretLink);
+        }
+        else return $maintenanceManager->showMaintenancePage(secretLink: $maintenanceSecretLink);
     }
 
     /**

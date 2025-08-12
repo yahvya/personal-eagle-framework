@@ -3,40 +3,30 @@
 namespace Yahvya\EagleFramework\Database\Default\System;
 
 /**
- * @brief Fonctions mysql
- * @author yahaya bathily https://github.com/yahvya
+ * @brief Mysql function
  */
 class MysqlFunction
 {
     /**
-     * @var string Chaine complète de la fonction
-     */
-    protected string $function;
-
-    /**
-     * @var bool Si un nom d'attribut doit être remplacé dans la fonction
-     */
-    protected bool $replaceAttributesName;
-
-    /**
      * @var string|null alias de retour
      */
-    protected ?string $alias;
+    protected(set) ?string $alias;
 
     /**
-     * @param string $function Chaine complète de la fonction → "COUNT({username})" "NOW()"
-     * @param bool $replaceAttributeName Si un nom d'attribut doit être remplacé dans la fonction
+     * @param string $function Function complete string using markers → "COUNT({username})" "NOW()"
+     * @param bool $replaceAttributesName If an attribute should be replaced in the function
      */
-    public function __construct(string $function, bool $replaceAttributesName = true)
+    public function __construct(
+        protected(set) string $function,
+        protected(set) bool $replaceAttributesName = true
+    )
     {
-        $this->function = $function;
-        $this->replaceAttributesName = $replaceAttributesName;
         $this->alias = null;
     }
 
     /**
-     * @défini un alias sur la fonction
-     * @param string $alias alias
+     * @défini An alias for the function result
+     * @param string $alias The alias
      * @return $this
      */
     public function as(string $alias): MysqlFunction
@@ -47,34 +37,10 @@ class MysqlFunction
     }
 
     /**
-     * @return string|null l'alias ou null si aucun
-     */
-    public function getAlias(): string|null
-    {
-        return $this->alias;
-    }
-
-    /**
-     * @return bool Si les noms des attributs doivent être remplacés
-     */
-    public function haveToReplaceAttributesName(): bool
-    {
-        return $this->replaceAttributesName;
-    }
-
-    /**
-     * @return string La fonction
-     */
-    public function getFunction(): string
-    {
-        return $this->function;
-    }
-
-    /**
-     * @brief Fonction CONCAT mysql
-     * @param string ...$toConcat Valeur à concaténer. Si un nom d'attribut est fourni entouré avec {}. ex: CONCAT("val1","{attributeOne}","val2")
-     * @return MysqlFunction la fonction
-     * @attention Cette fonction remplace les noms d'attributs par défaut
+     * @brief Mysql CONCAT function
+     * @param string ...$toConcat Values to concat or attribute name which can be encapsulated with {} ex: CONCAT("val1","{attributeOne}","val2")
+     * @return MysqlFunction The built function
+     * @attention The method replaces the default name of the attributes
      */
     public static function CONCAT(string ...$toConcat): MysqlFunction
     {
@@ -82,12 +48,12 @@ class MysqlFunction
     }
 
     /**
-     * @brief Fonction SUBSTRING mysql
-     * @param string $stringGetter valeur ou nom de l'attribut entouré avec {}. ex: SUBSTRING("value1",1,3) SUBSTRING("{username}",1,4)
-     * @param int $start index de départ
-     * @param int $length taille
-     * @return MysqlFunction la fonction
-     * @attention Cette fonction remplace les noms d'attributs par défaut
+     * @brief Mysql SUBSTRING function
+     * @param string $stringGetter Values or attribute name which can be encapsulated with {}. Ex: SUBSTRING("value1",1,3) SUBSTRING("{username}",1,4)
+     * @param int $start Start index
+     * @param int $length Length
+     * @return MysqlFunction The built function
+     * @attention The method replaces the default name of the attributes
      */
     public static function SUBSTRING(string $stringGetter, int $start, int $length): MysqlFunction
     {
@@ -95,10 +61,10 @@ class MysqlFunction
     }
 
     /**
-     * @brief Fonction UPPER mysql
-     * @param string $stringGetter valeur ou nom de l'attribut entouré avec {}. ex: UPPER("value1") UPPER("{username}")
-     * @return MysqlFunction la fonction
-     * @attention Cette fonction remplace les noms d'attributs par défaut
+     * @brief Mysql UPPER function
+     * @param string $stringGetter Value or attribute name which can be encapsulated with {}. Ex: UPPER("value1") UPPER("{username}")
+     * @return MysqlFunction The built function
+     * @attention The method replaces the default name of the attributes
      */
     public static function UPPER(string $stringGetter): MysqlFunction
     {
@@ -106,10 +72,10 @@ class MysqlFunction
     }
 
     /**
-     * @brief Fonction LOWER mysql
-     * @param string $stringGetter valeur ou nom de l'attribut entouré avec {}. ex: LOWER("value1") LOWER("{username}")
-     * @return MysqlFunction la fonction
-     * @attention Cette fonction remplace les noms d'attributs par défaut
+     * @brief Mysql LOWER function
+     * @param string $stringGetter Value or attribute name which can be encapsulated with {}. Ex: LOWER("value1") LOWER("{username}")
+     * @return MysqlFunction The built function
+     * @attention The method replaces the default name of the attributes
      */
     public static function LOWER(string $stringGetter): MysqlFunction
     {
@@ -117,10 +83,10 @@ class MysqlFunction
     }
 
     /**
-     * @brief Fonction DISTINCT mysql
-     * @param string $toDistinct valeur ou nom de l'attribut entouré avec {} ex : DISTINCT("*") DISTINCT("{username}")
-     * @return MysqlFunction la fonction
-     * @attention Cette fonction remplace les noms d'attributs par défaut
+     * @brief Mysql DISTINCT function
+     * @param string $toDistinct Value or attribute name which can be encapsulated with {}. Ex: DISTINCT("*") DISTINCT("{username}")
+     * @return MysqlFunction The built function
+     * @attention The method replaces the default name of the attributes
      */
     public static function DISTINCT(string $toDistinct): MysqlFunction
     {
@@ -128,10 +94,10 @@ class MysqlFunction
     }
 
     /**
-     * @brief Fonction LENGTH mysql
-     * @param string $stringGetter valeur ou nom de l'attribut entouré avec {}. ex: LENGTH("value1") LENGTH("{username}")
-     * @return MysqlFunction la fonction
-     * @attention Cette fonction remplace les noms d'attributs par défaut
+     * @brief Mysql LENGTH function
+     * @param string $stringGetter Value or attribute name which can be encapsulated with {}. Ex: LENGTH("value1") LENGTH("{username}")
+     * @return MysqlFunction The built function
+     * @attention The method replaces the default name of the attributes
      */
     public static function LENGTH(string $stringGetter): MysqlFunction
     {
@@ -139,8 +105,8 @@ class MysqlFunction
     }
 
     /**
-     * @brief Fonction RAND mysql
-     * @return MysqlFunction la fonction
+     * @brief Mysql RAND function
+     * @return MysqlFunction The build function
      */
     public static function RAND(): MysqlFunction
     {
@@ -148,10 +114,10 @@ class MysqlFunction
     }
 
     /**
-     * @brief Fonction ABS mysql
-     * @param string $numberGetter valeur ou nom de l'attribut entouré avec {}. ex: ABS({price}) ABS(10)
-     * @return MysqlFunction la fonction
-     * @attention Cette fonction remplace les noms d'attributs par défaut
+     * @brief Mysql ABS function
+     * @param string $numberGetter Attribute name encapsulated with {}. Ex: ABS({price}) ABS(10)
+     * @return MysqlFunction The built function
+     * @attention The method replaces the default name of the attributes
      */
     public static function ABS(string $numberGetter): MysqlFunction
     {
@@ -159,10 +125,10 @@ class MysqlFunction
     }
 
     /**
-     * @brief Fonction SUM mysql
-     * @param string $numberGetter nom de l'attribut entouré avec {}. ex: SUM({price})
-     * @return MysqlFunction la fonction
-     * @attention Cette fonction remplace les noms d'attributs par défaut
+     * @brief Mysql SUM function
+     * @param string $numberGetter Attribute name encapsulated with {}. Ex: SUM({price})
+     * @return MysqlFunction The built function
+     * @attention The method replaces the default name of the attributes
      */
     public static function SUM(string $numberGetter): MysqlFunction
     {
@@ -170,10 +136,10 @@ class MysqlFunction
     }
 
     /**
-     * @brief Fonction AVG mysql
-     * @param string $numberGetter nom de l'attribut entouré avec {}. ex: AVG({price})
-     * @return MysqlFunction la fonction
-     * @attention Cette fonction remplace les noms d'attributs par défaut
+     * @brief Mysql AVG function
+     * @param string $numberGetter Attribute name encapsulated with {}. Ex: AVG({price})
+     * @return MysqlFunction The built function
+     * @attention The method replaces the default name of the attributes
      */
     public static function AVG(string $numberGetter): MysqlFunction
     {
@@ -181,10 +147,10 @@ class MysqlFunction
     }
 
     /**
-     * @brief Fonction COUNT mysql
-     * @param string $numberGetter nom de l'attribut entouré avec {}. ex: COUNT({price})
-     * @return MysqlFunction la fonction
-     * @attention Cette fonction remplace les noms d'attributs par défaut
+     * @brief Mysql COUNT function
+     * @param string $numberGetter Attribute name encapsulated with {}. Ex: COUNT({price})
+     * @return MysqlFunction The built function
+     * @attention The method replaces the default name of the attributes
      */
     public static function COUNT(string $numberGetter): MysqlFunction
     {
@@ -192,10 +158,10 @@ class MysqlFunction
     }
 
     /**
-     * @brief Fonction MIN mysql
-     * @param string $numberGetter nom de l'attribut entouré avec {}. ex: MIN({price})
-     * @return MysqlFunction la fonction
-     * @attention Cette fonction remplace les noms d'attributs par défaut
+     * @brief Mysql MIN function
+     * @param string $numberGetter Attribute name encapsulated with {}. Ex: MIN({price})
+     * @return MysqlFunction The built function
+     * @attention The method replaces the default name of the attributes
      */
     public static function MIN(string $numberGetter): MysqlFunction
     {
@@ -203,10 +169,10 @@ class MysqlFunction
     }
 
     /**
-     * @brief Fonction MAX mysql
-     * @param string $numberGetter nom de l'attribut entouré avec {}. ex: MAX({price})
-     * @return MysqlFunction la fonction
-     * @attention Cette fonction remplace les noms d'attributs par défaut
+     * @brief Mysql MAX function
+     * @param string $numberGetter Attribute name encapsulated with {}. Ex: MAX({price})
+     * @return MysqlFunction The built function
+     * @attention The method replaces the default name of the attributes
      */
     public static function MAX(string $numberGetter): MysqlFunction
     {
@@ -214,11 +180,11 @@ class MysqlFunction
     }
 
     /**
-     * @brief Fonction ROUND mysql
-     * @param string $numberGetter valeur ou nom de l'attribut entouré avec {}. ex: ROUND({price}) ROUND(10)
-     * @param int $decimal Précision
-     * @return MysqlFunction la fonction
-     * @attention Cette fonction remplace les noms d'attributs par défaut
+     * @brief Mysql ROUND function
+     * @param string $numberGetter value or attribute name which can be encapsulated with {}. Ex: ROUND({price}) ROUND(10)
+     * @param int $decimal Precision
+     * @return MysqlFunction The built function
+     * @attention The method replaces the default name of the attributes
      */
     public static function ROUND(string $numberGetter, int $decimal = 2): MysqlFunction
     {
@@ -226,8 +192,8 @@ class MysqlFunction
     }
 
     /**
-     * @brief Fonction NOW mysql
-     * @return MysqlFunction la fonction
+     * @brief Mysql NOW function
+     * @return MysqlFunction The built function
      */
     public static function NOW(): MysqlFunction
     {
@@ -235,19 +201,19 @@ class MysqlFunction
     }
 
     /**
-     * @brief Fonction NOW mysql
-     * @return MysqlFunction la fonction
+     * @brief Mysql TIMESTAMP function
+     * @return MysqlFunction The built function
      */
     public static function TIMESTAMP(): MysqlFunction
     {
-        return new MysqlFunction(function: "NOW()");
+        return new MysqlFunction(function: "TIMESTAMP()");
     }
 
     /**
-     * @brief Fonction DATE_FORMAT mysql
-     * @param string $dateGetter valeur ou nom de l'attribut entouré avec {}. ex: DATE_FORMAT("'2024-02-17 12:20:30'","%Y") DATE_FORMAT({orderDate},"%Y")
-     * @return MysqlFunction la fonction
-     * @attention Cette fonction remplace les noms d'attributs par défaut
+     * @brief Mysql DATE_FORMAT function
+     * @param string $dateGetter value or attribute name which can be encapsulated with {}. Ex: DATE_FORMAT("'2024-02-17 12:20:30'","%Y") DATE_FORMAT({orderDate},"%Y")
+     * @return MysqlFunction The built function
+     * @attention The method replaces the default name of the attributes
      */
     public static function DATE_FORMAT(string $dateGetter, string $format): MysqlFunction
     {
@@ -255,13 +221,13 @@ class MysqlFunction
     }
 
     /**
-     * @brief Colonne classique avec alias
-     * @param string $attributeName nom de l'attribut
-     * @param string $alias alias
-     * @return MysqlFunction la fonction
+     * @brief Put an alias on a column
+     * @param string $attributeName Attribute name
+     * @param string $alias Alias
+     * @return MysqlFunction The built function
      */
     public static function COLUMN_ALIAS(string $attributeName, string $alias): MysqlFunction
     {
-        return (new MysqlFunction(function: $attributeName))->as(alias: $alias);
+        return new MysqlFunction(function: $attributeName)->as(alias: $alias);
     }
 }

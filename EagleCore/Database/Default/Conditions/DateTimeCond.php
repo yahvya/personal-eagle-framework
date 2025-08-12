@@ -9,23 +9,20 @@ use Yahvya\EagleFramework\Database\Default\System\MysqlModel;
 use Throwable;
 
 /**
- * @brief Condition représentant un champ de type datetime
- * @author yahaya bathily https://github.com/yahvya
+ * @brief Datetime field check condition
  */
 #[Attribute]
 class DateTimeCond implements Cond
 {
     /**
-     * @brief Message d'erreur
+     * @param string $errorMessage Error message
      */
-    private string $errorMessage;
-
-    /**
-     * @param string $errorMessage le message d'erreur affiché
-     */
-    public function __construct(string $errorMessage = "Une date au format correct est attendue")
+    public function __construct(
+        protected(set) string $errorMessage = "A well formated date is expected" {
+            get => $this->errorMessage;
+        }
+    )
     {
-        $this->errorMessage = $errorMessage;
     }
 
     #[Override]
@@ -36,22 +33,15 @@ class DateTimeCond implements Cond
             new DateTime(datetime: $data);
 
             return true;
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
         }
 
         return false;
     }
 
-    #[Override]
-    public function getIsDisplayable(): bool
-    {
-        return true;
-    }
-
-    #[Override]
-    public function getErrorMessage(): string
-    {
-        return $this->errorMessage;
+    public bool $isDisplayable {
+        get => true;
     }
 }

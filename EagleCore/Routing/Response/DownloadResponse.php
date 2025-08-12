@@ -43,7 +43,8 @@ class DownloadResponse extends Response
         try
         {
             @readfile(filename: $this->content);
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
             die("Resource not found");
         }

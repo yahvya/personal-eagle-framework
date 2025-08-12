@@ -134,7 +134,8 @@ class Route
         try
         {
             $genericParameterMatcher = Application::getFrameworkConfig()->getConfig(name: FrameworkConfig::ROUTE_GENERIC_PARAMETER_MATCHER->value);
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
         }
 

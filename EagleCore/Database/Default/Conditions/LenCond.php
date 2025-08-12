@@ -7,37 +7,24 @@ use Override;
 use Yahvya\EagleFramework\Database\Default\System\MysqlModel;
 
 /**
- * @brief Condition de vérification de taille
- * @author yahaya bathily https://github.com/yahvya
+ * @brief String length check condition
  */
 #[Attribute]
 class LenCond implements Cond
 {
     /**
-     * @brief Longueur maximale de la chaine
+     * @param int $minLength String min len
+     * @param int $maxLength String max len
+     * @param string $errorMessage Error message
      */
-    private int $maxLength;
-
-    /**
-     * @brief Longueur minimum de la chaine
-     */
-    private int $minLength;
-
-    /**
-     * @var string Message d'erreur
-     */
-    private string $errorMessage;
-
-    /**
-     * @param int $minLength la taille minimum de la chaine contenue (par défaut 1)
-     * @param int $maxLength la taille maximum de la chaine contenue (par défaut 2)
-     * @param string $errorMessage le message à afficher en cas de non validation
-     */
-    public function __construct(int $minLength = 1, int $maxLength = 255, string $errorMessage = "Veuillez vérifier le contenu de la chaine saisie.")
+    public function __construct(
+        protected(set) int $minLength = 1,
+        protected(set) int $maxLength = 255,
+        protected(set) string $errorMessage = "PLease check the provided string content." {
+            get => $this->errorMessage;
+        }
+    )
     {
-        $this->maxLength = $maxLength;
-        $this->minLength = $minLength;
-        $this->errorMessage = $errorMessage;
     }
 
     #[Override]
@@ -53,15 +40,7 @@ class LenCond implements Cond
         return false;
     }
 
-    #[Override]
-    public function getErrorMessage(): string
-    {
-        return $this->errorMessage;
-    }
-
-    #[Override]
-    public function getIsDisplayable(): bool
-    {
-        return true;
+    public bool $isDisplayable {
+        get => true;
     }
 }

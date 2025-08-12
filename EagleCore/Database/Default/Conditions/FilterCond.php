@@ -7,30 +7,22 @@ use Override;
 use Yahvya\EagleFramework\Database\Default\System\MysqlModel;
 
 /**
- * @brief Condition filter_var
- * @author yahaya bathily https://github.com/yahvya
+ * @brief filter_var function-based condition
  */
 #[Attribute]
 class FilterCond implements Cond
 {
     /**
-     * @brief Le message d'erreur
+     * @param int $filter validations constant FILTER_VALIDATE_...
+     * @param string $errorMessage Error message
      */
-    private string $errorMessage;
-
-    /**
-     * @brief Le filtre à valider
-     */
-    private int $filter;
-
-    /**
-     * @param int $filter constante FILTER_VALIDATE_...
-     * @param string $errorMessage message d'erreur
-     */
-    public function __construct(int $filter, string $errorMessage)
+    public function __construct(
+        protected(set) int $filter,
+        protected(set) string $errorMessage {
+            get => $this->errorMessage;
+        }
+    )
     {
-        $this->filter = $filter;
-        $this->errorMessage = $errorMessage;
     }
 
     #[Override]
@@ -39,21 +31,7 @@ class FilterCond implements Cond
         return filter_var(value: $data, filter: $this->filter);
     }
 
-    #[Override]
-    /**
-     * @return bool si l'erreur peut être envoyée à l'utilisateur
-     */
-    public function getIsDisplayable(): bool
-    {
-        return true;
-    }
-
-    #[Override]
-    /**
-     * @return string le message d'erreur en cas d'échec de validation de la condition
-     */
-    public function getErrorMessage(): string
-    {
-        return $this->errorMessage;
+    public bool $isDisplayable {
+        get => true;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Yahvya\EagleFramework\Database\Default\System;
 
+use Exception;
 use Override;
 use PDO;
 use PDOStatement;
@@ -19,53 +20,52 @@ use Yahvya\EagleFramework\Database\Default\CustomDatatypes\JoinedList;
 use Yahvya\EagleFramework\Database\Default\Formatters\FormaterException;
 use Yahvya\EagleFramework\Database\Default\QueryBuilder\MysqlQueryBuilder;
 use Yahvya\EagleFramework\Database\System\DatabaseActionException;
-use Yahvya\EagleFramework\Database\System\DatabaseCondition;
-use Yahvya\EagleFramework\Database\System\DatabaseCondSeparator;
+use Yahvya\EagleFramework\Database\System\QueryCondition;
+use Yahvya\EagleFramework\Database\System\QueryCondSeparator;
 use Yahvya\EagleFramework\Database\System\DatabaseModel;
 use Yahvya\EagleFramework\Routing\Application\Application;
-use Yahvya\EagleFramework\Utils\List\SaboList;
+use Yahvya\EagleFramework\Utils\List\EagleList;
 use Throwable;
 
 /**
- * @brief Modèle de la base de données mysql
- * @author yahaya bathily https://github.com/yahvya
- * @attention les attributs utilisables doivent être protected|public
+ * @brief Mysql database model class base
+ * @attention Make sure the sub attributes are protected|public
  */
-class MysqlModel extends DatabaseModel
+abstract class MysqlModel extends DatabaseModel
 {
     /**
-     * @var TableName Fournisseur du nom de la table
+     * @var TableName Table name provider
      */
-    protected TableName $tableName;
+    protected(set) TableName $tableNameProvider;
 
     /**
-     * @var TableColumn[] Configuration des colonnes de la base de donnée. Indicé par le nom de l'attribut et contient comme valeur l'instance de TableColumn
+     * @var array{string:TableColumn} Database columns configurations provider. Configuration des colonnes de la base de donnée. Indexed by the column name
      */
-    protected array $dbColumnsConfig;
+    protected(set) array $dbColumnsConfig;
 
     /**
-     * @var JoinedColumn[] Configuration des colonnes de jointures
+     * @var JoinedColumn[] Foreign columns configurations
      */
-    protected array $joinedColumnsConfig;
+    protected(set) array $joinedColumnsConfig;
 
     /**
-     * @var array Valeur originale des attributs sans formatage
+     * @var array Attributes original values without any formatting
      */
-    protected array $attributesOriginalValues = [];
+    public array $attributesOriginalValues = [];
 
     /**
-     * @var MysqlQueryBuilder constructeur de requête interne
-     * @attention À l'utilisation directe du QueryBuilder. Privilégiez de passer par la méthode "prepareForNewQuery"
+     * @var MysqlQueryBuilder Internal query builder
+     * @attention Be aware of the direct usage of the builder. Prefer to use an already defined method if you can and the 'prepareForNewQuery' method.
      */
-    protected MysqlQueryBuilder $queryBuilder;
+    protected(set) MysqlQueryBuilder $queryBuilder;
 
     /**
-     * @throws ConfigException en cas d'erreur de configuration du model
+     * @throws ConfigException On model configuration error
      */
     public function __construct()
     {
         $this->loadConfiguration();
-        $this->queryBuilder = new MysqlQueryBuilder(model: $this);
+        $this->queryBuilder = new MysqlQueryBuilder(baseModel: $this);
     }
 
     #[Override]
@@ -75,9 +75,8 @@ class MysqlModel extends DatabaseModel
         {
             $this->beforeCreate();
 
-            // construction des champs à insérer
             $insertConfig = [];
-            $columnsConfig = $this->getColumnsConfig();
+            $columnsConfig = $this->dbColumnsConfig;
             $reflection = new ReflectionClass(objectOrClass: $this);
 
             foreach ($columnsConfig as $attributeName => $columnConfig)
@@ -86,7 +85,8 @@ class MysqlModel extends DatabaseModel
                 {
                     if ($columnConfig->isNullable())
                         $insertConfig[$attributeName] = null;
-                } else
+                }
+                else
                     $insertConfig[$attributeName] = $columnConfig->convertFromValue(data: $this->$attributeName);
             }
 
@@ -98,18 +98,16 @@ class MysqlModel extends DatabaseModel
             $this->afterCreate();
 
             return true;
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
             return false;
         }
     }
 
     /**
-     * @brief Met à jour la ligne en base de données, basé sur les clés primaires
-     * @return bool si la mise à jour s'est produite
-     * @throws ConfigException en cas d'erreur
-     * @throws DatabaseActionException en cas d'erreur
-     * @throws MysqlException en cas de clé primaire non fourni
+     * @inheritDoc
+     * @throws MysqlException On error
      */
     #[Override]
     public function update(): bool
@@ -118,13 +116,11 @@ class MysqlModel extends DatabaseModel
 
         $updateConfig = [];
 
-        // récupération des valeurs actuelles des attributs
         foreach ($this->dbColumnsConfig as $attributeName => $columnConfig)
             $updateConfig[$attributeName] = $columnConfig->convertFromValue(data: $this->$attributeName);
 
         $queryBuilder = $this->prepareForNewQuery()->update(updateConfig: $updateConfig);
 
-        // exécution de la requête
         $statement = self::execQuery(
             queryBuilder: self::buildPrimaryKeysCondOn(model: $this, queryBuilder: $queryBuilder)
         );
@@ -138,11 +134,8 @@ class MysqlModel extends DatabaseModel
     }
 
     /**
-     * @brief Supprime la ligne en base de données, basé sur les clés primaires
-     * @return bool
-     * @throws ConfigException en cas d'erreur
-     * @throws DatabaseActionException en cas d'erreur
-     * @throws MysqlException en cas de clé primaire non fourni
+     * @inheritDoc
+     * @throws MysqlException On error
      */
     #[Override]
     public function delete(): bool
@@ -165,22 +158,21 @@ class MysqlModel extends DatabaseModel
     }
 
     /**
-     * @brief Met à jour la valeur d'un attribut
-     * @param string $attributeName Nom de l'attribut à mettre à jour
-     * @param mixed $value valeur à placer
+     * @brief Update an attribute value
+     * @param string $attributeName Attribute to update name
+     * @param mixed $value New value
      * @return $this
-     * @throws ConfigException en cas d'attribut non trouvé
-     * @throws FormaterException en cas d'erreur de formatage
-     * @throws MysqlCondException en cas d'erreur de validation
+     * @throws ConfigException On error
+     * @throws FormaterException On error
+     * @throws MysqlCondException On error
      */
     public function setAttribute(string $attributeName, mixed $value): MysqlModel
     {
         $columnConfig = $this->dbColumnsConfig[$attributeName] ?? null;
 
         if ($columnConfig === null)
-            throw new ConfigException(message: "Attribut non trouvé");
+            throw new ConfigException(message: "Attribute not found");
 
-        // vérification de la validité et formatage de la donnée
         $formatedData = $columnConfig
             ->verifyData(baseModel: $this, attributeName: $attributeName, data: $value)
             ->formatData(baseModel: $this, originalData: $value);
@@ -192,12 +184,12 @@ class MysqlModel extends DatabaseModel
     }
 
     /**
-     * @brief Fourni la valeur de l'attribut
-     * @param string $attributeName nom de l'attribut
-     * @param bool $reform si true reforme la donnée via les formateurs de reformation
-     * @return mixed La donnée
-     * @throws ConfigException en cas d'attribut non trouvé
-     * @throws FormaterException en cas d'échec de formatage
+     * @brief Provided an attribute value
+     * @param string $attributeName Attribute name
+     * @param bool $reform If true, apply all associated re-formers with the attribute
+     * @return mixed Attribute value or null
+     * @throws ConfigException On error
+     * @throws FormaterException On error
      */
     public function getAttribute(string $attributeName, bool $reform = true): mixed
     {
@@ -208,7 +200,6 @@ class MysqlModel extends DatabaseModel
 
         $data = $this->$attributeName;
 
-        // reformation de la donnée
         if ($reform)
             $data = $columnConfig->reformData(baseModel: $this, formatedData: $data);
 
@@ -216,10 +207,10 @@ class MysqlModel extends DatabaseModel
     }
 
     /**
-     * @brief Fourni la valeur originale non formatée de l'attribut
-     * @attention Si la valeur était inséré en base de données l'originale équivaut à la valeur formatée avant insertion
-     * @param string $attributeName non de l'attribut
-     * @return mixed la valeur ou null
+     * @brief Provide the original value of the attribute
+     * @attention If the value was inserted in the database, the original value equals the version stored in the database
+     * @param string $attributeName Attribute name
+     * @return mixed The original value or null
      */
     public function getAttributOriginal(string $attributeName): mixed
     {
@@ -227,17 +218,9 @@ class MysqlModel extends DatabaseModel
     }
 
     /**
-     * @return TableColumn[]|EnumColumn[] La configuration des colonnes
-     */
-    public function getColumnsConfig(): array
-    {
-        return $this->dbColumnsConfig;
-    }
-
-    /**
-     * @brief Fourni la configuration de colonne d'un attribut en particulier
-     * @param string $attributName Nom de l'attribut
-     * @return TableColumn|EnumColumn|null la configuration de colonne ou null
+     * @brief Provide the column configuration of an attribute
+     * @param string $attributName Attribute name
+     * @return TableColumn|EnumColumn|null Column configuration name
      */
     public function getColumnConfig(string $attributName): TableColumn|EnumColumn|null
     {
@@ -245,38 +228,21 @@ class MysqlModel extends DatabaseModel
     }
 
     /**
-     * @return JoinedColumn[] Les configurations des colonnes de jointure
-     */
-    public function getJoinedColumnsConfig(): array
-    {
-        return $this->joinedColumnsConfig;
-    }
-
-    /**
-     * @return TableName Fournisseur du nom de la table
-     */
-    public function getTableNameManager(): TableName
-    {
-        return $this->tableName;
-    }
-
-    /**
-     * @brief Transforme les données du model en tableau
-     * @param bool $addJoinedColumns si true ajoute les colonnes jointes
-     * @return array le tableau indicé par les noms d'attributs et comme valeur celles récupérées
+     * @brief Transform model data into an associative array
+     * @param bool $addJoinedColumns If true, add the joined columns values
+     * @return array{string:mixed} Model data as an associative array
+     * @throws Exception On error
      */
     public function getAsArray(bool $addJoinedColumns = true): array
     {
         $result = [];
 
-        // récupération des attributs
         foreach ($this->dbColumnsConfig as $attributeName => $_)
             $result[$attributeName] = $this->getAttribute(attributeName: $attributeName);
 
         if (!$addJoinedColumns)
             return $result;
 
-        // récupération des colonnes jointes
         foreach ($this->joinedColumnsConfig as $attributeName => $_)
             $result[$attributeName] = array_map(
                 callback: fn(MysqlModel $joinedModel): array => $joinedModel->getAsArray(),
@@ -286,20 +252,10 @@ class MysqlModel extends DatabaseModel
         return $result;
     }
 
-    /**
-     * @param array $attributesOriginalValues
-     */
-    public function setAttributesOriginalValues(array $attributesOriginalValues): void
-    {
-        $this->attributesOriginalValues = $attributesOriginalValues;
-    }
-
     #[Override]
     public function afterGeneration(mixed $datas = []): DatabaseModel
     {
         parent::afterGeneration(datas: $datas);
-
-        // sauvegarde des valeurs par défaut des attributs
 
         foreach ($this->dbColumnsConfig as $attributeName => $_)
             $this->attributesOriginalValues[$attributeName] = $this->$attributeName;
@@ -344,10 +300,8 @@ class MysqlModel extends DatabaseModel
     }
 
     /**
-     * @brief Action à exécuter avant génération du model
-     * @param mixed $datas tableau indicé par les noms d'attributs, et avec comme valeur celle en base de données
-     * @return $this
-     * @throws DatabaseActionException en cas d'erreur
+     * @inheritDoc
+     * @throws ConfigException On error
      */
     #[Override]
     protected function beforeGeneration(mixed $datas = []): MysqlModel
@@ -356,31 +310,29 @@ class MysqlModel extends DatabaseModel
     }
 
     /**
-     * @brief Charge la configuration du modèle
+     * @brief Load the model configuration
      * @return void
-     * @throws ConfigException en cas de mauvaise configuration
+     * @throws ConfigException In case of a bad configuration
      */
     protected function loadConfiguration(): void
     {
         $reflection = new ReflectionClass(objectOrClass: $this);
 
-        // récupération du nom de la table
         $found = false;
 
         foreach ($reflection->getAttributes() as $attribute)
         {
             if ($attribute->getName() === TableName::class)
             {
-                $this->tableName = $attribute->newInstance();
+                $this->tableNameProvider = $attribute->newInstance();
                 $found = true;
                 break;
             }
         }
 
         if (!$found)
-            throw new ConfigException(message: "Model mal configuré");
+            throw new ConfigException(message: "Badly configured model");
 
-        // chargement des colonnes lié à la base de donnée
         $this->dbColumnsConfig = [];
         $this->joinedColumnsConfig = [];
 
@@ -388,7 +340,7 @@ class MysqlModel extends DatabaseModel
         {
             $propertyName = $property->getName();
 
-            // recherche de l'attribut descriptif
+            // Search the description attribute
             foreach ($property->getAttributes() as $attribute)
             {
                 $instance = $attribute->newInstance();
@@ -409,8 +361,8 @@ class MysqlModel extends DatabaseModel
     }
 
     /**
-     * @brief Prépare le queryBuilder interne pour une nouvelle requête
-     * @return MysqlQueryBuilder le queryBuilder prêt pour une nouvelle requête
+     * @brief Prepare the internal query builder for a new request
+     * @return MysqlQueryBuilder The query builder ready for a new request
      */
     protected function prepareForNewQuery(): MysqlQueryBuilder
     {
@@ -418,9 +370,8 @@ class MysqlModel extends DatabaseModel
     }
 
     /**
-     * @brief Fourni le dernier id inséré
-     * @return int|null le dernier id inséré
-     * @throws ConfigException en cas d'erreur de configuration
+     * @return int|null The last insert id
+     * @throws ConfigException On error
      */
     protected function lastInsertId(): int|null
     {
@@ -430,18 +381,18 @@ class MysqlModel extends DatabaseModel
     }
 
     /**
-     * @brief Génère un model à partir de la première ligne fetch
-     * @param PDOStatement|null $statement statement
-     * @param MysqlQueryBuilder $queryBuilder constructeur
-     * @return MysqlModel|null le model crée ou null
-     * @throws MysqlException en cas d'erreur
-     * @throws ConfigException en cas d'erreur
-     * @throws DatabaseActionException en cas d'erreur
+     * @brief Generate a model from a fetched line
+     * @param PDOStatement|null $statement PDO statement
+     * @param MysqlQueryBuilder $queryBuilder Query builder instance
+     * @return MysqlModel|null Generated model
+     * @throws MysqlException On error
+     * @throws ConfigException On error
+     * @throws DatabaseActionException On error
      */
     public static function createFromDatabaseLine(?PDOStatement $statement, MysqlQueryBuilder $queryBuilder): MysqlModel|null
     {
         if ($statement === null)
-            throw new MysqlException(message: "Echec de construction de la requête");
+            throw new MysqlException(message: "Fail to build the request");
 
         $lineConfig = $statement->fetch(mode: PDO::FETCH_ASSOC);
 
@@ -450,20 +401,20 @@ class MysqlModel extends DatabaseModel
 
         return self::createModelFromLine(
             line: $lineConfig,
-            modelClass: get_class(object: $queryBuilder->getBaseModel())
+            modelClass: get_class(object: $queryBuilder->baseModel)
         );
     }
 
     /**
-     * @brief Génère un model à partir de la première ligne fetch
-     * @param PDOStatement|null $statement statement
-     * @param MysqlQueryBuilder $queryBuilder constructeur
-     * @return SaboList la liste des models générés
-     * @throws MysqlException en cas d'erreur
-     * @throws ConfigException en cas d'erreur
-     * @throws DatabaseActionException en cas d'erreur
+     * @brief Generate a model from the fetched lines
+     * @param PDOStatement|null $statement PDO statement
+     * @param MysqlQueryBuilder $queryBuilder Query builder instance
+     * @return EagleList Generated model list
+     * @throws MysqlException On error
+     * @throws ConfigException On error
+     * @throws DatabaseActionException On error
      */
-    public static function createFromDatabaseLines(?PDOStatement $statement, MysqlQueryBuilder $queryBuilder): SaboList
+    public static function createFromDatabaseLines(?PDOStatement $statement, MysqlQueryBuilder $queryBuilder): EagleList
     {
         $models = [];
 
@@ -477,17 +428,17 @@ class MysqlModel extends DatabaseModel
             $models[] = $model;
         }
 
-        return new SaboList(datas: $models);
+        return new EagleList(datas: $models);
     }
 
     /**
-     * @brief Récupère la première ligne fournie par les résultats de la requête
-     * @param MysqlCondition|MysqlCondSeparator ...$findBuilders Configuration de recherche
-     * @return MysqlModel|null model trouvé ou null
-     * @throws ConfigException en cas d'erreur de configuration
+     * @brief Get the first which match the conditions
+     * @param MysqlCondition|MysqlCondSeparator ...$findBuilders Request parts
+     * @return MysqlModel|null Founded row as model or null
+     * @throws ConfigException On error
      */
     #[Override]
-    public static function findOne(DatabaseCondition|DatabaseCondSeparator ...$findBuilders): MysqlModel|null
+    public static function findOne(QueryCondition|QueryCondSeparator ...$findBuilders): MysqlModel|null
     {
         try
         {
@@ -501,25 +452,27 @@ class MysqlModel extends DatabaseModel
             $queryBuilder->limit(count: 1);
 
             return self::createFromDatabaseLine(statement: self::execQuery(queryBuilder: $queryBuilder), queryBuilder: $queryBuilder);
-        } catch (ConfigException $e)
+        }
+        catch (ConfigException $e)
         {
             throw $e;
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
             return null;
         }
     }
 
     /**
-     * @brief
-     * @param DatabaseCondition|DatabaseCondSeparator ...$findBuilders
-     * @return SaboList<MysqlModel>
-     * @throws ConfigException en cas d'erreur de configuration
-     * @throws MysqlException en cas d'erreur
-     * @throws DatabaseActionException en cas d'erreur
+     * @brief Find all rows that match the conditions
+     * @param QueryCondition|QueryCondSeparator ...$findBuilders Query parts
+     * @return EagleList<MysqlModel> Founded rows as a model list
+     * @throws ConfigException On error
+     * @throws MysqlException On error
+     * @throws DatabaseActionException On error
      */
     #[Override]
-    public static function findAll(DatabaseCondition|DatabaseCondSeparator ...$findBuilders): SaboList
+    public static function findAll(QueryCondition|QueryCondSeparator ...$findBuilders): EagleList
     {
         $queryBuilder = MysqlQueryBuilder::createFrom(modelClass: get_called_class());
 
@@ -532,9 +485,9 @@ class MysqlModel extends DatabaseModel
     }
 
     /**
-     * @param string $modelClass class du model
-     * @return MysqlModel le model créé
-     * @throws ConfigException en cas d'erreur
+     * @param string $modelClass Model instance
+     * @return MysqlModel Model instance
+     * @throws ConfigException On error
      */
     public static function newInstanceOfModel(string $modelClass): MysqlModel
     {
@@ -545,24 +498,26 @@ class MysqlModel extends DatabaseModel
             $model = $reflection->newInstance();
 
             if (!($model instanceof MysqlModel))
-                throw new ConfigException(message: "La class fournie doit être une sous class de " . MysqlModel::class);
+                throw new ConfigException(message: "The provided class should be a child class of the <" . MysqlModel::class . "> class");
 
             return $model;
-        } catch (ConfigException $e)
+        }
+        catch (ConfigException $e)
         {
             throw $e;
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
-            throw new ConfigException(message: "Une erreur s'est produite lors de la construction du model");
+            throw new ConfigException(message: "An error occurred during the build of the model");
         }
     }
 
     /**
-     * @brief Exécute la requête et fourni le statement de réponse
-     * @param MysqlQueryBuilder $queryBuilder constructeur de requête
-     * @param bool $execute si true exécute la requête et fourni le statement sinon fourni le statement
-     * @return PDOStatement|null le statement
-     * @throws ConfigException en cas d'erreur de configuration
+     * @brief Execute the request and provide the statement
+     * @param MysqlQueryBuilder $queryBuilder Query builder instance
+     * @param bool $execute If true, the query will be executed
+     * @return PDOStatement|null The statement or null
+     * @throws ConfigException On error
      */
     public static function execQuery(MysqlQueryBuilder $queryBuilder, bool $execute = true): ?PDOStatement
     {
@@ -577,17 +532,16 @@ class MysqlModel extends DatabaseModel
     }
 
     /**
-     * @brief Charge les données de la colonne jointe fournie
-     * @param MysqlModel $model model de base dans laquelle charger les données
-     * @param JoinedColumn $joinedColumn Configuration de jointure
-     * @return SaboList<MysqlModel> Résultats de la récupération
-     * @throws MysqlException en cas d'erreur
+     * @brief Load the provided joined column data
+     * @param MysqlModel $model Model instance to load the data in
+     * @param JoinedColumn $joinedColumn Join configuration
+     * @return EagleList<MysqlModel> Load result
+     * @throws MysqlException On error
      */
-    public static function loadJoinedColumns(MysqlModel $model, JoinedColumn $joinedColumn): SaboList
+    public static function loadJoinedColumns(MysqlModel $model, JoinedColumn $joinedColumn): EagleList
     {
         $joinConfig = $joinedColumn->getJoinConfig();
 
-        // construction des conditions de match
         $conditions = [MysqlCondSeparator::GROUP_START()];
 
         foreach ($joinConfig as $baseModelAttributeName => $joinModelAttributeName)
@@ -604,33 +558,31 @@ class MysqlModel extends DatabaseModel
         $size = count(value: $conditions);
 
         if ($size === 1)
-            throw new MysqlException(message: "Aucune condition de match sur le liste jointe", isDisplayable: false);
+            throw new MysqlException(message: "No matching condition on the joined list", isDisplayable: false);
 
-        // remplacement du dernier and par la fermeture de groupe
         $conditions[$size - 1] = MysqlCondSeparator::GROUP_END();
 
         return @call_user_func_array([$joinedColumn->getClassModel(), "findAll"], $conditions);
     }
 
     /**
-     * @brief Crée un model à partir de la configuration
-     * @param array $line contenu de la ligne de la base de données
-     * @param string $modelClass class du model
-     * @return MysqlModel model crée
-     * @throws ConfigException en cas d'erreur
-     * @throws MysqlException en cas d'erreur
-     * @throws DatabaseActionException en cas d'erreur
+     * @brief Build a model from the configuration
+     * @param array $line Database row content
+     * @param string $modelClass Expected model class
+     * @return MysqlModel The built model
+     * @throws ConfigException On error
+     * @throws MysqlException On error
+     * @throws DatabaseActionException On error
      */
     public static function createModelFromLine(array $line, string $modelClass): MysqlModel
     {
         $model = self::newInstanceOfModel(modelClass: $modelClass);
 
-        $columnsConfig = $model->getColumnsConfig();
+        $columnsConfig = $model->dbColumnsConfig;
 
-        // tableau indicé par les noms d'attributs et les valeurs de la ligne
         $linkedValues = [];
 
-        // construction du tableau inversé des configurations
+        // Build of the reversed conditions array
         foreach ($line as $columnRealName => $dbValue)
         {
             foreach ($columnsConfig as $attributeName => $columnConfig)
@@ -644,14 +596,11 @@ class MysqlModel extends DatabaseModel
             }
         }
 
-        // exécution des actions pré génération
         $model->beforeGeneration(datas: $linkedValues);
 
-        // affectation des attributs
         foreach ($linkedValues as $attributeName => $dbValue)
             $model->$attributeName = $columnsConfig[$attributeName]->convertToValue(data: $dbValue);
 
-        // chargement des colonnes jointes
         foreach ($model->joinedColumnsConfig as $attributeName => $config)
         {
             $list = new JoinedList(descriptor: $config, linkedModel: $model);
@@ -663,20 +612,18 @@ class MysqlModel extends DatabaseModel
             $list->loadContent();
         }
 
-
-        // exécution des actions post générations
         $model->afterGeneration();
 
         return $model;
     }
 
     /**
-     * @brief Ajoute au queryBuilder les conditions de vérification de clé primaire du model
-     * @param MysqlModel $model le model
-     * @param MysqlQueryBuilder $queryBuilder constructeur
-     * @param bool $addWhere si true ajoute ->where() suivi des conditions si false ajoute une condition AND avant d'ajouter le groupe de vérification des clés primaires
-     * @return MysqlQueryBuilder le constructeur changé
-     * @throws MysqlException en cas de clés primaires non présente
+     * @brief Add to the query builder the check conditions of primary keys
+     * @param MysqlModel $model Model instance
+     * @param MysqlQueryBuilder $queryBuilder Query builder
+     * @param bool $addWhere If true, add ->where() followed by the conditions. If false, add an 'AND' condition before adding the primary keys conditions group
+     * @return MysqlQueryBuilder Modified builder
+     * @throws MysqlException In the case of non-present primary keys
      */
     public static function buildPrimaryKeysCondOn(MysqlModel $model, MysqlQueryBuilder $queryBuilder, bool $addWhere = true): MysqlQueryBuilder
     {
@@ -685,8 +632,7 @@ class MysqlModel extends DatabaseModel
         else
             $queryBuilder->cond(MysqlCondSeparator::AND());
 
-        // ajout du groupe de conditions
-        $columnsConfig = $model->getColumnsConfig();
+        $columnsConfig = $model->dbColumnsConfig;
         $primaryKeysCond = [];
 
         foreach ($columnsConfig as $attributeName => $columnConfig)
@@ -703,9 +649,9 @@ class MysqlModel extends DatabaseModel
         }
 
         if (empty($primaryKeysCond))
-            throw new MysqlException(message: "Aucune clé primaire trouvée", isDisplayable: false);
+            throw new MysqlException(message: "No primary key found", isDisplayable: false);
 
-        // remplacement de la dernière condition AND
+        // replace the last 'AND' condition
         $primaryKeysCond[count(value: $primaryKeysCond) - 1] = MysqlCondSeparator::GROUP_END();
 
         return $queryBuilder->cond(
@@ -715,8 +661,8 @@ class MysqlModel extends DatabaseModel
     }
 
     /**
-     * @return Config la configuration de la base de donnée de l'application
-     * @throws ConfigException en cas d'erreur de configuration
+     * @return Config Application database configuration
+     * @throws ConfigException On error
      */
     protected static function getDatabaseConfig(): Config
     {

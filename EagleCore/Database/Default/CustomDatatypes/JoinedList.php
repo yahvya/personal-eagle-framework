@@ -5,41 +5,30 @@ namespace Yahvya\EagleFramework\Database\Default\CustomDatatypes;
 use Yahvya\EagleFramework\Database\Default\Attributes\JoinedColumn;
 use Yahvya\EagleFramework\Database\Default\System\MysqlException;
 use Yahvya\EagleFramework\Database\Default\System\MysqlModel;
-use Yahvya\EagleFramework\Utils\List\SaboList;
+use Yahvya\EagleFramework\Utils\List\EagleList;
 
 /**
- * @brief Lignes jointes
- * @author yahaya bathily https://github.com/yahvya
- * @template ContainedType type d'éléments contenu
+ * @brief Joined lines custom type
+ * @template ContainedType Contained element types
  */
-class JoinedList extends SaboList
+class JoinedList extends EagleList
 {
     /**
-     * @var JoinedColumn Descripteur de la jointure
+     * @param JoinedColumn $descriptor Join column descriptor
+     * @param MysqlModel $linkedModel Linked model
      */
-    protected JoinedColumn $descriptor;
-
-    /**
-     * @var MysqlModel Model lié
-     */
-    protected MysqlModel $linkedModel;
-
-    /**
-     * @param JoinedColumn $descriptor Descripteur de la jointure
-     * @param MysqlModel $linkedModel model lié
-     */
-    public function __construct(JoinedColumn $descriptor, MysqlModel $linkedModel)
+    public function __construct(
+        protected(set) JoinedColumn $descriptor,
+        protected(set) MysqlModel $linkedModel
+    )
     {
         parent::__construct(datas: []);
-
-        $this->descriptor = $descriptor;
-        $this->linkedModel = $linkedModel;
     }
 
     /**
-     * @brief Charge les données de la jointure
+     * @brief Load the joined data
      * @return $this
-     * @throws MysqlException en cas d'erreur lors du chargement
+     * @throws MysqlException On error
      */
     public function loadContent(): JoinedList
     {

@@ -3,13 +3,12 @@
 namespace Yahvya\EagleFramework\Database\Default\Attributes;
 
 /**
- * @brief Représente un attribut pouvant être créé en sql
- * @author yahaya bathily https://github.com/yahvya
+ * @brief SQL attribute abstract definition
  */
 abstract class SqlAttribute
 {
     /**
-     * @return string Fourni le sql de création de l'attribut
+     * @return string Provide the SQL creation string of the attribute
      */
     public abstract function getCreationSql(): string;
 }

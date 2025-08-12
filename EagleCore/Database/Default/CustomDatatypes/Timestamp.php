@@ -5,30 +5,26 @@ namespace Yahvya\EagleFramework\Database\Default\CustomDatatypes;
 use DateTime;
 
 /**
- * @brief Type custom timestamp
- * @author yahaya bathily https://github.com/yahvya
+ * @brief Custom model class type for timestamps
  */
 class Timestamp
 {
     /**
-     * @var DateTime Gestionnaire interne de la date
+     * @var DateTime Date internal manager
      */
     protected DateTime $dateManager;
 
     /**
-     * @param int|null $timestamp Timestamp à gérer. Si null timestamp actuel utilisé
+     * @param int|null $timestamp Timestamp to treat. If null "now" will be used
      */
     public function __construct(?int $timestamp = null)
     {
-        if ($timestamp === null)
-            $timestamp = time();
-
         $this->dateManager = new DateTime();
-        $this->dateManager->setTimestamp($timestamp);
+        $this->dateManager->setTimestamp($timestamp ?? time());
     }
 
     /**
-     * @return int le timestamp converti en entrée pour la base de donnée
+     * @return int The ready value to be inserted in the database
      */
     public function convertForDatabase(): int
     {
@@ -36,7 +32,7 @@ class Timestamp
     }
 
     /**
-     * @return int Fourni le timestamp
+     * @return int The stored timestamp
      */
     public function getTimestamp(): int
     {
@@ -44,7 +40,7 @@ class Timestamp
     }
 
     /**
-     * @return DateTime fourni un datetime à partir du timestamp interne
+     * @return DateTime Datetime instance based on the timestamp
      */
     public function toDateTime(): DateTime
     {
@@ -52,9 +48,9 @@ class Timestamp
     }
 
     /**
-     * @brief Formate le timestamp
-     * @param string $format format
-     * @return string le retour
+     * @brief Format the timestamp
+     * @param string $format Format
+     * @return string Formated value
      */
     public function format(string $format = "Y-m-d H:i:s"): string
     {
@@ -62,9 +58,9 @@ class Timestamp
     }
 
     /**
-     * @brief Converti la donnée fournie en instance de timestamp
-     * @param string $data timestamp stocké
-     * @return Timestamp Le timestamp généré
+     * @brief Convert a database column value into an instance
+     * @param string $data Db timestamp stored
+     * @return Timestamp Generate"d instance
      */
     public static function fromDatabase(mixed $data): Timestamp
     {

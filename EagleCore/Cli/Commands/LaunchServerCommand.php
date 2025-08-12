@@ -51,7 +51,7 @@ class LaunchServerCommand extends EagleFrameworkCLICommand
         $sync = $argumentManager->find(optionName: "sync");
 
         $link = "$host:$port";
-        $rooter = APP_CONFIG->getConfig(name: "ROOT") . "/SaboCore/index.php";
+        $rooter = APP_CONFIG->getConfig(name: "ROOT") . "/EagleCore/index.php";
 
         if ($sync !== null)
         {
@@ -124,7 +124,7 @@ class LaunchServerCommand extends EagleFrameworkCLICommand
     {
         return [
             "Launch the development server - Default port (" . self::DEFAULT_PORT . ") - Default host (" . self::DEFAULT_HOST . ")",
-            "> php sabo $this->commandName",
+            "> php eagle $this->commandName",
             "Optional options :",
             "\t--port : Port number",
             "\t--host : Host address",
@@ -167,7 +167,8 @@ class LaunchServerCommand extends EagleFrameworkCLICommand
             );
 
             return true;
-        } else
+        }
+        else
         {
             Printer::printStyle(
                 toPrint: "Fail to install the <" . self::SYNC_COMMAND_NAME . "> command",

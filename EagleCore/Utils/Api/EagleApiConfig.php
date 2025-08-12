@@ -3,9 +3,9 @@
 namespace Yahvya\EagleFramework\Utils\Api;
 
 /**
- * @brief SaboApi constructor data
+ * @brief EagleApi constructor data
  */
-enum SaboApiConfig: int
+enum EagleApiConfig: int
 {
     /**
      * @brief Request link

@@ -45,7 +45,8 @@ class CliArgument
         {
             $option = null;
             $argumentValue = $matches[0];
-        } else
+        }
+        else
         {
             $option = $matches[2];
             $argumentValue = $matches[3];

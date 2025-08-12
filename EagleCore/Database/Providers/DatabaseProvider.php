@@ -6,21 +6,20 @@ use Yahvya\EagleFramework\Config\Config;
 use Yahvya\EagleFramework\Config\ConfigException;
 
 /**
- * @brief Classe parente de fournisseur d'instance pour le système de base de donnée
- * @author yahaya bathily https://github.com/yahvya/
+ * @brief Database provider
  */
 abstract class DatabaseProvider
 {
     /**
-     * @brief Initialise la base de données
-     * @param Config $providerConfig configuration du provider
+     * @brief Initialize the database by configure things
+     * @param Config $providerConfig Provider configuration (specified in the environment configuration)
      * @return void
-     * @throws ConfigException en cas d'erreur
+     * @throws ConfigException On error
      */
     public abstract function initDatabase(Config $providerConfig): void;
 
     /**
-     * @return mixed le gestionnaire de connexion
+     * @return mixed Connection instance handler
      */
     public abstract function getCon(): mixed;
 }

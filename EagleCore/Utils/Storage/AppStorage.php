@@ -32,7 +32,8 @@ abstract class AppStorage
             }
 
             return @copy(from: $fileBasePath, to: $storagePath);
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
             return false;
         }
@@ -59,7 +60,8 @@ abstract class AppStorage
             }
 
             return @file_put_contents(filename: $storagePath, data: $content) !== false;
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
             return false;
         }
@@ -86,7 +88,8 @@ abstract class AppStorage
             }
 
             return @move_uploaded_file(from: $fileTmpName, to: $storagePath);
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
             return false;
         }
@@ -107,7 +110,8 @@ abstract class AppStorage
             if (!str_starts_with(haystack: $pathFromStorage, needle: "/")) $pathFromStorage = "/$pathFromStorage";
 
             return $completePath . $pathFromStorage;
-        } catch (Throwable)
+        }
+        catch (Throwable)
         {
             return $pathFromStorage;
         }

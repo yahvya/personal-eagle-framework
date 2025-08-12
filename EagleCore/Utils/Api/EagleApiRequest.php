@@ -5,7 +5,7 @@ namespace Yahvya\EagleFramework\Utils\Api;
 /**
  * @brief Configuration of request parameters
  */
-enum SaboApiRequest
+enum EagleApiRequest
 {
     // Method of converting data
 

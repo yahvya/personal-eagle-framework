@@ -33,7 +33,7 @@ abstract class RandomStringGenerator
 
         foreach ($toIgnore as $typeToIgnore) unset($chars[$typeToIgnore->value]);
 
-        $choiceList = implode(array: $chars);
+        $choiceList = implode(separator: "", array: $chars);
         $choiceList = str_split(string: $choiceList);
 
         $keys = [];

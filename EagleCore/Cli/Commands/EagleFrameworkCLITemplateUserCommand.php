@@ -58,6 +58,7 @@ abstract class EagleFrameworkCLITemplateUserCommand extends EagleFrameworkCLICom
     public static function formatNameForClass(string $baseName): string
     {
         return implode(
+            separator: "",
             array: array_map(
                 callback: fn(string $part): string => ucfirst(string: strtolower(string: $part)),
                 array: explode(separator: " ", string: $baseName)

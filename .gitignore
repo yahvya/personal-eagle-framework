@@ -4,7 +4,12 @@
 
 # Sensitive files
 **/.env
-**/.env.php
+**/env.php
 
 # Vendor directories
 **/vendor/
+
+# Cache files
+EagleCore/views/*
+!EagleCore/views/blade/compiled/.gitkeep
+!EagleCore/views/twig/.gitkeep

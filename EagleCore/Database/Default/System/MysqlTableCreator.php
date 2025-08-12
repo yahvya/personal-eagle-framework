@@ -19,12 +19,12 @@ abstract class MysqlTableCreator
      */
     public static function getTableCreationFrom(MysqlModel $model): string
     {
-        $creationScript = "{$model->getTableNameManager()->getCreationSql()}(\n";
+        $creationScript = "{$model->tableNameProvider->getCreationSql()}(\n";
 
         $primaryKeys = [];
         $foreignKeys = [];
 
-        foreach ($model->getColumnsConfig() as $_ => $column)
+        foreach ($model->dbColumnsConfig as $column)
         {
             $creationScript .= "\t{$column->getCreationSql()},\n";
 

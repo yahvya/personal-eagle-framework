@@ -3,7 +3,6 @@
 namespace Yahvya\EagleFramework\Database\Default\Conditions;
 
 use Override;
-use Yahvya\EagleFramework\Database\Default\Conditions\Cond;
 use Yahvya\EagleFramework\Database\Default\System\MysqlModel;
 use Throwable;
 

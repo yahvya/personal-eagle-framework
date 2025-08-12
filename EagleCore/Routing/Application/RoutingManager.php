@@ -58,11 +58,11 @@ class RoutingManager
             return self::notFoundPage();
 
         ["route" => $route, "match" => $match] = $searchResult;
-        $matches = $match->getMatchTable();
+        $matches = $match->matchTable;
 
         $args = [$request, $matches];
 
-        foreach ($route->getAccessVerifiers() as $verifier)
+        foreach ($route->accessVerifiers as $verifier)
         {
             $verifyResult = $verifier->execVerification(verifierArgs: $args, onSuccessArgs: $args, onFailureArgs: $args);
 
@@ -70,7 +70,7 @@ class RoutingManager
                 return $verifyResult["failure"];
         }
 
-        return $this->launch(toExecute: $route->getToExecute(), matches: $matches, request: $request);
+        return $this->launch(toExecute: $route->toExecute, matches: $matches, request: $request);
     }
 
     /**

@@ -146,7 +146,7 @@ abstract class RouteManager
             // search route by match
             $match = $route->matchWith(url: $link);
 
-            if ($match->getHaveMatch()) return ["route" => $route, "match" => $match];
+            if ($match->haveMatch) return ["route" => $route, "match" => $match];
         }
 
         return null;

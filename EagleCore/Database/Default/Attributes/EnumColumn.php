@@ -51,8 +51,8 @@ class EnumColumn extends TableColumn
             )
             . ")"
             . ($this->isNullable ? "" : " NOT NULL")
-            . ($this->isUnique() ? " UNIQUE" : "")
-            . ($this->haveDefaultValue() ? " DEFAULT {$this->getDefaultValueStr()}" : "");
+            . ($this->isUnique ? " UNIQUE" : "")
+            . ($this->haveDefaultValue() ? " DEFAULT $this->defaultValue" : "");
     }
 
     #[Override]

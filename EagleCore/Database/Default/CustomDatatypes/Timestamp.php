@@ -15,7 +15,7 @@ class Timestamp
     protected DateTime $dateManager;
 
     /**
-     * @param int|null $timestamp Timestamp to treat. If null "now" will be used
+     * @param int|null $timestamp Timestamp to treat. If null, "now" will be used
      */
     public function __construct(?int $timestamp = null)
     {

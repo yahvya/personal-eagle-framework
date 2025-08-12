@@ -8,30 +8,13 @@ namespace Yahvya\EagleFramework\Routing\Routes;
 class MatchResult
 {
     /**
-     * @var bool Whether the match is successful
-     */
-    protected bool $match;
-
-    /**
-     * @var array Match table
-     */
-    protected(set) array $matchTable;
-
-    /**
      * @param bool $haveMatch Whether the match is successful
      * @param array $matchTable Match table
      */
-    public function __construct(bool $haveMatch, array $matchTable = [])
+    public function __construct(
+        protected(set) bool $haveMatch,
+        protected(set) array $matchTable = []
+    )
     {
-        $this->matchTable = $matchTable;
-        $this->match = $haveMatch;
-    }
-
-    /**
-     * @return bool Whether the match is successful
-     */
-    public function getHaveMatch(): bool
-    {
-        return $this->match;
     }
 }

@@ -17,7 +17,7 @@ use Yahvya\EagleFramework\Database\Default\Attributes\TableColumn;
 use Yahvya\EagleFramework\Database\Default\Attributes\TableName;
 use Yahvya\EagleFramework\Database\Default\Conditions\MysqlCondException;
 use Yahvya\EagleFramework\Database\Default\CustomDatatypes\JoinedList;
-use Yahvya\EagleFramework\Database\Default\Formatters\FormaterException;
+use Yahvya\EagleFramework\Database\Default\Formater\FormaterException;
 use Yahvya\EagleFramework\Database\Default\QueryBuilder\MysqlQueryBuilder;
 use Yahvya\EagleFramework\Database\System\DatabaseActionException;
 use Yahvya\EagleFramework\Database\System\QueryCondition;
@@ -540,7 +540,7 @@ abstract class MysqlModel extends DatabaseModel
      */
     public static function loadJoinedColumns(MysqlModel $model, JoinedColumn $joinedColumn): EagleList
     {
-        $joinConfig = $joinedColumn->getJoinConfig();
+        $joinConfig = $joinedColumn->joinConfig;
 
         $conditions = [MysqlCondSeparator::GROUP_START()];
 
@@ -562,7 +562,7 @@ abstract class MysqlModel extends DatabaseModel
 
         $conditions[$size - 1] = MysqlCondSeparator::GROUP_END();
 
-        return @call_user_func_array([$joinedColumn->getClassModel(), "findAll"], $conditions);
+        return @call_user_func_array([$joinedColumn->classModel, "findAll"], $conditions);
     }
 
     /**
@@ -606,7 +606,7 @@ abstract class MysqlModel extends DatabaseModel
             $list = new JoinedList(descriptor: $config, linkedModel: $model);
             $model->$attributeName = $list;
 
-            if (!$config->getLoadOnGeneration())
+            if (!$config->loadOnGeneration)
                 continue;
 
             $list->loadContent();

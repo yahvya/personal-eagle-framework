@@ -68,8 +68,8 @@ class DecimalColumn extends TableColumn
         return
             "$this->columnName DECIMAL($this->decimalCount,$this->afterDecimalCount)"
             . ($this->isNullable ? "" : " NOT NULL")
-            . ($this->isUnique() ? " UNIQUE" : "")
-            . ($this->haveDefaultValue() ? " DEFAULT {$this->getDefaultValueStr()}" : "");
+            . ($this->isUnique ? " UNIQUE" : "")
+            . ($this->haveDefaultValue() ? " DEFAULT $this->defaultValue" : "");
     }
 
     #[Override]

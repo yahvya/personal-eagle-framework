@@ -8,19 +8,19 @@ use Yahvya\EagleFramework\Utils\Storage\AppStorage;
 use Yahvya\EagleFramework\Utils\Storage\Storable;
 
 /**
- * @brief Server file manager
+ * @brief File server manager
  */
 class FileManager implements Storable
 {
     /**
-     * @param string $fileAbsolutePath File's absolute path
+     * @param string $fileAbsolutePath Absolute path to the file
      */
     public function __construct(protected string $fileAbsolutePath)
     {
     }
 
     /**
-     * @return bool If the file exists
+     * @return bool Whether the file exists
      */
     public function fileExists(): bool
     {
@@ -28,16 +28,16 @@ class FileManager implements Storable
     }
 
     /**
-     * @brief Recherche l'extension du fichier
-     * @param bool $fromFirstOccur Si true récupère le chemin à partir du premier "." rencontré (ex : file.blade.php = blade.php) sinon le dernier (ex : file.blade.php = php)
-     * @param string $extensionSeparator séparateur d'extension "." par défaut
-     * @return string|null l'extension trouvée ou
+     * @brief Finds the file extension
+     * @param bool $fromFirstOccur If true, get the extension from the first '.' found (e.g. file.blade.php = blade.php), otherwise from the last '.' (e.g. file.blade.php = php)
+     * @param string $extensionSeparator Extension separator, default is "."
+     * @return string|null The found extension or null if none found
      */
-    public function getExtension(bool $fromFirstOccur = true, string $extensionSeparator = "."): string|null
+    public function getExtension(bool $fromFirstOccur = true, string $extensionSeparator = "."): ?string
     {
         $extension = $this->fileAbsolutePath;
 
-        // récupération de l'extension dans que la chaine résultat contient des séparateurs de chemin
+        // Extract extension as long as the result contains path separators
         do
         {
             $pos = $fromFirstOccur ? @strpos(haystack: $extension, needle: $extensionSeparator) : @strrpos(haystack: $extension, needle: $extensionSeparator);
@@ -51,8 +51,8 @@ class FileManager implements Storable
     }
 
     /**
-     * @param string|null $fileName nom à donner au fichier téléchargé ou null pour conserver le nom par défaut
-     * @return DownloadResponse le fichier au téléchargement
+     * @param string|null $fileName Name to give to the downloaded file, or null to keep default
+     * @return DownloadResponse File ready for download
      */
     public function getToDownload(?string $fileName = null): DownloadResponse
     {
@@ -60,7 +60,7 @@ class FileManager implements Storable
     }
 
     /**
-     * @return string le chemin du fichier contenu
+     * @return string The full path of the file
      */
     public function getPath(): string
     {
@@ -68,10 +68,10 @@ class FileManager implements Storable
     }
 
     /**
-     * @brief Stock le fichier dans le dossier de stockage (en conservant le fichier actuel)
-     * @param string $path Chemin à partir du dossier de stockage comme racine (/)
-     * @param bool $createFoldersIfNotExists si true et que le nouveau chemin contient des dossiers inexistants, ils seront créés
-     * @return bool si le stockage a réussi
+     * @brief Stores the file in the storage folder (keeping the current file)
+     * @param string $path Path relative to the storage root folder (/)
+     * @param bool $createFoldersIfNotExists If true, creates missing folders in the new path
+     * @return bool Whether the storage was successful
      */
     #[Override]
     public function storeIn(string $path, bool $createFoldersIfNotExists = true): bool
@@ -84,8 +84,8 @@ class FileManager implements Storable
     }
 
     /**
-     * @brief Supprime le fichier
-     * @return bool si la suppression a réussie
+     * @brief Deletes the file
+     * @return bool Whether the deletion was successful
      */
     public function delete(): bool
     {
@@ -93,8 +93,8 @@ class FileManager implements Storable
     }
 
     /**
-     * @return FileContentManager|null gestionnaire de contenu de fichier si échec de lecture du contenu
-     * @attention adapté aux fichiers à contenu textuel
+     * @return FileContentManager|null File content manager if file read succeeds, null otherwise
+     * @attention Suitable for text content files only
      */
     #[Override]
     public function getFromStorage(): ?FileContentManager

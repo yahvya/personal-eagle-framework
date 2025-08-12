@@ -52,10 +52,10 @@ class MysqlComparator extends QueryComparator
                 $bindValues = [];
                 $countOfMarkers = 0;
 
-                foreach ($queryBuilder->getBindValues() as $bindValue)
+                foreach ($queryBuilder->toBind as $bindValue)
                 {
-                    $bindValues[] = $bindValue->getToBindDatas()->toArray();
-                    $countOfMarkers += $bindValue->getCountOfMarkers();
+                    $bindValues[] = $bindValue->dataToBind->toArray();
+                    $countOfMarkers += $bindValue->countOfMarkers;
                 }
 
                 return new MysqlBindDatas(

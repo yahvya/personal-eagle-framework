@@ -1,9 +1,10 @@
-# editor files
+# Editor folders
+**/.idea/
+**/.vscode/
 
-*.idea
-*.vscode
+# Sensitive files
+**/.env
+**/.env.php
 
-# sensible files
-*.env
-*.env.php
-*vendor/
+# Vendor directories
+**/vendor/

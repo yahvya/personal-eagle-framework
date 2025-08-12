@@ -29,6 +29,6 @@ abstract class Treatment
      */
     protected static function throwModelException(MysqlException $exception): void
     {
-        throw new TreatmentException(message: $exception->getMessage(), isDisplayable: $exception->getIsDisplayable());
+        throw new TreatmentException(message: $exception->getMessage(), isDisplayable: $exception->isDisplayable);
     }
 }

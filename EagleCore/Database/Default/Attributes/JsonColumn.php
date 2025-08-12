@@ -35,8 +35,8 @@ class JsonColumn extends TableColumn
         return
             "$this->columnName JSON"
             . ($this->isNullable ? "" : " NOT NULL")
-            . ($this->isUnique() ? " UNIQUE" : "")
-            . ($this->haveDefaultValue() ? " DEFAULT {$this->getDefaultValueStr()}" : "");
+            . ($this->isUnique ? " UNIQUE" : "")
+            . ($this->haveDefaultValue() ? " DEFAULT $this->defaultValue" : "");
     }
 
     #[Override]

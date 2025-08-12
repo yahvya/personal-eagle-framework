@@ -7,7 +7,7 @@
   "autoload": {
     "psr-4": {
       "Yahvya\\EagleFramework\\": "EagleCore/",
-      "Application": "Src/"
+      "Application\\": "Src/"
     }
   },
   "authors": [
@@ -28,5 +28,8 @@
     "twig/twig": "^3.8",
     "phpmailer/phpmailer": "^6.9",
     "php": ">=8.4"
-  }
+  },
+  "bin": [
+    "./eagle"
+  ]
 }

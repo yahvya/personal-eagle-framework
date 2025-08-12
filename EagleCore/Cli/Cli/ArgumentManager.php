@@ -15,7 +15,7 @@ class ArgumentManager
     /**
      * @var int Current read index
      */
-    protected int $currentIndex = 0;
+    protected(set) int $currentIndex = 0;
 
     /**
      * @param string[] $argv CLI arguments based on $argv

@@ -10,7 +10,7 @@ class Config
     /**
      * @var array{string:mixed} Configuration
      */
-    protected array $config = [];
+    protected(set) array $config = [];
 
     /**
      * @brief Add / Update a configuration element

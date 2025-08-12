@@ -60,7 +60,7 @@ class MysqlQueryBuilder
     {
         $this->sqlString = "";
         $this->toBind = [];
-        $this->tableAlias = $this->baseModel->tableNameProvider->getTableName() . time();
+        $this->tableAlias = $this->baseModel->tableNameProvider->tableName . time();
 
         return $this;
     }
@@ -230,7 +230,7 @@ class MysqlQueryBuilder
         }
         else
         {
-            $sql = "{$this->baseModel->getColumnConfig(attributName: $condGetter)->getColumnName()} ";
+            $sql = "{$this->baseModel->getColumnConfig(attributName: $condGetter)->columnName} ";
         }
 
         // treatment of the markers replacement
@@ -334,7 +334,7 @@ class MysqlQueryBuilder
             $columnsToSelect[] = $function . ($alias ? " AS $alias" : "");
         }
 
-        $this->sqlString .= (empty($columnsToSelect) ? "*" : implode(separator: ",", array: $columnsToSelect)) . " FROM {$this->baseModel->tableNameProvider->getTableName()} AS {aliasTable} ";
+        $this->sqlString .= (empty($columnsToSelect) ? "*" : implode(separator: ",", array: $columnsToSelect)) . " FROM {$this->baseModel->tableNameProvider->tableName} AS {aliasTable} ";
 
         return $this;
     }
@@ -347,7 +347,7 @@ class MysqlQueryBuilder
      */
     public function insert(array $insertConfig): MysqlQueryBuilder
     {
-        $this->sqlString .= "INSERT INTO {$this->baseModel->tableNameProvider->getTableName()} ";
+        $this->sqlString .= "INSERT INTO {$this->baseModel->tableNameProvider->tableName} ";
 
         $columnsToInsert = [];
         $sql = [];
@@ -381,7 +381,7 @@ class MysqlQueryBuilder
      */
     public function update(array $updateConfig): MysqlQueryBuilder
     {
-        $this->sqlString .= "UPDATE {$this->baseModel->tableNameProvider->getTableName()} AS {aliasTable} SET ";
+        $this->sqlString .= "UPDATE {$this->baseModel->tableNameProvider->tableName} AS {aliasTable} SET ";
 
         $columnsConfig = $this->baseModel->dbColumnsConfig;
 
@@ -413,7 +413,7 @@ class MysqlQueryBuilder
      */
     public function delete(): MysqlQueryBuilder
     {
-        $this->sqlString .= "DELETE FROM {$this->baseModel->tableNameProvider->getTableName()} AS {aliasTable} ";
+        $this->sqlString .= "DELETE FROM {$this->baseModel->tableNameProvider->tableName} AS {aliasTable} ";
 
         return $this;
     }
@@ -473,7 +473,7 @@ class MysqlQueryBuilder
         {
             [$attributeName, $sortOrder] = $orderConfig;
 
-            $sql[] = "{$this->baseModel->getColumnConfig(attributName: $attributeName)->getColumnName()} $sortOrder";
+            $sql[] = "{$this->baseModel->getColumnConfig(attributName: $attributeName)->columnName} $sortOrder";
         }
 
         $this->sqlString .= implode(separator: ",", array: $sql) . " ";
@@ -491,7 +491,7 @@ class MysqlQueryBuilder
         $this->sqlString .= "GROUP BY " . implode(
                 separator: ",",
                 array: array_map(
-                    callback: fn(string $attributeName): string => $this->baseModel->getColumnConfig(attributName: $attributeName)->getColumnName(),
+                    callback: fn(string $attributeName): string => $this->baseModel->getColumnConfig(attributName: $attributeName)->columnName,
                     array: $attributesNames
                 )
             ) . " ";

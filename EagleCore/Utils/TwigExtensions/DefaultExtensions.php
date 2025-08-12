@@ -2,7 +2,6 @@
 
 namespace Yahvya\EagleFramework\Utils\TwigExtensions;
 
-use Yahvya\EagleFramework\Utils\Csrf\CsrfManager;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
